@@ -120,8 +120,7 @@ XPCOMUtils.defineConstant(this, "EVENTS", EVENTS);
 
 const { Task } = require("devtools/sham/task");
 
-XPCOMUtils.defineLazyModuleGetter(this, "Parser",
-  "resource://devtools/shared/Parser.jsm");
+XPCOMUtils.defineLazyModuleGetter(this, "Parser", "devtools/shared/parser");
 
 XPCOMUtils.defineLazyModuleGetter(this, "ShortcutUtils",
   "resource://gre/modules/ShortcutUtils.jsm");

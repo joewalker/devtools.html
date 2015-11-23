@@ -10,7 +10,7 @@ const {Cc, Ci, Cu, components} = require("chrome");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
 if (!isWorker) {
-  loader.lazyImporter(this, "Parser", "resource://devtools/shared/Parser.jsm");
+  loader.lazyImporter(this, "Parser", "devtools/shared/parser");
 }
 
 // Provide an easy way to bail out of even attempting an autocompletion

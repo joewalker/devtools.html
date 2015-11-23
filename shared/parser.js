@@ -15,8 +15,6 @@ const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 XPCOMUtils.defineLazyModuleGetter(this,
   "Reflect", "resource://gre/modules/reflect.jsm");
 
-this.EXPORTED_SYMBOLS = ["Parser", "ParserHelpers", "SyntaxTreeVisitor"];
-
 /**
  * A JS parser using the reflection API.
  */
@@ -2349,3 +2347,7 @@ var SyntaxTreeVisitor = {
 };
 
 XPCOMUtils.defineLazyGetter(Parser, "reflectionAPI", () => Reflect);
+
+exports.Parser = Parser;
+exports.ParserHelpers = ParserHelpers;
+exports.SyntaxTreeVisitor = SyntaxTreeVisitor;
