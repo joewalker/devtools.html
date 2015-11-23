@@ -14,7 +14,7 @@ const {
   Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
 } = require("devtools/client/shared/widgets/ViewHelpers");
-Cu.import("resource://devtools/shared/event-emitter.js");
+const { EventEmitter } = require("devtools/shared/event-emitter");
 
 /**
  * A breadcrumb-like list of items.

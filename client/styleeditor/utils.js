@@ -7,7 +7,7 @@
 const {Cc, Ci, Cu, Cr} = require("chrome");
 
 const { Services } = require("devtools/sham/services");
-Cu.import("resource://devtools/shared/event-emitter.js");
+const { EventEmitter } = require("devtools/shared/event-emitter");
 
 exports.PREF_ORIG_SOURCES = "devtools.styleeditor.source-maps-enabled";
 

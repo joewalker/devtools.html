@@ -7,7 +7,7 @@
 const {Cu} = require("chrome");
 const Editor = require("devtools/client/sourceeditor/editor");
 const { Services } = require("devtools/sham/services");
-Cu.import("resource://devtools/shared/event-emitter.js");
+const { EventEmitter } = require("devtools/shared/event-emitter");
 
 exports.HTMLEditor = HTMLEditor;
 

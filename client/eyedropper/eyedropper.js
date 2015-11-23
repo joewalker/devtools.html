@@ -5,7 +5,7 @@
 const {Cc, Ci, Cu} = require("chrome");
 const {rgbToHsl} = require("devtools/shared/css-color").colorUtils;
 const Telemetry = require("devtools/client/shared/telemetry");
-const {EventEmitter} = require("devtools/shared/event-emitter");
+const { EventEmitter } = require("devtools/shared/event-emitter");
 const promise = require("promise");
 const {setTimeout, clearTimeout} = Cu.import("resource://gre/modules/Timer.jsm", {});
 

@@ -17,7 +17,7 @@ const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 // Cu.import("resource://gre/modules/Timer.jsm");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
-Cu.import("resource://devtools/shared/event-emitter.js");
+const { EventEmitter } = require("devtools/shared/event-emitter");
 
 /**
  * Inheritance helpers from the addon SDK's core/heritage.
