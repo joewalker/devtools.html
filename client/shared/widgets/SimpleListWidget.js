@@ -10,8 +10,6 @@ const Cu = Components.utils;
 
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 
-this.EXPORTED_SYMBOLS = ["SimpleListWidget"];
-
 /**
  * A very simple vertical list view.
  *
@@ -251,3 +249,5 @@ SimpleListWidget.prototype = {
   _emptyTextNode: null,
   _emptyTextValue: ""
 };
+
+exports.SimpleListWidget = this.SimpleListWidget;

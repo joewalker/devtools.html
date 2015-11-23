@@ -714,7 +714,7 @@ DevToolsUtils.defineLazyPrototypeGetter(Item.prototype, "_itemsByElement", () =>
  *   });
  *
  * See https://gist.github.com/victorporof/5749386 for more details.
- * The devtools/shared/widgets/SimpleListWidget.jsm is an implementation example.
+ * The devtools/shared/widgets/SimpleListWidget.js is an implementation example.
  *
  * Language:
  *   - An "item" is an instance of an Item.

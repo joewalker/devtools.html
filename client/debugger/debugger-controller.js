@@ -96,7 +96,7 @@ const FRAME_TYPE = {
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 Cu.import("resource://devtools/shared/event-emitter.js");
-Cu.import("resource://devtools/client/shared/widgets/SimpleListWidget.jsm");
+const { SimpleListWidget } = require("devtools/client/shared/widgets/SimpleListWidget");
 const { BreadcrumbsWidget } = require("devtools/client/shared/widgets/BreadcrumbsWidget");
 const { SideMenuWidget } = require("devtools/client/shared/widgets/SideMenuWidget");
 Cu.import("resource://devtools/client/shared/widgets/VariablesView.jsm");
