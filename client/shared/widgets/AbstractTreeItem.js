@@ -13,8 +13,6 @@ Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 XPCOMUtils.defineLazyModuleGetter(this, "EventEmitter",
   "resource://devtools/shared/event-emitter.js");
 
-this.EXPORTED_SYMBOLS = ["AbstractTreeItem"];
-
 /**
  * A very generic and low-level tree view implementation. It is not intended
  * to be used alone, but as a base class that you can extend to build your
@@ -583,3 +581,5 @@ AbstractTreeItem.prototype = {
     this._rootItem.emit("blur", this);
   }
 };
+
+exports.AbstractTreeItem = AbstractTreeItem;
