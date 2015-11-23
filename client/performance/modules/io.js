@@ -6,7 +6,7 @@
 const { Cc, Ci, Cu, Cr } = require("chrome");
 
 const { Services } = require("devtools/sham/services");
-loader.lazyRequireGetter(this, "promise");
+const { promise } = require("devtools/sham/promise");
 const RecordingUtils = require("devtools/shared/performance/recording-utils");
 
 const { FileUtils } = require("devtools/sham/fileutils");

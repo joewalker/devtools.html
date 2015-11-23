@@ -7,7 +7,7 @@ const { Task } = require("devtools/sham/task");
 const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
 const { setNamedTimeout, clearNamedTimeout } = require("devtools/client/shared/widgets/ViewHelpers");
 
-loader.lazyRequireGetter(this, "promise");
+const { promise } = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 
 const { getColor } = require("devtools/client/shared/theme");

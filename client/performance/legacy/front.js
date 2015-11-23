@@ -7,7 +7,7 @@ const { Cu } = require("chrome");
 const { Task } = require("devtools/sham/task");
 
 const { Services } = require("devtools/sham/services");
-loader.lazyRequireGetter(this, "promise");
+const { promise } = require("devtools/sham/promise");
 const { extend } = require("sdk/util/object");
 
 const Actors = require("devtools/client/performance/legacy/actors");

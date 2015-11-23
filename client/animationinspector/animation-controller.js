@@ -16,7 +16,7 @@ const {
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
 } = require("devtools/client/shared/widgets/ViewHelpers");
 
-loader.lazyRequireGetter(this, "promise");
+const { promise } = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 const { AnimationsFront } = require("devtools/server/actors/animation");
 

@@ -5,7 +5,7 @@
 
 const { Task } = require("devtools/sham/task");
 
-loader.lazyRequireGetter(this, "promise");
+const { promise } = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 const { Poller } = require("devtools/client/shared/poller");
 

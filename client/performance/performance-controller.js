@@ -18,7 +18,7 @@ Object.defineProperty(this, "EVENTS", {
 });
 
 const { Services } = require("devtools/sham/services");
-loader.lazyRequireGetter(this, "promise");
+const { promise } = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const system = require("devtools/shared/system");

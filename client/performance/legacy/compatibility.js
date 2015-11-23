@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-loader.lazyRequireGetter(this, "promise");
+const { promise } = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 
 /**

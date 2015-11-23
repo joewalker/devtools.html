@@ -8,7 +8,7 @@
 const { Cc, Ci, Cu, Cr } = require("chrome");
 const { Task } = require("devtools/sham/task");
 
-loader.lazyRequireGetter(this, "promise");
+const { promise } = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 
 function PerformancePanel(iframeWindow, toolbox) {

@@ -14,7 +14,7 @@ const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { Task } = require("devtools/sham/task");
 loader.lazyImporter(this, "PluralForm", "resource://gre/modules/PluralForm.jsm");
 
-loader.lazyRequireGetter(this, "promise");
+const { promise } = require("devtools/sham/promise");
 const { TableWidget } = require("devtools/client/shared/widgets/TableWidget");
 const { ObjectClient } = require("devtools/shared/client/main");
 

@@ -7,7 +7,7 @@ const { Cc, Ci, Cu } = require("chrome");
 const { Task } = require("devtools/sham/task");
 
 const { Services } = require("devtools/sham/services");
-loader.lazyRequireGetter(this, "promise");
+const { promise } = require("devtools/sham/promise");
 loader.lazyRequireGetter(this, "OS", "resource://gre/modules/commonjs/node/os.js");
 const { DebuggerServer } = require("devtools/server/main");
 loader.lazyRequireGetter(this, "AppConstants",

@@ -15,7 +15,7 @@ const BarGraphWidget = require("devtools/client/shared/widgets/BarGraphWidget");
 const MountainGraphWidget = require("devtools/client/shared/widgets/MountainGraphWidget");
 const { CanvasGraphUtils } = require("devtools/client/shared/widgets/Graphs");
 
-loader.lazyRequireGetter(this, "promise");
+const { promise } = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 
 const { colorUtils } = require("devtools/shared/css-color");

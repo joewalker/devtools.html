@@ -14,7 +14,7 @@ const { loader, require } =
 
 const { Task } = require("devtools/sham/task");
 
-loader.lazyRequireGetter(this, "promise");
+const { promise } = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const { PromisesFront } = require("devtools/server/actors/promises");

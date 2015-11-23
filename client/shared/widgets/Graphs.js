@@ -9,7 +9,7 @@ const { Task } = require("devtools/sham/task");
 const { Heritage, setNamedTimeout, clearNamedTimeout } = require("devtools/client/shared/widgets/ViewHelpers");
 const { getCurrentZoom } = require("devtools/shared/layout/utils");
 
-loader.lazyRequireGetter(this, "promise");
+const { promise } = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 
 loader.lazyImporter(this, "DevToolsWorker",
