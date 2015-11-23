@@ -33,7 +33,8 @@ const ELLIPSIS = Services.prefs.getComplexValue("intl.ellipsis", Ci.nsIPrefLocal
 const { Task } = require("devtools/sham/task");
 const {scrollIntoViewIfNeeded} = require("devtools/shared/layout/utils");
 
-Cu.import("resource://devtools/shared/gcli/Templater.jsm");
+// Removed this already, will need to bring it back if this is called
+// const template = require("devtools/shared/gcli/Templater");
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
@@ -362,6 +363,7 @@ MarkupView.prototype = {
   template: function(aName, aDest, aOptions={stack: "markup-view.xhtml"}) {
     let node = this.doc.getElementById("template-" + aName).cloneNode(true);
     node.removeAttribute("id");
+    // See above: removed already, will need to bring it back if this is called
     template(node, aDest, aOptions);
     return node;
   },

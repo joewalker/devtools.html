@@ -9,7 +9,7 @@
 (function (factory) { // Module boilerplate
   if (this.module && module.id.indexOf("event-emitter") >= 0) { // require
     factory.call(this, require, exports, module);
-  } else { // Cu.import
+  } else { // require
       const Cu = Components.utils;
       this.isWorker = false;
       this.promise = require("devtools/sham/promise").Promise;

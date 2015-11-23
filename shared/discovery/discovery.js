@@ -59,7 +59,8 @@ XPCOMUtils.defineLazyGetter(this, "sysInfo", () => {
 });
 
 XPCOMUtils.defineLazyGetter(this, "libcutils", function () {
-  Cu.import("resource://gre/modules/systemlibs.js");
+  // TODO: Hoping we don't need to sham this
+  require("gre/modules/systemlibs.js");
   return libcutils;
 });
 

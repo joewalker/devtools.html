@@ -10,7 +10,9 @@ const { Ci, Cu, components } = require("chrome");
 const Services = require("Services");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
-const promise = Cu.import("resource://devtools/shared/deprecated-sync-thenables.js", {}).Promise;
+// WARNING I swapped the sync one for the async one here
+//const promise = require("resource://devtools/shared/deprecated-sync-thenables.js", {}).Promise;
+const promise = require("devtools/sham/promise").Promise;
 
 const events = require("sdk/event/core");
 const { WebConsoleClient } = require("devtools/shared/webconsole/client");

@@ -51,7 +51,7 @@ const { TreeWidget } = require("devtools/client/shared/widgets/TreeWidget");
 const { SideMenuWidget } = require("devtools/client/shared/widgets/SideMenuWidget");
 const { setNamedTimeout, clearNamedTimeout } = require("devtools/client/shared/widgets/ViewHelpers");
 
-loader.lazyImporter(this, "PluralForm", "resource://gre/modules/PluralForm.jsm");
+const PluralForm = require("devtools/sham/pluralform");
 
 const BRANCH_NAME = "devtools.performance.ui.";
 

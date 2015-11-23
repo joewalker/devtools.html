@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 const { Cu } = require("chrome");
-const { AddonManager } = Cu.import("resource://gre/modules/AddonManager.jsm");
+const { AddonManager } = require("devtools/sham/addonmanager");
 const { Task } = require("devtools/sham/task");
 const { ConnectionManager } = require("devtools/shared/client/connection-manager");
 const { AddonSimulatorProcess } = require("devtools/client/webide/modules/simulator-process");

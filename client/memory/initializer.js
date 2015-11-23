@@ -5,9 +5,8 @@
 "use strict";
 
 const { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
-const BrowserLoaderModule = {};
-Cu.import("resource://devtools/client/shared/browser-loader.js", BrowserLoaderModule);
-const { require } = BrowserLoaderModule.BrowserLoader("resource://devtools/client/memory/", this);
+//const { BrowserLoader } = require("devtools/client/shared/browser-loader");
+//const { require } = BrowserLoader("resource://devtools/client/memory/", this);
 const { Task } = require("devtools/sham/task");
 const { createFactory, createElement } = require("devtools/client/shared/vendor/react");
 const ReactDOM = require("devtools/client/shared/vendor/react-dom");

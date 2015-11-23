@@ -18,8 +18,9 @@ const { NetUtil } = require("devtools/sham/netutil");
 const { FileUtils } = require("devtools/sham/fileutils");
 const { OS } = require("devtools/sham/osfile");
 
-var { Loader } = Cu.import("resource://gre/modules/commonjs/toolkit/loader.js", {});
-var promise = Cu.import("resource://gre/modules/Promise.jsm", {}).Promise;
+// Hoping that we can skip creating a sham for this
+//var { Loader } = require("gre/modules/commonjs/toolkit/loader.js", {});
+var promise = require("devtools/sham/promise").Promise;
 
 this.EXPORTED_SYMBOLS = ["DevToolsLoader", "devtools", "BuiltinProvider",
                          "SrcdirProvider", "require", "loader"];
@@ -47,14 +48,14 @@ XPCOMUtils.defineLazyGetter(loaderModules, "Debugger", () => {
   );
   return sandbox.Debugger;
 });
-XPCOMUtils.defineLazyGetter(loaderModules, "Timer", () => {
-  let {setTimeout, clearTimeout} = Cu.import("resource://gre/modules/Timer.jsm", {});
-  // Do not return Cu.import result, as SDK loader would freeze Timer.jsm globals...
-  return {
-    setTimeout,
-    clearTimeout
-  };
-});
+//XPCOMUtils.defineLazyGetter(loaderModules, "Timer", () => {
+//  let {setTimeout, clearTimeout} = require("devtools/sham/timer");
+//  // Do not return 'require' result, as SDK loader would freeze Timer.jsm globals...
+//  return {
+//    setTimeout,
+//    clearTimeout
+//  };
+//});
 XPCOMUtils.defineLazyGetter(loaderModules, "xpcInspector", () => {
   return Cc["@mozilla.org/jsinspector;1"].getService(Ci.nsIJSInspector);
 });

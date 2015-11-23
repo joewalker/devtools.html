@@ -8,10 +8,10 @@
     const { Cc, Ci, Cu, ChromeWorker } = require("chrome");
     const dumpn = require("devtools/shared/DevToolsUtils").dumpn;
     factory.call(this, require, exports, module, { Cc, Ci, Cu }, ChromeWorker, dumpn);
-  } else { // Cu.import
+  } else { // require
     const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
     this.isWorker = false;
-    this.Promise = Cu.import("resource://gre/modules/Promise.jsm", {}).Promise;
+    this.Promise = require("devtools/sham/Promise").Promise;
     factory.call(
       this, require, this, { exports: this },
       { Cc, Ci, Cu }, ChromeWorker, null
