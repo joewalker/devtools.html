@@ -134,11 +134,7 @@ XPCOMUtils.defineConstant(this, "Editor", Editor);
 XPCOMUtils.defineLazyModuleGetter(this, "Chart",
   "devtools/client/shared/widgets/Chart.js");
 
-XPCOMUtils.defineLazyModuleGetter(this, "Curl",
-  "resource://devtools/client/shared/Curl.jsm");
-
-XPCOMUtils.defineLazyModuleGetter(this, "CurlUtils",
-  "resource://devtools/client/shared/Curl.jsm");
+const { Curl, CurlUtils } = require("devtools/client/shared/Curl");
 
 const { Task } = require("devtools/sham/task");
 
