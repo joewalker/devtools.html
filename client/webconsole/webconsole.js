@@ -27,7 +27,7 @@ const system = require("devtools/shared/system");
 const Timers = require("sdk/timers");
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 const { VariablesViewController, StackFrameUtils } = require("devtools/client/shared/widgets/VariablesViewController");
-loader.lazyImporter(this, "PluralForm", "resource://gre/modules/PluralForm.jsm");
+const PluralForm = require("devtools/sham/pluralform");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 
 const STRINGS_URI = "chrome://devtools/locale/webconsole.properties";

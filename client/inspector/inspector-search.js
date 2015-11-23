@@ -7,7 +7,7 @@
 const {Cu, Ci} = require("chrome");
 
 const promise = require("promise");
-loader.lazyGetter(this, "EventEmitter", () => require("devtools/shared/event-emitter"));
+const EventEmitter = require("devtools/shared/event-emitter");
 loader.lazyGetter(this, "AutocompletePopup", () => require("devtools/client/shared/autocomplete-popup").AutocompletePopup);
 
 // Maximum number of selector suggestions shown in the panel.

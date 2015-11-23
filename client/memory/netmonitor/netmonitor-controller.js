@@ -133,15 +133,13 @@ XPCOMUtils.defineConstant(this, "EVENTS", EVENTS);
 XPCOMUtils.defineConstant(this, "ACTIVITY_TYPE", ACTIVITY_TYPE);
 XPCOMUtils.defineConstant(this, "Editor", Editor);
 
-XPCOMUtils.defineLazyModuleGetter(this, "Chart",
-  "devtools/client/shared/widgets/Chart.js");
+const { Chart } = require("devtools/client/shared/widgets/Chart");
 
 const { Curl, CurlUtils } = require("devtools/client/shared/Curl");
 
 const { Task } = require("devtools/sham/task");
 
-XPCOMUtils.defineLazyModuleGetter(this, "PluralForm",
-  "resource://gre/modules/PluralForm.jsm");
+const PluralForm = require("devtools/sham/pluralform");
 
 XPCOMUtils.defineLazyServiceGetter(this, "clipboardHelper",
   "@mozilla.org/widget/clipboardhelper;1", "nsIClipboardHelper");

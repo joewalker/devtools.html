@@ -12,7 +12,7 @@ const { Services } = require("devtools/sham/services");
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { Task } = require("devtools/sham/task");
-loader.lazyImporter(this, "PluralForm", "resource://gre/modules/PluralForm.jsm");
+const PluralForm = require("devtools/sham/pluralform");
 
 const { promise } = require("devtools/sham/promise");
 const { TableWidget } = require("devtools/client/shared/widgets/TableWidget");

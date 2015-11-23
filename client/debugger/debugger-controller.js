@@ -119,10 +119,7 @@ XPCOMUtils.defineConstant(this, "EVENTS", EVENTS);
 
 const { Task } = require("devtools/sham/task");
 
-XPCOMUtils.defineLazyModuleGetter(this, "Parser", "devtools/shared/parser");
-
-XPCOMUtils.defineLazyModuleGetter(this, "ShortcutUtils",
-  "resource://gre/modules/ShortcutUtils.jsm");
+const { Parser } = require("devtools/shared/parser");
 
 XPCOMUtils.defineLazyServiceGetter(this, "clipboardHelper",
   "@mozilla.org/widget/clipboardhelper;1", "nsIClipboardHelper");

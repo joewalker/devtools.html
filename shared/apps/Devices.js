@@ -4,7 +4,7 @@
 
 "use strict";
 
-Components.utils.import("resource://devtools/shared/event-emitter.js");
+const EventEmitter = require("devtools/shared/event-emitter");
 
 var addonInstalled = false;
 

@@ -26,18 +26,7 @@ const CANVAS_ACTOR_RECORDING_ATTEMPT = DevToolsUtils.testing ? 500 : 5000;
 
 const { Task } = require("devtools/sham/task");
 
-XPCOMUtils.defineLazyModuleGetter(this, "PluralForm",
-  "resource://gre/modules/PluralForm.jsm");
-
-//XPCOMUtils.defineLazyModuleGetter(this, "FileUtils",
-//  "resource://gre/modules/FileUtils.jsm");
-
-//XPCOMUtils.defineLazyModuleGetter(this, "NetUtil",
-//  "resource://gre/modules/NetUtil.jsm");
-
-XPCOMUtils.defineLazyGetter(this, "NetworkHelper", function() {
-  return require("devtools/shared/webconsole/network-helper");
-});
+const { NetworkHelper } = require("devtools/shared/webconsole/network-helper");
 
 // The panel's window global is an EventEmitter firing the following events:
 const EVENTS = {

@@ -28,8 +28,7 @@ const { Task } = require("devtools/sham/task");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const promise = require("promise");
 
-XPCOMUtils.defineLazyModuleGetter(this, "PluralForm",
-  "resource://gre/modules/PluralForm.jsm");
+const PluralForm = require("devtools/sham/pluralform");
 
 XPCOMUtils.defineLazyServiceGetter(this, "clipboardHelper",
   "@mozilla.org/widget/clipboardhelper;1",

@@ -13,8 +13,7 @@ const {
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
 } = require("devtools/client/shared/widgets/ViewHelpers");
 
-XPCOMUtils.defineLazyModuleGetter(this, "EventEmitter",
-  "resource://devtools/shared/event-emitter.js");
+const EventEmitter = require("devtools/shared/event-emitter");
 
 /**
  * A very generic and low-level tree view implementation. It is not intended

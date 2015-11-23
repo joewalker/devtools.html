@@ -20,8 +20,7 @@ const { _, assert, log, text, wire, showFilePicker } = require("devtools/client/
 const { SplitView } = require("devtools/client/shared/SplitView");
 const { StyleSheetEditor, prettifyCSS } = require("devtools/client/styleeditor/StyleSheetEditor");
 
-XPCOMUtils.defineLazyModuleGetter(this, "PluralForm",
-                                  "resource://gre/modules/PluralForm.jsm");
+const PluralForm = require("devtools/sham/pluralform");
 
 const { PrefObserver, PREF_ORIG_SOURCES } = require("devtools/client/styleeditor/utils");
 const csscoverage = require("devtools/server/actors/csscoverage");
