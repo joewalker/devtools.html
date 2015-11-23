@@ -12,7 +12,7 @@
   } else { // Cu.import
       const Cu = Components.utils;
       this.isWorker = false;
-      this.promise = Cu.import("resource://gre/modules/Promise.jsm", {}).Promise;
+      this.promise = require("devtools/sham/promise").Promise;
       factory.call(this, require, this, { exports: this });
       this.EXPORTED_SYMBOLS = ["EventEmitter"];
   }

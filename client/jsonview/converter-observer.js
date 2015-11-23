@@ -13,16 +13,8 @@ const Ci = Components.interfaces;
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
 
-// Load JsonView services lazily.
-XPCOMUtils.defineLazyGetter(this, "JsonViewService", function() {
-  const {JsonViewService} = devtools.require("devtools/client/jsonview/converter-child");
-  return JsonViewService;
-});
-
-XPCOMUtils.defineLazyGetter(this, "JsonViewSniffer", function() {
-  const {JsonViewSniffer} = devtools.require("devtools/client/jsonview/converter-sniffer");
-  return JsonViewSniffer;
-});
+const { JsonViewService } = require("devtools/client/jsonview/converter-child");
+const { JsonViewSniffer } = require("devtools/client/jsonview/converter-sniffer");
 
 // Constants
 const JSON_VIEW_PREF = "devtools.jsonview.enabled";
