@@ -19,7 +19,7 @@ const { Task } = require("devtools/sham/task");
 Cu.import("resource://devtools/shared/event-emitter.js");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 Cu.import("resource://devtools/client/styleeditor/StyleEditorUtil.jsm");
-Cu.import("resource://devtools/client/shared/SplitView.jsm");
+const { SplitView } = require("devtools/client/shared/SplitView");
 Cu.import("resource://devtools/client/styleeditor/StyleSheetEditor.jsm");
 
 XPCOMUtils.defineLazyModuleGetter(this, "PluralForm",
