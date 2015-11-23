@@ -12,6 +12,8 @@
     "url": "https://github.com/joewalker/devtoolsweb/issues"
   },
   "devDependencies": {
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
     "gulp": "^3.9.0",
     "gulp-util": "^3.0.7",
     "webpack": "^1.12.8"
