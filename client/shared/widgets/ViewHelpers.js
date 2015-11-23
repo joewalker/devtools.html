@@ -20,12 +20,6 @@ const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 Cu.import("resource://devtools/shared/event-emitter.js");
 
-this.EXPORTED_SYMBOLS = [
-  "Heritage", "ViewHelpers", "WidgetMethods",
-  "setNamedTimeout", "clearNamedTimeout",
-  "setConditionalTimeout", "clearConditionalTimeout",
-];
-
 /**
  * Inheritance helpers from the addon SDK's core/heritage.
  * Remove these when all devtools are loadered.
@@ -1815,3 +1809,11 @@ Item.prototype[Symbol.iterator] =
 WidgetMethods[Symbol.iterator] = function*() {
   yield* this._itemsByElement.values();
 };
+
+exports.Heritage = Heritage;
+exports.ViewHelpers = ViewHelpers;
+exports.WidgetMethods = WidgetMethods;
+exports.setNamedTimeout = setNamedTimeout;
+exports.clearNamedTimeout = clearNamedTimeout;
+exports.setConditionalTimeout = setConditionalTimeout;
+exports.clearConditionalTimeout = clearConditionalTimeout;

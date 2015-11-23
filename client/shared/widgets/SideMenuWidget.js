@@ -8,14 +8,17 @@
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
-Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const {
+  Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
+  clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
+} = require("devtools/client/shared/widgets/ViewHelpers");
 Cu.import("resource://devtools/shared/event-emitter.js");
 
 /**
  * A simple side menu, with the ability of grouping menu items.
  *
  * Note: this widget should be used in tandem with the WidgetMethods in
- * ViewHelpers.jsm.
+ * ViewHelpers.js.
  *
  * @param nsIDOMNode aNode
  *        The element associated with the widget.

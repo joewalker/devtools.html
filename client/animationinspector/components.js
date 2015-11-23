@@ -20,7 +20,10 @@
 //    c.destroy();
 
 const {Cu} = require("chrome");
-Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const {
+  Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
+  clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
+} = require("devtools/client/shared/widgets/ViewHelpers");
 const {Task} = require("devtools/sham/task");
 const {
   createNode,

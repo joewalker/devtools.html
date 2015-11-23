@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const { ViewHelpers } = require("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
 
 /**
  * Localization convenience methods.

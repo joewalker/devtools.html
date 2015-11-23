@@ -8,7 +8,10 @@ var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { SideMenuWidget } = require("devtools/client/shared/widgets/SideMenuWidget");
-Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const {
+  Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
+  clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
+} = require("devtools/client/shared/widgets/ViewHelpers");
 
 const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const promise = require("promise");

@@ -9,7 +9,7 @@
  */
 
 const { Cu, Cc, Ci } = require("chrome");
-const { ViewHelpers } = Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm", {});
+const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
 const ITCHPAD_STRINGS_URI = "chrome://devtools/locale/projecteditor.properties";
 const L10N = new ViewHelpers.L10N(ITCHPAD_STRINGS_URI).stringBundle;
 

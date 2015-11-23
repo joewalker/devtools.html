@@ -22,10 +22,7 @@ loader.lazyRequireGetter(this, "beautify", "devtools/shared/jsbeautify/beautify"
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
-XPCOMUtils.defineLazyModuleGetter(this, "setNamedTimeout",
-  "resource://devtools/client/shared/widgets/ViewHelpers.jsm");
-XPCOMUtils.defineLazyModuleGetter(this, "clearNamedTimeout",
-  "resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const { setNamedTimeout, clearNamedTimeout } = require("devtools/client/shared/widgets/ViewHelpers");
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 const { VariablesViewController, StackFrameUtils } = require("devtools/client/shared/widgets/VariablesViewController");
 const { Task } = require("devtools/sham/task");

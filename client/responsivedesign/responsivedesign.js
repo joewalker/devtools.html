@@ -11,7 +11,10 @@ const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 Cu.import("resource://devtools/shared/event-emitter.js");
-Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const {
+  Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
+  clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
+} = require("devtools/client/shared/widgets/ViewHelpers");
 XPCOMUtils.defineLazyModuleGetter(this, "SystemAppProxy",
                                   "resource://gre/modules/SystemAppProxy.jsm");
 

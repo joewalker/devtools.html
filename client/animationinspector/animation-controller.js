@@ -11,7 +11,10 @@ var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
 
 const { Task } = require("devtools/sham/task");
 var { loader, require } = Cu.import("resource://devtools/shared/Loader.jsm");
-Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const {
+  Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
+  clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
+} = require("devtools/client/shared/widgets/ViewHelpers");
 
 loader.lazyRequireGetter(this, "promise");
 loader.lazyRequireGetter(this, "EventEmitter",

@@ -19,7 +19,10 @@ const HOVERED_SLICE_TRANSLATE_DISTANCE_RATIO = 20;
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
-Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const {
+  Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
+  clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
+} = require("devtools/client/shared/widgets/ViewHelpers");
 Cu.import("resource://devtools/shared/event-emitter.js");
 
 /**

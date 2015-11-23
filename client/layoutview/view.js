@@ -10,7 +10,10 @@ var {utils: Cu, interfaces: Ci, classes: Cc} = Components;
 
 const { Task } = require("devtools/sham/task");
 const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
-Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const {
+  Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
+  clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
+} = require("devtools/client/shared/widgets/ViewHelpers");
 
 const {InplaceEditor, editableItem} = require("devtools/client/shared/inplace-editor");
 const {ReflowFront} = require("devtools/server/actors/layout");

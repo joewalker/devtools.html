@@ -3,7 +3,7 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 const { DOM: dom, createClass, createFactory, PropTypes } = require("devtools/client/shared/vendor/react");
-const { ViewHelpers } = require("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
 
 const AUTO_EXPAND_DEPTH = 3; // depth
 

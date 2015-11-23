@@ -101,7 +101,10 @@ const { BreadcrumbsWidget } = require("devtools/client/shared/widgets/Breadcrumb
 const { SideMenuWidget } = require("devtools/client/shared/widgets/SideMenuWidget");
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 const { VariablesViewController, StackFrameUtils } = require("devtools/client/shared/widgets/VariablesViewController");
-Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const {
+  Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
+  clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
+} = require("devtools/client/shared/widgets/ViewHelpers");
 
 Cu.import("resource://devtools/client/shared/browser-loader.js");
 const require = BrowserLoader("resource://devtools/client/debugger/", this).require;

@@ -4,8 +4,8 @@
 "use strict";
 
 const { Task } = require("devtools/sham/task");
-const { ViewHelpers } = require("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
-const { setNamedTimeout, clearNamedTimeout } = require("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
+const { setNamedTimeout, clearNamedTimeout } = require("devtools/client/shared/widgets/ViewHelpers");
 
 loader.lazyRequireGetter(this, "promise");
 loader.lazyRequireGetter(this, "EventEmitter",

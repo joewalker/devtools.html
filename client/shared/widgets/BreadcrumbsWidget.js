@@ -10,14 +10,17 @@ const Cu = Components.utils;
 
 const ENSURE_SELECTION_VISIBLE_DELAY = 50; // ms
 
-Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const {
+  Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
+  clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
+} = require("devtools/client/shared/widgets/ViewHelpers");
 Cu.import("resource://devtools/shared/event-emitter.js");
 
 /**
  * A breadcrumb-like list of items.
  *
  * Note: this widget should be used in tandem with the WidgetMethods in
- * ViewHelpers.jsm.
+ * ViewHelpers.js.
  *
  * @param nsIDOMNode aNode
  *        The element associated with the widget.

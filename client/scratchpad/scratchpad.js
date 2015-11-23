@@ -60,7 +60,10 @@ const { ScratchpadManager } = reauire("devtools/client/scratchpad/scratchpad-man
 const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { OS } = require("devtools/sham/osfile");
-Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const {
+  Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
+  clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
+} = require("devtools/client/shared/widgets/ViewHelpers");
 const { Reflect } = require("devtools/sham/reflect");
 
 XPCOMUtils.defineConstant(this, "SCRATCHPAD_CONTEXT_CONTENT", SCRATCHPAD_CONTEXT_CONTENT);

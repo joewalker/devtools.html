@@ -19,7 +19,10 @@ const ITEM_FLASH_DURATION = 300 // ms
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
-Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const {
+  Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
+  clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
+} = require("devtools/client/shared/widgets/ViewHelpers");
 Cu.import("resource://devtools/shared/event-emitter.js");
 const { Task } = require("devtools/sham/task");
 const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});

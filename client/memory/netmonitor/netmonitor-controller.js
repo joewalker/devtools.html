@@ -116,7 +116,10 @@ const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { SideMenuWidget } = require("devtools/client/shared/widgets/SideMenuWidget");
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 const { VariablesViewController, StackFrameUtils } = require("devtools/client/shared/widgets/VariablesViewController");
-Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const {
+  Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
+  clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
+} = require("devtools/client/shared/widgets/ViewHelpers");
 
 const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const promise = require("promise");

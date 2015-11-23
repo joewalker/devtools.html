@@ -7,7 +7,7 @@ var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
 const { loader, require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 
 const { Task } = require("devtools/sham/task");
-const { Heritage, ViewHelpers, WidgetMethods } = require("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const { Heritage, ViewHelpers, WidgetMethods } = require("devtools/client/shared/widgets/ViewHelpers");
 
 // Events emitted by various objects in the panel.
 const EVENTS = require("devtools/client/performance/events");
@@ -73,10 +73,8 @@ loader.lazyRequireGetter(this, "TreeWidget",
   "devtools/client/shared/widgets/TreeWidget", true);
 
 const { SideMenuWidget } = require("devtools/client/shared/widgets/SideMenuWidget");
-loader.lazyImporter(this, "setNamedTimeout",
-  "resource://devtools/client/shared/widgets/ViewHelpers.jsm");
-loader.lazyImporter(this, "clearNamedTimeout",
-  "resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+const { setNamedTimeout, clearNamedTimeout } = require("devtools/client/shared/widgets/ViewHelpers");
+
 loader.lazyImporter(this, "PluralForm",
   "resource://gre/modules/PluralForm.jsm");
 

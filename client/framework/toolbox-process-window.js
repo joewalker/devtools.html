@@ -11,8 +11,7 @@ var { TargetFactory } = require("devtools/client/framework/target");
 var { Toolbox } = require("devtools/client/framework/toolbox");
 const { Services } = require("devtools/sham/services");
 var { DebuggerClient } = require("devtools/shared/client/main");
-var { ViewHelpers } =
-  Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm", {});
+const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
 var { Task } = require("devtools/sham/task");
 
 /**
