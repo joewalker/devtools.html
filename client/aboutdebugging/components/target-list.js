@@ -8,7 +8,7 @@
 
 const React = require("devtools/client/shared/vendor/react");
 const { TargetComponent } = require("devtools/client/aboutdebugging/components/target");
-loader.lazyRequireGetter(this, "Services");
+const { Services } = require("devtools/sham/services");
 
 const Strings = Services.strings.createBundle(
   "chrome://devtools/locale/aboutdebugging.properties");

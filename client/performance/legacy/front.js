@@ -6,7 +6,7 @@
 const { Cu } = require("chrome");
 const { Task } = require("devtools/sham/task");
 
-loader.lazyRequireGetter(this, "Services");
+const { Services } = require("devtools/sham/services");
 loader.lazyRequireGetter(this, "promise");
 const { extend } = require("sdk/util/object");
 

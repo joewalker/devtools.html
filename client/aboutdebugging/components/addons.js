@@ -8,7 +8,7 @@
 
 const React = require("devtools/client/shared/vendor/react");
 const { TargetListComponent } = require("devtools/client/aboutdebugging/components/target-list");
-loader.lazyRequireGetter(this, "Services");
+const { Services } = require("devtools/sham/services");
 
 loader.lazyImporter(this, "AddonManager",
   "resource://gre/modules/AddonManager.jsm");

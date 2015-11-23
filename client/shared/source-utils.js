@@ -4,7 +4,7 @@
 
 "use strict";
 
-loader.lazyRequireGetter(this, "Services");
+const { Services } = require("devtools/sham/services");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { Task } = require("devtools/sham/task");
 

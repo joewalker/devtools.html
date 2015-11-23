@@ -16,7 +16,7 @@ const { DebuggerClient } = require("devtools/shared/client/main");
 const { DebuggerServer } = require("devtools/server/main");
 const Telemetry = require("devtools/client/shared/telemetry");
 const { WorkersComponent } = require("devtools/client/aboutdebugging/components/workers");
-loader.lazyRequireGetter(this, "Services");
+const { Services } = require("devtools/sham/services");
 
 var AboutDebugging = {
   _categories: null,

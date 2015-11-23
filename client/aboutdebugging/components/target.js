@@ -10,7 +10,7 @@
 const React = require("devtools/client/shared/vendor/react");
 const { TargetFactory } = require("devtools/client/framework/target");
 const { Toolbox } = require("devtools/client/framework/toolbox");
-loader.lazyRequireGetter(this, "Services");
+const { Services } = require("devtools/sham/services");
 
 const { BrowserToolboxProcess } = require("devtools/client/framework/ToolboxProcess");
 const { gDevTools } = require("devtools/client/framework/gDevTools");

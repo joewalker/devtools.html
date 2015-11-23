@@ -5,7 +5,7 @@
 
 const { Cc, Ci, Cu, Cr } = require("chrome");
 
-loader.lazyRequireGetter(this, "Services");
+const { Services } = require("devtools/sham/services");
 loader.lazyRequireGetter(this, "promise");
 const RecordingUtils = require("devtools/shared/performance/recording-utils");
 
