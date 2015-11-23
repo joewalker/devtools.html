@@ -14,7 +14,7 @@ const L10N = exports.L10N = new ViewHelpers.L10N(STRINGS_URI);
 const { URL } = require("sdk/url");
 const { OS } = require("devtools/sham/osfile");
 const { assert } = require("devtools/shared/DevToolsUtils");
-const { Preferences } = require("resource://gre/modules/Preferences.jsm");
+//const { Preferences } = require("resource://gre/modules/Preferences.jsm");
 const CUSTOM_BREAKDOWN_PREF = "devtools.memory.custom-breakdowns";
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const { snapshotState: states, diffingState, breakdowns } = require("./constants");
@@ -84,14 +84,15 @@ exports.getBreakdownNames = function () {
  * @return {Object}
  */
 exports.getCustomBreakdowns = function () {
-  let customBreakdowns = Object.create(null);
-  try {
-    customBreakdowns = JSON.parse(Preferences.get(CUSTOM_BREAKDOWN_PREF)) || Object.create(null);
-  } catch (e) {
-    DevToolsUtils.reportException(
-      `String stored in "${CUSTOM_BREAKDOWN_PREF}" pref cannot be parsed by \`JSON.parse()\`.`);
-  }
-  return customBreakdowns;
+  throw new Error("Preferences has not been shammed");
+//  let customBreakdowns = Object.create(null);
+//  try {
+//    customBreakdowns = JSON.parse(Preferences.get(CUSTOM_BREAKDOWN_PREF)) || Object.create(null);
+//  } catch (e) {
+//    DevToolsUtils.reportException(
+//      `String stored in "${CUSTOM_BREAKDOWN_PREF}" pref cannot be parsed by \`JSON.parse()\`.`);
+//  }
+//  return customBreakdowns;
 }
 
 /**

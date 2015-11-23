@@ -10,8 +10,7 @@ const React = require("devtools/client/shared/vendor/react");
 const { TargetListComponent } = require("devtools/client/aboutdebugging/components/target-list");
 const { Services } = require("devtools/sham/services");
 
-loader.lazyImporter(this, "AddonManager",
-  "resource://gre/modules/AddonManager.jsm");
+const { AddonManager } = require("devtools/sham/addonmanager");
 
 const ExtensionIcon = "chrome://mozapps/skin/extensions/extensionGeneric.svg";
 const Strings = Services.strings.createBundle(

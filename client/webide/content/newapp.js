@@ -9,8 +9,8 @@ var Ci = Components.interfaces;
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
-XPCOMUtils.defineLazyModuleGetter(this, "ZipUtils", "resource://gre/modules/ZipUtils.jsm");
-XPCOMUtils.defineLazyModuleGetter(this, "Downloads", "resource://gre/modules/Downloads.jsm");
+//XPCOMUtils.defineLazyModuleGetter(this, "ZipUtils", "resource://gre/modules/ZipUtils.jsm");
+//XPCOMUtils.defineLazyModuleGetter(this, "Downloads", "resource://gre/modules/Downloads.jsm");
 
 const { FileUtils } = require("devtools/sham/fileutils");
 const {AppProjects} = require("devtools/client/webide/modules/app-projects");

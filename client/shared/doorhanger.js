@@ -8,7 +8,7 @@ const { Ci, Cc } = require("chrome");
 const { Services } = require("devtools/sham/services");
 const { DOMHelpers } = require("devtools/client/shared/DOMHelpers");
 const { Task } = require("devtools/sham/task");
-const { Promise } = require("resource://gre/modules/Promise.jsm");
+const { Promise } = require("devtools/sham/Promise");
 const { setTimeout } = require("sdk/timers");
 const { getMostRecentBrowserWindow } = require("sdk/window/utils");
 

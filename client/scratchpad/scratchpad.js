@@ -86,11 +86,11 @@ const { ObjectClient } = require("devtools/shared/client/main");
 XPCOMUtils.defineLazyGetter(this, "REMOTE_TIMEOUT", () =>
   Services.prefs.getIntPref("devtools.debugger.remote-timeout"));
 
-XPCOMUtils.defineLazyModuleGetter(this, "ShortcutUtils",
-  "resource://gre/modules/ShortcutUtils.jsm");
-
-XPCOMUtils.defineLazyModuleGetter(this, "Reflect",
-  "resource://gre/modules/reflect.jsm");
+//XPCOMUtils.defineLazyModuleGetter(this, "ShortcutUtils",
+//  "resource://gre/modules/ShortcutUtils.jsm");
+//
+//XPCOMUtils.defineLazyModuleGetter(this, "Reflect",
+//  "resource://gre/modules/reflect.jsm");
 
 // Because we have no constructor / destructor where we can log metrics we need
 // to do so here.
@@ -711,12 +711,12 @@ var Scratchpad = {
    * comment and return false.
    */
   _parseText: function SP__parseText(aText) {
-    try {
-      return Reflect.parse(aText);
-    } catch (e) {
-      this.writeAsErrorComment({ exception: DevToolsUtils.safeErrorString(e) });
-      return false;
-    }
+//    try {
+//      return Reflect.parse(aText);
+//    } catch (e) {
+//      this.writeAsErrorComment({ exception: DevToolsUtils.safeErrorString(e) });
+//      return false;
+//    }
   },
 
   /**

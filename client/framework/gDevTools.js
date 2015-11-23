@@ -13,8 +13,8 @@ const promise = require("promise");
 const { TargetFactory } = require("devtools/client/framework/target");
 const { Toolbox } = require("devtools/client/framework/toolbox");
 
-XPCOMUtils.defineLazyModuleGetter(this, "CustomizableUI",
-                                  "resource:///modules/CustomizableUI.jsm");
+//XPCOMUtils.defineLazyModuleGetter(this, "CustomizableUI",
+//                                  "resource:///modules/CustomizableUI.jsm");
 const { DebuggerServer } = require("devtools/server/main");
 const { DebuggerClient } = require("devtools/shared/client/main");
 
@@ -757,32 +757,33 @@ var gDevToolsBrowser = {
    * Install WebIDE widget
    */
   installWebIDEWidget: function() {
-    if (this.isWebIDEWidgetInstalled()) {
-      return;
-    }
-
-    let defaultArea;
-    if (Services.prefs.getBoolPref("devtools.webide.widget.inNavbarByDefault")) {
-      defaultArea = CustomizableUI.AREA_NAVBAR;
-    } else {
-      defaultArea = CustomizableUI.AREA_PANEL;
-    }
-
-    CustomizableUI.createWidget({
-      id: "webide-button",
-      shortcutId: "key_webide",
-      label: "devtools-webide-button2.label",
-      tooltiptext: "devtools-webide-button2.tooltiptext",
-      defaultArea: defaultArea,
-      onCommand: function(aEvent) {
-        gDevToolsBrowser.openWebIDE();
-      }
-    });
+//    if (this.isWebIDEWidgetInstalled()) {
+//      return;
+//    }
+//
+//    let defaultArea;
+//    if (Services.prefs.getBoolPref("devtools.webide.widget.inNavbarByDefault")) {
+//      defaultArea = CustomizableUI.AREA_NAVBAR;
+//    } else {
+//      defaultArea = CustomizableUI.AREA_PANEL;
+//    }
+//
+//    CustomizableUI.createWidget({
+//      id: "webide-button",
+//      shortcutId: "key_webide",
+//      label: "devtools-webide-button2.label",
+//      tooltiptext: "devtools-webide-button2.tooltiptext",
+//      defaultArea: defaultArea,
+//      onCommand: function(aEvent) {
+//        gDevToolsBrowser.openWebIDE();
+//      }
+//    });
   },
 
   isWebIDEWidgetInstalled: function() {
-    let widgetWrapper = CustomizableUI.getWidget("webide-button");
-    return !!(widgetWrapper && widgetWrapper.provider == CustomizableUI.PROVIDER_API);
+    return false;
+//    let widgetWrapper = CustomizableUI.getWidget("webide-button");
+//    return !!(widgetWrapper && widgetWrapper.provider == CustomizableUI.PROVIDER_API);
   },
 
   /**
@@ -794,17 +795,17 @@ var gDevToolsBrowser = {
    * Uninstall WebIDE widget
    */
   uninstallWebIDEWidget: function() {
-    if (this.isWebIDEWidgetInstalled()) {
-      CustomizableUI.removeWidgetFromArea("webide-button");
-    }
-    CustomizableUI.destroyWidget("webide-button");
+//    if (this.isWebIDEWidgetInstalled()) {
+//      CustomizableUI.removeWidgetFromArea("webide-button");
+//    }
+//    CustomizableUI.destroyWidget("webide-button");
   },
 
   /**
    * Move WebIDE widget to the navbar
    */
   moveWebIDEWidgetInNavbar: function() {
-    CustomizableUI.addWidgetToArea("webide-button", CustomizableUI.AREA_NAVBAR);
+//    CustomizableUI.addWidgetToArea("webide-button", CustomizableUI.AREA_NAVBAR);
   },
 
   /**

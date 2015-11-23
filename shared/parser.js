@@ -11,8 +11,8 @@ const Cu = Components.utils;
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
-XPCOMUtils.defineLazyModuleGetter(this,
-  "Reflect", "resource://gre/modules/reflect.jsm");
+//XPCOMUtils.defineLazyModuleGetter(this,
+//  "Reflect", "resource://gre/modules/reflect.jsm");
 
 /**
  * A JS parser using the reflection API.

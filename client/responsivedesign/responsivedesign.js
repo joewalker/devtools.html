@@ -15,8 +15,8 @@ const {
   Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
 } = require("devtools/client/shared/widgets/ViewHelpers");
-XPCOMUtils.defineLazyModuleGetter(this, "SystemAppProxy",
-                                  "resource://gre/modules/SystemAppProxy.jsm");
+//XPCOMUtils.defineLazyModuleGetter(this, "SystemAppProxy",
+//                                  "resource://gre/modules/SystemAppProxy.jsm");
 
 var Telemetry = require("devtools/client/shared/telemetry");
 var { showDoorhanger } = require("devtools/client/shared/doorhanger");
@@ -480,6 +480,8 @@ ResponsiveUI.prototype = {
 
   // FxOS custom controls
   buildPhoneUI: function () {
+    return;
+    /*
     this.stack.classList.add("fxos-mode");
 
     let sleepButton = this.chromeDoc.createElement("button");
@@ -537,6 +539,7 @@ ResponsiveUI.prototype = {
     bottomToolbar.appendChild(homeButton);
     this.bottomToolbar = bottomToolbar;
     this.container.appendChild(bottomToolbar);
+    */
   },
 
   /**
