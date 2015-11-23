@@ -27,8 +27,7 @@ XPCOMUtils.defineLazyModuleGetter(this, "setNamedTimeout",
 XPCOMUtils.defineLazyModuleGetter(this, "clearNamedTimeout",
   "resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
-XPCOMUtils.defineLazyModuleGetter(this, "VariablesViewController",
-  "resource://devtools/client/shared/widgets/VariablesViewController.jsm");
+const { VariablesViewController, StackFrameUtils } = require("devtools/client/shared/widgets/VariablesViewController");
 const { Task } = require("devtools/sham/task");
 
 const XHTML_NS = "http://www.w3.org/1999/xhtml";

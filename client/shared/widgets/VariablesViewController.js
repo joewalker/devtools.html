@@ -32,9 +32,6 @@ const DBG_STRINGS_URI = "chrome://devtools/locale/debugger.properties";
 
 const ELLIPSIS = Services.prefs.getComplexValue("intl.ellipsis", Ci.nsIPrefLocalizedString).data
 
-this.EXPORTED_SYMBOLS = ["VariablesViewController", "StackFrameUtils"];
-
-
 /**
  * Controller for a VariablesView that handles interfacing with the debugger
  * protocol. Is able to populate scopes and variables via the protocol as well
@@ -788,3 +785,6 @@ var StackFrameUtils = {
  * Localization convenience methods.
  */
 var L10N = new ViewHelpers.L10N(DBG_STRINGS_URI);
+
+exports.VariablesViewController = this.VariablesViewController;
+exports.StackFrameUtils = this.StackFrameUtils;

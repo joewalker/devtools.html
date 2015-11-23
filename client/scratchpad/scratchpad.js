@@ -72,8 +72,7 @@ XPCOMUtils.defineConstant(this, "BUTTON_POSITION_REVERT", BUTTON_POSITION_REVERT
 
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 
-XPCOMUtils.defineLazyModuleGetter(this, "VariablesViewController",
-  "resource://devtools/client/shared/widgets/VariablesViewController.jsm");
+const { VariablesViewController, StackFrameUtils } = require("devtools/client/shared/widgets/VariablesViewController");
 
 loader.lazyRequireGetter(this, "DebuggerServer", "devtools/server/main", true);
 

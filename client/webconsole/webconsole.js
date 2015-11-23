@@ -26,7 +26,7 @@ loader.lazyRequireGetter(this, "ObjectClient", "devtools/shared/client/main", tr
 loader.lazyRequireGetter(this, "system", "devtools/shared/system");
 loader.lazyRequireGetter(this, "Timers", "sdk/timers");
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
-loader.lazyImporter(this, "VariablesViewController", "resource://devtools/client/shared/widgets/VariablesViewController.jsm");
+const { VariablesViewController, StackFrameUtils } = require("devtools/client/shared/widgets/VariablesViewController");
 loader.lazyImporter(this, "PluralForm", "resource://gre/modules/PluralForm.jsm");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 

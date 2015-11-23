@@ -100,7 +100,7 @@ const { SimpleListWidget } = require("devtools/client/shared/widgets/SimpleListW
 const { BreadcrumbsWidget } = require("devtools/client/shared/widgets/BreadcrumbsWidget");
 const { SideMenuWidget } = require("devtools/client/shared/widgets/SideMenuWidget");
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
-Cu.import("resource://devtools/client/shared/widgets/VariablesViewController.jsm");
+const { VariablesViewController, StackFrameUtils } = require("devtools/client/shared/widgets/VariablesViewController");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 
 Cu.import("resource://devtools/client/shared/browser-loader.js");

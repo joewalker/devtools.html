@@ -115,7 +115,7 @@ const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { SideMenuWidget } = require("devtools/client/shared/widgets/SideMenuWidget");
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
-Cu.import("resource://devtools/client/shared/widgets/VariablesViewController.jsm");
+const { VariablesViewController, StackFrameUtils } = require("devtools/client/shared/widgets/VariablesViewController");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 
 const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});

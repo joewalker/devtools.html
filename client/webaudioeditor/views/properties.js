@@ -4,7 +4,7 @@
 "use strict";
 
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
-Cu.import("resource://devtools/client/shared/widgets/VariablesViewController.jsm");
+const { VariablesViewController, StackFrameUtils } = require("devtools/client/shared/widgets/VariablesViewController");
 
 const GENERIC_VARIABLES_VIEW_SETTINGS = {
   searchEnabled: false,
