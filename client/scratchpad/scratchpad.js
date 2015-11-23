@@ -56,7 +56,7 @@ const promise = require("promise");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
 const { NetUtil } = require("devtools/sham/netutil");
-Cu.import("resource://devtools/client/scratchpad/scratchpad-manager.jsm");
+const { ScratchpadManager } = reauire("devtools/client/scratchpad/scratchpad-manager");
 const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { OS } = require("devtools/sham/osfile");

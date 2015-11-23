@@ -23,7 +23,7 @@ var sourceUtils = require("devtools/client/shared/source-utils");
 
 const { Services } = require("devtools/sham/services");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
-Cu.import("resource://devtools/client/scratchpad/scratchpad-manager.jsm");
+const { ScratchpadManager } = reauire("devtools/client/scratchpad/scratchpad-manager");
 const { DOMHelpers } = require("devtools/client/shared/DOMHelpers");
 const { Task } = require("devtools/sham/task");
 

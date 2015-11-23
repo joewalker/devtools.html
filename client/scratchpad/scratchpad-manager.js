@@ -5,8 +5,6 @@
 
 "use strict";
 
-this.EXPORTED_SYMBOLS = ["ScratchpadManager"];
-
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
@@ -172,3 +170,5 @@ var ShutdownObserver = {
     Services.obs.removeObserver(this, "quit-application-granted");
   }
 };
+
+exports.ScratchpadManager = this.ScratchpadManager;
