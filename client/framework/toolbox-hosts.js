@@ -8,7 +8,7 @@ const {Cu} = require("chrome");
 const EventEmitter = require("devtools/shared/event-emitter");
 const promise = require("promise");
 const { Services } = require("devtools/sham/services");
-Cu.import("resource://devtools/client/shared/DOMHelpers.jsm");
+const { DOMHelpers } = require("devtools/client/shared/DOMHelpers");
 
 /* A host should always allow this much space for the page to be displayed.
  * There is also a min-height on the browser, but we still don't want to set

@@ -24,7 +24,7 @@ var sourceUtils = require("devtools/client/shared/source-utils");
 const { Services } = require("devtools/sham/services");
 Cu.import("resource://devtools/client/framework/gDevTools.jsm");
 Cu.import("resource://devtools/client/scratchpad/scratchpad-manager.jsm");
-Cu.import("resource://devtools/client/shared/DOMHelpers.jsm");
+const { DOMHelpers } = require("devtools/client/shared/DOMHelpers");
 const { Task } = require("devtools/sham/task");
 
 loader.lazyGetter(this, "toolboxStrings", () => {

@@ -6,8 +6,6 @@ const Ci = Components.interfaces;
 const Cu = Components.utils;
 const { Services } = require("devtools/sham/services");
 
-this.EXPORTED_SYMBOLS = ["DOMHelpers"];
-
 /**
  * DOMHelpers
  * Makes DOM traversal easier. Goes through iframes.
@@ -154,3 +152,5 @@ DOMHelpers.prototype = {
     docShell.chromeEventHandler.addEventListener("DOMContentLoaded", onReady, false);
   }
 };
+
+exports.DOMHelpers = this.DOMHelpers;
