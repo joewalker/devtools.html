@@ -15,8 +15,7 @@ loader.lazyRequireGetter(this, "Toolbox",
   "devtools/client/framework/toolbox", true);
 loader.lazyRequireGetter(this, "Services");
 
-loader.lazyImporter(this, "BrowserToolboxProcess",
-  "resource://devtools/client/framework/ToolboxProcess.jsm");
+const { BrowserToolboxProcess } = require("devtools/client/framework/ToolboxProcess");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 
 const Strings = Services.strings.createBundle(

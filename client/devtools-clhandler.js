@@ -76,7 +76,7 @@ devtoolsCommandlineHandler.prototype = {
     if (!this._isRemoteDebuggingEnabled()) {
       return;
     }
-    Cu.import("resource://devtools/client/framework/ToolboxProcess.jsm");
+    const { BrowserToolboxProcess } = require("devtools/client/framework/ToolboxProcess");
     BrowserToolboxProcess.init();
 
     if (cmdLine.state == Ci.nsICommandLine.STATE_REMOTE_AUTO) {

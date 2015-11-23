@@ -22,8 +22,6 @@ XPCOMUtils.defineLazyGetter(this, "EventEmitter", function () {
 });
 const promise = require("promise");
 
-this.EXPORTED_SYMBOLS = ["BrowserToolboxProcess"];
-
 var processes = new Set();
 
 /**
@@ -275,3 +273,5 @@ Services.prefs.addObserver("devtools.debugger.log", {
 }, false);
 
 Services.obs.notifyObservers(null, "ToolboxProcessLoaded", null);
+
+exports.BrowserToolboxProcess = this.BrowserToolboxProcess;
