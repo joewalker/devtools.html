@@ -13,7 +13,7 @@ const {
 } = require("devtools/client/shared/widgets/ViewHelpers");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 
-const { loader } = Cu.import("resource://devtools/shared/Loader.jsm");
+const { loader } = require("devtools/shared/Loader");
 
 var { EventTarget } = require("sdk/event/target");
 

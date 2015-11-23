@@ -43,7 +43,7 @@ const FALLBACK_CHARSET_LIST = "intl.fallbackCharsetList.ISO-8859-1";
 
 const VARIABLES_VIEW_URL = "chrome://devtools/content/shared/widgets/VariablesView.xul";
 
-const {loader} = Cu.import("resource://devtools/shared/Loader.jsm");
+const {loader} = require("devtools/shared/Loader");
 
 const Telemetry = require("devtools/client/shared/telemetry");
 const Editor    = require("devtools/client/sourceeditor/editor");

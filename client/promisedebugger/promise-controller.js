@@ -9,7 +9,7 @@
 "use strict";
 
 var { utils: Cu } = Components;
-const { loader } = Cu.import("resource://devtools/shared/Loader.jsm");
+const { loader } = require("devtools/shared/Loader");
 
 const { Task } = require("devtools/sham/task");
 

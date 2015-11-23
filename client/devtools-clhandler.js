@@ -91,7 +91,7 @@ devtoolsCommandlineHandler.prototype = {
       // Default to TCP port 6000 if no value given
       portOrPath = 6000;
     }
-    let { DevToolsLoader } = Cu.import("resource://devtools/shared/Loader.jsm");
+    let { DevToolsLoader } = require("devtools/shared/Loader");
 
     try {
       // Create a separate loader instance, so that we can be sure to receive

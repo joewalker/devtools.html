@@ -106,10 +106,6 @@ const {
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
 } = require("devtools/client/shared/widgets/ViewHelpers");
 
-Cu.import("resource://devtools/client/shared/browser-loader.js");
-const require = BrowserLoader("resource://devtools/client/debugger/", this).require;
-XPCOMUtils.defineConstant(this, "require", require);
-
 const {TargetFactory} = require("devtools/client/framework/target");
 const {Toolbox} = require("devtools/client/framework/toolbox");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");

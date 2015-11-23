@@ -1,7 +1,7 @@
 var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
 const loaders = Cu.import("resource://gre/modules/commonjs/toolkit/loader.js", {});
-const { devtools, DevToolsLoader } = Cu.import("resource://devtools/shared/Loader.jsm", {});
+const { devtools, DevToolsLoader } = require("devtools/shared/Loader");
 const { joinURI } = devtools.require("devtools/shared/path");
 const VENDOR_CONTENT_URL = "resource://devtools/client/shared/vendor";
 const COMPONENTS_URL = "resource://devtools/client/shared/components";

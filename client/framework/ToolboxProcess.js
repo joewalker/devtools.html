@@ -12,7 +12,7 @@ const CHROME_DEBUGGER_PROFILE_NAME = "chrome_debugger_profile";
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
-const { DevToolsLoader } = Cu.import("resource://devtools/shared/Loader.jsm");
+const { DevToolsLoader } = require("devtools/shared/Loader");
 
 XPCOMUtils.defineLazyGetter(this, "Telemetry", function () {
   return require("devtools/client/shared/telemetry");
