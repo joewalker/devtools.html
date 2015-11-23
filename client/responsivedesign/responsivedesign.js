@@ -18,7 +18,6 @@ const {
 XPCOMUtils.defineLazyModuleGetter(this, "SystemAppProxy",
                                   "resource://gre/modules/SystemAppProxy.jsm");
 
-var { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 var Telemetry = require("devtools/client/shared/telemetry");
 var { showDoorhanger } = require("devtools/client/shared/doorhanger");
 var { TouchEventSimulator } = require("devtools/shared/touch/simulator");

@@ -23,7 +23,6 @@ const { StyleSheetEditor, prettifyCSS } = require("devtools/client/styleeditor/S
 XPCOMUtils.defineLazyModuleGetter(this, "PluralForm",
                                   "resource://gre/modules/PluralForm.jsm");
 
-const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const { PrefObserver, PREF_ORIG_SOURCES } = require("devtools/client/styleeditor/utils");
 const csscoverage = require("devtools/server/actors/csscoverage");
 const promise = require("promise");

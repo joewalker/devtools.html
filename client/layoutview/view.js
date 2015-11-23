@@ -9,7 +9,6 @@
 var {utils: Cu, interfaces: Ci, classes: Cc} = Components;
 
 const { Task } = require("devtools/sham/task");
-const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const {
   Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout

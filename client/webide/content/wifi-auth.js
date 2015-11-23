@@ -6,8 +6,6 @@
 
 var Cu = Components.utils;
 const { Services } = const { Services } = require("devtools/sham/services");
-const { require } =
-  Cu.import("resource://devtools/shared/Loader.jsm", {});
 const QR = require("devtools/shared/qrcode/index");
 
 window.addEventListener("load", function onLoad() {

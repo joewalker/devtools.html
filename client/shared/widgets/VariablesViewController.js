@@ -14,7 +14,6 @@ const {
   Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
 } = require("devtools/client/shared/widgets/ViewHelpers");
-var {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 var promise = require("promise");
 
 Object.defineProperty(this, "WebConsoleUtils", {

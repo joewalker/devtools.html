@@ -104,7 +104,6 @@
 
   const { Services } = require("devtools/sham/services");
   const { gDevTools } = require("devtools/client/framework/gDevTools");
-  const {require} = Components.utils.import("resource://devtools/shared/Loader.jsm", {});
   const StylesheetUtils = require("sdk/stylesheet/utils");
 
   let os;

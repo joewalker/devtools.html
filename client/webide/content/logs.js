@@ -4,7 +4,6 @@
 
 var Cu = Components.utils;
 const { gDevTools } = require("devtools/client/framework/gDevTools");
-const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const {AppManager} = require("devtools/client/webide/modules/app-manager");
 
 window.addEventListener("load", function onLoad() {

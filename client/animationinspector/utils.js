@@ -8,7 +8,6 @@
 
 const {Cu} = require("chrome");
 const {Task} = require("devtools/sham/task");
-var {loader} = Cu.import("resource://devtools/shared/Loader.jsm");
 const EventEmitter = require("devtools/shared/event-emitter");
 
 // How many times, maximum, can we loop before we find the optimal time

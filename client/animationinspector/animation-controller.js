@@ -10,7 +10,6 @@
 var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
 
 const { Task } = require("devtools/sham/task");
-var { loader, require } = Cu.import("resource://devtools/shared/Loader.jsm");
 const {
   Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout

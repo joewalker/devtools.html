@@ -25,7 +25,6 @@ const {
 } = require("devtools/client/shared/widgets/ViewHelpers");
 Cu.import("resource://devtools/shared/event-emitter.js");
 const { Task } = require("devtools/sham/task");
-const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const promise = require("promise");
 

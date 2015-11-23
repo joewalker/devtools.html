@@ -1616,8 +1616,7 @@ Toolbox.prototype = {
   },
 
   reload: function () {
-    const {devtools} = Cu.import("resource://devtools/shared/Loader.jsm", {});
-    devtools.reload(true);
+    throw new Error("Missing devtools.reload()");
   },
 
   /**

@@ -4,7 +4,6 @@
 
 var Cu = Components.utils;
 const {Services} = const { Services } = require("devtools/sham/services");
-const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const {GetAvailableAddons, ForgetAddonsList} = require("devtools/client/webide/modules/addons");
 const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
 

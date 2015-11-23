@@ -13,12 +13,6 @@ const Ci = Components.interfaces;
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
 
-// Load devtools module lazily.
-XPCOMUtils.defineLazyGetter(this, "devtools", function() {
-  const {devtools} = Cu.import("resource://devtools/shared/Loader.jsm", {});
-  return devtools;
-});
-
 // Load JsonView services lazily.
 XPCOMUtils.defineLazyGetter(this, "JsonViewService", function() {
   const {JsonViewService} = devtools.require("devtools/client/jsonview/converter-child");

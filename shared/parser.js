@@ -9,7 +9,6 @@ const Ci = Components.interfaces;
 const Cu = Components.utils;
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
-const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
 XPCOMUtils.defineLazyModuleGetter(this,

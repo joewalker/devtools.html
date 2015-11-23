@@ -9,7 +9,6 @@ var Ci = Components.interfaces;
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { Task } = require("devtools/sham/task");
 
-const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const {Toolbox} = require("devtools/client/framework/toolbox");
 const Services = require("Services");
 const {AppProjects} = require("devtools/client/webide/modules/app-projects");

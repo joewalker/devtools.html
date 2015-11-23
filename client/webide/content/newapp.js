@@ -12,7 +12,6 @@ const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 XPCOMUtils.defineLazyModuleGetter(this, "ZipUtils", "resource://gre/modules/ZipUtils.jsm");
 XPCOMUtils.defineLazyModuleGetter(this, "Downloads", "resource://gre/modules/Downloads.jsm");
 
-const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const { FileUtils } = require("devtools/sham/fileutils");
 const {AppProjects} = require("devtools/client/webide/modules/app-projects");
 const {AppManager} = require("devtools/client/webide/modules/app-manager");

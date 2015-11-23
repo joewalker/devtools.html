@@ -11,7 +11,6 @@ const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
 const { Task } = require("devtools/sham/task");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
-var {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 var {TargetFactory} = require("devtools/client/framework/target");
 var {Toolbox} = require("devtools/client/framework/toolbox")
 var promise = require("promise");

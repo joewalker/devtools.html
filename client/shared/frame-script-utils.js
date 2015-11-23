@@ -4,7 +4,7 @@
 
 "use strict";
 var {classes: Cc, interfaces: Ci, utils: Cu, results: Cr} = Components;
-const {require, loader} = Cu.import("resource://devtools/shared/Loader.jsm", {});
+const {loader} = Cu.import("resource://devtools/shared/Loader.jsm");
 const promise = require("promise");
 const { Task } = require("devtools/sham/task");
 const subScriptLoader = Cc["@mozilla.org/moz/jssubscript-loader;1"]

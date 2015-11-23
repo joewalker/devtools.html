@@ -39,7 +39,6 @@ devtoolsCommandlineHandler.prototype = {
   handleConsoleFlag: function(cmdLine) {
     let window = Services.wm.getMostRecentWindow("devtools:webconsole");
     if (!window) {
-      let { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
       // Load the browser devtools main module as the loader's main module.
       const { gDevTools } = require("devtools/client/framework/gDevTools");
       let hudservice = require("devtools/client/webconsole/hudservice");
@@ -92,8 +91,7 @@ devtoolsCommandlineHandler.prototype = {
       // Default to TCP port 6000 if no value given
       portOrPath = 6000;
     }
-    let { DevToolsLoader } =
-      Cu.import("resource://devtools/shared/Loader.jsm", {});
+    let { DevToolsLoader } = Cu.import("resource://devtools/shared/Loader.jsm");
 
     try {
       // Create a separate loader instance, so that we can be sure to receive

@@ -16,7 +16,6 @@ const WIDGET_FOCUSABLE_NODES = new Set(["vbox", "hbox"]);
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 // Cu.import("resource://gre/modules/Timer.jsm");
-const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 Cu.import("resource://devtools/shared/event-emitter.js");
 

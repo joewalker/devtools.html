@@ -4,7 +4,6 @@
 
 var Cu = Components.utils;
 const { gDevTools } = require("devtools/client/framework/gDevTools");
-const {require} = Cu.import('resource://devtools/shared/Loader.jsm', {});
 const { Services } = require("devtools/sham/services");
 const {AppManager} = require('devtools/client/webide/modules/app-manager');
 const {AppActorFront} = require('devtools/shared/apps/app-actor-front');

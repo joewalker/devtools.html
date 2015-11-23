@@ -10,13 +10,7 @@
   if (this.module && module.id.indexOf("transport") >= 0) { // require
     factory.call(this, require, exports);
   } else { // loadSubScript
-    if (this.require) {
-      factory.call(this, require, this);
-    } else {
-      const Cu = Components.utils;
-      const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
-      factory.call(this, require, this);
-    }
+    factory.call(this, require, this);
   }
 }).call(this, function (require, exports) {
 

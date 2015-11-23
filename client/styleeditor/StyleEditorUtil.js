@@ -13,7 +13,6 @@ const { Services } = require("devtools/sham/services");
 
 const PROPERTIES_URL = "chrome://devtools/locale/styleeditor.properties";
 
-const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const gStringBundle = Services.strings.createBundle(PROPERTIES_URL);
 
 

@@ -4,7 +4,7 @@
 "use strict";
 
 var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
-const { loader, require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
+const { loader } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 
 const { Task } = require("devtools/sham/task");
 const { Heritage, ViewHelpers, WidgetMethods } = require("devtools/client/shared/widgets/ViewHelpers");

@@ -4,7 +4,6 @@
 
 var Cu = Components.utils;
 const {Services} = const { Services } = require("devtools/sham/services");
-const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const {AppManager} = require("devtools/client/webide/modules/app-manager");
 const {Connection} = require("devtools/shared/client/connection-manager");
 const {RuntimeTypes} = require("devtools/client/webide/modules/runtimes");

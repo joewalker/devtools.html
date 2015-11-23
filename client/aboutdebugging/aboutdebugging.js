@@ -8,9 +8,6 @@
 
 "use strict";
 
-const { loader } = Components.utils.import(
-  "resource://devtools/shared/Loader.jsm", {});
-
 const { AddonsComponent } = require("devtools/client/aboutdebugging/components/addons");
 const { DebuggerClient } = require("devtools/shared/client/main");
 const { DebuggerServer } = require("devtools/server/main");

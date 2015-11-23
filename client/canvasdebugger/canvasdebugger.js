@@ -13,7 +13,6 @@ const {
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
 } = require("devtools/client/shared/widgets/ViewHelpers");
 
-const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const promise = require("promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 const { CallWatcherFront } = require("devtools/server/actors/call-watcher");
