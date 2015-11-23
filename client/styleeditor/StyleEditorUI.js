@@ -5,8 +5,6 @@
 
 "use strict";
 
-this.EXPORTED_SYMBOLS = ["StyleEditorUI"];
-
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
@@ -932,3 +930,5 @@ StyleEditorUI.prototype = {
     this._prefObserver.destroy();
   }
 }
+
+exports.StyleEditorUI = this.StyleEditorUI;

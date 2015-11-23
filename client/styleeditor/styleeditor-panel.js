@@ -12,7 +12,7 @@ const { Services } = require("devtools/sham/services");
 var promise = require("promise");
 var EventEmitter = require("devtools/shared/event-emitter");
 
-Cu.import("resource://devtools/client/styleeditor/StyleEditorUI.jsm");
+const { StyleEditorUI } = require("devtools/client/styleeditor/StyleEditorUI");
 Cu.import("resource://devtools/client/styleeditor/StyleEditorUtil.jsm");
 
 loader.lazyGetter(this, "StyleSheetsFront",
