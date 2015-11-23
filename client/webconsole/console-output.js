@@ -9,8 +9,7 @@ const {Cc, Ci, Cu} = require("chrome");
 
 const { Services } = require("devtools/sham/services");
 
-loader.lazyImporter(this, "VariablesView", "resource://devtools/client/shared/widgets/VariablesView.jsm");
-loader.lazyImporter(this, "escapeHTML", "resource://devtools/client/shared/widgets/VariablesView.jsm");
+const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { Task } = require("devtools/sham/task");
 loader.lazyImporter(this, "PluralForm", "resource://gre/modules/PluralForm.jsm");

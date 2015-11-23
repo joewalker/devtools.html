@@ -99,7 +99,7 @@ Cu.import("resource://devtools/shared/event-emitter.js");
 const { SimpleListWidget } = require("devtools/client/shared/widgets/SimpleListWidget");
 const { BreadcrumbsWidget } = require("devtools/client/shared/widgets/BreadcrumbsWidget");
 const { SideMenuWidget } = require("devtools/client/shared/widgets/SideMenuWidget");
-Cu.import("resource://devtools/client/shared/widgets/VariablesView.jsm");
+const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 Cu.import("resource://devtools/client/shared/widgets/VariablesViewController.jsm");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 

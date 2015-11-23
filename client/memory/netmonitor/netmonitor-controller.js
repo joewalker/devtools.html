@@ -114,7 +114,7 @@ const ACTIVITY_TYPE = {
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { SideMenuWidget } = require("devtools/client/shared/widgets/SideMenuWidget");
-Cu.import("resource://devtools/client/shared/widgets/VariablesView.jsm");
+const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 Cu.import("resource://devtools/client/shared/widgets/VariablesViewController.jsm");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 

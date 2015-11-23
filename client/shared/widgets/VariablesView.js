@@ -49,8 +49,6 @@ Object.defineProperty(this, "NetworkHelper", {
   enumerable: true
 });
 
-this.EXPORTED_SYMBOLS = ["VariablesView", "escapeHTML"];
-
 /**
  * Debugger localization strings.
  */
@@ -4148,3 +4146,6 @@ EditableNameAndValue.prototype = Heritage.extend(EditableName.prototype, {
     this._next(e);
   }
 });
+
+exports.VariablesView = this.VariablesView;
+exports.escapeHTML = this.escapeHTML;

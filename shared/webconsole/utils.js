@@ -15,7 +15,7 @@ const { Services } = require("devtools/sham/services");
 
 // TODO: Bug 842672 - browser/ imports modules from toolkit/.
 // Note that these are only used in WebConsoleCommands, see $0 and pprint().
-loader.lazyImporter(this, "VariablesView", "resource://devtools/client/shared/widgets/VariablesView.jsm");
+const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
 XPCOMUtils.defineLazyServiceGetter(this,

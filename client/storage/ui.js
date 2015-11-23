@@ -14,8 +14,7 @@ loader.lazyRequireGetter(this, "TableWidget",
                          "devtools/client/shared/widgets/TableWidget", true);
 loader.lazyImporter(this, "ViewHelpers",
   "resource://devtools/client/shared/widgets/ViewHelpers.jsm");
-loader.lazyImporter(this, "VariablesView",
-  "resource://devtools/client/shared/widgets/VariablesView.jsm");
+const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 
 const Telemetry = require("devtools/client/shared/telemetry");
 
