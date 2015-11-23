@@ -417,7 +417,7 @@ var {
 
     let reportError = Cu.reportError;
 
-    let Timer = Cu.import("resource://gre/modules/Timer.jsm", {});
+    const Timer = require("devtools/sham/timer");
 
     let setImmediate = function (callback) {
       Timer.setTimeout(callback, 0);

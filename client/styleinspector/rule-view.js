@@ -8,8 +8,7 @@
 
 const {Cc, Ci, Cu} = require("chrome");
 const promise = require("promise");
-const {setTimeout, clearTimeout} =
-      Cu.import("resource://gre/modules/Timer.jsm", {});
+const {setTimeout, clearTimeout} = require("devtools/sham/timer");
 const {CssLogic} = require("devtools/shared/styleinspector/css-logic");
 const {InplaceEditor, editableField, editableItem} =
       require("devtools/client/shared/inplace-editor");

@@ -14,7 +14,7 @@ const promise = require("promise");
 const { on, forget } = require("devtools/client/projecteditor/lib/helpers/event");
 const { FileResource } = require("devtools/client/projecteditor/lib/stores/resource");
 const {Services} = const { Services } = require("devtools/sham/services");
-const {setTimeout, clearTimeout} = Cu.import("resource://gre/modules/Timer.jsm", {});
+const {setTimeout, clearTimeout} = require("devtools/sham/timer");
 
 const CHECK_LINKED_DIRECTORY_DELAY = 5000;
 const SHOULD_LIVE_REFRESH = true;
