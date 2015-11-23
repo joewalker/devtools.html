@@ -13,8 +13,6 @@ const ENSURE_SELECTION_VISIBLE_DELAY = 50; // ms
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 Cu.import("resource://devtools/shared/event-emitter.js");
 
-this.EXPORTED_SYMBOLS = ["BreadcrumbsWidget"];
-
 /**
  * A breadcrumb-like list of items.
  *
@@ -258,3 +256,5 @@ Breadcrumb.prototype = {
   ownerView: null,
   _target: null
 };
+
+exports.BreadcrumbsWidget = BreadcrumbsWidget;

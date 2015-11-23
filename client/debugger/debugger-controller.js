@@ -97,7 +97,7 @@ const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 Cu.import("resource://devtools/shared/event-emitter.js");
 Cu.import("resource://devtools/client/shared/widgets/SimpleListWidget.jsm");
-Cu.import("resource://devtools/client/shared/widgets/BreadcrumbsWidget.jsm");
+const { BreadcrumbsWidget } = require("devtools/client/shared/widgets/BreadcrumbsWidget");
 Cu.import("resource://devtools/client/shared/widgets/SideMenuWidget.jsm");
 Cu.import("resource://devtools/client/shared/widgets/VariablesView.jsm");
 Cu.import("resource://devtools/client/shared/widgets/VariablesViewController.jsm");
