@@ -434,7 +434,7 @@ DevToolsLoader.prototype = {
       // and are on a browser window.
       // Wait for a second before opening the toolbox to avoid races
       // between the old and the new one.
-      const {setTimeout} = require("devtools/sham/timer");
+      //const {setTimeout} = require("devtools/sham/timer");
       setTimeout(() => {
         let { gBrowser } = window;
         let target = this.TargetFactory.forTab(gBrowser.selectedTab);

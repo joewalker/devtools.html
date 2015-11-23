@@ -417,10 +417,10 @@ var {
 
     let reportError = Cu.reportError;
 
-    const Timer = require("devtools/sham/timer");
+    //const Timer = require("devtools/sham/timer");
 
     let setImmediate = function (callback) {
-      Timer.setTimeout(callback, 0);
+      setTimeout(callback, 0);
     }
 
     let xpcInspector = Cc["@mozilla.org/jsinspector;1"].
