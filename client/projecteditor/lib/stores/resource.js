@@ -13,10 +13,10 @@ const { EventTarget } = require("sdk/event/target");
 const { emit } = require("sdk/event/core");
 const URL = require("sdk/url");
 const promise = require("promise");
-const { OS } = require("devtools/sham/osfile.js");
-const { FileUtils } = require("devtools/sham/fileutils.js");
+const { OS } = require("devtools/sham/osfile");
+const { FileUtils } = require("devtools/sham/fileutils");
 const mimeService = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService);
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 
 const gDecoder = new TextDecoder();
 const gEncoder = new TextEncoder();

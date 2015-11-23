@@ -2,7 +2,7 @@
 
 const { Cc, Ci, Cu, Cr } = require("chrome");
 
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 const { ViewHelpers, Heritage } = require("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 const { AbstractCanvasGraph, CanvasGraphUtils } = require("devtools/client/shared/widgets/Graphs");
 

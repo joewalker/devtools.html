@@ -11,7 +11,7 @@
 
 const Cu = Components.utils;
 
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
 const WARNING_PREF = "devtools.migration.warnings";
 if (Services.prefs.getBoolPref(WARNING_PREF)) {

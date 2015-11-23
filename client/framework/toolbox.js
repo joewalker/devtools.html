@@ -21,11 +21,11 @@ var Telemetry = require("devtools/client/shared/telemetry");
 var HUDService = require("devtools/client/webconsole/hudservice");
 var sourceUtils = require("devtools/client/shared/source-utils");
 
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 Cu.import("resource://devtools/client/framework/gDevTools.jsm");
 Cu.import("resource://devtools/client/scratchpad/scratchpad-manager.jsm");
 Cu.import("resource://devtools/client/shared/DOMHelpers.jsm");
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 
 loader.lazyImporter(this, "CommandUtils",
   "resource://devtools/client/shared/DeveloperToolbar.jsm");

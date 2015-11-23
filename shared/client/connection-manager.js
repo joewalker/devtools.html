@@ -13,8 +13,8 @@ const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const { DebuggerServer } = require("devtools/server/main");
 const { DebuggerClient } = require("devtools/shared/client/main");
 
-const { Services } = require("devtools/sham/services.js");
-const { Task } = require("devtools/sham/task.js");
+const { Services } = require("devtools/sham/services");
+const { Task } = require("devtools/sham/task");
 
 const REMOTE_TIMEOUT = "devtools.debugger.remote-timeout";
 

@@ -18,7 +18,7 @@ const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
 const PROPERTIES_URL = "chrome://devtools/locale/styleeditor.properties";
 

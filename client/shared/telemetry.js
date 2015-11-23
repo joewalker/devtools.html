@@ -55,8 +55,8 @@ this.Telemetry = function() {
 module.exports = Telemetry;
 
 var {Cc, Ci, Cu} = require("chrome");
-const { Services } = require("devtools/sham/services.js");
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { Services } = require("devtools/sham/services");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
 Telemetry.prototype = {
   _histograms: {

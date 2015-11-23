@@ -10,8 +10,8 @@ const NS_XHTML = "http://www.w3.org/1999/xhtml";
 const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
-const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
+const { Services } = require("devtools/sham/services");
 
 const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const { TargetFactory } = require("devtools/client/framework/target");

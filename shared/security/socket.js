@@ -49,7 +49,7 @@ DevToolsUtils.defineLazyGetter(this, "nssErrorsService", () => {
          .getService(Ci.nsINSSErrorsService);
 });
 
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 
 var DebuggerSocket = {};
 

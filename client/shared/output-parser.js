@@ -6,7 +6,7 @@
 
 const {Cc, Ci, Cu} = require("chrome");
 const {colorUtils} = require("devtools/shared/css-color");
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
 const HTML_NS = "http://www.w3.org/1999/xhtml";
 

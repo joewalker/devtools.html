@@ -8,8 +8,8 @@
 
 const {Cu, Ci, Cc} = require("chrome");
 
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
-const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
+const { Services } = require("devtools/sham/services");
 
 XPCOMUtils.defineLazyGetter(this, "JsonViewService", function() {
   return require("devtools/client/jsonview/utils");

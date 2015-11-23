@@ -5,9 +5,9 @@
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
 /**
  * Handles --webide command line option.

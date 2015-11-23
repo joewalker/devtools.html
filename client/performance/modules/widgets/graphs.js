@@ -8,7 +8,7 @@
  */
 
 const { Cc, Ci, Cu, Cr } = require("chrome");
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 const { Heritage } = require("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 const LineGraphWidget = require("devtools/client/shared/widgets/LineGraphWidget");
 const BarGraphWidget = require("devtools/client/shared/widgets/BarGraphWidget");

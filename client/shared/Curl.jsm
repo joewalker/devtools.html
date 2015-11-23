@@ -39,7 +39,7 @@
 
 this.EXPORTED_SYMBOLS = ["Curl", "CurlUtils"];
 
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
 const DEFAULT_HTTP_VERSION = "HTTP/1.1";
 

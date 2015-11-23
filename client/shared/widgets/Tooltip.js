@@ -19,8 +19,8 @@ const Editor = require("devtools/client/sourceeditor/editor");
 
 loader.lazyRequireGetter(this, "beautify", "devtools/shared/jsbeautify/beautify");
 
-const { Services } = require("devtools/sham/services.js");
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { Services } = require("devtools/sham/services");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
 XPCOMUtils.defineLazyModuleGetter(this, "setNamedTimeout",
   "resource://devtools/client/shared/widgets/ViewHelpers.jsm");
@@ -30,7 +30,7 @@ XPCOMUtils.defineLazyModuleGetter(this, "VariablesView",
   "resource://devtools/client/shared/widgets/VariablesView.jsm");
 XPCOMUtils.defineLazyModuleGetter(this, "VariablesViewController",
   "resource://devtools/client/shared/widgets/VariablesViewController.jsm");
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 
 const XHTML_NS = "http://www.w3.org/1999/xhtml";
 const SPECTRUM_FRAME = "chrome://devtools/content/shared/widgets/spectrum-frame.xhtml";

@@ -111,8 +111,8 @@ const ACTIVITY_TYPE = {
   DISABLE_CACHE: 4
 };
 
-const { Services } = require("devtools/sham/services.js");
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { Services } = require("devtools/sham/services");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 Cu.import("resource://devtools/client/shared/widgets/SideMenuWidget.jsm");
 Cu.import("resource://devtools/client/shared/widgets/VariablesView.jsm");
 Cu.import("resource://devtools/client/shared/widgets/VariablesViewController.jsm");
@@ -140,7 +140,7 @@ XPCOMUtils.defineLazyModuleGetter(this, "Curl",
 XPCOMUtils.defineLazyModuleGetter(this, "CurlUtils",
   "resource://devtools/client/shared/Curl.jsm");
 
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 
 XPCOMUtils.defineLazyModuleGetter(this, "PluralForm",
   "resource://gre/modules/PluralForm.jsm");

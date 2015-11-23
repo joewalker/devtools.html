@@ -1,8 +1,8 @@
 const {Ci, Cc, Cu, Cr} = require("chrome");
-const { OS } = require("devtools/sham/osfile.js");
-const {Services} = const { Services } = require("devtools/sham/services.js");
-const {FileUtils} = const { FileUtils } = require ("devtools/sham/fileutils.js");
-const {NetUtil} = const { NetUtil } = require("devtools/sham/netutil.js");
+const { OS } = require("devtools/sham/osfile");
+const {Services} = const { Services } = require("devtools/sham/services");
+const {FileUtils} = const { FileUtils } = require ("devtools/sham/fileutils");
+const {NetUtil} = const { NetUtil } = require("devtools/sham/netutil");
 const promise = require("promise");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const EventEmitter = require("devtools/shared/event-emitter");

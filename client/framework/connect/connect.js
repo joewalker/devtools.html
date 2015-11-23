@@ -7,9 +7,9 @@
 "use strict";
 
 var Cu = Components.utils;
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
-const { Services } = require("devtools/sham/services.js");
-const { Task } = require("devtools/sham/task.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
+const { Services } = require("devtools/sham/services");
+const { Task } = require("devtools/sham/task");
 var {gDevTools} = Cu.import("resource://devtools/client/framework/gDevTools.jsm", {});
 var {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 var {TargetFactory} = require("devtools/client/framework/target");

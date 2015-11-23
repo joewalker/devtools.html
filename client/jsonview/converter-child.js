@@ -18,7 +18,7 @@ loader.lazyRequireGetter(this, "NetworkHelper",
 loader.lazyRequireGetter(this, "JsonViewUtils",
                                "devtools/client/jsonview/utils");
 
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
 const childProcessMessageManager =
   Cc["@mozilla.org/childprocessmessagemanager;1"].

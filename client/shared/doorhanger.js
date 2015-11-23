@@ -5,9 +5,9 @@
 "use strict";
 
 const { Ci, Cc } = require("chrome");
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 const { DOMHelpers } = require("resource://devtools/client/shared/DOMHelpers.jsm");
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 const { Promise } = require("resource://gre/modules/Promise.jsm");
 const { setTimeout } = require("sdk/timers");
 const { getMostRecentBrowserWindow } = require("sdk/window/utils");

@@ -4,7 +4,7 @@
 
 const Ci = Components.interfaces;
 const Cu = Components.utils;
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
 this.EXPORTED_SYMBOLS = ["DOMHelpers"];
 

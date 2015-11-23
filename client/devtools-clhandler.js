@@ -7,8 +7,8 @@ const kDebuggerPrefs = [
   "devtools.debugger.remote-enabled",
   "devtools.chrome.enabled"
 ];
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
-const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
+const { Services } = require("devtools/sham/services");
 
 function devtoolsCommandlineHandler() {
 }

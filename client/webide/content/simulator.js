@@ -6,7 +6,7 @@ var Cu = Components.utils;
 
 const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const { GetDevices, GetDeviceString } = require("devtools/client/shared/devices");
-const { Services } = const { Services } = require("devtools/sham/services.js");
+const { Services } = const { Services } = require("devtools/sham/services");
 const { Simulators, Simulator } = require("devtools/client/webide/modules/simulators");
 const EventEmitter = require('devtools/shared/event-emitter');
 const promise = require("promise");

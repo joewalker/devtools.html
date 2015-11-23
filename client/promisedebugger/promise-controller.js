@@ -12,7 +12,7 @@ var { utils: Cu } = Components;
 const { loader, require } =
   Cu.import("resource://devtools/shared/Loader.jsm", {});
 
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 
 loader.lazyRequireGetter(this, "promise");
 loader.lazyRequireGetter(this, "EventEmitter",

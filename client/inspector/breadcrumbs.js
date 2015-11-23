@@ -7,8 +7,8 @@
 "use strict";
 
 const {Cu, Ci} = require("chrome");
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
-const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
+const { Services } = require("devtools/sham/services");
 const promise = require("promise");
 
 const ENSURE_SELECTION_VISIBLE_DELAY = 50; // ms

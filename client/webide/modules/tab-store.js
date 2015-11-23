@@ -8,7 +8,7 @@ const { TargetFactory } = require("devtools/client/framework/target");
 const EventEmitter = require("devtools/shared/event-emitter");
 const { Connection } = require("devtools/shared/client/connection-manager");
 const promise = require("promise");
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 
 const _knownTabStores = new WeakMap();
 

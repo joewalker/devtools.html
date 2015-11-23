@@ -6,7 +6,7 @@
 
 const { Ci, Cc } = require("chrome");
 const { getJSON } = require("devtools/client/shared/getjson");
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 const promise = require("promise");
 
 const DEVICES_URL = "devtools.devices.url";

@@ -55,7 +55,7 @@
 "use strict";
 
 const {components, Cc, Ci, Cu} = require("chrome");
-const { NetUtil } = require("devtools/sham/netutil.js");
+const { NetUtil } = require("devtools/sham/netutil");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
 // The cache used in the `nsIURL` function.

@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 const { Cc, Cu, Ci } = require("chrome");
-const { FileUtils } = require("devtools/sham/fileutils.js");
-const { Services } = require("devtools/sham/services.js");
+const { FileUtils } = require("devtools/sham/fileutils");
+const { Services } = require("devtools/sham/services");
 const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
 
 function doesFileExist (location) {

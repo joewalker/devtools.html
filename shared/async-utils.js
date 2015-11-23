@@ -14,7 +14,7 @@
  */
 
 var {Cu} = require("chrome");
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 var Promise = require("promise");
 
 /**

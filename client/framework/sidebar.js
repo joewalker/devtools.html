@@ -6,9 +6,9 @@
 
 const {Cu} = require("chrome");
 
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
-const { Services } = require("devtools/sham/services.js");
-const { Task } = require("devtools/sham/task.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
+const { Services } = require("devtools/sham/services");
+const { Task } = require("devtools/sham/task");
 
 var EventEmitter = require("devtools/shared/event-emitter");
 var Telemetry = require("devtools/client/shared/telemetry");

@@ -4,7 +4,7 @@
 "use strict";
 
 const { Cu, Cc, Ci } = require("chrome");
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 const { defer, resolve } = require("promise");
 const { HarUtils } = require("./har-utils.js");
 const { HarBuilder } = require("./har-builder.js");

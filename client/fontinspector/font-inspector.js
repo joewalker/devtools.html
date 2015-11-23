@@ -10,8 +10,8 @@ var { utils: Cu } = Components;
 const DEFAULT_PREVIEW_TEXT = "Abc";
 const PREVIEW_UPDATE_DELAY = 150;
 
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
-const { Task } = require("devtools/sham/task.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
+const { Task } = require("devtools/sham/task");
 
 function FontInspector(inspector, window)
 {

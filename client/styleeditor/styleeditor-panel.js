@@ -6,8 +6,8 @@
 
 const {Cc, Ci, Cu, Cr} = require("chrome");
 
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
-const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
+const { Services } = require("devtools/sham/services");
 
 var promise = require("promise");
 var EventEmitter = require("devtools/shared/event-emitter");

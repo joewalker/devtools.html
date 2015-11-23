@@ -30,12 +30,12 @@ const Heritage = require("sdk/core/heritage");
 const {setTimeout, clearTimeout, setInterval, clearInterval} = require("sdk/timers");
 const {parseAttribute} = require("devtools/client/shared/node-attribute-parser");
 const ELLIPSIS = Services.prefs.getComplexValue("intl.ellipsis", Ci.nsIPrefLocalizedString).data;
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 const {scrollIntoViewIfNeeded} = require("devtools/shared/layout/utils");
 
 Cu.import("resource://devtools/shared/gcli/Templater.jsm");
-const { Services } = require("devtools/sham/services.js");
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { Services } = require("devtools/sham/services");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
 loader.lazyGetter(this, "DOMParser", function() {
   return Cc["@mozilla.org/xmlextras/domparser;1"].createInstance(Ci.nsIDOMParser);

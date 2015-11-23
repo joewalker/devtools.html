@@ -10,7 +10,7 @@ var { Ci, Cu, Cc, components } = require("chrome");
 var Services = require("Services");
 var promise = require("promise");
 
-const { FileUtils } = require("devtools/sham/fileutils.js");
+const { FileUtils } = require("devtools/sham/fileutils");
 loader.lazyRequireGetter(this, "setTimeout", "Timer", true);
 
 /**
@@ -534,9 +534,9 @@ exports.defineLazyModuleGetter = function defineLazyModuleGetter(aObject, aName,
   });
 };
 
-const { NetUtil } = require("devtools/sham/netutil.js");
+const { NetUtil } = require("devtools/sham/netutil");
 
-const { TextDecoder, OS } = require("devtools/sham/osfile.js");
+const { TextDecoder, OS } = require("devtools/sham/osfile");
 
 exports.defineLazyGetter(this, "NetworkHelper", () => {
   return require("devtools/shared/webconsole/network-helper");

@@ -14,7 +14,7 @@ const promise = require("promise");
 loader.lazyServiceGetter(this, "clipboardHelper",
                          "@mozilla.org/widget/clipboardhelper;1",
                          "nsIClipboardHelper");
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 loader.lazyRequireGetter(this, "EventEmitter", "devtools/shared/event-emitter");
 loader.lazyRequireGetter(this, "AutocompletePopup", "devtools/client/shared/autocomplete-popup", true);
 loader.lazyRequireGetter(this, "ToolSidebar", "devtools/client/framework/sidebar", true);

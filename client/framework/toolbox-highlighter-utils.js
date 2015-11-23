@@ -6,7 +6,7 @@
 
 const {Cc, Ci, Cu} = require("chrome");
 const promise = require("promise");
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
 /**

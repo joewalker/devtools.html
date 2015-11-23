@@ -16,11 +16,11 @@ const Editor  = require("devtools/client/sourceeditor/editor");
 const promise = require("promise");
 const {CssLogic} = require("devtools/shared/styleinspector/css-logic");
 
-const { Services } = require("devtools/sham/services.js");
-const { FileUtils } = require ("devtools/sham/fileutils.js");
-const { NetUtil } = require("devtools/sham/netutil.js");
-const { OS } = require("devtools/sham/osfile.js");
-const { Task } = require("devtools/sham/task.js");
+const { Services } = require("devtools/sham/services");
+const { FileUtils } = require ("devtools/sham/fileutils");
+const { NetUtil } = require("devtools/sham/netutil");
+const { OS } = require("devtools/sham/osfile");
+const { Task } = require("devtools/sham/task");
 Cu.import("resource://devtools/shared/event-emitter.js");
 Cu.import("resource://devtools/client/styleeditor/StyleEditorUtil.jsm");
 

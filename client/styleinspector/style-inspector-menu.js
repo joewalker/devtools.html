@@ -11,7 +11,7 @@ const {PREF_ORIG_SOURCES} = require("devtools/client/styleeditor/utils");
 
 loader.lazyRequireGetter(this, "overlays",
   "devtools/client/styleinspector/style-inspector-overlays");
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 loader.lazyServiceGetter(this, "clipboardHelper",
   "@mozilla.org/widget/clipboardhelper;1", "nsIClipboardHelper");
 loader.lazyGetter(this, "_strings", () => {

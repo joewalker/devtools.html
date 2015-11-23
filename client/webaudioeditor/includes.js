@@ -5,8 +5,8 @@
 
 var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
 
-const { Services } = require("devtools/sham/services.js");
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { Services } = require("devtools/sham/services");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 Cu.import("resource://devtools/client/framework/gDevTools.jsm");
 
@@ -14,7 +14,7 @@ const { loader, require } = Cu.import("resource://devtools/shared/Loader.jsm", {
 
 var { EventTarget } = require("sdk/event/target");
 
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 const { Class } = require("sdk/core/heritage");
 const EventEmitter = require("devtools/shared/event-emitter");
 const STRINGS_URI = "chrome://devtools/locale/webaudioeditor.properties"

@@ -5,7 +5,7 @@
 "use strict";
 
 const { Cc, Ci, Cu, Cr } = require("chrome");
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 const EventEmitter = require("devtools/shared/event-emitter");
 const { MemoryFront } = require("devtools/server/actors/memory");
 const HeapAnalysesClient = require("devtools/shared/heapsnapshot/HeapAnalysesClient");

@@ -9,9 +9,9 @@
 const {Cc, Ci, Cu, components} = require("chrome");
 const {isWindowIncluded} = require("devtools/shared/layout/utils");
 
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
 // TODO: Bug 842672 - browser/ imports modules from toolkit/.
 // Note that these are only used in WebConsoleCommands, see $0 and pprint().

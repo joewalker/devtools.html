@@ -7,7 +7,7 @@
 
 var { interfaces: Ci, utils: Cu } = Components;
 
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
 var systemAppOrigin = (function() {
   let systemOrigin = "_";

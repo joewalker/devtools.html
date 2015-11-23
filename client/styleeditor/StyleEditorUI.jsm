@@ -11,11 +11,11 @@ const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
-const { Services } = require("devtools/sham/services.js");
-const { NetUtil } = require("devtools/sham/netutil.js");
-const { OS } = require("devtools/sham/osfile.js");
-const { Task } = require("devtools/sham/task.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
+const { Services } = require("devtools/sham/services");
+const { NetUtil } = require("devtools/sham/netutil");
+const { OS } = require("devtools/sham/osfile");
+const { Task } = require("devtools/sham/task");
 Cu.import("resource://devtools/shared/event-emitter.js");
 Cu.import("resource://devtools/client/framework/gDevTools.jsm");
 Cu.import("resource://devtools/client/styleeditor/StyleEditorUtil.jsm");

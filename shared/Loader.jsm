@@ -11,12 +11,12 @@
 
 var { Constructor: CC, classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
-const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
+const { Services } = require("devtools/sham/services");
 
-const { NetUtil } = require("devtools/sham/netutil.js");
-const { FileUtils } = require("devtools/sham/fileutils.js");
-const { OS } = require("devtools/sham/osfile.js");
+const { NetUtil } = require("devtools/sham/netutil");
+const { FileUtils } = require("devtools/sham/fileutils");
+const { OS } = require("devtools/sham/osfile");
 
 var { Loader } = Cu.import("resource://gre/modules/commonjs/toolkit/loader.js", {});
 var promise = Cu.import("resource://gre/modules/Promise.jsm", {}).Promise;
@@ -41,7 +41,7 @@ XPCOMUtils.defineLazyGetter(loaderModules, "Debugger", () => {
   // compartment sharing), so add the Debugger object to a sandbox instead.
   let sandbox = Cu.Sandbox(CC('@mozilla.org/systemprincipal;1', 'nsIPrincipal')());
   Cu.evalInSandbox(
-    "const { addDebuggerToGlobal } = require('devtools/sham/jsdebugger.js');" +
+    "const { addDebuggerToGlobal } = require('devtools/sham/jsdebugger');" +
     "addDebuggerToGlobal(this);",
     sandbox
   );

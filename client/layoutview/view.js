@@ -8,7 +8,7 @@
 
 var {utils: Cu, interfaces: Ci, classes: Cc} = Components;
 
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 

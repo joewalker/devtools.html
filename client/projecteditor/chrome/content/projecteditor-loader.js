@@ -1,7 +1,7 @@
 var Cu = Components.utils;
 const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
-const { FileUtils } = require("devtools/sham/fileutils.js");
-const { NetUtil } = require("devtools/sham/netutil.js");
+const { FileUtils } = require("devtools/sham/fileutils");
+const { NetUtil } = require("devtools/sham/netutil");
 const promise = require("promise");
 const ProjectEditor = require("devtools/client/projecteditor/lib/projecteditor");
 

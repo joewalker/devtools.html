@@ -6,9 +6,9 @@
 var {Ci,Cu,CC} = require("chrome");
 const promise = require("devtools/shared/deprecated-sync-thenables");
 
-const { FileUtils } = require("devtools/sham/fileutils.js");
+const { FileUtils } = require("devtools/sham/fileutils");
 const Services = require("Services");
-const {Task} = require("devtools/sham/task.js");
+const {Task} = require("devtools/sham/task");
 var XMLHttpRequest = CC("@mozilla.org/xmlextras/xmlhttprequest;1");
 var strings = Services.strings.createBundle("chrome://devtools/locale/app-manager.properties");
 

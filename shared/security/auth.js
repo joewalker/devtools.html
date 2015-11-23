@@ -17,7 +17,7 @@ loader.lazyRequireGetter(this, "cert",
   "devtools/shared/security/cert");
 loader.lazyRequireGetter(this, "asyncStorage",
   "devtools/shared/async-storage");
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 
 /**
  * A simple enum-like object with keys mirrored to values.

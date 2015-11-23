@@ -40,9 +40,9 @@ loader.lazyRequireGetter(this, "EventEmitter",
   "devtools/shared/event-emitter");
 loader.lazyRequireGetter(this, "StyleInspectorMenu",
   "devtools/client/styleinspector/style-inspector-menu");
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
 const HTML_NS = "http://www.w3.org/1999/xhtml";
 const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";

@@ -6,9 +6,9 @@
 const { Cu, Ci, Cc } = require("chrome");
 const { Class } = require("sdk/core/heritage");
 const { defer, resolve } = require("promise");
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 
 loader.lazyRequireGetter(this, "HarCollector", "devtools/client/netmonitor/har/har-collector", true);
 loader.lazyRequireGetter(this, "HarExporter", "devtools/client/netmonitor/har/har-exporter", true);

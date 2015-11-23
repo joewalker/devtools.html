@@ -6,7 +6,7 @@
 
 const {Cc, Ci, Cu, Cr} = require("chrome");
 
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
 var promise = require("promise");
 var EventEmitter = require("devtools/shared/event-emitter");

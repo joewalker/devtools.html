@@ -25,7 +25,7 @@
 "use strict";
 
 const {Cc, Cu, Ci} = require("chrome");
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 const Promise = require("promise");
 const DOMUtils = Cc["@mozilla.org/inspector/dom-utils;1"]
                  .getService(Ci.inIDOMUtils);

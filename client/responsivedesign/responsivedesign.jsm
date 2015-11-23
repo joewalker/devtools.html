@@ -7,8 +7,8 @@
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
-const { Services } = require("devtools/sham/services.js");
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { Services } = require("devtools/sham/services");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 Cu.import("resource://devtools/client/framework/gDevTools.jsm");
 Cu.import("resource://devtools/shared/event-emitter.js");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
@@ -19,7 +19,7 @@ var { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 var Telemetry = require("devtools/client/shared/telemetry");
 var { showDoorhanger } = require("devtools/client/shared/doorhanger");
 var { TouchEventSimulator } = require("devtools/shared/touch/simulator");
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 var promise = require("promise");
 
 this.EXPORTED_SYMBOLS = ["ResponsiveUIManager"];

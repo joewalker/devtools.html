@@ -8,7 +8,7 @@ const { Ci, Cu } = require("chrome");
 const promise = require("promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 loader.lazyRequireGetter(this, "DebuggerServer", "devtools/server/main", true);
 loader.lazyRequireGetter(this, "DebuggerClient",
   "devtools/shared/client/main", true);

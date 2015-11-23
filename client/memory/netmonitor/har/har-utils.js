@@ -4,7 +4,7 @@
 "use strict";
 
 const { Cu, Ci, Cc, CC } = require("chrome");
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
 XPCOMUtils.defineLazyGetter(this, "dirService", function() {
   return Cc["@mozilla.org/file/directory_service;1"].getService(Ci.nsIProperties);

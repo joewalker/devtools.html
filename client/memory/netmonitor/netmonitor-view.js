@@ -71,7 +71,7 @@ const GENERIC_VARIABLES_VIEW_SETTINGS = {
 const NETWORK_ANALYSIS_PIE_CHART_DIAMETER = 200; // px
 const FREETEXT_FILTER_SEARCH_DELAY = 200; // ms
 
-const { DeferredTask } = require("devtools/sham/deferredtask.js");
+const { DeferredTask } = require("devtools/sham/deferredtask");
 
 /**
  * Object defining the network monitor view components.

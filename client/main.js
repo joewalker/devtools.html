@@ -5,7 +5,7 @@
 "use strict";
 
 const { Cu } = require("chrome");
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 const { gDevTools } = require("resource://devtools/client/framework/gDevTools.jsm");
 
 const { defaultTools, defaultThemes } = require("devtools/client/definitions");

@@ -8,7 +8,7 @@ const { defer, all } = require("promise");
 const { setTimeout, clearTimeout } = require("sdk/timers");
 const { makeInfallible } = require("devtools/shared/DevToolsUtils");
 
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
 // Helper tracer. Should be generic sharable by other modules (bug 1171927)
 const trace = {

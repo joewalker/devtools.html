@@ -93,8 +93,8 @@ const FRAME_TYPE = {
   PUBLIC_CLIENT_EVAL: 3
 };
 
-const { Services } = require("devtools/sham/services.js");
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { Services } = require("devtools/sham/services");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 Cu.import("resource://devtools/shared/event-emitter.js");
 Cu.import("resource://devtools/client/shared/widgets/SimpleListWidget.jsm");
 Cu.import("resource://devtools/client/shared/widgets/BreadcrumbsWidget.jsm");
@@ -118,7 +118,7 @@ const FastListWidget = require("devtools/client/shared/widgets/FastListWidget");
 
 XPCOMUtils.defineConstant(this, "EVENTS", EVENTS);
 
-const { Task } = require("devtools/sham/task.js");
+const { Task } = require("devtools/sham/task");
 
 XPCOMUtils.defineLazyModuleGetter(this, "Parser",
   "resource://devtools/shared/Parser.jsm");

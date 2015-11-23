@@ -4,7 +4,7 @@
 "use strict";
 
 const {Cc, Ci, Cu, Cr} = require("chrome");
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 
 const events = require("sdk/event/core");
 

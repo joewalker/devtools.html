@@ -7,7 +7,7 @@
 const {Cu} = require("chrome");
 const EventEmitter = require("devtools/shared/event-emitter");
 const promise = require("promise");
-const { Services } = require("devtools/sham/services.js");
+const { Services } = require("devtools/sham/services");
 Cu.import("resource://devtools/client/shared/DOMHelpers.jsm");
 
 /* A host should always allow this much space for the page to be displayed.

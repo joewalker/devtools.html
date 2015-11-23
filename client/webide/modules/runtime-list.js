@@ -4,12 +4,12 @@
 
 const {Cu} = require("chrome");
 
-const {Services} = const { Services } = require("devtools/sham/services.js");
+const {Services} = const { Services } = require("devtools/sham/services");
 const {AppManager} = require("devtools/client/webide/modules/app-manager");
 const EventEmitter = require("devtools/shared/event-emitter");
 const {RuntimeScanners, WiFiScanner} = require("devtools/client/webide/modules/runtimes");
 const {Devices} = Cu.import("resource://devtools/shared/apps/Devices.jsm");
-const {Task} = require("devtools/sham/task.js");
+const {Task} = require("devtools/sham/task");
 const utils = require("devtools/client/webide/modules/utils");
 
 const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");

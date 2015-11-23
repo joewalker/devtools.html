@@ -53,15 +53,15 @@ const {DevToolsWorker} = require("devtools/shared/worker/worker");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const promise = require("promise");
 
-const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
-const { Services } = require("devtools/sham/services.js");
-const { NetUtil } = require("devtools/sham/netutil.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
+const { Services } = require("devtools/sham/services");
+const { NetUtil } = require("devtools/sham/netutil");
 Cu.import("resource://devtools/client/scratchpad/scratchpad-manager.jsm");
-const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger.js");
+const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger");
 Cu.import("resource://devtools/client/framework/gDevTools.jsm");
-const { OS } = require("devtools/sham/osfile.js");
+const { OS } = require("devtools/sham/osfile");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
-const { Reflect } = require("devtools/sham/reflect.js");
+const { Reflect } = require("devtools/sham/reflect");
 
 XPCOMUtils.defineConstant(this, "SCRATCHPAD_CONTEXT_CONTENT", SCRATCHPAD_CONTEXT_CONTENT);
 XPCOMUtils.defineConstant(this, "SCRATCHPAD_CONTEXT_BROWSER", SCRATCHPAD_CONTEXT_BROWSER);
