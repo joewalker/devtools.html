@@ -11,8 +11,6 @@ const Cu = Components.utils;
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 Cu.import("resource://devtools/shared/event-emitter.js");
 
-this.EXPORTED_SYMBOLS = ["SideMenuWidget"];
-
 /**
  * A simple side menu, with the ability of grouping menu items.
  *
@@ -710,3 +708,5 @@ function makeCheckbox(aParentNode, aOptions) {
   aParentNode.appendChild(checkbox);
   return checkbox;
 }
+
+exports.SideMenuWidget = this.SideMenuWidget;

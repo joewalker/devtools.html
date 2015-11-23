@@ -72,8 +72,7 @@ loader.lazyRequireGetter(this, "FlameGraph",
 loader.lazyRequireGetter(this, "TreeWidget",
   "devtools/client/shared/widgets/TreeWidget", true);
 
-loader.lazyImporter(this, "SideMenuWidget",
-  "resource://devtools/client/shared/widgets/SideMenuWidget.jsm");
+const { SideMenuWidget } = require("devtools/client/shared/widgets/SideMenuWidget");
 loader.lazyImporter(this, "setNamedTimeout",
   "resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 loader.lazyImporter(this, "clearNamedTimeout",
