@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 const {Cu, Ci} = require("chrome");
-const {Devices} = Cu.import("resource://devtools/shared/apps/Devices.jsm");
+const {Devices} = require("devtools/shared/apps/Devices");
 const {Services} = const { Services } = require("devtools/sham/services");
 const {Connection} = require("devtools/shared/client/connection-manager");
 const {DebuggerServer} = require("devtools/server/main");
