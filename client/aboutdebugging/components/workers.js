@@ -6,11 +6,9 @@
 
 "use strict";
 
-loader.lazyRequireGetter(this, "Ci",
-  "chrome", true);
+const { Ci } = require("chrome");
 const React = require("devtools/client/shared/vendor/react");
-loader.lazyRequireGetter(this, "TargetListComponent",
-  "devtools/client/aboutdebugging/components/target-list", true);
+const { TargetListComponent } = require("devtools/client/aboutdebugging/components/target-list");
 loader.lazyRequireGetter(this, "Services");
 
 const Strings = Services.strings.createBundle(

@@ -13,17 +13,13 @@ const { Cc, Ci, Cu, Cr } = require("chrome");
 const { Heritage } = require("devtools/client/shared/widgets/ViewHelpers");
 const { AbstractCanvasGraph } = require("devtools/client/shared/widgets/Graphs");
 
-loader.lazyRequireGetter(this, "colorUtils",
-  "devtools/shared/css-color", true);
-loader.lazyRequireGetter(this, "getColor",
-  "devtools/client/shared/theme", true);
+const { colorUtils } = require("devtools/shared/css-color");
+const { getColor } = require("devtools/client/shared/theme");
 loader.lazyRequireGetter(this, "L10N",
   "devtools/client/performance/modules/global", true);
-loader.lazyRequireGetter(this, "TickUtils",
-  "devtools/client/performance/modules/widgets/waterfall-ticks", true);
+const { TickUtils } = require("devtools/client/performance/modules/widgets/waterfall-ticks");
 const MarkerUtils = require("devtools/client/performance/modules/logic/marker-utils");
-loader.lazyRequireGetter(this, "TIMELINE_BLUEPRINT",
-  "devtools/client/performance/modules/markers", true);
+const { TIMELINE_BLUEPRINT } = require("devtools/client/performance/modules/markers");
 
 const OVERVIEW_HEADER_HEIGHT = 14; // px
 const OVERVIEW_ROW_HEIGHT = 11; // px

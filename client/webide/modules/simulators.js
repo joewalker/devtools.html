@@ -5,10 +5,10 @@
 const { Cu } = require("chrome");
 const { AddonManager } = Cu.import("resource://gre/modules/AddonManager.jsm");
 const { Task } = require("devtools/sham/task");
-loader.lazyRequireGetter(this, "ConnectionManager", "devtools/shared/client/connection-manager", true);
-loader.lazyRequireGetter(this, "AddonSimulatorProcess", "devtools/client/webide/modules/simulator-process", true);
-loader.lazyRequireGetter(this, "OldAddonSimulatorProcess", "devtools/client/webide/modules/simulator-process", true);
-loader.lazyRequireGetter(this, "CustomSimulatorProcess", "devtools/client/webide/modules/simulator-process", true);
+const { ConnectionManager } = require("devtools/shared/client/connection-manager");
+const { AddonSimulatorProcess } = require("devtools/client/webide/modules/simulator-process");
+const { OldAddonSimulatorProcess } = require("devtools/client/webide/modules/simulator-process");
+const { CustomSimulatorProcess } = require("devtools/client/webide/modules/simulator-process");
 const asyncStorage = require("devtools/shared/async-storage");
 const EventEmitter = require("devtools/shared/event-emitter");
 const promise = require("promise");

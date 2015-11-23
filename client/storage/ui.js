@@ -8,10 +8,8 @@
 const {Cu} = require("chrome");
 const EventEmitter = require("devtools/shared/event-emitter");
 
-loader.lazyRequireGetter(this, "TreeWidget",
-                         "devtools/client/shared/widgets/TreeWidget", true);
-loader.lazyRequireGetter(this, "TableWidget",
-                         "devtools/client/shared/widgets/TableWidget", true);
+const { TreeWidget } = require("devtools/client/shared/widgets/TreeWidget");
+const { TableWidget } = require("devtools/client/shared/widgets/TableWidget");
 const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 

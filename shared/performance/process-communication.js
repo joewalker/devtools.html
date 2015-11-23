@@ -12,7 +12,7 @@
 
 const FRAME_SCRIPT_UTILS_URL = "chrome://devtools/content/shared/frame-script-utils.js";
 const { Task } = require("devtools/sham/task");
-loader.lazyRequireGetter(this, "uuid", "sdk/util/uuid", true);
+const { uuid } = require("sdk/util/uuid");
 
 var mm = null;
 

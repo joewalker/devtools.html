@@ -5,8 +5,7 @@
 "use strict";
 loader.lazyRequireGetter(this, "timers",
   "resource://gre/modules/Timer.jsm");
-loader.lazyRequireGetter(this, "defer",
-  "promise", true);
+const { defer } = require("promise");
 
 /**
  * @constructor Poller

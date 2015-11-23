@@ -9,7 +9,7 @@ const { Task } = require("devtools/sham/task");
 loader.lazyRequireGetter(this, "Services");
 loader.lazyRequireGetter(this, "promise");
 loader.lazyRequireGetter(this, "OS", "resource://gre/modules/commonjs/node/os.js");
-loader.lazyRequireGetter(this, "DebuggerServer", "devtools/server/main", true);
+const { DebuggerServer } = require("devtools/server/main");
 loader.lazyRequireGetter(this, "AppConstants",
   "resource://gre/modules/AppConstants.jsm", true);
 loader.lazyGetter(this, "screenManager", () => {

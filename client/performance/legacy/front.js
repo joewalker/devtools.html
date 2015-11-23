@@ -8,26 +8,18 @@ const { Task } = require("devtools/sham/task");
 
 loader.lazyRequireGetter(this, "Services");
 loader.lazyRequireGetter(this, "promise");
-loader.lazyRequireGetter(this, "extend",
-  "sdk/util/object", true);
+const { extend } = require("sdk/util/object");
 
 const Actors = require("devtools/client/performance/legacy/actors");
-loader.lazyRequireGetter(this, "LegacyPerformanceRecording",
-  "devtools/client/performance/legacy/recording", true);
-loader.lazyRequireGetter(this, "importRecording",
-  "devtools/client/performance/legacy/recording", true);
-loader.lazyRequireGetter(this, "normalizePerformanceFeatures",
-  "devtools/shared/performance/recording-utils", true);
+const { LegacyPerformanceRecording } = require("devtools/client/performance/legacy/recording");
+const { importRecording } = require("devtools/client/performance/legacy/recording");
+const { normalizePerformanceFeatures } = require("devtools/shared/performance/recording-utils");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
-loader.lazyRequireGetter(this, "getDeviceFront",
-  "devtools/server/actors/device", true);
-loader.lazyRequireGetter(this, "getSystemInfo",
-  "devtools/shared/system", true);
+const { getDeviceFront } = require("devtools/server/actors/device");
+const { getSystemInfo } = require("devtools/shared/system");
 const events = require("sdk/event/core");
-loader.lazyRequireGetter(this, "EventTarget",
-  "sdk/event/target", true);
-loader.lazyRequireGetter(this, "Class",
-  "sdk/core/heritage", true);
+const { EventTarget } = require("sdk/event/target");
+const { Class } = require("sdk/core/heritage");
 
 /**
  * A connection to underlying actors (profiler, framerate, etc.)

@@ -8,10 +8,8 @@
 "use strict";
 
 const React = require("devtools/client/shared/vendor/react");
-loader.lazyRequireGetter(this, "TargetFactory",
-  "devtools/client/framework/target", true);
-loader.lazyRequireGetter(this, "Toolbox",
-  "devtools/client/framework/toolbox", true);
+const { TargetFactory } = require("devtools/client/framework/target");
+const { Toolbox } = require("devtools/client/framework/toolbox");
 loader.lazyRequireGetter(this, "Services");
 
 const { BrowserToolboxProcess } = require("devtools/client/framework/ToolboxProcess");

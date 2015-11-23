@@ -18,8 +18,8 @@ loader.lazyGetter(this, "Telemetry", () => require("devtools/client/shared/telem
 loader.lazyGetter(this, "WebConsoleFrame", () => require("devtools/client/webconsole/webconsole").WebConsoleFrame);
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { Services } = require("devtools/sham/services");
-loader.lazyRequireGetter(this, "DebuggerServer", "devtools/server/main", true);
-loader.lazyRequireGetter(this, "DebuggerClient", "devtools/shared/client/main", true);
+const { DebuggerServer } = require("devtools/server/main");
+const { DebuggerClient } = require("devtools/shared/client/main");
 loader.lazyGetter(this, "showDoorhanger", () => require("devtools/client/shared/doorhanger").showDoorhanger);
 const sourceUtils = require("devtools/client/shared/source-utils");
 

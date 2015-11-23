@@ -15,8 +15,8 @@ const { Task } = require("devtools/sham/task");
 loader.lazyImporter(this, "PluralForm", "resource://gre/modules/PluralForm.jsm");
 
 loader.lazyRequireGetter(this, "promise");
-loader.lazyRequireGetter(this, "TableWidget", "devtools/client/shared/widgets/TableWidget", true);
-loader.lazyRequireGetter(this, "ObjectClient", "devtools/shared/client/main", true);
+const { TableWidget } = require("devtools/client/shared/widgets/TableWidget");
+const { ObjectClient } = require("devtools/shared/client/main");
 
 const Heritage = require("sdk/core/heritage");
 const URI = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);

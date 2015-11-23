@@ -42,19 +42,13 @@ loader.lazyGetter(this, "toolboxStrings", () => {
     }
   };
 });
-loader.lazyRequireGetter(this, "getHighlighterUtils",
-  "devtools/client/framework/toolbox-highlighter-utils", true);
-loader.lazyRequireGetter(this, "Hosts",
-  "devtools/client/framework/toolbox-hosts", true);
-loader.lazyRequireGetter(this, "Selection",
-  "devtools/client/framework/selection", true);
-loader.lazyRequireGetter(this, "InspectorFront",
-  "devtools/server/actors/inspector", true);
+const { getHighlighterUtils } = require("devtools/client/framework/toolbox-highlighter-utils");
+const { Hosts } = require("devtools/client/framework/toolbox-hosts");
+const { Selection } = require("devtools/client/framework/selection");
+const { InspectorFront } = require("devtools/server/actors/inspector");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
-loader.lazyRequireGetter(this, "showDoorhanger",
-  "devtools/client/shared/doorhanger", true);
-loader.lazyRequireGetter(this, "createPerformanceFront",
-  "devtools/server/actors/performance", true);
+const { showDoorhanger } = require("devtools/client/shared/doorhanger");
+const { createPerformanceFront } = require("devtools/server/actors/performance");
 const system = require("devtools/shared/system");
 loader.lazyGetter(this, "osString", () => {
   return Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime).OS;

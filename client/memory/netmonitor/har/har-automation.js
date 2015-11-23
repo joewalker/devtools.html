@@ -10,9 +10,9 @@ const { Services } = require("devtools/sham/services");
 
 const { Task } = require("devtools/sham/task");
 
-loader.lazyRequireGetter(this, "HarCollector", "devtools/client/netmonitor/har/har-collector", true);
-loader.lazyRequireGetter(this, "HarExporter", "devtools/client/netmonitor/har/har-exporter", true);
-loader.lazyRequireGetter(this, "HarUtils", "devtools/client/netmonitor/har/har-utils", true);
+const { HarCollector } = require("devtools/client/netmonitor/har/har-collector");
+const { HarExporter } = require("devtools/client/netmonitor/har/har-exporter");
+const { HarUtils } = require("devtools/client/netmonitor/har/har-utils");
 
 const prefDomain = "devtools.netmonitor.har.";
 

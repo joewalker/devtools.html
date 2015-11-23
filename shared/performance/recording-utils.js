@@ -4,8 +4,7 @@
 "use strict";
 
 const { Cc, Ci, Cu, Cr } = require("chrome");
-loader.lazyRequireGetter(this, "extend",
-  "sdk/util/object", true);
+const { extend } = require("sdk/util/object");
 
 /**
  * Utility functions for managing recording models and their internal data,

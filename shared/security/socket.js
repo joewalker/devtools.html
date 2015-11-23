@@ -15,18 +15,14 @@ var Services = require("Services");
 var promise = require("promise");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
 var { dumpn, dumpv } = DevToolsUtils;
-loader.lazyRequireGetter(this, "DebuggerTransport",
-  "devtools/shared/transport/transport", true);
-loader.lazyRequireGetter(this, "DebuggerServer",
-  "devtools/server/main", true);
+const { DebuggerTransport } = require("devtools/shared/transport/transport");
+const { DebuggerServer } = require("devtools/server/main");
 const discovery = require("devtools/shared/discovery/discovery");
 const cert = require("devtools/shared/security/cert");
-loader.lazyRequireGetter(this, "Authenticators",
-  "devtools/shared/security/auth", true);
-loader.lazyRequireGetter(this, "AuthenticationResult",
-  "devtools/shared/security/auth", true);
-loader.lazyRequireGetter(this, "setTimeout", "Timer", true);
-loader.lazyRequireGetter(this, "clearTimeout", "Timer", true);
+const { Authenticators } = require("devtools/shared/security/auth");
+const { AuthenticationResult } = require("devtools/shared/security/auth");
+const { setTimeout } = require("Timer");
+const { clearTimeout } = require("Timer");
 
 DevToolsUtils.defineLazyGetter(this, "nsFile", () => {
   return CC("@mozilla.org/file/local;1", "nsIFile", "initWithPath");

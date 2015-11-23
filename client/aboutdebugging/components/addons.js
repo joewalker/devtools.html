@@ -7,8 +7,7 @@
 "use strict";
 
 const React = require("devtools/client/shared/vendor/react");
-loader.lazyRequireGetter(this, "TargetListComponent",
-  "devtools/client/aboutdebugging/components/target-list", true);
+const { TargetListComponent } = require("devtools/client/aboutdebugging/components/target-list");
 loader.lazyRequireGetter(this, "Services");
 
 loader.lazyImporter(this, "AddonManager",

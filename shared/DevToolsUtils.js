@@ -11,7 +11,7 @@ var Services = require("Services");
 var promise = require("promise");
 
 const { FileUtils } = require("devtools/sham/fileutils");
-loader.lazyRequireGetter(this, "setTimeout", "Timer", true);
+const { setTimeout } = require("Timer");
 
 /**
  * Turn the error |aError| into a string, without fail.

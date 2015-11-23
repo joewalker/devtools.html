@@ -7,8 +7,7 @@
 const { Ci } = require("chrome");
 const { memoize } = require("sdk/lang/functional");
 
-loader.lazyRequireGetter(this, "setIgnoreLayoutChanges",
-  "devtools/server/actors/layout", true);
+const { setIgnoreLayoutChanges } = require("devtools/server/actors/layout");
 exports.setIgnoreLayoutChanges = (...args) =>
   this.setIgnoreLayoutChanges(...args);
 

@@ -18,8 +18,7 @@ const {
 
 loader.lazyRequireGetter(this, "promise");
 const EventEmitter = require("devtools/shared/event-emitter");
-loader.lazyRequireGetter(this, "AnimationsFront",
-                               "devtools/server/actors/animation", true);
+const { AnimationsFront } = require("devtools/server/actors/animation");
 
 const STRINGS_URI = "chrome://devtools/locale/animationinspector.properties";
 const L10N = new ViewHelpers.L10N(STRINGS_URI);

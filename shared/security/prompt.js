@@ -9,10 +9,8 @@
 var { Ci } = require("chrome");
 var Services = require("Services");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
-loader.lazyRequireGetter(this, "DebuggerSocket",
-  "devtools/shared/security/socket", true);
-loader.lazyRequireGetter(this, "AuthenticationResult",
-  "devtools/shared/security/auth", true);
+const { DebuggerSocket } = require("devtools/shared/security/socket");
+const { AuthenticationResult } = require("devtools/shared/security/auth");
 
 DevToolsUtils.defineLazyGetter(this, "bundle", () => {
   const DBG_STRINGS_URI = "chrome://devtools-shared/locale/debugger.properties";

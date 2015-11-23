@@ -17,8 +17,7 @@ const { Task } = require("devtools/sham/task");
 loader.lazyRequireGetter(this, "promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
-loader.lazyRequireGetter(this, "PromisesFront",
-  "devtools/server/actors/promises", true);
+const { PromisesFront } = require("devtools/server/actors/promises");
 
 // Global toolbox, set when startup is called.
 var gToolbox;

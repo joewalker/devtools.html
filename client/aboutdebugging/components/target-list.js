@@ -7,8 +7,7 @@
 "use strict";
 
 const React = require("devtools/client/shared/vendor/react");
-loader.lazyRequireGetter(this, "TargetComponent",
-  "devtools/client/aboutdebugging/components/target", true);
+const { TargetComponent } = require("devtools/client/aboutdebugging/components/target");
 loader.lazyRequireGetter(this, "Services");
 
 const Strings = Services.strings.createBundle(

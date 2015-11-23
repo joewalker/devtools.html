@@ -9,9 +9,8 @@ const promise = require("promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
-loader.lazyRequireGetter(this, "DebuggerServer", "devtools/server/main", true);
-loader.lazyRequireGetter(this, "DebuggerClient",
-  "devtools/shared/client/main", true);
+const { DebuggerServer } = require("devtools/server/main");
+const { DebuggerClient } = require("devtools/shared/client/main");
 
 const targets = new WeakMap();
 const promiseTargets = new WeakMap();

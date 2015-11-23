@@ -27,43 +27,28 @@ const system = require("devtools/shared/system");
 
 loader.lazyRequireGetter(this, "L10N",
   "devtools/client/performance/modules/global", true);
-loader.lazyRequireGetter(this, "PerformanceTelemetry",
-  "devtools/client/performance/modules/logic/telemetry", true);
-loader.lazyRequireGetter(this, "TIMELINE_BLUEPRINT",
-  "devtools/client/performance/modules/markers", true);
+const { PerformanceTelemetry } = require("devtools/client/performance/modules/logic/telemetry");
+const { TIMELINE_BLUEPRINT } = require("devtools/client/performance/modules/markers");
 const RecordingUtils = require("devtools/shared/performance/recording-utils");
-loader.lazyRequireGetter(this, "GraphsController",
-  "devtools/client/performance/modules/widgets/graphs", true);
-loader.lazyRequireGetter(this, "OptimizationsGraph",
-  "devtools/client/performance/modules/widgets/graphs", true);
-loader.lazyRequireGetter(this, "WaterfallHeader",
-  "devtools/client/performance/modules/widgets/waterfall-ticks", true);
-loader.lazyRequireGetter(this, "MarkerView",
-  "devtools/client/performance/modules/widgets/marker-view", true);
-loader.lazyRequireGetter(this, "MarkerDetails",
-  "devtools/client/performance/modules/widgets/marker-details", true);
+const { GraphsController } = require("devtools/client/performance/modules/widgets/graphs");
+const { OptimizationsGraph } = require("devtools/client/performance/modules/widgets/graphs");
+const { WaterfallHeader } = require("devtools/client/performance/modules/widgets/waterfall-ticks");
+const { MarkerView } = require("devtools/client/performance/modules/widgets/marker-view");
+const { MarkerDetails } = require("devtools/client/performance/modules/widgets/marker-details");
 const MarkerUtils = require("devtools/client/performance/modules/logic/marker-utils");
 const WaterfallUtils = require("devtools/client/performance/modules/logic/waterfall-utils");
 const FrameUtils = require("devtools/client/performance/modules/logic/frame-utils");
-loader.lazyRequireGetter(this, "CallView",
-  "devtools/client/performance/modules/widgets/tree-view", true);
-loader.lazyRequireGetter(this, "ThreadNode",
-  "devtools/client/performance/modules/logic/tree-model", true);
-loader.lazyRequireGetter(this, "FrameNode",
-  "devtools/client/performance/modules/logic/tree-model", true);
-loader.lazyRequireGetter(this, "JITOptimizations",
-  "devtools/client/performance/modules/logic/jit", true);
+const { CallView } = require("devtools/client/performance/modules/widgets/tree-view");
+const { ThreadNode } = require("devtools/client/performance/modules/logic/tree-model");
+const { FrameNode } = require("devtools/client/performance/modules/logic/tree-model");
+const { JITOptimizations } = require("devtools/client/performance/modules/logic/jit");
 
 // Widgets modules
 
-loader.lazyRequireGetter(this, "OptionsView",
-  "devtools/client/shared/options-view", true);
-loader.lazyRequireGetter(this, "FlameGraphUtils",
-  "devtools/client/shared/widgets/FlameGraph", true);
-loader.lazyRequireGetter(this, "FlameGraph",
-  "devtools/client/shared/widgets/FlameGraph", true);
-loader.lazyRequireGetter(this, "TreeWidget",
-  "devtools/client/shared/widgets/TreeWidget", true);
+const { OptionsView } = require("devtools/client/shared/options-view");
+const { FlameGraphUtils } = require("devtools/client/shared/widgets/FlameGraph");
+const { FlameGraph } = require("devtools/client/shared/widgets/FlameGraph");
+const { TreeWidget } = require("devtools/client/shared/widgets/TreeWidget");
 
 const { SideMenuWidget } = require("devtools/client/shared/widgets/SideMenuWidget");
 const { setNamedTimeout, clearNamedTimeout } = require("devtools/client/shared/widgets/ViewHelpers");

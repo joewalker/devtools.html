@@ -12,10 +12,8 @@ const { Cu, Ci } = require("chrome");
 
 loader.lazyRequireGetter(this, "L10N",
   "devtools/client/performance/modules/global", true);
-loader.lazyRequireGetter(this, "PREFS",
-  "devtools/client/performance/modules/global", true);
-loader.lazyRequireGetter(this, "TIMELINE_BLUEPRINT",
-  "devtools/client/performance/modules/markers", true);
+const { PREFS } = require("devtools/client/performance/modules/global");
+const { TIMELINE_BLUEPRINT } = require("devtools/client/performance/modules/markers");
 const WebConsoleUtils = require("devtools/shared/webconsole/utils");
 
 // String used to fill in platform data when it should be hidden.

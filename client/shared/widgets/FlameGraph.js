@@ -10,19 +10,14 @@ const { setNamedTimeout, clearNamedTimeout } = require("devtools/client/shared/w
 loader.lazyRequireGetter(this, "promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 
-loader.lazyRequireGetter(this, "getColor",
-  "devtools/client/shared/theme", true);
+const { getColor } = require("devtools/client/shared/theme");
 
-loader.lazyRequireGetter(this, "CATEGORY_MAPPINGS",
-  "devtools/client/performance/modules/global", true);
+const { CATEGORY_MAPPINGS } = require("devtools/client/performance/modules/global");
 const FrameUtils = require("devtools/client/performance/modules/logic/frame-utils");
 
-loader.lazyRequireGetter(this, "AbstractCanvasGraph",
-  "devtools/client/shared/widgets/Graphs", true);
-loader.lazyRequireGetter(this, "GraphArea",
-  "devtools/client/shared/widgets/Graphs", true);
-loader.lazyRequireGetter(this, "GraphAreaDragger",
-  "devtools/client/shared/widgets/Graphs", true);
+const { AbstractCanvasGraph } = require("devtools/client/shared/widgets/Graphs");
+const { GraphArea } = require("devtools/client/shared/widgets/Graphs");
+const { GraphAreaDragger } = require("devtools/client/shared/widgets/Graphs");
 
 const HTML_NS = "http://www.w3.org/1999/xhtml";
 const GRAPH_SRC = "chrome://devtools/content/shared/widgets/graphs-frame.xhtml";

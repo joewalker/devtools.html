@@ -77,11 +77,11 @@ const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/Va
 
 const { VariablesViewController, StackFrameUtils } = require("devtools/client/shared/widgets/VariablesViewController");
 
-loader.lazyRequireGetter(this, "DebuggerServer", "devtools/server/main", true);
+const { DebuggerServer } = require("devtools/server/main");
 
-loader.lazyRequireGetter(this, "DebuggerClient", "devtools/shared/client/main", true);
-loader.lazyRequireGetter(this, "EnvironmentClient", "devtools/shared/client/main", true);
-loader.lazyRequireGetter(this, "ObjectClient", "devtools/shared/client/main", true);
+const { DebuggerClient } = require("devtools/shared/client/main");
+const { EnvironmentClient } = require("devtools/shared/client/main");
+const { ObjectClient } = require("devtools/shared/client/main");
 
 XPCOMUtils.defineLazyGetter(this, "REMOTE_TIMEOUT", () =>
   Services.prefs.getIntPref("devtools.debugger.remote-timeout"));

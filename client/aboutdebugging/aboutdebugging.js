@@ -11,15 +11,11 @@
 const { loader } = Components.utils.import(
   "resource://devtools/shared/Loader.jsm", {});
 
-loader.lazyRequireGetter(this, "AddonsComponent",
-  "devtools/client/aboutdebugging/components/addons", true);
-loader.lazyRequireGetter(this, "DebuggerClient",
-  "devtools/shared/client/main", true);
-loader.lazyRequireGetter(this, "DebuggerServer",
-  "devtools/server/main", true);
+const { AddonsComponent } = require("devtools/client/aboutdebugging/components/addons");
+const { DebuggerClient } = require("devtools/shared/client/main");
+const { DebuggerServer } = require("devtools/server/main");
 const Telemetry = require("devtools/client/shared/telemetry");
-loader.lazyRequireGetter(this, "WorkersComponent",
-  "devtools/client/aboutdebugging/components/workers", true);
+const { WorkersComponent } = require("devtools/client/aboutdebugging/components/workers");
 loader.lazyRequireGetter(this, "Services");
 
 var AboutDebugging = {

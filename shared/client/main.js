@@ -13,8 +13,8 @@ const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const promise = Cu.import("resource://devtools/shared/deprecated-sync-thenables.js", {}).Promise;
 
 const events = require("sdk/event/core");
-loader.lazyRequireGetter(this, "WebConsoleClient", "devtools/shared/webconsole/client", true);
-loader.lazyRequireGetter(this, "DebuggerSocket", "devtools/shared/security/socket", true);
+const { WebConsoleClient } = require("devtools/shared/webconsole/client");
+const { DebuggerSocket } = require("devtools/shared/security/socket");
 const Authentication = require("devtools/shared/security/auth");
 
 const noop = () => {};

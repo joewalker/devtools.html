@@ -8,9 +8,8 @@ const { Task } = require("devtools/sham/task");
 
 const PerformanceIO = require("devtools/client/performance/modules/io");
 const RecordingUtils = require("devtools/shared/performance/recording-utils");
-loader.lazyRequireGetter(this, "PerformanceRecordingCommon",
-  "devtools/shared/performance/recording-common", true);
-loader.lazyRequireGetter(this, "merge", "sdk/util/object", true);
+const { PerformanceRecordingCommon } = require("devtools/shared/performance/recording-common");
+const { merge } = require("sdk/util/object");
 
 /**
  * Model for a wholistic profile, containing the duration, profiling data,

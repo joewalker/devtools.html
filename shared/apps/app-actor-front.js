@@ -9,7 +9,7 @@ const EventEmitter = require("devtools/shared/event-emitter");
 
 // Bug 1188401: When loaded from xpcshell tests, we do not have browser/ files
 // and can't load target.js. Should be fixed by bug 912121.
-loader.lazyRequireGetter(this, "TargetFactory", "devtools/client/framework/target", true);
+const { TargetFactory } = require("devtools/client/framework/target");
 
 // XXX: bug 912476 make this module a real protocol.js front
 // by converting webapps actor to protocol.js

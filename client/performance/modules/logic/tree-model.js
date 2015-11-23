@@ -5,8 +5,7 @@
 
 const { Cc, Ci, Cu, Cr } = require("chrome");
 
-loader.lazyRequireGetter(this, "JITOptimizations",
-  "devtools/client/performance/modules/logic/jit", true);
+const { JITOptimizations } = require("devtools/client/performance/modules/logic/jit");
 const FrameUtils = require("devtools/client/performance/modules/logic/frame-utils");
 
 /**
