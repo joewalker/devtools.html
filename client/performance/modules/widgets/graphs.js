@@ -21,8 +21,7 @@ const EventEmitter = require("devtools/shared/event-emitter");
 const { colorUtils } = require("devtools/shared/css-color");
 const { getColor } = require("devtools/client/shared/theme");
 const ProfilerGlobal = require("devtools/client/performance/modules/global");
-loader.lazyRequireGetter(this, "L10N",
-  "devtools/client/performance/modules/global", true);
+const { L10N } = require("devtools/client/performance/modules/global");
 const { MarkersOverview } = require("devtools/client/performance/modules/widgets/markers-overview");
 const { createTierGraphDataFromFrameNode } = require("devtools/client/performance/modules/logic/jit");
 

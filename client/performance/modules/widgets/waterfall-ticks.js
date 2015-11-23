@@ -8,8 +8,7 @@
  * markers displayed in the waterfall.
  */
 
-loader.lazyRequireGetter(this, "L10N",
-  "devtools/client/performance/modules/global", true);
+const { L10N } = require("devtools/client/performance/modules/global");
 const { WATERFALL_MARKER_SIDEBAR_WIDTH } = require("devtools/client/performance/modules/widgets/marker-view");
 
 const HTML_NS = "http://www.w3.org/1999/xhtml";

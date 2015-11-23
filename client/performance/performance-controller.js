@@ -25,8 +25,7 @@ const system = require("devtools/shared/system");
 
 // Logic modules
 
-loader.lazyRequireGetter(this, "L10N",
-  "devtools/client/performance/modules/global", true);
+const { L10N } = require("devtools/client/performance/modules/global");
 const { PerformanceTelemetry } = require("devtools/client/performance/modules/logic/telemetry");
 const { TIMELINE_BLUEPRINT } = require("devtools/client/performance/modules/markers");
 const RecordingUtils = require("devtools/shared/performance/recording-utils");

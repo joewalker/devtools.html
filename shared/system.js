@@ -8,10 +8,10 @@ const { Task } = require("devtools/sham/task");
 
 const { Services } = require("devtools/sham/services");
 const { promise } = require("devtools/sham/promise");
-loader.lazyRequireGetter(this, "OS", "resource://gre/modules/commonjs/node/os.js");
+const OS = require("devtools/sham/os.js");
 const { DebuggerServer } = require("devtools/server/main");
-loader.lazyRequireGetter(this, "AppConstants",
-  "resource://gre/modules/AppConstants.jsm", true);
+const { AppConstants } = require("devtools/sham/appconstants");
+const { promise } = require("devtools/sham/promise"); // Why are we destructuring here?
 loader.lazyGetter(this, "screenManager", () => {
   return Cc["@mozilla.org/gfx/screenmanager;1"].getService(Ci.nsIScreenManager);
 });

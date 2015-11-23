@@ -10,8 +10,7 @@
 
 const { Cu, Ci } = require("chrome");
 
-loader.lazyRequireGetter(this, "L10N",
-  "devtools/client/performance/modules/global", true);
+const { L10N } = require("devtools/client/performance/modules/global");
 const { PREFS } = require("devtools/client/performance/modules/global");
 const { TIMELINE_BLUEPRINT } = require("devtools/client/performance/modules/markers");
 const WebConsoleUtils = require("devtools/shared/webconsole/utils");

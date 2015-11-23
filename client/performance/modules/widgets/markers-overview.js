@@ -15,8 +15,7 @@ const { AbstractCanvasGraph } = require("devtools/client/shared/widgets/Graphs")
 
 const { colorUtils } = require("devtools/shared/css-color");
 const { getColor } = require("devtools/client/shared/theme");
-loader.lazyRequireGetter(this, "L10N",
-  "devtools/client/performance/modules/global", true);
+const { L10N } = require("devtools/client/performance/modules/global");
 const { TickUtils } = require("devtools/client/performance/modules/widgets/waterfall-ticks");
 const MarkerUtils = require("devtools/client/performance/modules/logic/marker-utils");
 const { TIMELINE_BLUEPRINT } = require("devtools/client/performance/modules/markers");

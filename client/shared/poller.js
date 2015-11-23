@@ -3,8 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 "use strict";
-loader.lazyRequireGetter(this, "timers",
-  "resource://gre/modules/Timer.jsm");
+const timers = require("devtools/sham/timer");
 const { defer } = require("promise");
 
 /**
