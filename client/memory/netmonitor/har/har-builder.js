@@ -8,7 +8,7 @@ const { defer, all, resolve } = require("promise");
 const { Services } = require("devtools/sham/services");
 
 const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
-loader.lazyRequireGetter(this, "NetworkHelper", "devtools/shared/webconsole/network-helper");
+const NetworkHelper = require("devtools/shared/webconsole/network-helper");
 
 loader.lazyGetter(this, "appInfo", () => {
   return Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo);

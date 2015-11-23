@@ -11,22 +11,19 @@ loader.lazyRequireGetter(this, "promise");
 loader.lazyRequireGetter(this, "extend",
   "sdk/util/object", true);
 
-loader.lazyRequireGetter(this, "Actors",
-  "devtools/client/performance/legacy/actors");
+const Actors = require("devtools/client/performance/legacy/actors");
 loader.lazyRequireGetter(this, "LegacyPerformanceRecording",
   "devtools/client/performance/legacy/recording", true);
 loader.lazyRequireGetter(this, "importRecording",
   "devtools/client/performance/legacy/recording", true);
 loader.lazyRequireGetter(this, "normalizePerformanceFeatures",
   "devtools/shared/performance/recording-utils", true);
-loader.lazyRequireGetter(this, "DevToolsUtils",
-  "devtools/shared/DevToolsUtils");
+const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 loader.lazyRequireGetter(this, "getDeviceFront",
   "devtools/server/actors/device", true);
 loader.lazyRequireGetter(this, "getSystemInfo",
   "devtools/shared/system", true);
-loader.lazyRequireGetter(this, "events",
-  "sdk/event/core");
+const events = require("sdk/event/core");
 loader.lazyRequireGetter(this, "EventTarget",
   "sdk/event/target", true);
 loader.lazyRequireGetter(this, "Class",

@@ -26,8 +26,7 @@ const Telemetry = require("devtools/client/shared/telemetry");
 const telemetry = new Telemetry();
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
-loader.lazyRequireGetter(this, "LineGraphWidget",
-  "devtools/client/shared/widgets/LineGraphWidget");
+const LineGraphWidget = require("devtools/client/shared/widgets/LineGraphWidget");
 
 // `AUDIO_NODE_DEFINITION` defined in the controller's initialization,
 // which describes all the properties of an AudioNode

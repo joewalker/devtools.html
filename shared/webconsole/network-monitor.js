@@ -8,11 +8,9 @@ const {Cc, Ci, Cu, Cr} = require("chrome");
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
-loader.lazyRequireGetter(this, "NetworkHelper",
-                         "devtools/shared/webconsole/network-helper");
+const NetworkHelper = require("devtools/shared/webconsole/network-helper");
 const { Services } = require("devtools/sham/services");
-loader.lazyRequireGetter(this, "DevToolsUtils",
-                         "devtools/shared/DevToolsUtils");
+const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const { NetUtil } = require("devtools/sham/netutil");
 loader.lazyServiceGetter(this, "gActivityDistributor",
                          "@mozilla.org/network/http-activity-distributor;1",

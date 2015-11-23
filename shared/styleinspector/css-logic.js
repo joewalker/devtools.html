@@ -75,7 +75,7 @@ exports.PSEUDO_ELEMENT_SET = PSEUDO_ELEMENT_SET;
 
 // This should be ok because none of the functions that use this should be used
 // on the worker thread, where Cu is not available.
-loader.lazyRequireGetter(this, "CSS", "CSS");
+const CSS = require("CSS");
 
 function CssLogic()
 {

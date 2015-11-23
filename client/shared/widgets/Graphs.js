@@ -10,8 +10,7 @@ const { Heritage, setNamedTimeout, clearNamedTimeout } = require("devtools/clien
 const { getCurrentZoom } = require("devtools/shared/layout/utils");
 
 loader.lazyRequireGetter(this, "promise");
-loader.lazyRequireGetter(this, "EventEmitter",
-  "devtools/shared/event-emitter");
+const EventEmitter = require("devtools/shared/event-emitter");
 
 loader.lazyImporter(this, "DevToolsWorker",
   "resource://devtools/shared/worker/worker.js");

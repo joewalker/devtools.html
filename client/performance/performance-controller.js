@@ -19,12 +19,9 @@ Object.defineProperty(this, "EVENTS", {
 
 loader.lazyRequireGetter(this, "Services");
 loader.lazyRequireGetter(this, "promise");
-loader.lazyRequireGetter(this, "EventEmitter",
-  "devtools/shared/event-emitter");
-loader.lazyRequireGetter(this, "DevToolsUtils",
-  "devtools/shared/DevToolsUtils");
-loader.lazyRequireGetter(this, "system",
-  "devtools/shared/system");
+const EventEmitter = require("devtools/shared/event-emitter");
+const DevToolsUtils = require("devtools/shared/DevToolsUtils");
+const system = require("devtools/shared/system");
 
 // Logic modules
 
@@ -34,8 +31,7 @@ loader.lazyRequireGetter(this, "PerformanceTelemetry",
   "devtools/client/performance/modules/logic/telemetry", true);
 loader.lazyRequireGetter(this, "TIMELINE_BLUEPRINT",
   "devtools/client/performance/modules/markers", true);
-loader.lazyRequireGetter(this, "RecordingUtils",
-  "devtools/shared/performance/recording-utils");
+const RecordingUtils = require("devtools/shared/performance/recording-utils");
 loader.lazyRequireGetter(this, "GraphsController",
   "devtools/client/performance/modules/widgets/graphs", true);
 loader.lazyRequireGetter(this, "OptimizationsGraph",
@@ -46,12 +42,9 @@ loader.lazyRequireGetter(this, "MarkerView",
   "devtools/client/performance/modules/widgets/marker-view", true);
 loader.lazyRequireGetter(this, "MarkerDetails",
   "devtools/client/performance/modules/widgets/marker-details", true);
-loader.lazyRequireGetter(this, "MarkerUtils",
-  "devtools/client/performance/modules/logic/marker-utils");
-loader.lazyRequireGetter(this, "WaterfallUtils",
-  "devtools/client/performance/modules/logic/waterfall-utils");
-loader.lazyRequireGetter(this, "FrameUtils",
-  "devtools/client/performance/modules/logic/frame-utils");
+const MarkerUtils = require("devtools/client/performance/modules/logic/marker-utils");
+const WaterfallUtils = require("devtools/client/performance/modules/logic/waterfall-utils");
+const FrameUtils = require("devtools/client/performance/modules/logic/frame-utils");
 loader.lazyRequireGetter(this, "CallView",
   "devtools/client/performance/modules/widgets/tree-view", true);
 loader.lazyRequireGetter(this, "ThreadNode",

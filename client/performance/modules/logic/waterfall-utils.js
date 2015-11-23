@@ -9,8 +9,7 @@
 
 loader.lazyRequireGetter(this, "extend",
   "sdk/util/object", true);
-loader.lazyRequireGetter(this, "MarkerUtils",
-  "devtools/client/performance/modules/logic/marker-utils");
+const MarkerUtils = require("devtools/client/performance/modules/logic/marker-utils");
 
 /**
  * Creates a parent marker, which functions like a regular marker,

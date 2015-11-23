@@ -16,15 +16,13 @@ const MountainGraphWidget = require("devtools/client/shared/widgets/MountainGrap
 const { CanvasGraphUtils } = require("devtools/client/shared/widgets/Graphs");
 
 loader.lazyRequireGetter(this, "promise");
-loader.lazyRequireGetter(this, "EventEmitter",
-  "devtools/shared/event-emitter");
+const EventEmitter = require("devtools/shared/event-emitter");
 
 loader.lazyRequireGetter(this, "colorUtils",
   "devtools/shared/css-color", true);
 loader.lazyRequireGetter(this, "getColor",
   "devtools/client/shared/theme", true);
-loader.lazyRequireGetter(this, "ProfilerGlobal",
-  "devtools/client/performance/modules/global");
+const ProfilerGlobal = require("devtools/client/performance/modules/global");
 loader.lazyRequireGetter(this, "L10N",
   "devtools/client/performance/modules/global", true);
 loader.lazyRequireGetter(this, "MarkersOverview",

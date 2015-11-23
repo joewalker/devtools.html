@@ -11,12 +11,9 @@ var Services = require("Services");
 var promise = require("promise");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
 var { dumpn, dumpv } = DevToolsUtils;
-loader.lazyRequireGetter(this, "prompt",
-  "devtools/shared/security/prompt");
-loader.lazyRequireGetter(this, "cert",
-  "devtools/shared/security/cert");
-loader.lazyRequireGetter(this, "asyncStorage",
-  "devtools/shared/async-storage");
+const prompt = require("devtools/shared/security/prompt");
+const cert = require("devtools/shared/security/cert");
+const asyncStorage = require("devtools/shared/async-storage");
 const { Task } = require("devtools/sham/task");
 
 /**

@@ -16,8 +16,7 @@ loader.lazyRequireGetter(this, "PREFS",
   "devtools/client/performance/modules/global", true);
 loader.lazyRequireGetter(this, "TIMELINE_BLUEPRINT",
   "devtools/client/performance/modules/markers", true);
-loader.lazyRequireGetter(this, "WebConsoleUtils",
-  "devtools/shared/webconsole/utils");
+const WebConsoleUtils = require("devtools/shared/webconsole/utils");
 
 // String used to fill in platform data when it should be hidden.
 const GECKO_SYMBOL = "(Gecko)";

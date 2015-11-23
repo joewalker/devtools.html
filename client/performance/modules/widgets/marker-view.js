@@ -12,8 +12,7 @@ const { Cc, Ci, Cu, Cr } = require("chrome");
 const { Heritage } = require("devtools/client/shared/widgets/ViewHelpers");
 const { AbstractTreeItem } = require("devtools/client/shared/widgets/AbstractTreeItem");
 
-loader.lazyRequireGetter(this, "MarkerUtils",
-  "devtools/client/performance/modules/logic/marker-utils");
+const MarkerUtils = require("devtools/client/performance/modules/logic/marker-utils");
 
 const HTML_NS = "http://www.w3.org/1999/xhtml";
 

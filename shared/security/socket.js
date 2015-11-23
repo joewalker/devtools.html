@@ -19,10 +19,8 @@ loader.lazyRequireGetter(this, "DebuggerTransport",
   "devtools/shared/transport/transport", true);
 loader.lazyRequireGetter(this, "DebuggerServer",
   "devtools/server/main", true);
-loader.lazyRequireGetter(this, "discovery",
-  "devtools/shared/discovery/discovery");
-loader.lazyRequireGetter(this, "cert",
-  "devtools/shared/security/cert");
+const discovery = require("devtools/shared/discovery/discovery");
+const cert = require("devtools/shared/security/cert");
 loader.lazyRequireGetter(this, "Authenticators",
   "devtools/shared/security/auth", true);
 loader.lazyRequireGetter(this, "AuthenticationResult",

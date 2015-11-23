@@ -20,10 +20,8 @@ const {PrefObserver, PREF_ORIG_SOURCES} = require("devtools/client/styleeditor/u
 const {createChild} = require("devtools/client/styleinspector/utils");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 
-loader.lazyRequireGetter(this, "overlays",
-  "devtools/client/styleinspector/style-inspector-overlays");
-loader.lazyRequireGetter(this, "StyleInspectorMenu",
-  "devtools/client/styleinspector/style-inspector-menu");
+const overlays = require("devtools/client/styleinspector/style-inspector-overlays");
+const StyleInspectorMenu = require("devtools/client/styleinspector/style-inspector-menu");
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");

@@ -15,7 +15,7 @@
 "use strict";
 
 const {Cc, Ci, Cu} = require("chrome");
-loader.lazyRequireGetter(this, "CSS", "CSS");
+const CSS = require("CSS");
 const promise = require("promise");
 const { Task } = require("devtools/sham/task");
 loader.lazyGetter(this, "DOMUtils", () => {

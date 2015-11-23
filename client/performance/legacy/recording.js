@@ -6,10 +6,8 @@
 const { Cc, Ci, Cu, Cr } = require("chrome");
 const { Task } = require("devtools/sham/task");
 
-loader.lazyRequireGetter(this, "PerformanceIO",
-  "devtools/client/performance/modules/io");
-loader.lazyRequireGetter(this, "RecordingUtils",
-  "devtools/shared/performance/recording-utils");
+const PerformanceIO = require("devtools/client/performance/modules/io");
+const RecordingUtils = require("devtools/shared/performance/recording-utils");
 loader.lazyRequireGetter(this, "PerformanceRecordingCommon",
   "devtools/shared/performance/recording-common", true);
 loader.lazyRequireGetter(this, "merge", "sdk/util/object", true);

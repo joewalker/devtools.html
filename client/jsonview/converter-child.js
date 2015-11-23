@@ -13,10 +13,8 @@ const xpcom = require("sdk/platform/xpcom");
 const Events = require("sdk/dom/events");
 const Clipboard = require("sdk/clipboard");
 
-loader.lazyRequireGetter(this, "NetworkHelper",
-                               "devtools/shared/webconsole/network-helper");
-loader.lazyRequireGetter(this, "JsonViewUtils",
-                               "devtools/client/jsonview/utils");
+const NetworkHelper = require("devtools/shared/webconsole/network-helper");
+const JsonViewUtils = require("devtools/client/jsonview/utils");
 
 const { Services } = require("devtools/sham/services");
 

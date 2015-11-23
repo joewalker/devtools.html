@@ -21,8 +21,7 @@ loader.lazyRequireGetter(this, "L10N",
   "devtools/client/performance/modules/global", true);
 loader.lazyRequireGetter(this, "TickUtils",
   "devtools/client/performance/modules/widgets/waterfall-ticks", true);
-loader.lazyRequireGetter(this, "MarkerUtils",
-  "devtools/client/performance/modules/logic/marker-utils");
+const MarkerUtils = require("devtools/client/performance/modules/logic/marker-utils");
 loader.lazyRequireGetter(this, "TIMELINE_BLUEPRINT",
   "devtools/client/performance/modules/markers", true);
 

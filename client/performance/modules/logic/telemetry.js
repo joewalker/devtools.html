@@ -3,13 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-loader.lazyRequireGetter(this, "Telemetry",
-  "devtools/client/shared/telemetry");
+const Telemetry = require("devtools/client/shared/telemetry");
 const { Services } = require("devtools/sham/services");
-loader.lazyRequireGetter(this, "DevToolsUtils",
-  "devtools/shared/DevToolsUtils");
-loader.lazyRequireGetter(this, "EVENTS",
-  "devtools/client/performance/events");
+const DevToolsUtils = require("devtools/shared/DevToolsUtils");
+const EVENTS = require("devtools/client/performance/events");
 
 const EVENT_MAP_FLAGS = new Map([
   [EVENTS.RECORDING_IMPORTED, "DEVTOOLS_PERFTOOLS_RECORDING_IMPORT_FLAG"],

@@ -8,8 +8,7 @@
 
 loader.lazyRequireGetter(this, "Ci",
   "chrome", true);
-loader.lazyRequireGetter(this, "React",
-  "devtools/client/shared/vendor/react");
+const React = require("devtools/client/shared/vendor/react");
 loader.lazyRequireGetter(this, "TargetListComponent",
   "devtools/client/aboutdebugging/components/target-list", true);
 loader.lazyRequireGetter(this, "Services");

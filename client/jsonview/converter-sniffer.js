@@ -13,8 +13,7 @@ const {Class} = require("sdk/core/heritage");
 
 const categoryManager = Cc["@mozilla.org/categorymanager;1"].getService(Ci.nsICategoryManager);
 
-loader.lazyRequireGetter(this, "NetworkHelper",
-                               "devtools/shared/webconsole/network-helper");
+const NetworkHelper = require("devtools/shared/webconsole/network-helper");
 
 // Constants
 const JSON_TYPE = "application/json";

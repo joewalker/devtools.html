@@ -17,8 +17,7 @@ const {
 } = require("devtools/client/shared/widgets/ViewHelpers");
 
 loader.lazyRequireGetter(this, "promise");
-loader.lazyRequireGetter(this, "EventEmitter",
-                               "devtools/shared/event-emitter");
+const EventEmitter = require("devtools/shared/event-emitter");
 loader.lazyRequireGetter(this, "AnimationsFront",
                                "devtools/server/actors/animation", true);
 

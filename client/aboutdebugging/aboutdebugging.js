@@ -17,8 +17,7 @@ loader.lazyRequireGetter(this, "DebuggerClient",
   "devtools/shared/client/main", true);
 loader.lazyRequireGetter(this, "DebuggerServer",
   "devtools/server/main", true);
-loader.lazyRequireGetter(this, "Telemetry",
-  "devtools/client/shared/telemetry");
+const Telemetry = require("devtools/client/shared/telemetry");
 loader.lazyRequireGetter(this, "WorkersComponent",
   "devtools/client/aboutdebugging/components/workers", true);
 loader.lazyRequireGetter(this, "Services");

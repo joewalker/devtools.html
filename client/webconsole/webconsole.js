@@ -15,16 +15,16 @@ loader.lazyServiceGetter(this, "clipboardHelper",
                          "@mozilla.org/widget/clipboardhelper;1",
                          "nsIClipboardHelper");
 const { Services } = require("devtools/sham/services");
-loader.lazyRequireGetter(this, "EventEmitter", "devtools/shared/event-emitter");
+const EventEmitter = require("devtools/shared/event-emitter");
 loader.lazyRequireGetter(this, "AutocompletePopup", "devtools/client/shared/autocomplete-popup", true);
 loader.lazyRequireGetter(this, "ToolSidebar", "devtools/client/framework/sidebar", true);
 loader.lazyRequireGetter(this, "ConsoleOutput", "devtools/client/webconsole/console-output", true);
 loader.lazyRequireGetter(this, "Messages", "devtools/client/webconsole/console-output", true);
-loader.lazyRequireGetter(this, "asyncStorage", "devtools/shared/async-storage");
+const asyncStorage = require("devtools/shared/async-storage");
 loader.lazyRequireGetter(this, "EnvironmentClient", "devtools/shared/client/main", true);
 loader.lazyRequireGetter(this, "ObjectClient", "devtools/shared/client/main", true);
-loader.lazyRequireGetter(this, "system", "devtools/shared/system");
-loader.lazyRequireGetter(this, "Timers", "sdk/timers");
+const system = require("devtools/shared/system");
+const Timers = require("sdk/timers");
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 const { VariablesViewController, StackFrameUtils } = require("devtools/client/shared/widgets/VariablesViewController");
 loader.lazyImporter(this, "PluralForm", "resource://gre/modules/PluralForm.jsm");

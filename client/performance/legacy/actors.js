@@ -6,15 +6,12 @@
 const { Task } = require("devtools/sham/task");
 
 loader.lazyRequireGetter(this, "promise");
-loader.lazyRequireGetter(this, "EventEmitter",
-  "devtools/shared/event-emitter");
+const EventEmitter = require("devtools/shared/event-emitter");
 loader.lazyRequireGetter(this, "Poller",
   "devtools/client/shared/poller", true);
 
-loader.lazyRequireGetter(this, "CompatUtils",
-  "devtools/client/performance/legacy/compatibility");
-loader.lazyRequireGetter(this, "RecordingUtils",
-  "devtools/shared/performance/recording-utils");
+const CompatUtils = require("devtools/client/performance/legacy/compatibility");
+const RecordingUtils = require("devtools/shared/performance/recording-utils");
 loader.lazyRequireGetter(this, "TimelineFront",
   "devtools/server/actors/timeline", true);
 loader.lazyRequireGetter(this, "ProfilerFront",

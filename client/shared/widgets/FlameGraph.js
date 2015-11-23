@@ -8,16 +8,14 @@ const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
 const { setNamedTimeout, clearNamedTimeout } = require("devtools/client/shared/widgets/ViewHelpers");
 
 loader.lazyRequireGetter(this, "promise");
-loader.lazyRequireGetter(this, "EventEmitter",
-  "devtools/shared/event-emitter");
+const EventEmitter = require("devtools/shared/event-emitter");
 
 loader.lazyRequireGetter(this, "getColor",
   "devtools/client/shared/theme", true);
 
 loader.lazyRequireGetter(this, "CATEGORY_MAPPINGS",
   "devtools/client/performance/modules/global", true);
-loader.lazyRequireGetter(this, "FrameUtils",
-  "devtools/client/performance/modules/logic/frame-utils");
+const FrameUtils = require("devtools/client/performance/modules/logic/frame-utils");
 
 loader.lazyRequireGetter(this, "AbstractCanvasGraph",
   "devtools/client/shared/widgets/Graphs", true);

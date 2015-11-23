@@ -9,8 +9,7 @@ const { Cc, Ci, Cu, Cr } = require("chrome");
 const { Task } = require("devtools/sham/task");
 
 loader.lazyRequireGetter(this, "promise");
-loader.lazyRequireGetter(this, "EventEmitter",
-  "devtools/shared/event-emitter");
+const EventEmitter = require("devtools/shared/event-emitter");
 
 function PerformancePanel(iframeWindow, toolbox) {
   this.panelWin = iframeWindow;
