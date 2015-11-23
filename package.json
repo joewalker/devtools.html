@@ -1,0 +1,19 @@
+{
+  "name": "devtoolsweb",
+  "version": "1.0.0",
+  "description": "devtools.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joewalker/devtoolsweb.git"
+  },
+  "author": "",
+  "license": "MPL 2.0",
+  "bugs": {
+    "url": "https://github.com/joewalker/devtoolsweb/issues"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.7",
+    "webpack": "^1.12.8"
+  }
+}
