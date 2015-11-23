@@ -14,9 +14,9 @@ var { Constructor: CC, classes: Cc, interfaces: Ci, utils: Cu } = Components;
 const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 const { Services } = require("devtools/sham/services.js");
 
-XPCOMUtils.defineLazyModuleGetter(this, "NetUtil", "resource://gre/modules/NetUtil.jsm");
-XPCOMUtils.defineLazyModuleGetter(this, "FileUtils", "resource://gre/modules/FileUtils.jsm");
-XPCOMUtils.defineLazyModuleGetter(this, "OS", "resource://gre/modules/osfile.jsm");
+const { NetUtil } = require("devtools/sham/netutil.js");
+const { FileUtils } = require("devtools/sham/fileutils.js");
+const { OS } = require("devtools/sham/osfile.js");
 
 var { Loader } = Cu.import("resource://gre/modules/commonjs/toolkit/loader.js", {});
 var promise = Cu.import("resource://gre/modules/Promise.jsm", {}).Promise;
@@ -41,7 +41,7 @@ XPCOMUtils.defineLazyGetter(loaderModules, "Debugger", () => {
   // compartment sharing), so add the Debugger object to a sandbox instead.
   let sandbox = Cu.Sandbox(CC('@mozilla.org/systemprincipal;1', 'nsIPrincipal')());
   Cu.evalInSandbox(
-    "Components.utils.import('resource://gre/modules/jsdebugger.jsm');" +
+    "const { addDebuggerToGlobal } = require('devtools/sham/jsdebugger.js');" +
     "addDebuggerToGlobal(this);",
     sandbox
   );
@@ -393,10 +393,6 @@ DevToolsLoader.prototype = {
         id: this.id
       },
     };
-    // Lazy define console in order to load Console.jsm only when it is used
-    XPCOMUtils.defineLazyGetter(this._provider.globals, "console", () => {
-      return Cu.import("resource://gre/modules/Console.jsm", {}).console;
-    });
 
     this._provider.load();
     this.require = Loader.Require(this._provider.loader, { id: "devtools" });

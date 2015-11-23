@@ -18,8 +18,8 @@
 
 var Cu = require('chrome').Cu;
 
-var XPCOMUtils = Cu.import('resource://gre/modules/XPCOMUtils.jsm', {}).XPCOMUtils;
-var Services = Cu.import('resource://gre/modules/Services.jsm', {}).Services;
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { Services } = require("devtools/sham/services.js");
 
 var imports = {};
 XPCOMUtils.defineLazyGetter(imports, 'stringBundle', function () {

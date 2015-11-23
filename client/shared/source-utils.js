@@ -6,7 +6,7 @@
 
 loader.lazyRequireGetter(this, "Services");
 loader.lazyImporter(this, "gDevTools", "resource://devtools/client/framework/gDevTools.jsm");
-loader.lazyImporter(this, "Task", "resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 
 /**
  * Tries to open a Stylesheet file in the Style Editor. If the file is not found,

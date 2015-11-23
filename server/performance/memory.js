@@ -10,8 +10,7 @@ const { Class } = require("sdk/core/heritage");
 const { expectState } = require("devtools/server/actors/common");
 loader.lazyRequireGetter(this, "events", "sdk/event/core");
 loader.lazyRequireGetter(this, "EventTarget", "sdk/event/target", true);
-loader.lazyRequireGetter(this, "DeferredTask",
-  "resource://gre/modules/DeferredTask.jsm", true);
+const { DeferredTask } = require("devtools/sham/deferredtask.js");
 loader.lazyRequireGetter(this, "StackFrameCache",
   "devtools/server/actors/utils/stack", true);
 loader.lazyRequireGetter(this, "ThreadSafeChromeUtils");

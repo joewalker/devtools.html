@@ -23,7 +23,6 @@ const { Services } = require("devtools/sham/services.js");
 const PROPERTIES_URL = "chrome://devtools/locale/styleeditor.properties";
 
 const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
-const console = require("resource://gre/modules/Console.jsm").console;
 const gStringBundle = Services.strings.createBundle(PROPERTIES_URL);
 
 

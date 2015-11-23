@@ -6,7 +6,7 @@
 
 const { Cu } = require("chrome");
 const protocol = require("devtools/server/protocol");
-const { Task } = require("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 const { Actor, custom, method, RetVal, Arg, Option, types, preEvent } = protocol;
 const { actorBridge } = require("devtools/server/actors/common");
 const { PerformanceRecordingActor, PerformanceRecordingFront } = require("devtools/server/actors/performance-recording");

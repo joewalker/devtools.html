@@ -13,9 +13,6 @@ Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 XPCOMUtils.defineLazyModuleGetter(this, "EventEmitter",
   "resource://devtools/shared/event-emitter.js");
 
-XPCOMUtils.defineLazyModuleGetter(this, "console",
-  "resource://gre/modules/Console.jsm");
-
 this.EXPORTED_SYMBOLS = ["AbstractTreeItem"];
 
 /**

@@ -49,8 +49,7 @@ DevToolsUtils.defineLazyGetter(this, "nssErrorsService", () => {
          .getService(Ci.nsINSSErrorsService);
 });
 
-DevToolsUtils.defineLazyModuleGetter(this, "Task",
-  "resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 
 var DebuggerSocket = {};
 

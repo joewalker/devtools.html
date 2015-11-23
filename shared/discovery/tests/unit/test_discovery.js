@@ -5,7 +5,7 @@
 
 var Cu = Components.utils;
 
-const { Services } = Cu.import("resource://gre/modules/Services.jsm", {});
+const { Services } = require("devtools/sham/services.js");
 Services.prefs.setBoolPref("devtools.discovery.log", true);
 
 do_register_cleanup(() => {

@@ -10,7 +10,7 @@
  */
 
 const { Ci, Cu } = require("chrome");
-const { NetUtil } = Cu.import("resource://gre/modules/NetUtil.jsm", {});
+const { NetUtil } = require("devtools/sham/netutil.js");
 loader.lazyRequireGetter(this, "Services");
 loader.lazyImporter(this, "gDevTools", "resource://devtools/client/framework/gDevTools.jsm");
 

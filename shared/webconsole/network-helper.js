@@ -55,7 +55,7 @@
 "use strict";
 
 const {components, Cc, Ci, Cu} = require("chrome");
-loader.lazyImporter(this, "NetUtil", "resource://gre/modules/NetUtil.jsm");
+const { NetUtil } = require("devtools/sham/netutil.js");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
 // The cache used in the `nsIURL` function.

@@ -4,14 +4,14 @@
 
 var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
 
-var { Services } = Cu.import("resource://gre/modules/Services.jsm", {});
+const { Services } = require("devtools/sham/services.js");
 
 // Enable logging for all the tests. Both the debugger server and frontend will
 // be affected by this pref.
 var gEnableLogging = Services.prefs.getBoolPref("devtools.debugger.log");
 Services.prefs.setBoolPref("devtools.debugger.log", false);
 
-var { Task } = Cu.import("resource://gre/modules/Task.jsm", {});
+var { Task } = require("devtools/sham/task.js");
 var { gDevTools } = Cu.import("resource://devtools/client/framework/gDevTools.jsm", {});
 var { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 var { TargetFactory } = require("devtools/client/framework/target");

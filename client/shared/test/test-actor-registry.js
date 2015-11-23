@@ -11,7 +11,7 @@ var Cc = Components.classes;
 var CC = Components.Constructor;
 
 var { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
-var { NetUtil } = Cu.import("resource://gre/modules/NetUtil.jsm", {});
+const { NetUtil } = require("devtools/sham/netutil.js");
 var promise = require("promise");
 
 var TEST_URL_ROOT = "http://example.com/browser/devtools/client/shared/test/";

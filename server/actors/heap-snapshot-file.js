@@ -10,8 +10,8 @@ const Services = require("Services");
 
 loader.lazyRequireGetter(this, "DevToolsUtils",
                          "devtools/shared/DevToolsUtils");
-loader.lazyRequireGetter(this, "OS", "resource://gre/modules/osfile.jsm", true);
-loader.lazyRequireGetter(this, "Task", "resource://gre/modules/Task.jsm", true);
+const { OS } = require("devtools/sham/osfile.js");
+const { Task } = require("devtools/sham/task.js");
 loader.lazyRequireGetter(this, "HeapSnapshotFileUtils",
                          "devtools/shared/heapsnapshot/HeapSnapshotFileUtils");
 

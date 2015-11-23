@@ -8,7 +8,7 @@ const Ci = Components.interfaces;
 const Cc = Components.classes;
 const Cu = Components.utils;
 
-const { Services } = Cu.import("resource://gre/modules/Services.jsm", {});
+const { Services } = require("devtools/sham/services.js");
 const { DevToolsLoader } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 
 this.EXPORTED_SYMBOLS = ["init"];

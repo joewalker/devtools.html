@@ -4,12 +4,11 @@
 
 var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
 
-var { Services } = Cu.import("resource://gre/modules/Services.jsm", {});
+const { Services } = require("devtools/sham/services.js");
 var { Preferences } = Cu.import("resource://gre/modules/Preferences.jsm", {});
-var { Task } = Cu.import("resource://gre/modules/Task.jsm", {});
+var { Task } = require("devtools/sham/task.js");
 var { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 var { gDevTools } = Cu.import("resource://devtools/client/framework/gDevTools.jsm", {});
-var { console } = require("resource://gre/modules/Console.jsm");
 var { TargetFactory } = require("devtools/client/framework/target");
 var Promise = require("promise");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
@@ -292,7 +291,7 @@ function consoleExecute (console, method, val) {
   ui.on("new-messages", handler);
   jsterm.execute(message);
 
-  let { console: c } = Cu.import("resource://gre/modules/Console.jsm", {});
+  // let { console: c } = require("devtools/sham/console.js");
   function handler (event, messages) {
     for (let msg of messages) {
       if (msg.response._message === message) {

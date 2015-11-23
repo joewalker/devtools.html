@@ -13,10 +13,10 @@ const { EventTarget } = require("sdk/event/target");
 const { emit } = require("sdk/event/core");
 const URL = require("sdk/url");
 const promise = require("promise");
-const { OS } = Cu.import("resource://gre/modules/osfile.jsm", {});
-const { FileUtils } = Cu.import("resource://gre/modules/FileUtils.jsm", {});
+const { OS } = require("devtools/sham/osfile.js");
+const { FileUtils } = require("devtools/sham/fileutils.js");
 const mimeService = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService);
-const { Task } = Cu.import("resource://gre/modules/Task.jsm", {});
+const { Task } = require("devtools/sham/task.js");
 
 const gDecoder = new TextDecoder();
 const gEncoder = new TextEncoder();

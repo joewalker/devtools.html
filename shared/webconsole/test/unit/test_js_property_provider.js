@@ -6,7 +6,7 @@
 const { require } = Components.utils.import("resource://devtools/shared/Loader.jsm", {});
 const { JSPropertyProvider } = require("devtools/shared/webconsole/js-property-provider");
 
-Components.utils.import("resource://gre/modules/jsdebugger.jsm");
+const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger.js");
 addDebuggerToGlobal(this);
 
 function run_test() {

@@ -9,7 +9,6 @@ const { Services } = require("devtools/sham/services.js");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 Cu.import("resource://devtools/client/shared/widgets/SideMenuWidget.jsm");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
-const { console } = require("devtools/sham/console.js");
 
 const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const promise = require("promise");
@@ -23,17 +22,16 @@ const telemetry = new Telemetry();
 
 const CANVAS_ACTOR_RECORDING_ATTEMPT = DevToolsUtils.testing ? 500 : 5000;
 
-XPCOMUtils.defineLazyModuleGetter(this, "Task",
-  "resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 
 XPCOMUtils.defineLazyModuleGetter(this, "PluralForm",
   "resource://gre/modules/PluralForm.jsm");
 
-XPCOMUtils.defineLazyModuleGetter(this, "FileUtils",
-  "resource://gre/modules/FileUtils.jsm");
+//XPCOMUtils.defineLazyModuleGetter(this, "FileUtils",
+//  "resource://gre/modules/FileUtils.jsm");
 
-XPCOMUtils.defineLazyModuleGetter(this, "NetUtil",
-  "resource://gre/modules/NetUtil.jsm");
+//XPCOMUtils.defineLazyModuleGetter(this, "NetUtil",
+//  "resource://gre/modules/NetUtil.jsm");
 
 XPCOMUtils.defineLazyGetter(this, "NetworkHelper", function() {
   return require("devtools/shared/webconsole/network-helper");

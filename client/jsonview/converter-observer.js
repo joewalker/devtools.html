@@ -10,8 +10,8 @@ const Cu = Components.utils;
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 
-const {XPCOMUtils} = Cu.import("resource://gre/modules/XPCOMUtils.jsm", {});
-const {Services} = Cu.import("resource://gre/modules/Services.jsm", {});
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { Services } = require("devtools/sham/services.js");
 
 // Load devtools module lazily.
 XPCOMUtils.defineLazyGetter(this, "devtools", function() {

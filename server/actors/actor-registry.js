@@ -12,7 +12,7 @@ const Services = require("Services");
 const { DebuggerServer } = require("devtools/server/main");
 const { registerActor, unregisterActor } = require("devtools/server/actors/utils/actor-registry-utils");
 
-loader.lazyImporter(this, "NetUtil", "resource://gre/modules/NetUtil.jsm");
+const { NetUtil } = require("devtools/sham/netutil.js");
 
 /**
  * The ActorActor gives you a handle to an actor you've dynamically

@@ -6,12 +6,12 @@
 
 const { Cc, Ci, Cu } = require("chrome");
 const l10n = require("gcli/l10n");
-const { Services } = require("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 const { getRect } = require("devtools/shared/layout/utils");
 
 loader.lazyImporter(this, "Downloads", "resource://gre/modules/Downloads.jsm");
-loader.lazyImporter(this, "Task", "resource://gre/modules/Task.jsm");
-loader.lazyImporter(this, "OS", "resource://gre/modules/osfile.jsm");
+const { Task } = require("devtools/sham/task.js");
+const { OS } = require("devtools/sham/osfile.js");
 
 const BRAND_SHORT_NAME = Cc["@mozilla.org/intl/stringbundle;1"]
                            .getService(Ci.nsIStringBundleService)

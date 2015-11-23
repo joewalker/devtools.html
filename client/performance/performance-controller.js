@@ -6,7 +6,7 @@
 var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
 const { loader, require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 
-const { Task } = require("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 const { Heritage, ViewHelpers, WidgetMethods } = require("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 
 // Events emitted by various objects in the panel.

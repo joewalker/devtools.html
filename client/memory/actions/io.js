@@ -7,7 +7,7 @@ const { reportException, assert } = require("devtools/shared/DevToolsUtils");
 const { snapshotState: states, actions } = require("../constants");
 const { immutableUpdate, L10N, openFilePicker, createSnapshot } = require("../utils");
 const { readSnapshot, takeCensus, selectSnapshot } = require("./snapshot");
-const { OS } = require("resource://gre/modules/osfile.jsm");
+const { OS } = require("devtools/sham/osfile.js");
 const VALID_EXPORT_STATES = [states.SAVED, states.READ, states.SAVING_CENSUS, states.SAVED_CENSUS];
 
 exports.pickFileAndExportSnapshot = function (snapshot) {

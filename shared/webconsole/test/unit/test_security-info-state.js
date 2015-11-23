@@ -7,7 +7,7 @@
 // different cases.
 
 const { require } = Components.utils.import("resource://devtools/shared/Loader.jsm", {});
-Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 
 Object.defineProperty(this, "NetworkHelper", {
   get: function() {

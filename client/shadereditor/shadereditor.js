@@ -10,7 +10,6 @@ const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 const { Task } = require("devtools/sham/task.js");
 Cu.import("resource://devtools/client/shared/widgets/SideMenuWidget.jsm");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
-const { console } = require("devtools/sham/console.js");
 
 const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const promise = require("promise");

@@ -4,23 +4,22 @@
 "use strict";
 
 var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
-var { Services } = Cu.import("resource://gre/modules/Services.jsm", {});
+const { Services } = require("devtools/sham/services.js");
 var { gDevTools } = Cu.import("resource://devtools/client/framework/gDevTools.jsm", {});
-var { console } = Cu.import("resource://gre/modules/Console.jsm", {});
 var { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
 DevToolsUtils.testing = true;
 
-var { OS } = require("resource://gre/modules/osfile.jsm");
-var { FileUtils } = require("resource://gre/modules/FileUtils.jsm");
+const { OS } = require("devtools/sham/osfile.js");
+const { FileUtils } = require("devtools/sham/fileutils.js");
 var { TargetFactory } = require("devtools/client/framework/target");
 var promise = require("promise");
-var { Task } = Cu.import("resource://gre/modules/Task.jsm", {});
+var { Task } = require("devtools/sham/task.js");
 var { expectState } = require("devtools/server/actors/common");
 var HeapSnapshotFileUtils = require("devtools/shared/heapsnapshot/HeapSnapshotFileUtils");
 var HeapAnalysesClient = require("devtools/shared/heapsnapshot/HeapAnalysesClient");
-var { addDebuggerToGlobal } = require("resource://gre/modules/jsdebugger.jsm");
+const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger.js");
 var Store = require("devtools/client/memory/store");
 var SYSTEM_PRINCIPAL = Cc["@mozilla.org/systemprincipal;1"].createInstance(Ci.nsIPrincipal);
 

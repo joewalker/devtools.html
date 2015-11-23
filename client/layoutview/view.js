@@ -10,7 +10,6 @@ var {utils: Cu, interfaces: Ci, classes: Cc} = Components;
 
 const { Task } = require("devtools/sham/task.js");
 const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
-const { console } = require("devtools/sham/console.js");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 
 const {InplaceEditor, editableItem} = require("devtools/client/shared/inplace-editor");

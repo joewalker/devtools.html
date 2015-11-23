@@ -18,7 +18,7 @@
       window.onload = function() {
         SimpleTest.waitForExplicitFinish();
 
-        let {TextDecoder, OS}  = Cu.import("resource://gre/modules/osfile.jsm", {});
+        const { TextDecoder, OS } = require("devtools/sham/osfile.js");
 
         Task.spawn(function* () {
             let win = yield openWebIDE();

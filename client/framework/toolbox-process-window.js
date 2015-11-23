@@ -9,11 +9,11 @@ var { gDevTools } = Cu.import("resource://devtools/client/framework/gDevTools.js
 var { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 var { TargetFactory } = require("devtools/client/framework/target");
 var { Toolbox } = require("devtools/client/framework/toolbox");
-var { Services } = Cu.import("resource://gre/modules/Services.jsm", {});
+const { Services } = require("devtools/sham/services.js");
 var { DebuggerClient } = require("devtools/shared/client/main");
 var { ViewHelpers } =
   Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm", {});
-var { Task } = Cu.import("resource://gre/modules/Task.jsm", {});
+var { Task } = require("devtools/sham/task.js");
 
 /**
  * Shortcuts for accessing various debugger preferences.

@@ -1,5 +1,5 @@
 function run_test() {
-  Components.utils.import("resource://gre/modules/jsdebugger.jsm");
+  const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger.js");
   addDebuggerToGlobal(this);
   var g = testGlobal("test");
   var dbg = new Debugger();
@@ -13,7 +13,7 @@ function run_test() {
       enumerable: true
     });
 
-    Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
+    const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 
     // This is a CCW.
     XPCOMUtils.defineLazyGetter(this, "foo", function() { return "foo"; });

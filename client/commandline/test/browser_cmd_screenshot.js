@@ -7,7 +7,7 @@
 const TEST_URI = "http://example.com/browser/devtools/client/commandline/" +
                  "test/browser_cmd_screenshot.html";
 
-var FileUtils = (Cu.import("resource://gre/modules/FileUtils.jsm", {})).FileUtils;
+const { FileUtils } = require("devtools/sham/fileutils.js");
 
 function test() {
   return Task.spawn(spawnTest).then(finish, helpers.handleError);

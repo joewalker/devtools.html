@@ -9,7 +9,6 @@ const TEST_HOST = 'mochi.test:8888';
 
 var {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 var {TargetFactory} = require("devtools/client/framework/target");
-var {console} = Cu.import("resource://gre/modules/Console.jsm", {});
 var promise = require("promise");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
 

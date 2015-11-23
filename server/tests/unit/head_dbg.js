@@ -11,7 +11,7 @@ var CC = Components.Constructor;
 const { require, loader } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const { worker } = Cu.import("resource://devtools/shared/worker/loader.js", {})
 const promise = require("promise");
-const { Task } = Cu.import("resource://gre/modules/Task.jsm", {});
+const { Task } = require("devtools/sham/task.js");
 const { promiseInvoke } = require("devtools/shared/async-utils");
 
 const Services = require("Services");
@@ -27,7 +27,7 @@ const { DebuggerServer: WorkerDebuggerServer } = worker.require("devtools/server
 const { DebuggerClient, ObjectClient } = require("devtools/shared/client/main");
 const { MemoryFront } = require("devtools/server/actors/memory");
 
-const { addDebuggerToGlobal } = Cu.import("resource://gre/modules/jsdebugger.jsm", {});
+const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger.js");
 
 const systemPrincipal = Cc["@mozilla.org/systemprincipal;1"].createInstance(Ci.nsIPrincipal);
 
@@ -224,7 +224,6 @@ function tryImport(url) {
 }
 
 tryImport("resource://devtools/shared/Loader.jsm");
-tryImport("resource://gre/modules/Console.jsm");
 
 function testExceptionHook(ex) {
   try {

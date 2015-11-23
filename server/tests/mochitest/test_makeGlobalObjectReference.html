@@ -16,7 +16,7 @@ Debugger.prototype.makeGlobalObjectReference should dereference WindowProxy
 <pre id="test">
 <script>
 
-Components.utils.import("resource://gre/modules/jsdebugger.jsm");
+const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger.js");
 addDebuggerToGlobal(this);
 
 window.onload = function () {

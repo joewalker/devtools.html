@@ -6,8 +6,8 @@
  * but don't contain the appropriate recording data.
  */
 
-var { FileUtils } = Cu.import("resource://gre/modules/FileUtils.jsm", {});
-var { NetUtil } = Cu.import("resource://gre/modules/NetUtil.jsm", {});
+const { FileUtils } = require("devtools/sham/fileutils.js");
+const { NetUtil } = require("devtools/sham/netutil.js");
 
 var test = Task.async(function*() {
   let { target, panel, toolbox } = yield initPerformance(SIMPLE_URL);

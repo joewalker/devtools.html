@@ -26,7 +26,7 @@
         Cu.import("resource://devtools/shared/deprecated-sync-thenables.js", {});
       const { EventEmitter } =
         Cu.import("resource://devtools/shared/event-emitter.js", {});
-      const { Task } = Cu.import("resource://gre/modules/Task.jsm", {});
+      const { Task } = require("devtools/sham/task.js");
 
       SimpleTest.waitForExplicitFinish();
 

@@ -7,7 +7,7 @@ const Cu = Components.utils;
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 
-XPCOMUtils.defineLazyModuleGetter(this, "Services", "resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 
 /**
  * Handles --webide command line option.

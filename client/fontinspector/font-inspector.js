@@ -11,10 +11,7 @@ const DEFAULT_PREVIEW_TEXT = "Abc";
 const PREVIEW_UPDATE_DELAY = 150;
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
-XPCOMUtils.defineLazyModuleGetter(this, "Task",
-  "resource://gre/modules/Task.jsm");
-XPCOMUtils.defineLazyModuleGetter(this, "console",
-  "resource://gre/modules/Console.jsm");
+const { Task } = require("devtools/sham/task.js");
 
 function FontInspector(inspector, window)
 {

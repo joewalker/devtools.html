@@ -4,7 +4,7 @@
 // Test that inspecting primitive values uses the object inspector, not an
 // inline comment.
 
-var {Task} = Cu.import("resource://gre/modules/Task.jsm", {});
+var {Task} = require("devtools/sham/task.js");
 
 function test() {
   const options = {

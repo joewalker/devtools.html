@@ -12,9 +12,8 @@ function scopedCuImport(path) {
   return scope;
 }
 
-const {Services} = scopedCuImport("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 const {gDevTools} = scopedCuImport("resource://devtools/client/framework/gDevTools.jsm");
-const {console} = scopedCuImport("resource://gre/modules/Console.jsm");
 const {ScratchpadManager} = scopedCuImport("resource://devtools/client/scratchpad/scratchpad-manager.jsm");
 const {require} = scopedCuImport("resource://devtools/shared/Loader.jsm");
 

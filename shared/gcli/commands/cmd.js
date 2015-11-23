@@ -6,7 +6,7 @@
 
 const { Cc, Ci, Cu } = require("chrome");
 
-const { OS } = Cu.import("resource://gre/modules/osfile.jsm", {});
+const { OS } = require("devtools/sham/osfile.js");
 const { TextEncoder, TextDecoder } = Cu.import('resource://gre/modules/commonjs/toolkit/loader.js', {});
 const gcli = require("gcli/index");
 const l10n = require("gcli/l10n");
@@ -20,7 +20,7 @@ loader.lazyGetter(this, "supportsString", function() {
   return Cc["@mozilla.org/supports-string;1"].createInstance(Ci.nsISupportsString);
 });
 
-loader.lazyImporter(this, "NetUtil", "resource://gre/modules/NetUtil.jsm");
+const { NetUtil } = require("devtools/sham/netutil.js");
 
 const PREF_DIR = "devtools.commands.dir";
 

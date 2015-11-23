@@ -118,8 +118,7 @@ const FastListWidget = require("devtools/client/shared/widgets/FastListWidget");
 
 XPCOMUtils.defineConstant(this, "EVENTS", EVENTS);
 
-XPCOMUtils.defineLazyModuleGetter(this, "Task",
-  "resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 
 XPCOMUtils.defineLazyModuleGetter(this, "Parser",
   "resource://devtools/shared/Parser.jsm");

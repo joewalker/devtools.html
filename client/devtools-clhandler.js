@@ -8,7 +8,7 @@ const kDebuggerPrefs = [
   "devtools.chrome.enabled"
 ];
 const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
-XPCOMUtils.defineLazyModuleGetter(this, "Services", "resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 
 function devtoolsCommandlineHandler() {
 }
@@ -43,7 +43,6 @@ devtoolsCommandlineHandler.prototype = {
       // Load the browser devtools main module as the loader's main module.
       Cu.import("resource://devtools/client/framework/gDevTools.jsm");
       let hudservice = require("devtools/client/webconsole/hudservice");
-      let { console } = Cu.import("resource://gre/modules/Console.jsm", {});
       hudservice.toggleBrowserConsole().then(null, console.error);
     } else {
       window.focus(); // the Browser Console was already open

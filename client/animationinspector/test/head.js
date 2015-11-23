@@ -9,7 +9,6 @@ const {gDevTools} = Cu.import("resource://devtools/client/framework/gDevTools.js
 const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const promise = require("promise");
 const {TargetFactory} = require("devtools/client/framework/target");
-const {console} = Cu.import("resource://gre/modules/Console.jsm", {});
 const {ViewHelpers} = Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm", {});
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 

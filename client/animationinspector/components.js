@@ -21,7 +21,7 @@
 
 const {Cu} = require("chrome");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
-const {Task} = Cu.import("resource://gre/modules/Task.jsm", {});
+const {Task} = require("devtools/sham/task.js");
 const {
   createNode,
   drawGraphElementBackground,

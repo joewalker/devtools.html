@@ -12,10 +12,9 @@ const { actorBridge } = require("devtools/server/actors/common");
 loader.lazyRequireGetter(this, "events", "sdk/event/core");
 loader.lazyRequireGetter(this, "StackFrameCache",
                          "devtools/server/actors/utils/stack", true);
-loader.lazyRequireGetter(this, "FileUtils",
-                         "resource://gre/modules/FileUtils.jsm", true);
-loader.lazyRequireGetter(this, "NetUtil", "resource://gre/modules/NetUtil.jsm", true);
-loader.lazyRequireGetter(this, "Task", "resource://gre/modules/Task.jsm", true);
+const { FileUtils } = require("devtools/sham/fileutils.js");
+const { NetUtil } = require("devtools/sham/netutil.js");
+const { Task } = require("devtools/sham/task.js");
 loader.lazyRequireGetter(this, "HeapSnapshotFileUtils",
                          "devtools/shared/heapsnapshot/HeapSnapshotFileUtils");
 loader.lazyRequireGetter(this, "ThreadSafeChromeUtils");

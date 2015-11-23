@@ -11,7 +11,7 @@
 
 const Cu = Components.utils;
 
-const { Services } = Cu.import("resource://gre/modules/Services.jsm", {});
+const { Services } = require("devtools/sham/services.js");
 
 const WARNING_PREF = "devtools.migration.warnings";
 if (Services.prefs.getBoolPref(WARNING_PREF)) {
@@ -26,9 +26,6 @@ this.EXPORTED_SYMBOLS = [
   "console",
   "ConsoleAPI"
 ];
-
-const module =
-  Cu.import("resource://gre/modules/Console.jsm", {});
 
 for (let symbol of this.EXPORTED_SYMBOLS) {
   this[symbol] = module[symbol];

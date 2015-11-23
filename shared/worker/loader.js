@@ -390,7 +390,7 @@ var {
     // Debugger object needs to be defined in a sandbox.
     let sandbox = Cu.Sandbox(principal, {});
     Cu.evalInSandbox(
-      "Components.utils.import('resource://gre/modules/jsdebugger.jsm');" +
+      "const { addDebuggerToGlobal } = require('devtools/sham/jsdebugger.js');" +
       "addDebuggerToGlobal(this);",
       sandbox
     );

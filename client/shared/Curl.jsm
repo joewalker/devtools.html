@@ -39,7 +39,7 @@
 
 this.EXPORTED_SYMBOLS = ["Curl", "CurlUtils"];
 
-Components.utils.import("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 
 const DEFAULT_HTTP_VERSION = "HTTP/1.1";
 

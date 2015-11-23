@@ -7,12 +7,12 @@
 
 const {Cc, Ci, Cu} = require("chrome");
 
-const { Services } = require("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 
 loader.lazyImporter(this, "VariablesView", "resource://devtools/client/shared/widgets/VariablesView.jsm");
 loader.lazyImporter(this, "escapeHTML", "resource://devtools/client/shared/widgets/VariablesView.jsm");
 loader.lazyImporter(this, "gDevTools", "resource://devtools/client/framework/gDevTools.jsm");
-loader.lazyImporter(this, "Task", "resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 loader.lazyImporter(this, "PluralForm", "resource://gre/modules/PluralForm.jsm");
 
 loader.lazyRequireGetter(this, "promise");

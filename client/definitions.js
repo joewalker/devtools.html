@@ -6,7 +6,7 @@
 
 const {Cc, Ci, Cu} = require("chrome");
 
-const { Services } = require("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 
 loader.lazyGetter(this, "osString", () => Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime).OS);
 

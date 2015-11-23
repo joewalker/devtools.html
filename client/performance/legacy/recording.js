@@ -4,7 +4,7 @@
 "use strict";
 
 const { Cc, Ci, Cu, Cr } = require("chrome");
-const { Task } = require("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 
 loader.lazyRequireGetter(this, "PerformanceIO",
   "devtools/client/performance/modules/io");

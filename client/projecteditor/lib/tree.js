@@ -12,7 +12,7 @@ const { merge } = require("sdk/util/object");
 const promise = require("promise");
 const { InplaceEditor } = require("devtools/client/shared/inplace-editor");
 const { on, forget } = require("devtools/client/projecteditor/lib/helpers/event");
-const { OS } = Cu.import("resource://gre/modules/osfile.jsm", {});
+const { OS } = require("devtools/sham/osfile.js");
 
 const HTML_NS = "http://www.w3.org/1999/xhtml";
 

@@ -14,7 +14,7 @@
  */
 
 var {Cu} = require("chrome");
-var {Task} = require("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 var Promise = require("promise");
 
 /**

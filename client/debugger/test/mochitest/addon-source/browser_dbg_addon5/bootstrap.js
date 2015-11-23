@@ -4,7 +4,7 @@
 var { interfaces: Ci, classes: Cc } = Components;
 
 function startup(aParams, aReason) {
-  Components.utils.import("resource://gre/modules/Services.jsm");
+  const { Services } = require("devtools/sham/services.js");
   let res = Services.io.getProtocolHandler("resource")
                        .QueryInterface(Ci.nsIResProtocolHandler);
   res.setSubstitution("browser_dbg_addon5", aParams.resourceURI);

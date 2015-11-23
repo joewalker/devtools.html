@@ -7,7 +7,7 @@
 "use strict";
 
 const {Cu} = require("chrome");
-const {Task} = Cu.import("resource://gre/modules/Task.jsm", {});
+const {Task} = require("devtools/sham/task.js");
 var {loader} = Cu.import("resource://devtools/shared/Loader.jsm");
 loader.lazyRequireGetter(this, "EventEmitter",
                                "devtools/shared/event-emitter");

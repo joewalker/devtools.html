@@ -15,9 +15,7 @@
  */
 
 this.EXPORTED_SYMBOLS = [ "template" ];
-Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
-XPCOMUtils.defineLazyModuleGetter(this, "console",
-                                  "resource://gre/modules/Console.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 
 'use strict';
 

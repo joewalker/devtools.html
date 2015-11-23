@@ -26,7 +26,7 @@ const { Class } = require("sdk/core/heritage");
 // toolbox startup
 loader.lazyRequireGetter(this, "events", "sdk/event/core");
 loader.lazyRequireGetter(this, "Timers", "sdk/timers");
-loader.lazyRequireGetter(this, "Task", "resource://gre/modules/Task.jsm", true);
+const { Task } = require("devtools/sham/task.js");
 loader.lazyRequireGetter(this, "Memory", "devtools/server/performance/memory", true);
 loader.lazyRequireGetter(this, "Framerate", "devtools/server/performance/framerate", true);
 loader.lazyRequireGetter(this, "StackFrameCache", "devtools/server/actors/utils/stack", true);

@@ -11,7 +11,7 @@ function test() {
   // Test is slow on Linux EC2 instances - Bug 962931
   requestLongerTimeout(2);
 
-  let {Task} = Cu.import("resource://gre/modules/Task.jsm", {});
+  let {Task} = require("devtools/sham/task.js");
   let {Toolbox} = require("devtools/client/framework/toolbox")
   let toolbox;
 

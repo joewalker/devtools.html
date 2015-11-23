@@ -19,8 +19,9 @@ function test() {
 function consoleOpened(HUD) {
   let {JSPropertyProvider} = require("devtools/shared/webconsole/js-property-provider");
 
-  let tmp = Cu.import("resource://gre/modules/jsdebugger.jsm", {});
-  tmp.addDebuggerToGlobal(tmp);
+  const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger.js");
+  let tmp = {};
+  addDebuggerToGlobal(tmp);
   let dbg = new tmp.Debugger();
 
   let jsterm = HUD.jsterm;

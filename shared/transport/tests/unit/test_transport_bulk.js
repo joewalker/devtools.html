@@ -1,8 +1,8 @@
 /* Any copyright is dedicated to the Public Domain.
    http://creativecommons.org/publicdomain/zero/1.0/ */
 
-var { FileUtils } = Cu.import("resource://gre/modules/FileUtils.jsm", {});
-var { NetUtil } = Cu.import("resource://gre/modules/NetUtil.jsm", {});
+const { FileUtils } = require("devtools/sham/fileutils.js");
+const { NetUtil } = require("devtools/sham/netutil.js");
 
 function run_test() {
   initTestDebuggerServer();

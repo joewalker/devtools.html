@@ -11,7 +11,6 @@ var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
 
 const { Task } = require("devtools/sham/task.js");
 var { loader, require } = Cu.import("resource://devtools/shared/Loader.jsm");
-const { console } = require("devtools/sham/console.js");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 
 loader.lazyRequireGetter(this, "promise");

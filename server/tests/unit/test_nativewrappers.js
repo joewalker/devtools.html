@@ -1,6 +1,6 @@
 function run_test()
 {
-  Components.utils.import("resource://gre/modules/jsdebugger.jsm");
+  const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger.js");
   addDebuggerToGlobal(this);
   var g = testGlobal("test1");
 

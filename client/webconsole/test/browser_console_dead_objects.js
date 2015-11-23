@@ -38,9 +38,10 @@ function test() {
 
     jsterm.clearOutput();
 
+
     // Add the reference to the content document.
     yield jsterm.execute("Cu = Components.utils;" +
-                  "Cu.import('resource://gre/modules/Services.jsm');" +
+                  "const { Services } = require('devtools/sham/services.js');" +
                   "chromeWindow = Services.wm.getMostRecentWindow('" +
                   "navigator:browser');" +
                   "foobarzTezt = chromeWindow.content.document;" +

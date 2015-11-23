@@ -27,8 +27,8 @@
 
 const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
-var { XPCOMUtils } = Cu.import("resource://gre/modules/XPCOMUtils.jsm", {});
-var { Services }   = Cu.import("resource://gre/modules/Services.jsm", {});
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { Services } = require("devtools/sham/services.js");
 var { LoadContextInfo } = Cu.import("resource://gre/modules/LoadContextInfo.jsm", {});
 var { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 var promise = require("promise");

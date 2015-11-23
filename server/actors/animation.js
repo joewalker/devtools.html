@@ -27,7 +27,7 @@
 
 const {Cu} = require("chrome");
 const promise = require("promise");
-const {Task} = Cu.import("resource://gre/modules/Task.jsm", {});
+const {Task} = require("devtools/sham/task.js");
 const protocol = require("devtools/server/protocol");
 const {ActorClass, Actor, FrontClass, Front,
        Arg, method, RetVal, types} = protocol;

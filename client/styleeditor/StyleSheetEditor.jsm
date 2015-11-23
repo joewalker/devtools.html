@@ -15,7 +15,6 @@ const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const Editor  = require("devtools/client/sourceeditor/editor");
 const promise = require("promise");
 const {CssLogic} = require("devtools/shared/styleinspector/css-logic");
-const {console} = require("resource://gre/modules/Console.jsm");
 
 const { Services } = require("devtools/sham/services.js");
 const { FileUtils } = require ("devtools/sham/fileutils.js");

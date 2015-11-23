@@ -11,7 +11,7 @@ const {isWindowIncluded} = require("devtools/shared/layout/utils");
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 
-loader.lazyImporter(this, "Services", "resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 
 // TODO: Bug 842672 - browser/ imports modules from toolkit/.
 // Note that these are only used in WebConsoleCommands, see $0 and pprint().

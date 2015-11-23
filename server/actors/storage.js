@@ -15,9 +15,9 @@ const promise = require("promise");
 const {isWindowIncluded} = require("devtools/shared/layout/utils");
 const {setTimeout, clearTimeout} = require("sdk/timers");
 
-loader.lazyImporter(this, "OS", "resource://gre/modules/osfile.jsm");
+const { OS } = require("devtools/sham/osfile.js");
 loader.lazyImporter(this, "Sqlite", "resource://gre/modules/Sqlite.jsm");
-loader.lazyImporter(this, "Task", "resource://gre/modules/Task.jsm", "Task");
+const { Task } = require("devtools/sham/task.js");
 
 var gTrackedMessageManager = new Map();
 

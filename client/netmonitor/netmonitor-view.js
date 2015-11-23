@@ -71,7 +71,7 @@ const GENERIC_VARIABLES_VIEW_SETTINGS = {
 const NETWORK_ANALYSIS_PIE_CHART_DIAMETER = 200; // px
 const FREETEXT_FILTER_SEARCH_DELAY = 200; // ms
 
-const {DeferredTask} = Cu.import("resource://gre/modules/DeferredTask.jsm", {});
+const { DeferredTask } = require("devtools/sham/deferredtask.js");
 
 /**
  * Object defining the network monitor view components.

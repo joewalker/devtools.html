@@ -4,7 +4,7 @@
 // Test that we can read core dumps into HeapSnapshot instances.
 
 if (typeof Debugger != "function") {
-  const { addDebuggerToGlobal } = Cu.import("resource://gre/modules/jsdebugger.jsm", {});
+  const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger.js");
   addDebuggerToGlobal(this);
 }
 

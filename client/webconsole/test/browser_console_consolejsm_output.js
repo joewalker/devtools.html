@@ -21,7 +21,6 @@ add_task(function*() {
   let storage = consoleStorage.getService(Ci.nsIConsoleAPIStorage);
   storage.clearEvents();
 
-  let {console} = Cu.import("resource://gre/modules/Console.jsm", {});
   console.log("bug861338-log-cached");
 
   let hud = yield HUDService.toggleBrowserConsole();
@@ -153,7 +152,7 @@ add_task(function* testPrefix() {
   let storage = consoleStorage.getService(Ci.nsIConsoleAPIStorage);
   storage.clearEvents();
 
-  let {ConsoleAPI} = Cu.import("resource://gre/modules/Console.jsm", {});
+  let {ConsoleAPI} = require("devtools/sham/console.js");
   let consoleOptions = {
     maxLogLevel: "error",
     prefix: "Log Prefix",
@@ -184,7 +183,7 @@ add_task(function* testMaxLogLevelPrefMissing() {
   let storage = consoleStorage.getService(Ci.nsIConsoleAPIStorage);
   storage.clearEvents();
 
-  let {ConsoleAPI} = Cu.import("resource://gre/modules/Console.jsm", {});
+  let {ConsoleAPI} = require("devtools/sham/console.js");
   let consoleOptions = {
     maxLogLevel: "error",
     maxLogLevelPref: "testing.maxLogLevel",
@@ -223,7 +222,7 @@ add_task(function* testMaxLogLevelPref() {
   let storage = consoleStorage.getService(Ci.nsIConsoleAPIStorage);
   storage.clearEvents();
 
-  let {ConsoleAPI} = Cu.import("resource://gre/modules/Console.jsm", {});
+  let {ConsoleAPI} = require("devtools/sham/console.js");
   let consoleOptions = {
     maxLogLevel: "error",
     maxLogLevelPref: "testing.maxLogLevel",

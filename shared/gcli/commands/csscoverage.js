@@ -12,7 +12,7 @@ const domtemplate = require("gcli/util/domtemplate");
 const csscoverage = require("devtools/server/actors/csscoverage");
 const l10n = csscoverage.l10n;
 
-const { XPCOMUtils } = require("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 
 XPCOMUtils.defineLazyModuleGetter(this, "Chart", "resource://devtools/client/shared/widgets/Chart.jsm");
 

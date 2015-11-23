@@ -9,8 +9,8 @@ const { Class } = require("sdk/core/heritage");
 loader.lazyRequireGetter(this, "events", "sdk/event/core");
 loader.lazyRequireGetter(this, "EventTarget", "sdk/event/target", true);
 loader.lazyRequireGetter(this, "DevToolsUtils", "devtools/shared/DevToolsUtils");
-loader.lazyRequireGetter(this, "DeferredTask", "resource://gre/modules/DeferredTask.jsm", true);
-loader.lazyRequireGetter(this, "Task", "resource://gre/modules/Task.jsm", true);
+const { DeferredTask } = require("devtools/sham/deferredtask.js");
+const { Task } = require("devtools/sham/task.js");
 
 // Events piped from system observers to Profiler instances.
 const PROFILER_SYSTEM_EVENTS = [

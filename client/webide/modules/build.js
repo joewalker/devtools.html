@@ -5,8 +5,8 @@
 const {Cu, Cc, Ci} = require("chrome");
 
 const promise = require("promise");
-const { Task } = Cu.import("resource://gre/modules/Task.jsm", {});
-const { TextDecoder, OS }  = Cu.import("resource://gre/modules/osfile.jsm", {});
+const { Task } = require("devtools/sham/task.js");
+const { TextDecoder, OS } = require("devtools/sham/osfile.js");
 const Subprocess = require("sdk/system/child_process/subprocess");
 
 const ProjectBuilding = exports.ProjectBuilding = {

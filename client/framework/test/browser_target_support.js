@@ -5,7 +5,7 @@
 // `actorHasMethod` and `getTrait`.
 
 var { Task } =
-  Cu.import("resource://gre/modules/Task.jsm", {});
+  require("devtools/sham/task.js");
 var { WebAudioFront } =
   require("devtools/server/actors/webaudio");
 

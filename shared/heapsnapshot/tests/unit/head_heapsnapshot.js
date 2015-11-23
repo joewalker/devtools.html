@@ -12,9 +12,8 @@ var CC = Components.Constructor;
 const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const { Match } = Cu.import("resource://test/Match.jsm", {});
 const { Census } = Cu.import("resource://test/Census.jsm", {});
-const { addDebuggerToGlobal } =
-  Cu.import("resource://gre/modules/jsdebugger.jsm", {});
-const { Task } = Cu.import("resource://gre/modules/Task.jsm", {});
+const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger.js");
+const { Task } = require("devtools/sham/task.js");
 
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const HeapAnalysesClient =

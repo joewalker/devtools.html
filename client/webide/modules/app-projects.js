@@ -8,7 +8,7 @@ const promise = require("devtools/shared/deprecated-sync-thenables");
 
 const {EventEmitter} = Cu.import("resource://devtools/shared/event-emitter.js", {});
 const {generateUUID} = Cc['@mozilla.org/uuid-generator;1'].getService(Ci.nsIUUIDGenerator);
-const {FileUtils} = Cu.import("resource://gre/modules/FileUtils.jsm", {});
+const { FileUtils } = require("devtools/sham/fileutils.js");
 const {indexedDB} = require("sdk/indexed-db");
 
 /**

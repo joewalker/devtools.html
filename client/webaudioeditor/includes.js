@@ -12,10 +12,9 @@ Cu.import("resource://devtools/client/framework/gDevTools.jsm");
 
 const { loader, require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 
-var { console } = Cu.import("resource://gre/modules/Console.jsm", {});
 var { EventTarget } = require("sdk/event/target");
 
-const { Task } = Cu.import("resource://gre/modules/Task.jsm", {});
+const { Task } = require("devtools/sham/task.js");
 const { Class } = require("sdk/core/heritage");
 const EventEmitter = require("devtools/shared/event-emitter");
 const STRINGS_URI = "chrome://devtools/locale/webaudioeditor.properties"

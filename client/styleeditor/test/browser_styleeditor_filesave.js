@@ -11,11 +11,8 @@ const TESTCASE_URI_CSS = TEST_BASE_HTTP + "simple.css";
 var Cc = Components.classes;
 var Ci = Components.interfaces;
 
-var tempScope = {};
-Components.utils.import("resource://gre/modules/FileUtils.jsm", tempScope);
-Components.utils.import("resource://gre/modules/NetUtil.jsm", tempScope);
-var FileUtils = tempScope.FileUtils;
-var NetUtil = tempScope.NetUtil;
+const { FileUtils } = require("devtools/sham/fileutils.js");
+const { NetUtil } = require("devtools/sham/netutil.js");
 
 add_task(function* () {
   let htmlFile = yield copy(TESTCASE_URI_HTML, "simple.html");

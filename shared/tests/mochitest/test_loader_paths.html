@@ -21,7 +21,7 @@
     <script type="application/javascript;version=1.8">
       const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
-      const { Services } = Cu.import("resource://gre/modules/Services.jsm", {});
+      const { Services } = require("devtools/sham/services.js");
 
       const SRCDIR_PREF = "devtools.loader.srcdir";
       let srcDir = Cc["@mozilla.org/file/directory_service;1"]

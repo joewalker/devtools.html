@@ -2,7 +2,7 @@
    http://creativecommons.org/publicdomain/zero/1.0/ */
 "use strict";
 
-Components.utils.import("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 var promise = require("promise");
 
 function test() {

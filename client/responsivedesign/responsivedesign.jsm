@@ -19,7 +19,7 @@ var { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 var Telemetry = require("devtools/client/shared/telemetry");
 var { showDoorhanger } = require("devtools/client/shared/doorhanger");
 var { TouchEventSimulator } = require("devtools/shared/touch/simulator");
-var { Task } = require("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 var promise = require("promise");
 
 this.EXPORTED_SYMBOLS = ["ResponsiveUIManager"];

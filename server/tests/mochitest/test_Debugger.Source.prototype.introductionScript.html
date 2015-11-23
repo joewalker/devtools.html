@@ -16,7 +16,7 @@ behave when 'eval' is called with no scripted frames active at all.
 <pre id="test">
 <script>
 
-Components.utils.import("resource://gre/modules/jsdebugger.jsm");
+const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger.js");
 addDebuggerToGlobal(this);
 
 window.onload = function () {

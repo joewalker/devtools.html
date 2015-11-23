@@ -140,8 +140,7 @@ XPCOMUtils.defineLazyModuleGetter(this, "Curl",
 XPCOMUtils.defineLazyModuleGetter(this, "CurlUtils",
   "resource://devtools/client/shared/Curl.jsm");
 
-XPCOMUtils.defineLazyModuleGetter(this, "Task",
-  "resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 
 XPCOMUtils.defineLazyModuleGetter(this, "PluralForm",
   "resource://gre/modules/PluralForm.jsm");

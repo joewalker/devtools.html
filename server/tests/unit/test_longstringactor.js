@@ -6,7 +6,7 @@ const { LongStringActor } = require("devtools/server/actors/object");
 
 function run_test()
 {
-  Cu.import("resource://gre/modules/jsdebugger.jsm");
+  const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger.js");
   addDebuggerToGlobal(this);
 
   test_LSA_disconnect();

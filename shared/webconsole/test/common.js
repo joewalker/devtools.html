@@ -8,10 +8,9 @@ var {classes: Cc, interfaces: Ci, utils: Cu} = Components;
 const XHTML_NS = "http://www.w3.org/1999/xhtml";
 
 const { Services } = require("devtools/sham/services.js");
-const {Task} = Cu.import("resource://gre/modules/Task.jsm", {});
+const {Task} = require("devtools/sham/task.js");
 
 // This gives logging to stdout for tests
-var {console} = Cu.import("resource://gre/modules/Console.jsm", {});
 
 var {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 var WebConsoleUtils = require("devtools/shared/webconsole/utils").Utils;

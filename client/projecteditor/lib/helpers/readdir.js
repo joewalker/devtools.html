@@ -4,7 +4,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-importScripts("resource://gre/modules/osfile.jsm");
+const { OS } = require("devtools/sham/osfile.js");
 
 /**
  * This file is meant to be loaded in a worker using:

@@ -14,8 +14,8 @@ loader.lazyImporter(this, "gDevTools", "resource://devtools/client/framework/gDe
 
 loader.lazyGetter(this, "Debugger", () => {
   let global = Cu.getGlobalForObject({});
-  let JsDebugger = Cu.import("resource://gre/modules/jsdebugger.jsm", {});
-  JsDebugger.addDebuggerToGlobal(global);
+  const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger.js");
+  addDebuggerToGlobal(global);
   return global.Debugger;
 });
 

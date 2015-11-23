@@ -40,7 +40,7 @@ loader.lazyRequireGetter(this, "EventEmitter",
   "devtools/shared/event-emitter");
 loader.lazyRequireGetter(this, "StyleInspectorMenu",
   "devtools/client/styleinspector/style-inspector-menu");
-loader.lazyImporter(this, "Services", "resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 

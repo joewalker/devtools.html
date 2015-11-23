@@ -55,8 +55,8 @@ this.Telemetry = function() {
 module.exports = Telemetry;
 
 var {Cc, Ci, Cu} = require("chrome");
-var {Services} = Cu.import("resource://gre/modules/Services.jsm", {});
-var {XPCOMUtils} = Cu.import("resource://gre/modules/XPCOMUtils.jsm", {});
+const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 
 Telemetry.prototype = {
   _histograms: {

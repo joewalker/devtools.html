@@ -19,9 +19,6 @@ const promise = require("promise");
 
 const Node = Ci.nsIDOMNode;
 
-XPCOMUtils.defineLazyModuleGetter(this, "console",
-                                  "resource://gre/modules/Console.jsm");
-
 XPCOMUtils.defineLazyModuleGetter(this, "PluralForm",
                                   "resource://gre/modules/PluralForm.jsm");
 

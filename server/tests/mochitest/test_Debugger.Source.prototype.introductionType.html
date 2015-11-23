@@ -17,7 +17,7 @@ JavaScrip appearing in an inline event handler attribute.
 <pre id="test">
 <script>
 
-Components.utils.import("resource://gre/modules/jsdebugger.jsm");
+const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger.js");
 addDebuggerToGlobal(this);
 
 var dbg;

@@ -5,8 +5,7 @@
 
 loader.lazyRequireGetter(this, "Telemetry",
   "devtools/client/shared/telemetry");
-loader.lazyRequireGetter(this, "Services",
-  "resource://gre/modules/Services.jsm", true);
+const { Services } = require("devtools/sham/services.js");
 loader.lazyRequireGetter(this, "DevToolsUtils",
   "devtools/shared/DevToolsUtils");
 loader.lazyRequireGetter(this, "EVENTS",

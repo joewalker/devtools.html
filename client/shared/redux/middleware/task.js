@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const { Task } = require("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 const { executeSoon, isGenerator, isPromise, reportException } = require("devtools/shared/DevToolsUtils");
 const ERROR_TYPE = exports.ERROR_TYPE = "@@redux/middleware/task#error";
 

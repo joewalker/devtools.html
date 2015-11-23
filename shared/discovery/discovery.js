@@ -44,8 +44,8 @@ const UPDATE_PORT = 50625;
 const ADDRESS = "224.0.0.115";
 const REPLY_TIMEOUT = 5000;
 
-const { XPCOMUtils } = Cu.import("resource://gre/modules/XPCOMUtils.jsm", {});
-const { Services } = Cu.import("resource://gre/modules/Services.jsm", {});
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { Services } = require("devtools/sham/services.js");
 
 XPCOMUtils.defineLazyGetter(this, "converter", () => {
   let conv = Cc["@mozilla.org/intl/scriptableunicodeconverter"].

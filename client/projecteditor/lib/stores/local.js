@@ -6,10 +6,10 @@
 
 const { Cc, Ci, Cu, ChromeWorker } = require("chrome");
 const { Class } = require("sdk/core/heritage");
-const { OS } = Cu.import("resource://gre/modules/osfile.jsm", {});
+const { OS } = require("devtools/sham/osfile.js");
 const { emit } = require("sdk/event/core");
 const { Store } = require("devtools/client/projecteditor/lib/stores/base");
-const { Task } = Cu.import("resource://gre/modules/Task.jsm", {});
+const { Task } = require("devtools/sham/task.js");
 const promise = require("promise");
 const { on, forget } = require("devtools/client/projecteditor/lib/helpers/event");
 const { FileResource } = require("devtools/client/projecteditor/lib/stores/resource");

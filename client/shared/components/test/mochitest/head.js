@@ -6,7 +6,7 @@ var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
 
 const { Assert } = require("devtools/sham/assert.js");
 const { Task } = require("devtools/sham/task.js");
-var { Services } = Cu.import("resource://gre/modules/Services.jsm", {});
+const { Services } = require("devtools/sham/services.js");
 
 // Disable logging for all the tests. Both the debugger server and frontend will
 // be affected by this pref.

@@ -278,7 +278,7 @@ function test() {
     if (!isWinXP) {
       info("screenshot");
       instance.screenshot("responsiveui");
-      let FileUtils = (Cu.import("resource://gre/modules/FileUtils.jsm", {})).FileUtils;
+      const { FileUtils } = require("devtools/sham/fileutils.js");
 
       while(true) {
         // while(true) until we find the file.

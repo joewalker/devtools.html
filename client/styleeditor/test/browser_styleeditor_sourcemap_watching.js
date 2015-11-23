@@ -4,7 +4,7 @@
 
 "use strict";
 
-Components.utils.import("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 var {require} = Components.utils.import("resource://devtools/shared/Loader.jsm", {});
 var promise = require("promise");
 
@@ -22,11 +22,8 @@ const CSS_TEXT = "* { color: blue }";
 var Cc = Components.classes;
 var Ci = Components.interfaces;
 
-var tempScope = {};
-Components.utils.import("resource://gre/modules/FileUtils.jsm", tempScope);
-Components.utils.import("resource://gre/modules/NetUtil.jsm", tempScope);
-var FileUtils = tempScope.FileUtils;
-var NetUtil = tempScope.NetUtil;
+const { FileUtils } = require("devtools/sham/fileutils.js");
+const { NetUtil } = require("devtools/sham/netutil.js");
 
 function test() {
   waitForExplicitFinish();

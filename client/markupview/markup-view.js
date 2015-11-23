@@ -30,7 +30,7 @@ const Heritage = require("sdk/core/heritage");
 const {setTimeout, clearTimeout, setInterval, clearInterval} = require("sdk/timers");
 const {parseAttribute} = require("devtools/client/shared/node-attribute-parser");
 const ELLIPSIS = Services.prefs.getComplexValue("intl.ellipsis", Ci.nsIPrefLocalizedString).data;
-const {Task} = require("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 const {scrollIntoViewIfNeeded} = require("devtools/shared/layout/utils");
 
 Cu.import("resource://devtools/shared/gcli/Templater.jsm");

@@ -22,8 +22,8 @@ var Cc = require('chrome').Cc;
 var Ci = require('chrome').Ci;
 var Cu = require('chrome').Cu;
 
-var XPCOMUtils = Cu.import('resource://gre/modules/XPCOMUtils.jsm', {}).XPCOMUtils;
-var Services = Cu.import('resource://gre/modules/Services.jsm', {}).Services;
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { Services } = require("devtools/sham/services.js");
 
 XPCOMUtils.defineLazyGetter(imports, 'prefBranch', function() {
   var prefService = Cc['@mozilla.org/preferences-service;1']

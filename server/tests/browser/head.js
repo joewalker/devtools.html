@@ -7,7 +7,6 @@ var Ci = Components.interfaces;
 var Cu = Components.utils;
 
 const { Services } = require("devtools/sham/services.js");
-const {console} = Cu.import("resource://gre/modules/Console.jsm", {});
 const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const {DebuggerClient} = require("devtools/shared/client/main");
 const {DebuggerServer} = require("devtools/server/main");

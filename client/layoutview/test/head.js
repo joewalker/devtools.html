@@ -7,7 +7,6 @@
 var Cu = Components.utils;
 var {gDevTools} = Cu.import("resource://devtools/client/framework/gDevTools.jsm", {});
 var {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
-var {console} = Cu.import("resource://gre/modules/Console.jsm", {});
 var {TargetFactory} = require("devtools/client/framework/target");
 var promise = require("promise");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
