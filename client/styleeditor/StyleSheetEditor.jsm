@@ -22,7 +22,7 @@ const { NetUtil } = require("devtools/sham/netutil");
 const { OS } = require("devtools/sham/osfile");
 const { Task } = require("devtools/sham/task");
 Cu.import("resource://devtools/shared/event-emitter.js");
-Cu.import("resource://devtools/client/styleeditor/StyleEditorUtil.jsm");
+const { _, assert, log, text, wire, showFilePicker } = require("devtools/client/styleeditor/StyleEditorUtil");
 
 const LOAD_ERROR = "error-load";
 const SAVE_ERROR = "error-save";

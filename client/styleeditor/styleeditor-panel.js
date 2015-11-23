@@ -13,7 +13,7 @@ var promise = require("promise");
 var EventEmitter = require("devtools/shared/event-emitter");
 
 const { StyleEditorUI } = require("devtools/client/styleeditor/StyleEditorUI");
-Cu.import("resource://devtools/client/styleeditor/StyleEditorUtil.jsm");
+const { _, assert, log, text, wire, showFilePicker } = require("devtools/client/styleeditor/StyleEditorUtil");
 
 loader.lazyGetter(this, "StyleSheetsFront",
   () => require("devtools/server/actors/stylesheets").StyleSheetsFront);

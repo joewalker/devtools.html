@@ -5,15 +5,6 @@
 
 "use strict";
 
-this.EXPORTED_SYMBOLS = [
-  "_",
-  "assert",
-  "log",
-  "text",
-  "wire",
-  "showFilePicker"
-];
-
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
@@ -231,3 +222,10 @@ this.showFilePicker = function showFilePicker(path, toSave, parentWindow,
   fp.open(fpCallback);
   return;
 }
+
+exports._ = this._;
+exports.assert = this.assert;
+exports.log = this.log;
+exports.text = this.text;
+exports.wire = this.wire;
+exports.showFilePicker = this.showFilePicker;

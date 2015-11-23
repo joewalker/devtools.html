@@ -16,7 +16,7 @@ const { OS } = require("devtools/sham/osfile");
 const { Task } = require("devtools/sham/task");
 Cu.import("resource://devtools/shared/event-emitter.js");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
-Cu.import("resource://devtools/client/styleeditor/StyleEditorUtil.jsm");
+const { _, assert, log, text, wire, showFilePicker } = require("devtools/client/styleeditor/StyleEditorUtil");
 const { SplitView } = require("devtools/client/shared/SplitView");
 Cu.import("resource://devtools/client/styleeditor/StyleSheetEditor.jsm");
 
