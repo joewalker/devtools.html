@@ -5,7 +5,7 @@
 "use strict";
 
 loader.lazyRequireGetter(this, "Services");
-loader.lazyImporter(this, "gDevTools", "resource://devtools/client/framework/gDevTools.jsm");
+const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { Task } = require("devtools/sham/task");
 
 /**

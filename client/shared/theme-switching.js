@@ -103,7 +103,7 @@
   const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
   const { Services } = require("devtools/sham/services");
-  Cu.import("resource://devtools/client/framework/gDevTools.jsm");
+  const { gDevTools } = require("devtools/client/framework/gDevTools");
   const {require} = Components.utils.import("resource://devtools/shared/Loader.jsm", {});
   const StylesheetUtils = require("sdk/stylesheet/utils");
 

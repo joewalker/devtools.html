@@ -12,8 +12,7 @@ const {Tools} = require("devtools/client/main");
 const { Services } = require("devtools/sham/services");
 const {PREF_ORIG_SOURCES} = require("devtools/client/styleeditor/utils");
 
-loader.lazyGetter(this, "gDevTools", () =>
-  Cu.import("resource://devtools/client/framework/gDevTools.jsm", {}).gDevTools);
+const { gDevTools } = require("devtools/client/framework/gDevTools");
 loader.lazyGetter(this, "RuleView",
   () => require("devtools/client/styleinspector/rule-view"));
 loader.lazyGetter(this, "ComputedView",

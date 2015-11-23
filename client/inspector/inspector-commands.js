@@ -22,7 +22,7 @@ exports.items = [{
   ],
   exec: function(args, context) {
     let target = context.environment.target;
-    let gDevTools = require("resource://devtools/client/framework/gDevTools.jsm").gDevTools;
+    const { gDevTools } = require("devtools/client/framework/gDevTools");
 
     return gDevTools.showToolbox(target, "inspector").then(toolbox => {
       toolbox.getCurrentPanel().selection.setNode(args.selector, "gcli");

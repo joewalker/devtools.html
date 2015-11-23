@@ -9,7 +9,7 @@ const Cu = Components.utils;
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
-Cu.import("resource://devtools/client/framework/gDevTools.jsm");
+const { gDevTools } = require("devtools/client/framework/gDevTools");
 Cu.import("resource://devtools/shared/event-emitter.js");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 XPCOMUtils.defineLazyModuleGetter(this, "SystemAppProxy",

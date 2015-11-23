@@ -12,7 +12,7 @@
 const { Ci, Cu } = require("chrome");
 const { NetUtil } = require("devtools/sham/netutil");
 loader.lazyRequireGetter(this, "Services");
-loader.lazyImporter(this, "gDevTools", "resource://devtools/client/framework/gDevTools.jsm");
+const { gDevTools } = require("devtools/client/framework/gDevTools");
 
 const VARIABLES_URI = "chrome://devtools/skin/variables.css";
 const THEME_SELECTOR_STRINGS = {

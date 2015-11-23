@@ -11,7 +11,7 @@ const { Services } = require("devtools/sham/services");
 
 loader.lazyImporter(this, "VariablesView", "resource://devtools/client/shared/widgets/VariablesView.jsm");
 loader.lazyImporter(this, "escapeHTML", "resource://devtools/client/shared/widgets/VariablesView.jsm");
-loader.lazyImporter(this, "gDevTools", "resource://devtools/client/framework/gDevTools.jsm");
+const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { Task } = require("devtools/sham/task");
 loader.lazyImporter(this, "PluralForm", "resource://gre/modules/PluralForm.jsm");
 

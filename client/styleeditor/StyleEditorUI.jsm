@@ -17,7 +17,7 @@ const { NetUtil } = require("devtools/sham/netutil");
 const { OS } = require("devtools/sham/osfile");
 const { Task } = require("devtools/sham/task");
 Cu.import("resource://devtools/shared/event-emitter.js");
-Cu.import("resource://devtools/client/framework/gDevTools.jsm");
+const { gDevTools } = require("devtools/client/framework/gDevTools");
 Cu.import("resource://devtools/client/styleeditor/StyleEditorUtil.jsm");
 Cu.import("resource://devtools/client/shared/SplitView.jsm");
 Cu.import("resource://devtools/client/styleeditor/StyleSheetEditor.jsm");

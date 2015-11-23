@@ -22,7 +22,7 @@ var HUDService = require("devtools/client/webconsole/hudservice");
 var sourceUtils = require("devtools/client/shared/source-utils");
 
 const { Services } = require("devtools/sham/services");
-Cu.import("resource://devtools/client/framework/gDevTools.jsm");
+const { gDevTools } = require("devtools/client/framework/gDevTools");
 Cu.import("resource://devtools/client/scratchpad/scratchpad-manager.jsm");
 const { DOMHelpers } = require("devtools/client/shared/DOMHelpers");
 const { Task } = require("devtools/sham/task");

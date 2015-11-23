@@ -58,7 +58,7 @@ const { Services } = require("devtools/sham/services");
 const { NetUtil } = require("devtools/sham/netutil");
 Cu.import("resource://devtools/client/scratchpad/scratchpad-manager.jsm");
 const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger");
-Cu.import("resource://devtools/client/framework/gDevTools.jsm");
+const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { OS } = require("devtools/sham/osfile");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 const { Reflect } = require("devtools/sham/reflect");

@@ -17,8 +17,7 @@ loader.lazyRequireGetter(this, "Services");
 
 loader.lazyImporter(this, "BrowserToolboxProcess",
   "resource://devtools/client/framework/ToolboxProcess.jsm");
-loader.lazyImporter(this, "gDevTools",
-  "resource://devtools/client/framework/gDevTools.jsm");
+const { gDevTools } = require("devtools/client/framework/gDevTools");
 
 const Strings = Services.strings.createBundle(
   "chrome://devtools/locale/aboutdebugging.properties");

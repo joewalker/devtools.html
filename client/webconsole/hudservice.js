@@ -16,7 +16,7 @@ var promise = require("promise");
 
 loader.lazyGetter(this, "Telemetry", () => require("devtools/client/shared/telemetry"));
 loader.lazyGetter(this, "WebConsoleFrame", () => require("devtools/client/webconsole/webconsole").WebConsoleFrame);
-loader.lazyImporter(this, "gDevTools", "resource://devtools/client/framework/gDevTools.jsm");
+const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { Services } = require("devtools/sham/services");
 loader.lazyRequireGetter(this, "DebuggerServer", "devtools/server/main", true);
 loader.lazyRequireGetter(this, "DebuggerClient", "devtools/shared/client/main", true);

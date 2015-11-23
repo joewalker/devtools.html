@@ -5,7 +5,7 @@
 
 var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
-var { gDevTools } = Cu.import("resource://devtools/client/framework/gDevTools.jsm", {});
+const { gDevTools } = require("devtools/client/framework/gDevTools");
 var { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 var { TargetFactory } = require("devtools/client/framework/target");
 var { Toolbox } = require("devtools/client/framework/toolbox");

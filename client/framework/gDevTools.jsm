@@ -4,8 +4,6 @@
 
 "use strict";
 
-this.EXPORTED_SYMBOLS = [ "gDevTools", "DevTools", "gDevToolsBrowser" ];
-
 const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
@@ -1320,3 +1318,7 @@ Services.obs.addObserver(gDevToolsBrowser.destroy, "quit-application", false);
 
 // Load the browser devtools main module as the loader's main module.
 loader.main("devtools/client/main");
+
+exports.gDevTools = this.gDevTools;
+exports.DevTools = this.DevTools;
+exports.gDevToolsBrowser = this.gDevToolsBrowser;

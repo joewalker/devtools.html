@@ -41,7 +41,7 @@ devtoolsCommandlineHandler.prototype = {
     if (!window) {
       let { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
       // Load the browser devtools main module as the loader's main module.
-      Cu.import("resource://devtools/client/framework/gDevTools.jsm");
+      const { gDevTools } = require("devtools/client/framework/gDevTools");
       let hudservice = require("devtools/client/webconsole/hudservice");
       hudservice.toggleBrowserConsole().then(null, console.error);
     } else {

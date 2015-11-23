@@ -8,7 +8,7 @@ var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
-Cu.import("resource://devtools/client/framework/gDevTools.jsm");
+const { gDevTools } = require("devtools/client/framework/gDevTools");
 
 const { loader, require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 

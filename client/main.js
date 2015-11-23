@@ -6,7 +6,7 @@
 
 const { Cu } = require("chrome");
 const { Services } = require("devtools/sham/services");
-const { gDevTools } = require("resource://devtools/client/framework/gDevTools.jsm");
+const { gDevTools } = require("devtools/client/framework/gDevTools");
 
 const { defaultTools, defaultThemes } = require("devtools/client/definitions");
 
