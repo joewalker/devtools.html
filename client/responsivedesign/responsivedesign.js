@@ -22,8 +22,6 @@ var { TouchEventSimulator } = require("devtools/shared/touch/simulator");
 const { Task } = require("devtools/sham/task");
 var promise = require("promise");
 
-this.EXPORTED_SYMBOLS = ["ResponsiveUIManager"];
-
 const MIN_WIDTH = 50;
 const MIN_HEIGHT = 50;
 
@@ -1020,3 +1018,5 @@ ResponsiveUI.prototype = {
 XPCOMUtils.defineLazyGetter(ResponsiveUI.prototype, "strings", function () {
   return Services.strings.createBundle("chrome://devtools/locale/responsiveUI.properties");
 });
+
+exports.ResponsiveUIManager = this.ResponsiveUIManager;
