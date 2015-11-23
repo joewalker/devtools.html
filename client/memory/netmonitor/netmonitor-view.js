@@ -3341,7 +3341,7 @@ PerformanceStatisticsView.prototype = {
    * @param object
    *        An object containing all or some the following properties:
    *          - id: either "#primed-cache-chart" or "#empty-cache-chart"
-   *          - title/data/strings/totals/sorted: @see Chart.jsm for details
+   *          - title/data/strings/totals/sorted: @see Chart.js for details
    */
   _createChart: function({ id, title, data, strings, totals, sorted }) {
     let container = $(id);
@@ -3371,7 +3371,7 @@ PerformanceStatisticsView.prototype = {
 
   /**
    * Sanitizes the data source used for creating charts, to follow the
-   * data format spec defined in Chart.jsm.
+   * data format spec defined in Chart.js.
    *
    * @param array aItems
    *        A collection of request items used as the data source for the chart.

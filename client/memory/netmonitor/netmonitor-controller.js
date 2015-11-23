@@ -132,7 +132,7 @@ XPCOMUtils.defineConstant(this, "ACTIVITY_TYPE", ACTIVITY_TYPE);
 XPCOMUtils.defineConstant(this, "Editor", Editor);
 
 XPCOMUtils.defineLazyModuleGetter(this, "Chart",
-  "resource://devtools/client/shared/widgets/Chart.jsm");
+  "devtools/client/shared/widgets/Chart.js");
 
 XPCOMUtils.defineLazyModuleGetter(this, "Curl",
   "resource://devtools/client/shared/Curl.jsm");

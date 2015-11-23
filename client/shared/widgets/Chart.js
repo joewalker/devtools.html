@@ -22,8 +22,6 @@ const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 Cu.import("resource://devtools/shared/event-emitter.js");
 
-this.EXPORTED_SYMBOLS = ["Chart"];
-
 /**
  * Localization convenience methods.
  */
@@ -448,3 +446,5 @@ function delegate(emitter, events, node, args) {
     node.addEventListener(event, emitter.emit.bind(emitter, event, args));
   }
 }
+
+exports.Chart = Chart;
