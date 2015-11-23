@@ -30,8 +30,6 @@ loader.lazyGetter(this, "clipboardHelper", () => {
   return Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
 });
 
-loader.lazyImporter(this, "CommandUtils", "resource://devtools/client/shared/DeveloperToolbar.jsm");
-
 const LAYOUT_CHANGE_TIMER = 250;
 
 /**
@@ -1235,14 +1233,14 @@ InspectorPanel.prototype = {
    * Initiate gcli screenshot command on selected node
    */
   screenshotNode: function() {
-    CommandUtils.createRequisition(this._target, {
-      environment: CommandUtils.createEnvironment(this, '_target')
-    }).then(requisition => {
-      // Bug 1180314 -  CssSelector might contain white space so need to make sure it is
-      // passed to screenshot as a single parameter.  More work *might* be needed if
-      // CssSelector could contain escaped single- or double-quotes, backslashes, etc.
-      requisition.updateExec("screenshot --selector '" + this.selectionCssSelector + "'");
-    });
+//    CommandUtils.createRequisition(this._target, {
+//      environment: CommandUtils.createEnvironment(this, '_target')
+//    }).then(requisition => {
+//      // Bug 1180314 -  CssSelector might contain white space so need to make sure it is
+//      // passed to screenshot as a single parameter.  More work *might* be needed if
+//      // CssSelector could contain escaped single- or double-quotes, backslashes, etc.
+//      requisition.updateExec("screenshot --selector '" + this.selectionCssSelector + "'");
+//    });
   },
 
   /**

@@ -27,8 +27,6 @@ Cu.import("resource://devtools/client/scratchpad/scratchpad-manager.jsm");
 Cu.import("resource://devtools/client/shared/DOMHelpers.jsm");
 const { Task } = require("devtools/sham/task");
 
-loader.lazyImporter(this, "CommandUtils",
-  "resource://devtools/client/shared/DeveloperToolbar.jsm");
 loader.lazyGetter(this, "toolboxStrings", () => {
   const properties = "chrome://devtools/locale/toolbox.properties";
   const bundle = Services.strings.createBundle(properties);
@@ -893,29 +891,8 @@ Toolbox.prototype = {
 
     this.setToolboxButtonsVisibility();
 
-    // Old servers don't have a GCLI Actor, so just return
-    if (!this.target.hasActor("gcli")) {
-      return promise.resolve();
-    }
-
-    const options = {
-      environment: CommandUtils.createEnvironment(this, '_target')
-    };
-    return CommandUtils.createRequisition(this.target, options).then(requisition => {
-      this._requisition = requisition;
-
-      const spec = CommandUtils.getCommandbarSpec("devtools.toolbox.toolbarSpec");
-      return CommandUtils.createButtons(spec, this.target, this.doc,
-                                        requisition).then(buttons => {
-        let container = this.doc.getElementById("toolbox-buttons");
-        buttons.forEach(button=> {
-          if (button) {
-            container.appendChild(button);
-          }
-        });
-        this.setToolboxButtonsVisibility();
-      });
-    });
+    // No GCLI in this hack
+    return promise.resolve();
   },
 
   /**
