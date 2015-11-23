@@ -6,34 +6,11 @@
  * EventEmitter.
  */
 
-(function (factory) { // Module boilerplate
-  if (this.module && module.id.indexOf("event-emitter") >= 0) { // require
-    factory.call(this, require, exports, module);
-  } else { // require
-      const Cu = Components.utils;
-      this.isWorker = false;
-      this.promise = require("devtools/sham/promise").Promise;
-      factory.call(this, require, this, { exports: this });
-      this.EXPORTED_SYMBOLS = ["EventEmitter"];
-  }
-}).call(this, function (require, exports, module) {
-
 this.EventEmitter = function EventEmitter() {};
 module.exports = EventEmitter;
 
-const { Cu, components } = require("chrome");
-const Services = require("Services");
-const promise = require("promise");
-var loggingEnabled = true;
-
-if (!isWorker) {
-  loggingEnabled = Services.prefs.getBoolPref("devtools.dump.emit");
-  Services.prefs.addObserver("devtools.dump.emit", {
-    observe: () => {
-      loggingEnabled = Services.prefs.getBoolPref("devtools.dump.emit");
-    }
-  }, false);
-}
+const { Cu } = require("devtools/sham/chrome");
+const promise = require("devtools/sham/promise");
 
 /**
  * Decorate an object with event emitter functionality.
@@ -124,8 +101,6 @@ EventEmitter.prototype = {
    * be sent to listener functions.
    */
   emit: function EventEmitter_emit(aEvent) {
-    this.logEvent(aEvent, arguments);
-
     if (!this._eventEmitterListeners || !this._eventEmitterListeners.has(aEvent)) {
       return;
     }
@@ -154,63 +129,4 @@ EventEmitter.prototype = {
       }
     }
   },
-
-  logEvent: function(aEvent, args) {
-    if (!loggingEnabled) {
-      return;
-    }
-
-    let caller, func, path;
-    if (!isWorker) {
-      caller = components.stack.caller.caller;
-      func = caller.name;
-      let file = caller.filename;
-      if (file.includes(" -> ")) {
-        file = caller.filename.split(/ -> /)[1];
-      }
-      path = file + ":" + caller.lineNumber;
-    }
-
-    let argOut = "(";
-    if (args.length === 1) {
-      argOut += aEvent;
-    }
-
-    let out = "EMITTING: ";
-
-    // We need this try / catch to prevent any dead object errors.
-    try {
-      for (let i = 1; i < args.length; i++) {
-        if (i === 1) {
-          argOut = "(" + aEvent + ", ";
-        } else {
-          argOut += ", ";
-        }
-
-        let arg = args[i];
-        argOut += arg;
-
-        if (arg && arg.nodeName) {
-          argOut += " (" + arg.nodeName;
-          if (arg.id) {
-            argOut += "#" + arg.id;
-          }
-          if (arg.className) {
-            argOut += "." + arg.className;
-          }
-          argOut += ")";
-        }
-      }
-    } catch(e) {
-      // Object is dead so the toolbox is most likely shutting down,
-      // do nothing.
-    }
-
-    argOut += ")";
-    out += "emit" + argOut + " from " + func + "() -> " + path + "\n";
-
-    dump(out);
-  },
 };
-
-});
