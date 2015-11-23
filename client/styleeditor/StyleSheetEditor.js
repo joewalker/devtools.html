@@ -5,8 +5,6 @@
 
 "use strict";
 
-this.EXPORTED_SYMBOLS = ["StyleSheetEditor", "prettifyCSS"];
-
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
@@ -871,3 +869,6 @@ function findUnsharedBranches(origUri, uri) {
 function removeQuery(href) {
   return href.replace(/\?.*/, "");
 }
+
+exports.StyleSheetEditor = this.StyleSheetEditor;
+exports.prettifyCSS = this.prettifyCSS;
