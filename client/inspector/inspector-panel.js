@@ -4,30 +4,24 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const {Cc, Ci, Cu, Cr} = require("chrome");
-
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 const { Services } = require("devtools/sham/services");
 
-var promise = require("promise");
+var promise = require("devtools/sham/promise");
 var EventEmitter = require("devtools/shared/event-emitter");
-var clipboard = require("sdk/clipboard");
-var {HostType} = require("devtools/client/framework/toolbox").Toolbox;
+var clipboard = require("devtools/sham/clipboard");
+//var {HostType} = require("devtools/client/framework/toolbox").Toolbox;
 
-const CSS = require("CSS");
+lazyRequire(this, "MarkupView", () => require("devtools/client/markupview/markup-view").MarkupView);
+lazyRequire(this, "HTMLBreadcrumbs", () => require("devtools/client/inspector/breadcrumbs").HTMLBreadcrumbs);
+lazyRequire(this, "ToolSidebar", () => require("devtools/client/framework/sidebar").ToolSidebar);
+lazyRequire(this, "InspectorSearch", () => require("devtools/client/inspector/inspector-search").InspectorSearch);
 
-loader.lazyGetter(this, "MarkupView", () => require("devtools/client/markupview/markup-view").MarkupView);
-loader.lazyGetter(this, "HTMLBreadcrumbs", () => require("devtools/client/inspector/breadcrumbs").HTMLBreadcrumbs);
-loader.lazyGetter(this, "ToolSidebar", () => require("devtools/client/framework/sidebar").ToolSidebar);
-loader.lazyGetter(this, "InspectorSearch", () => require("devtools/client/inspector/inspector-search").InspectorSearch);
-
-loader.lazyGetter(this, "strings", () => {
+lazyRequire(this, "strings", () => {
   return Services.strings.createBundle("chrome://devtools/locale/inspector.properties");
 });
-loader.lazyGetter(this, "toolboxStrings", () => {
+lazyRequire(this, "toolboxStrings", () => {
   return Services.strings.createBundle("chrome://devtools/locale/toolbox.properties");
-});
-loader.lazyGetter(this, "clipboardHelper", () => {
-  return Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
 });
 
 const LAYOUT_CHANGE_TIMER = 250;
@@ -1021,8 +1015,12 @@ InspectorPanel.prototype = {
    * Update the pane toggle button visibility depending on the toolbox host type.
    */
   updatePaneToggleButton: function() {
-    this._paneToggleButton.setAttribute("hidden",
-      this._toolbox.hostType === HostType.SIDE);
+    /**
+     * XXX Not handling this for Mozlando demo for now, needing to pull
+     * in Toolbox
+     */
+    //this._paneToggleButton.setAttribute("hidden",
+    //  this._toolbox.hostType === HostType.SIDE);
   },
 
   /**
@@ -1172,11 +1170,11 @@ InspectorPanel.prototype = {
         break;
       case Ci.nsIDOMNode.COMMENT_NODE :
         this._getLongString(node.getNodeValue()).then(comment => {
-          clipboardHelper.copyString("<!--" + comment + "-->");
+          clipboard.copy("<!--" + comment + "-->");
         });
         break;
       case Ci.nsIDOMNode.DOCUMENT_TYPE_NODE :
-        clipboardHelper.copyString(node.doctypeString);
+        clipboard.copy(node.doctypeString);
         break;
     }
   },
@@ -1198,7 +1196,7 @@ InspectorPanel.prototype = {
    */
   _copyLongString: function(longStringActorPromise) {
     return this._getLongString(longStringActorPromise).then(string => {
-      clipboardHelper.copyString(string);
+      clipboard.copy(string);
     }).catch(Cu.reportError);
   },
 
@@ -1225,7 +1223,7 @@ InspectorPanel.prototype = {
     }
 
     this.selection.nodeFront.getUniqueSelector().then((selector) => {
-      clipboardHelper.copyString(selector);
+      clipboard.copy(selector);
     }).then(null, console.error);
   },
 
@@ -1388,7 +1386,7 @@ InspectorPanel.prototype = {
     // When the inspector menu was setup on click (see _setupNodeLinkMenu), we
     // already checked that resolveRelativeURL existed.
     this.inspector.resolveRelativeURL(link, this.selection.nodeFront).then(url => {
-      clipboardHelper.copyString(url);
+      clipboard.copy(url);
     }, console.error);
   },
 
