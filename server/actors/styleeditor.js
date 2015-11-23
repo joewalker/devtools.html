@@ -7,9 +7,9 @@
 var { components, Cc, Ci, Cu } = require("chrome");
 var Services = require("Services");
 
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
-Cu.import("resource://gre/modules/NetUtil.jsm");
-Cu.import("resource://gre/modules/FileUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { NetUtil } = require("devtools/sham/netutil.js");
+const { FileUtils } = require ("devtools/sham/fileutils.js");
 
 const promise = require("promise");
 const events = require("sdk/event/core");

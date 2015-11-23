@@ -9,9 +9,9 @@
 
 var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
 
-Cu.import("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 var { loader, require } = Cu.import("resource://devtools/shared/Loader.jsm");
-Cu.import("resource://gre/modules/Console.jsm");
+const { console } = require("devtools/sham/console.js");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 
 loader.lazyRequireGetter(this, "promise");

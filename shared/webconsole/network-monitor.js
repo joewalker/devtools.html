@@ -6,7 +6,7 @@
 
 const {Cc, Ci, Cu, Cr} = require("chrome");
 
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 
 loader.lazyRequireGetter(this, "NetworkHelper",
                          "devtools/shared/webconsole/network-helper");

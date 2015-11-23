@@ -210,7 +210,7 @@ function getFilePath(aName, aAllowMissing=false) {
   return path.slice(filePrePath.length);
 }
 
-Cu.import("resource://gre/modules/NetUtil.jsm");
+const { NetUtil } = require("devtools/sham/netutil.js");
 
 /**
  * Wrapper around do_get_file to prefix files with the name of current test to

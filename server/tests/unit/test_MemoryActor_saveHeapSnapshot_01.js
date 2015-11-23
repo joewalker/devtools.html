@@ -4,7 +4,7 @@
 // Test that we can tell the memory actor to take a heap snapshot over the RDP
 // and then create a HeapSnapshot instance from the resulting file.
 
-Cu.import("resource://gre/modules/osfile.jsm");
+const { OS } = require("devtools/sham/osfile.js");
 
 const run_test = makeMemoryActorTest(function* (client, memoryFront) {
   const snapshotFilePath = yield memoryFront.saveHeapSnapshot();

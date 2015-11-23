@@ -1,8 +1,8 @@
 const {Ci, Cc, Cu, Cr} = require("chrome");
-Cu.import("resource://gre/modules/osfile.jsm");
-const {Services} = Cu.import("resource://gre/modules/Services.jsm");
-const {FileUtils} = Cu.import("resource://gre/modules/FileUtils.jsm");
-const {NetUtil} = Cu.import("resource://gre/modules/NetUtil.jsm");
+const { OS } = require("devtools/sham/osfile.js");
+const {Services} = const { Services } = require("devtools/sham/services.js");
+const {FileUtils} = const { FileUtils } = require ("devtools/sham/fileutils.js");
+const {NetUtil} = const { NetUtil } = require("devtools/sham/netutil.js");
 const promise = require("promise");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const EventEmitter = require("devtools/shared/event-emitter");

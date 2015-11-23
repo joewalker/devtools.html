@@ -111,8 +111,8 @@ const ACTIVITY_TYPE = {
   DISABLE_CACHE: 4
 };
 
-Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 Cu.import("resource://devtools/client/shared/widgets/SideMenuWidget.jsm");
 Cu.import("resource://devtools/client/shared/widgets/VariablesView.jsm");
 Cu.import("resource://devtools/client/shared/widgets/VariablesViewController.jsm");

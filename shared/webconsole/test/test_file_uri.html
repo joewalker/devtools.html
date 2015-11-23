@@ -14,8 +14,8 @@
 <script class="testbody" type="text/javascript;version=1.8">
 SimpleTest.waitForExplicitFinish();
 
-Cu.import("resource://gre/modules/NetUtil.jsm");
-Cu.import("resource://gre/modules/FileUtils.jsm");
+const { NetUtil } = require("devtools/sham/netutil.js");
+const { FileUtils } = require ("devtools/sham/fileutils.js");
 
 let gState;
 let gTmpFile;

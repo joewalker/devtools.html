@@ -467,7 +467,7 @@ function getFilePath(aName, aAllowMissing=false, aUsePlatformPathSeparator=false
   return path;
 }
 
-Cu.import("resource://gre/modules/NetUtil.jsm");
+const { NetUtil } = require("devtools/sham/netutil.js");
 
 /**
  * Returns the full text contents of the given file.

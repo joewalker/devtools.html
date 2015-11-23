@@ -18,7 +18,7 @@ const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
-Cu.import("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 
 const PROPERTIES_URL = "chrome://devtools/locale/styleeditor.properties";
 

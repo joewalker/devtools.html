@@ -13,7 +13,7 @@ const { Task } = Cu.import("resource://gre/modules/Task.jsm", {});
 const promise = require("promise");
 const { on, forget } = require("devtools/client/projecteditor/lib/helpers/event");
 const { FileResource } = require("devtools/client/projecteditor/lib/stores/resource");
-const {Services} = Cu.import("resource://gre/modules/Services.jsm");
+const {Services} = const { Services } = require("devtools/sham/services.js");
 const {setTimeout, clearTimeout} = Cu.import("resource://gre/modules/Timer.jsm", {});
 
 const CHECK_LINKED_DIRECTORY_DELAY = 5000;

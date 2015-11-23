@@ -13,7 +13,7 @@ var TiltUtils = require("devtools/client/tilt/tilt-utils");
 var EventEmitter = require("devtools/shared/event-emitter");
 var Telemetry = require("devtools/client/shared/telemetry");
 
-Cu.import("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 
 // Tilt notifications dispatched through the nsIObserverService.
 const TILT_NOTIFICATIONS = {

@@ -2,7 +2,7 @@ var Cu = Components.utils;
 var Cc = Components.classes;
 var Ci = Components.interfaces;
 
-Cu.import("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 
 // Always log packets when running tests.
 Services.prefs.setBoolPref("devtools.debugger.log", true);
@@ -10,7 +10,7 @@ SimpleTest.registerCleanupFunction(function() {
   Services.prefs.clearUserPref("devtools.debugger.log");
 });
 
-Cu.import("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 var { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 var { DebuggerClient } = require("devtools/shared/client/main");
 var { DebuggerServer } = require("devtools/server/main");

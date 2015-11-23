@@ -5,8 +5,8 @@
 
 var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
 
-Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 Cu.import("resource://devtools/client/framework/gDevTools.jsm");
 

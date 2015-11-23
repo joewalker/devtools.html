@@ -4,7 +4,7 @@
 // Test that we can properly stream heap snapshot files over the RDP as bulk
 // data.
 
-Cu.import("resource://gre/modules/osfile.jsm");
+const { OS } = require("devtools/sham/osfile.js");
 
 const run_test = makeMemoryActorTest(function* (client, memoryFront) {
   const snapshotFilePath = yield memoryFront.saveHeapSnapshot({

@@ -25,8 +25,8 @@ loader.lazyRequireGetter(this, "overlays",
 loader.lazyRequireGetter(this, "StyleInspectorMenu",
   "devtools/client/styleinspector/style-inspector-menu");
 
-Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 
 XPCOMUtils.defineLazyModuleGetter(this, "PluralForm",
                                   "resource://gre/modules/PluralForm.jsm");

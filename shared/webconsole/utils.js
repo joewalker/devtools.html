@@ -9,7 +9,7 @@
 const {Cc, Ci, Cu, components} = require("chrome");
 const {isWindowIncluded} = require("devtools/shared/layout/utils");
 
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 
 loader.lazyImporter(this, "Services", "resource://gre/modules/Services.jsm");
 

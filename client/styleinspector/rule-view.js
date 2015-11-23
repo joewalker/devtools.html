@@ -42,7 +42,7 @@ loader.lazyRequireGetter(this, "StyleInspectorMenu",
   "devtools/client/styleinspector/style-inspector-menu");
 loader.lazyImporter(this, "Services", "resource://gre/modules/Services.jsm");
 
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 
 const HTML_NS = "http://www.w3.org/1999/xhtml";
 const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";

@@ -5,9 +5,9 @@
 
 var {utils: Cu, classes: Cc, interfaces: Ci} = Components;
 
-Cu.import('resource://gre/modules/Services.jsm');
-Cu.import("resource://gre/modules/FileUtils.jsm");
-Cu.import("resource://gre/modules/Task.jsm");
+const { Services } = require("devtools/sham/services.js");
+const { FileUtils } = require ("devtools/sham/fileutils.js");
+const { Task } = require("devtools/sham/task.js");
 
 const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const {gDevTools} = Cu.import("resource://devtools/client/framework/gDevTools.jsm", {});

@@ -4,7 +4,7 @@
 
 const {Cu, Ci} = require("chrome");
 const {Devices} = Cu.import("resource://devtools/shared/apps/Devices.jsm");
-const {Services} = Cu.import("resource://gre/modules/Services.jsm");
+const {Services} = const { Services } = require("devtools/sham/services.js");
 const {Connection} = require("devtools/shared/client/connection-manager");
 const {DebuggerServer} = require("devtools/server/main");
 const {Simulators} = require("devtools/client/webide/modules/simulators");

@@ -4,7 +4,7 @@
 
 var Cu = Components.utils;
 Cu.import("resource://devtools/client/framework/gDevTools.jsm");
-const {Services} = Cu.import("resource://gre/modules/Services.jsm");
+const {Services} = const { Services } = require("devtools/sham/services.js");
 const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const {AppManager} = require("devtools/client/webide/modules/app-manager");
 const {ProjectBuilding} = require("devtools/client/webide/modules/build");

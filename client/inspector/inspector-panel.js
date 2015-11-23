@@ -6,7 +6,7 @@
 
 const {Cc, Ci, Cu, Cr} = require("chrome");
 
-Cu.import("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 
 var promise = require("promise");
 var EventEmitter = require("devtools/shared/event-emitter");

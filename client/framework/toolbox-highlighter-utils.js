@@ -6,7 +6,7 @@
 
 const {Cc, Ci, Cu} = require("chrome");
 const promise = require("promise");
-Cu.import("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
 /**

@@ -8,9 +8,9 @@ const {Arg, method, RetVal} = protocol;
 const {DebuggerServer} = require("devtools/server/main");
 const promise = require("promise");
 
-Cu.import("resource://gre/modules/FileUtils.jsm");
-Cu.import("resource://gre/modules/NetUtil.jsm");
-Cu.import("resource://gre/modules/Services.jsm");
+const { FileUtils } = require ("devtools/sham/fileutils.js");
+const { NetUtil } = require("devtools/sham/netutil.js");
+const { Services } = require("devtools/sham/services.js");
 
 var defaultSettings = {};
 var settingsFile;

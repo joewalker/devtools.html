@@ -4,7 +4,7 @@
 
 const Ci = Components.interfaces;
 const Cu = Components.utils;
-Cu.import("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 
 this.EXPORTED_SYMBOLS = ["DOMHelpers"];
 

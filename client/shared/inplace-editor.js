@@ -37,8 +37,8 @@ const MAX_POPUP_ENTRIES = 10;
 const FOCUS_FORWARD = Ci.nsIFocusManager.MOVEFOCUS_FORWARD;
 const FOCUS_BACKWARD = Ci.nsIFocusManager.MOVEFOCUS_BACKWARD;
 
-Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 Cu.import("resource://devtools/shared/event-emitter.js");
 
 /**

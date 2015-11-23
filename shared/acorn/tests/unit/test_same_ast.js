@@ -6,7 +6,7 @@
  */
 
 const acorn = require("acorn/acorn");
-Cu.import("resource://gre/modules/reflect.jsm");
+const { Reflect } = require("devtools/sham/reflect.js");
 
 const testCode = "" + function main () {
   function makeAcc(n) {

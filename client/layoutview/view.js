@@ -8,9 +8,9 @@
 
 var {utils: Cu, interfaces: Ci, classes: Cc} = Components;
 
-Cu.import("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
-Cu.import("resource://gre/modules/Console.jsm");
+const { console } = require("devtools/sham/console.js");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 
 const {InplaceEditor, editableItem} = require("devtools/client/shared/inplace-editor");

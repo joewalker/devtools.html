@@ -8,8 +8,8 @@
 const {Cc, Ci, Cu} = require("chrome");
 const {getRect} = require("devtools/shared/layout/utils");
 
-Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 
 const STACK_THICKNESS = 15;
 

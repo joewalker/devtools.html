@@ -7,7 +7,7 @@
 
 const { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
 
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
 
 XPCOMUtils.defineLazyModuleGetter(this, "EventEmitter",

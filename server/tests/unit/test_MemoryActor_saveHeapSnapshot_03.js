@@ -4,7 +4,7 @@
 // Test that we can save full runtime heap snapshots when attached to the
 // ChromeActor or a ChildProcessActor.
 
-Cu.import("resource://gre/modules/osfile.jsm");
+const { OS } = require("devtools/sham/osfile.js");
 
 const run_test = makeFullRuntimeMemoryActorTest(function* (client, memoryFront) {
   const snapshotFilePath = yield memoryFront.saveHeapSnapshot();

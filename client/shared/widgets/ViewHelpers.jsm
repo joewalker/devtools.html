@@ -13,9 +13,9 @@ const PANE_APPEARANCE_DELAY = 50;
 const PAGE_SIZE_ITEM_COUNT_RATIO = 5;
 const WIDGET_FOCUSABLE_NODES = new Set(["vbox", "hbox"]);
 
-Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
-Cu.import("resource://gre/modules/Timer.jsm");
+const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+// Cu.import("resource://gre/modules/Timer.jsm");
 const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 Cu.import("resource://devtools/shared/event-emitter.js");

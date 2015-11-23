@@ -3,11 +3,8 @@
    http://creativecommons.org/publicdomain/zero/1.0/ */
 /* Bug 653427 */
 
-var tempScope = {};
-Cu.import("resource://gre/modules/NetUtil.jsm", tempScope);
-Cu.import("resource://gre/modules/FileUtils.jsm", tempScope);
-var NetUtil = tempScope.NetUtil;
-var FileUtils = tempScope.FileUtils;
+const { NetUtil } = require("devtools/sham/netutil.js");
+const { FileUtils } = require ("devtools/sham/fileutils.js");
 
 // only finish() when correct number of tests are done
 const expected = 9;

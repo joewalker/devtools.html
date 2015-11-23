@@ -34,8 +34,8 @@ const {Task} = require("resource://gre/modules/Task.jsm");
 const {scrollIntoViewIfNeeded} = require("devtools/shared/layout/utils");
 
 Cu.import("resource://devtools/shared/gcli/Templater.jsm");
-Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 
 loader.lazyGetter(this, "DOMParser", function() {
   return Cc["@mozilla.org/xmlextras/domparser;1"].createInstance(Ci.nsIDOMParser);

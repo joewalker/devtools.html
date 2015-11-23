@@ -11,7 +11,7 @@ const {LongStringActor} = require("devtools/server/actors/string");
 const {DebuggerServer} = require("devtools/server/main");
 const {getSystemInfo, getSetting} = require("devtools/shared/system");
 
-Cu.import("resource://gre/modules/PermissionsTable.jsm")
+const { PermissionsTable } = require("devtools/sham/permissionstable.js");
 
 var DeviceActor = exports.DeviceActor = protocol.ActorClass({
   typeName: "device",

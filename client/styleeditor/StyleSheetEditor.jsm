@@ -17,11 +17,11 @@ const promise = require("promise");
 const {CssLogic} = require("devtools/shared/styleinspector/css-logic");
 const {console} = require("resource://gre/modules/Console.jsm");
 
-Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("resource://gre/modules/FileUtils.jsm");
-Cu.import("resource://gre/modules/NetUtil.jsm");
-Cu.import("resource://gre/modules/osfile.jsm");
-Cu.import("resource://gre/modules/Task.jsm");
+const { Services } = require("devtools/sham/services.js");
+const { FileUtils } = require ("devtools/sham/fileutils.js");
+const { NetUtil } = require("devtools/sham/netutil.js");
+const { OS } = require("devtools/sham/osfile.js");
+const { Task } = require("devtools/sham/task.js");
 Cu.import("resource://devtools/shared/event-emitter.js");
 Cu.import("resource://devtools/client/styleeditor/StyleEditorUtil.jsm");
 

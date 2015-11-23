@@ -8,8 +8,8 @@ var Cu = Components.utils;
 const { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const { DebuggerClient } = require("devtools/shared/client/main");
 const { DebuggerServer } = require("devtools/server/main");
-const { FileUtils } = Cu.import("resource://gre/modules/FileUtils.jsm");
-const { Services } = Cu.import("resource://gre/modules/Services.jsm");
+const { FileUtils } = const { FileUtils } = require ("devtools/sham/fileutils.js");
+const { Services } = const { Services } = require("devtools/sham/services.js");
 
 var gClient, gActor;
 

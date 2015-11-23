@@ -19,8 +19,8 @@ const Editor = require("devtools/client/sourceeditor/editor");
 
 loader.lazyRequireGetter(this, "beautify", "devtools/shared/jsbeautify/beautify");
 
-Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { Services } = require("devtools/sham/services.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 
 XPCOMUtils.defineLazyModuleGetter(this, "setNamedTimeout",
   "resource://devtools/client/shared/widgets/ViewHelpers.jsm");

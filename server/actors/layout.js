@@ -25,7 +25,7 @@
  */
 
 const {Ci, Cu} = require("chrome");
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 const protocol = require("devtools/server/protocol");
 const {method, Arg, RetVal, types} = protocol;
 const events = require("sdk/event/core");

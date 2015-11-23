@@ -10,7 +10,7 @@
 
 const {Ci, Cu} = require("chrome");
 const Services = require("Services");
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
 const protocol = require("devtools/server/protocol");
 const {method, Arg, RetVal} = protocol;
 const events = require("sdk/event/core");

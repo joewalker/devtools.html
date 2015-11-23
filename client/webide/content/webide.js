@@ -7,7 +7,7 @@ var Cu = Components.utils;
 var Ci = Components.interfaces;
 
 Cu.import("resource://devtools/client/framework/gDevTools.jsm");
-Cu.import("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 
 const {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
 const {Toolbox} = require("devtools/client/framework/toolbox");

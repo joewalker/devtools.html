@@ -4,7 +4,7 @@
 
 const {Cu, CC} = require("chrome");
 const promise = require("promise");
-const {Services} = Cu.import("resource://gre/modules/Services.jsm");
+const {Services} = const { Services } = require("devtools/sham/services.js");
 
 const XMLHttpRequest = CC("@mozilla.org/xmlextras/xmlhttprequest;1");
 

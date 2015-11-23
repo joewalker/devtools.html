@@ -7,7 +7,7 @@
 
 var { interfaces: Ci, utils: Cu } = Components;
 
-Cu.import("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 
 var systemAppOrigin = (function() {
   let systemOrigin = "_";

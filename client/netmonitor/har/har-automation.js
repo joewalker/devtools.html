@@ -8,7 +8,7 @@ const { Class } = require("sdk/core/heritage");
 const { defer, resolve } = require("promise");
 const { Services } = Cu.import("resource://gre/modules/Services.jsm", {});
 
-Cu.import("resource://gre/modules/Task.jsm");
+const { Task } = require("devtools/sham/task.js");
 
 loader.lazyRequireGetter(this, "HarCollector", "devtools/client/netmonitor/har/har-collector", true);
 loader.lazyRequireGetter(this, "HarExporter", "devtools/client/netmonitor/har/har-exporter", true);

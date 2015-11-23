@@ -13,7 +13,7 @@ var TiltVisualizerStyle = require("devtools/client/tilt/tilt-visualizer-style");
 var {EPSILON, TiltMath, vec3, mat4, quat4} = require("devtools/client/tilt/tilt-math");
 var {TargetFactory} = require("devtools/client/framework/target");
 
-Cu.import("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 Cu.import("resource://devtools/client/framework/gDevTools.jsm");
 
 const ELEMENT_MIN_SIZE = 4;

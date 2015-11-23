@@ -9,7 +9,7 @@
 const {Cc, Cu, Ci} = require("chrome");
 const promise = require("promise");
 const {Tools} = require("devtools/client/main");
-Cu.import("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 const {PREF_ORIG_SOURCES} = require("devtools/client/styleeditor/utils");
 
 loader.lazyGetter(this, "gDevTools", () =>

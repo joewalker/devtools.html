@@ -9,7 +9,7 @@ function notify() {
 }
 
 function startup(aParams, aReason) {
-  Cu.import("resource://gre/modules/Services.jsm");
+  const { Services } = require("devtools/sham/services.js");
   let res = Services.io.getProtocolHandler("resource")
                        .QueryInterface(Ci.nsIResProtocolHandler);
   res.setSubstitution("browser_dbg_addon4", aParams.resourceURI);

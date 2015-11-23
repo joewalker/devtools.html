@@ -7,7 +7,7 @@ var {classes: Cc, interfaces: Ci, utils: Cu} = Components;
 
 const XHTML_NS = "http://www.w3.org/1999/xhtml";
 
-Cu.import("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 const {Task} = Cu.import("resource://gre/modules/Task.jsm", {});
 
 // This gives logging to stdout for tests

@@ -17,7 +17,7 @@
 const {Cc, Ci, Cu} = require("chrome");
 loader.lazyRequireGetter(this, "CSS", "CSS");
 const promise = require("promise");
-Cu.import("resource://gre/modules/Task.jsm", this);
+const { Task } = require("devtools/sham/task.js");
 loader.lazyGetter(this, "DOMUtils", () => {
   return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
 });

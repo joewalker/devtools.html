@@ -14,7 +14,7 @@ const Cu = Components.utils;
 const SCRATCHPAD_WINDOW_URL = "chrome://devtools/content/scratchpad/scratchpad.xul";
 const SCRATCHPAD_WINDOW_FEATURES = "chrome,titlebar,toolbar,centerscreen,resizable,dialog=no";
 
-Cu.import("resource://gre/modules/Services.jsm");
+const { Services } = require("devtools/sham/services.js");
 
 /**
  * The ScratchpadManager object opens new Scratchpad windows and manages the state

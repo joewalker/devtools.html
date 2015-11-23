@@ -18,7 +18,7 @@ window.onload = function() {
   var Cc = Components.classes;
   var Ci = Components.interfaces;
 
-  Cu.import("resource://gre/modules/Services.jsm");
+  const { Services } = require("devtools/sham/services.js");
 
   // Always log packets when running tests.
   Services.prefs.setBoolPref("devtools.debugger.log", true);

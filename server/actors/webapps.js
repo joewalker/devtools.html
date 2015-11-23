@@ -6,11 +6,11 @@
 
 var {Cu, Cc, Ci} = require("chrome");
 
-Cu.import("resource://gre/modules/NetUtil.jsm");
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
-Cu.import("resource://gre/modules/osfile.jsm");
-Cu.import("resource://gre/modules/FileUtils.jsm");
-Cu.import("resource://gre/modules/UserCustomizations.jsm");
+const { NetUtil } = require("devtools/sham/netutil.js");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils.js");
+const { OS } = require("devtools/sham/osfile.js");
+const { FileUtils } = require ("devtools/sham/fileutils.js");
+const { UserCustomizations } = require("devtools/sham/usercustomizations.js");
 
 var promise = require("promise");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
@@ -211,7 +211,7 @@ function WebappsActor(aConnection) {
 
   Cu.import("resource://gre/modules/Webapps.jsm");
   Cu.import("resource://gre/modules/AppsUtils.jsm");
-  Cu.import("resource://gre/modules/FileUtils.jsm");
+  const { FileUtils } = require ("devtools/sham/fileutils.js");
   Cu.import("resource://gre/modules/MessageBroadcaster.jsm");
 
   this.appsChild = {};

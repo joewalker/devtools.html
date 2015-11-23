@@ -22,8 +22,8 @@ const {
 } = require("devtools/client/shared/widgets/Tooltip");
 const EventEmitter = require("devtools/shared/event-emitter");
 const promise = require("promise");
-Cu.import("resource://gre/modules/Task.jsm");
-Cu.import("resource://gre/modules/Services.jsm");
+const { Task } = require("devtools/sham/task.js");
+const { Services } = require("devtools/sham/services.js");
 
 const PREF_IMAGE_TOOLTIP_SIZE = "devtools.inspector.imagePreviewTooltipSize";
 
