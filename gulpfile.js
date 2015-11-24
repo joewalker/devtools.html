@@ -1,8 +1,13 @@
+// Lets us use babel in tests
+require("babel-core/register");
+
 var fs = require("fs");
 var path = require("path");
 var gulp = require("gulp");
 var gutil = require("gulp-util");
 var webpack = require("webpack");
+var mocha = require("gulp-mocha");
+
 var WEBPACK_CONFIG_NAME = "webpack.config.js";
 var PREFS_SRC_FILE = path.join(__dirname, "client", "preferences", "devtools.js");
 var PREFS_OUTPUT_FILE = path.join(__dirname, "build", "preferences.json");
@@ -61,7 +66,7 @@ gulp.task("watch", function() {
 /**
  * Crudely parses `client/preferences/devtools.js` and generates
  * a JSON representation of these prefs in `build/prefs.json`
- * For preprocessing directives, it'll just use the last form called in the file.
+ * For preprocessing directives, it"ll just use the last form called in the file.
  */
 gulp.task("build-prefs", function (callback) {
   var lines = fs.readFileSync(PREFS_SRC_FILE, "utf8").split("\n");
@@ -71,14 +76,16 @@ gulp.task("build-prefs", function (callback) {
       return prefs;
     }
 
-    var prefNames = /^pref\(["'](.*)["'],\s(.*)\)/.exec(line);
+    var prefNames = /^\s*pref\(['"]([\w\.]*)['"],\s(.*)\);/.exec(line);
     if (!prefNames) {
       return prefs;
     }
 
     var currentBranch = prefs;
     var prefName = prefNames[1];
-    var value = prefNames[2];
+    console.log(prefName, prefNames[2]);
+    var value = eval(prefNames[2]);
+
     for (var branch of prefName.split(".")) { 
       currentBranch = (currentBranch[branch] = currentBranch[branch] || Object.create(null));
     }
@@ -90,6 +97,14 @@ gulp.task("build-prefs", function (callback) {
                          typeof value === "number" ? 64 : 0;
     return prefs;
   }, Object.create(null)), null, 2), callback);
+});
+
+gulp.task("build-test", function (callback) {
+  var webpackConfig = path.join(__dirname, "test", WEBPACK_CONFIG_NAME);
+  webpack(require(webpackConfig), function (err, stats) {
+    gutil.log("[webpack]", stats.toString({}));
+    callback();
+  });
 });
 
 gulp.task("default", ["build"]);

@@ -3,808 +3,590 @@
     "devedition": {
       "promo": {
         "shown": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "url": {
-          "value": "\"https://www.mozilla.org/firefox/developer/?utm_source=firefox-dev-tools&utm_medium=firefox-browser&utm_content=betadoorhanger\"",
+          "value": "https://www.mozilla.org/firefox/developer/?utm_source=firefox-dev-tools&utm_medium=firefox-browser&utm_content=betadoorhanger",
           "type": 32
         },
         "enabled": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         }
       }
     },
     "errorconsole": {
       "enabled": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       }
     },
     "toolbar": {
       "enabled": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "visible": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       }
     },
     "webide": {
       "enabled": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       }
     },
     "toolbox": {
       "footer": {
         "height": {
-          "value": "250",
-          "type": 32
+          "value": 250,
+          "type": 64
         }
       },
       "sidebar": {
         "width": {
-          "value": "500",
-          "type": 32
+          "value": 500,
+          "type": 64
         }
       },
       "host": {
-        "value": "\"bottom\"",
+        "value": "bottom",
         "type": 32
       },
       "previousHost": {
-        "value": "\"side\"",
+        "value": "side",
         "type": 32
       },
       "selectedTool": {
-        "value": "\"webconsole\"",
+        "value": "webconsole",
         "type": 32
       },
-      "toolbarSpec\", '[\"splitconsole\", \"paintflashing toggle\",\"tilt toggle\",\"scratchpad\",\"resize toggle\",\"eyedropper\",\"screenshot --fullpage\", \"rulers": {
-        "value": "\"measure\"]'",
+      "toolbarSpec": {
+        "value": "[\"splitconsole\", \"paintflashing toggle\",\"tilt toggle\",\"scratchpad\",\"resize toggle\",\"eyedropper\",\"screenshot --fullpage\", \"rulers\", \"measure\"]",
         "type": 32
       },
       "sideEnabled": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "zoomValue": {
-        "value": "\"1\"",
+        "value": "1",
         "type": 32
       },
       "splitconsoleEnabled": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       },
       "splitconsoleHeight": {
-        "value": "100",
-        "type": 32
-      }
-    },
-    "command-button-pick": {
-      "enabled": {
-        "value": "true",
-        "type": 32
-      }
-    },
-    "command-button-frames": {
-      "enabled": {
-        "value": "true",
-        "type": 32
-      }
-    },
-    "command-button-splitconsole": {
-      "enabled": {
-        "value": "true",
-        "type": 32
-      }
-    },
-    "command-button-paintflashing": {
-      "enabled": {
-        "value": "false",
-        "type": 32
-      }
-    },
-    "command-button-tilt": {
-      "enabled": {
-        "value": "false",
-        "type": 32
-      }
-    },
-    "command-button-scratchpad": {
-      "enabled": {
-        "value": "false",
-        "type": 32
-      }
-    },
-    "command-button-responsive": {
-      "enabled": {
-        "value": "true",
-        "type": 32
-      }
-    },
-    "command-button-eyedropper": {
-      "enabled": {
-        "value": "false",
-        "type": 32
-      }
-    },
-    "command-button-screenshot": {
-      "enabled": {
-        "value": "false",
-        "type": 32
-      }
-    },
-    "command-button-rulers": {
-      "enabled": {
-        "value": "false",
-        "type": 32
-      }
-    },
-    "command-button-measure": {
-      "enabled": {
-        "value": "false",
-        "type": 32
+        "value": 100,
+        "type": 64
       }
     },
     "inspector": {
       "enabled": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "activeSidebar": {
-        "value": "\"ruleview\"",
+        "value": "ruleview",
         "type": 32
       },
       "remote": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       },
       "show_pseudo_elements": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       },
       "imagePreviewTooltipSize": {
-        "value": "300",
-        "type": 32
+        "value": 300,
+        "type": 64
       },
       "showUserAgentStyles": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       },
       "showAllAnonymousContent": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       },
       "mdnDocsTooltip": {
         "enabled": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         }
       }
     },
     "defaultColorUnit": {
-      "value": "\"authored\"",
+      "value": "authored",
       "type": 32
-    },
-    "responsiveUI": {
-      "no-reload-notification": {
-        "value": "false",
-        "type": 32
-      }
     },
     "debugger": {
       "enabled": {
-        "value": "true",
-        "type": 32
-      },
-      "chrome-debugging-host": {
-        "value": "\"localhost\"",
-        "type": 32
-      },
-      "chrome-debugging-port": {
-        "value": "6080",
-        "type": 32
-      },
-      "remote-host": {
-        "value": "\"localhost\"",
-        "type": 32
-      },
-      "remote-timeout": {
-        "value": "20000",
-        "type": 32
-      },
-      "pause-on-exceptions": {
-        "value": "false",
-        "type": 32
-      },
-      "ignore-caught-exceptions": {
-        "value": "true",
-        "type": 32
-      },
-      "source-maps-enabled": {
-        "value": "true",
-        "type": 32
-      },
-      "pretty-print-enabled": {
-        "value": "true",
-        "type": 32
-      },
-      "auto-pretty-print": {
-        "value": "false",
-        "type": 32
-      },
-      "auto-black-box": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "workers": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       },
       "promise": {
-        "value": "false",
-        "type": 32
-      },
-      "ui": {
-        "panes-workers-and-sources-width": {
-          "value": "200",
-          "type": 32
-        },
-        "panes-instruments-width": {
-          "value": "300",
-          "type": 32
-        },
-        "panes-visible-on-startup": {
-          "value": "false",
-          "type": 32
-        },
-        "variables-sorting-enabled": {
-          "value": "true",
-          "type": 32
-        },
-        "variables-only-enum-visible": {
-          "value": "false",
-          "type": 32
-        },
-        "variables-searchbox-visible": {
-          "value": "false",
-          "type": 32
-        }
+        "value": false,
+        "type": 128
       }
     },
     "memory": {
       "enabled": {
-        "value": "false",
-        "type": 32
-      },
-      "custom-breakdowns": {
-        "value": "\"{}\"",
-        "type": 32
+        "value": false,
+        "type": 128
       }
     },
     "performance": {
       "enabled": {
-        "value": "true",
-        "type": 32
-      },
-      "memory": {
-        "sample-probability": {
-          "value": "\"0.05\"",
-          "type": 32
-        },
-        "max-log-length": {
-          "value": "125000",
-          "type": 32
-        }
-      },
-      "profiler": {
-        "buffer-size": {
-          "value": "10000000",
-          "type": 32
-        },
-        "sample-frequency-khz": {
-          "value": "1",
-          "type": 32
-        }
+        "value": true,
+        "type": 128
       },
       "ui": {
-        "invert-call-tree": {
-          "value": "true",
-          "type": 32
-        },
-        "invert-flame-graph": {
-          "value": "false",
-          "type": 32
-        },
-        "flatten-tree-recursion": {
-          "value": "true",
-          "type": 32
-        },
-        "show-platform-data": {
-          "value": "false",
-          "type": 32
-        },
-        "show-idle-blocks": {
-          "value": "true",
-          "type": 32
-        },
-        "enable-memory": {
-          "value": "false",
-          "type": 32
-        },
-        "enable-allocations": {
-          "value": "false",
-          "type": 32
-        },
-        "enable-framerate": {
-          "value": "true",
-          "type": 32
-        },
-        "enable-jit-optimizations": {
-          "value": "false",
-          "type": 32
-        },
-        "enable-memory-flame": {
-          "value": "false",
-          "type": 32
-        },
         "experimental": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         }
       }
     },
     "cache": {
       "disabled": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       }
     },
     "serviceWorkers": {
       "testing": {
         "enabled": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         }
       }
     },
     "netmonitor": {
       "enabled": {
-        "value": "true",
-        "type": 32
-      },
-      "panes-network-details-width": {
-        "value": "550",
-        "type": 32
-      },
-      "panes-network-details-height": {
-        "value": "450",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "statistics": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "filters": {
-        "value": "\"[\\\"all\\\"]\"",
+        "value": "[\"all\"]",
         "type": 32
       },
       "har": {
         "defaultLogDir": {
-          "value": "\"\"",
+          "value": "",
           "type": 32
         },
         "defaultFileName": {
-          "value": "\"Archive %y-%m-%d %H-%M-%S\"",
+          "value": "Archive %y-%m-%d %H-%M-%S",
           "type": 32
         },
         "jsonp": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "jsonpCallback": {
-          "value": "\"\"",
+          "value": "",
           "type": 32
         },
         "includeResponseBodies": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "compress": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "forceExport": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "pageLoadedTimeout": {
-          "value": "1500",
-          "type": 32
+          "value": 1500,
+          "type": 64
         },
         "enableAutoExportToFile": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         }
       }
     },
     "tilt": {
       "enabled": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "intro_transition": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "outro_transition": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       }
     },
     "scratchpad": {
       "recentFilesMax": {
-        "value": "10",
-        "type": 32
+        "value": 10,
+        "type": 64
       },
       "lineNumbers": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "wrapText": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       },
       "showTrailingSpace": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       },
       "editorFontSize": {
-        "value": "12",
-        "type": 32
+        "value": 12,
+        "type": 64
       },
       "enableAutocompletion": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       }
     },
     "storage": {
       "enabled": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       }
     },
     "styleeditor": {
       "enabled": {
-        "value": "true",
-        "type": 32
-      },
-      "source-maps-enabled": {
-        "value": "true",
-        "type": 32
-      },
-      "autocompletion-enabled": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "showMediaSidebar": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "mediaSidebarWidth": {
-        "value": "238",
-        "type": 32
+        "value": 238,
+        "type": 64
       },
       "navSidebarWidth": {
-        "value": "245",
-        "type": 32
+        "value": 245,
+        "type": 64
       },
       "transitions": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       }
     },
     "shadereditor": {
       "enabled": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       }
     },
     "canvasdebugger": {
       "enabled": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       }
     },
     "webaudioeditor": {
       "enabled": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       },
       "inspectorWidth": {
-        "value": "300",
-        "type": 32
+        "value": 300,
+        "type": 64
       }
     },
     "webconsole": {
       "filter": {
         "network": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "networkinfo": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "netwarn": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "netxhr": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "csserror": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "cssparser": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "csslog": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "exception": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "jswarn": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "jslog": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "error": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "warn": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "info": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "log": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "secerror": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "secwarn": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "serviceworkers": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "sharedworkers": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "windowlessworkers": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "servererror": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "serverwarn": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "serverinfo": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "serverlog": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         }
       },
       "fontSize": {
-        "value": "0",
-        "type": 32
+        "value": 0,
+        "type": 64
       },
       "inputHistoryCount": {
-        "value": "50",
-        "type": 32
+        "value": 50,
+        "type": 64
       },
       "persistlog": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       },
       "timestampMessages": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       }
     },
     "browserconsole": {
       "filter": {
         "network": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "networkinfo": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "netwarn": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "netxhr": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "csserror": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "cssparser": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "csslog": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "exception": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "jswarn": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "jslog": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "error": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "warn": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "info": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "log": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "secerror": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "secwarn": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "serviceworkers": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "sharedworkers": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "windowlessworkers": {
-          "value": "true",
-          "type": 32
+          "value": true,
+          "type": 128
         },
         "servererror": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "serverwarn": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "serverinfo": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         },
         "serverlog": {
-          "value": "false",
-          "type": 32
+          "value": false,
+          "type": 128
         }
       }
     },
     "hud": {
       "loglimit": {
         "network": {
-          "value": "1000",
-          "type": 32
+          "value": 1000,
+          "type": 64
         },
         "cssparser": {
-          "value": "1000",
-          "type": 32
+          "value": 1000,
+          "type": 64
         },
         "exception": {
-          "value": "1000",
-          "type": 32
+          "value": 1000,
+          "type": 64
         },
         "console": {
-          "value": "1000",
-          "type": 32
+          "value": 1000,
+          "type": 64
         }
       }
     },
     "eyedropper": {
       "zoom": {
-        "value": "6",
-        "type": 32
+        "value": 6,
+        "type": 64
       }
     },
     "editor": {
       "tabsize": {
-        "value": "2",
-        "type": 32
+        "value": 2,
+        "type": 64
       },
       "expandtab": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "keymap": {
-        "value": "\"default\"",
+        "value": "default",
         "type": 32
       },
       "autoclosebrackets": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "detectindentation": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "enableCodeFolding": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       },
       "autocomplete": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       }
     },
     "fontinspector": {
       "enabled": {
-        "value": "true",
-        "type": 32
+        "value": true,
+        "type": 128
       }
     },
     "telemetry": {
       "tools": {
         "opened": {
           "version": {
-            "value": "\"{}\"",
+            "value": "{}",
             "type": 32
           }
         }
@@ -812,8 +594,8 @@
     },
     "jsonview": {
       "enabled": {
-        "value": "false",
-        "type": 32
+        "value": false,
+        "type": 128
       }
     }
   }
