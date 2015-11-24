@@ -13,15 +13,14 @@ var PREFS_SRC_FILE = path.join(__dirname, "client", "preferences", "devtools.js"
 var PREFS_OUTPUT_FILE = path.join(__dirname, "build", "preferences.json");
 
 /**
- * Builds a tool"s webpack via `toolName`, mapping
- * to `client/${toolName}/webpack.config.js`, resolving
- * the returned promise on completion.
+ * Builds a webpack dir via `dirPath`, mapping to
+ * `${dirPath}/webpack.config.js`, resolving the returned promise on completion.
  *
  * @param {String} toolName
  * @return {Promise}
  */
-function buildTool (toolName) {
-  var toolConfig = path.join(__dirname, "client", toolName, WEBPACK_CONFIG_NAME);
+function buildDir(dirPath) {
+  var toolConfig = path.join(dirPath, WEBPACK_CONFIG_NAME);
 
   return new Promise(function (resolve, reject) {
     // If tool directory doesn"t have a webpack build config,
@@ -40,7 +39,7 @@ function buildTool (toolName) {
       if (err) {
         reject(new gutil.PluginError("webpack", err));
       }
-      gutil.log("[webpack]", stats.toString({}));
+      gutil.log("[webpack] Path: " + dirPath, stats.toString({}));
       resolve();
     });
   });
@@ -48,7 +47,11 @@ function buildTool (toolName) {
 
 gulp.task("build", function () {
   var tools = fs.readdirSync(path.join(__dirname, "client"));
-  return Promise.all(tools.map(buildTool));
+  var dirs = tools.map(function(tool) {
+    return path.join(__dirname, "client", tool);
+  });
+  dirs.push(path.join(__dirname, "shared"));
+  return Promise.all(dirs.map(buildDir));
 });
 
 gulp.task("watch", function() {
@@ -86,7 +89,7 @@ gulp.task("build-prefs", function (callback) {
     console.log(prefName, prefNames[2]);
     var value = eval(prefNames[2]);
 
-    for (var branch of prefName.split(".")) { 
+    for (var branch of prefName.split(".")) {
       currentBranch = (currentBranch[branch] = currentBranch[branch] || Object.create(null));
     }
     currentBranch.value = value;
