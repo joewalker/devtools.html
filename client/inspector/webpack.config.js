@@ -5,6 +5,8 @@ module.exports = Object.assign({}, common, {
   entry: "./inspector-panel.js",
   output: {
     path: __dirname,
-    filename: "build.js"
+    filename: "build.js",
+    // This is the global that represents the entry's exports object
+    library: "Inspector",
   },
 });

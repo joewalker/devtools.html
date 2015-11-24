@@ -8,7 +8,7 @@ const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 const { Services } = require("devtools/sham/services");
 
 var promise = require("devtools/sham/promise");
-var EventEmitter = require("devtools/shared/event-emitter");
+var EventEmitter = exports.EventEmitter = require("devtools/shared/event-emitter");
 var clipboard = require("devtools/sham/clipboard");
 var L10N = require("devtools/sham/l10n");
 
