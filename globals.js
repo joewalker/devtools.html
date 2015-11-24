@@ -1,6 +1,3 @@
-function lazyRequire (context, name, pathOrFunction, dest) {
-
-}
 /**
  * Define a getter property on the given object that requires the given
  * module. This enables delaying importing modules until the module is
