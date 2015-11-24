@@ -9,7 +9,7 @@
 const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const EventEmitter = require("devtools/shared/event-emitter");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const {LongStringClient} = require("devtools/shared/client/main");
 
 /**

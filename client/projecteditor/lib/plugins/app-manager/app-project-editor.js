@@ -6,7 +6,7 @@
 
 const { Cu } = require("devtools/sham/chrome");
 const { Class } = require("sdk/core/heritage");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const { ItchEditor } = require("devtools/client/projecteditor/lib/editors");
 
 var AppProjectEditor = Class({

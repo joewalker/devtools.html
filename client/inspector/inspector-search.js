@@ -6,7 +6,7 @@
 
 const {Cu, Ci} = require("devtools/sham/chrome");
 
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 loader.lazyGetter(this, "AutocompletePopup", () => require("devtools/client/shared/autocomplete-popup").AutocompletePopup);
 

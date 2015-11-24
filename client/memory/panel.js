@@ -9,7 +9,7 @@ const { Task } = require("devtools/sham/task");
 const EventEmitter = require("devtools/shared/event-emitter");
 const { MemoryFront } = require("devtools/server/actors/memory");
 const HeapAnalysesClient = require("devtools/shared/heapsnapshot/HeapAnalysesClient");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 
 function MemoryPanel (iframeWindow, toolbox) {
   this.panelWin = iframeWindow;

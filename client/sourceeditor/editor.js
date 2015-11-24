@@ -32,7 +32,7 @@ const MAX_VERTICAL_OFFSET = 3;
 const RE_SCRATCHPAD_ERROR = /(?:@Scratchpad\/\d+:|\()(\d+):?(\d+)?(?:\)|\n)/;
 const RE_JUMP_TO_LINE = /^(\d+):?(\d+)?/;
 
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const events  = require("devtools/shared/event-emitter");
 const { PrefObserver } = require("devtools/client/styleeditor/utils");
 

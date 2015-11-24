@@ -7,8 +7,8 @@
 "use strict";
 
 var { Ci, Cc } = require("devtools/sham/chrome");
-var Services = require("Services");
-var promise = require("promise");
+var Services = require("devtools/sham/services");
+var promise = require("devtools/sham/promise");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
 var { dumpn, dumpv } = DevToolsUtils;
 const prompt = require("devtools/shared/security/prompt");

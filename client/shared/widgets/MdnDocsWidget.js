@@ -26,7 +26,7 @@
 
 const {Cc, Cu, Ci} = require("devtools/sham/chrome");
 const { Services } = require("devtools/sham/services");
-const Promise = require("promise");
+const Promise = require("devtools/sham/promise");
 const DOMUtils = Cc["@mozilla.org/inspector/dom-utils;1"]
                  .getService(Ci.inIDOMUtils);
 

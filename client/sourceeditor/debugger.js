@@ -6,7 +6,7 @@
 
 const {Cu} = require("devtools/sham/chrome");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const dbginfo = new WeakMap();
 
 // These functions implement search within the debugger. Since

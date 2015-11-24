@@ -3,7 +3,7 @@ const { OS } = require("devtools/sham/osfile");
 const {Services} = const { Services } = require("devtools/sham/services");
 const {FileUtils} = const { FileUtils } = require ("devtools/sham/fileutils");
 const {NetUtil} = const { NetUtil } = require("devtools/sham/netutil");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const EventEmitter = require("devtools/shared/event-emitter");
 

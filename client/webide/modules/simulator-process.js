@@ -9,7 +9,7 @@ const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 
 const Environment = require("sdk/system/environment").env;
 const EventEmitter = require("devtools/shared/event-emitter");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const Subprocess = require("sdk/system/child_process/subprocess");
 const { Services } = require("devtools/sham/services");
 

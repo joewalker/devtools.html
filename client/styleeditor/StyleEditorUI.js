@@ -24,7 +24,7 @@ const PluralForm = require("devtools/sham/pluralform");
 
 const { PrefObserver, PREF_ORIG_SOURCES } = require("devtools/client/styleeditor/utils");
 const csscoverage = require("devtools/server/actors/csscoverage");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 
 const LOAD_ERROR = "error-load";
 const STYLE_EDITOR_TEMPLATE = "stylesheet";

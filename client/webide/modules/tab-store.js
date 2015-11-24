@@ -7,7 +7,7 @@ const { Cu } = require("devtools/sham/chrome");
 const { TargetFactory } = require("devtools/client/framework/target");
 const EventEmitter = require("devtools/shared/event-emitter");
 const { Connection } = require("devtools/shared/client/connection-manager");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const { Task } = require("devtools/sham/task");
 
 const _knownTabStores = new WeakMap();

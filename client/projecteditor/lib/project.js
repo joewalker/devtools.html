@@ -13,7 +13,7 @@ const prefs = require("sdk/preferences/service");
 const { LocalStore } = require("devtools/client/projecteditor/lib/stores/local");
 const { OS } = require("devtools/sham/osfile");
 const { Task } = require("devtools/sham/task");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const { TextEncoder, TextDecoder } = require('sdk/io/buffer');
 const url = require('sdk/url');
 

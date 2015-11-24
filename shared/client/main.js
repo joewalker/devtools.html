@@ -7,7 +7,7 @@
 "use strict";
 
 const { Ci, Cu, components } = require("devtools/sham/chrome");
-const Services = require("Services");
+const Services = require("devtools/sham/services");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
 // WARNING I swapped the sync one for the async one here

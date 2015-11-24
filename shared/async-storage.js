@@ -41,7 +41,7 @@
  */
 const {Cc, Ci, Cu, Cr} = require("devtools/sham/chrome");
 const {indexedDB} = require("sdk/indexed-db");
-const Promise = require("promise");
+const Promise = require("devtools/sham/promise");
 
 module.exports = (function() {
   "use strict";

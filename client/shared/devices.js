@@ -7,7 +7,7 @@
 const { Ci, Cc } = require("devtools/sham/chrome");
 const { getJSON } = require("devtools/client/shared/getjson");
 const { Services } = require("devtools/sham/services");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 
 const DEVICES_URL = "devtools.devices.url";
 const Strings = Services.strings.createBundle("chrome://devtools/locale/device.properties");

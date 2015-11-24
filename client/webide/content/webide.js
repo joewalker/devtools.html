@@ -10,12 +10,12 @@ const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { Task } = require("devtools/sham/task");
 
 const {Toolbox} = require("devtools/client/framework/toolbox");
-const Services = require("Services");
+const Services = require("devtools/sham/services");
 const {AppProjects} = require("devtools/client/webide/modules/app-projects");
 const {Connection} = require("devtools/shared/client/connection-manager");
 const {AppManager} = require("devtools/client/webide/modules/app-manager");
 const EventEmitter = require("devtools/shared/event-emitter");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const ProjectEditor = require("devtools/client/projecteditor/lib/projecteditor");
 const {GetAvailableAddons} = require("devtools/client/webide/modules/addons");
 const {getJSON} = require("devtools/client/shared/getjson");

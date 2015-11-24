@@ -4,7 +4,7 @@
 "use strict";
 
 const { Cu, Ci, Cc } = require("devtools/sham/chrome");
-const { defer, all } = require("promise");
+const { defer, all } = require("devtools/sham/promise");
 const { makeInfallible } = require("devtools/shared/DevToolsUtils");
 
 const { Services } = require("devtools/sham/services");

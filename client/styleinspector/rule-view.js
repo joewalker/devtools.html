@@ -7,7 +7,7 @@
 "use strict";
 
 const {Cc, Ci, Cu} = require("devtools/sham/chrome");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 //const {setTimeout, clearTimeout} = require("devtools/sham/timer");
 const {CssLogic} = require("devtools/shared/styleinspector/css-logic");
 const {InplaceEditor, editableField, editableItem} =

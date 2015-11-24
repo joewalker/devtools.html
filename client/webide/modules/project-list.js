@@ -4,10 +4,10 @@
 
 const {Cu} = require("devtools/sham/chrome");
 
-const Services = require("Services");
+const Services = require("devtools/sham/services");
 const {AppProjects} = require("devtools/client/webide/modules/app-projects");
 const {AppManager} = require("devtools/client/webide/modules/app-manager");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 const {Task} = require("devtools/sham/task");
 const utils = require("devtools/client/webide/modules/utils");

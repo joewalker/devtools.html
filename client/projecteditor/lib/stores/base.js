@@ -8,7 +8,7 @@ const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 const { Class } = require("sdk/core/heritage");
 const { EventTarget } = require("sdk/event/target");
 const { emit } = require("sdk/event/core");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 
 /**
  * A Store object maintains a collection of Resource objects stored in a tree.

@@ -9,7 +9,7 @@ const {Cc, Ci, Cu, Cr} = require("devtools/sham/chrome");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
 
-var promise = require("promise");
+var promise = require("devtools/sham/promise");
 var EventEmitter = require("devtools/shared/event-emitter");
 
 const { StyleEditorUI } = require("devtools/client/styleeditor/StyleEditorUI");

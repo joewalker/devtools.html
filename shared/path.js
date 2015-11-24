@@ -4,7 +4,7 @@
 
 "use strict";
 
-const Services = require("Services");
+const Services = require("devtools/sham/services");
 
 /*
  * Returns the directory name of the path

@@ -5,7 +5,7 @@
 
 const { Cu, Cc, Ci } = require("devtools/sham/chrome");
 const { Services } = require("devtools/sham/services");
-const { defer, resolve } = require("promise");
+const { defer, resolve } = require("devtools/sham/promise");
 const { HarUtils } = require("./har-utils.js");
 const { HarBuilder } = require("./har-builder.js");
 

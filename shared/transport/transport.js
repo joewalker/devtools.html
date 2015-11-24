@@ -17,13 +17,13 @@
 "use strict";
 
 const { Cc, Ci, Cr, Cu, CC } = require("devtools/sham/chrome");
-const Services = require("Services");
+const Services = require("devtools/sham/services");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const { dumpn, dumpv } = DevToolsUtils;
 const StreamUtils = require("devtools/shared/transport/stream-utils");
 const { Packet, JSONPacket, BulkPacket } =
   require("devtools/shared/transport/packets");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 
 DevToolsUtils.defineLazyGetter(this, "Pipe", () => {

@@ -4,7 +4,7 @@
 "use strict";
 
 const { Cu, Ci, Cc } = require("devtools/sham/chrome");
-const { defer, all, resolve } = require("promise");
+const { defer, all, resolve } = require("devtools/sham/promise");
 const { Services } = require("devtools/sham/services");
 
 const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");

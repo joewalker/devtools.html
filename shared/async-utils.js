@@ -15,7 +15,7 @@
 
 var {Cu} = require("devtools/sham/chrome");
 const { Task } = require("devtools/sham/task");
-var Promise = require("promise");
+var Promise = require("devtools/sham/promise");
 
 /**
  * Create an async function that only executes once per instance of an object.

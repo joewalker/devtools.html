@@ -5,7 +5,7 @@
 "use strict";
 
 const {Cc, Ci, Cu} = require("devtools/sham/chrome");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 
 loader.lazyGetter(this, "HUDService", () => require("devtools/client/webconsole/hudservice"));
 const EventEmitter = require("devtools/shared/event-emitter");

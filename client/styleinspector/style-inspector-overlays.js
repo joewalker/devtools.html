@@ -21,7 +21,7 @@ const {
   SwatchFilterTooltip
 } = require("devtools/client/shared/widgets/Tooltip");
 const EventEmitter = require("devtools/shared/event-emitter");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const { Task } = require("devtools/sham/task");
 const { Services } = require("devtools/sham/services");
 

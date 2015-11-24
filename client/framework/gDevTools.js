@@ -8,7 +8,7 @@ const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 // Load target and toolbox lazily as they need gDevTools to be fully initialized
 const { TargetFactory } = require("devtools/client/framework/target");
 const { Toolbox } = require("devtools/client/framework/toolbox");

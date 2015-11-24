@@ -11,8 +11,8 @@ var { Ci, Cc, CC, Cr, Cu } = require("devtools/sham/chrome");
 // Ensure PSM is initialized to support TLS sockets
 Cc["@mozilla.org/psm;1"].getService(Ci.nsISupports);
 
-var Services = require("Services");
-var promise = require("promise");
+var Services = require("devtools/sham/services");
+var promise = require("devtools/sham/promise");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
 var { dumpn, dumpv } = DevToolsUtils;
 const { DebuggerTransport } = require("devtools/shared/transport/transport");

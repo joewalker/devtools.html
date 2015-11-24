@@ -4,7 +4,7 @@
 "use strict";
 
 var { Ci } = require("devtools/sham/chrome");
-var promise = require("promise");
+var promise = require("devtools/sham/promise");
 
 const FRAME_SCRIPT =
   "resource://devtools/shared/touch/simulator-content.js";

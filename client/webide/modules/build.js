@@ -4,7 +4,7 @@
 
 const {Cu, Cc, Ci} = require("devtools/sham/chrome");
 
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const { Task } = require("devtools/sham/task");
 const { TextDecoder, OS } = require("devtools/sham/osfile");
 const Subprocess = require("sdk/system/child_process/subprocess");

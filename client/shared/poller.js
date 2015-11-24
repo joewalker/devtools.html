@@ -4,7 +4,7 @@
 
 "use strict";
 //const timers = require("devtools/sham/timer");
-const { defer } = require("promise");
+const { defer } = require("devtools/sham/promise");
 
 /**
  * @constructor Poller

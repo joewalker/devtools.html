@@ -7,8 +7,8 @@
 /* General utilities used throughout devtools. */
 
 var { Ci, Cu, Cc, components } = require("devtools/sham/chrome");
-var Services = require("Services");
-var promise = require("promise");
+var Services = require("devtools/sham/services");
+var promise = require("devtools/sham/promise");
 
 const { FileUtils } = require("devtools/sham/fileutils");
 const { setTimeout } = require("Timer");

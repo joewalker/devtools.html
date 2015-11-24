@@ -10,7 +10,7 @@ const Ci = Components.interfaces;
 const Cu = Components.utils;
 
 const Editor  = require("devtools/client/sourceeditor/editor");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const {CssLogic} = require("devtools/shared/styleinspector/css-logic");
 
 const { Services } = require("devtools/sham/services");

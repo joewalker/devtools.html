@@ -5,7 +5,7 @@
 "use strict";
 var {classes: Cc, interfaces: Ci, utils: Cu, results: Cr} = Components;
 const {loader} = require("devtools/shared/Loader");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const { Task } = require("devtools/sham/task");
 const subScriptLoader = Cc["@mozilla.org/moz/jssubscript-loader;1"]
                           .getService(Ci.mozIJSSubScriptLoader);

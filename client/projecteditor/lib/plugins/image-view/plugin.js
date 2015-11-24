@@ -6,7 +6,7 @@
 
 const { Cu } = require("devtools/sham/chrome");
 const { Class } = require("sdk/core/heritage");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const { ImageEditor } = require("./image-editor");
 const { registerPlugin, Plugin } = require("devtools/client/projecteditor/lib/plugins/core");
 

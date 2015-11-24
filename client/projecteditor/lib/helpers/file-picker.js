@@ -11,7 +11,7 @@
 
 const { Cu, Cc, Ci } = require("devtools/sham/chrome");
 const { FileUtils } = require("devtools/sham/fileutils");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const { merge } = require("sdk/util/object");
 const { getLocalizedString } = require("devtools/client/projecteditor/lib/helpers/l10n");
 

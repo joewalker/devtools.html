@@ -26,7 +26,7 @@ const {
 const { EventEmitter } = require("devtools/shared/event-emitter");
 const { Task } = require("devtools/sham/task");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 
 const PluralForm = require("devtools/sham/pluralform");
 

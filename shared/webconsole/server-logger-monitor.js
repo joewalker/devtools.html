@@ -7,7 +7,7 @@
 "use strict";
 
 const {Ci} = require("devtools/sham/chrome");
-const Services = require("Services");
+const Services = require("devtools/sham/services");
 
 const {DebuggerServer} = require("devtools/server/main");
 const {makeInfallible} = require("devtools/shared/DevToolsUtils");

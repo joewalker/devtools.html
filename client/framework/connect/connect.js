@@ -13,7 +13,7 @@ const { Task } = require("devtools/sham/task");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 var {TargetFactory} = require("devtools/client/framework/target");
 var {Toolbox} = require("devtools/client/framework/toolbox")
-var promise = require("promise");
+var promise = require("devtools/sham/promise");
 var {DebuggerClient} = require("devtools/shared/client/main");
 
 var gClient;

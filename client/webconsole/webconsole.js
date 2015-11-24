@@ -9,7 +9,7 @@
 const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 
 const {Utils: WebConsoleUtils, CONSOLE_WORKER_IDS} = require("devtools/shared/webconsole/utils");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 
 loader.lazyServiceGetter(this, "clipboardHelper",
                          "@mozilla.org/widget/clipboardhelper;1",

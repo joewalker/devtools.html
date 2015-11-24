@@ -9,7 +9,7 @@
 const {Cu, Ci} = require("devtools/sham/chrome");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 
 const ENSURE_SELECTION_VISIBLE_DELAY = 50; // ms
 const ELLIPSIS = Services.prefs.getComplexValue("intl.ellipsis", Ci.nsIPrefLocalizedString).data;

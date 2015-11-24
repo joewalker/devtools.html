@@ -14,7 +14,7 @@ const {
   Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
 } = require("devtools/client/shared/widgets/ViewHelpers");
-var promise = require("promise");
+var promise = require("devtools/sham/promise");
 
 Object.defineProperty(this, "WebConsoleUtils", {
   get: function() {

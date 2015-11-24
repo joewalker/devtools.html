@@ -5,11 +5,11 @@
 "use strict";
 
 const { Ci, Cc, Cu, Cr, CC } = require("devtools/sham/chrome");
-const Services = require("Services");
+const Services = require("devtools/sham/services");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const { dumpv } = DevToolsUtils;
 const EventEmitter = require("devtools/shared/event-emitter");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 
 DevToolsUtils.defineLazyGetter(this, "IOUtil", () => {
   return Cc["@mozilla.org/io-util;1"].getService(Ci.nsIIOUtil);

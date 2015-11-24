@@ -5,7 +5,7 @@
 
 const { Cu, Ci, Cc } = require("devtools/sham/chrome");
 const { Class } = require("sdk/core/heritage");
-const { defer, resolve } = require("promise");
+const { defer, resolve } = require("devtools/sham/promise");
 const { Services } = require("devtools/sham/services");
 
 const { Task } = require("devtools/sham/task");

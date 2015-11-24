@@ -20,7 +20,7 @@ XPCOMUtils.defineLazyGetter(this, "Telemetry", function () {
 XPCOMUtils.defineLazyGetter(this, "EventEmitter", function () {
   return require("devtools/shared/event-emitter");
 });
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 
 var processes = new Set();
 

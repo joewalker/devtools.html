@@ -14,7 +14,7 @@ const {
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
 } = require("devtools/client/shared/widgets/ViewHelpers");
 
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 const {Tooltip} = require("devtools/client/shared/widgets/Tooltip");
 const Editor = require("devtools/client/sourceeditor/editor");

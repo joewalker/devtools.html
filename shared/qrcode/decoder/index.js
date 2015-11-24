@@ -1362,7 +1362,7 @@ Decoder.decode = function(bits) {
 };
 
 // mozilla: Get access to a window
-var Services = require("Services");
+var Services = require("devtools/sham/services");
 
 var DebuggerServer = require("devtools/server/main").DebuggerServer;
 

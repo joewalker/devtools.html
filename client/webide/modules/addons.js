@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 const {Cu} = require("devtools/sham/chrome");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const { AddonManager } = require("devtools/sham/addonmanager");
 const {Services} = const { Services } = require("devtools/sham/services");
 const {getJSON} = require("devtools/client/shared/getjson");

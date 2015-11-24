@@ -5,7 +5,7 @@
 "use strict";
 
 const { Ci, Cu } = require("devtools/sham/chrome");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");

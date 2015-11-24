@@ -8,7 +8,7 @@
 
 const {Cu, Ci} = require("devtools/sham/chrome");
 const {Class} = require("sdk/core/heritage");
-const Services = require("Services");
+const Services = require("devtools/sham/services");
 
 const {DebuggerServer} = require("devtools/server/main");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");

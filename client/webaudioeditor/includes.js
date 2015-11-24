@@ -33,7 +33,7 @@ const LineGraphWidget = require("devtools/client/shared/widgets/LineGraphWidget"
 var AUDIO_NODE_DEFINITION;
 
 // Override DOM promises with Promise.jsm helpers
-const { defer, all } = require("promise");
+const { defer, all } = require("devtools/sham/promise");
 
 /* Events fired on `window` to indicate state or actions*/
 const EVENTS = {

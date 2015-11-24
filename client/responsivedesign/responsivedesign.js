@@ -22,7 +22,7 @@ var Telemetry = require("devtools/client/shared/telemetry");
 var { showDoorhanger } = require("devtools/client/shared/doorhanger");
 var { TouchEventSimulator } = require("devtools/shared/touch/simulator");
 const { Task } = require("devtools/sham/task");
-var promise = require("promise");
+var promise = require("devtools/sham/promise");
 
 const MIN_WIDTH = 50;
 const MIN_HEIGHT = 50;

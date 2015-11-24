@@ -6,7 +6,7 @@
 "use strict";
 
 const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 const { WebGLFront } = require("devtools/server/actors/webgl");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");

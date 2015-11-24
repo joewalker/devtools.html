@@ -10,7 +10,7 @@ const { EventTarget } = require("sdk/event/target");
 const { emit } = require("sdk/event/core");
 const { EditorTypeForResource } = require("devtools/client/projecteditor/lib/editors");
 const NetworkHelper = require("devtools/shared/webconsole/network-helper");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 
 /**
  * The Shell is the object that manages the editor for a single resource.

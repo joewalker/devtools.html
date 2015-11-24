@@ -1,7 +1,7 @@
 var Cu = Components.utils;
 const { FileUtils } = require("devtools/sham/fileutils");
 const { NetUtil } = require("devtools/sham/netutil");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const ProjectEditor = require("devtools/client/projecteditor/lib/projecteditor");
 
 const SAMPLE_PATH = buildTempDirectoryStructure();

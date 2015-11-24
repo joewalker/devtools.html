@@ -8,7 +8,7 @@ const { GetDevices, GetDeviceString } = require("devtools/client/shared/devices"
 const { Services } = const { Services } = require("devtools/sham/services");
 const { Simulators, Simulator } = require("devtools/client/webide/modules/simulators");
 const EventEmitter = require('devtools/shared/event-emitter');
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const utils = require("devtools/client/webide/modules/utils");
 
 const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");

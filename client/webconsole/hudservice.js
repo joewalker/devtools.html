@@ -12,7 +12,7 @@ var WebConsoleUtils = require("devtools/shared/webconsole/utils").Utils;
 var Heritage = require("sdk/core/heritage");
 var {TargetFactory} = require("devtools/client/framework/target");
 var {Tools} = require("devtools/client/definitions");
-var promise = require("promise");
+var promise = require("devtools/sham/promise");
 
 loader.lazyGetter(this, "Telemetry", () => require("devtools/client/shared/telemetry"));
 loader.lazyGetter(this, "WebConsoleFrame", () => require("devtools/client/webconsole/webconsole").WebConsoleFrame);

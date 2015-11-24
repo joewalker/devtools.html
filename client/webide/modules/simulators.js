@@ -11,7 +11,7 @@ const { OldAddonSimulatorProcess } = require("devtools/client/webide/modules/sim
 const { CustomSimulatorProcess } = require("devtools/client/webide/modules/simulator-process");
 const asyncStorage = require("devtools/shared/async-storage");
 const EventEmitter = require("devtools/shared/event-emitter");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 
 const SimulatorRegExp = new RegExp(Services.prefs.getCharPref("devtools.webide.simulatorAddonRegExp"));
 const LocaleCompare = (a, b) => {
