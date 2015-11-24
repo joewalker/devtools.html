@@ -31,7 +31,7 @@ function lazyRequire (obj, property, module, destructure) {
       }
       else {
         value = destructure
-          ? require(module)[property] :
+          ? require(module)[property]
           : require(module || property);
       }
 

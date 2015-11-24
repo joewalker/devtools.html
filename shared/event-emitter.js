@@ -6,7 +6,7 @@
  * EventEmitter.
  */
 
-this.EventEmitter = function EventEmitter() {};
+var EventEmitter = function EventEmitter() {};
 module.exports = EventEmitter;
 
 const { Cu } = require("devtools/sham/chrome");
