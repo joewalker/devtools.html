@@ -11,7 +11,7 @@ const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
 const NetworkHelper = require("devtools/shared/webconsole/network-helper");
 
 loader.lazyGetter(this, "appInfo", () => {
-  return Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo);
+  return Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULAppInfo);
 });
 
 loader.lazyGetter(this, "L10N", () => {

@@ -35,7 +35,7 @@ const { getLocalizedString } = require("devtools/client/projecteditor/lib/helper
  *         after the file has been picked.
  */
 function showPicker(options) {
-  let fp = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+  let fp = Cc("@mozilla.org/filepicker;1").createInstance(Ci.nsIFilePicker);
   if (options.directory) {
     try {
       fp.displayDirectory = FileUtils.File(options.directory);

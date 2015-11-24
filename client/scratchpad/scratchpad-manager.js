@@ -106,7 +106,7 @@ this.ScratchpadManager = {
    */
   openScratchpad: function SPM_openScratchpad(aState)
   {
-    let params = Cc["@mozilla.org/embedcomp/dialogparam;1"]
+    let params = Cc("@mozilla.org/embedcomp/dialogparam;1")
                  .createInstance(Ci.nsIDialogParamBlock);
 
     params.SetNumberStrings(2);

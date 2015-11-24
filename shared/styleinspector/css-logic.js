@@ -1014,7 +1014,7 @@ const TAB_CHARS = "\t";
  */
 CssLogic.prettifyCSS = function(text, ruleCount) {
   if (CssLogic.LINE_SEPARATOR == null) {
-    let os = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime).OS;
+    let os = Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime).OS;
     CssLogic.LINE_SEPARATOR = (os === "WINNT" ? "\r\n" : "\n");
   }
 
@@ -2070,5 +2070,5 @@ CssSelectorInfo.prototype = {
 };
 
 DevToolsUtils.defineLazyGetter(this, "domUtils", function() {
-  return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
+  return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 });

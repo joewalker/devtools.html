@@ -226,7 +226,7 @@ DebuggerTransport.prototype = {
     }
 
     if (this._outgoing.length > 0) {
-      var threadManager = Cc["@mozilla.org/thread-manager;1"].getService();
+      var threadManager = Cc("@mozilla.org/thread-manager;1").getService();
       this._output.asyncWait(this, 0, 0, threadManager.currentThread);
     }
   },
@@ -309,7 +309,7 @@ DebuggerTransport.prototype = {
    */
   _waitForIncoming: function() {
     if (this._incomingEnabled) {
-      let threadManager = Cc["@mozilla.org/thread-manager;1"].getService();
+      let threadManager = Cc("@mozilla.org/thread-manager;1").getService();
       this._input.asyncWait(this, 0, 0, threadManager.currentThread);
     }
   },

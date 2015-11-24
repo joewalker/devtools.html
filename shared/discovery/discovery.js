@@ -47,14 +47,14 @@ const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
 
 XPCOMUtils.defineLazyGetter(this, "converter", () => {
-  let conv = Cc["@mozilla.org/intl/scriptableunicodeconverter"].
+  let conv = Cc("@mozilla.org/intl/scriptableunicodeconverter").
              createInstance(Ci.nsIScriptableUnicodeConverter);
   conv.charset = "utf8";
   return conv;
 });
 
 XPCOMUtils.defineLazyGetter(this, "sysInfo", () => {
-  return Cc["@mozilla.org/system-info;1"].getService(Ci.nsIPropertyBag2);
+  return Cc("@mozilla.org/system-info;1").getService(Ci.nsIPropertyBag2);
 });
 
 XPCOMUtils.defineLazyGetter(this, "libcutils", function () {
@@ -144,7 +144,7 @@ function LocalDevice() {
   this._name = LocalDevice.UNKNOWN;
   if ("@mozilla.org/settingsService;1" in Cc) {
     this._settings =
-      Cc["@mozilla.org/settingsService;1"].getService(Ci.nsISettingsService);
+      Cc("@mozilla.org/settingsService;1").getService(Ci.nsISettingsService);
     Services.obs.addObserver(this, "mozsettings-changed", false);
   }
   this._get(); // Trigger |_get| to load name eagerly

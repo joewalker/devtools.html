@@ -16,7 +16,7 @@ const DEV_EDITION_PROMO_URL = "chrome://devtools/content/framework/dev-edition-p
 const DEV_EDITION_PROMO_ENABLED_PREF = "devtools.devedition.promo.enabled";
 const DEV_EDITION_PROMO_SHOWN_PREF = "devtools.devedition.promo.shown";
 const DEV_EDITION_PROMO_URL_PREF = "devtools.devedition.promo.url";
-const LOCALE = Cc["@mozilla.org/chrome/chrome-registry;1"]
+const LOCALE = Cc("@mozilla.org/chrome/chrome-registry;1")
                .getService(Ci.nsIXULChromeRegistry)
                .getSelectedLocale("global");
 

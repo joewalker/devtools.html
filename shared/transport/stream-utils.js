@@ -12,7 +12,7 @@ const EventEmitter = require("devtools/shared/event-emitter");
 const promise = require("devtools/sham/promise");
 
 DevToolsUtils.defineLazyGetter(this, "IOUtil", () => {
-  return Cc["@mozilla.org/io-util;1"].getService(Ci.nsIIOUtil);
+  return Cc("@mozilla.org/io-util;1").getService(Ci.nsIIOUtil);
 });
 
 DevToolsUtils.defineLazyGetter(this, "ScriptableInputStream", () => {
@@ -69,7 +69,7 @@ function StreamCopier(input, output, length) {
   if (IOUtil.outputStreamIsBuffered(output)) {
     this.output = output;
   } else {
-    this.output = Cc["@mozilla.org/network/buffered-output-stream;1"].
+    this.output = Cc("@mozilla.org/network/buffered-output-stream;1").
                   createInstance(Ci.nsIBufferedOutputStream);
     this.output.init(output, BUFFER_SIZE);
   }

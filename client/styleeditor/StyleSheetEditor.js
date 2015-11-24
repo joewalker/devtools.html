@@ -620,7 +620,7 @@ StyleSheetEditor.prototype = {
       }
 
       let ostream = FileUtils.openSafeFileOutputStream(returnFile);
-      let converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"]
+      let converter = Cc("@mozilla.org/intl/scriptableunicodeconverter")
                         .createInstance(Ci.nsIScriptableUnicodeConverter);
       converter.charset = "UTF-8";
       let istream = converter.convertToInputStream(this._state.text);

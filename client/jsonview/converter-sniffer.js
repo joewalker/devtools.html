@@ -11,7 +11,7 @@ const xpcom = require("sdk/platform/xpcom");
 const {Unknown} = require("sdk/platform/xpcom");
 const {Class} = require("sdk/core/heritage");
 
-const categoryManager = Cc["@mozilla.org/categorymanager;1"].getService(Ci.nsICategoryManager);
+const categoryManager = Cc("@mozilla.org/categorymanager;1").getService(Ci.nsICategoryManager);
 
 const NetworkHelper = require("devtools/shared/webconsole/network-helper");
 

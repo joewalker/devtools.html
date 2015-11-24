@@ -18,7 +18,7 @@ const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const promise = require("devtools/sham/promise");
 const { Task } = require("devtools/sham/task");
 loader.lazyGetter(this, "DOMUtils", () => {
-  return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
+  return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 });
 
 const SELECTOR_ATTRIBUTE = exports.SELECTOR_ATTRIBUTE = 1;

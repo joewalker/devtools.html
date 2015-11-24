@@ -138,7 +138,7 @@ function setupThreadListeners(panel) {
 }
 
 function updateBadgeText(paused) {
-  let dockSupport = Cc["@mozilla.org/widget/macdocksupport;1"].getService(Ci.nsIMacDockSupport);
+  let dockSupport = Cc("@mozilla.org/widget/macdocksupport;1").getService(Ci.nsIMacDockSupport);
   dockSupport.badgeText = paused ? "▐▐ " : " ▶";
 }
 
@@ -175,7 +175,7 @@ function setTitle(title) {
 }
 
 function quitApp() {
-  let quit = Cc["@mozilla.org/supports-PRBool;1"]
+  let quit = Cc("@mozilla.org/supports-PRBool;1")
              .createInstance(Ci.nsISupportsPRBool);
   Services.obs.notifyObservers(quit, "quit-application-requested", null);
 

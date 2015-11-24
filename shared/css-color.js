@@ -468,5 +468,5 @@ function classifyColor(value) {
 }
 
 loader.lazyGetter(this, "DOMUtils", function () {
-  return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
+  return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 });

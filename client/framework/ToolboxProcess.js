@@ -189,7 +189,7 @@ BrowserToolboxProcess.prototype = {
    */
   _create: function() {
     dumpn("Initializing chrome debugging process.");
-    let process = this._dbgProcess = Cc["@mozilla.org/process/util;1"].createInstance(Ci.nsIProcess);
+    let process = this._dbgProcess = Cc("@mozilla.org/process/util;1").createInstance(Ci.nsIProcess);
     process.init(Services.dirsvc.get("XREExeF", Ci.nsIFile));
 
     let xulURI = DBG_XUL;

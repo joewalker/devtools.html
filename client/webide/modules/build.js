@@ -84,7 +84,7 @@ const ProjectBuilding = exports.ProjectBuilding = {
     let command, cwd, args = [], env = [];
 
     // Copy frequently used env vars
-    let envService = Cc["@mozilla.org/process/environment;1"].getService(Ci.nsIEnvironment);
+    let envService = Cc("@mozilla.org/process/environment;1").getService(Ci.nsIEnvironment);
     ["HOME", "PATH"].forEach(key => {
       let value = envService.get(key);
       if (value) {

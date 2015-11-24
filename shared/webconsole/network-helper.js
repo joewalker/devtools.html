@@ -80,7 +80,7 @@ var NetworkHelper = {
    */
   convertToUnicode: function NH_convertToUnicode(aText, aCharset)
   {
-    let conv = Cc["@mozilla.org/intl/scriptableunicodeconverter"].
+    let conv = Cc("@mozilla.org/intl/scriptableunicodeconverter").
                createInstance(Ci.nsIScriptableUnicodeConverter);
     try {
       conv.charset = aCharset || "UTF-8";
@@ -629,7 +629,7 @@ var NetworkHelper = {
 
       // HSTS and HPKP if available.
       if (httpActivity.hostname) {
-        const sss = Cc["@mozilla.org/ssservice;1"]
+        const sss = Cc("@mozilla.org/ssservice;1")
                       .getService(Ci.nsISiteSecurityService);
 
 

@@ -20,7 +20,7 @@ loader.lazyGetter(this, "asyncStorage",
                   () => require("devtools/shared/async-storage"));
 
 loader.lazyGetter(this, "DOMUtils", () => {
-  return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
+  return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 });
 
 const DEFAULT_FILTER_TYPE = "length";

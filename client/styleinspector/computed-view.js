@@ -137,7 +137,7 @@ function CssComputedView(inspector, document, pageStyle) {
 
   this._outputParser = new OutputParser(document);
 
-  let chromeReg = Cc["@mozilla.org/chrome/chrome-registry;1"]
+  let chromeReg = Cc("@mozilla.org/chrome/chrome-registry;1")
     .getService(Ci.nsIXULChromeRegistry);
   this.getRTLAttr = chromeReg.isLocaleRTL("global") ? "rtl" : "ltr";
 
@@ -226,7 +226,7 @@ XPCOMUtils.defineLazyGetter(CssComputedView, "_strings", function() {
 });
 
 XPCOMUtils.defineLazyGetter(this, "clipboardHelper", function() {
-  return Cc["@mozilla.org/widget/clipboardhelper;1"]
+  return Cc("@mozilla.org/widget/clipboardhelper;1")
          .getService(Ci.nsIClipboardHelper);
 });
 

@@ -350,7 +350,7 @@ var SnapshotsListView = Heritage.extend(WidgetMethods, {
    * The click listener for the "import" button in this container.
    */
   _onImportButtonClick: function() {
-    let fp = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+    let fp = Cc("@mozilla.org/filepicker;1").createInstance(Ci.nsIFilePicker);
     fp.init(window, L10N.getStr("snapshotsList.saveDialogTitle"), Ci.nsIFilePicker.modeOpen);
     fp.appendFilter(L10N.getStr("snapshotsList.saveDialogJSONFilter"), "*.json");
     fp.appendFilter(L10N.getStr("snapshotsList.saveDialogAllFilter"), "*.*");
@@ -398,7 +398,7 @@ var SnapshotsListView = Heritage.extend(WidgetMethods, {
   _onSaveButtonClick: function(e) {
     let snapshotItem = this.getItemForElement(e.target);
 
-    let fp = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+    let fp = Cc("@mozilla.org/filepicker;1").createInstance(Ci.nsIFilePicker);
     fp.init(window, L10N.getStr("snapshotsList.saveDialogTitle"), Ci.nsIFilePicker.modeSave);
     fp.appendFilter(L10N.getStr("snapshotsList.saveDialogJSONFilter"), "*.json");
     fp.appendFilter(L10N.getStr("snapshotsList.saveDialogAllFilter"), "*.*");
@@ -446,7 +446,7 @@ var SnapshotsListView = Heritage.extend(WidgetMethods, {
       data.screenshot = { index, width, height, flipped, pixels };
 
       let string = JSON.stringify(data);
-      let converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].
+      let converter = Cc("@mozilla.org/intl/scriptableunicodeconverter").
         createInstance(Ci.nsIScriptableUnicodeConverter);
 
       converter.charset = "UTF-8";

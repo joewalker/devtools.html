@@ -12,26 +12,26 @@ const promise = require("devtools/sham/promise");
 const { Services } = require("devtools/sham/services");
 
 loader.lazyGetter(this, "clipboardHelper", function() {
-  return Cc["@mozilla.org/widget/clipboardhelper;1"]
+  return Cc("@mozilla.org/widget/clipboardhelper;1")
     .getService(Ci.nsIClipboardHelper);
 });
 
 loader.lazyGetter(this, "ssService", function() {
-  return Cc["@mozilla.org/content/style-sheet-service;1"]
+  return Cc("@mozilla.org/content/style-sheet-service;1")
     .getService(Ci.nsIStyleSheetService);
 });
 
 loader.lazyGetter(this, "ioService", function() {
-  return Cc["@mozilla.org/network/io-service;1"]
+  return Cc("@mozilla.org/network/io-service;1")
     .getService(Ci.nsIIOService);
 });
 
 loader.lazyGetter(this, "DOMUtils", function () {
-  return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
+  return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 });
 
 loader.lazyGetter(this, "XULRuntime", function() {
-  return Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime);
+  return Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime);
 });
 
 loader.lazyGetter(this, "l10n", () => Services.strings

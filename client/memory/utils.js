@@ -412,7 +412,7 @@ exports.openFilePicker = function({ title, filters, defaultName, mode }) {
     throw new Error("No valid mode specified for nsIFilePicker.");
   }
 
-  let fp = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+  let fp = Cc("@mozilla.org/filepicker;1").createInstance(Ci.nsIFilePicker);
   fp.init(window, title, mode);
 
   for (let filter of (filters || [])) {

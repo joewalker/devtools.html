@@ -1179,7 +1179,7 @@ CSSCompleter.prototype = {
  *                      CSS values the property can have.
  */
 function getCSSKeywords() {
-  let domUtils = Cc["@mozilla.org/inspector/dom-utils;1"]
+  let domUtils = Cc("@mozilla.org/inspector/dom-utils;1")
                    .getService(Ci.inIDOMUtils);
   let props = {};
   let propNames = domUtils.getCSSPropertyNames(domUtils.INCLUDE_ALIASES);

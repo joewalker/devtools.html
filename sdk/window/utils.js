@@ -20,7 +20,7 @@ const WM = Cc['@mozilla.org/appshell/window-mediator;1'].
            getService(Ci.nsIWindowMediator);
 const io = Cc['@mozilla.org/network/io-service;1'].
            getService(Ci.nsIIOService);
-const FM = Cc["@mozilla.org/focus-manager;1"].
+const FM = Cc("@mozilla.org/focus-manager;1").
               getService(Ci.nsIFocusManager);
 
 const XUL_NS = 'http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul';
@@ -225,7 +225,7 @@ exports.onFocus = onFocus;
 
 var isFocused = dispatcher("window-isFocused");
 isFocused.when(x => x instanceof Ci.nsIDOMWindow, (window) => {
-  const FM = Cc["@mozilla.org/focus-manager;1"].
+  const FM = Cc("@mozilla.org/focus-manager;1").
                 getService(Ci.nsIFocusManager);
 
   let childTargetWindow = {};

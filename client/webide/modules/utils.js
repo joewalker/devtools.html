@@ -17,7 +17,7 @@ function _getFile (location, ...pickerParams) {
   if (location) {
     return new FileUtils.File(location);
   }
-  let fp = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+  let fp = Cc("@mozilla.org/filepicker;1").createInstance(Ci.nsIFilePicker);
   fp.init(...pickerParams);
   let res = fp.show();
   if (res == Ci.nsIFilePicker.returnCancel) {

@@ -9,7 +9,7 @@
 var { Ci, Cc, CC, Cr, Cu } = require("devtools/sham/chrome");
 
 // Ensure PSM is initialized to support TLS sockets
-Cc["@mozilla.org/psm;1"].getService(Ci.nsISupports);
+Cc("@mozilla.org/psm;1").getService(Ci.nsISupports);
 
 var Services = require("devtools/sham/services");
 var promise = require("devtools/sham/promise");
@@ -27,17 +27,17 @@ DevToolsUtils.defineLazyGetter(this, "nsFile", () => {
 });
 
 DevToolsUtils.defineLazyGetter(this, "socketTransportService", () => {
-  return Cc["@mozilla.org/network/socket-transport-service;1"]
+  return Cc("@mozilla.org/network/socket-transport-service;1")
          .getService(Ci.nsISocketTransportService);
 });
 
 DevToolsUtils.defineLazyGetter(this, "certOverrideService", () => {
-  return Cc["@mozilla.org/security/certoverride;1"]
+  return Cc("@mozilla.org/security/certoverride;1")
          .getService(Ci.nsICertOverrideService);
 });
 
 DevToolsUtils.defineLazyGetter(this, "nssErrorsService", () => {
-  return Cc["@mozilla.org/nss_errors_service;1"]
+  return Cc("@mozilla.org/nss_errors_service;1")
          .getService(Ci.nsINSSErrorsService);
 });
 
@@ -430,10 +430,10 @@ SocketListener.prototype = {
 
   _createSocketInstance: function() {
     if (this.encryption) {
-      return Cc["@mozilla.org/network/tls-server-socket;1"]
+      return Cc("@mozilla.org/network/tls-server-socket;1")
              .createInstance(Ci.nsITLSServerSocket);
     }
-    return Cc["@mozilla.org/network/server-socket;1"]
+    return Cc("@mozilla.org/network/server-socket;1")
            .createInstance(Ci.nsIServerSocket);
   },
 

@@ -19,7 +19,7 @@ const { TableWidget } = require("devtools/client/shared/widgets/TableWidget");
 const { ObjectClient } = require("devtools/shared/client/main");
 
 const Heritage = require("sdk/core/heritage");
-const URI = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
+const URI = Cc("@mozilla.org/network/io-service;1").getService(Ci.nsIIOService);
 const XHTML_NS = "http://www.w3.org/1999/xhtml";
 const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 const STRINGS_URI = "chrome://devtools/locale/webconsole.properties";

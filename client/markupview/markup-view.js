@@ -38,7 +38,7 @@ const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
 loader.lazyGetter(this, "DOMParser", function() {
-  return Cc["@mozilla.org/xmlextras/domparser;1"].createInstance(Ci.nsIDOMParser);
+  return Cc("@mozilla.org/xmlextras/domparser;1").createInstance(Ci.nsIDOMParser);
 });
 loader.lazyGetter(this, "AutocompletePopup", () => {
   return require("devtools/client/shared/autocomplete-popup").AutocompletePopup;
@@ -3102,6 +3102,6 @@ loader.lazyGetter(MarkupView.prototype, "strings", () => Services.strings.create
 ));
 
 XPCOMUtils.defineLazyGetter(this, "clipboardHelper", function() {
-  return Cc["@mozilla.org/widget/clipboardhelper;1"].
+  return Cc("@mozilla.org/widget/clipboardhelper;1").
     getService(Ci.nsIClipboardHelper);
 });

@@ -75,7 +75,7 @@ function getTemplatesJSON() {
 }
 
 function failAndBail(msg) {
-  let promptService = Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
+  let promptService = Cc("@mozilla.org/embedcomp/prompt-service;1").getService(Ci.nsIPromptService);
   promptService.alert(window, "error", msg);
   window.close();
 }
@@ -116,7 +116,7 @@ function doOK() {
   if (testOptions) {
     folder = testOptions.folder;
   } else {
-    let fp = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+    let fp = Cc("@mozilla.org/filepicker;1").createInstance(Ci.nsIFilePicker);
     fp.init(window, "Select directory where to create app directory", Ci.nsIFilePicker.modeGetFolder);
     let res = fp.show();
     if (res == Ci.nsIFilePicker.returnCancel) {

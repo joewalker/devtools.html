@@ -1253,5 +1253,5 @@ XPCOMUtils.defineLazyGetter(this, "CSSPropertyList", function() {
 });
 
 XPCOMUtils.defineLazyGetter(this, "domUtils", function() {
-  return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
+  return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 });

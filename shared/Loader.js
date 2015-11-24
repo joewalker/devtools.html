@@ -57,7 +57,7 @@ XPCOMUtils.defineLazyGetter(loaderModules, "Debugger", () => {
 //  };
 //});
 XPCOMUtils.defineLazyGetter(loaderModules, "xpcInspector", () => {
-  return Cc["@mozilla.org/jsinspector;1"].getService(Ci.nsIJSInspector);
+  return Cc("@mozilla.org/jsinspector;1").getService(Ci.nsIJSInspector);
 });
 XPCOMUtils.defineLazyGetter(loaderModules, "indexedDB", () => {
   // On xpcshell, we can't instantiate indexedDB without crashing

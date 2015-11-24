@@ -861,9 +861,9 @@ var gDevToolsBrowser = {
    * dialog.
    */
   setSlowScriptDebugHandler: function DT_setSlowScriptDebugHandler() {
-    let debugService = Cc["@mozilla.org/dom/slow-script-debug;1"]
+    let debugService = Cc("@mozilla.org/dom/slow-script-debug;1")
                          .getService(Ci.nsISlowScriptDebug);
-    let tm = Cc["@mozilla.org/thread-manager;1"].getService(Ci.nsIThreadManager);
+    let tm = Cc("@mozilla.org/thread-manager;1").getService(Ci.nsIThreadManager);
 
     function slowScriptDebugHandler(aTab, aCallback) {
       let target = TargetFactory.forTab(aTab);
@@ -943,7 +943,7 @@ var gDevToolsBrowser = {
    * Unset the slow script debug handler.
    */
   unsetSlowScriptDebugHandler: function DT_unsetSlowScriptDebugHandler() {
-    let debugService = Cc["@mozilla.org/dom/slow-script-debug;1"]
+    let debugService = Cc("@mozilla.org/dom/slow-script-debug;1")
                          .getService(Ci.nsISlowScriptDebug);
     debugService.activationHandler = undefined;
   },

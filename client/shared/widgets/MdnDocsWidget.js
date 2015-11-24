@@ -27,7 +27,7 @@
 const {Cc, Cu, Ci} = require("devtools/sham/chrome");
 const { Services } = require("devtools/sham/services");
 const Promise = require("devtools/sham/promise");
-const DOMUtils = Cc["@mozilla.org/inspector/dom-utils;1"]
+const DOMUtils = Cc("@mozilla.org/inspector/dom-utils;1")
                  .getService(Ci.inIDOMUtils);
 
 // Parameters for the XHR request
@@ -160,7 +160,7 @@ exports.appendSyntaxHighlightedCSS = appendSyntaxHighlightedCSS;
 function getMdnPage(pageUrl) {
   let deferred = Promise.defer();
 
-  let xhr = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
+  let xhr = Cc("@mozilla.org/xmlextras/xmlhttprequest;1").createInstance(Ci.nsIXMLHttpRequest);
 
   xhr.addEventListener("load", onLoaded, false);
   xhr.addEventListener("error", onError, false);

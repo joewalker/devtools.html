@@ -19,7 +19,7 @@ const JsonViewUtils = require("devtools/client/jsonview/utils");
 const { Services } = require("devtools/sham/services");
 
 const childProcessMessageManager =
-  Cc["@mozilla.org/childprocessmessagemanager;1"].
+  Cc("@mozilla.org/childprocessmessagemanager;1").
     getService(Ci.nsISyncMessageSender);
 
 // Amount of space that will be allocated for the stream's backing-store.
@@ -72,7 +72,7 @@ var Converter = Class({
 
   onDataAvailable: function(aRequest, aContext, aInputStream, aOffset, aCount) {
     // From https://developer.mozilla.org/en/Reading_textual_data
-    var is = Cc["@mozilla.org/intl/converter-input-stream;1"].
+    var is = Cc("@mozilla.org/intl/converter-input-stream;1").
       createInstance(Ci.nsIConverterInputStream);
     is.init(aInputStream, this.charset, -1,
       Ci.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);
@@ -165,11 +165,11 @@ var Converter = Class({
       outputDoc = this.toErrorPage(e, this.data, this.uri);
     }
 
-    var storage = Cc["@mozilla.org/storagestream;1"].createInstance(Ci.nsIStorageStream);
+    var storage = Cc("@mozilla.org/storagestream;1").createInstance(Ci.nsIStorageStream);
     storage.init(SEGMENT_SIZE, 0xffffffff, null);
     var out = storage.getOutputStream(0);
 
-    var binout = Cc["@mozilla.org/binaryoutputstream;1"]
+    var binout = Cc("@mozilla.org/binaryoutputstream;1")
       .createInstance(Ci.nsIBinaryOutputStream);
 
     binout.setOutputStream(out);

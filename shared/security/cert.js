@@ -11,8 +11,8 @@ var promise = require("devtools/sham/promise");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
 DevToolsUtils.defineLazyGetter(this, "localCertService", () => {
   // Ensure PSM is initialized to support TLS sockets
-  Cc["@mozilla.org/psm;1"].getService(Ci.nsISupports);
-  return Cc["@mozilla.org/security/local-cert-service;1"]
+  Cc("@mozilla.org/psm;1").getService(Ci.nsISupports);
+  return Cc("@mozilla.org/security/local-cert-service;1")
          .getService(Ci.nsILocalCertService);
 });
 

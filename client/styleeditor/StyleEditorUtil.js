@@ -186,7 +186,7 @@ this.showFilePicker = function showFilePicker(path, toSave, parentWindow,
       return;
     }
     try {
-      let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+      let file = Cc("@mozilla.org/file/local;1").createInstance(Ci.nsILocalFile);
       file.initWithPath(path);
       callback(file);
       return;
@@ -200,7 +200,7 @@ this.showFilePicker = function showFilePicker(path, toSave, parentWindow,
     return;
   }
 
-  let fp = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+  let fp = Cc("@mozilla.org/filepicker;1").createInstance(Ci.nsIFilePicker);
   let mode = toSave ? fp.modeSave : fp.modeOpen;
   let key = toSave ? "saveStyleSheet" : "importStyleSheet";
   let fpCallback = function(result) {

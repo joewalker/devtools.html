@@ -31,7 +31,7 @@ const StreamUtils = require("devtools/shared/transport/stream-utils");
 const promise = require("devtools/sham/promise");
 
 DevToolsUtils.defineLazyGetter(this, "unicodeConverter", () => {
-  const unicodeConverter = Cc["@mozilla.org/intl/scriptableunicodeconverter"]
+  const unicodeConverter = Cc("@mozilla.org/intl/scriptableunicodeconverter")
                            .createInstance(Ci.nsIScriptableUnicodeConverter);
   unicodeConverter.charset = "UTF-8";
   return unicodeConverter;

@@ -185,7 +185,7 @@ var RecordingsView = Heritage.extend(WidgetMethods, {
    * The click listener for the "save" button of each item in this container.
    */
   _onSaveButtonClick: function (e) {
-    let fp = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+    let fp = Cc("@mozilla.org/filepicker;1").createInstance(Ci.nsIFilePicker);
     fp.init(window, L10N.getStr("recordingsList.saveDialogTitle"), Ci.nsIFilePicker.modeSave);
     fp.appendFilter(L10N.getStr("recordingsList.saveDialogJSONFilter"), "*.json");
     fp.appendFilter(L10N.getStr("recordingsList.saveDialogAllFilter"), "*.*");

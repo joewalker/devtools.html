@@ -47,7 +47,7 @@
     }
 
     // Floating scroll-bars like in OSX
-    let hiddenDOMWindow = Cc["@mozilla.org/appshell/appShellService;1"]
+    let hiddenDOMWindow = Cc("@mozilla.org/appshell/appShellService;1")
                  .getService(Ci.nsIAppShellService)
                  .hiddenDOMWindow;
 

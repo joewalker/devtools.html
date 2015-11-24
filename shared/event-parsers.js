@@ -10,7 +10,7 @@
 const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 
 loader.lazyGetter(this, "eventListenerService", () => {
-  return Cc["@mozilla.org/eventlistenerservice;1"]
+  return Cc("@mozilla.org/eventlistenerservice;1")
            .getService(Ci.nsIEventListenerService);
 });
 

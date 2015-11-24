@@ -57,7 +57,7 @@ function addDirToZip(writer, dir, basePath) {
 function getResultText(code) {
   let regexp =
     /^\[Exception... "(.*)"  nsresult: "0x[0-9a-fA-F]* \((.*)\)"  location: ".*"  data: .*\]$/;
-  let ex = Cc["@mozilla.org/js/xpc/Exception;1"].
+  let ex = Cc("@mozilla.org/js/xpc/Exception;1").
            createInstance(Ci.nsIXPCException);
   ex.initialize(null, code, null, null, null, null);
   let [, message, name] = regexp.exec(ex.toString());
@@ -66,7 +66,7 @@ function getResultText(code) {
 
 function zipDirectory(zipFile, dirToArchive) {
   let deferred = promise.defer();
-  let writer = Cc["@mozilla.org/zipwriter;1"].createInstance(Ci.nsIZipWriter);
+  let writer = Cc("@mozilla.org/zipwriter;1").createInstance(Ci.nsIZipWriter);
   writer.open(zipFile, PR_RDWR | PR_CREATE_FILE | PR_TRUNCATE);
 
   this.addDirToZip(writer, dirToArchive, "");

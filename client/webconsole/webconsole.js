@@ -216,7 +216,7 @@ function WebConsoleFrame(aWebConsoleOwner)
   this._onToolboxPrefChanged = this._onToolboxPrefChanged.bind(this);
   this._onUpdateListeners = this._onUpdateListeners.bind(this);
 
-  this._outputTimer = Cc["@mozilla.org/timer;1"].createInstance(Ci.nsITimer);
+  this._outputTimer = Cc("@mozilla.org/timer;1").createInstance(Ci.nsITimer);
   this._outputTimerInitialized = false;
 
   EventEmitter.decorate(this);
@@ -724,7 +724,7 @@ WebConsoleFrame.prototype = {
    */
   _setFilterTextBoxEvents: function WCF__setFilterTextBoxEvents()
   {
-    let timer = Cc["@mozilla.org/timer;1"].createInstance(Ci.nsITimer);
+    let timer = Cc("@mozilla.org/timer;1").createInstance(Ci.nsITimer);
     let timerEvent = this.adjustVisibilityOnSearchStringChange.bind(this);
 
     let onChange = function _onChange() {
@@ -5018,7 +5018,7 @@ WebConsoleConnectionProxy.prototype = {
     this._connectDefer = promise.defer();
 
     let timeout = Services.prefs.getIntPref(PREF_CONNECTION_TIMEOUT);
-    this._connectTimer = Cc["@mozilla.org/timer;1"].createInstance(Ci.nsITimer);
+    this._connectTimer = Cc("@mozilla.org/timer;1").createInstance(Ci.nsITimer);
     this._connectTimer.initWithCallback(this._connectionTimeout,
                                         timeout, Ci.nsITimer.TYPE_ONE_SHOT);
 

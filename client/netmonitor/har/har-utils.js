@@ -7,7 +7,7 @@ const { Cu, Ci, Cc, CC } = require("devtools/sham/chrome");
 const { Services } = require("devtools/sham/services");
 
 XPCOMUtils.defineLazyGetter(this, "dirService", function() {
-  return Cc["@mozilla.org/file/directory_service;1"].getService(Ci.nsIProperties);
+  return Cc("@mozilla.org/file/directory_service;1").getService(Ci.nsIProperties);
 });
 
 XPCOMUtils.defineLazyGetter(this, "ZipWriter", function() {
@@ -44,7 +44,7 @@ var HarUtils = {
   getTargetFile: function(fileName, jsonp, compress) {
     let browser = getMostRecentBrowserWindow();
 
-    let fp = Cc["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
+    let fp = Cc("@mozilla.org/filepicker;1").createInstance(nsIFilePicker);
     fp.init(browser, null, nsIFilePicker.modeSave);
     fp.appendFilter("HTTP Archive Files", "*.har; *.harp; *.json; *.jsonp; *.zip");
     fp.appendFilters(nsIFilePicker.filterAll | nsIFilePicker.filterText);
@@ -94,13 +94,13 @@ var HarUtils = {
       OPEN_FLAGS.TRUNCATE;
 
     try {
-      let foStream = Cc["@mozilla.org/network/file-output-stream;1"]
+      let foStream = Cc("@mozilla.org/network/file-output-stream;1")
         .createInstance(Ci.nsIFileOutputStream);
 
       let permFlags = parseInt("0666", 8);
       foStream.init(file, openFlags, permFlags, 0);
 
-      let convertor = Cc["@mozilla.org/intl/converter-output-stream;1"]
+      let convertor = Cc("@mozilla.org/intl/converter-output-stream;1")
         .createInstance(Ci.nsIConverterOutputStream);
       convertor.init(foStream, "UTF-8", 0, 0);
 
@@ -136,7 +136,7 @@ var HarUtils = {
       file.moveTo(null, "temp" + (new Date()).getTime() + "temphar");
 
       // Create compressed file with the original file path name.
-      let zipFile = Cc["@mozilla.org/file/local;1"].
+      let zipFile = Cc("@mozilla.org/file/local;1").
         createInstance(Ci.nsILocalFile);
       zipFile.initWithPath(originalFilePath);
 
@@ -173,7 +173,7 @@ var HarUtils = {
       dir.append("har");
       dir.append("logs");
     } else {
-      dir = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+      dir = Cc("@mozilla.org/file/local;1").createInstance(Ci.nsILocalFile);
       dir.initWithPath(path);
     }
 

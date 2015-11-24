@@ -8,7 +8,7 @@ const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 
 const { Services } = require("devtools/sham/services");
 
-loader.lazyGetter(this, "osString", () => Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime).OS);
+loader.lazyGetter(this, "osString", () => Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime).OS);
 
 // Panels
 loader.lazyGetter(this, "OptionsPanel", () => require("devtools/client/framework/toolbox-options").OptionsPanel);

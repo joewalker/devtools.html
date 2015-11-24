@@ -22,7 +22,7 @@ const OPEN_FLAGS = {
  * Open File Save As dialog and let the user to pick proper file location.
  */
 exports.getTargetFile = function() {
-  var fp = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+  var fp = Cc("@mozilla.org/filepicker;1").createInstance(Ci.nsIFilePicker);
 
   var win = getMostRecentBrowserWindow();
   fp.init(win, null, Ci.nsIFilePicker.modeSave);
@@ -43,7 +43,7 @@ exports.getTargetFile = function() {
  * Save JSON to a file
  */
 exports.saveToFile = function(file, jsonString) {
-  var foStream = Cc["@mozilla.org/network/file-output-stream;1"].
+  var foStream = Cc("@mozilla.org/network/file-output-stream;1").
     createInstance(Ci.nsIFileOutputStream);
 
   // write, create, truncate
@@ -53,7 +53,7 @@ exports.saveToFile = function(file, jsonString) {
   let permFlags = parseInt("0666", 8);
   foStream.init(file, openFlags, permFlags, 0);
 
-  var converter = Cc["@mozilla.org/intl/converter-output-stream;1"].
+  var converter = Cc("@mozilla.org/intl/converter-output-stream;1").
     createInstance(Ci.nsIConverterOutputStream);
 
   converter.init(foStream, "UTF-8", 0, 0);

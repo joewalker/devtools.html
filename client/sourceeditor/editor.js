@@ -1208,7 +1208,7 @@ function getCSSKeywords() {
     return keys;
   }
 
-  let domUtils = Cc["@mozilla.org/inspector/dom-utils;1"]
+  let domUtils = Cc("@mozilla.org/inspector/dom-utils;1")
                    .getService(Ci.inIDOMUtils);
   let cssProperties = domUtils.getCSSPropertyNames(domUtils.INCLUDE_ALIASES);
   let cssColors = {};

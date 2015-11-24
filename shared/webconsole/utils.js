@@ -50,7 +50,7 @@ var WebConsoleUtils = {
    */
   supportsString: function WCU_supportsString(aString)
   {
-    let str = Cc["@mozilla.org/supports-string;1"].
+    let str = Cc("@mozilla.org/supports-string;1").
               createInstance(Ci.nsISupportsString);
     str.data = aString;
     return str;
@@ -1009,7 +1009,7 @@ ConsoleAPIListener.prototype =
   getCachedMessages: function CAL_getCachedMessages(aIncludePrivate = false)
   {
     let messages = [];
-    let ConsoleAPIStorage = Cc["@mozilla.org/consoleAPI-storage;1"]
+    let ConsoleAPIStorage = Cc("@mozilla.org/consoleAPI-storage;1")
                               .getService(Ci.nsIConsoleAPIStorage);
 
     // if !this.window, we're in a browser console. Retrieve all events

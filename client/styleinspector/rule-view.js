@@ -54,7 +54,7 @@ const FILTER_PROP_RE = /\s*([^:\s]*)\s*:\s*(.*?)\s*;?$/;
 // This is used to parse the filter search value to see if the filter
 // should be strict or not
 const FILTER_STRICT_RE = /\s*`(.*?)`\s*$/;
-const IOService = Cc["@mozilla.org/network/io-service;1"]
+const IOService = Cc("@mozilla.org/network/io-service;1")
                   .getService(Ci.nsIIOService);
 
 /**
@@ -80,7 +80,7 @@ function createDummyDocument() {
   });
   let docShell = getDocShell(frame);
   let eventTarget = docShell.chromeEventHandler;
-  docShell.createAboutBlankContentViewer(Cc["@mozilla.org/nullprincipal;1"]
+  docShell.createAboutBlankContentViewer(Cc("@mozilla.org/nullprincipal;1")
                                          .createInstance(Ci.nsIPrincipal));
   let window = docShell.contentViewer.DOMDocument.defaultView;
   window.location = "data:text/html,<html></html>";
@@ -4035,12 +4035,12 @@ function getPropertyNameAndValue(node) {
 }
 
 XPCOMUtils.defineLazyGetter(this, "clipboardHelper", function() {
-  return Cc["@mozilla.org/widget/clipboardhelper;1"]
+  return Cc("@mozilla.org/widget/clipboardhelper;1")
     .getService(Ci.nsIClipboardHelper);
 });
 
 XPCOMUtils.defineLazyGetter(this, "osString", function() {
-  return Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime).OS;
+  return Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime).OS;
 });
 
 XPCOMUtils.defineLazyGetter(this, "_strings", function() {
@@ -4049,7 +4049,7 @@ XPCOMUtils.defineLazyGetter(this, "_strings", function() {
 });
 
 XPCOMUtils.defineLazyGetter(this, "domUtils", function() {
-  return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
+  return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 });
 
 loader.lazyGetter(this, "AutocompletePopup", function() {

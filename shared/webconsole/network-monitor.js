@@ -226,7 +226,7 @@ NetworkResponseListener.prototype = {
         channel.contentEncodings &&
         !channel.applyConversion) {
       let encodingHeader = channel.getResponseHeader("Content-Encoding");
-      let scs = Cc["@mozilla.org/streamConverters;1"].
+      let scs = Cc("@mozilla.org/streamConverters;1").
         getService(Ci.nsIStreamConverterService);
       let encodings = encodingHeader.split(/\s*\t*,\s*\t*/);
       let nextListener = this;
@@ -952,7 +952,7 @@ NetworkMonitor.prototype = {
     // This allows us to buffer the data we are receiving and read it
     // asynchronously.
     // Both ends of the pipe must be blocking.
-    let sink = Cc["@mozilla.org/pipe;1"].createInstance(Ci.nsIPipe);
+    let sink = Cc("@mozilla.org/pipe;1").createInstance(Ci.nsIPipe);
 
     // The streams need to be blocking because this is required by the
     // stream tee.
@@ -965,7 +965,7 @@ NetworkMonitor.prototype = {
     newListener.inputStream = sink.inputStream;
     newListener.sink = sink;
 
-    let tee = Cc["@mozilla.org/network/stream-listener-tee;1"].
+    let tee = Cc("@mozilla.org/network/stream-listener-tee;1").
               createInstance(Ci.nsIStreamListenerTee);
 
     let originalListener = channel.setNewListener(tee);

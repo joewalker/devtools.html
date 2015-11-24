@@ -367,7 +367,7 @@ RequestsMenuView.prototype = Heritage.extend(WidgetMethods, {
     this._splitter = $("#network-inspector-view-splitter");
     this._summary = $("#requests-menu-network-summary-label");
     this._summary.setAttribute("value", L10N.getStr("networkMenu.empty"));
-    this.userInputTimer = Cc["@mozilla.org/timer;1"].createInstance(Ci.nsITimer);
+    this.userInputTimer = Cc("@mozilla.org/timer;1").createInstance(Ci.nsITimer);
 
     Prefs.filters.forEach(type => this.filterOn(type));
     this.sortContents(this._byTiming);

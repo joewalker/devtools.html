@@ -387,7 +387,7 @@ OOBCert.Client.prototype = {
 
   _createRandom() {
     const length = 16; // 16 bytes / 128 bits
-    let rng = Cc["@mozilla.org/security/random-generator;1"]
+    let rng = Cc("@mozilla.org/security/random-generator;1")
               .createInstance(Ci.nsIRandomGenerator);
     let bytes = rng.generateRandomBytes(length);
     return bytes.map(byte => byte.toString(16)).join("");

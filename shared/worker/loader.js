@@ -423,7 +423,7 @@ var {
       setTimeout(callback, 0);
     }
 
-    let xpcInspector = Cc["@mozilla.org/jsinspector;1"].
+    let xpcInspector = Cc("@mozilla.org/jsinspector;1").
                        getService(Ci.nsIJSInspector);
 
     return {

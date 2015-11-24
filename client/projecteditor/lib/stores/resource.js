@@ -15,7 +15,7 @@ const URL = require("sdk/url");
 const promise = require("devtools/sham/promise");
 const { OS } = require("devtools/sham/osfile");
 const { FileUtils } = require("devtools/sham/fileutils");
-const mimeService = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService);
+const mimeService = Cc("@mozilla.org/mime;1").getService(Ci.nsIMIMEService);
 const { Task } = require("devtools/sham/task");
 
 const gDecoder = new TextDecoder();

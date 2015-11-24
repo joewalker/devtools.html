@@ -1124,7 +1124,7 @@ var Scratchpad = {
    */
   _getUnicodeContent: function SP__getUnicodeContent(aContent, aCharsetArray) {
     let content = null,
-        converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Ci.nsIScriptableUnicodeConverter),
+        converter = Cc("@mozilla.org/intl/scriptableunicodeconverter").createInstance(Ci.nsIScriptableUnicodeConverter),
         success = aCharsetArray.some(charset => {
           try {
             converter.charset = charset;
@@ -1263,7 +1263,7 @@ var Scratchpad = {
     if (aIndex > -1) {
       promptCallback();
     } else {
-      let fp = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+      let fp = Cc("@mozilla.org/filepicker;1").createInstance(Ci.nsIFilePicker);
       fp.init(window, this.strings.GetStringFromName("openFile.title"),
               Ci.nsIFilePicker.modeOpen);
       fp.defaultString = "";
@@ -1343,7 +1343,7 @@ var Scratchpad = {
     // WARNING: Do not use setCharPref here, it doesn't play nicely with
     // Unicode strings.
 
-    let str = Cc["@mozilla.org/supports-string;1"]
+    let str = Cc("@mozilla.org/supports-string;1")
       .createInstance(Ci.nsISupportsString);
     str.data = JSON.stringify(filePaths);
 
@@ -1419,7 +1419,7 @@ var Scratchpad = {
     // WARNING: Do not use setCharPref here, it doesn't play nicely with
     // Unicode strings.
 
-    let str = Cc["@mozilla.org/supports-string;1"]
+    let str = Cc("@mozilla.org/supports-string;1")
       .createInstance(Ci.nsISupportsString);
     str.data = JSON.stringify(filePaths);
 
@@ -1475,7 +1475,7 @@ var Scratchpad = {
       return this.saveFileAs(aCallback);
     }
 
-    let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+    let file = Cc("@mozilla.org/file/local;1").createInstance(Ci.nsILocalFile);
     file.initWithPath(this.filename);
 
     this.exportToFile(file, true, false, aStatus => {
@@ -1498,7 +1498,7 @@ var Scratchpad = {
    */
   saveFileAs: function SP_saveFileAs(aCallback)
   {
-    let fp = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+    let fp = Cc("@mozilla.org/filepicker;1").createInstance(Ci.nsIFilePicker);
     let fpCallback = aResult => {
       if (aResult != Ci.nsIFilePicker.returnCancel) {
         this.setFilename(fp.file.path);
@@ -1530,7 +1530,7 @@ var Scratchpad = {
    */
   revertFile: function SP_revertFile(aCallback)
   {
-    let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+    let file = Cc("@mozilla.org/file/local;1").createInstance(Ci.nsILocalFile);
     file.initWithPath(this.filename);
 
     if (!file.exists()) {

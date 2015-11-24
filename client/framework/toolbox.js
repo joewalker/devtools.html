@@ -51,7 +51,7 @@ const { showDoorhanger } = require("devtools/client/shared/doorhanger");
 const { createPerformanceFront } = require("devtools/server/actors/performance");
 const system = require("devtools/shared/system");
 loader.lazyGetter(this, "osString", () => {
-  return Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime).OS;
+  return Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime).OS;
 });
 loader.lazyGetter(this, "registerHarOverlay", () => {
   return require("devtools/client/netmonitor/har/toolbox-overlay").register;

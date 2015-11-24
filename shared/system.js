@@ -12,10 +12,10 @@ const OS = require("devtools/sham/os.js");
 const { DebuggerServer } = require("devtools/server/main");
 const { AppConstants } = require("devtools/sham/appconstants");
 loader.lazyGetter(this, "screenManager", () => {
-  return Cc["@mozilla.org/gfx/screenmanager;1"].getService(Ci.nsIScreenManager);
+  return Cc("@mozilla.org/gfx/screenmanager;1").getService(Ci.nsIScreenManager);
 });
 loader.lazyGetter(this, "oscpu", () => {
-  return Cc["@mozilla.org/network/protocol;1?name=http"]
+  return Cc("@mozilla.org/network/protocol;1?name=http")
            .getService(Ci.nsIHttpProtocolHandler).oscpu;
 });
 
@@ -120,7 +120,7 @@ function *getSystemInfo() {
     geckoversion: geckoVersion,
 
     // Locale used in this build
-    locale: Cc["@mozilla.org/chrome/chrome-registry;1"].getService(Ci.nsIXULChromeRegistry).getSelectedLocale("global"),
+    locale: Cc("@mozilla.org/chrome/chrome-registry;1").getService(Ci.nsIXULChromeRegistry).getSelectedLocale("global"),
 
     /**
      * Information regarding the operating system.
@@ -173,7 +173,7 @@ function getProfileLocation () {
   // In child processes, we cannot access the profile location.
   try {
     let profd = Services.dirsvc.get("ProfD", Ci.nsILocalFile);
-    let profservice = Cc["@mozilla.org/toolkit/profile-service;1"].getService(Ci.nsIToolkitProfileService);
+    let profservice = Cc("@mozilla.org/toolkit/profile-service;1").getService(Ci.nsIToolkitProfileService);
     var profiles = profservice.profiles;
     while (profiles.hasMoreElements()) {
       let profile = profiles.getNext().QueryInterface(Ci.nsIToolkitProfile);
@@ -201,7 +201,7 @@ function getAppIniString(section, key) {
     return undefined;
   }
 
-  let iniParser = Cc["@mozilla.org/xpcom/ini-parser-factory;1"].getService(Ci.nsIINIParserFactory).createINIParser(inifile);
+  let iniParser = Cc("@mozilla.org/xpcom/ini-parser-factory;1").getService(Ci.nsIINIParserFactory).createINIParser(inifile);
   try {
     return iniParser.getString(section, key);
   } catch (e) {
@@ -303,7 +303,7 @@ function getSetting(name) {
     // settingsService fails in b2g child processes
     // TODO bug 1205797, make this work in child processes.
     try {
-      settingsService = Cc["@mozilla.org/settingsService;1"].getService(Ci.nsISettingsService);
+      settingsService = Cc("@mozilla.org/settingsService;1").getService(Ci.nsISettingsService);
     } catch (e) {
       return promise.reject(e);
     }
@@ -318,7 +318,7 @@ function getSetting(name) {
   return deferred.promise;
 }
 
-exports.is64Bit = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo).is64Bit;
+exports.is64Bit = Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULAppInfo).is64Bit;
 exports.getSystemInfo = Task.async(getSystemInfo);
 exports.getAppIniString = getAppIniString;
 exports.getSetting = getSetting;
