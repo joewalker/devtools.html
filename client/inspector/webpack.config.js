@@ -8,5 +8,3 @@ module.exports = Object.assign({}, common, {
     filename: "build.js"
   },
 });
-
-console.log(module.exports);

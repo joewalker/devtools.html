@@ -10,19 +10,15 @@ const { Services } = require("devtools/sham/services");
 var promise = require("devtools/sham/promise");
 var EventEmitter = require("devtools/shared/event-emitter");
 var clipboard = require("devtools/sham/clipboard");
-//var {HostType} = require("devtools/client/framework/toolbox").Toolbox;
+var L10N = require("devtools/sham/l10n");
 
 lazyRequire(this, "MarkupView", () => require("devtools/client/markupview/markup-view").MarkupView);
 lazyRequire(this, "HTMLBreadcrumbs", () => require("devtools/client/inspector/breadcrumbs").HTMLBreadcrumbs);
 lazyRequire(this, "ToolSidebar", () => require("devtools/client/framework/sidebar").ToolSidebar);
 lazyRequire(this, "InspectorSearch", () => require("devtools/client/inspector/inspector-search").InspectorSearch);
 
-lazyRequire(this, "strings", () => {
-  return Services.strings.createBundle("chrome://devtools/locale/inspector.properties");
-});
-lazyRequire(this, "toolboxStrings", () => {
-  return Services.strings.createBundle("chrome://devtools/locale/toolbox.properties");
-});
+lazyRequire(this, "strings", () => new L10N(require("l10n/inspector.properties")));
+lazyRequire(this, "toolboxStrings", () => new L10N(require("l10n/toolbox.properties")));
 
 const LAYOUT_CHANGE_TIMER = 250;
 

@@ -16,6 +16,7 @@
     "babel-loader": "^6.2.0",
     "gulp": "^3.9.0",
     "gulp-util": "^3.0.7",
+    "properties-loader": "^0.0.1",
     "webpack": "^1.12.8"
   }
 }
