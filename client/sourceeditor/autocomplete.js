@@ -201,17 +201,17 @@ function destroyAutoCompletion(ctx) {
  * Provides suggestions to autocomplete the current token/word being typed.
  */
 function autoComplete({ ed, cm }) {
-  let private = autocompleteMap.get(ed);
-  let { completer, popup } = private;
-  if (!completer || private.insertingSuggestion || private.doNotAutocomplete) {
-    private.insertingSuggestion = false;
+  let priv = autocompleteMap.get(ed);
+  let { completer, popup } = priv;
+  if (!completer || priv.insertingSuggestion || priv.doNotAutocomplete) {
+    priv.insertingSuggestion = false;
     return;
   }
   let cur = ed.getCursor();
   completer.complete(cm.getRange({line: 0, ch: 0}, cur), cur)
     .then(suggestions => {
     if (!suggestions || !suggestions.length || suggestions[0].preLabel == null) {
-      private.suggestionInsertedOnce = false;
+      priv.suggestionInsertedOnce = false;
       popup.hidePopup();
       ed.emit("after-suggest");
       return;
@@ -226,7 +226,7 @@ function autoComplete({ ed, cm }) {
     popup.hidePopup();
     popup.setItems(suggestions);
     popup.openPopup(cursorElement, -1 * left, 0);
-    private.suggestionInsertedOnce = false;
+    priv.suggestionInsertedOnce = false;
     // This event is used in tests.
     ed.emit("after-suggest");
   }).then(null, Cu.reportError);
@@ -259,12 +259,12 @@ function insertPopupItem(ed, popupItem) {
  * when `reverse` is not true. Opposite otherwise.
  */
 function cycleSuggestions(ed, reverse) {
-  let private = autocompleteMap.get(ed);
-  let { popup, completer } = private;
+  let priv = autocompleteMap.get(ed);
+  let { popup, completer } = priv;
   let cur = ed.getCursor();
-  private.insertingSuggestion = true;
-  if (!private.suggestionInsertedOnce) {
-    private.suggestionInsertedOnce = true;
+  priv.insertingSuggestion = true;
+  if (!priv.suggestionInsertedOnce) {
+    priv.suggestionInsertedOnce = true;
     let firstItem;
     if (reverse) {
       firstItem = popup.getItemAtIndex(popup.itemCount - 1);
@@ -299,55 +299,55 @@ function cycleSuggestions(ed, reverse) {
  * keypresses.
  */
 function onEditorKeypress({ ed, Editor }, cm, event) {
-  let private = autocompleteMap.get(ed);
+  let priv = autocompleteMap.get(ed);
 
   // Do not try to autocomplete with multiple selections.
   if (ed.hasMultipleSelections()) {
-    private.doNotAutocomplete = true;
-    private.popup.hidePopup();
+    priv.doNotAutocomplete = true;
+    priv.popup.hidePopup();
     return;
   }
 
   if ((event.ctrlKey || event.metaKey) && event.keyCode == event.DOM_VK_SPACE) {
     // When Ctrl/Cmd + Space is pressed, two simultaneous keypresses are emitted
     // first one for just the Ctrl/Cmd and second one for combo. The first one
-    // leave the private.doNotAutocomplete as true, so we have to make it false
-    private.doNotAutocomplete = false;
+    // leave the priv.doNotAutocomplete as true, so we have to make it false
+    priv.doNotAutocomplete = false;
     return;
   }
 
   if (event.ctrlKey || event.metaKey || event.altKey) {
-    private.doNotAutocomplete = true;
-    private.popup.hidePopup();
+    priv.doNotAutocomplete = true;
+    priv.popup.hidePopup();
     return;
   }
 
   switch (event.keyCode) {
     case event.DOM_VK_RETURN:
-      private.doNotAutocomplete = true;
+      priv.doNotAutocomplete = true;
       break;
 
     case event.DOM_VK_ESCAPE:
-      if (private.popup.isOpen)
+      if (priv.popup.isOpen)
         event.preventDefault();
     case event.DOM_VK_LEFT:
     case event.DOM_VK_RIGHT:
     case event.DOM_VK_HOME:
     case event.DOM_VK_END:
-      private.doNotAutocomplete = true;
-      private.popup.hidePopup();
+      priv.doNotAutocomplete = true;
+      priv.popup.hidePopup();
       break;
 
     case event.DOM_VK_BACK_SPACE:
     case event.DOM_VK_DELETE:
       if (ed.config.mode == Editor.modes.css)
-        private.completer.invalidateCache(ed.getCursor().line)
-      private.doNotAutocomplete = true;
-      private.popup.hidePopup();
+        priv.completer.invalidateCache(ed.getCursor().line)
+      priv.doNotAutocomplete = true;
+      priv.popup.hidePopup();
       break;
 
     default:
-      private.doNotAutocomplete = false;
+      priv.doNotAutocomplete = false;
   }
 }
 
