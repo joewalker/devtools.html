@@ -3,22 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-(function (factory) { // Module boilerplate
-  if (this.module && module.id.indexOf("worker") >= 0) { // require
-    const { Cc, Ci, Cu, ChromeWorker } = require("devtools/sham/chrome");
-    const dumpn = require("devtools/shared/DevToolsUtils").dumpn;
-    factory.call(this, require, exports, module, { Cc, Ci, Cu }, ChromeWorker, dumpn);
-  } else { // require
-    const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
-    this.isWorker = false;
-    this.Promise = require("devtools/sham/promise").Promise;
-    factory.call(
-      this, require, this, { exports: this },
-      { Cc, Ci, Cu }, ChromeWorker, null
-    );
-    this.EXPORTED_SYMBOLS = ["DevToolsWorker"];
-  }
-}).call(this, function (require, exports, module, { Ci, Cc }, ChromeWorker, dumpn) {
+const { Cc, Ci, Cu, ChromeWorker } = require("devtools/sham/chrome");
+const { dumpn } = require("devtools/shared/DevToolsUtils");
 
 var MESSAGE_COUNTER = 0;
 
@@ -162,5 +148,3 @@ function createWorkerString (fn) {
     createTask(self, "workerifiedTask", ${fn.toString()});
   `;
 }
-
-});

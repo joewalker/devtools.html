@@ -21,13 +21,11 @@
 //  mod(self.tern || (self.tern = {}), acorn, acorn, acorn.walk, tern.def, tern.signal); // Plain browser env
 //})(function(exports, acorn, acorn_loose, walk, def, signal) {
 
-  const infer = require("./infer");
-  const signal = require("./signal");
   const acorn = require("acorn/acorn");
   const acorn_loose = require("acorn/acorn_loose");
-  const def = require("./def").def;
-  const signal = require("./signal").signal,
-  const walk = require("acorn/walk").walk;
+  const def = require("./def");
+  const signal = require("./signal");
+  const walk = require("acorn/walk");
 
   "use strict";
 

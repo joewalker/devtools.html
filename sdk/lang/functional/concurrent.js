@@ -13,7 +13,7 @@ module.metadata = {
 };
 
 const { arity, name, derive, invoke } = require("./helpers");
-const { setTimeout, clearTimeout, setImmediate } = require("../../timers");
+//const { setTimeout, clearTimeout, setImmediate } = require("../../timers");
 
 /**
  * Takes a function and returns a wrapped one instead, calling which will call

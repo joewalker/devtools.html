@@ -21,8 +21,6 @@ const discovery = require("devtools/shared/discovery/discovery");
 const cert = require("devtools/shared/security/cert");
 const { Authenticators } = require("devtools/shared/security/auth");
 const { AuthenticationResult } = require("devtools/shared/security/auth");
-const { setTimeout } = require("Timer");
-const { clearTimeout } = require("Timer");
 
 DevToolsUtils.defineLazyGetter(this, "nsFile", () => {
   return CC("@mozilla.org/file/local;1", "nsIFile", "initWithPath");
