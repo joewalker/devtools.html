@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const { Cu, Ci, Cc } = require("chrome");
+const { Cu, Ci, Cc } = require("devtools/sham/chrome");
 const { Class } = require("sdk/core/heritage");
 const { defer, resolve } = require("promise");
 const { Services } = require("devtools/sham/services");

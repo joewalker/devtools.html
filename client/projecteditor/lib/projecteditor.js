@@ -4,7 +4,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const { Cc, Ci, Cu } = require("chrome");
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 const { Class } = require("sdk/core/heritage");
 const { Project } = require("devtools/client/projecteditor/lib/project");
 const { ProjectTreeView } = require("devtools/client/projecteditor/lib/tree");

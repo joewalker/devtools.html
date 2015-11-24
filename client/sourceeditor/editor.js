@@ -6,7 +6,7 @@
 
 "use strict";
 
-const { Cu, Cc, Ci, components } = require("chrome");
+const { Cu, Cc, Ci, components } = require("devtools/sham/chrome");
 
 const {
   EXPAND_TAB,

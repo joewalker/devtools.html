@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const { Cc, Ci, Cu, Cr } = require("chrome");
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 const { Task } = require("devtools/sham/task");
 
 const { promise } = require("devtools/sham/promise");

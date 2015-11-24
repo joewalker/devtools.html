@@ -54,7 +54,7 @@
 
 "use strict";
 
-const {components, Cc, Ci, Cu} = require("chrome");
+const {components, Cc, Ci, Cu} = require("devtools/sham/chrome");
 const { NetUtil } = require("devtools/sham/netutil");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 

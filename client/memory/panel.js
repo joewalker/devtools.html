@@ -4,7 +4,7 @@
 
 "use strict";
 
-const { Cc, Ci, Cu, Cr } = require("chrome");
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 const { Task } = require("devtools/sham/task");
 const EventEmitter = require("devtools/shared/event-emitter");
 const { MemoryFront } = require("devtools/server/actors/memory");

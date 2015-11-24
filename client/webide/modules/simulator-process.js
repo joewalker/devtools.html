@@ -5,7 +5,7 @@
 
 'use strict';
 
-const { Cc, Ci, Cu } = require("chrome");
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 
 const Environment = require("sdk/system/environment").env;
 const EventEmitter = require("devtools/shared/event-emitter");

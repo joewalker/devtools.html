@@ -24,7 +24,7 @@
 
 "use strict";
 
-const {Cc, Cu, Ci} = require("chrome");
+const {Cc, Cu, Ci} = require("devtools/sham/chrome");
 const { Services } = require("devtools/sham/services");
 const Promise = require("promise");
 const DOMUtils = Cc["@mozilla.org/inspector/dom-utils;1"]

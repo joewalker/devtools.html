@@ -6,7 +6,7 @@
 
 "use strict";
 
-const {Cc, Ci, Cu} = require("chrome");
+const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const promise = require("promise");
 //const {setTimeout, clearTimeout} = require("devtools/sham/timer");
 const {CssLogic} = require("devtools/shared/styleinspector/css-logic");

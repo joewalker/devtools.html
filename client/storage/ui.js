@@ -5,7 +5,7 @@
 
 "use strict";
 
-const {Cu} = require("chrome");
+const {Cu} = require("devtools/sham/chrome");
 const EventEmitter = require("devtools/shared/event-emitter");
 
 const { TreeWidget } = require("devtools/client/shared/widgets/TreeWidget");

@@ -8,7 +8,7 @@
  * of all the markers in the timeline data.
  */
 
-const { Cc, Ci, Cu, Cr } = require("chrome");
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 const { Heritage } = require("devtools/client/shared/widgets/ViewHelpers");
 const { AbstractTreeItem } = require("devtools/client/shared/widgets/AbstractTreeItem");
 

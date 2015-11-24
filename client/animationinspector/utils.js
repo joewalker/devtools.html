@@ -6,7 +6,7 @@
 
 "use strict";
 
-const {Cu} = require("chrome");
+const {Cu} = require("devtools/sham/chrome");
 const {Task} = require("devtools/sham/task");
 const EventEmitter = require("devtools/shared/event-emitter");
 

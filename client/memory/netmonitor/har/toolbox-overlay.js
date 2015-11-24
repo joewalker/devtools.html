@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const { Cu, Ci } = require("chrome");
+const { Cu, Ci } = require("devtools/sham/chrome");
 
 const { HarAutomation } = require("devtools/client/netmonitor/har/har-automation");
 

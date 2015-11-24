@@ -7,7 +7,7 @@
  * This file contains the base line graph that all Performance line graphs use.
  */
 
-const { Cc, Ci, Cu, Cr } = require("chrome");
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 const { Task } = require("devtools/sham/task");
 const { Heritage } = require("devtools/client/shared/widgets/ViewHelpers");
 const LineGraphWidget = require("devtools/client/shared/widgets/LineGraphWidget");

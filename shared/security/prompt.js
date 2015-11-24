@@ -6,7 +6,7 @@
 
 "use strict";
 
-var { Ci } = require("chrome");
+var { Ci } = require("devtools/sham/chrome");
 var Services = require("Services");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const { DebuggerSocket } = require("devtools/shared/security/socket");

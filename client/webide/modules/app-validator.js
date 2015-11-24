@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-var {Ci,Cu,CC} = require("chrome");
+var {Ci,Cu,CC} = require("devtools/sham/chrome");
 const promise = require("devtools/shared/deprecated-sync-thenables");
 
 const { FileUtils } = require("devtools/sham/fileutils");

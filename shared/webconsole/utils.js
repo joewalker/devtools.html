@@ -6,7 +6,7 @@
 
 "use strict";
 
-const {Cc, Ci, Cu, components} = require("chrome");
+const {Cc, Ci, Cu, components} = require("devtools/sham/chrome");
 const {isWindowIncluded} = require("devtools/shared/layout/utils");
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");

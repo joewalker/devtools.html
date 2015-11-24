@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-var { Ci } = require("chrome");
+var { Ci } = require("devtools/sham/chrome");
 var promise = require("promise");
 
 const FRAME_SCRIPT =

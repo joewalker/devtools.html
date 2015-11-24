@@ -6,7 +6,7 @@
 
 "use strict";
 
-const {Cu, Cc, Ci} = require("chrome");
+const {Cu, Cc, Ci} = require("devtools/sham/chrome");
 const {getMostRecentBrowserWindow} = require("sdk/window/utils");
 
 const OPEN_FLAGS = {

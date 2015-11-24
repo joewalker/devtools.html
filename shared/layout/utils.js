@@ -4,7 +4,7 @@
 
 "use strict";
 
-const { Ci } = require("chrome");
+const { Ci } = require("devtools/sham/chrome");
 const { memoize } = require("sdk/lang/functional");
 
 const { setIgnoreLayoutChanges } = require("devtools/server/actors/layout");

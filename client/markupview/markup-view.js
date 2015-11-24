@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const {Cc, Cu, Ci} = require("chrome");
+const {Cc, Cu, Ci} = require("devtools/sham/chrome");
 
 // Page size for pageup/pagedown
 const PAGE_SIZE = 10;

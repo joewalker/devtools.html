@@ -6,7 +6,7 @@
 
 "use strict";
 
-const {Cc, Ci, Cu} = require("chrome");
+const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const {PREF_ORIG_SOURCES} = require("devtools/client/styleeditor/utils");
 
 const overlays = require("devtools/client/styleinspector/style-inspector-overlays");

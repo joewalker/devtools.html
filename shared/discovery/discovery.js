@@ -31,7 +31,7 @@
  * is then available to scanning devices.
  */
 
-const { Cu, CC, Cc, Ci } = require("chrome");
+const { Cu, CC, Cc, Ci } = require("devtools/sham/chrome");
 const EventEmitter = require("devtools/shared/event-emitter");
 const { setTimeout, clearTimeout } = require("sdk/timers");
 

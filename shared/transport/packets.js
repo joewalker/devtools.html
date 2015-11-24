@@ -24,7 +24,7 @@
  *     Called to clean up at the end of use
  */
 
-const { Cc, Ci, Cu } = require("chrome");
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const { dumpn, dumpv } = DevToolsUtils;
 const StreamUtils = require("devtools/shared/transport/stream-utils");

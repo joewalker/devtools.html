@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const {Cu, Ci} = require("chrome");
+const {Cu, Ci} = require("devtools/sham/chrome");
 const {Devices} = require("devtools/shared/apps/Devices");
 const {Services} = const { Services } = require("devtools/sham/services");
 const {Connection} = require("devtools/shared/client/connection-manager");

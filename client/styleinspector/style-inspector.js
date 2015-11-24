@@ -6,7 +6,7 @@
 
 "use strict";
 
-const {Cc, Cu, Ci} = require("chrome");
+const {Cc, Cu, Ci} = require("devtools/sham/chrome");
 const promise = require("promise");
 const {Tools} = require("devtools/client/main");
 const { Services } = require("devtools/sham/services");

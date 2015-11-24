@@ -19,7 +19,7 @@
 // 4. destroy the component:
 //    c.destroy();
 
-const {Cu} = require("chrome");
+const {Cu} = require("devtools/sham/chrome");
 const {
   Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout

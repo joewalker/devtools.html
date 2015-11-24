@@ -9,7 +9,7 @@
  * https://developer.mozilla.org/en-US/docs/Tools/DevToolsColors
  */
 
-const { Ci, Cu } = require("chrome");
+const { Ci, Cu } = require("devtools/sham/chrome");
 const { NetUtil } = require("devtools/sham/netutil");
 const { Services } = require("devtools/sham/services");
 const { gDevTools } = require("devtools/client/framework/gDevTools");

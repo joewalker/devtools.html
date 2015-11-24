@@ -4,7 +4,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
  "use strict";
 
-const {Cu} = require("chrome");
+const {Cu} = require("devtools/sham/chrome");
 const Editor = require("devtools/client/sourceeditor/editor");
 const { Services } = require("devtools/sham/services");
 const { EventEmitter } = require("devtools/shared/event-emitter");

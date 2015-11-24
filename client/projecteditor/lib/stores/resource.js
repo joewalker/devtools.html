@@ -6,7 +6,7 @@
 
 "use strict";
 
-const { Cc, Ci, Cu } = require("chrome");
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 const { TextEncoder, TextDecoder } = require('sdk/io/buffer');
 const { Class } = require("sdk/core/heritage");
 const { EventTarget } = require("sdk/event/target");

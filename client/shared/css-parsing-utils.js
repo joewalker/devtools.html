@@ -14,7 +14,7 @@
 
 "use strict";
 
-const {Cc, Ci, Cu} = require("chrome");
+const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const CSS = require("CSS");
 const promise = require("promise");
 const { Task } = require("devtools/sham/task");

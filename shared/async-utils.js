@@ -13,7 +13,7 @@
  * See Task documentation at https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Task.jsm.
  */
 
-var {Cu} = require("chrome");
+var {Cu} = require("devtools/sham/chrome");
 const { Task } = require("devtools/sham/task");
 var Promise = require("promise");
 

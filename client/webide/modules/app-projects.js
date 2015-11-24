@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const {Cc,Ci,Cu,Cr} = require("chrome");
+const {Cc,Ci,Cu,Cr} = require("devtools/sham/chrome");
 const ObservableObject = require("devtools/client/shared/observable-object");
 const promise = require("devtools/shared/deprecated-sync-thenables");
 

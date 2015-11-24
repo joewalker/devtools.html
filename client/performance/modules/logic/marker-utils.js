@@ -8,7 +8,7 @@
  * and parsing out the blueprint to generate correct values for markers.
  */
 
-const { Cu, Ci } = require("chrome");
+const { Cu, Ci } = require("devtools/sham/chrome");
 
 const { L10N } = require("devtools/client/performance/modules/global");
 const { PREFS } = require("devtools/client/performance/modules/global");

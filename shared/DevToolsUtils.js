@@ -6,7 +6,7 @@
 
 /* General utilities used throughout devtools. */
 
-var { Ci, Cu, Cc, components } = require("chrome");
+var { Ci, Cu, Cc, components } = require("devtools/sham/chrome");
 var Services = require("Services");
 var promise = require("promise");
 

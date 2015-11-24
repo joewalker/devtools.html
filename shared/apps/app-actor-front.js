@@ -1,4 +1,4 @@
-const {Ci, Cc, Cu, Cr} = require("chrome");
+const {Ci, Cc, Cu, Cr} = require("devtools/sham/chrome");
 const { OS } = require("devtools/sham/osfile");
 const {Services} = const { Services } = require("devtools/sham/services");
 const {FileUtils} = const { FileUtils } = require ("devtools/sham/fileutils");

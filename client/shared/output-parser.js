@@ -4,7 +4,7 @@
 
 "use strict";
 
-const {Cc, Ci, Cu} = require("chrome");
+const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const {colorUtils} = require("devtools/shared/css-color");
 const { Services } = require("devtools/sham/services");
 

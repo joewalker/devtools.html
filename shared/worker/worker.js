@@ -5,7 +5,7 @@
 
 (function (factory) { // Module boilerplate
   if (this.module && module.id.indexOf("worker") >= 0) { // require
-    const { Cc, Ci, Cu, ChromeWorker } = require("chrome");
+    const { Cc, Ci, Cu, ChromeWorker } = require("devtools/sham/chrome");
     const dumpn = require("devtools/shared/DevToolsUtils").dumpn;
     factory.call(this, require, exports, module, { Cc, Ci, Cu }, ChromeWorker, dumpn);
   } else { // require

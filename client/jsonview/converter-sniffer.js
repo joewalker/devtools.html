@@ -6,7 +6,7 @@
 
 "use strict";
 
-const {Cc, Ci, components} = require("chrome");
+const {Cc, Ci, components} = require("devtools/sham/chrome");
 const xpcom = require("sdk/platform/xpcom");
 const {Unknown} = require("sdk/platform/xpcom");
 const {Class} = require("sdk/core/heritage");

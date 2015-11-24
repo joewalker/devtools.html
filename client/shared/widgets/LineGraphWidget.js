@@ -1,6 +1,6 @@
 "use strict";
 
-const { Cc, Ci, Cu, Cr } = require("chrome");
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
 const { Task } = require("devtools/sham/task");
 const { ViewHelpers, Heritage } = require("devtools/client/shared/widgets/ViewHelpers");

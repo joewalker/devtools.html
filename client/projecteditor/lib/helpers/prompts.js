@@ -9,7 +9,7 @@
  * See https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIPromptService
  */
 
-const { Cu, Cc, Ci } = require("chrome");
+const { Cu, Cc, Ci } = require("devtools/sham/chrome");
 const { getLocalizedString } = require("devtools/client/projecteditor/lib/helpers/l10n");
 const prompts = Cc["@mozilla.org/embedcomp/prompt-service;1"]
                         .getService(Ci.nsIPromptService);

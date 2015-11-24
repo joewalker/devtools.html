@@ -6,7 +6,7 @@
 
 "use strict";
 
-var { Ci, Cc, CC, Cr, Cu } = require("chrome");
+var { Ci, Cc, CC, Cr, Cu } = require("devtools/sham/chrome");
 
 // Ensure PSM is initialized to support TLS sockets
 Cc["@mozilla.org/psm;1"].getService(Ci.nsISupports);

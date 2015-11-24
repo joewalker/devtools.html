@@ -7,7 +7,7 @@
  * This file contains the rendering code for the marker sidebar.
  */
 
-const { Cc, Ci, Cu, Cr } = require("chrome");
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
 const EventEmitter = require("devtools/shared/event-emitter");
 const MarkerUtils = require("devtools/client/performance/modules/logic/marker-utils");

@@ -4,7 +4,7 @@
 
 "use strict";
 
-const { Cu } = require("chrome");
+const { Cu } = require("devtools/sham/chrome");
 const promise = require("promise");
 
 // Lazily require encoder and decoder in case only one is needed

@@ -6,7 +6,7 @@
 
 "use strict";
 
-var { Ci, Cc } = require("chrome");
+var { Ci, Cc } = require("devtools/sham/chrome");
 var Services = require("Services");
 var promise = require("promise");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");

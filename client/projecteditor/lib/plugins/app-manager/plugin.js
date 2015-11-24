@@ -1,4 +1,4 @@
-const { Cu } = require("chrome");
+const { Cu } = require("devtools/sham/chrome");
 const { Class } = require("sdk/core/heritage");
 const { EventTarget } = require("sdk/event/target");
 const { emit } = require("sdk/event/core");

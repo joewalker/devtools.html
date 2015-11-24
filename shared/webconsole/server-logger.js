@@ -6,7 +6,7 @@
 
 "use strict";
 
-const {Cu, Ci} = require("chrome");
+const {Cu, Ci} = require("devtools/sham/chrome");
 const {Class} = require("sdk/core/heritage");
 const Services = require("Services");
 

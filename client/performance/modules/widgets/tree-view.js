@@ -8,7 +8,7 @@
  * received from the proviler in a tree-like structure.
  */
 
-const { Cc, Ci, Cu, Cr } = require("chrome");
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 const { L10N } = require("devtools/client/performance/modules/global");
 const { Heritage } = require("devtools/client/shared/widgets/ViewHelpers");
 const { AbstractTreeItem } = require("devtools/client/shared/widgets/AbstractTreeItem");

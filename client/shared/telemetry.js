@@ -54,7 +54,7 @@ this.Telemetry = function() {
 
 module.exports = Telemetry;
 
-var {Cc, Ci, Cu} = require("chrome");
+var {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 

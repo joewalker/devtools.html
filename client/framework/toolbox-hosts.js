@@ -4,7 +4,7 @@
 
 "use strict";
 
-const {Cu} = require("chrome");
+const {Cu} = require("devtools/sham/chrome");
 const EventEmitter = require("devtools/shared/event-emitter");
 const promise = require("promise");
 const { Services } = require("devtools/sham/services");

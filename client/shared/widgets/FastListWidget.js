@@ -6,7 +6,7 @@
 "use strict";
 
 const EventEmitter = require("devtools/shared/event-emitter");
-const { Cu, Ci } = require("chrome");
+const { Cu, Ci } = require("devtools/sham/chrome");
 const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
 
 /**

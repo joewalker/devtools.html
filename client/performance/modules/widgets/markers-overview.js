@@ -9,7 +9,7 @@
  * markers are visible in the "waterfall".
  */
 
-const { Cc, Ci, Cu, Cr } = require("chrome");
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 const { Heritage } = require("devtools/client/shared/widgets/ViewHelpers");
 const { AbstractCanvasGraph } = require("devtools/client/shared/widgets/Graphs");
 

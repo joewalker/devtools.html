@@ -9,7 +9,7 @@
  * file and folder pickers.
  */
 
-const { Cu, Cc, Ci } = require("chrome");
+const { Cu, Cc, Ci } = require("devtools/sham/chrome");
 const { FileUtils } = require("devtools/sham/fileutils");
 const promise = require("promise");
 const { merge } = require("sdk/util/object");

@@ -23,7 +23,7 @@
 
 "use strict";
 
-const {Ci, Cu, Cc} = require("chrome");
+const {Ci, Cu, Cc} = require("devtools/sham/chrome");
 
 const HTML_NS = "http://www.w3.org/1999/xhtml";
 const CONTENT_TYPES = {

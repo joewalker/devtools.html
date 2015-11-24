@@ -6,7 +6,7 @@
 
 "use strict";
 
-const { Cu, Ci } = require("chrome");
+const { Cu, Ci } = require("devtools/sham/chrome");
 const { getRootBindingParent } = require("devtools/shared/layout/utils");
 var EventEmitter = require("devtools/shared/event-emitter");
 

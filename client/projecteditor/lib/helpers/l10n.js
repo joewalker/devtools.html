@@ -8,7 +8,7 @@
  * This file contains helper functions for internationalizing projecteditor strings
  */
 
-const { Cu, Cc, Ci } = require("chrome");
+const { Cu, Cc, Ci } = require("devtools/sham/chrome");
 const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
 const ITCHPAD_STRINGS_URI = "chrome://devtools/locale/projecteditor.properties";
 const L10N = new ViewHelpers.L10N(ITCHPAD_STRINGS_URI).stringBundle;

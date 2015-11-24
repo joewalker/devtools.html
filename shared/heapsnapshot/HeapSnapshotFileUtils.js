@@ -22,7 +22,7 @@
 
 "use strict";
 
-const { Ci } = require("chrome");
+const { Ci } = require("devtools/sham/chrome");
 const { FileUtils } = require("devtools/sham/fileutils");
 const { OS } = require("devtools/sham/osfile");
 
