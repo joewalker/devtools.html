@@ -13,4 +13,6 @@ const Services = {
   }
 };
 
-exports.Services = Services;
+Services.prefs = require("devtools/sham/services/prefs");
+
+module.exports = Services;
