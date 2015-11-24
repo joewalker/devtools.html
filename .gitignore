@@ -1,6 +1,7 @@
 # .gitignore - List of filenames git should ignore
 
 node_modules
+build.js
 
 # Filenames that should be ignored wherever they appear
 *~
