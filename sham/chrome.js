@@ -21,6 +21,6 @@ module.exports = {
   },
   Cr: {},
   components: {
-
+    isSuccessCode: () => (returnCode & 0x80000000) === 0,
   }
 };
