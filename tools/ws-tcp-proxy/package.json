@@ -1,0 +1,12 @@
+{
+  "name": "ws-tcp-proxy",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": "index.js",
+  "author": "J. Ryan Stinnett <jryans@gmail.com> (http://convolv.es/)",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "ws": "^0.8.0"
+  }
+}
