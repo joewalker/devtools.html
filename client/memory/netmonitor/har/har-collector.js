@@ -5,7 +5,6 @@
 
 const { Cu, Ci, Cc } = require("devtools/sham/chrome");
 const { defer, all } = require("promise");
-const { setTimeout, clearTimeout } = require("sdk/timers");
 const { makeInfallible } = require("devtools/shared/DevToolsUtils");
 
 const { Services } = require("devtools/sham/services");

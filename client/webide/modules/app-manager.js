@@ -18,7 +18,6 @@ const {AppActorFront} = require("devtools/shared/apps/app-actor-front");
 const {getDeviceFront} = require("devtools/server/actors/device");
 const {getPreferenceFront} = require("devtools/server/actors/preference");
 const {getSettingsFront} = require("devtools/server/actors/settings");
-const {setTimeout} = require("sdk/timers");
 const {Task} = require("devtools/sham/task");
 const {RuntimeScanners, RuntimeTypes} = require("devtools/client/webide/modules/runtimes");
 const { NetUtil } = require("devtools/sham/netutil");

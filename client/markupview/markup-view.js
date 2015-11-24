@@ -27,7 +27,6 @@ const promise = require("promise");
 const {Tooltip} = require("devtools/client/shared/widgets/Tooltip");
 const EventEmitter = require("devtools/shared/event-emitter");
 const Heritage = require("sdk/core/heritage");
-const {setTimeout, clearTimeout, setInterval, clearInterval} = require("sdk/timers");
 const {parseAttribute} = require("devtools/client/shared/node-attribute-parser");
 const ELLIPSIS = Services.prefs.getComplexValue("intl.ellipsis", Ci.nsIPrefLocalizedString).data;
 const { Task } = require("devtools/sham/task");

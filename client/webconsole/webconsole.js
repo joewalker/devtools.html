@@ -24,7 +24,6 @@ const asyncStorage = require("devtools/shared/async-storage");
 const { EnvironmentClient } = require("devtools/shared/client/main");
 const { ObjectClient } = require("devtools/shared/client/main");
 const system = require("devtools/shared/system");
-const Timers = require("sdk/timers");
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 const { VariablesViewController, StackFrameUtils } = require("devtools/client/shared/widgets/VariablesViewController");
 const PluralForm = require("devtools/sham/pluralform");
