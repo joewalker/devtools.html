@@ -1,0 +1,820 @@
+{
+  "devtools": {
+    "devedition": {
+      "promo": {
+        "shown": {
+          "value": "false",
+          "type": 32
+        },
+        "url": {
+          "value": "\"https://www.mozilla.org/firefox/developer/?utm_source=firefox-dev-tools&utm_medium=firefox-browser&utm_content=betadoorhanger\"",
+          "type": 32
+        },
+        "enabled": {
+          "value": "false",
+          "type": 32
+        }
+      }
+    },
+    "errorconsole": {
+      "enabled": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "toolbar": {
+      "enabled": {
+        "value": "true",
+        "type": 32
+      },
+      "visible": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "webide": {
+      "enabled": {
+        "value": "true",
+        "type": 32
+      }
+    },
+    "toolbox": {
+      "footer": {
+        "height": {
+          "value": "250",
+          "type": 32
+        }
+      },
+      "sidebar": {
+        "width": {
+          "value": "500",
+          "type": 32
+        }
+      },
+      "host": {
+        "value": "\"bottom\"",
+        "type": 32
+      },
+      "previousHost": {
+        "value": "\"side\"",
+        "type": 32
+      },
+      "selectedTool": {
+        "value": "\"webconsole\"",
+        "type": 32
+      },
+      "toolbarSpec\", '[\"splitconsole\", \"paintflashing toggle\",\"tilt toggle\",\"scratchpad\",\"resize toggle\",\"eyedropper\",\"screenshot --fullpage\", \"rulers": {
+        "value": "\"measure\"]'",
+        "type": 32
+      },
+      "sideEnabled": {
+        "value": "true",
+        "type": 32
+      },
+      "zoomValue": {
+        "value": "\"1\"",
+        "type": 32
+      },
+      "splitconsoleEnabled": {
+        "value": "false",
+        "type": 32
+      },
+      "splitconsoleHeight": {
+        "value": "100",
+        "type": 32
+      }
+    },
+    "command-button-pick": {
+      "enabled": {
+        "value": "true",
+        "type": 32
+      }
+    },
+    "command-button-frames": {
+      "enabled": {
+        "value": "true",
+        "type": 32
+      }
+    },
+    "command-button-splitconsole": {
+      "enabled": {
+        "value": "true",
+        "type": 32
+      }
+    },
+    "command-button-paintflashing": {
+      "enabled": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "command-button-tilt": {
+      "enabled": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "command-button-scratchpad": {
+      "enabled": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "command-button-responsive": {
+      "enabled": {
+        "value": "true",
+        "type": 32
+      }
+    },
+    "command-button-eyedropper": {
+      "enabled": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "command-button-screenshot": {
+      "enabled": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "command-button-rulers": {
+      "enabled": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "command-button-measure": {
+      "enabled": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "inspector": {
+      "enabled": {
+        "value": "true",
+        "type": 32
+      },
+      "activeSidebar": {
+        "value": "\"ruleview\"",
+        "type": 32
+      },
+      "remote": {
+        "value": "false",
+        "type": 32
+      },
+      "show_pseudo_elements": {
+        "value": "false",
+        "type": 32
+      },
+      "imagePreviewTooltipSize": {
+        "value": "300",
+        "type": 32
+      },
+      "showUserAgentStyles": {
+        "value": "false",
+        "type": 32
+      },
+      "showAllAnonymousContent": {
+        "value": "false",
+        "type": 32
+      },
+      "mdnDocsTooltip": {
+        "enabled": {
+          "value": "true",
+          "type": 32
+        }
+      }
+    },
+    "defaultColorUnit": {
+      "value": "\"authored\"",
+      "type": 32
+    },
+    "responsiveUI": {
+      "no-reload-notification": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "debugger": {
+      "enabled": {
+        "value": "true",
+        "type": 32
+      },
+      "chrome-debugging-host": {
+        "value": "\"localhost\"",
+        "type": 32
+      },
+      "chrome-debugging-port": {
+        "value": "6080",
+        "type": 32
+      },
+      "remote-host": {
+        "value": "\"localhost\"",
+        "type": 32
+      },
+      "remote-timeout": {
+        "value": "20000",
+        "type": 32
+      },
+      "pause-on-exceptions": {
+        "value": "false",
+        "type": 32
+      },
+      "ignore-caught-exceptions": {
+        "value": "true",
+        "type": 32
+      },
+      "source-maps-enabled": {
+        "value": "true",
+        "type": 32
+      },
+      "pretty-print-enabled": {
+        "value": "true",
+        "type": 32
+      },
+      "auto-pretty-print": {
+        "value": "false",
+        "type": 32
+      },
+      "auto-black-box": {
+        "value": "true",
+        "type": 32
+      },
+      "workers": {
+        "value": "false",
+        "type": 32
+      },
+      "promise": {
+        "value": "false",
+        "type": 32
+      },
+      "ui": {
+        "panes-workers-and-sources-width": {
+          "value": "200",
+          "type": 32
+        },
+        "panes-instruments-width": {
+          "value": "300",
+          "type": 32
+        },
+        "panes-visible-on-startup": {
+          "value": "false",
+          "type": 32
+        },
+        "variables-sorting-enabled": {
+          "value": "true",
+          "type": 32
+        },
+        "variables-only-enum-visible": {
+          "value": "false",
+          "type": 32
+        },
+        "variables-searchbox-visible": {
+          "value": "false",
+          "type": 32
+        }
+      }
+    },
+    "memory": {
+      "enabled": {
+        "value": "false",
+        "type": 32
+      },
+      "custom-breakdowns": {
+        "value": "\"{}\"",
+        "type": 32
+      }
+    },
+    "performance": {
+      "enabled": {
+        "value": "true",
+        "type": 32
+      },
+      "memory": {
+        "sample-probability": {
+          "value": "\"0.05\"",
+          "type": 32
+        },
+        "max-log-length": {
+          "value": "125000",
+          "type": 32
+        }
+      },
+      "profiler": {
+        "buffer-size": {
+          "value": "10000000",
+          "type": 32
+        },
+        "sample-frequency-khz": {
+          "value": "1",
+          "type": 32
+        }
+      },
+      "ui": {
+        "invert-call-tree": {
+          "value": "true",
+          "type": 32
+        },
+        "invert-flame-graph": {
+          "value": "false",
+          "type": 32
+        },
+        "flatten-tree-recursion": {
+          "value": "true",
+          "type": 32
+        },
+        "show-platform-data": {
+          "value": "false",
+          "type": 32
+        },
+        "show-idle-blocks": {
+          "value": "true",
+          "type": 32
+        },
+        "enable-memory": {
+          "value": "false",
+          "type": 32
+        },
+        "enable-allocations": {
+          "value": "false",
+          "type": 32
+        },
+        "enable-framerate": {
+          "value": "true",
+          "type": 32
+        },
+        "enable-jit-optimizations": {
+          "value": "false",
+          "type": 32
+        },
+        "enable-memory-flame": {
+          "value": "false",
+          "type": 32
+        },
+        "experimental": {
+          "value": "false",
+          "type": 32
+        }
+      }
+    },
+    "cache": {
+      "disabled": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "serviceWorkers": {
+      "testing": {
+        "enabled": {
+          "value": "false",
+          "type": 32
+        }
+      }
+    },
+    "netmonitor": {
+      "enabled": {
+        "value": "true",
+        "type": 32
+      },
+      "panes-network-details-width": {
+        "value": "550",
+        "type": 32
+      },
+      "panes-network-details-height": {
+        "value": "450",
+        "type": 32
+      },
+      "statistics": {
+        "value": "true",
+        "type": 32
+      },
+      "filters": {
+        "value": "\"[\\\"all\\\"]\"",
+        "type": 32
+      },
+      "har": {
+        "defaultLogDir": {
+          "value": "\"\"",
+          "type": 32
+        },
+        "defaultFileName": {
+          "value": "\"Archive %y-%m-%d %H-%M-%S\"",
+          "type": 32
+        },
+        "jsonp": {
+          "value": "false",
+          "type": 32
+        },
+        "jsonpCallback": {
+          "value": "\"\"",
+          "type": 32
+        },
+        "includeResponseBodies": {
+          "value": "true",
+          "type": 32
+        },
+        "compress": {
+          "value": "false",
+          "type": 32
+        },
+        "forceExport": {
+          "value": "false",
+          "type": 32
+        },
+        "pageLoadedTimeout": {
+          "value": "1500",
+          "type": 32
+        },
+        "enableAutoExportToFile": {
+          "value": "false",
+          "type": 32
+        }
+      }
+    },
+    "tilt": {
+      "enabled": {
+        "value": "true",
+        "type": 32
+      },
+      "intro_transition": {
+        "value": "true",
+        "type": 32
+      },
+      "outro_transition": {
+        "value": "true",
+        "type": 32
+      }
+    },
+    "scratchpad": {
+      "recentFilesMax": {
+        "value": "10",
+        "type": 32
+      },
+      "lineNumbers": {
+        "value": "true",
+        "type": 32
+      },
+      "wrapText": {
+        "value": "false",
+        "type": 32
+      },
+      "showTrailingSpace": {
+        "value": "false",
+        "type": 32
+      },
+      "editorFontSize": {
+        "value": "12",
+        "type": 32
+      },
+      "enableAutocompletion": {
+        "value": "true",
+        "type": 32
+      }
+    },
+    "storage": {
+      "enabled": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "styleeditor": {
+      "enabled": {
+        "value": "true",
+        "type": 32
+      },
+      "source-maps-enabled": {
+        "value": "true",
+        "type": 32
+      },
+      "autocompletion-enabled": {
+        "value": "true",
+        "type": 32
+      },
+      "showMediaSidebar": {
+        "value": "true",
+        "type": 32
+      },
+      "mediaSidebarWidth": {
+        "value": "238",
+        "type": 32
+      },
+      "navSidebarWidth": {
+        "value": "245",
+        "type": 32
+      },
+      "transitions": {
+        "value": "true",
+        "type": 32
+      }
+    },
+    "shadereditor": {
+      "enabled": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "canvasdebugger": {
+      "enabled": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "webaudioeditor": {
+      "enabled": {
+        "value": "false",
+        "type": 32
+      },
+      "inspectorWidth": {
+        "value": "300",
+        "type": 32
+      }
+    },
+    "webconsole": {
+      "filter": {
+        "network": {
+          "value": "true",
+          "type": 32
+        },
+        "networkinfo": {
+          "value": "false",
+          "type": 32
+        },
+        "netwarn": {
+          "value": "true",
+          "type": 32
+        },
+        "netxhr": {
+          "value": "false",
+          "type": 32
+        },
+        "csserror": {
+          "value": "true",
+          "type": 32
+        },
+        "cssparser": {
+          "value": "false",
+          "type": 32
+        },
+        "csslog": {
+          "value": "false",
+          "type": 32
+        },
+        "exception": {
+          "value": "true",
+          "type": 32
+        },
+        "jswarn": {
+          "value": "true",
+          "type": 32
+        },
+        "jslog": {
+          "value": "false",
+          "type": 32
+        },
+        "error": {
+          "value": "true",
+          "type": 32
+        },
+        "warn": {
+          "value": "true",
+          "type": 32
+        },
+        "info": {
+          "value": "true",
+          "type": 32
+        },
+        "log": {
+          "value": "true",
+          "type": 32
+        },
+        "secerror": {
+          "value": "true",
+          "type": 32
+        },
+        "secwarn": {
+          "value": "true",
+          "type": 32
+        },
+        "serviceworkers": {
+          "value": "true",
+          "type": 32
+        },
+        "sharedworkers": {
+          "value": "false",
+          "type": 32
+        },
+        "windowlessworkers": {
+          "value": "false",
+          "type": 32
+        },
+        "servererror": {
+          "value": "false",
+          "type": 32
+        },
+        "serverwarn": {
+          "value": "false",
+          "type": 32
+        },
+        "serverinfo": {
+          "value": "false",
+          "type": 32
+        },
+        "serverlog": {
+          "value": "false",
+          "type": 32
+        }
+      },
+      "fontSize": {
+        "value": "0",
+        "type": 32
+      },
+      "inputHistoryCount": {
+        "value": "50",
+        "type": 32
+      },
+      "persistlog": {
+        "value": "false",
+        "type": 32
+      },
+      "timestampMessages": {
+        "value": "false",
+        "type": 32
+      }
+    },
+    "browserconsole": {
+      "filter": {
+        "network": {
+          "value": "true",
+          "type": 32
+        },
+        "networkinfo": {
+          "value": "false",
+          "type": 32
+        },
+        "netwarn": {
+          "value": "true",
+          "type": 32
+        },
+        "netxhr": {
+          "value": "false",
+          "type": 32
+        },
+        "csserror": {
+          "value": "true",
+          "type": 32
+        },
+        "cssparser": {
+          "value": "false",
+          "type": 32
+        },
+        "csslog": {
+          "value": "false",
+          "type": 32
+        },
+        "exception": {
+          "value": "true",
+          "type": 32
+        },
+        "jswarn": {
+          "value": "true",
+          "type": 32
+        },
+        "jslog": {
+          "value": "true",
+          "type": 32
+        },
+        "error": {
+          "value": "true",
+          "type": 32
+        },
+        "warn": {
+          "value": "true",
+          "type": 32
+        },
+        "info": {
+          "value": "true",
+          "type": 32
+        },
+        "log": {
+          "value": "true",
+          "type": 32
+        },
+        "secerror": {
+          "value": "true",
+          "type": 32
+        },
+        "secwarn": {
+          "value": "true",
+          "type": 32
+        },
+        "serviceworkers": {
+          "value": "true",
+          "type": 32
+        },
+        "sharedworkers": {
+          "value": "true",
+          "type": 32
+        },
+        "windowlessworkers": {
+          "value": "true",
+          "type": 32
+        },
+        "servererror": {
+          "value": "false",
+          "type": 32
+        },
+        "serverwarn": {
+          "value": "false",
+          "type": 32
+        },
+        "serverinfo": {
+          "value": "false",
+          "type": 32
+        },
+        "serverlog": {
+          "value": "false",
+          "type": 32
+        }
+      }
+    },
+    "hud": {
+      "loglimit": {
+        "network": {
+          "value": "1000",
+          "type": 32
+        },
+        "cssparser": {
+          "value": "1000",
+          "type": 32
+        },
+        "exception": {
+          "value": "1000",
+          "type": 32
+        },
+        "console": {
+          "value": "1000",
+          "type": 32
+        }
+      }
+    },
+    "eyedropper": {
+      "zoom": {
+        "value": "6",
+        "type": 32
+      }
+    },
+    "editor": {
+      "tabsize": {
+        "value": "2",
+        "type": 32
+      },
+      "expandtab": {
+        "value": "true",
+        "type": 32
+      },
+      "keymap": {
+        "value": "\"default\"",
+        "type": 32
+      },
+      "autoclosebrackets": {
+        "value": "true",
+        "type": 32
+      },
+      "detectindentation": {
+        "value": "true",
+        "type": 32
+      },
+      "enableCodeFolding": {
+        "value": "true",
+        "type": 32
+      },
+      "autocomplete": {
+        "value": "true",
+        "type": 32
+      }
+    },
+    "fontinspector": {
+      "enabled": {
+        "value": "true",
+        "type": 32
+      }
+    },
+    "telemetry": {
+      "tools": {
+        "opened": {
+          "version": {
+            "value": "\"{}\"",
+            "type": 32
+          }
+        }
+      }
+    },
+    "jsonview": {
+      "enabled": {
+        "value": "false",
+        "type": 32
+      }
+    }
+  }
+}
