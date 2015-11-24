@@ -19,8 +19,14 @@ function buildTool (toolName) {
   return new Promise(function (resolve, reject) {
     // If tool directory doesn't have a webpack build config,
     // skip it
-    if (!fs.statSync(toolConfig).size) {
+    try {
+      if (!fs.statSync(toolConfig).size) {
+        resolve();
+        return;
+      }
+    } catch(e) {
       resolve();
+      return;
     }
 
     webpack(require(toolConfig), function (err, stats) {
@@ -33,9 +39,21 @@ function buildTool (toolName) {
   });
 }
 
-gulp.task("build", function (callback) {
+gulp.task("build", function () {
   var tools = fs.readdirSync(path.join(__dirname, "client"));
-  Promise.all(tools.map(buildTool)).then(callback);
+  return Promise.all(tools.map(buildTool));
+});
+
+gulp.task('watch', function() {
+  var watcher = gulp.watch(['client/**/*','shared/**/*','sham/**/*']);
+  watcher.on('change', function(event) {
+    console.log('File ' + event.path + ' was ' + event.type);
+    if (event.type == "changed" &&
+        event.path.indexOf("build.js") == -1) {
+      console.log('Running build');
+      gulp.run("build");
+    }
+  });
 });
 
 gulp.task("default", ["build"]);
