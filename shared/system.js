@@ -11,7 +11,6 @@ const { promise } = require("devtools/sham/promise");
 const OS = require("devtools/sham/os.js");
 const { DebuggerServer } = require("devtools/server/main");
 const { AppConstants } = require("devtools/sham/appconstants");
-const { promise } = require("devtools/sham/promise"); // Why are we destructuring here?
 loader.lazyGetter(this, "screenManager", () => {
   return Cc["@mozilla.org/gfx/screenmanager;1"].getService(Ci.nsIScreenManager);
 });

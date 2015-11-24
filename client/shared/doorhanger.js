@@ -8,7 +8,7 @@ const { Ci, Cc } = require("devtools/sham/chrome");
 const { Services } = require("devtools/sham/services");
 const { DOMHelpers } = require("devtools/client/shared/DOMHelpers");
 const { Task } = require("devtools/sham/task");
-const { Promise } = require("devtools/sham/Promise");
+const { Promise } = require("devtools/sham/promise");
 const { getMostRecentBrowserWindow } = require("sdk/window/utils");
 
 const XULNS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";

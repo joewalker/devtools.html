@@ -12,14 +12,23 @@
 // thus be used in place abstract values that only ever contain a
 // single type.
 
-(function(mod) {
-  if (typeof exports == "object" && typeof module == "object") // CommonJS
-    return mod(exports, require("acorn/acorn"), require("acorn/acorn_loose"), require("acorn/util/walk"),
-               require("./def"), require("./signal"));
-  if (typeof define == "function" && define.amd) // AMD
-    return define(["exports", "acorn/acorn", "acorn/acorn_loose", "acorn/util/walk", "./def", "./signal"], mod);
-  mod(self.tern || (self.tern = {}), acorn, acorn, acorn.walk, tern.def, tern.signal); // Plain browser env
-})(function(exports, acorn, acorn_loose, walk, def, signal) {
+//(function(mod) {
+//  if (typeof exports == "object" && typeof module == "object") // CommonJS
+//    return mod(exports, require("acorn/acorn"), require("acorn/acorn_loose"), require("acorn/util/walk"),
+//               require("./def"), require("./signal"));
+//  if (typeof define == "function" && define.amd) // AMD
+//    return define(["exports", "acorn/acorn", "acorn/acorn_loose", "acorn/util/walk", "./def", "./signal"], mod);
+//  mod(self.tern || (self.tern = {}), acorn, acorn, acorn.walk, tern.def, tern.signal); // Plain browser env
+//})(function(exports, acorn, acorn_loose, walk, def, signal) {
+
+  const infer = require("./infer");
+  const signal = require("./signal");
+  const acorn = require("acorn/acorn");
+  const acorn_loose = require("acorn/acorn_loose");
+  const def = require("./def").def;
+  const signal = require("./signal").signal,
+  const walk = require("acorn/walk").walk;
+
   "use strict";
 
   var toString = exports.toString = function(type, maxDepth, parent) {
@@ -1471,4 +1480,4 @@
 
   // Delayed initialization because of cyclic dependencies.
   def = exports.def = def.init({}, exports);
-});
+//});

@@ -6,13 +6,6 @@
 
 // TODO: Get rid of this code once the marionette server loads transport.js as
 // an SDK module (see bug 1000814)
-(function (factory) { // Module boilerplate
-  if (this.module && module.id.indexOf("transport") >= 0) { // require
-    factory.call(this, require, exports);
-  } else { // loadSubScript
-    factory.call(this, require, this);
-  }
-}).call(this, function (require, exports) {
 
 "use strict";
 
@@ -863,5 +856,3 @@ if (!this.isWorker) {
     exports.WorkerDebuggerTransport = WorkerDebuggerTransport;
   }).call(this);
 }
-
-});

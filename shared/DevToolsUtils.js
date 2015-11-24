@@ -11,7 +11,6 @@ var Services = require("devtools/sham/services");
 var promise = require("devtools/sham/promise");
 
 const { FileUtils } = require("devtools/sham/fileutils");
-const { setTimeout } = require("Timer");
 
 /**
  * Turn the error |aError| into a string, without fail.

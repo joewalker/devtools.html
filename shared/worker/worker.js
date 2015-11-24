@@ -11,7 +11,7 @@
   } else { // require
     const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
     this.isWorker = false;
-    this.Promise = require("devtools/sham/Promise").Promise;
+    this.Promise = require("devtools/sham/promise").Promise;
     factory.call(
       this, require, this, { exports: this },
       { Cc, Ci, Cu }, ChromeWorker, null
