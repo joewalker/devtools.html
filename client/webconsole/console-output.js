@@ -28,7 +28,7 @@ const WebConsoleUtils = require("devtools/shared/webconsole/utils").Utils;
 const l10n = new WebConsoleUtils.l10n(STRINGS_URI);
 
 const MAX_STRING_GRIP_LENGTH = 36;
-const ELLIPSIS = Services.prefs.getComplexValue("intl.ellipsis", Ci.nsIPrefLocalizedString).data;
+const ELLIPSIS = "…"; // Should be l10n'd
 
 // Constants for compatibility with the Web Console output implementation before
 // bug 778766.

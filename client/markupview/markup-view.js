@@ -29,7 +29,7 @@ const {Tooltip} = require("devtools/client/shared/widgets/Tooltip");
 const EventEmitter = require("devtools/shared/event-emitter");
 const Heritage = require("sdk/core/heritage");
 const {parseAttribute} = require("devtools/client/shared/node-attribute-parser");
-const ELLIPSIS = Services.prefs.getComplexValue("intl.ellipsis", Ci.nsIPrefLocalizedString).data;
+const ELLIPSIS = "…"; // Should be l10n'd
 const { Task } = require("devtools/sham/task");
 const {scrollIntoViewIfNeeded} = require("devtools/shared/layout/utils");
 
