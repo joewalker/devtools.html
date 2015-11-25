@@ -1,0 +1,82 @@
+/* See license.txt for terms of usage */
+
+/******************************************************************************/
+/* Splitter */
+
+.splitterBox {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.leftPanel {
+  height: 100%;
+  flex: 1;
+  order: 1;
+}
+
+.splitterBox .splitter {
+  background-color: rgb(231, 241, 251);
+  order: 2;
+}
+
+.rightPanel {
+  height: 100%;
+  width: 40%;
+  order: 3;
+}
+
+.splitterBox .splitter.vertical {
+  width: 4px;
+  height: 100%;
+  cursor: e-resize;
+}
+
+.splitterBox .splitter.horizontal {
+  height: 4px;
+  width: 100%;
+  cursor: s-resize;
+}
+
+.splitterBox .splitter > .innerBox {
+  visibility: visible;
+  height: 30px;
+  width: 4px;
+  background-color: rgb(219, 234, 249);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+  border-bottom: 1px solid rgb(170, 188, 207);
+  cursor: default;
+  margin: 0;
+  padding: 1px 0;
+}
+
+/******************************************************************************/
+/* Resizing */
+
+/* When splitter resizing is in progress set the cursor for all elements
+ since the mouse doesn't have to be always just over the resizer and this
+ avoids cursor flashing. */
+body[resizing="true"] * {
+  cursor: e-resize !important;
+}
+
+/******************************************************************************/
+/* Theme Light & Dark */
+
+.theme-dark .splitterBox .splitter > .innerBox,
+.theme-light .splitterBox .splitter > .innerBox {
+  display: none;
+}
+
+.theme-light .splitterBox .splitter,
+.theme-dark .splitterBox .splitter {
+  background-color: var(--theme-toolbar-background);
+}
+
+.theme-light .splitterBox .splitter.vertical,
+.theme-dark .splitterBox .splitter.vertical {
+  width: 1px;
+  border-left: 1px solid var(--theme-splitter-color);
+}
+
