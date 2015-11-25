@@ -43,21 +43,21 @@
 
 /* Expand/collapse panel toolbar button */
 
-#inspector-pane-toggle {
-  list-style-image: url(images/debugger-collapse.png);
+#inspector-pane-toggle::before {
+  background-image: url(images/debugger-collapse.png);
 }
 
-#inspector-pane-toggle[pane-collapsed] {
-  list-style-image: url(images/debugger-expand.png);
+#inspector-pane-toggle::before {
+  background-image: url(images/debugger-expand.png);
 }
 
 @media (min-resolution: 1.1dppx) {
-  #inspector-pane-toggle {
-    list-style-image: url(images/debugger-collapse@2x.png);
+  #inspector-pane-toggle::before {
+    background-image: url(images/debugger-collapse@2x.png);
   }
 
-  #inspector-pane-toggle[pane-collapsed] {
-    list-style-image: url(images/debugger-expand@2x.png);
+  #inspector-pane-toggle[pane-collapsed]::before {
+    background-image: url(images/debugger-expand@2x.png);
   }
 }
 
