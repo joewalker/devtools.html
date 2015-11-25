@@ -18,44 +18,44 @@ var {Cc, Ci, Cu} = require("devtools/sham/chrome");
 var promise = require("devtools/sham/promise");
 var EventEmitter = require("devtools/shared/event-emitter");
 var Telemetry = require("devtools/client/shared/telemetry");
-var HUDService = require("devtools/client/webconsole/hudservice");
-var sourceUtils = require("devtools/client/shared/source-utils");
+// var HUDService = require("devtools/client/webconsole/hudservice");
+// var sourceUtils = require("devtools/client/shared/source-utils");
 
 const { Services } = require("devtools/sham/services");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
-const { ScratchpadManager } = reauire("devtools/client/scratchpad/scratchpad-manager");
 const { DOMHelpers } = require("devtools/client/shared/DOMHelpers");
 const { Task } = require("devtools/sham/task");
 
-loader.lazyGetter(this, "toolboxStrings", () => {
-  const properties = "chrome://devtools/locale/toolbox.properties";
-  const bundle = Services.strings.createBundle(properties);
-  return (name, ...args) => {
-    try {
-      if (!args.length) {
-        return bundle.GetStringFromName(name);
-      }
-      return bundle.formatStringFromName(name, args, args.length);
-    } catch (ex) {
-      Services.console.logStringMessage("Error reading '" + name + "'");
-      return null;
-    }
-  };
-});
+var toolboxStrings = () => {};
+// loader.lazyGetter(this, "toolboxStrings", () => {
+//   const properties = "chrome://devtools/locale/toolbox.properties";
+//   const bundle = Services.strings.createBundle(properties);
+//   return (name, ...args) => {
+//     try {
+//       if (!args.length) {
+//         return bundle.GetStringFromName(name);
+//       }
+//       return bundle.formatStringFromName(name, args, args.length);
+//     } catch (ex) {
+//       Services.console.logStringMessage("Error reading '" + name + "'");
+//       return null;
+//     }
+//   };
+// });
 const { getHighlighterUtils } = require("devtools/client/framework/toolbox-highlighter-utils");
 const { Hosts } = require("devtools/client/framework/toolbox-hosts");
 const { Selection } = require("devtools/client/framework/selection");
 const { InspectorFront } = require("devtools/server/actors/inspector");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
-const { showDoorhanger } = require("devtools/client/shared/doorhanger");
-const { createPerformanceFront } = require("devtools/server/actors/performance");
-const system = require("devtools/shared/system");
-loader.lazyGetter(this, "osString", () => {
-  return Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime).OS;
-});
-loader.lazyGetter(this, "registerHarOverlay", () => {
-  return require("devtools/client/netmonitor/har/toolbox-overlay").register;
-});
+// const { showDoorhanger } = require("devtools/client/shared/doorhanger");
+// const { createPerformanceFront } = require("devtools/server/actors/performance");
+// const system = require("devtools/shared/system");
+// loader.lazyGetter(this, "osString", () => {
+//   return Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime).OS;
+// });
+// loader.lazyGetter(this, "registerHarOverlay", () => {
+//   return require("devtools/client/netmonitor/har/toolbox-overlay").register;
+// });
 
 // White-list buttons that can be toggled to prevent adding prefs for
 // addons that have manually inserted toolbarbuttons into DOM.
@@ -82,6 +82,38 @@ const ToolboxButtons = exports.ToolboxButtons = [
   { id: "command-button-rulers" },
   { id: "command-button-measure" }
 ];
+
+exports.getWSTarget = Task.async(function*() {
+  let { DebuggerClient } = require("devtools/shared/client/main");
+  let { DebuggerTransport } = require("devtools/shared/transport/transport");
+  let { Task } = require("devtools/sham/task");
+  let { TargetFactory } = require("devtools/client/framework/target");
+  let { InspectorFront } = require("devtools/server/actors/inspector");
+
+  let socket = new WebSocket("ws://localhost:9000");
+  let transport = new DebuggerTransport(socket);
+  let client = new DebuggerClient(transport);
+  yield client.connect();
+
+  let response = yield client.listTabs();
+  let tab = response.tabs[response.selected];
+
+  let options = {
+    form: tab,
+    client,
+    chrome: false,
+  };
+  let target = yield TargetFactory.forRemoteTab(options);
+  return target;
+
+  // /*let hostType = Toolbox.HostType.WINDOW;
+  // gDevTools.showToolbox(target, tool, hostType)*/
+
+  // let inspector = InspectorFront(target.client, target.form);
+  // let walker = yield inspector.getWalker();
+
+
+});
 
 /**
  * A "Toolbox" is the component that holds all the tools for one specific
@@ -729,7 +761,7 @@ Toolbox.prototype = {
       // needed. See bug 371900
       key.setAttribute("oncommand", "void(0)");
       key.addEventListener("command", () => {
-        HUDService.toggleBrowserConsole();
+        // HUDService.toggleBrowserConsole();
       }, true);
       doc.getElementById("toolbox-keyset").appendChild(key);
     }
@@ -1611,6 +1643,7 @@ Toolbox.prototype = {
 
     // clean up the toolbox if its window is closed
     let newHost = new Hosts[hostType](this.target.tab, options);
+    console.log("New host", newHost);
     newHost.on("window-closed", this.destroy);
     return newHost;
   },

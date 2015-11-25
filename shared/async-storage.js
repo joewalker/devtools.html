@@ -40,7 +40,7 @@
  *
  */
 const {Cc, Ci, Cu, Cr} = require("devtools/sham/chrome");
-const {indexedDB} = require("sdk/indexed-db");
+const {indexedDB} = { open: () => {} }; // require("sdk/indexed-db");
 const Promise = require("devtools/sham/promise");
 
 module.exports = (function() {

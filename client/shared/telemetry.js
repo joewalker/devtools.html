@@ -41,7 +41,7 @@
 
 const TOOLS_OPENED_PREF = "devtools.telemetry.tools.opened.version";
 
-this.Telemetry = function() {
+var Telemetry = function() {
   // Bind pretty much all functions so that callers do not need to.
   this.toolOpened = this.toolOpened.bind(this);
   this.toolClosed = this.toolClosed.bind(this);
@@ -308,7 +308,7 @@ Telemetry.prototype = {
   log: function(histogramId, value) {
     if (histogramId) {
       try {
-        let histogram = Services.telemetry.getHistogramById(histogramId);
+        // let histogram = Services.telemetry.getHistogramById(histogramId);
         histogram.add(value);
       } catch(e) {
         dump("Warning: An attempt was made to write to the " + histogramId +
@@ -330,7 +330,7 @@ Telemetry.prototype = {
   logKeyed: function(histogramId, key, value) {
     if (histogramId) {
       try {
-        let histogram = Services.telemetry.getKeyedHistogramById(histogramId);
+        // let histogram = Services.telemetry.getKeyedHistogramById(histogramId);
         histogram.add(key, value);
       } catch(e) {
         dump("Warning: An attempt was made to write to the " + histogramId +

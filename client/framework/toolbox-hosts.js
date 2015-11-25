@@ -50,48 +50,57 @@ BottomHost.prototype = {
    * Create a box at the bottom of the host tab.
    */
   create: function() {
-    let deferred = promise.defer();
+    return new Promise(resolve => {
+      this.frame = document.createElement("iframe");
+      this.frame.className = "devtools-toolbox-bottom-iframe";
 
-    let gBrowser = this.hostTab.ownerDocument.defaultView.gBrowser;
-    let ownerDocument = gBrowser.ownerDocument;
-    this._nbox = gBrowser.getNotificationBox(this.hostTab.linkedBrowser);
-
-    this._splitter = ownerDocument.createElement("splitter");
-    this._splitter.setAttribute("class", "devtools-horizontal-splitter");
-
-    this.frame = ownerDocument.createElement("iframe");
-    this.frame.className = "devtools-toolbox-bottom-iframe";
-    this.frame.height = Math.min(
-      Services.prefs.getIntPref(this.heightPref),
-      this._nbox.clientHeight - MIN_PAGE_SIZE
-    );
-
-    this._nbox.appendChild(this._splitter);
-    this._nbox.appendChild(this.frame);
-
-    let frameLoad = () => {
+      document.body.appendChild(this.frame);
       this.emit("ready", this.frame);
-      deferred.resolve(this.frame);
-    };
+      resolve(this.frame);
+    });
 
-    this.frame.tooltip = "aHTMLTooltip";
+    // let deferred = promise.defer();
 
-    // we have to load something so we can switch documents if we have to
-    this.frame.setAttribute("src", "about:blank");
+    // let gBrowser = this.hostTab.ownerDocument.defaultView.gBrowser;
+    // let ownerDocument = gBrowser.ownerDocument;
+    // this._nbox = gBrowser.getNotificationBox(this.hostTab.linkedBrowser);
 
-    let domHelper = new DOMHelpers(this.frame.contentWindow);
-    domHelper.onceDOMReady(frameLoad);
+    // this._splitter = ownerDocument.createElement("splitter");
+    // this._splitter.setAttribute("class", "devtools-horizontal-splitter");
 
-    focusTab(this.hostTab);
+    // this.frame = ownerDocument.createElement("iframe");
+    // this.frame.className = "devtools-toolbox-bottom-iframe";
+    // this.frame.height = Math.min(
+    //   Services.prefs.getIntPref(this.heightPref),
+    //   this._nbox.clientHeight - MIN_PAGE_SIZE
+    // );
 
-    return deferred.promise;
+    // this._nbox.appendChild(this._splitter);
+    // this._nbox.appendChild(this.frame);
+
+    // let frameLoad = () => {
+    //   this.emit("ready", this.frame);
+    //   deferred.resolve(this.frame);
+    // };
+
+    // this.frame.tooltip = "aHTMLTooltip";
+
+    // // we have to load something so we can switch documents if we have to
+    // this.frame.setAttribute("src", "about:blank");
+
+    // let domHelper = new DOMHelpers(this.frame.contentWindow);
+    // domHelper.onceDOMReady(frameLoad);
+
+    // focusTab(this.hostTab);
+
+    // return deferred.promise;
   },
 
   /**
    * Raise the host.
    */
   raise: function() {
-    focusTab(this.hostTab);
+    // focusTab(this.hostTab);
   },
 
   /**
@@ -100,23 +109,23 @@ BottomHost.prototype = {
    * means that the toolbox won't be visible at all once minimized.
    */
   minimize: function(height=0) {
-    if (this.isMinimized) {
-      return;
-    }
-    this.isMinimized = true;
+    // if (this.isMinimized) {
+    //   return;
+    // }
+    // this.isMinimized = true;
 
-    let onTransitionEnd = event => {
-      if (event.propertyName !== "margin-bottom") {
-        // Ignore transitionend on unrelated properties.
-        return;
-      }
+    // let onTransitionEnd = event => {
+    //   if (event.propertyName !== "margin-bottom") {
+    //     // Ignore transitionend on unrelated properties.
+    //     return;
+    //   }
 
-      this.frame.removeEventListener("transitionend", onTransitionEnd);
-      this.emit("minimized");
-    };
-    this.frame.addEventListener("transitionend", onTransitionEnd);
-    this.frame.style.marginBottom = -this.frame.height + height + "px";
-    this._splitter.classList.add("disabled");
+    //   this.frame.removeEventListener("transitionend", onTransitionEnd);
+    //   this.emit("minimized");
+    // };
+    // this.frame.addEventListener("transitionend", onTransitionEnd);
+    // this.frame.style.marginBottom = -this.frame.height + height + "px";
+    // this._splitter.classList.add("disabled");
   },
 
   /**
@@ -124,23 +133,23 @@ BottomHost.prototype = {
    * maximized to the height it previously had).
    */
   maximize: function() {
-    if (!this.isMinimized) {
-      return;
-    }
-    this.isMinimized = false;
+    // if (!this.isMinimized) {
+    //   return;
+    // }
+    // this.isMinimized = false;
 
-    let onTransitionEnd = event => {
-      if (event.propertyName !== "margin-bottom") {
-        // Ignore transitionend on unrelated properties.
-        return;
-      }
+    // let onTransitionEnd = event => {
+    //   if (event.propertyName !== "margin-bottom") {
+    //     // Ignore transitionend on unrelated properties.
+    //     return;
+    //   }
 
-      this.frame.removeEventListener("transitionend", onTransitionEnd);
-      this.emit("maximized");
-    };
-    this.frame.addEventListener("transitionend", onTransitionEnd);
-    this.frame.style.marginBottom = "0";
-    this._splitter.classList.remove("disabled");
+    //   this.frame.removeEventListener("transitionend", onTransitionEnd);
+    //   this.emit("maximized");
+    // };
+    // this.frame.addEventListener("transitionend", onTransitionEnd);
+    // this.frame.style.marginBottom = "0";
+    // this._splitter.classList.remove("disabled");
   },
 
   /**
@@ -148,7 +157,7 @@ BottomHost.prototype = {
    * @param {Number} minHeight The height to minimize to.
    */
   toggleMinimizeMode: function(minHeight) {
-    this.isMinimized ? this.maximize() : this.minimize(minHeight);
+    // this.isMinimized ? this.maximize() : this.minimize(minHeight);
   },
 
   /**
@@ -161,13 +170,13 @@ BottomHost.prototype = {
    * Destroy the bottom dock.
    */
   destroy: function() {
-    if (!this._destroyed) {
-      this._destroyed = true;
+    // if (!this._destroyed) {
+    //   this._destroyed = true;
 
-      Services.prefs.setIntPref(this.heightPref, this.frame.height);
-      this._nbox.removeChild(this._splitter);
-      this._nbox.removeChild(this.frame);
-    }
+    //   Services.prefs.setIntPref(this.heightPref, this.frame.height);
+    //   this._nbox.removeChild(this._splitter);
+    //   this._nbox.removeChild(this.frame);
+    // }
 
     return promise.resolve(null);
   }

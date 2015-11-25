@@ -1313,7 +1313,7 @@ var frontProto = function(proto) {
         let histogramId = "DEVTOOLS_DEBUGGER_RDP_"
           + transportType + spec.telemetry + "_MS";
         try {
-          histogram = Services.telemetry.getHistogramById(histogramId);
+          // histogram = Services.telemetry.getHistogramById(histogramId);
           startTime = new Date();
         } catch(ex) {
           // XXX: Is this expected in xpcshell tests?

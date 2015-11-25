@@ -11,18 +11,18 @@ const { Services } = require("devtools/sham/services");
 const promise = require("devtools/sham/promise");
 // Load target and toolbox lazily as they need gDevTools to be fully initialized
 const { TargetFactory } = require("devtools/client/framework/target");
-const { Toolbox } = require("devtools/client/framework/toolbox");
+// const { Toolbox } = require("devtools/client/framework/toolbox");
 
 //XPCOMUtils.defineLazyModuleGetter(this, "CustomizableUI",
 //                                  "resource:///modules/CustomizableUI.jsm");
-const { DebuggerServer } = require("devtools/server/main");
-const { DebuggerClient } = require("devtools/shared/client/main");
+// const { DebuggerServer } = require("devtools/server/main");
+// const { DebuggerClient } = require("devtools/shared/client/main");
 
 const {defaultTools: DefaultTools, defaultThemes: DefaultThemes} =
-  require("devtools/client/definitions");
+require("devtools/client/definitions");
 const EventEmitter = require("devtools/shared/event-emitter");
 const Telemetry = require("devtools/client/shared/telemetry");
-const {JsonView} = require("devtools/client/jsonview/main");
+// const {JsonView} = require("devtools/client/jsonview/main");
 
 const TABS_OPEN_PEAK_HISTOGRAM = "DEVTOOLS_TABS_OPEN_PEAK_LINEAR";
 const TABS_OPEN_AVG_HISTOGRAM = "DEVTOOLS_TABS_OPEN_AVERAGE_LINEAR";
@@ -38,7 +38,7 @@ const bundle = Services.strings.createBundle("chrome://devtools/locale/toolbox.p
  * DevTools is a class that represents a set of developer tools, it holds a
  * set of tools and keeps track of open toolboxes in the browser.
  */
-this.DevTools = function DevTools() {
+var DevTools = function DevTools() {
   this._tools = new Map();     // Map<toolId, tool>
   this._themes = new Map();    // Map<themeId, theme>
   this._toolboxes = new Map(); // Map<target, toolbox>
@@ -49,7 +49,7 @@ this.DevTools = function DevTools() {
   this._teardown = this._teardown.bind(this);
 
   // JSON Viewer for 'application/json' documents.
-  JsonView.initialize();
+  // JsonView.initialize();
 
   EventEmitter.decorate(this);
 
@@ -496,7 +496,7 @@ DevTools.prototype = {
       this.unregisterTool(key, true);
     }
 
-    JsonView.destroy();
+    // JsonView.destroy();
 
     this._pingTelemetry();
     this._telemetry = null;
@@ -523,7 +523,7 @@ DevTools.prototype = {
  * same lifetime as the browser.
  */
 var gDevTools = new DevTools();
-this.gDevTools = gDevTools;
+var gDevTools = gDevTools;
 
 /**
  * gDevToolsBrowser exposes functions to connect the gDevTools instance with a
@@ -1297,7 +1297,7 @@ var gDevToolsBrowser = {
   },
 }
 
-this.gDevToolsBrowser = gDevToolsBrowser;
+// this.gDevToolsBrowser = gDevToolsBrowser;
 
 gDevTools.on("tool-registered", function(ev, toolId) {
   let toolDefinition = gDevTools._tools.get(toolId);
@@ -1317,8 +1317,8 @@ gDevTools.on("toolbox-destroyed", gDevToolsBrowser._updateMenuCheckbox);
 Services.obs.addObserver(gDevToolsBrowser.destroy, "quit-application", false);
 
 // Load the browser devtools main module as the loader's main module.
-loader.main("devtools/client/main");
+// loader.main("devtools/client/main");
 
-exports.gDevTools = this.gDevTools;
-exports.DevTools = this.DevTools;
-exports.gDevToolsBrowser = this.gDevToolsBrowser;
+exports.gDevTools = gDevTools;
+exports.DevTools = DevTools;
+exports.gDevToolsBrowser = gDevToolsBrowser;

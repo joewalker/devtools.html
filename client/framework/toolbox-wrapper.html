@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../themes/variables.css" />
+        <link rel="stylesheet" href="../themes/toolbars.css" />
+        <link rel="stylesheet" href="../themes/common.css" />
+        <link rel="stylesheet" href="../themes/dark-theme.css" />
+        <link rel="stylesheet" href="../themes/inspector.css" />
+        <style type="text/css">
+            html { height: 100%; }
+            body { margin: 0; padding: 0; display: flex; height: 100%; }
+            iframe {flex: 1; border: 0;}
+        </style>
+    </head>
+    <body>
+        <!-- All this code should actually live inside an iframe and this should be called via a toolbox -->
+        <script src="../../globals.js"></script>
+        <script src="build.js"></script>
+        <script>
+            // var target = {
+            //     makeRemote: function () { return new Promise(resolve => resolve()) },
+            //     client: { traits: {} },
+            //     tab: {
+            //         ownerDocument: { defaultView: {} },
+            //     },
+            //     form: {},
+            //     on: function() {},
+            //     off: function() {},
+            //     actorHasMethod: function () { return new Promise(resolve => resolve(false)); },
+            // };
+
+            var toolbox;
+            Toolbox.getWSTarget().then(function(target) {
+                toolbox = new Toolbox.Toolbox(target, "inspector", "bottom");
+                toolbox.open().then(function() {
+                    console.log("Open finished");
+                });
+            });
+
+            // var toolbox = {
+            //     "_target": target,
+            //     doc: { defaultView: {} },
+            //     openSplitConsole: function () {},
+            //     inspector: {
+            //         getPageStyle: function () { return new Promise(resolve => resolve()); }
+            //     },
+            //     walker: {},
+            //     selection: {},
+            //     getNotificationBox: function () {
+            //         return { getNotificationWithValue: function () {} };
+            //     },
+            //     currentToolId: "inspector",
+            // };
+            // Inspector.EventEmitter.decorate(target)
+            // Inspector.EventEmitter.decorate(toolbox)
+            // var inspector = new Inspector.InspectorPanel(document.querySelector("iframe"), toolbox);
+        </script>
+    </body>
+</html>

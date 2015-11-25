@@ -14,7 +14,7 @@ const { Services } = require("devtools/sham/services");
  * @param nsIDOMWindow aWindow
  *        The content window, owning the document to traverse.
  */
-this.DOMHelpers = function DOMHelpers(aWindow) {
+var DOMHelpers = function DOMHelpers(aWindow) {
   if (!aWindow) {
     throw new Error("window can't be null or undefined");
   }
@@ -137,20 +137,29 @@ DOMHelpers.prototype = {
    */
   onceDOMReady: function Helpers_onLocationChange(callback) {
     let window = this.window;
-    let docShell = window.QueryInterface(Ci.nsIInterfaceRequestor)
-                         .getInterface(Ci.nsIWebNavigation)
-                         .QueryInterface(Ci.nsIDocShell);
-    let onReady = function(event) {
-      if (event.target == window.document) {
-        docShell.chromeEventHandler.removeEventListener("DOMContentLoaded", onReady, false);
-        // If in `callback` the URL of the window is changed and a listener to DOMContentLoaded
-        // is attached, the event we just received will be also be caught by the new listener.
-        // We want to avoid that so we execute the callback in the next queue.
-        Services.tm.mainThread.dispatch(callback, 0);
-      }
+    // XXX: This is just a hack to simulate dom loaded.. this will surely
+    // fail in a variety of ways
+    if (window.location.toString() === "about:blank") {
+      callback();
+    } else {
+      window.document.addEventListener("DOMContentLoaded", () => {
+        callback();
+      });
     }
-    docShell.chromeEventHandler.addEventListener("DOMContentLoaded", onReady, false);
+    // let docShell = window.QueryInterface(Ci.nsIInterfaceRequestor)
+    //                      .getInterface(Ci.nsIWebNavigation)
+    //                      .QueryInterface(Ci.nsIDocShell);
+    // let onReady = function(event) {
+    //   if (event.target == window.document) {
+    //     docShell.chromeEventHandler.removeEventListener("DOMContentLoaded", onReady, false);
+    //     // If in `callback` the URL of the window is changed and a listener to DOMContentLoaded
+    //     // is attached, the event we just received will be also be caught by the new listener.
+    //     // We want to avoid that so we execute the callback in the next queue.
+    //     Services.tm.mainThread.dispatch(callback, 0);
+    //   }
+    // }
+    // docShell.chromeEventHandler.addEventListener("DOMContentLoaded", onReady, false);
   }
 };
 
-exports.DOMHelpers = this.DOMHelpers;
+exports.DOMHelpers = DOMHelpers;

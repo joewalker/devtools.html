@@ -8,22 +8,24 @@ const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 
 const { Services } = require("devtools/sham/services");
 
-loader.lazyGetter(this, "osString", () => Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime).OS);
+var osString = "Darwin";
+// lazyGetter(this, "osString", () => Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime).OS);
 
+var InspectorPanel = require("devtools/client/inspector/inspector-panel").InspectorPanel;
 // Panels
-loader.lazyGetter(this, "OptionsPanel", () => require("devtools/client/framework/toolbox-options").OptionsPanel);
-loader.lazyGetter(this, "InspectorPanel", () => require("devtools/client/inspector/inspector-panel").InspectorPanel);
-loader.lazyGetter(this, "WebConsolePanel", () => require("devtools/client/webconsole/panel").WebConsolePanel);
-loader.lazyGetter(this, "DebuggerPanel", () => require("devtools/client/debugger/panel").DebuggerPanel);
-loader.lazyGetter(this, "StyleEditorPanel", () => require("devtools/client/styleeditor/styleeditor-panel").StyleEditorPanel);
-loader.lazyGetter(this, "ShaderEditorPanel", () => require("devtools/client/shadereditor/panel").ShaderEditorPanel);
-loader.lazyGetter(this, "CanvasDebuggerPanel", () => require("devtools/client/canvasdebugger/panel").CanvasDebuggerPanel);
-loader.lazyGetter(this, "WebAudioEditorPanel", () => require("devtools/client/webaudioeditor/panel").WebAudioEditorPanel);
-loader.lazyGetter(this, "MemoryPanel", () => require("devtools/client/memory/panel").MemoryPanel);
-loader.lazyGetter(this, "PerformancePanel", () => require("devtools/client/performance/panel").PerformancePanel);
-loader.lazyGetter(this, "NetMonitorPanel", () => require("devtools/client/netmonitor/panel").NetMonitorPanel);
-loader.lazyGetter(this, "StoragePanel", () => require("devtools/client/storage/panel").StoragePanel);
-loader.lazyGetter(this, "ScratchpadPanel", () => require("devtools/client/scratchpad/scratchpad-panel").ScratchpadPanel);
+// loader.lazyGetter(this, "OptionsPanel", () => require("devtools/client/framework/toolbox-options").OptionsPanel);
+// loader.lazyGetter(this, "InspectorPanel", () => require("devtools/client/inspector/inspector-panel").InspectorPanel);
+// loader.lazyGetter(this, "WebConsolePanel", () => require("devtools/client/webconsole/panel").WebConsolePanel);
+// loader.lazyGetter(this, "DebuggerPanel", () => require("devtools/client/debugger/panel").DebuggerPanel);
+// loader.lazyGetter(this, "StyleEditorPanel", () => require("devtools/client/styleeditor/styleeditor-panel").StyleEditorPanel);
+// loader.lazyGetter(this, "ShaderEditorPanel", () => require("devtools/client/shadereditor/panel").ShaderEditorPanel);
+// loader.lazyGetter(this, "CanvasDebuggerPanel", () => require("devtools/client/canvasdebugger/panel").CanvasDebuggerPanel);
+// loader.lazyGetter(this, "WebAudioEditorPanel", () => require("devtools/client/webaudioeditor/panel").WebAudioEditorPanel);
+// loader.lazyGetter(this, "MemoryPanel", () => require("devtools/client/memory/panel").MemoryPanel);
+// loader.lazyGetter(this, "PerformancePanel", () => require("devtools/client/performance/panel").PerformancePanel);
+// loader.lazyGetter(this, "NetMonitorPanel", () => require("devtools/client/netmonitor/panel").NetMonitorPanel);
+// loader.lazyGetter(this, "StoragePanel", () => require("devtools/client/storage/panel").StoragePanel);
+// loader.lazyGetter(this, "ScratchpadPanel", () => require("devtools/client/scratchpad/scratchpad-panel").ScratchpadPanel);
 
 // Strings
 const toolboxProps = "chrome://devtools/locale/toolbox.properties";
@@ -40,19 +42,19 @@ const storageProps = "chrome://devtools/locale/storage.properties";
 const scratchpadProps = "chrome://devtools/locale/scratchpad.properties";
 const memoryProps = "chrome://devtools/locale/memory.properties";
 
-loader.lazyGetter(this, "toolboxStrings", () => Services.strings.createBundle(toolboxProps));
-loader.lazyGetter(this, "performanceStrings",() => Services.strings.createBundle(performanceProps));
-loader.lazyGetter(this, "webConsoleStrings", () => Services.strings.createBundle(webConsoleProps));
-loader.lazyGetter(this, "debuggerStrings", () => Services.strings.createBundle(debuggerProps));
-loader.lazyGetter(this, "styleEditorStrings", () => Services.strings.createBundle(styleEditorProps));
-loader.lazyGetter(this, "shaderEditorStrings", () => Services.strings.createBundle(shaderEditorProps));
-loader.lazyGetter(this, "canvasDebuggerStrings", () => Services.strings.createBundle(canvasDebuggerProps));
-loader.lazyGetter(this, "webAudioEditorStrings", () => Services.strings.createBundle(webAudioEditorProps));
-loader.lazyGetter(this, "inspectorStrings", () => Services.strings.createBundle(inspectorProps));
-loader.lazyGetter(this, "netMonitorStrings", () => Services.strings.createBundle(netMonitorProps));
-loader.lazyGetter(this, "storageStrings", () => Services.strings.createBundle(storageProps));
-loader.lazyGetter(this, "scratchpadStrings", () => Services.strings.createBundle(scratchpadProps));
-loader.lazyGetter(this, "memoryStrings", () => Services.strings.createBundle(memoryProps));
+var toolboxStrings = Services.strings.createBundle(toolboxProps);
+var performanceStrings =Services.strings.createBundle(performanceProps);
+var webConsoleStrings = Services.strings.createBundle(webConsoleProps);
+var debuggerStrings = Services.strings.createBundle(debuggerProps);
+var styleEditorStrings = Services.strings.createBundle(styleEditorProps);
+var shaderEditorStrings = Services.strings.createBundle(shaderEditorProps);
+var canvasDebuggerStrings = Services.strings.createBundle(canvasDebuggerProps);
+var webAudioEditorStrings = Services.strings.createBundle(webAudioEditorProps);
+var inspectorStrings = Services.strings.createBundle(inspectorProps);
+var netMonitorStrings = Services.strings.createBundle(netMonitorProps);
+var storageStrings = Services.strings.createBundle(storageProps);
+var scratchpadStrings = Services.strings.createBundle(scratchpadProps);
+var memoryStrings = Services.strings.createBundle(memoryProps);
 
 var Tools = {};
 exports.Tools = Tools;
@@ -451,8 +453,9 @@ function l10n(name, bundle, arg)
     return arg ? bundle.formatStringFromName(name, [arg], 1)
     : bundle.GetStringFromName(name);
   } catch (ex) {
-    Services.console.logStringMessage("Error reading '" + name + "'");
-    throw new Error("l10n error with " + name);
+    // Services.console.logStringMessage("Error reading '" + name + "'");
+    // throw new Error("l10n error with " + name);
+    return "Error reading string";
   }
 }
 

@@ -2,6 +2,11 @@ let DEFAULTS = require("../../build/preferences.json");
 // TODO Can make this localStorage or something in the future?
 let storage = JSON.parse(JSON.stringify(DEFAULTS));
 
+const PREF_INVALID = exports.PREF_INVALID = 0;
+const PREF_STRING = exports.PREF_STRING = 32;
+const PREF_INT = exports.PREF_INT = 64;
+const PREF_BOOL = exports.PREF_BOOL = 128;
+
 /**
  * Returns a `Pref` object containing the following properties:
  *
@@ -14,23 +19,23 @@ function findPref (pref) {
 
   for (let branchName of branchNames) {
     branch = branch[branchName];
+    if (!branch) {
+      branch = {};
+    }
   }
 
   return branch;
 }
 
 function setPrefValue (pref, value) {
-  findPref(pref).value = value;
+  let obj = findPref(pref);
+  obj.value = value;
 }
 
 function getPrefValue (pref) {
   return findPref(pref).value;
 }
 
-const PREF_INVALID = exports.PREF_INVALID = 0;
-const PREF_STRING = exports.PREF_STRING = 32;
-const PREF_INT = exports.PREF_INT = 64;
-const PREF_BOOL = exports.PREF_BOOL = 128;
 
 const addObserver = exports.addObserver = function (domain, observer, holdWeak) {
   console.error("TODO implement addObserver");
@@ -49,11 +54,10 @@ const getPrefType = exports.getPrefType = function (pref) {
 };
 
 const setBoolPref = exports.setBoolPref = function (pref, value) {
-  console.log(pref, value, findPref(pref));
   if (typeof value !== "boolean") {
     throw new Error("Cannot setBoolPref without a boolean.");
   }
-  if (getPrefType(pref) !== PREF_BOOL) {
+  if (getPrefType(pref) && getPrefType(pref) !== PREF_BOOL) {
     throw new Error("Can only call setBoolPref on boolean type prefs.");
   }
   setPrefValue(pref, value);
@@ -63,7 +67,7 @@ exports.setCharPref = function (pref, value) {
   if (typeof value !== "string") {
     throw new Error("Cannot setCharPref without a string.");
   }
-  if (getPrefType(pref) !== PREF_STRING) {
+  if (getPrefType(pref) && getPrefType(pref) !== PREF_STRING) {
     throw new Error("Can only call setCharPref on string type prefs.");
   }
   setPrefValue(pref, value);
@@ -73,7 +77,7 @@ exports.setIntPref = function (pref, value) {
   if (typeof value !== "number" && (parseInt(value) !== value)) {
     throw new Error("Cannot setCharPref without an integer.");
   }
-  if (getPrefType(pref) !== PREF_INT) {
+  if (getPrefType(pref) && getPrefType(pref) !== PREF_INT) {
     throw new Error("Can only call setIntPref on number type prefs.");
   }
   setPrefValue(pref, value);

@@ -34,10 +34,12 @@ function buildDir(dirPath) {
     // skip it
     try {
       if (!fs.statSync(toolConfig).size) {
+        // console.log("Skipping dir", dirPath);
         resolve();
         return;
       }
     } catch(e) {
+      // console.log("Skipping dir", dirPath);
       resolve();
       return;
     }
@@ -58,6 +60,8 @@ gulp.task("build", function () {
     return path.join(__dirname, "client", tool);
   });*/
   var dirs = [];
+  // dirs.push(path.join(__dirname, "client", "inspector"));
+  dirs.push(path.join(__dirname, "client", "framework"));
   dirs.push(path.join(__dirname, "tools", "connect"));
   return Promise.all(dirs.map(buildDir));
 });

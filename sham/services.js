@@ -20,6 +20,10 @@ const Services = {
   },
 };
 
+Services.obs = {
+  addObserver: () => {},
+  removeObserver: () => {},
+}
 Services.prefs = require("devtools/sham/services/prefs");
 
-module.exports = Services;
+module.exports.Services = Services;

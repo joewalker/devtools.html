@@ -249,7 +249,7 @@ DebuggerClient.requester = function (aPacketSkeleton,
         : "REMOTE_";
       let histogramId = "DEVTOOLS_DEBUGGER_RDP_"
         + transportType + telemetry + "_MS";
-      histogram = Services.telemetry.getHistogramById(histogramId);
+      // histogram = Services.telemetry.getHistogramById(histogramId);
       startTime = +new Date;
     }
     let outgoingPacket = {
