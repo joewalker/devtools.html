@@ -155,8 +155,13 @@ function colorToRGBA(name) {
   return vals;
 }
 
+function isValidCSSColor(name) {
+  return colorToRGBA(name) !== null;
+}
+
 module.exports = {
   getCSSLexer,
   rgbToColorName,
   colorToRGBA,
+  isValidCSSColor,
 };
