@@ -70,15 +70,16 @@ html vbox {
   visibility: collapse;
 }
 
-html [flex="1"] { flex-grow: 1 }
-html [flex="2"] { flex-grow: 2 }
-html [flex="3"] { flex-grow: 3 }
-html [flex="4"] { flex-grow: 4 }
-html [flex="5"] { flex-grow: 5 }
-html [flex="6"] { flex-grow: 6 }
-html [flex="7"] { flex-grow: 7 }
-html [flex="8"] { flex-grow: 8 }
-html [flex="9"] { flex-grow: 9 }
+html [flex="0"] { flex: 0; }
+html [flex="1"] { flex-grow: 1; }
+html [flex="2"] { flex-grow: 2; }
+html [flex="3"] { flex-grow: 3; }
+html [flex="4"] { flex-grow: 4; }
+html [flex="5"] { flex-grow: 5; }
+html [flex="6"] { flex-grow: 6; }
+html [flex="7"] { flex-grow: 7; }
+html [flex="8"] { flex-grow: 8; }
+html [flex="9"] { flex-grow: 9; }
 
 html [align="start"] { align-items: flex-start }
 html [align="center"] { align-items: center }

@@ -13,7 +13,7 @@ const { Task } = require("devtools/sham/task");
 var EventEmitter = require("devtools/shared/event-emitter");
 var Telemetry = require("devtools/client/shared/telemetry");
 
-const XULNS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+const XULNS = "http://www.w3.org/1999/xhtml";
 
 /**
  * ToolSidebar provides methods to register tabs in the sidebar.
@@ -62,6 +62,8 @@ function ToolSidebar(tabbox, panel, uid, options={}) {
   EventEmitter.decorate(this);
 
   this._tabbox = tabbox;
+  this._tabboxTabs = tabbox.querySelector("tabs");
+  this._tabboxTabpanels = tabbox.querySelector("tabpanels");
   this._uid = uid;
   this._panelDoc = this._tabbox.ownerDocument;
   this._toolPanel = panel;
@@ -78,7 +80,7 @@ function ToolSidebar(tabbox, panel, uid, options={}) {
     this._telemetry = new Telemetry();
   }
 
-  this._tabbox.tabpanels.addEventListener("select", this, true);
+  this._tabbox.addEventListener("select", this, true);
 
   this._tabs = new Map();
 
@@ -112,11 +114,13 @@ ToolSidebar.prototype = {
    * function at any time to add the menu.
    */
   addAllTabsMenu: function() {
+    // XXX: Don't mess with this yet.. Hopefully the widget would handle this
+    return;
     if (this._allTabsBtn) {
       return;
     }
 
-    let tabs = this._tabbox.tabs;
+    let tabs = this._tabboxTabs;
 
     // Create a container and insert it first in the tabbox
     let allTabsContainer = this._panelDoc.createElementNS(XULNS, "stack");
@@ -152,17 +156,20 @@ ToolSidebar.prototype = {
   },
 
   removeAllTabsMenu: function() {
+    // XXX: Don't mess with this yet.. Hopefully the widget would handle this
+    return;
+
     if (!this._allTabsBtn) {
       return;
     }
 
-    let tabs = this._tabbox.tabs;
+    let tabs = this._tabboxTabs;
 
     tabs.removeEventListener("overflow", this._onTabBoxOverflow, false);
     tabs.removeEventListener("underflow", this._onTabBoxUnderflow, false);
 
     // Moving back the tabs as a first child of the tabbox
-    this._tabbox.insertBefore(tabs, this._tabbox.tabpanels);
+    this._tabbox.insertBefore(tabs, this._tabboxTabpanels);
     this._tabbox.querySelector("stack").remove();
 
     this._allTabsBtn = null;
@@ -198,7 +205,7 @@ ToolSidebar.prototype = {
     this._allTabsBtn.querySelector("menupopup").appendChild(item);
 
     item.addEventListener("click", () => {
-      this._tabbox.selectedTab = tab;
+      this._tabboxSelectedTab = tab;
     }, false);
 
     tab.allTabsMenuItem = item;
@@ -214,16 +221,16 @@ ToolSidebar.prototype = {
    * @param {string} url
    */
   addTab: function(id, url, selected=false) {
-    let iframe = this._panelDoc.createElementNS(XULNS, "iframe");
+    let iframe = this._panelDoc.createElement("iframe");
     iframe.className = "iframe-" + id;
     iframe.setAttribute("flex", "1");
     iframe.setAttribute("src", url);
     iframe.tooltip = "aHTMLTooltip";
 
     // Creating the tab and adding it to the tabbox
-    let tab = this._panelDoc.createElementNS(XULNS, "tab");
-    this._tabbox.tabs.appendChild(tab);
-    tab.setAttribute("label", ""); // Avoid showing "undefined" while the tab is loading
+    let tab = this._panelDoc.createElement("tab");
+    this._tabboxTabs.appendChild(tab);
+    // tab.setAttribute("label", ""); // Avoid showing "undefined" while the tab is loading
     tab.setAttribute("id", this.TAB_ID_PREFIX + id);
     tab.setAttribute("crop", "end");
 
@@ -233,7 +240,7 @@ ToolSidebar.prototype = {
     let onIFrameLoaded = (event) => {
       let doc = event.target;
       let win = doc.defaultView;
-      tab.setAttribute("label", doc.title);
+      tab.textContent = doc.title;
 
       if (allTabsItem) {
         allTabsItem.setAttribute("label", doc.title);
@@ -251,7 +258,8 @@ ToolSidebar.prototype = {
     let tabpanel = this._panelDoc.createElementNS(XULNS, "tabpanel");
     tabpanel.setAttribute("id", this.TABPANEL_ID_PREFIX + id);
     tabpanel.appendChild(iframe);
-    this._tabbox.tabpanels.appendChild(tabpanel);
+    tabpanel.hidden = true;
+    this._tabboxTabpanels.appendChild(tabpanel);
 
     this._tooltip = this._panelDoc.createElementNS(XULNS, "tooltip");
     this._tooltip.id = "aHTMLTooltip";
@@ -262,6 +270,9 @@ ToolSidebar.prototype = {
 
     // We store the index of this tab.
     this._tabs.set(id, tab);
+    tab.addEventListener("click", () => {
+      this.select(id);
+    });
 
     if (selected) {
       // For some reason I don't understand, if we call this.select in this
@@ -283,7 +294,7 @@ ToolSidebar.prototype = {
   addExistingTabs: function() {
     let knownTabs = [...this._tabs.values()];
 
-    for (let tab of this._tabbox.tabs.querySelectorAll("tab")) {
+    for (let tab of this._tabboxTabs.querySelectorAll("tab")) {
       if (knownTabs.indexOf(tab) !== -1) {
         continue;
       }
@@ -353,7 +364,9 @@ ToolSidebar.prototype = {
   select: function(id) {
     let tab = this.getTab(id);
     if (tab) {
-      this._tabbox.selectedTab = tab;
+      this._tabboxSelectedTab = tab;
+      // Hack to trigger event, since tabbox.selectedTab doesn't actually do anything
+      this.handleEvent({type: "select"});
     }
   },
 
@@ -363,7 +376,7 @@ ToolSidebar.prototype = {
   getCurrentTabID: function() {
     let currentID = null;
     for (let [id, tab] of this._tabs) {
-      if (this._tabbox.tabs.selectedItem == tab) {
+      if (this._tabboxSelectedTab == tab) {
         currentID = id;
         break;
       }
@@ -379,7 +392,7 @@ ToolSidebar.prototype = {
   getTabPanel: function(id) {
     // Search with and without the ID prefix as there might have been existing
     // tabpanels by the time the sidebar got created
-    return this._tabbox.tabpanels.querySelector("#" + this.TABPANEL_ID_PREFIX + id + ", #" + id);
+    return this._tabboxTabpanels.querySelector("#" + this.TABPANEL_ID_PREFIX + id + ", #" + id);
   },
 
   /**
@@ -407,6 +420,9 @@ ToolSidebar.prototype = {
     let previousTool = this._currentTool;
     this._currentTool = this.getCurrentTabID();
     if (previousTool) {
+      // Hack to hide tab panel until we have a different widget.
+      this._tabboxTabpanels.querySelector("#" + this._tabs.get(previousTool).linkedPanel).hidden = true;
+
       if (this._telemetry) {
         this._telemetry.toolClosed(previousTool);
       }
@@ -417,6 +433,8 @@ ToolSidebar.prototype = {
       this._telemetry.toolOpened(this._currentTool);
     }
 
+    // Hack to show tab panel until we have a different widget.
+    this._tabboxTabpanels.querySelector("#" + this._tabs.get(this._currentTool).linkedPanel).hidden = false;
     this.emit(this._currentTool + "-selected");
     this.emit("select", this._currentTool);
 
@@ -428,7 +446,7 @@ ToolSidebar.prototype = {
 
     // Handle menuitem selection if the allTabsMenu is there by unchecking all
     // items except the selected one.
-    let tab = this._tabbox.selectedTab;
+    let tab = this._tabboxSelectedTab;
     if (tab.allTabsMenuItem) {
       for (let otherItem of this._allTabsBtn.querySelectorAll("menuitem")) {
         otherItem.removeAttribute("checked");
@@ -501,13 +519,13 @@ ToolSidebar.prototype = {
       this.removeAllTabsMenu();
     }
 
-    this._tabbox.tabpanels.removeEventListener("select", this, true);
+    this._tabbox.removeEventListener("select", this, true);
 
-    // Note that we check for the existence of this._tabbox.tabpanels at each
+    // Note that we check for the existence of this._tabboxTabpanels at each
     // step as the container window may have been closed by the time one of the
     // panel's destroy promise resolves.
-    while (this._tabbox.tabpanels && this._tabbox.tabpanels.hasChildNodes()) {
-      let panel = this._tabbox.tabpanels.firstChild;
+    while (this._tabboxTabpanels && this._tabboxTabpanels.hasChildNodes()) {
+      let panel = this._tabboxTabpanels.firstChild;
       let win = panel.firstChild.contentWindow;
       if (win && ("destroy" in win)) {
         yield win.destroy();
@@ -515,8 +533,8 @@ ToolSidebar.prototype = {
       panel.remove();
     }
 
-    while (this._tabbox.tabs && this._tabbox.tabs.hasChildNodes()) {
-      this._tabbox.tabs.removeChild(this._tabbox.tabs.firstChild);
+    while (this._tabboxTabs && this._tabboxTabs.hasChildNodes()) {
+      this._tabboxTabs.removeChild(this._tabboxTabs.firstChild);
     }
 
     if (this._currentTool && this._telemetry) {
