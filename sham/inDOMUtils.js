@@ -4,8 +4,24 @@
 
 var { CSSLexer } = require("devtools/sham/parse-css");
 var { cssColors } = require("devtools/sham/css-color-db");
+var { cssProperties } = require("devtools/sham/css-property-db");
 
 var cssRGBMap;
+
+// From inIDOMUtils.idl.
+var EXCLUDE_SHORTHANDS = (1 << 0);
+var INCLUDE_ALIASES = (1 << 1);
+var TYPE_LENGTH = 0;
+var TYPE_PERCENTAGE = 1;
+var TYPE_COLOR = 2;
+var TYPE_URL = 3;
+var TYPE_ANGLE = 4;
+var TYPE_FREQUENCY = 5;
+var TYPE_TIME = 6;
+var TYPE_GRADIENT = 7;
+var TYPE_TIMING_FUNCTION = 8;
+var TYPE_IMAGE_RECT = 9;
+var TYPE_NUMBER = 10;
 
 function getCSSLexer(text) {
   return new CSSLexer(text);
@@ -159,9 +175,98 @@ function isValidCSSColor(name) {
   return colorToRGBA(name) !== null;
 }
 
+function isVariable(name) {
+  return name.startsWith("--");
+}
+
+function cssPropertyIsShorthand(name) {
+  if (isVariable(name)) {
+    return false;
+  }
+  if (!(name in cssProperties)) {
+    throw Error("unknown property " + name);
+  }
+  return cssProperties[name].inherited;
+}
+
+function getSubpropertiesForCSSProperty(name) {
+  if (isVariable(name)) {
+    return [name];
+  }
+  if (!(name in cssProperties)) {
+    throw Error("unknown property " + name);
+  }
+  if ("subproperties" in cssProperties[name]) {
+    return cssProperties[name].subproperties.slice();
+  }
+  return [name];
+}
+
+function getCSSValuesForProperty(name) {
+  if (isVariable(name)) {
+    return ["initial", "inherit", "unset"];
+  }
+  if (!(name in cssProperties)) {
+    throw Error("unknown property " + name);
+  }
+  return cssProperties[name].values.slice();
+}
+
+function getCSSPropertyNames(flags) {
+  let names = Object.keys(cssProperties);
+  if ((flags & EXCLUDE_SHORTHANDS) !== 0) {
+    names = names.filter((name) => cssProperties[name].subproperties);
+  }
+  if ((flags & INCLUDE_ALIASES) === 0) {
+    names = names.filter((name) => !cssProperties[name].alias);
+  }
+  return names;
+}
+
+function cssPropertySupportsType(name, type) {
+  if (isVariable(name)) {
+    return false;
+  }
+  if (!(name in cssProperties)) {
+    throw Error("unknown property " + name);
+  }
+  return (cssProperties[name].supports & (1 << type)) !== 0;
+}
+
+function isInheritedProperty(name) {
+  if (isVariable(name)) {
+    return true;
+  }
+  if (!(name in cssProperties)) {
+    return false;
+  }
+  return cssProperties[name].inherited;
+}
+
 module.exports = {
   getCSSLexer,
   rgbToColorName,
   colorToRGBA,
   isValidCSSColor,
+  cssPropertyIsShorthand,
+  getSubpropertiesForCSSProperty,
+  getCSSValuesForProperty,
+  getCSSPropertyNames,
+  cssPropertySupportsType,
+  isInheritedProperty,
+
+  // Constants.
+  EXCLUDE_SHORTHANDS,
+  INCLUDE_ALIASES,
+  TYPE_LENGTH,
+  TYPE_PERCENTAGE,
+  TYPE_COLOR,
+  TYPE_URL,
+  TYPE_ANGLE,
+  TYPE_FREQUENCY,
+  TYPE_TIME,
+  TYPE_GRADIENT,
+  TYPE_TIMING_FUNCTION,
+  TYPE_IMAGE_RECT,
+  TYPE_NUMBER,
 };
