@@ -1,15 +1,15 @@
 {
-  "name": "devtoolsweb",
-  "version": "1.0.0",
+  "name": "devtools.html",
+  "version": "0.0.0",
   "description": "devtools.html",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joewalker/devtoolsweb.git"
+    "url": "git+https://github.com/joewalker/devtools.html.git"
   },
   "author": "",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/joewalker/devtoolsweb/issues"
+    "url": "https://github.com/joewalker/devtools.html/issues"
   },
   "devDependencies": {
     "babel-core": "^6.2.1",
