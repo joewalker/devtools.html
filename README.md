@@ -18,3 +18,9 @@ Install `gulp` globally and all dependencies.
 ## Testing
 
 Ensure tests are built via webpack with `gulp build-test`. Run tests by opening up `./test/index.html`. The build also includes the lib files packed up, so if the source code changes, you'll also have to rebuild the tests.
+
+## Connection Test in Firefox
+
+1. Start server in Firefox with `listen` in GCLI (uses default port 6080)
+2. Run `gulp serve-connect` to start proxy and build the connection test tool
+3. Open http://localhost:8001 to run the connection test tool

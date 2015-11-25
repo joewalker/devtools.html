@@ -1,3 +1,6 @@
+/* eslint-env node */
+"use strict";
+
 // Lets us use babel in tests
 require("babel-core/register");
 
@@ -7,10 +10,14 @@ var gulp = require("gulp");
 var gutil = require("gulp-util");
 var webpack = require("webpack");
 var mocha = require("gulp-mocha");
+var wsTcpProxy = require("./tools/ws-tcp-proxy");
+var http = require("http");
+var ecstatic = require("ecstatic");
 
 var WEBPACK_CONFIG_NAME = "webpack.config.js";
 var PREFS_SRC_FILE = path.join(__dirname, "client", "preferences", "devtools.js");
 var PREFS_OUTPUT_FILE = path.join(__dirname, "build", "preferences.json");
+var CONNECT_HTTP_PORT = 8081;
 
 /**
  * Builds a webpack dir via `dirPath`, mapping to
@@ -47,10 +54,11 @@ function buildDir(dirPath) {
 
 gulp.task("build", function () {
   var tools = fs.readdirSync(path.join(__dirname, "client"));
-  var dirs = tools.map(function(tool) {
+  /*var dirs = tools.map(function(tool) {
     return path.join(__dirname, "client", tool);
-  });
-  dirs.push(path.join(__dirname, "shared"));
+  });*/
+  var dirs = [];
+  dirs.push(path.join(__dirname, "tools", "connect"));
   return Promise.all(dirs.map(buildDir));
 });
 
@@ -108,6 +116,23 @@ gulp.task("build-test", function (callback) {
     gutil.log("[webpack]", stats.toString({}));
     callback();
   });
+});
+
+gulp.task("start-proxy", function() {
+  wsTcpProxy.listen();
+});
+
+gulp.task("build-connect", function() {
+  return buildDir(path.join(__dirname, "tools", "connect"));
+});
+
+gulp.task("serve-connect", ["build-connect", "start-proxy"], function() {
+  var server = http.createServer(ecstatic({
+    root: path.join(__dirname, "tools", "connect"),
+    cache: 0
+  }));
+  server.listen(CONNECT_HTTP_PORT);
+  console.log("Open http://localhost:8081 to start the connect tool");
 });
 
 gulp.task("default", ["build"]);
