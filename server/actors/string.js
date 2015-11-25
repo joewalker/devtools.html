@@ -5,7 +5,7 @@
 "use strict";
 
 var {Cu} = require("devtools/sham/chrome");
-var {DebuggerServer} = require("devtools/server/main");
+/*var {DebuggerServer} = require("devtools/server/main");*/
 
 var promise = require("devtools/sham/promise");
 var {Class} = require("sdk/core/heritage");

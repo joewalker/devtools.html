@@ -10,8 +10,8 @@ const Services = require("devtools/sham/services");
 
 loader.lazyRequireGetter(this, "DevToolsUtils",
                          "devtools/shared/DevToolsUtils");
-loader.lazyRequireGetter(this, "OS", "resource://gre/modules/osfile.jsm", true);
-loader.lazyRequireGetter(this, "Task", "resource://gre/modules/Task.jsm", true);
+let { OS } = require("resource://gre/modules/osfile.jsm");
+let { Task } = require("resource://gre/modules/Task.jsm");
 loader.lazyRequireGetter(this, "HeapSnapshotFileUtils",
                          "devtools/shared/heapsnapshot/HeapSnapshotFileUtils");
 

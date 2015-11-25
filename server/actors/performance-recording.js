@@ -9,8 +9,8 @@ const protocol = require("devtools/server/protocol");
 const { custom, method, RetVal, Arg, Option, types, preEvent } = protocol;
 const { actorBridge } = require("devtools/server/actors/common");
 
-loader.lazyRequireGetter(this, "events", "sdk/event/core");
-loader.lazyRequireGetter(this, "merge", "sdk/util/object", true);
+let events = require("sdk/event/core");
+let { merge } = require("sdk/util/object");
 loader.lazyRequireGetter(this, "PerformanceIO",
   "devtools/client/performance/modules/io");
 loader.lazyRequireGetter(this, "RecordingUtils",

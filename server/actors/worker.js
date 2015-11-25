@@ -3,7 +3,7 @@
 var { Ci, Cu } = require("devtools/sham/chrome");
 var { DebuggerServer } = require("devtools/server/main");
 
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
 XPCOMUtils.defineLazyServiceGetter(
   this, "wdm",

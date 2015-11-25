@@ -7,7 +7,7 @@
 var { components, Cc, Ci, Cu } = require("devtools/sham/chrome");
 var Services = require("devtools/sham/services");
 
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 Cu.import("resource://gre/modules/NetUtil.jsm");
 Cu.import("resource://gre/modules/FileUtils.jsm");
 
@@ -18,7 +18,7 @@ const {Arg, Option, method, RetVal, types} = protocol;
 const {LongStringActor, ShortLongString} = require("devtools/server/actors/string");
 const {fetch} = require("devtools/shared/DevToolsUtils");
 
-loader.lazyGetter(this, "CssLogic", () => require("devtools/shared/styleinspector/css-logic").CssLogic);
+/*loader.lazyGetter(this, "CssLogic", () => require("devtools/shared/styleinspector/css-logic").CssLogic);*/
 
 var TRANSITION_CLASS = "moz-styleeditor-transitioning";
 var TRANSITION_DURATION_MS = 500;

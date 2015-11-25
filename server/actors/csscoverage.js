@@ -7,13 +7,13 @@
 const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 
 const Services = require("devtools/sham/services");
-const { XPCOMUtils } = require("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
 const events = require("sdk/event/core");
 const protocol = require("devtools/server/protocol");
 const { method, custom, RetVal, Arg } = protocol;
 
-loader.lazyGetter(this, "gDevTools", () => {
+/*loader.lazyGetter(this, "gDevTools", () => {
   return require("resource://devtools/client/framework/gDevTools.jsm").gDevTools;
 });
 loader.lazyGetter(this, "DOMUtils", () => {
@@ -24,7 +24,7 @@ loader.lazyGetter(this, "stylesheets", () => {
 });
 loader.lazyGetter(this, "CssLogic", () => {
   return require("devtools/shared/styleinspector/css-logic").CssLogic;
-});
+});*/
 
 const CSSRule = Ci.nsIDOMCSSRule;
 

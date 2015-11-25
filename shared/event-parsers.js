@@ -9,10 +9,10 @@
 
 const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 
-loader.lazyGetter(this, "eventListenerService", () => {
+/*loader.lazyGetter(this, "eventListenerService", () => {
   return Cc("@mozilla.org/eventlistenerservice;1")
            .getService(Ci.nsIEventListenerService);
-});
+});*/
 
 var parsers = [
   {
@@ -262,7 +262,7 @@ function jQueryLiveGetListeners(node, boolOnEventFound) {
   return handlers;
 }
 
-this.EventParsers = function EventParsers() {
+let EventParsers = this.EventParsers = function() {
   if (this._eventParsers.size === 0) {
     for (let parserObj of parsers) {
       this.registerEventParser(parserObj);

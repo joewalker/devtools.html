@@ -7,7 +7,7 @@
 var {Cu, Cc, Ci} = require("devtools/sham/chrome");
 
 Cu.import("resource://gre/modules/NetUtil.jsm");
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 Cu.import("resource://gre/modules/osfile.jsm");
 Cu.import("resource://gre/modules/FileUtils.jsm");
 Cu.import("resource://gre/modules/UserCustomizations.jsm");

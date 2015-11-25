@@ -16,21 +16,21 @@ var { assert  } = DevToolsUtils;
 var { TabSources } = require("./utils/TabSources");
 var makeDebugger = require("./utils/make-debugger");
 
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
-loader.lazyRequireGetter(this, "RootActor", "devtools/server/actors/root", true);
-loader.lazyRequireGetter(this, "ThreadActor", "devtools/server/actors/script", true);
-loader.lazyRequireGetter(this, "unwrapDebuggerObjectGlobal", "devtools/server/actors/script", true);
-loader.lazyRequireGetter(this, "BrowserAddonActor", "devtools/server/actors/addon", true);
-loader.lazyRequireGetter(this, "WorkerActorList", "devtools/server/actors/worker", true);
+let { RootActor } = require("devtools/server/actors/root");
+let { ThreadActor } = require("devtools/server/actors/script");
+let { unwrapDebuggerObjectGlobal } = require("devtools/server/actors/script");
+let { BrowserAddonActor } = require("devtools/server/actors/addon");
+let { WorkerActorList } = require("devtools/server/actors/worker");
 loader.lazyImporter(this, "AddonManager", "resource://gre/modules/AddonManager.jsm");
 
 // Assumptions on events module:
 // events needs to be dispatched synchronously,
 // by calling the listeners in the order or registration.
-loader.lazyRequireGetter(this, "events", "sdk/event/core");
+let events = require("sdk/event/core");
 
-loader.lazyRequireGetter(this, "StyleSheetActor", "devtools/server/actors/stylesheets", true);
+let { StyleSheetActor } = require("devtools/server/actors/stylesheets");
 
 function getWindowID(window) {
   return window.QueryInterface(Ci.nsIInterfaceRequestor)

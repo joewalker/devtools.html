@@ -57,11 +57,10 @@ const {Arg, Option, method, RetVal, types} = protocol;
 const {LongStringActor, ShortLongString} = require("devtools/server/actors/string");
 const promise = require("devtools/sham/promise");
 const {Task} = require("devtools/sham/task");
-const object = require("sdk/util/object");
+/*const object = require("sdk/util/object");*/
 const events = require("sdk/event/core");
-const {Unknown} = require("sdk/platform/xpcom");
 const {Class} = require("sdk/core/heritage");
-const {WalkerSearch} = require("devtools/server/actors/utils/walker-search");
+/*const {WalkerSearch} = require("devtools/server/actors/utils/walker-search");*/
 const {PageStyleActor, getFontPreviewData} = require("devtools/server/actors/styles");
 const {
   HighlighterActor,
@@ -78,7 +77,7 @@ const {
 const {getLayoutChangesObserver, releaseLayoutChangesObserver} =
   require("devtools/server/actors/layout");
 
-loader.lazyRequireGetter(this, "CSS", "CSS");
+/*let CSS = require("CSS");*/
 
 const {EventParsers} = require("devtools/shared/event-parsers");
 
@@ -124,12 +123,11 @@ const PSEUDO_SELECTORS = [
 var HELPER_SHEET = ".__fx-devtools-hide-shortcut__ { visibility: hidden !important } ";
 HELPER_SHEET += ":-moz-devtools-highlighted { outline: 2px dashed #F06!important; outline-offset: -2px!important } ";
 
-loader.lazyRequireGetter(this, "DevToolsUtils",
-                         "devtools/shared/DevToolsUtils");
+let DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
-loader.lazyRequireGetter(this, "AsyncUtils", "devtools/shared/async-utils");
+let AsyncUtils = require("devtools/shared/async-utils");
 
-loader.lazyGetter(this, "DOMParser", function() {
+/*loader.lazyGetter(this, "DOMParser", function() {
   return Cc["@mozilla.org/xmlextras/domparser;1"].createInstance(Ci.nsIDOMParser);
 });
 
@@ -138,7 +136,7 @@ loader.lazyGetter(this, "eventListenerService", function() {
            .getService(Ci.nsIEventListenerService);
 });
 
-loader.lazyGetter(this, "CssLogic", () => require("devtools/shared/styleinspector/css-logic").CssLogic);
+loader.lazyGetter(this, "CssLogic", () => require("devtools/shared/styleinspector/css-logic").CssLogic);*/
 
 // XXX: A poor man's makeInfallible until we move it out of transport.js
 // Which should be very soon.
@@ -2333,8 +2331,8 @@ var WalkerActor = protocol.ActorClass({
     }
     let win = node.rawNode.ownerDocument.defaultView;
     if (!this.installedHelpers.has(win)) {
-      let { Style } = require("sdk/stylesheet/style");
-      let { attach } = require("sdk/content/mod");
+      /*let { Style } = require("sdk/stylesheet/style");*/
+      /*let { attach } = require("sdk/content/mod");*/
       let style = Style({source: HELPER_SHEET, type: "agent" });
       attach(style, win);
       this.installedHelpers.set(win, style);
@@ -4224,6 +4222,6 @@ var imageToImageData = Task.async(function* (node, maxDim) {
   }
 });
 
-loader.lazyGetter(this, "DOMUtils", function () {
+/*loader.lazyGetter(this, "DOMUtils", function () {
   return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
-});
+});*/

@@ -4,7 +4,7 @@
 
 const {Ci,Cu,Cc} = require("devtools/sham/chrome");
 
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
 const Services = require("devtools/sham/services");
 var {setTimeout,clearTimeout} = require("sdk/timers");

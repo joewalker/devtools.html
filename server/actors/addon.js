@@ -13,10 +13,10 @@ var { ConsoleAPIListener } = require("devtools/shared/webconsole/utils");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
 var { assert, update } = DevToolsUtils;
 
-loader.lazyRequireGetter(this, "AddonThreadActor", "devtools/server/actors/script", true);
-loader.lazyRequireGetter(this, "unwrapDebuggerObjectGlobal", "devtools/server/actors/script", true);
-loader.lazyRequireGetter(this, "mapURIToAddonID", "devtools/server/actors/utils/map-uri-to-addon-id");
-loader.lazyRequireGetter(this, "WebConsoleActor", "devtools/server/actors/webconsole", true);
+let { AddonThreadActor } = require("devtools/server/actors/script");
+let { unwrapDebuggerObjectGlobal } = require("devtools/server/actors/script");
+let mapURIToAddonID = require("devtools/server/actors/utils/map-uri-to-addon-id");
+let { WebConsoleActor } = require("devtools/server/actors/webconsole");
 
 loader.lazyImporter(this, "AddonManager", "resource://gre/modules/AddonManager.jsm");
 

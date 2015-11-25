@@ -10,8 +10,8 @@ const { custom, method, RetVal, Arg, Option, types } = protocol;
 const { Profiler } = require("devtools/server/performance/profiler");
 const { actorBridge } = require("devtools/server/actors/common");
 
-loader.lazyRequireGetter(this, "events", "sdk/event/core");
-loader.lazyRequireGetter(this, "extend", "sdk/util/object", true);
+let events = require("sdk/event/core");
+let { extend } = require("sdk/util/object");
 
 types.addType("profiler-data", {
   // On Fx42+, the profile is only deserialized on the front; older

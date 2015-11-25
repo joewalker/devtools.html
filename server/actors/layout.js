@@ -25,12 +25,12 @@
  */
 
 const {Ci, Cu} = require("devtools/sham/chrome");
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const protocol = require("devtools/server/protocol");
 const {method, Arg, RetVal, types} = protocol;
 const events = require("sdk/event/core");
 const Heritage = require("sdk/core/heritage");
-const {setTimeout, clearTimeout} = require("sdk/timers");
+/*const {setTimeout, clearTimeout} = require("sdk/timers");*/
 const EventEmitter = require("devtools/shared/event-emitter");
 
 /**

@@ -10,7 +10,7 @@ const { expectState, ActorPool } = require("devtools/server/actors/common");
 const { ObjectActor,
         createValueGrip } = require("devtools/server/actors/object");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
-loader.lazyRequireGetter(this, "events", "sdk/event/core");
+let events = require("sdk/event/core");
 
 // Teach protocol.js how to deal with legacy actor types
 types.addType("ObjectActor", {

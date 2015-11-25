@@ -7,10 +7,10 @@
 var { components, Cc, Ci, Cu } = require("devtools/sham/chrome");
 var Services = require("devtools/sham/services");
 
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
-Cu.import("resource://gre/modules/NetUtil.jsm");
-Cu.import("resource://gre/modules/FileUtils.jsm");
-Cu.import("resource://gre/modules/Task.jsm");
+const { XPCOMUtils } = require("devtools/sham/xpcomutils");
+/*Cu.import("resource://gre/modules/NetUtil.jsm");
+Cu.import("resource://gre/modules/FileUtils.jsm");*/
+const { Task } = require("devtools/sham/task");
 
 const promise = require("devtools/sham/promise");
 const events = require("sdk/event/core");
@@ -19,9 +19,9 @@ const {Arg, Option, method, RetVal, types} = protocol;
 const {LongStringActor, ShortLongString} = require("devtools/server/actors/string");
 const {fetch} = require("devtools/shared/DevToolsUtils");
 const {listenOnce} = require("devtools/shared/async-utils");
-const {SourceMapConsumer} = require("source-map");
+/*const {SourceMapConsumer} = require("source-map");*/
 
-loader.lazyGetter(this, "CssLogic", () => require("devtools/shared/styleinspector/css-logic").CssLogic);
+/*loader.lazyGetter(this, "CssLogic", () => require("devtools/shared/styleinspector/css-logic").CssLogic);*/
 
 const {
   getIndentationFromPrefs,

@@ -22,17 +22,17 @@ const { DevToolsWorker } = require("devtools/shared/worker/worker");
 
 const { defer, resolve, reject, all } = promise;
 
-loader.lazyGetter(this, "Debugger", () => {
+/*loader.lazyGetter(this, "Debugger", () => {
   let Debugger = require("Debugger");
   hackDebugger(Debugger);
   return Debugger;
-});
-loader.lazyRequireGetter(this, "SourceMapConsumer", "source-map", true);
-loader.lazyRequireGetter(this, "SourceMapGenerator", "source-map", true);
-loader.lazyRequireGetter(this, "CssLogic", "devtools/shared/styleinspector/css-logic", true);
-loader.lazyRequireGetter(this, "events", "sdk/event/core");
-loader.lazyRequireGetter(this, "mapURIToAddonID", "devtools/server/actors/utils/map-uri-to-addon-id");
-loader.lazyRequireGetter(this, "setTimeout", "sdk/timers", true);
+});*/
+let { SourceMapConsumer } = require("source-map");
+let { SourceMapGenerator } = require("source-map");
+let { CssLogic } = require("devtools/shared/styleinspector/css-logic");
+let events = require("sdk/event/core");
+let mapURIToAddonID = require("devtools/server/actors/utils/map-uri-to-addon-id");
+let { setTimeout } = require("sdk/timers");
 
 /**
  * A BreakpointActorMap is a map from locations to instances of BreakpointActor.

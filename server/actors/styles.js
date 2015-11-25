@@ -7,6 +7,7 @@
 const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const promise = require("devtools/sham/promise");
 const protocol = require("devtools/server/protocol");
+const {Task} = require("devtools/sham/task");
 const {Arg, Option, method, RetVal, types} = protocol;
 const events = require("sdk/event/core");
 const {Class} = require("sdk/core/heritage");
@@ -17,9 +18,9 @@ const {PSEUDO_ELEMENT_SET} = require("devtools/shared/styleinspector/css-logic")
 const {UPDATE_PRESERVING_RULES, UPDATE_GENERAL} =
       require("devtools/server/actors/stylesheets");
 
-loader.lazyRequireGetter(this, "CSS", "CSS");
+/*let CSS = require("CSS");*/
 
-loader.lazyGetter(this, "CssLogic", () => {
+/*loader.lazyGetter(this, "CssLogic", () => {
   return require("devtools/shared/styleinspector/css-logic").CssLogic;
 });
 loader.lazyGetter(this, "DOMUtils", () => {
@@ -28,7 +29,7 @@ loader.lazyGetter(this, "DOMUtils", () => {
 
 loader.lazyGetter(this, "RuleRewriter", () => {
   return require("devtools/client/shared/css-parsing-utils").RuleRewriter;
-});
+});*/
 
 // The PageStyle actor flattens the DOM CSS objects a little bit, merging
 // Rules and their Styles into one actor.  For elements (which have a style

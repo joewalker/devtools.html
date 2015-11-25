@@ -16,7 +16,8 @@ const XPCOMUtils = {
         return cache;
       },
     });
-  }
+  },
+  generateQI: function() {}
 };
 
 exports.XPCOMUtils = XPCOMUtils;

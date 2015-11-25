@@ -13,12 +13,12 @@ const { EnvironmentActor, ThreadActor } = require("devtools/server/actors/script
 const { ObjectActor, LongStringActor, createValueGrip, stringIsLong } = require("devtools/server/actors/object");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
-loader.lazyRequireGetter(this, "NetworkMonitor", "devtools/shared/webconsole/network-monitor", true);
-loader.lazyRequireGetter(this, "NetworkMonitorChild", "devtools/shared/webconsole/network-monitor", true);
-loader.lazyRequireGetter(this, "ConsoleProgressListener", "devtools/shared/webconsole/network-monitor", true);
-loader.lazyRequireGetter(this, "events", "sdk/event/core");
-loader.lazyRequireGetter(this, "ServerLoggingListener", "devtools/shared/webconsole/server-logger", true);
-loader.lazyRequireGetter(this, "JSPropertyProvider", "devtools/shared/webconsole/js-property-provider", true);
+let { NetworkMonitor } = require("devtools/shared/webconsole/network-monitor");
+let { NetworkMonitorChild } = require("devtools/shared/webconsole/network-monitor");
+let { ConsoleProgressListener } = require("devtools/shared/webconsole/network-monitor");
+let events = require("sdk/event/core");
+let { ServerLoggingListener } = require("devtools/shared/webconsole/server-logger");
+let { JSPropertyProvider } = require("devtools/shared/webconsole/js-property-provider");
 
 for (let name of ["WebConsoleUtils", "ConsoleServiceListener",
     "ConsoleAPIListener", "addWebConsoleCommands",

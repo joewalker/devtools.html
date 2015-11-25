@@ -8,7 +8,7 @@ const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 var protocol = require("devtools/server/protocol");
 var { method, RetVal, Arg, types } = protocol;
 const { reportException } = require("devtools/shared/DevToolsUtils");
-loader.lazyRequireGetter(this, "events", "sdk/event/core");
+let events = require("sdk/event/core");
 
 var MemprofActor = protocol.ActorClass({
   typeName: "memprof",

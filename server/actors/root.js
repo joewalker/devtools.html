@@ -11,9 +11,9 @@ const Services = require("devtools/sham/services");
 const { ActorPool, appendExtraActors, createExtraActors } = require("devtools/server/actors/common");
 const { DebuggerServer } = require("devtools/server/main");
 
-loader.lazyGetter(this, "ppmm", () => {
+/*loader.lazyGetter(this, "ppmm", () => {
   return Cc["@mozilla.org/parentprocessmessagemanager;1"].getService(Ci.nsIMessageBroadcaster);
-});
+});*/
 
 /* Root actor for the remote debugging protocol. */
 

@@ -11,8 +11,8 @@ const events = require("sdk/event/core");
 const protocol = require("devtools/server/protocol");
 const { Arg, Option, method, RetVal } = protocol;
 const { isWindowIncluded } = require("devtools/shared/layout/utils");
-const { isXUL, isNodeValid } = require("./highlighters/utils/markup");
-const { SimpleOutlineHighlighter } = require("./highlighters/simple-outline");
+/*const { isXUL, isNodeValid } = require("./highlighters/utils/markup");*/
+/*const { SimpleOutlineHighlighter } = require("./highlighters/simple-outline");*/
 
 const HIGHLIGHTER_PICKED_TIMER = 1000;
 
@@ -680,7 +680,7 @@ HighlighterEnvironment.prototype = {
   }
 };
 
-const { BoxModelHighlighter } = require("./highlighters/box-model");
+/*const { BoxModelHighlighter } = require("./highlighters/box-model");
 register(BoxModelHighlighter);
 exports.BoxModelHighlighter = BoxModelHighlighter;
 
@@ -706,4 +706,4 @@ exports.RulersHighlighter = RulersHighlighter;
 
 const { MeasuringToolHighlighter } = require("./highlighters/measuring-tool");
 register(MeasuringToolHighlighter);
-exports.MeasuringToolHighlighter = MeasuringToolHighlighter;
+exports.MeasuringToolHighlighter = MeasuringToolHighlighter;*/

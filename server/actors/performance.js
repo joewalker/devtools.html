@@ -11,8 +11,8 @@ const { Actor, custom, method, RetVal, Arg, Option, types, preEvent } = protocol
 const { actorBridge } = require("devtools/server/actors/common");
 const { PerformanceRecordingActor, PerformanceRecordingFront } = require("devtools/server/actors/performance-recording");
 
-loader.lazyRequireGetter(this, "events", "sdk/event/core");
-loader.lazyRequireGetter(this, "extend", "sdk/util/object", true);
+let events = require("sdk/event/core");
+let { extend } = require("sdk/util/object");
 
 loader.lazyRequireGetter(this, "PerformanceRecorder",
   "devtools/server/performance/recorder", true);
