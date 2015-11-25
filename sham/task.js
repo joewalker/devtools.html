@@ -515,4 +515,4 @@ Task.Debugging = {
   }
 };
 
-module.exports = Task;
+exports.Task = Task;
