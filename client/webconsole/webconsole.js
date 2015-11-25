@@ -11,9 +11,7 @@ const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const {Utils: WebConsoleUtils, CONSOLE_WORKER_IDS} = require("devtools/shared/webconsole/utils");
 const promise = require("devtools/sham/promise");
 
-loader.lazyServiceGetter(this, "clipboardHelper",
-                         "@mozilla.org/widget/clipboardhelper;1",
-                         "nsIClipboardHelper");
+const clipboardHelper = require("devtools/sham/clipboard");
 const { Services } = require("devtools/sham/services");
 const EventEmitter = require("devtools/shared/event-emitter");
 const { AutocompletePopup } = require("devtools/client/shared/autocomplete-popup");
@@ -2838,7 +2836,7 @@ WebConsoleFrame.prototype = {
       }
     }
 
-    clipboardHelper.copyString(strings.join("\n"));
+    clipboardHelper.copy(strings.join("\n"));
   },
 
   /**
@@ -3297,7 +3295,7 @@ JSTerm.prototype = {
           this.hud.owner.openLink(HELP_URL);
           break;
         case "copyValueToClipboard":
-          clipboardHelper.copyString(helperResult.value);
+          clipboardHelper.copy(helperResult.value);
           break;
       }
     }

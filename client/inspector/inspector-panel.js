@@ -9,7 +9,7 @@ const { Services } = require("devtools/sham/services");
 
 var promise = require("devtools/sham/promise");
 var EventEmitter = exports.EventEmitter = require("devtools/shared/event-emitter");
-var clipboard = require("devtools/sham/clipboard");
+var clipboardHelper = require("devtools/sham/clipboard");
 var L10N = require("devtools/sham/l10n");
 
 var MarkupView = require("devtools/client/markupview/markup-view").MarkupView;
@@ -1176,11 +1176,11 @@ InspectorPanel.prototype = {
         break;
       case Ci.nsIDOMNode.COMMENT_NODE :
         this._getLongString(node.getNodeValue()).then(comment => {
-          clipboardHelper.copyString("<!--" + comment + "-->");
+          clipboardHelper.copy("<!--" + comment + "-->");
         });
         break;
       case Ci.nsIDOMNode.DOCUMENT_TYPE_NODE :
-        clipboardHelper.copyString(node.doctypeString);
+        clipboardHelper.copy(node.doctypeString);
         break;
     }
   },
@@ -1202,7 +1202,7 @@ InspectorPanel.prototype = {
    */
   _copyLongString: function(longStringActorPromise) {
     return this._getLongString(longStringActorPromise).then(string => {
-      clipboardHelper.copyString(string);
+      clipboardHelper.copy(string);
     }).catch(Cu.reportError);
   },
 
@@ -1229,7 +1229,7 @@ InspectorPanel.prototype = {
     }
 
     this.selection.nodeFront.getUniqueSelector().then((selector) => {
-      clipboardHelper.copyString(selector);
+      clipboardHelper.copy(selector);
     }).then(null, console.error);
   },
 
@@ -1392,7 +1392,7 @@ InspectorPanel.prototype = {
     // When the inspector menu was setup on click (see _setupNodeLinkMenu), we
     // already checked that resolveRelativeURL existed.
     this.inspector.resolveRelativeURL(link, this.selection.nodeFront).then(url => {
-      clipboardHelper.copyString(url);
+      clipboardHelper.copy(url);
     }, console.error);
   },
 
