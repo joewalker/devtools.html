@@ -111,6 +111,13 @@ exports.getComplexValue = function (pref) {
   }
 };
 
+exports.getBranch = function (pref) {
+  return {
+    addObserver: () => {},
+    removeObserver: () => {},
+  }
+};
+
 exports.prefHasUserValue = function (pref) {
   // XXX: Implement me
   return false;

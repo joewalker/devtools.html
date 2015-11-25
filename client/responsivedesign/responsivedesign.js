@@ -10,7 +10,7 @@ const Cu = Components.utils;
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
-const { EventEmitter } = require("devtools/shared/event-emitter");
+const EventEmitter = require("devtools/shared/event-emitter");
 const {
   Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout

@@ -23,7 +23,6 @@ var Telemetry = require("devtools/client/shared/telemetry");
 
 const { Services } = require("devtools/sham/services");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
-const { DOMHelpers } = require("devtools/client/shared/DOMHelpers");
 const { Task } = require("devtools/sham/task");
 
 var toolboxStrings = () => {};
@@ -360,16 +359,14 @@ Toolbox.prototype = {
   open: function() {
     return Task.spawn(function*() {
       let iframe = yield this._host.create();
-      let domReady = promise.defer();
 
       // Load the toolbox-level actor fronts and utilities now
       yield this._target.makeRemote();
-      iframe.setAttribute("src", this._URL);
-      iframe.setAttribute("aria-label", toolboxStrings("toolbox.label"));
-      let domHelper = new DOMHelpers(iframe.contentWindow);
-      domHelper.onceDOMReady(() => domReady.resolve());
-
-      yield domReady.promise;
+      yield new Promise(resolve => {
+        iframe.setAttribute("src", this._URL);
+        iframe.setAttribute("aria-label", toolboxStrings("toolbox.label"));
+        iframe.onload = resolve;
+      });
 
       this.isReady = true;
       let framesPromise = this._listFrames();
@@ -1279,23 +1276,7 @@ Toolbox.prototype = {
     if (definition.panelLabel) {
       iframe.setAttribute("aria-label", definition.panelLabel);
     }
-
-    // Depending on the host, iframe.contentWindow is not always
-    // defined at this moment. If it is not defined, we use an
-    // event listener on the iframe DOM node. If it's defined,
-    // we use the chromeEventHandler. We can't use a listener
-    // on the DOM node every time because this won't work
-    // if the (xul chrome) iframe is loaded in a content docshell.
-    if (iframe.contentWindow) {
-      let domHelper = new DOMHelpers(iframe.contentWindow);
-      domHelper.onceDOMReady(onLoad);
-    } else {
-      let callback = () => {
-        iframe.removeEventListener("DOMContentLoaded", callback);
-        onLoad();
-      };
-      iframe.addEventListener("DOMContentLoaded", callback);
-    }
+    iframe.onload = onLoad;
 
     return deferred.promise;
   },

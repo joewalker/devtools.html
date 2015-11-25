@@ -23,7 +23,7 @@ const {
   Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
 } = require("devtools/client/shared/widgets/ViewHelpers");
-const { EventEmitter } = require("devtools/shared/event-emitter");
+const EventEmitter = require("devtools/shared/event-emitter");
 const { Task } = require("devtools/sham/task");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const promise = require("devtools/sham/promise");

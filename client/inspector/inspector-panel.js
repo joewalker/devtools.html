@@ -360,28 +360,30 @@ InspectorPanel.prototype = {
     this.sidebar.on("select", this._setDefaultSidebar);
 
     this.sidebar.addTab("ruleview",
-                        "chrome://devtools/content/styleinspector/cssruleview.xhtml",
+                        "../styleinspector/cssruleview.xhtml",
                         "ruleview" == defaultTab);
 
     this.sidebar.addTab("computedview",
-                        "chrome://devtools/content/styleinspector/computedview.xhtml",
+                        "../styleinspector/computedview.xhtml",
                         "computedview" == defaultTab);
 
     if (Services.prefs.getBoolPref("devtools.fontinspector.enabled") && this.canGetUsedFontFaces) {
       this.sidebar.addTab("fontinspector",
-                          "chrome://devtools/content/fontinspector/font-inspector.xhtml",
+                          "../fontinspector/font-inspector.xhtml",
                           "fontinspector" == defaultTab);
     }
 
-    this.sidebar.addTab("layoutview",
-                        "chrome://devtools/content/layoutview/view.xhtml",
-                        "layoutview" == defaultTab);
+    // XXX: Need to get this running with webpack
+    // this.sidebar.addTab("layoutview",
+    //                     "../layoutview/view.xhtml",
+    //                     "layoutview" == defaultTab);
 
-    if (this.target.form.animationsActor) {
-      this.sidebar.addTab("animationinspector",
-                          "chrome://devtools/content/animationinspector/animation-inspector.xhtml",
-                          "animationinspector" == defaultTab);
-    }
+    // XXX: Need to get this running with webpack
+    // if (this.target.form.animationsActor) {
+    //   this.sidebar.addTab("animationinspector",
+    //                       "../animationinspector/animation-inspector.xhtml",
+    //                       "animationinspector" == defaultTab);
+    // }
 
     this.sidebar.show();
 

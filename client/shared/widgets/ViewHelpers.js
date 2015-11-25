@@ -17,7 +17,7 @@ const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 // const {setTimeout, clearTimeout} = require("devtools/sham/timer");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
-const { EventEmitter } = require("devtools/shared/event-emitter");
+const EventEmitter = require("devtools/shared/event-emitter");
 
 /**
  * Inheritance helpers from the addon SDK's core/heritage.

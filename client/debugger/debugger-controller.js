@@ -95,7 +95,7 @@ const FRAME_TYPE = {
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
-const { EventEmitter } = require("devtools/shared/event-emitter");
+const EventEmitter = require("devtools/shared/event-emitter");
 const { SimpleListWidget } = require("devtools/client/shared/widgets/SimpleListWidget");
 const { BreadcrumbsWidget } = require("devtools/client/shared/widgets/BreadcrumbsWidget");
 const { SideMenuWidget } = require("devtools/client/shared/widgets/SideMenuWidget");
