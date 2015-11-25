@@ -303,9 +303,7 @@ ViewHelpers.L10N = function(aStringBundleName) {
   // XPCOMUtils.defineLazyGetter(this, "stringBundle", () =>
   //   Services.strings.createBundle(aStringBundleName));
 
-  this.ellipsis = "...";
-  // XPCOMUtils.defineLazyGetter(this, "ellipsis", () =>
-  //   Services.prefs.getComplexValue("intl.ellipsis", Ci.nsIPrefLocalizedString).data);
+  this.ellipsis = "…"; // Should be l10n'd
 };
 
 ViewHelpers.L10N.prototype = {

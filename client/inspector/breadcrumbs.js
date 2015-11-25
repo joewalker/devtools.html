@@ -12,7 +12,7 @@ const { Services } = require("devtools/sham/services");
 const promise = require("devtools/sham/promise");
 
 const ENSURE_SELECTION_VISIBLE_DELAY = 50; // ms
-const ELLIPSIS = Services.prefs.getComplexValue("intl.ellipsis", Ci.nsIPrefLocalizedString).data;
+const ELLIPSIS = "…"; // Should be l10n'd
 const MAX_LABEL_LENGTH = 40;
 const LOW_PRIORITY_ELEMENTS = {
   "HEAD": true,

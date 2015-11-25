@@ -2132,8 +2132,7 @@ DevToolsUtils.defineLazyPrototypeGetter(Scope.prototype, "_enumItems", Array);
 DevToolsUtils.defineLazyPrototypeGetter(Scope.prototype, "_nonEnumItems", Array);
 
 // An ellipsis symbol (usually "…") used for localization.
-XPCOMUtils.defineLazyGetter(Scope, "ellipsis", () =>
-  Services.prefs.getComplexValue("intl.ellipsis", Ci.nsIPrefLocalizedString).data);
+XPCOMUtils.defineLazyGetter(Scope, "ellipsis", () => "…"  /*Should be l10n'd*/);
 
 /**
  * A Variable is a Scope holding Property instances.

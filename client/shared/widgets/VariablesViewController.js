@@ -32,7 +32,7 @@ const MAX_LONG_STRING_LENGTH = 200000;
 const MAX_PROPERTY_ITEMS = 2000;
 const DBG_STRINGS_URI = "chrome://devtools/locale/debugger.properties";
 
-const ELLIPSIS = Services.prefs.getComplexValue("intl.ellipsis", Ci.nsIPrefLocalizedString).data
+const ELLIPSIS = "…"; // Should be l10n'd
 
 /**
  * Controller for a VariablesView that handles interfacing with the debugger
