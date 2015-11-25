@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html class="theme-light">
+<head>
+  <meta charset="utf-8">
+  <script src="../node_modules/react/dist/react.min.js"></script>
+  <script src="../node_modules/react-dom/dist/react-dom.min.js"></script>
+</head>
+<body>
+  <div id="content">
+    <!-- this is where the root react component will get rendered -->
+  </div>
+
+  <!-- <script type="text/javascript" src="bundle.js" charset="utf-8"></script> -->
+
+  <!-- include the webpack-dev-server script so our scripts get reloaded when we make a change -->
+  <!-- we'll run the webpack dev server on port 8090, so make sure it is correct -->
+  <script src="http://localhost:8090/webpack-dev-server.js"></script>
+
+  <!-- include the bundle that contains all our scripts, produced by webpack -->
+  <!-- the bundle is served by the webpack-dev-server, so serve it also from localhost:8090 -->
+  <script type="text/javascript" src="./toolbox.js"></script>
+</body>
+</html>
