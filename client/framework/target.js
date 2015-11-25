@@ -8,8 +8,7 @@ const { Ci, Cu } = require("devtools/sham/chrome");
 const promise = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 
-const { XPCOMUtils } = require("devtools/sham/xpcomutils");
-const { DebuggerServer } = require("devtools/server/main");
+/*const { DebuggerServer } = require("devtools/server/main");*/
 const { DebuggerClient } = require("devtools/shared/client/main");
 
 const targets = new WeakMap();
@@ -623,81 +622,6 @@ TabTarget.prototype = {
     let id = this._tab ? this._tab : (this._form && this._form.actor);
     return `TabTarget:${id}`;
   },
-};
-
-/**
- * WebProgressListener for TabTarget.
- *
- * @param object aTarget
- *        The TabTarget instance to work with.
- */
-function TabWebProgressListener(aTarget) {
-  this.target = aTarget;
-}
-
-TabWebProgressListener.prototype = {
-  target: null,
-
-  QueryInterface: XPCOMUtils.generateQI([Ci.nsIWebProgressListener,
-                                         Ci.nsISupportsWeakReference]),
-
-  onStateChange: function(progress, request, flag) {
-    let isStart = flag & Ci.nsIWebProgressListener.STATE_START;
-    let isDocument = flag & Ci.nsIWebProgressListener.STATE_IS_DOCUMENT;
-    let isNetwork = flag & Ci.nsIWebProgressListener.STATE_IS_NETWORK;
-    let isRequest = flag & Ci.nsIWebProgressListener.STATE_IS_REQUEST;
-
-    // Skip non-interesting states.
-    if (!isStart || !isDocument || !isRequest || !isNetwork) {
-      return;
-    }
-
-    // emit event if the top frame is navigating
-    if (progress.isTopLevel) {
-      // Emit the event if the target is not remoted or store the payload for
-      // later emission otherwise.
-      if (this.target._client) {
-        this.target._navRequest = request;
-      } else {
-        this.target.emit("will-navigate", request);
-      }
-    }
-  },
-
-  onProgressChange: function() {},
-  onSecurityChange: function() {},
-  onStatusChange: function() {},
-
-  onLocationChange: function(webProgress, request, URI, flags) {
-    if (this.target &&
-        !(flags & Ci.nsIWebProgressListener.LOCATION_CHANGE_SAME_DOCUMENT)) {
-      let window = webProgress.DOMWindow;
-      // Emit the event if the target is not remoted or store the payload for
-      // later emission otherwise.
-      if (this.target._client) {
-        this.target._navWindow = window;
-      } else {
-        this.target.emit("navigate", window);
-      }
-    }
-  },
-
-  /**
-   * Destroy the progress listener instance.
-   */
-  destroy: function() {
-    if (this.target.tab) {
-      try {
-        this.target.tab.linkedBrowser.removeProgressListener(this);
-      } catch (ex) {
-        // This can throw when a tab crashes in e10s.
-      }
-    }
-    this.target._webProgressListener = null;
-    this.target._navRequest = null;
-    this.target._navWindow = null;
-    this.target = null;
-  }
 };
 
 function WorkerTarget(workerClient) {

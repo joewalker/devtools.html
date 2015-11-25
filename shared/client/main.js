@@ -15,7 +15,7 @@ const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const promise = require("devtools/sham/promise");
 
 const events = require("sdk/event/core");
-/*const { WebConsoleClient } = require("devtools/shared/webconsole/client");*/
+const { WebConsoleClient } = require("devtools/shared/webconsole/client");
 /*const { DebuggerSocket } = require("devtools/shared/security/socket");*/
 /*const Authentication = require("devtools/shared/security/auth");*/
 
