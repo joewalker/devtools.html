@@ -49,15 +49,23 @@ function lazyRequire (obj, property, module, destructure) {
   });
 }
 
-var loader = {
-  lazyGetter: function(aObject, aName, aLambda) {
-    Object.defineProperty(aObject, aName, {
-      get: function () {
-        delete aObject[aName];
-        return aObject[aName] = aLambda.apply(aObject);
-      },
-      configurable: true,
-      enumerable: true
-    });
-  }
+// Shim out these lazy getters, as they can all be implemented
+// with lazyRequire
+function lazyGetter (obj, name, fn) {
+  return lazyRequire(obj, name, fn);
 }
+
+function lazyImporter (obj, name, path) {
+  return lazyRequire(obj, name, path, true);
+}
+
+function lazyServiceGetter (obj, name, fn) {
+  throw new Error("`lazyServiceGetter` cannot be implemented in content.");
+}
+
+var loader = {
+  lazyGetter: lazyGetter,
+  lazyImporter: lazyImporter,
+  lazyRequireGetter: lazyRequire,
+  lazyServiceGetter: lazyServiceGetter,
+};
