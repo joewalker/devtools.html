@@ -27,12 +27,27 @@ exports.listen = () => {
 
     tcpClient.on("data", data => {
       console.log("TCP -> WS: " + data);
-      wsConnection.send(data);
+      try {
+        wsConnection.send(data);
+      } catch (e) {
+        tcpClient.end();
+        console.log("WS send failed, disconnected from TCP");
+      }
     });
 
     wsConnection.on("message", msg => {
       console.log("WS -> TCP: " + msg);
       tcpClient.write(msg);
+    });
+
+    wsConnection.on("close", () => {
+      tcpClient.end();
+      console.log("WS connection closed, disconnected from TCP");
+    });
+
+    wsConnection.on("error", () => {
+      tcpClient.end();
+      console.log("WS connection error, disconnected from TCP");
     });
   });
 };
