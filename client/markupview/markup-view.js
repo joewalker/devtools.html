@@ -34,7 +34,7 @@ const { Task } = require("devtools/sham/task");
 const {scrollIntoViewIfNeeded} = require("devtools/shared/layout/utils");
 
 // Removed this already, will need to bring it back if this is called
-// const template = require("devtools/shared/gcli/Templater");
+const {template} = require("devtools/client/markupview/templater");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
 loader.lazyGetter(this, "DOMParser", function() {

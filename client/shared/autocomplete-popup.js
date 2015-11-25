@@ -160,8 +160,8 @@ AutocompletePopup.prototype = {
   hidePopup: function AP_hidePopup()
   {
     // Return accessibility focus to the input.
-    this._document.activeElement.removeAttribute("aria-activedescendant");
-    this._panel.hidePopup();
+    // this._document.activeElement.removeAttribute("aria-activedescendant");
+    // this._panel.hidePopup();
   },
 
   /**

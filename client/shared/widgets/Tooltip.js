@@ -263,7 +263,7 @@ Tooltip.prototype = {
    */
   hide: function() {
     this.panel.hidden = true;
-    this.panel.hidePopup();
+    // this.panel.hidePopup();
   },
 
   isShown: function() {

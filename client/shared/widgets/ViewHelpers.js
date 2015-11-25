@@ -110,7 +110,7 @@ var clearConditionalTimeout = function clearConditionalTimeout(aId) {
   clearNamedTimeout(aId);
 };
 
-XPCOMUtils.defineLazyGetter(this, "namedTimeoutsStore", () => new Map());
+var namedTimeoutsStore = new Map();
 
 /**
  * Helpers for creating and messaging between UI components.
