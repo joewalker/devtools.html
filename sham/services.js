@@ -10,7 +10,14 @@ const Services = {
   },
   appinfo: {
     OS: 'Darwin', // Probably
-  }
+  },
+  telemetry: {
+    getHistogramById() {
+      return {
+        add() {}
+      };
+    },
+  },
 };
 
 Services.prefs = require("devtools/sham/services/prefs");

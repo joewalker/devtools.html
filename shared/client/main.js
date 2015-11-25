@@ -12,12 +12,12 @@ const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
 // WARNING I swapped the sync one for the async one here
 //const promise = require("resource://devtools/shared/deprecated-sync-thenables.js", {}).Promise;
-const promise = require("devtools/sham/promise").Promise;
+const promise = require("devtools/sham/promise");
 
 const events = require("sdk/event/core");
-const { WebConsoleClient } = require("devtools/shared/webconsole/client");
-const { DebuggerSocket } = require("devtools/shared/security/socket");
-const Authentication = require("devtools/shared/security/auth");
+/*const { WebConsoleClient } = require("devtools/shared/webconsole/client");*/
+/*const { DebuggerSocket } = require("devtools/shared/security/socket");*/
+/*const Authentication = require("devtools/shared/security/auth");*/
 
 const noop = () => {};
 

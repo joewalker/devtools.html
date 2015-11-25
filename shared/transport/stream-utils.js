@@ -217,7 +217,7 @@ function delimitedRead(stream, delimiter, count) {
         count + " bytes");
 
   let scriptableStream;
-  if (stream instanceof Ci.nsIScriptableInputStream) {
+  if (stream.readBytes) {
     scriptableStream = stream;
   } else {
     scriptableStream = new ScriptableInputStream(stream);

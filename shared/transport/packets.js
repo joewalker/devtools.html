@@ -30,12 +30,13 @@ const { dumpn, dumpv } = DevToolsUtils;
 const StreamUtils = require("devtools/shared/transport/stream-utils");
 const promise = require("devtools/sham/promise");
 
-DevToolsUtils.defineLazyGetter(this, "unicodeConverter", () => {
+/*DevToolsUtils.defineLazyGetter(this, "unicodeConverter", () => {
   const unicodeConverter = Cc("@mozilla.org/intl/scriptableunicodeconverter")
                            .createInstance(Ci.nsIScriptableUnicodeConverter);
   unicodeConverter.charset = "UTF-8";
   return unicodeConverter;
-});
+});*/
+const utf8 = require("./utf8");
 
 // The transport's previous check ensured the header length did not exceed 20
 // characters.  Here, we opt for the somewhat smaller, but still large limit of
@@ -142,7 +143,7 @@ Object.defineProperty(JSONPacket.prototype, "object", {
   set: function(object) {
     this._object = object;
     let data = JSON.stringify(object);
-    this._data = unicodeConverter.ConvertFromUnicode(data);
+    this._data = data;
     this.length = this._data.length;
   }
 });
@@ -160,7 +161,7 @@ JSONPacket.prototype.read = function(stream, scriptableStream) {
 
   let json = this._data;
   try {
-    json = unicodeConverter.ConvertToUnicode(json);
+    json = utf8.decode(json);
     this._object = JSON.parse(json);
   } catch(e) {
     let msg = "Error parsing incoming packet: " + json + " (" + e +
@@ -176,6 +177,9 @@ JSONPacket.prototype.read = function(stream, scriptableStream) {
 }
 
 JSONPacket.prototype._readData = function(stream, scriptableStream) {
+  if (!scriptableStream) {
+    scriptableStream = stream;
+  }
   if (dumpv.wantVerbose) {
     dumpv("Reading JSON data: _l: " + this.length + " dL: " +
           this._data.length + " sA: " + stream.available());

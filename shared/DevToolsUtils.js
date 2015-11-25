@@ -166,13 +166,7 @@ exports.compose = function compose(...funcs) {
  * Waits for the next tick in the event loop to execute a callback.
  */
 exports.executeSoon = function executeSoon(aFn) {
-  if (isWorker) {
-    setImmediate(aFn);
-  } else {
-    Services.tm.mainThread.dispatch({
-      run: exports.makeInfallible(aFn)
-    }, Ci.nsIThread.DISPATCH_NORMAL);
-  }
+  setTimeout(aFn, 0);
 };
 
 /**
@@ -366,13 +360,13 @@ exports.isSafeJSObject = function isSafeJSObject(aObj) {
 
 exports.dumpn = function dumpn(str) {
   if (exports.dumpn.wantLogging) {
-    dump("DBG-SERVER: " + str + "\n");
+    console.log("DBG-SERVER: " + str + "\n");
   }
 }
 
 // We want wantLogging to be writable. The exports object is frozen by the
 // loader, so define it on dumpn instead.
-exports.dumpn.wantLogging = false;
+exports.dumpn.wantLogging = true;
 
 /**
  * A verbose logger for low-level tracing.
@@ -385,7 +379,7 @@ exports.dumpv = function(msg) {
 
 // We want wantLogging to be writable. The exports object is frozen by the
 // loader, so define it on dumpn instead.
-exports.dumpv.wantVerbose = false;
+exports.dumpv.wantVerbose = true;
 
 /**
  * Utility function for updating an object with the properties of

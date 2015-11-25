@@ -1,3 +1,4 @@
+/* eslint-env browser */
 /* -*- indent-tabs-mode: nil; js-indent-level: 2 -*- */
 /* vim: set ft=javascript ts=2 et sw=2 tw=80: */
 /* This Source Code Form is subject to the terms of the Mozilla Public
@@ -9,8 +10,6 @@
 
 "use strict";
 
-const { Cc, Ci, Cr, Cu, CC } = require("devtools/sham/chrome");
-const Services = require("devtools/sham/services");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const { dumpn, dumpv } = DevToolsUtils;
 const StreamUtils = require("devtools/shared/transport/stream-utils");
@@ -18,15 +17,7 @@ const { Packet, JSONPacket, BulkPacket } =
   require("devtools/shared/transport/packets");
 const promise = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
-
-DevToolsUtils.defineLazyGetter(this, "Pipe", () => {
-  return CC("@mozilla.org/pipe;1", "nsIPipe", "init");
-});
-
-DevToolsUtils.defineLazyGetter(this, "ScriptableInputStream", () => {
-  return CC("@mozilla.org/scriptableinputstream;1",
-            "nsIScriptableInputStream", "init");
-});
+const utf8 = require("./utf8");
 
 const PACKET_HEADER_MAX = 200;
 
@@ -87,12 +78,10 @@ const PACKET_HEADER_MAX = 200;
  * See ./packets.js and the Remote Debugging Protocol specification for more
  * details on the format of these packets.
  */
-function DebuggerTransport(input, output) {
+function DebuggerTransport(socket) {
   EventEmitter.decorate(this);
 
-  this._input = input;
-  this._scriptableInput = new ScriptableInputStream(input);
-  this._output = output;
+  this._socket = socket;
 
   // The current incoming (possibly partial) header, which will determine which
   // type of Packet |_incoming| below will become.
@@ -190,9 +179,7 @@ DebuggerTransport.prototype = {
     this.emit("onClosed", reason);
 
     this.active = false;
-    this._input.close();
-    this._scriptableInput.close();
-    this._output.close();
+    this._socket.close();
     this._destroyIncoming();
     this._destroyAllOutgoing();
     if (this.hooks) {
@@ -209,7 +196,9 @@ DebuggerTransport.prototype = {
   /**
    * The currently outgoing packet (at the top of the queue).
    */
-  get _currentOutgoing() { return this._outgoing[0]; },
+  get _currentOutgoing() {
+    return this._outgoing[0];
+  },
 
   /**
    * Flush data to the outgoing stream.  Waits until the output stream notifies
@@ -226,8 +215,7 @@ DebuggerTransport.prototype = {
     }
 
     if (this._outgoing.length > 0) {
-      var threadManager = Cc("@mozilla.org/thread-manager;1").getService();
-      this._output.asyncWait(this, 0, 0, threadManager.currentThread);
+      setTimeout(this.onOutputStreamReady.bind(this), 0);
     }
   },
 
@@ -254,13 +242,19 @@ DebuggerTransport.prototype = {
    * The current outgoing packet will attempt to write some amount of data, but
    * may not complete.
    */
-  onOutputStreamReady: DevToolsUtils.makeInfallible(function(stream) {
+  onOutputStreamReady: DevToolsUtils.makeInfallible(function() {
     if (!this._outgoingEnabled || this._outgoing.length === 0) {
       return;
     }
 
     try {
-      this._currentOutgoing.write(stream);
+      this._currentOutgoing.write({
+        write: data => {
+          let count = data.length;
+          this._socket.send(data);
+          return count;
+        }
+      });
     } catch(e) {
       if (e.result != Cr.NS_BASE_STREAM_WOULD_BLOCK) {
         this.close(e.result);
@@ -308,9 +302,8 @@ DebuggerTransport.prototype = {
    * ready for reading.
    */
   _waitForIncoming: function() {
-    if (this._incomingEnabled) {
-      let threadManager = Cc("@mozilla.org/thread-manager;1").getService();
-      this._input.asyncWait(this, 0, 0, threadManager.currentThread);
+    if (this._incomingEnabled && !this._socket.onmessage) {
+      this._socket.onmessage = this.onInputStreamReady.bind(this);
     }
   },
 
@@ -337,10 +330,25 @@ DebuggerTransport.prototype = {
    * Called when the stream is either readable or closed.
    */
   onInputStreamReady:
-  DevToolsUtils.makeInfallible(function(stream) {
+  DevToolsUtils.makeInfallible(function(event) {
+    let data = event.data;
+    // TODO: ws-tcp-proxy decodes utf-8, but the transport expects to see the
+    // encoded bytes.  Simplest step is to re-encode for now.
+    data = utf8.encode(data);
+    let stream = {
+      available() {
+        return data.length;
+      },
+      readBytes(count) {
+        let result = data.slice(0, count);
+        data = data.slice(count);
+        return result;
+      },
+    };
+
     try {
-      while(stream.available() && this._incomingEnabled &&
-            this._processIncoming(stream, stream.available())) {}
+      while (data && this._incomingEnabled &&
+             this._processIncoming(stream, stream.available())) {}
       this._waitForIncoming();
     } catch(e) {
       if (e.result != Cr.NS_BASE_STREAM_WOULD_BLOCK) {
@@ -389,7 +397,7 @@ DebuggerTransport.prototype = {
       if (!this._incoming.done) {
         // We have an incomplete packet, keep reading it.
         dumpv("Existing packet incomplete, keep reading");
-        this._incoming.read(stream, this._scriptableInput);
+        this._incoming.read(stream);
       }
     } catch(e) {
       let msg = "Error reading incoming packet: (" + e + " - " + e.stack + ")";
@@ -418,10 +426,10 @@ DebuggerTransport.prototype = {
    * @return boolean
    *         True if we now have a complete header.
    */
-  _readHeader: function() {
+  _readHeader: function(stream) {
     let amountToRead = PACKET_HEADER_MAX - this._incomingHeader.length;
     this._incomingHeader +=
-      StreamUtils.delimitedRead(this._scriptableInput, ":", amountToRead);
+      StreamUtils.delimitedRead(stream, ":", amountToRead);
     if (dumpv.wantVerbose) {
       dumpv("Header read: " + this._incomingHeader);
     }
