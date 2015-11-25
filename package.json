@@ -27,5 +27,8 @@
     "mocha-loader": "^0.7.1",
     "properties-loader": "^0.0.1",
     "webpack": "^1.12.8"
+  },
+  "dependencies": {
+    "ws": "0.8.0"
   }
 }
