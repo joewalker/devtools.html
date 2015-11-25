@@ -168,6 +168,15 @@ function colorToRGBA(name) {
     vals.push(1);
   }
 
+  let parenToken = getToken();
+  if (!parenToken || parenToken.tokenType !== "symbol" ||
+      parenToken.text !== ")") {
+    return null;
+  }
+  if (getToken() !== null) {
+    return null;
+  }
+
   return vals;
 }
 
