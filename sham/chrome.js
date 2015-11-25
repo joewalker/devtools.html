@@ -18,6 +18,7 @@ module.exports = {
   },
   Cu: {
     reportError: (msg) => console.error(msg),
+    callFunctionWithAsyncStack: fn => fn(),
   },
   Cr: {},
   components: {
