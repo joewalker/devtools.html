@@ -110,7 +110,7 @@ var PanelFactory = {
     panel.setAttribute("level", "top");
 
     panel.setAttribute("class", "devtools-tooltip theme-tooltip-panel");
-    doc.querySelector("window").appendChild(panel);
+    doc.querySelector("body").appendChild(panel);
 
     return panel;
   }
@@ -199,7 +199,7 @@ function Tooltip(doc, options) {
   }
 
   // Listen to keypress events to close the tooltip if configured to do so
-  let win = this.doc.querySelector("window");
+  let win = this.doc.querySelector("body");
   this._onKeyPress = event => {
     if (this.panel.hidden) {
       return;
@@ -312,7 +312,7 @@ Tooltip.prototype = {
         this["_onPopup" + eventName], false);
     }
 
-    let win = this.doc.querySelector("window");
+    let win = this.doc.querySelector("body");
     win.removeEventListener("keypress", this._onKeyPress, false);
 
     let closeOnEvents = this.options.get("closeOnEvents");

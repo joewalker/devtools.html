@@ -61,7 +61,3 @@ var loader = {
     });
   }
 }
-
-var DOMUtils = domUtils = {
-
-};
