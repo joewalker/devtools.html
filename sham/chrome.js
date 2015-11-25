@@ -14,6 +14,9 @@ module.exports = {
       MOVEFOCUS_BACKWARD: 2,
       MOVEFOCUS_FORWARD: 1,
 
+    },
+    nsIDOMKeyEvent: {
+      
     }
   },
   Cu: {

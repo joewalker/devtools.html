@@ -165,7 +165,7 @@ UndoStack.prototype = {
   installController: function Undo_installController(aControllerWindow)
   {
     this._controllerWindow = aControllerWindow;
-    aControllerWindow.controllers.appendController(this);
+    // aControllerWindow.controllers.appendController(this);
   },
 
   /**
@@ -176,7 +176,7 @@ UndoStack.prototype = {
     if (!this._controllerWindow) {
       return;
     }
-    this._controllerWindow.controllers.removeController(this);
+    // this._controllerWindow.controllers.removeController(this);
   },
 
   supportsCommand: function Undo_supportsCommand(aCommand)

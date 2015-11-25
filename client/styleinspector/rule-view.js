@@ -4048,9 +4048,9 @@ XPCOMUtils.defineLazyGetter(this, "_strings", function() {
     "chrome://devtools-shared/locale/styleinspector.properties");
 });
 
-XPCOMUtils.defineLazyGetter(this, "domUtils", function() {
-  return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
-});
+// XPCOMUtils.defineLazyGetter(this, "domUtils", function() {
+//   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
+// });
 
 loader.lazyGetter(this, "AutocompletePopup", function() {
   return require("devtools/client/shared/autocomplete-popup").AutocompletePopup;

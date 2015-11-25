@@ -48,3 +48,20 @@ function lazyRequire (obj, property, module, destructure) {
     enumerable: true
   });
 }
+
+var loader = {
+  lazyGetter: function(aObject, aName, aLambda) {
+    Object.defineProperty(aObject, aName, {
+      get: function () {
+        delete aObject[aName];
+        return aObject[aName] = aLambda.apply(aObject);
+      },
+      configurable: true,
+      enumerable: true
+    });
+  }
+}
+
+var DOMUtils = domUtils = {
+
+};

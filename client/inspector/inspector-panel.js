@@ -12,13 +12,13 @@ var EventEmitter = exports.EventEmitter = require("devtools/shared/event-emitter
 var clipboard = require("devtools/sham/clipboard");
 var L10N = require("devtools/sham/l10n");
 
-lazyRequire(this, "MarkupView", () => require("devtools/client/markupview/markup-view").MarkupView);
-lazyRequire(this, "HTMLBreadcrumbs", () => require("devtools/client/inspector/breadcrumbs").HTMLBreadcrumbs);
-lazyRequire(this, "ToolSidebar", () => require("devtools/client/framework/sidebar").ToolSidebar);
-lazyRequire(this, "InspectorSearch", () => require("devtools/client/inspector/inspector-search").InspectorSearch);
+var MarkupView = require("devtools/client/markupview/markup-view").MarkupView;
+var HTMLBreadcrumbs = require("devtools/client/inspector/breadcrumbs").HTMLBreadcrumbs;
+var ToolSidebar = require("devtools/client/framework/sidebar").ToolSidebar;
+var InspectorSearch = require("devtools/client/inspector/inspector-search").InspectorSearch;
 
-lazyRequire(this, "strings", () => new L10N(require("l10n/inspector.properties")));
-lazyRequire(this, "toolboxStrings", () => new L10N(require("l10n/toolbox.properties")));
+var strings = new L10N(require("l10n/inspector.properties"));
+var toolboxStrings = new L10N(require("l10n/toolbox.properties"));
 
 const LAYOUT_CHANGE_TIMER = 250;
 
@@ -153,7 +153,12 @@ InspectorPanel.prototype = {
     this.selection.on("before-new-node-front", this.onBeforeNewSelection);
     this.selection.on("detached-front", this.onDetached);
 
-    this.breadcrumbs = new HTMLBreadcrumbs(this);
+    // this.breadcrumbs = new HTMLBreadcrumbs(this);
+    this.breadcrumbs = {
+      destroy: () => {},
+      indexOf: () => {},
+      cutAfter: () => {},
+    };
 
     this._toolbox.on("host-changed", this.onToolboxHostChanged);
 
@@ -165,6 +170,8 @@ InspectorPanel.prototype = {
       // We show the warning only when the inspector
       // is selected.
       this.updateDebuggerPausedWarning = () => {
+        // XXX: Need to replace notificationBox
+        return;
         let notificationBox = this._toolbox.getNotificationBox();
         let notification = notificationBox.getNotificationWithValue("inspector-script-paused");
         if (!notification && this._toolbox.currentToolId == "inspector" &&
@@ -929,7 +936,7 @@ InspectorPanel.prototype = {
 
     this._markupBox.setAttribute("collapsed", true);
     this._markupBox.appendChild(this._markupFrame);
-    this._markupFrame.setAttribute("src", "chrome://devtools/content/markupview/markup-view.xhtml");
+    this._markupFrame.setAttribute("src", "../markupview/markup-view.xhtml");
     this._markupFrame.setAttribute("aria-label", strings.GetStringFromName("inspector.panelLabel.markupView"));
   },
 
@@ -1011,12 +1018,8 @@ InspectorPanel.prototype = {
    * Update the pane toggle button visibility depending on the toolbox host type.
    */
   updatePaneToggleButton: function() {
-    /**
-     * XXX Not handling this for Mozlando demo for now, needing to pull
-     * in Toolbox
-     */
-    //this._paneToggleButton.setAttribute("hidden",
-    //  this._toolbox.hostType === HostType.SIDE);
+    this._paneToggleButton.setAttribute("hidden",
+      this._toolbox.hostType === HostType.SIDE);
   },
 
   /**
@@ -1166,11 +1169,11 @@ InspectorPanel.prototype = {
         break;
       case Ci.nsIDOMNode.COMMENT_NODE :
         this._getLongString(node.getNodeValue()).then(comment => {
-          clipboard.copy("<!--" + comment + "-->");
+          clipboardHelper.copyString("<!--" + comment + "-->");
         });
         break;
       case Ci.nsIDOMNode.DOCUMENT_TYPE_NODE :
-        clipboard.copy(node.doctypeString);
+        clipboardHelper.copyString(node.doctypeString);
         break;
     }
   },
@@ -1192,7 +1195,7 @@ InspectorPanel.prototype = {
    */
   _copyLongString: function(longStringActorPromise) {
     return this._getLongString(longStringActorPromise).then(string => {
-      clipboard.copy(string);
+      clipboardHelper.copyString(string);
     }).catch(Cu.reportError);
   },
 
@@ -1219,7 +1222,7 @@ InspectorPanel.prototype = {
     }
 
     this.selection.nodeFront.getUniqueSelector().then((selector) => {
-      clipboard.copy(selector);
+      clipboardHelper.copyString(selector);
     }).then(null, console.error);
   },
 
@@ -1227,14 +1230,14 @@ InspectorPanel.prototype = {
    * Initiate gcli screenshot command on selected node
    */
   screenshotNode: function() {
-//    CommandUtils.createRequisition(this._target, {
-//      environment: CommandUtils.createEnvironment(this, '_target')
-//    }).then(requisition => {
-//      // Bug 1180314 -  CssSelector might contain white space so need to make sure it is
-//      // passed to screenshot as a single parameter.  More work *might* be needed if
-//      // CssSelector could contain escaped single- or double-quotes, backslashes, etc.
-//      requisition.updateExec("screenshot --selector '" + this.selectionCssSelector + "'");
-//    });
+    CommandUtils.createRequisition(this._target, {
+      environment: CommandUtils.createEnvironment(this, '_target')
+    }).then(requisition => {
+      // Bug 1180314 -  CssSelector might contain white space so need to make sure it is
+      // passed to screenshot as a single parameter.  More work *might* be needed if
+      // CssSelector could contain escaped single- or double-quotes, backslashes, etc.
+      requisition.updateExec("screenshot --selector '" + this.selectionCssSelector + "'");
+    });
   },
 
   /**
@@ -1382,7 +1385,7 @@ InspectorPanel.prototype = {
     // When the inspector menu was setup on click (see _setupNodeLinkMenu), we
     // already checked that resolveRelativeURL existed.
     this.inspector.resolveRelativeURL(link, this.selection.nodeFront).then(url => {
-      clipboard.copy(url);
+      clipboardHelper.copyString(url);
     }, console.error);
   },
 
@@ -1422,3 +1425,4 @@ InspectorPanel.prototype = {
     }
   }
 };
+

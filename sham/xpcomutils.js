@@ -17,7 +17,8 @@ const XPCOMUtils = {
       },
     });
   },
-  generateQI: function() {}
+  generateQI: function() {},
+  defineLazyServiceGetter: function() {},
 };
 
 exports.XPCOMUtils = XPCOMUtils;

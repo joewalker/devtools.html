@@ -6,6 +6,10 @@ const Services = {
   strings: {
     createBundle: name => {
       // TODO: implement
+      return  {
+        GetStringFromName: () => { return ""; },
+        formatStringFromName: () => { return ""; }
+      }
     }
   },
   appinfo: {

@@ -105,14 +105,6 @@ exports.getWSTarget = Task.async(function*() {
   };
   let target = yield TargetFactory.forRemoteTab(options);
   return target;
-
-  // /*let hostType = Toolbox.HostType.WINDOW;
-  // gDevTools.showToolbox(target, tool, hostType)*/
-
-  // let inspector = InspectorFront(target.client, target.form);
-  // let walker = yield inspector.getWalker();
-
-
 });
 
 /**
@@ -199,7 +191,7 @@ Toolbox.HostType = {
 };
 
 Toolbox.prototype = {
-  _URL: "chrome://devtools/content/framework/toolbox.xul",
+  _URL: "toolbox.xhtml",
 
   _prefs: {
     LAST_HOST: "devtools.toolbox.host",
@@ -383,12 +375,12 @@ Toolbox.prototype = {
       let framesPromise = this._listFrames();
 
       this.closeButton = this.doc.getElementById("toolbox-close");
-      this.closeButton.addEventListener("command", this.destroy, true);
+      this.closeButton.addEventListener("click", this.destroy, true);
 
       gDevTools.on("pref-changed", this._prefChanged);
 
       let framesMenu = this.doc.getElementById("command-button-frames");
-      framesMenu.addEventListener("command", this.selectFrame, true);
+      framesMenu.addEventListener("click", this.selectFrame, true);
 
       this.textboxContextMenuPopup =
         this.doc.getElementById("toolbox-textbox-context-popup");
@@ -460,9 +452,9 @@ Toolbox.prototype = {
   _pingTelemetry: function() {
     this._telemetry.toolOpened("toolbox");
 
-    this._telemetry.logOncePerBrowserVersion(OS_HISTOGRAM, system.getOSCPU());
-    this._telemetry.logOncePerBrowserVersion(OS_IS_64_BITS, system.is64Bit ? 1 : 0);
-    this._telemetry.logOncePerBrowserVersion(SCREENSIZE_HISTOGRAM, system.getScreenDimensions());
+    // this._telemetry.logOncePerBrowserVersion(OS_HISTOGRAM, system.getOSCPU());
+    // this._telemetry.logOncePerBrowserVersion(OS_IS_64_BITS, system.is64Bit ? 1 : 0);
+    // this._telemetry.logOncePerBrowserVersion(SCREENSIZE_HISTOGRAM, system.getScreenDimensions());
   },
 
   /**
@@ -578,7 +570,7 @@ Toolbox.prototype = {
   },
 
   _registerOverlays: function() {
-    registerHarOverlay(this);
+    // registerHarOverlay(this);
   },
 
   _saveSplitConsoleHeight: function() {
@@ -708,11 +700,9 @@ Toolbox.prototype = {
     zoomValue = Math.max(zoomValue, MIN_ZOOM);
     zoomValue = Math.min(zoomValue, MAX_ZOOM);
 
-    let contViewer = this.frame.docShell.contentViewer;
-
-    contViewer.fullZoom = zoomValue;
-
-    Services.prefs.setCharPref(ZOOM_PREF, zoomValue);
+    // let contViewer = this.frame.docShell.contentViewer;
+    // contViewer.fullZoom = zoomValue;
+    // Services.prefs.setCharPref(ZOOM_PREF, zoomValue);
   },
 
   /**
@@ -761,7 +751,7 @@ Toolbox.prototype = {
       // needed. See bug 371900
       key.setAttribute("oncommand", "void(0)");
       key.addEventListener("command", () => {
-        // HUDService.toggleBrowserConsole();
+        HUDService.toggleBrowserConsole();
       }, true);
       doc.getElementById("toolbox-keyset").appendChild(key);
     }
@@ -800,10 +790,11 @@ Toolbox.prototype = {
 
     // Bottom-type host can be minimized, add a button for this.
     if (this.hostType == Toolbox.HostType.BOTTOM) {
-      let minimizeBtn = this.doc.createElement("toolbarbutton");
+      let minimizeBtn = this.doc.createElement("button");
       minimizeBtn.id = "toolbox-dock-bottom-minimize";
+      minimizeBtn.className = "devtools-button";
 
-      minimizeBtn.addEventListener("command", this._toggleMinimizeMode);
+      minimizeBtn.addEventListener("click", this._toggleMinimizeMode);
       dockBox.appendChild(minimizeBtn);
       // Show the button in its maximized state.
       this._onBottomHostMaximized();
@@ -833,12 +824,12 @@ Toolbox.prototype = {
         continue;
       }
 
-      let button = this.doc.createElement("toolbarbutton");
+      let button = this.doc.createElement("button");
       button.id = "toolbox-dock-" + position;
-      button.className = "toolbox-dock-button";
+      button.className = "toolbox-dock-button devtools-button";
       button.setAttribute("tooltiptext", toolboxStrings("toolboxDockButtons." +
                                                         position + ".tooltip"));
-      button.addEventListener("command", () => {
+      button.addEventListener("click", () => {
         this.switchHost(position);
       });
 
@@ -900,6 +891,7 @@ Toolbox.prototype = {
    * Add tabs to the toolbox UI for registered tools
    */
   _buildTabs: function() {
+    console.log("BUILDING TABS", gDevTools.getToolDefinitionArray());
     for (let definition of gDevTools.getToolDefinitionArray()) {
       this._buildTabForTool(definition);
     }
@@ -915,8 +907,30 @@ Toolbox.prototype = {
 
     this.setToolboxButtonsVisibility();
 
-    // No GCLI in this hack
+    // Old servers don't have a GCLI Actor, so just return
+    if (!this.target.hasActor("gcli")) {
+      return promise.resolve();
+    }
     return promise.resolve();
+
+    const options = {
+      environment: CommandUtils.createEnvironment(this, '_target')
+    };
+    return CommandUtils.createRequisition(this.target, options).then(requisition => {
+      this._requisition = requisition;
+
+      const spec = CommandUtils.getCommandbarSpec("devtools.toolbox.toolbarSpec");
+      return CommandUtils.createButtons(spec, this.target, this.doc,
+                                        requisition).then(buttons => {
+        let container = this.doc.getElementById("toolbox-buttons");
+        buttons.forEach(button=> {
+          if (button) {
+            container.appendChild(button);
+          }
+        });
+        this.setToolboxButtonsVisibility();
+      });
+    });
   },
 
   /**
@@ -924,9 +938,9 @@ Toolbox.prototype = {
    * since we want it to work for remote targets too
    */
   _buildPickerButton: function() {
-    this._pickerButton = this.doc.createElement("toolbarbutton");
+    this._pickerButton = this.doc.createElement("button");
     this._pickerButton.id = "command-button-pick";
-    this._pickerButton.className = "command-button command-button-invertable";
+    this._pickerButton.className = "command-button command-button-invertable devtools-button";
     this._pickerButton.setAttribute("tooltiptext", toolboxStrings("pickButton.tooltip"));
     this._pickerButton.setAttribute("hidden", "true");
 
@@ -934,7 +948,7 @@ Toolbox.prototype = {
     container.appendChild(this._pickerButton);
 
     this._togglePicker = this.highlighterUtils.togglePicker.bind(this.highlighterUtils);
-    this._pickerButton.addEventListener("command", this._togglePicker, false);
+    this._pickerButton.addEventListener("click", this._togglePicker, false);
   },
 
   /**
@@ -1068,7 +1082,7 @@ Toolbox.prototype = {
       toolDefinition.ordinal = MAX_ORDINAL;
     }
 
-    let radio = this.doc.createElement("radio");
+    let radio = this.doc.createElement("box");
     // The radio element is not being used in the conventional way, thus
     // the devtools-tab class replaces the radio XBL binding with its base
     // binding (the control-item binding).
@@ -1081,7 +1095,7 @@ Toolbox.prototype = {
       radio.setAttribute("icon-invertable", "true");
     }
 
-    radio.addEventListener("command", () => {
+    radio.addEventListener("click", () => {
       this.selectTool(id);
     });
 
@@ -1091,13 +1105,13 @@ Toolbox.prototype = {
     radio.appendChild(spacer);
 
     if (toolDefinition.icon) {
-      let image = this.doc.createElement("image");
+      let image = this.doc.createElement("img");
       image.className = "default-icon";
       image.setAttribute("src",
                          toolDefinition.icon || toolDefinition.highlightedicon);
       radio.appendChild(image);
       // Adding the highlighted icon image
-      image = this.doc.createElement("image");
+      image = this.doc.createElement("img");
       image.className = "highlighted-icon";
       image.setAttribute("src",
                          toolDefinition.highlightedicon || toolDefinition.icon);
@@ -1106,8 +1120,8 @@ Toolbox.prototype = {
 
     if (toolDefinition.label && !toolDefinition.iconOnly) {
       let label = this.doc.createElement("label");
-      label.setAttribute("value", toolDefinition.label);
-      label.setAttribute("crop", "end");
+      label.textContent = toolDefinition.label;
+      // label.setAttribute("crop", "end");
       label.setAttribute("flex", "1");
       radio.appendChild(label);
       radio.setAttribute("flex", "1");
@@ -1346,7 +1360,15 @@ Toolbox.prototype = {
     // and select the right iframe
     let deck = this.doc.getElementById("toolbox-deck");
     let panel = this.doc.getElementById("toolbox-panel-" + id);
-    deck.selectedPanel = panel;
+    console.log("Geting panel for ", id);
+
+    // Hack to work around no <deck>
+    // deck.selectedPanel = panel;
+    if (this.selectedPanel) {
+      this.selectedPanel.classList.remove("visible");
+    }
+    this.selectedPanel = panel;
+    panel.classList.add("visible");
 
     this.lastUsedToolId = this.currentToolId;
     this.currentToolId = id;
@@ -1559,7 +1581,8 @@ Toolbox.prototype = {
   },
 
   _updateFrames: function(event, data) {
-    if (!Services.prefs.getBoolPref("devtools.command-button-frames.enabled")) {
+    // XXX: Don't deal with frames yet
+    if (true || !Services.prefs.getBoolPref("devtools.command-button-frames.enabled")) {
       return;
     }
 
@@ -1643,13 +1666,13 @@ Toolbox.prototype = {
 
     // clean up the toolbox if its window is closed
     let newHost = new Hosts[hostType](this.target.tab, options);
-    console.log("New host", newHost);
     newHost.on("window-closed", this.destroy);
     return newHost;
   },
 
   reload: function () {
-    throw new Error("Missing devtools.reload()");
+    const {devtools} = Cu.import("resource://devtools/shared/Loader.jsm", {});
+    devtools.reload(true);
   },
 
   /**
@@ -1914,7 +1937,7 @@ Toolbox.prototype = {
       this.webconsolePanel.removeEventListener("resize",
         this._saveSplitConsoleHeight);
     }
-    this.closeButton.removeEventListener("command", this.destroy, true);
+    this.closeButton.removeEventListener("click", this.destroy, true);
     this.textboxContextMenuPopup.removeEventListener("popupshowing",
       this._updateTextboxMenuItems, true);
 
@@ -1945,7 +1968,7 @@ Toolbox.prototype = {
     outstanding.push(this.destroyInspector().then(() => {
       // Removing buttons
       if (this._pickerButton) {
-        this._pickerButton.removeEventListener("command", this._togglePicker, false);
+        this._pickerButton.removeEventListener("click", this._togglePicker, false);
         this._pickerButton = null;
       }
     }));
@@ -1957,7 +1980,7 @@ Toolbox.prototype = {
     let win = this.frame.ownerGlobal;
 
     if (this._requisition) {
-      CommandUtils.destroyRequisition(this._requisition, this.target);
+      // CommandUtils.destroyRequisition(this._requisition, this.target);
     }
     this._telemetry.toolClosed("toolbox");
     this._telemetry.destroy();

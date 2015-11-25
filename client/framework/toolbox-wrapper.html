@@ -16,18 +16,6 @@
         <script src="../../globals.js"></script>
         <script src="build.js"></script>
         <script>
-            // var target = {
-            //     makeRemote: function () { return new Promise(resolve => resolve()) },
-            //     client: { traits: {} },
-            //     tab: {
-            //         ownerDocument: { defaultView: {} },
-            //     },
-            //     form: {},
-            //     on: function() {},
-            //     off: function() {},
-            //     actorHasMethod: function () { return new Promise(resolve => resolve(false)); },
-            // };
-
             var toolbox;
             Toolbox.getWSTarget().then(function(target) {
                 toolbox = new Toolbox.Toolbox(target, "inspector", "bottom");
@@ -35,24 +23,6 @@
                     console.log("Open finished");
                 });
             });
-
-            // var toolbox = {
-            //     "_target": target,
-            //     doc: { defaultView: {} },
-            //     openSplitConsole: function () {},
-            //     inspector: {
-            //         getPageStyle: function () { return new Promise(resolve => resolve()); }
-            //     },
-            //     walker: {},
-            //     selection: {},
-            //     getNotificationBox: function () {
-            //         return { getNotificationWithValue: function () {} };
-            //     },
-            //     currentToolId: "inspector",
-            // };
-            // Inspector.EventEmitter.decorate(target)
-            // Inspector.EventEmitter.decorate(toolbox)
-            // var inspector = new Inspector.InspectorPanel(document.querySelector("iframe"), toolbox);
         </script>
     </body>
 </html>

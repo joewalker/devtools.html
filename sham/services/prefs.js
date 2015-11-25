@@ -103,3 +103,15 @@ exports.getIntPref = function (pref) {
   }
   return getPrefValue(pref);
 };
+
+exports.getComplexValue = function (pref) {
+  // XXX: Implement me
+  return  {
+    data: ''
+  }
+};
+
+exports.prefHasUserValue = function (pref) {
+  // XXX: Implement me
+  return false;
+};

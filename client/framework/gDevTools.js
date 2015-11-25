@@ -861,91 +861,91 @@ var gDevToolsBrowser = {
    * dialog.
    */
   setSlowScriptDebugHandler: function DT_setSlowScriptDebugHandler() {
-    let debugService = Cc("@mozilla.org/dom/slow-script-debug;1")
-                         .getService(Ci.nsISlowScriptDebug);
-    let tm = Cc("@mozilla.org/thread-manager;1").getService(Ci.nsIThreadManager);
+    // let debugService = Cc("@mozilla.org/dom/slow-script-debug;1")
+    //                      .getService(Ci.nsISlowScriptDebug);
+    // let tm = Cc("@mozilla.org/thread-manager;1").getService(Ci.nsIThreadManager);
 
-    function slowScriptDebugHandler(aTab, aCallback) {
-      let target = TargetFactory.forTab(aTab);
+    // function slowScriptDebugHandler(aTab, aCallback) {
+    //   let target = TargetFactory.forTab(aTab);
 
-      gDevTools.showToolbox(target, "jsdebugger").then(toolbox => {
-        let threadClient = toolbox.getCurrentPanel().panelWin.gThreadClient;
+    //   gDevTools.showToolbox(target, "jsdebugger").then(toolbox => {
+    //     let threadClient = toolbox.getCurrentPanel().panelWin.gThreadClient;
 
-        // Break in place, which means resuming the debuggee thread and pausing
-        // right before the next step happens.
-        switch (threadClient.state) {
-          case "paused":
-            // When the debugger is already paused.
-            threadClient.resumeThenPause();
-            aCallback();
-            break;
-          case "attached":
-            // When the debugger is already open.
-            threadClient.interrupt(() => {
-              threadClient.resumeThenPause();
-              aCallback();
-            });
-            break;
-          case "resuming":
-            // The debugger is newly opened.
-            threadClient.addOneTimeListener("resumed", () => {
-              threadClient.interrupt(() => {
-                threadClient.resumeThenPause();
-                aCallback();
-              });
-            });
-            break;
-          default:
-            throw Error("invalid thread client state in slow script debug handler: " +
-                        threadClient.state);
-          }
-      });
-    }
+    //     // Break in place, which means resuming the debuggee thread and pausing
+    //     // right before the next step happens.
+    //     switch (threadClient.state) {
+    //       case "paused":
+    //         // When the debugger is already paused.
+    //         threadClient.resumeThenPause();
+    //         aCallback();
+    //         break;
+    //       case "attached":
+    //         // When the debugger is already open.
+    //         threadClient.interrupt(() => {
+    //           threadClient.resumeThenPause();
+    //           aCallback();
+    //         });
+    //         break;
+    //       case "resuming":
+    //         // The debugger is newly opened.
+    //         threadClient.addOneTimeListener("resumed", () => {
+    //           threadClient.interrupt(() => {
+    //             threadClient.resumeThenPause();
+    //             aCallback();
+    //           });
+    //         });
+    //         break;
+    //       default:
+    //         throw Error("invalid thread client state in slow script debug handler: " +
+    //                     threadClient.state);
+    //       }
+    //   });
+    // }
 
-    debugService.activationHandler = function(aWindow) {
-      let chromeWindow = aWindow.QueryInterface(Ci.nsIInterfaceRequestor)
-                                .getInterface(Ci.nsIWebNavigation)
-                                .QueryInterface(Ci.nsIDocShellTreeItem)
-                                .rootTreeItem
-                                .QueryInterface(Ci.nsIInterfaceRequestor)
-                                .getInterface(Ci.nsIDOMWindow)
-                                .QueryInterface(Ci.nsIDOMChromeWindow);
+    // debugService.activationHandler = function(aWindow) {
+    //   let chromeWindow = aWindow.QueryInterface(Ci.nsIInterfaceRequestor)
+    //                             .getInterface(Ci.nsIWebNavigation)
+    //                             .QueryInterface(Ci.nsIDocShellTreeItem)
+    //                             .rootTreeItem
+    //                             .QueryInterface(Ci.nsIInterfaceRequestor)
+    //                             .getInterface(Ci.nsIDOMWindow)
+    //                             .QueryInterface(Ci.nsIDOMChromeWindow);
 
-      let setupFinished = false;
-      slowScriptDebugHandler(chromeWindow.gBrowser.selectedTab,
-                             () => { setupFinished = true; });
+    //   let setupFinished = false;
+    //   slowScriptDebugHandler(chromeWindow.gBrowser.selectedTab,
+    //                          () => { setupFinished = true; });
 
-      // Don't return from the interrupt handler until the debugger is brought
-      // up; no reason to continue executing the slow script.
-      let utils = aWindow.QueryInterface(Ci.nsIInterfaceRequestor)
-                         .getInterface(Ci.nsIDOMWindowUtils);
-      utils.enterModalState();
-      while (!setupFinished) {
-        tm.currentThread.processNextEvent(true);
-      }
-      utils.leaveModalState();
-    };
+    //   // Don't return from the interrupt handler until the debugger is brought
+    //   // up; no reason to continue executing the slow script.
+    //   let utils = aWindow.QueryInterface(Ci.nsIInterfaceRequestor)
+    //                      .getInterface(Ci.nsIDOMWindowUtils);
+    //   utils.enterModalState();
+    //   while (!setupFinished) {
+    //     tm.currentThread.processNextEvent(true);
+    //   }
+    //   utils.leaveModalState();
+    // };
 
-    debugService.remoteActivationHandler = function(aBrowser, aCallback) {
-      let chromeWindow = aBrowser.ownerDocument.defaultView;
-      let tab = chromeWindow.gBrowser.getTabForBrowser(aBrowser);
-      chromeWindow.gBrowser.selected = tab;
+    // debugService.remoteActivationHandler = function(aBrowser, aCallback) {
+    //   let chromeWindow = aBrowser.ownerDocument.defaultView;
+    //   let tab = chromeWindow.gBrowser.getTabForBrowser(aBrowser);
+    //   chromeWindow.gBrowser.selected = tab;
 
-      function callback() {
-        aCallback.finishDebuggerStartup();
-      }
+    //   function callback() {
+    //     aCallback.finishDebuggerStartup();
+    //   }
 
-      slowScriptDebugHandler(tab, callback);
-    };
+    //   slowScriptDebugHandler(tab, callback);
+    // };
   },
 
   /**
    * Unset the slow script debug handler.
    */
   unsetSlowScriptDebugHandler: function DT_unsetSlowScriptDebugHandler() {
-    let debugService = Cc("@mozilla.org/dom/slow-script-debug;1")
-                         .getService(Ci.nsISlowScriptDebug);
-    debugService.activationHandler = undefined;
+    // let debugService = Cc("@mozilla.org/dom/slow-script-debug;1")
+    //                      .getService(Ci.nsISlowScriptDebug);
+    // debugService.activationHandler = undefined;
   },
 
   /**
@@ -1322,3 +1322,9 @@ Services.obs.addObserver(gDevToolsBrowser.destroy, "quit-application", false);
 exports.gDevTools = gDevTools;
 exports.DevTools = DevTools;
 exports.gDevToolsBrowser = gDevToolsBrowser;
+
+
+// XXX: MAIN SHOULD DO THIS
+DefaultTools.forEach(definition => gDevTools.registerTool(definition));
+DefaultThemes.forEach(definition => gDevTools.registerTheme(definition));
+

@@ -366,7 +366,7 @@ exports.dumpn = function dumpn(str) {
 
 // We want wantLogging to be writable. The exports object is frozen by the
 // loader, so define it on dumpn instead.
-exports.dumpn.wantLogging = true;
+exports.dumpn.wantLogging = false;
 
 /**
  * A verbose logger for low-level tracing.

@@ -20,6 +20,7 @@ const DRAG_DROP_MAX_AUTOSCROLL_SPEED = 15;
 const DRAG_DROP_MIN_INITIAL_DISTANCE = 10;
 const AUTOCOMPLETE_POPUP_PANEL_ID = "markupview_autoCompletePopup";
 
+const { Services } = require("devtools/sham/services");
 const {UndoStack} = require("devtools/client/shared/undo");
 const {editableField, InplaceEditor} = require("devtools/client/shared/inplace-editor");
 const {HTMLEditor} = require("devtools/client/markupview/html-editor");
@@ -34,15 +35,12 @@ const {scrollIntoViewIfNeeded} = require("devtools/shared/layout/utils");
 
 // Removed this already, will need to bring it back if this is called
 // const template = require("devtools/shared/gcli/Templater");
-const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
 loader.lazyGetter(this, "DOMParser", function() {
   return Cc("@mozilla.org/xmlextras/domparser;1").createInstance(Ci.nsIDOMParser);
 });
-loader.lazyGetter(this, "AutocompletePopup", () => {
-  return require("devtools/client/shared/autocomplete-popup").AutocompletePopup;
-});
+var AutocompletePopup = require("devtools/client/shared/autocomplete-popup").AutocompletePopup;
 
 /**
  * Vocabulary for the purposes of this file:
@@ -72,7 +70,9 @@ function MarkupView(aInspector, aFrame, aControllerWindow) {
   this.win = this._frame.contentWindow;
   this.doc = this._frame.contentDocument;
   this._elt = this.doc.querySelector("#root");
-  this.htmlEditor = new HTMLEditor(this.doc);
+  // XXX: source editor doesn't work yet
+  this.htmlEditor = { hide: () => {}, refresh: () => {}, show: () => {}, destroy: () => {}, once: () => {}}
+  // this.htmlEditor = new HTMLEditor(this.doc);
 
   try {
     this.maxChildren = Services.prefs.getIntPref("devtools.markup.pagesize");

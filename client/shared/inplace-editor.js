@@ -1252,6 +1252,6 @@ XPCOMUtils.defineLazyGetter(this, "CSSPropertyList", function() {
   return domUtils.getCSSPropertyNames(domUtils.INCLUDE_ALIASES).sort();
 });
 
-XPCOMUtils.defineLazyGetter(this, "domUtils", function() {
-  return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
-});
+// XPCOMUtils.defineLazyGetter(this, "domUtils", function() {
+//   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
+// });

@@ -7,6 +7,7 @@
 const { Ci, Cu } = require("devtools/sham/chrome");
 const promise = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
+const { Services } = require("devtools/sham/services");
 
 /*const { DebuggerServer } = require("devtools/server/main");*/
 const { DebuggerClient } = require("devtools/shared/client/main");
@@ -316,10 +317,10 @@ TabTarget.prototype = {
     // and even though .contentWindowAsCPOW *might* work, it will not work
     // in all contexts.  Consumers of .window need to be refactored to not
     // rely on this.
-    if (Services.appinfo.processType != Ci.nsIXULRuntime.PROCESS_TYPE_DEFAULT) {
-      Cu.reportError("The .window getter on devtools' |target| object isn't " +
-                     "e10s friendly!\n" + Error().stack);
-    }
+    // if (Services.appinfo.processType != Ci.nsIXULRuntime.PROCESS_TYPE_DEFAULT) {
+    //   Cu.reportError("The .window getter on devtools' |target| object isn't " +
+    //                  "e10s friendly!\n" + Error().stack);
+    // }
     // Be extra careful here, since this may be called by HS_getHudByWindow
     // during shutdown.
     if (this._tab && this._tab.linkedBrowser) {

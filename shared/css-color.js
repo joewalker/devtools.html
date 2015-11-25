@@ -467,6 +467,6 @@ function classifyColor(value) {
   return CssColor.COLORUNIT.name;
 }
 
-loader.lazyGetter(this, "DOMUtils", function () {
-  return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
-});
+// loader.lazyGetter(this, "DOMUtils", function () {
+//   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
+// });

@@ -23,7 +23,7 @@ const { EventEmitter } = require("devtools/shared/event-emitter");
  * Inheritance helpers from the addon SDK's core/heritage.
  * Remove these when all devtools are loadered.
  */
-this.Heritage = {
+var Heritage = {
   /**
    * @see extend in sdk/core/heritage.
    */
@@ -53,7 +53,7 @@ this.Heritage = {
  * @param function aCallback
  *        Invoked when no more events are fired after the specified time.
  */
-this.setNamedTimeout = function setNamedTimeout(aId, aWait, aCallback) {
+var setNamedTimeout = function setNamedTimeout(aId, aWait, aCallback) {
   clearNamedTimeout(aId);
 
   namedTimeoutsStore.set(aId, setTimeout(() =>
@@ -67,7 +67,7 @@ this.setNamedTimeout = function setNamedTimeout(aId, aWait, aCallback) {
  * @param string aId
  *        A string identifier for the named timeout.
  */
-this.clearNamedTimeout = function clearNamedTimeout(aId) {
+var clearNamedTimeout = function clearNamedTimeout(aId) {
   if (!namedTimeoutsStore) {
     return;
   }
@@ -89,7 +89,7 @@ this.clearNamedTimeout = function clearNamedTimeout(aId) {
  *        Invoked when no more events are fired after the specified time, and
  *        the provided predicate function returns true.
  */
-this.setConditionalTimeout = function setConditionalTimeout(aId, aWait, aPredicate, aCallback) {
+var setConditionalTimeout = function setConditionalTimeout(aId, aWait, aPredicate, aCallback) {
   setNamedTimeout(aId, aWait, function maybeCallback() {
     if (aPredicate()) {
       aCallback();
@@ -106,7 +106,7 @@ this.setConditionalTimeout = function setConditionalTimeout(aId, aWait, aPredica
  * @param string aId
  *        A string identifier for the conditional timeout.
  */
-this.clearConditionalTimeout = function clearConditionalTimeout(aId) {
+var clearConditionalTimeout = function clearConditionalTimeout(aId) {
   clearNamedTimeout(aId);
 };
 
@@ -115,7 +115,7 @@ XPCOMUtils.defineLazyGetter(this, "namedTimeoutsStore", () => new Map());
 /**
  * Helpers for creating and messaging between UI components.
  */
-this.ViewHelpers = {
+var ViewHelpers = {
   /**
    * Convenience method, dispatching a custom event.
    *
@@ -299,16 +299,17 @@ this.ViewHelpers = {
  *        The desired string bundle's name.
  */
 ViewHelpers.L10N = function(aStringBundleName) {
-  XPCOMUtils.defineLazyGetter(this, "stringBundle", () =>
-    Services.strings.createBundle(aStringBundleName));
+  this.stringBundle = Services.strings.createBundle(aStringBundleName);
+  // XPCOMUtils.defineLazyGetter(this, "stringBundle", () =>
+  //   Services.strings.createBundle(aStringBundleName));
 
-  XPCOMUtils.defineLazyGetter(this, "ellipsis", () =>
-    Services.prefs.getComplexValue("intl.ellipsis", Ci.nsIPrefLocalizedString).data);
+  this.ellipsis = "...";
+  // XPCOMUtils.defineLazyGetter(this, "ellipsis", () =>
+  //   Services.prefs.getComplexValue("intl.ellipsis", Ci.nsIPrefLocalizedString).data);
 };
 
 ViewHelpers.L10N.prototype = {
   stringBundle: null,
-
   /**
    * L10N shortcut function.
    *
@@ -738,7 +739,7 @@ DevToolsUtils.defineLazyPrototypeGetter(Item.prototype, "_itemsByElement", () =>
  *   - "keyPress" -> (aName:string, aEvent:KeyboardEvent)
  *   - "mousePress" -> (aName:string, aEvent:MouseEvent)
  */
-this.WidgetMethods = {
+var WidgetMethods = {
   /**
    * Sets the element node or widget associated with this container.
    * @param nsIDOMNode | object aWidget

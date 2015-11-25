@@ -19,68 +19,85 @@
     documentElement.style.display = display; // Restore
   }
 
+  function loadSheet(url) {
+    let styleSheetAttr = `href="${url}" type="text/css"`;
+    let styleSheet = document.createProcessingInstruction(
+      "xml-stylesheet", styleSheetAttr);
+    document.insertBefore(styleSheet, document.documentElement);
+  }
+
+  function removeSheet(url) {
+    let current = document.documentElement;
+    while (current) {
+      if (current.nodeType === 7 && current.sheet && current.sheet.href === url) {
+        console.log("Found a matching PI", current);
+        let toRemove = current;
+        current = current.previousSibling;
+        toRemove.remove();
+      } else {
+        current = current.previousSibling;
+      }
+    }
+  }
+
   function switchTheme(newTheme, oldTheme) {
     if (newTheme === oldTheme) {
       return;
     }
 
-    let oldThemeDef = gDevTools.getThemeDefinition(oldTheme);
+    // let oldThemeDef = gDevTools.getThemeDefinition(oldTheme);
 
-    // Unload all theme stylesheets related to the old theme.
-    if (oldThemeDef) {
-      for (let url of oldThemeDef.stylesheets) {
-        StylesheetUtils.removeSheet(window, url, "author");
-      }
-    }
+    // // Unload all theme stylesheets related to the old theme.
+    // if (oldThemeDef) {
+    //   for (let url of oldThemeDef.stylesheets) {
+    //     removeSheet(url);
+    //   }
+    // }
 
     // Load all stylesheets associated with the new theme.
-    let newThemeDef = gDevTools.getThemeDefinition(newTheme);
+    // let newThemeDef = gDevTools.getThemeDefinition(newTheme);
+    let newThemeDef = {
+      stylesheets: ['../themes/light-theme.css'],
+      classList: ["theme-light"],
+    }
 
     // The theme might not be available anymore (e.g. uninstalled)
     // Use the default one.
-    if (!newThemeDef) {
-      newThemeDef = gDevTools.getThemeDefinition("light");
-    }
+    // if (!newThemeDef) {
+    //   newThemeDef = gDevTools.getThemeDefinition("light");
+    // }
 
     for (let url of newThemeDef.stylesheets) {
-      StylesheetUtils.loadSheet(window, url, "author");
+      loadSheet(url);
     }
 
     // Floating scroll-bars like in OSX
-    let hiddenDOMWindow = Cc("@mozilla.org/appshell/appShellService;1")
-                 .getService(Ci.nsIAppShellService)
-                 .hiddenDOMWindow;
+    // let hiddenDOMWindow = Cc["@mozilla.org/appshell/appShellService;1"]
+    //              .getService(Ci.nsIAppShellService)
+    //              .hiddenDOMWindow;
 
-    // TODO: extensions might want to customize scrollbar styles too.
-    if (!hiddenDOMWindow.matchMedia("(-moz-overlay-scrollbars)").matches) {
-      let scrollbarsUrl = Services.io.newURI(
-        DEVTOOLS_SKIN_URL + "floating-scrollbars-light.css", null, null);
+    // // TODO: extensions might want to customize scrollbar styles too.
+    // if (!hiddenDOMWindow.matchMedia("(-moz-overlay-scrollbars)").matches) {
+    //   let scrollbarsUrl = Services.io.newURI(
+    //     DEVTOOLS_SKIN_URL + "floating-scrollbars-light.css", null, null);
 
-      if (newTheme == "dark") {
-        StylesheetUtils.loadSheet(
-          window,
-          scrollbarsUrl,
-          "agent"
-        );
-      } else if (oldTheme == "dark") {
-        StylesheetUtils.removeSheet(
-          window,
-          scrollbarsUrl,
-          "agent"
-        );
-      }
-      forceStyle();
-    }
+    //   if (newTheme == "dark") {
+    //     loadSheet(scrollbarsUrl);
+    //   } else if (oldTheme == "dark") {
+    //     removeSheet(scrollbarsUrl);
+    //   }
+    //   forceStyle();
+    // }
 
-    if (oldThemeDef) {
-      for (let name of oldThemeDef.classList) {
-        documentElement.classList.remove(name);
-      }
+    // if (oldThemeDef) {
+    //   for (let name of oldThemeDef.classList) {
+    //     documentElement.classList.remove(name);
+    //   }
 
-      if (oldThemeDef.onUnapply) {
-        oldThemeDef.onUnapply(window, newTheme);
-      }
-    }
+    //   if (oldThemeDef.onUnapply) {
+    //     oldThemeDef.onUnapply(window, newTheme);
+    //   }
+    // }
 
     for (let name of newThemeDef.classList) {
       documentElement.classList.add(name);
@@ -91,7 +108,7 @@
     }
 
     // Final notification for further theme-switching related logic.
-    gDevTools.emit("theme-switched", window, newTheme, oldTheme);
+    // gDevTools.emit("theme-switched", window, newTheme, oldTheme);
   }
 
   function handlePrefChange(event, data) {
@@ -100,11 +117,10 @@
     }
   }
 
-  const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+  // const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
-  const { Services } = require("devtools/sham/services");
-  const { gDevTools } = require("devtools/client/framework/gDevTools");
-  const StylesheetUtils = require("sdk/stylesheet/utils");
+  // Cu.import("resource://gre/modules/Services.jsm");
+  // Cu.import("resource://devtools/client/framework/gDevTools.jsm");
 
   let os;
   let platform = navigator.platform;
@@ -120,11 +136,12 @@
   if (documentElement.hasAttribute("force-theme")) {
     switchTheme(documentElement.getAttribute("force-theme"));
   } else {
-    switchTheme(Services.prefs.getCharPref("devtools.theme"));
+    // switchTheme(Services.prefs.getCharPref("devtools.theme"));
+    switchTheme("light");
 
-    gDevTools.on("pref-changed", handlePrefChange);
-    window.addEventListener("unload", function() {
-      gDevTools.off("pref-changed", handlePrefChange);
-    });
+    // gDevTools.on("pref-changed", handlePrefChange);
+    // window.addEventListener("unload", function() {
+    //   gDevTools.off("pref-changed", handlePrefChange);
+    // });
   }
 })();

@@ -53,7 +53,7 @@ Object.defineProperty(this, "NetworkHelper", {
 /**
  * Debugger localization strings.
  */
-const STR = Services.strings.createBundle(DBG_STRINGS_URI);
+const STR = Services.strings.createBundle(DBG_STRINGS_URI)
 
 /**
  * A tree view for inspecting scopes, objects and properties.
@@ -71,7 +71,7 @@ const STR = Services.strings.createBundle(DBG_STRINGS_URI);
  *        An object contaning initialization options for this view.
  *        e.g. { lazyEmpty: true, searchEnabled: true ... }
  */
-this.VariablesView = function VariablesView(aParentNode, aFlags = {}) {
+var VariablesView = function VariablesView(aParentNode, aFlags = {}) {
   this._store = []; // Can't use a Map because Scope names needn't be unique.
   this._itemsByElement = new WeakMap();
   this._prevHierarchy = new Map();
@@ -4148,5 +4148,5 @@ EditableNameAndValue.prototype = Heritage.extend(EditableName.prototype, {
   }
 });
 
-exports.VariablesView = this.VariablesView;
-exports.escapeHTML = this.escapeHTML;
+exports.VariablesView = VariablesView;
+exports.escapeHTML = escapeHTML;

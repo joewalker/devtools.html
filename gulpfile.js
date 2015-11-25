@@ -61,6 +61,7 @@ gulp.task("build", function () {
   });*/
   var dirs = [];
   // dirs.push(path.join(__dirname, "client", "inspector"));
+  dirs.push(path.join(__dirname, "client", "inspector"));
   dirs.push(path.join(__dirname, "client", "framework"));
   dirs.push(path.join(__dirname, "tools", "connect"));
   return Promise.all(dirs.map(buildDir));

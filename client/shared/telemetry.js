@@ -347,6 +347,7 @@ Telemetry.prototype = {
    *         Histogram in which the data is to be stored.
    */
   logOncePerBrowserVersion: function(perUserHistogram, value) {
+    return;
     let currentVersion = appInfo.version;
     let latest = Services.prefs.getCharPref(TOOLS_OPENED_PREF);
     let latestObj = JSON.parse(latest);

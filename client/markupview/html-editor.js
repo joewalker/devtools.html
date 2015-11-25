@@ -7,7 +7,7 @@
 const {Cu} = require("devtools/sham/chrome");
 const Editor = require("devtools/client/sourceeditor/editor");
 const { Services } = require("devtools/sham/services");
-const { EventEmitter } = require("devtools/shared/event-emitter");
+const EventEmitter = require("devtools/shared/event-emitter");
 
 exports.HTMLEditor = HTMLEditor;
 

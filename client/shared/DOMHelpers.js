@@ -137,15 +137,20 @@ DOMHelpers.prototype = {
    */
   onceDOMReady: function Helpers_onLocationChange(callback) {
     let window = this.window;
+    console.log("onceDOMReady", window.location.toString(), window.document.readyState)
     // XXX: This is just a hack to simulate dom loaded.. this will surely
     // fail in a variety of ways
-    if (window.location.toString() === "about:blank") {
+
+    setTimeout(function() {
       callback();
-    } else {
-      window.document.addEventListener("DOMContentLoaded", () => {
-        callback();
-      });
-    }
+    }, 1000);
+    // if (window.location.toString() === "about:blank") {
+    //   callback();
+    // } else {
+    //   window.document.addEventListener("DOMContentLoaded", () => {
+    //     callback();
+    //   });
+    // }
     // let docShell = window.QueryInterface(Ci.nsIInterfaceRequestor)
     //                      .getInterface(Ci.nsIWebNavigation)
     //                      .QueryInterface(Ci.nsIDocShell);

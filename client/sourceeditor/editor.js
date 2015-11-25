@@ -264,15 +264,17 @@ Editor.prototype = {
       // and its dependencies into its DOM.
 
       env.removeEventListener("load", onLoad, true);
-      let win = env.contentWindow.wrappedJSObject;
+      // let win = env.contentWindow.wrappedJSObject;
+      let win = env.contentWindow;
 
       if (!this.config.themeSwitching)
         win.document.documentElement.setAttribute("force-theme", "light");
 
       let scriptsToInject = CM_SCRIPTS.concat(this.config.externalScripts);
       scriptsToInject.forEach((url) => {
-        if (url.startsWith("chrome://"))
-          Services.scriptloader.loadSubScript(url, win, "utf8");
+        //  XXX: Services.scriptloader.loadSubScript
+        // if (url.startsWith("chrome://"))
+        //   Services.scriptloader.loadSubScript(url, win, "utf8");
       });
       // Replace the propertyKeywords, colorKeywords and valueKeywords
       // properties of the CSS MIME type with the values provided by Gecko.
@@ -1200,6 +1202,11 @@ Editor.keyFor = function (cmd, opts={ noaccel: false }) {
 // here instead of the file codemirror/css.js so as to leave that file untouched
 // and easily upgradable.
 function getCSSKeywords() {
+  return {
+    cssProperties: {},
+    cssValues: {},
+    cssColors: {}
+  };
   function keySet(array) {
     var keys = {};
     for (var i = 0; i < array.length; ++i) {

@@ -32,9 +32,9 @@ const {
   DEFAULT_PRESET_CATEGORY
 } = require("devtools/client/shared/widgets/CubicBezierPresets");
 const { Cc, Ci } = require("devtools/sham/chrome");
-loader.lazyGetter(this, "DOMUtils", () => {
-  return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
-});
+// loader.lazyGetter(this, "DOMUtils", () => {
+//   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
+// });
 
 /**
  * CubicBezier data structure helper

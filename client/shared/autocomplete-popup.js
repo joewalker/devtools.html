@@ -6,7 +6,8 @@
 "use strict";
 
 const {Cc, Ci, Cu} = require("devtools/sham/chrome");
-const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+// const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+const XUL_NS = "http://www.w3.org/1999/xhtml";
 
 const { Services } = require("devtools/sham/services");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
@@ -47,11 +48,11 @@ function AutocompletePopup(aDocument, aOptions = {})
   let theme = aOptions.theme || "dark";
   // If theme is auto, use the devtools.theme pref
   if (theme == "auto") {
-    theme = Services.prefs.getCharPref("devtools.theme");
+    theme = "light"; // XXX: Services.prefs.getCharPref("devtools.theme");
     this.autoThemeEnabled = true;
     // Setup theme change listener.
     this._handleThemeChange = this._handleThemeChange.bind(this);
-    gDevTools.on("pref-changed", this._handleThemeChange);
+    // gDevTools.on("pref-changed", this._handleThemeChange);
   }
   // Reuse the existing popup elements.
   this._panel = this._document.getElementById(id);
@@ -86,8 +87,9 @@ function AutocompletePopup(aDocument, aOptions = {})
     this._panel.appendChild(this._list);
 
     // Open and hide the panel, so we initialize the API of the richlistbox.
-    this._panel.openPopup(null, this.position, 0, 0);
-    this._panel.hidePopup();
+    // XXXX
+    // this._panel.openPopup(null, this.position, 0, 0);
+    // this._panel.hidePopup();
   }
 
   this._list.setAttribute("flex", "1");
@@ -140,13 +142,14 @@ AutocompletePopup.prototype = {
    */
   openPopup: function AP_openPopup(aAnchor, aXOffset = 0, aYOffset = 0)
   {
-    this.__maxLabelLength = -1;
-    this._updateSize();
-    this._panel.openPopup(aAnchor, this.position, aXOffset, aYOffset);
+    // XXX
+    // this.__maxLabelLength = -1;
+    // this._updateSize();
+    // this._panel.openPopup(aAnchor, this.position, aXOffset, aYOffset);
 
-    if (this.autoSelect) {
-      this.selectFirstItem();
-    }
+    // if (this.autoSelect) {
+    //   this.selectFirstItem();
+    // }
 
     this.emit("popup-opened");
   },
@@ -194,7 +197,7 @@ AutocompletePopup.prototype = {
     }
 
     if (this.autoThemeEnabled) {
-      gDevTools.off("pref-changed", this._handleThemeChange);
+      // gDevTools.off("pref-changed", this._handleThemeChange);
     }
 
     this._list.remove();
