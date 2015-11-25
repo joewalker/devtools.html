@@ -13,12 +13,10 @@ const { Services } = require("devtools/sham/services");
 const {PREF_ORIG_SOURCES} = require("devtools/client/styleeditor/utils");
 
 const { gDevTools } = require("devtools/client/framework/gDevTools");
-loader.lazyGetter(this, "RuleView",
-  () => require("devtools/client/styleinspector/rule-view"));
-loader.lazyGetter(this, "ComputedView",
-  () => require("devtools/client/styleinspector/computed-view"));
-loader.lazyGetter(this, "_strings", () => Services.strings
-  .createBundle("chrome://devtools-shared/locale/styleinspector.properties"));
+this.RuleView = require("devtools/client/styleinspector/rule-view");
+this.ComputedView = require("devtools/client/styleinspector/computed-view");
+this._strings = Services.strings
+  .createBundle("chrome://devtools-shared/locale/styleinspector.properties");
 
 // This module doesn't currently export any symbols directly, it only
 // registers inspector tools.
@@ -260,3 +258,21 @@ ComputedViewTool.prototype = {
 
 exports.RuleViewTool = RuleViewTool;
 exports.ComputedViewTool = ComputedViewTool;
+
+console.log("RUNNING STYLE INSPECTOR!!", window);
+
+window.setPanel = function(panel, iframe) {
+  if (window.location.includes("cssruleview")) {
+    window.ruleview = new RuleViewTool(panel, window);
+  } else {
+    window.computedview = new inspector.ComputedViewTool(panel, window);
+  }
+}
+window.onunload = function() {
+  if (window.ruleview) {
+    window.ruleview.destroy();
+  }
+  if (window.computedview) {
+    window.computedview.destroy();
+  }
+}

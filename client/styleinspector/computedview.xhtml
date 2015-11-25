@@ -27,40 +27,28 @@
 
   <head>
 
-    <title>&computedViewTitle;</title>
+    <title>!!computedViewTitle;</title>
 
     <link rel="stylesheet" href="chrome://global/skin/global.css"  type="text/css"/>
     <link rel="stylesheet" href="../themes/common.css"  type="text/css"/>
     <link rel="stylesheet" href="../themes/computedview.css"  type="text/css"/>
 
     <script type="application/javascript;version=1.8" src="../shared/theme-switching.js"/>
-
-    <script type="application/javascript;version=1.8">
-      window.setPanel = function(panel, iframe) {
-        let inspector = require("devtools/client/styleinspector/style-inspector");
-        this.computedview = new inspector.ComputedViewTool(panel, window);
-      }
-      window.onunload = function() {
-        if (this.computedview) {
-          this.computedview.destroy();
-        }
-      }
-    </script>
   </head>
 
-  <body dir="&locale.dir;">
+  <body>
 
     <div id="root" class="devtools-monospace">
       <div class="devtools-toolbar">
         <div class="devtools-searchbox">
           <input id="computedview-searchbox"
                  class="devtools-searchinput devtools-rule-searchbox"
-                 type="search" placeholder="&filterStylesPlaceholder;"/>
+                 type="search" placeholder="!!filterStylesPlaceholder;"/>
           <button id="computedview-searchinput-clear" class="devtools-searchinput-clear"></button>
         </div>
         <xul:checkbox id="browser-style-checkbox"
                       class="includebrowserstyles"
-                      checked="false" label="&browserStylesLabel;"/>
+                      checked="false" label="!!browserStylesLabel;"/>
       </div>
     </div>
 
@@ -70,7 +58,7 @@
 
     <!-- When no properties are found the following block is displayed. -->
     <div id="noResults" hidden="">
-      &noPropertiesFound;
+      !!noPropertiesFound;
     </div>
 
   </body>
