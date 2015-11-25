@@ -43,4 +43,22 @@ Services.tm = {
   }
 };
 
+Services.scriptloader = {
+  /**
+   * Implements a subset of loadSubScript, to inject scripts into a window, rather
+   * than an arbitrary scope.
+   * @see https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/mozIJSSubScriptLoader#loadSubScript%28%29
+   */
+  loadSubScript: (url, target, charset="utf8") => {
+    // Only implement scenario where target has reference to a document
+    if (!target || !target.document) {
+      throw new Error(`target in loadSubScript does not have a document.`);
+    }
+
+    let script = target.document.createElement("script");
+    script.src = url;
+    target.document.body.appendChild(script);
+  }
+};
+
 module.exports.Services = Services;

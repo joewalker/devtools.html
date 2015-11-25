@@ -168,6 +168,15 @@ function colorToRGBA(name) {
     vals.push(1);
   }
 
+  let parenToken = getToken();
+  if (!parenToken || parenToken.tokenType !== "symbol" ||
+      parenToken.text !== ")") {
+    return null;
+  }
+  if (getToken() !== null) {
+    return null;
+  }
+
   return vals;
 }
 
@@ -243,6 +252,18 @@ function isInheritedProperty(name) {
   return cssProperties[name].inherited;
 }
 
+function cssPropertyIsValid(name, value) {
+  if (isVariable(name)) {
+    return true;
+  }
+  if (!(name in cssProperties)) {
+    return false;
+  }
+  let elt = document.createElement("div");
+  elt.style = name + ":" + value;
+  return elt.style.length > 0;
+}
+
 module.exports = {
   getCSSLexer,
   rgbToColorName,
@@ -254,6 +275,7 @@ module.exports = {
   getCSSPropertyNames,
   cssPropertySupportsType,
   isInheritedProperty,
+  cssPropertyIsValid,
 
   // Constants.
   EXCLUDE_SHORTHANDS,

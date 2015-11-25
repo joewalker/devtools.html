@@ -272,9 +272,8 @@ Editor.prototype = {
 
       let scriptsToInject = CM_SCRIPTS.concat(this.config.externalScripts);
       scriptsToInject.forEach((url) => {
-        //  XXX: Services.scriptloader.loadSubScript
-        // if (url.startsWith("chrome://"))
-        //   Services.scriptloader.loadSubScript(url, win, "utf8");
+        if (url.startsWith("chrome://"))
+          Services.scriptloader.loadSubScript(url, win, "utf8");
       });
       // Replace the propertyKeywords, colorKeywords and valueKeywords
       // properties of the CSS MIME type with the values provided by Gecko.
