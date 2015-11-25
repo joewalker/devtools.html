@@ -30,4 +30,17 @@ Services.obs = {
 }
 Services.prefs = require("devtools/sham/services/prefs");
 
+Services.tm = {
+  currentThread: {
+    dispatch: (cb) => {
+      setImmediate(cb);
+    }
+  },
+  mainThread: {
+    dispatch: (cb) => {
+      setImmediate(cb);
+    }
+  }
+};
+
 module.exports.Services = Services;
