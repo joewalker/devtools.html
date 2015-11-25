@@ -2,14 +2,10 @@
  * A sham for https://developer.mozilla.org/en-US/Add-ons/SDK/Low-Level_APIs/chrome
  */
 
-var { CSSLexer } = require("devtools/sham/parse-css");
+var inDOMUtils = require("devtools/sham/inDOMUtils");
 
 var ourServices = {
-  inIDOMUtils: {
-    getCSSLexer: function(text) {
-      return new CSSLexer(text);
-    },
-  },
+  inIDOMUtils: inDOMUtils,
 };
 
 module.exports = {
