@@ -379,7 +379,7 @@ exports.dumpv = function(msg) {
 
 // We want wantLogging to be writable. The exports object is frozen by the
 // loader, so define it on dumpn instead.
-exports.dumpv.wantVerbose = true;
+exports.dumpv.wantVerbose = false;
 
 /**
  * Utility function for updating an object with the properties of
