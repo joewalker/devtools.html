@@ -7,8 +7,8 @@
 const protocol = require("devtools/server/protocol");
 const { method, custom, Arg, Option, RetVal } = protocol;
 
-const { Cu, CC, components } = require("chrome");
-const Services = require("Services");
+const { Cu, CC, components } = require("devtools/sham/chrome");
+const Services = require("devtools/sham/services");
 const { DebuggerServer } = require("devtools/server/main");
 const { registerActor, unregisterActor } = require("devtools/server/actors/utils/actor-registry-utils");
 

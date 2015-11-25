@@ -9,7 +9,7 @@
 const events = require("sdk/event/core");
 const protocol = require("devtools/server/protocol");
 
-const { Cu, Ci } = require("chrome");
+const { Cu, Ci } = require("devtools/sham/chrome");
 
 const { on, once, off, emit } = events;
 const { method, Arg, Option, RetVal, types } = protocol;

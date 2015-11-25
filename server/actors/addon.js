@@ -4,8 +4,8 @@
 
 "use strict";
 
-var { Ci, Cu } = require("chrome");
-var Services = require("Services");
+var { Ci, Cu } = require("devtools/sham/chrome");
+var Services = require("devtools/sham/services");
 var { ActorPool } = require("devtools/server/actors/common");
 var { TabSources } = require("./utils/TabSources");
 var makeDebugger = require("./utils/make-debugger");

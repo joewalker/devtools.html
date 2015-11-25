@@ -6,15 +6,15 @@
 
 "use strict";
 
-const Services = require("Services");
-const { Cc, Ci, Cu, components, ChromeWorker } = require("chrome");
+const Services = require("devtools/sham/services");
+const { Cc, Ci, Cu, components, ChromeWorker } = require("devtools/sham/chrome");
 const { ActorPool, OriginalLocation, GeneratedLocation } = require("devtools/server/actors/common");
 const { ObjectActor, createValueGrip, longStringGrip } = require("devtools/server/actors/object");
 const { DebuggerServer } = require("devtools/server/main");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const { assert, dbg_assert, dumpn, update, fetch } = DevToolsUtils;
 const { dirname, joinURI } = require("devtools/shared/path");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const PromiseDebugging = require("PromiseDebugging");
 const xpcInspector = require("xpcInspector");
 const ScriptStore = require("./utils/ScriptStore");
@@ -2100,7 +2100,7 @@ function resolveURIToLocalPath(aURI) {
     case "file":
       return aURI;
 
-    case "chrome":
+    case "devtools/sham/chrome":
       resolved = Cc["@mozilla.org/chrome/chrome-registry;1"].
                  getService(Ci.nsIChromeRegistry).convertChromeURL(aURI);
       return resolveURIToLocalPath(resolved);

@@ -3,9 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const {Cc, Ci, Cu, Cr} = require("chrome");
+const {Cc, Ci, Cu, Cr} = require("devtools/sham/chrome");
 const events = require("sdk/event/core");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const protocol = require("devtools/server/protocol");
 const {CallWatcherActor, CallWatcherFront} = require("devtools/server/actors/call-watcher");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");

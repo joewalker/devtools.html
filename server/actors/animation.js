@@ -25,9 +25,9 @@
  *   /dom/webidl/Animation*.webidl
  */
 
-const {Cu} = require("chrome");
-const promise = require("promise");
-const {Task} = Cu.import("resource://gre/modules/Task.jsm", {});
+const {Cu} = require("devtools/sham/chrome");
+const promise = require("devtools/sham/promise");
+const {Task} = require("devtools/sham/task");
 const protocol = require("devtools/server/protocol");
 const {ActorClass, Actor, FrontClass, Front,
        Arg, method, RetVal, types} = protocol;

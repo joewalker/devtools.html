@@ -8,8 +8,8 @@
  * duration of the lag in milliseconds).
  */
 
-const {Ci, Cu} = require("chrome");
-const Services = require("Services");
+const {Ci, Cu} = require("devtools/sham/chrome");
+const Services = require("devtools/sham/services");
 Cu.import("resource://gre/modules/XPCOMUtils.jsm");
 const protocol = require("devtools/server/protocol");
 const {method, Arg, RetVal} = protocol;

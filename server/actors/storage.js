@@ -4,14 +4,14 @@
 
 "use strict";
 
-const {Cc, Ci} = require("chrome");
+const {Cc, Ci} = require("devtools/sham/chrome");
 const events = require("sdk/event/core");
 const protocol = require("devtools/server/protocol");
 const {Arg, method, RetVal, types} = protocol;
 const {LongStringActor} = require("devtools/server/actors/string");
 const {DebuggerServer} = require("devtools/server/main");
-const Services = require("Services");
-const promise = require("promise");
+const Services = require("devtools/sham/services");
+const promise = require("devtools/sham/promise");
 const {isWindowIncluded} = require("devtools/shared/layout/utils");
 const {setTimeout, clearTimeout} = require("sdk/timers");
 

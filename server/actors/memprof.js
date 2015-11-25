@@ -4,7 +4,7 @@
 
 "use strict";
 
-const { Cc, Ci, Cu } = require("chrome");
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 var protocol = require("devtools/server/protocol");
 var { method, RetVal, Arg, types } = protocol;
 const { reportException } = require("devtools/shared/DevToolsUtils");

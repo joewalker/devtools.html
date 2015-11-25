@@ -4,8 +4,8 @@
 
 "use strict";
 
-const {Cc, Ci, Cu} = require("chrome");
-const promise = require("promise");
+const {Cc, Ci, Cu} = require("devtools/sham/chrome");
+const promise = require("devtools/sham/promise");
 const protocol = require("devtools/server/protocol");
 const {Arg, Option, method, RetVal, types} = protocol;
 const events = require("sdk/event/core");

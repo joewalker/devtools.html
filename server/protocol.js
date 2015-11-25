@@ -4,10 +4,10 @@
 
 "use strict";
 
-var { Cu, components } = require("chrome");
+var { Cu, components } = require("devtools/sham/chrome");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
-var Services = require("Services");
-var promise = require("promise");
+var Services = require("devtools/sham/services");
+var promise = require("devtools/sham/promise");
 var {Class} = require("sdk/core/heritage");
 var {EventTarget} = require("sdk/event/target");
 var events = require("sdk/event/core");

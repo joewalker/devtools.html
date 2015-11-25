@@ -6,9 +6,9 @@
 
 "use strict";
 
-var { Ci, Cu } = require("chrome");
-var Services = require("Services");
-var promise = require("promise");
+var { Ci, Cu } = require("devtools/sham/chrome");
+var Services = require("devtools/sham/services");
+var promise = require("devtools/sham/promise");
 var { ActorPool, createExtraActors, appendExtraActors } = require("devtools/server/actors/common");
 var { DebuggerServer } = require("devtools/server/main");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");

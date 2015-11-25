@@ -4,15 +4,15 @@
 
 "use strict";
 
-var { components, Cc, Ci, Cu } = require("chrome");
-var Services = require("Services");
+var { components, Cc, Ci, Cu } = require("devtools/sham/chrome");
+var Services = require("devtools/sham/services");
 
 Cu.import("resource://gre/modules/XPCOMUtils.jsm");
 Cu.import("resource://gre/modules/NetUtil.jsm");
 Cu.import("resource://gre/modules/FileUtils.jsm");
 Cu.import("resource://gre/modules/Task.jsm");
 
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const events = require("sdk/event/core");
 const protocol = require("devtools/server/protocol");
 const {Arg, Option, method, RetVal, types} = protocol;

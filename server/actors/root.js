@@ -6,8 +6,8 @@
 
 "use strict";
 
-const { Cc, Ci, Cu } = require("chrome");
-const Services = require("Services");
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
+const Services = require("devtools/sham/services");
 const { ActorPool, appendExtraActors, createExtraActors } = require("devtools/server/actors/common");
 const { DebuggerServer } = require("devtools/server/main");
 

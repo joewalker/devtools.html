@@ -4,10 +4,10 @@
 
 "use strict";
 
-var {Cu} = require("chrome");
+var {Cu} = require("devtools/sham/chrome");
 var {DebuggerServer} = require("devtools/server/main");
 
-var promise = require("promise");
+var promise = require("devtools/sham/promise");
 var {Class} = require("sdk/core/heritage");
 
 var protocol = require("devtools/server/protocol");

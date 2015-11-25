@@ -4,7 +4,7 @@
 
 "use strict";
 
-const { Cu } = require("chrome");
+const { Cu } = require("devtools/sham/chrome");
 const protocol = require("devtools/server/protocol");
 const { custom, method, RetVal, Arg, Option, types } = protocol;
 const { Profiler } = require("devtools/server/performance/profiler");

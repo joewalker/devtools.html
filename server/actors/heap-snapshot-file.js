@@ -6,7 +6,7 @@
 
 const protocol = require("devtools/server/protocol");
 const { method, Arg } = protocol;
-const Services = require("Services");
+const Services = require("devtools/sham/services");
 
 loader.lazyRequireGetter(this, "DevToolsUtils",
                          "devtools/shared/DevToolsUtils");

@@ -4,9 +4,9 @@
 
 "use strict";
 
-const { Cc, Ci, Cu } = require("chrome");
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 
-const Services = require("Services");
+const Services = require("devtools/sham/services");
 const { XPCOMUtils } = require("resource://gre/modules/XPCOMUtils.jsm");
 
 const events = require("sdk/event/core");

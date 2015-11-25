@@ -50,13 +50,13 @@
  * we connect it up through its parents.
  */
 
-const {Cc, Ci, Cu, Cr} = require("chrome");
-const Services = require("Services");
+const {Cc, Ci, Cu, Cr} = require("devtools/sham/chrome");
+const Services = require("devtools/sham/services");
 const protocol = require("devtools/server/protocol");
 const {Arg, Option, method, RetVal, types} = protocol;
 const {LongStringActor, ShortLongString} = require("devtools/server/actors/string");
-const promise = require("promise");
-const {Task} = Cu.import("resource://gre/modules/Task.jsm", {});
+const promise = require("devtools/sham/promise");
+const {Task} = require("devtools/sham/task");
 const object = require("sdk/util/object");
 const events = require("sdk/event/core");
 const {Unknown} = require("sdk/platform/xpcom");

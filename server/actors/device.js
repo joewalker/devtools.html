@@ -2,11 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const {Cc, Ci, Cu, CC} = require("chrome");
-const Services = require("Services");
+const {Cc, Ci, Cu, CC} = require("devtools/sham/chrome");
+const Services = require("devtools/sham/services");
 const protocol = require("devtools/server/protocol");
 const {method, RetVal} = protocol;
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const {LongStringActor} = require("devtools/server/actors/string");
 const {DebuggerServer} = require("devtools/server/main");
 const {getSystemInfo, getSetting} = require("devtools/shared/system");

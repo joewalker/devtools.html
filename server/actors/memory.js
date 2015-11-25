@@ -4,7 +4,7 @@
 
 "use strict";
 
-const { Cc, Ci, Cu, components } = require("chrome");
+const { Cc, Ci, Cu, components } = require("devtools/sham/chrome");
 const protocol = require("devtools/server/protocol");
 const { method, RetVal, Arg, types } = protocol;
 const { Memory } = require("devtools/server/performance/memory");

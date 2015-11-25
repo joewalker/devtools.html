@@ -6,7 +6,7 @@
 
 "use strict";
 
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 const { method } = require("devtools/server/protocol");
 
 /**

@@ -6,7 +6,7 @@
 
 "use strict";
 
-const { Cu, Ci } = require("chrome");
+const { Cu, Ci } = require("devtools/sham/chrome");
 const { GeneratedLocation } = require("devtools/server/actors/common");
 const { DebuggerServer } = require("devtools/server/main")
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");

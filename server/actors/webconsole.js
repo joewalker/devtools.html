@@ -6,8 +6,8 @@
 
 "use strict";
 
-const Services = require("Services");
-const { Cc, Ci, Cu } = require("chrome");
+const Services = require("devtools/sham/services");
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 const { DebuggerServer, ActorPool } = require("devtools/server/main");
 const { EnvironmentActor, ThreadActor } = require("devtools/server/actors/script");
 const { ObjectActor, LongStringActor, createValueGrip, stringIsLong } = require("devtools/server/actors/object");

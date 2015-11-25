@@ -4,8 +4,8 @@
 
 "use strict";
 
-const { Ci } = require("chrome");
-const Services = require("Services");
+const { Ci } = require("devtools/sham/chrome");
+const Services = require("devtools/sham/services");
 const { DebuggerServer } = require("../main");
 const { getChildDocShells, TabActor } = require("./webbrowser");
 const makeDebugger = require("./utils/make-debugger");

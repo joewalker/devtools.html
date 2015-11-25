@@ -4,7 +4,7 @@
 
 "use strict";
 
-var {Cu, Cc, Ci} = require("chrome");
+var {Cu, Cc, Ci} = require("devtools/sham/chrome");
 
 Cu.import("resource://gre/modules/NetUtil.jsm");
 Cu.import("resource://gre/modules/XPCOMUtils.jsm");
@@ -12,11 +12,11 @@ Cu.import("resource://gre/modules/osfile.jsm");
 Cu.import("resource://gre/modules/FileUtils.jsm");
 Cu.import("resource://gre/modules/UserCustomizations.jsm");
 
-var promise = require("promise");
+var promise = require("devtools/sham/promise");
 var DevToolsUtils = require("devtools/shared/DevToolsUtils");
 var { ActorPool } = require("devtools/server/actors/common");
 var { DebuggerServer } = require("devtools/server/main");
-var Services = require("Services");
+var Services = require("devtools/sham/services");
 
 // Comma separated list of permissions that a sideloaded app can't ask for
 const UNSAFE_PERMISSIONS = Services.prefs.getCharPref("devtools.apps.forbidden-permissions");

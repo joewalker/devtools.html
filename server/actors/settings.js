@@ -2,11 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const {Cc, Ci, Cu, CC} = require("chrome");
+const {Cc, Ci, Cu, CC} = require("devtools/sham/chrome");
 const protocol = require("devtools/server/protocol");
 const {Arg, method, RetVal} = protocol;
 const {DebuggerServer} = require("devtools/server/main");
-const promise = require("promise");
+const promise = require("devtools/sham/promise");
 
 Cu.import("resource://gre/modules/FileUtils.jsm");
 Cu.import("resource://gre/modules/NetUtil.jsm");

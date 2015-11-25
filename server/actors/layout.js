@@ -24,7 +24,7 @@
  *   These dedicated classes are used by the LayoutChangesObserver.
  */
 
-const {Ci, Cu} = require("chrome");
+const {Ci, Cu} = require("devtools/sham/chrome");
 Cu.import("resource://gre/modules/XPCOMUtils.jsm");
 const protocol = require("devtools/server/protocol");
 const {method, Arg, RetVal, types} = protocol;
