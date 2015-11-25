@@ -243,6 +243,18 @@ function isInheritedProperty(name) {
   return cssProperties[name].inherited;
 }
 
+function cssPropertyIsValid(name, value) {
+  if (isVariable(name)) {
+    return true;
+  }
+  if (!(name in cssProperties)) {
+    return false;
+  }
+  let elt = document.createElement("div");
+  elt.style = name + ":" + value;
+  return elt.style.length > 0;
+}
+
 module.exports = {
   getCSSLexer,
   rgbToColorName,
@@ -254,6 +266,7 @@ module.exports = {
   getCSSPropertyNames,
   cssPropertySupportsType,
   isInheritedProperty,
+  cssPropertyIsValid,
 
   // Constants.
   EXCLUDE_SHORTHANDS,
