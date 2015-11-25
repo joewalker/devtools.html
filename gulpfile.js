@@ -124,7 +124,16 @@ gulp.task("build-test", function (callback) {
 });
 
 gulp.task("start-proxy", function() {
-  wsTcpProxy.listen();
+  // WS <-> TCP server in Firefox
+  wsTcpProxy.listen({
+    wsPort: 9000,
+    tcpPort: 6080
+  });
+  // WS <-> TCP server in Valence add-on <-> Chrome
+  wsTcpProxy.listen({
+    wsPort: 9001,
+    tcpPort: 6081
+  });
 });
 
 gulp.task("build-connect", function() {
@@ -137,7 +146,8 @@ gulp.task("serve-connect", ["build-connect", "start-proxy"], function() {
     cache: 0
   }));
   server.listen(CONNECT_HTTP_PORT);
-  console.log("Open http://localhost:8081 to start the connect tool");
+  console.log("Open http://localhost:8081/?wsPort=9000 to test Firefox");
+  console.log("Open http://localhost:8081/?wsPort=9001 to test Chrome");
 });
 
 gulp.task("build-toolbox", function() {

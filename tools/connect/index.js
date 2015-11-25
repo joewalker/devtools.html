@@ -7,8 +7,18 @@ let { Task } = require("devtools/sham/task");
 let { TargetFactory } = require("devtools/client/framework/target");
 let { InspectorFront } = require("devtools/server/actors/inspector");
 
+let WEB_SOCKET_PORT = 9000;
+
+function getPort() {
+  let query = location.search.match(/(\w+)=(\d+)/);
+  if (query && query[1] == "wsPort") {
+    return query[2];
+  }
+  return WEB_SOCKET_PORT;
+}
+
 exports.start = Task.async(function*() {
-  let socket = new WebSocket("ws://localhost:9000");
+  let socket = new WebSocket("ws://localhost:" + getPort());
   let transport = new DebuggerTransport(socket);
   let client = new DebuggerClient(transport);
   yield client.connect();

@@ -6,14 +6,16 @@ const net = require("net");
 const WEB_SOCKET_PORT = 9000;
 const TCP_PORT = 6080;
 
-exports.listen = () => {
-  let wsServer = new ws.Server({ port: WEB_SOCKET_PORT });
+exports.listen = options => {
+  let wsPort = options.wsPort || WEB_SOCKET_PORT;
+  let tcpPort = options.tcpPort || TCP_PORT;
 
-  console.log("Listening for WS on *:" + WEB_SOCKET_PORT);
-  console.log("Will proxy to TCP on *:" + TCP_PORT + " on first WS connection");
+  let wsServer = new ws.Server({ port: wsPort });
+  console.log("Listening for WS on *:" + wsPort);
+  console.log("Will proxy to TCP on *:" + tcpPort + " on first WS connection");
 
   wsServer.on("connection", wsConnection => {
-    let tcpClient = net.connect({ port: TCP_PORT });
+    let tcpClient = net.connect({ port: tcpPort });
     tcpClient.setEncoding("utf8");
 
     tcpClient.on("connect", () => {
