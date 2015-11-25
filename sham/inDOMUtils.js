@@ -94,20 +94,16 @@ function colorToRGBA(name) {
     }
   };
 
-  let die = function() {
-    throw new Error("invalid color");
-  };
-
   let requireComma = function(token) {
     if (token.tokenType !== "symbol" || token.text !== ",") {
-      die();
+      return null;
     }
     return getToken();
   };
 
   let func = getToken();
   if (!func || func.tokenType !== "function") {
-    die();
+    return null;
   }
   let alpha = false;
   if (func.text === "rgb" || func.text === "hsl") {
@@ -115,7 +111,7 @@ function colorToRGBA(name) {
   } else if (func.text === "rgba" || func.text === "hsla") {
     alpha = true;
   } else {
-    die();
+    return null;
   }
 
   let vals = [];
@@ -125,7 +121,7 @@ function colorToRGBA(name) {
       token = requireComma(token);
     }
     if (token.tokenType !== "number" || !token.isInteger) {
-      die();
+      return null;
     }
     let num = token.number;
     if (num < 0) {
@@ -143,7 +139,7 @@ function colorToRGBA(name) {
   if (alpha) {
     let token = requireComma(getToken());
     if (token.tokenType !== "number") {
-      die();
+      return null;
     }
     let num = token.number;
     if (num < 0) {
