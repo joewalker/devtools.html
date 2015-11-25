@@ -2,22 +2,28 @@
  * A sham for https://developer.mozilla.org/en-US/Add-ons/SDK/Low-Level_APIs/chrome
  */
 
+var inDOMUtils = require("devtools/sham/inDOMUtils");
+
+var ourServices = {
+  inIDOMUtils: inDOMUtils,
+};
+
 module.exports = {
   Cc: name => {
     console.log('Sham for', name);
     return {
-      getService: () => {}
+      getService: (name) => ourServices[name]
     };
   },
   Ci: {
     nsIFocusManager: {
       MOVEFOCUS_BACKWARD: 2,
       MOVEFOCUS_FORWARD: 1,
-
     },
     nsIDOMKeyEvent: {
-      
-    }
+
+    },
+    inIDOMUtils: "inIDOMUtils",
   },
   Cu: {
     reportError: (msg) => console.error(msg),

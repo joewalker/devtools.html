@@ -140,4 +140,8 @@ gulp.task("serve-connect", ["build-connect", "start-proxy"], function() {
   console.log("Open http://localhost:8081 to start the connect tool");
 });
 
+gulp.task("build-toolbox", function() {
+  return buildDir(path.join(__dirname, "client", "framework", "toolbox.html"));
+});
+
 gulp.task("default", ["build"]);
