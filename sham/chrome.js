@@ -16,6 +16,10 @@ module.exports = {
     };
   },
   Ci: {
+    nsIThread: {
+      "DISPATCH_NORMAL":0,
+      "DISPATCH_SYNC":1
+    },
     nsIDOMNode: {
       "ELEMENT_NODE":1,
       "ATTRIBUTE_NODE":2,
