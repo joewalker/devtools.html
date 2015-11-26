@@ -37,7 +37,9 @@ var toolboxStrings = (name, ...args) => {
     return null;
   }
 };
-
+let { DebuggerClient } = require("devtools/shared/client/main");
+let { DebuggerTransport } = require("devtools/shared/transport/transport");
+let { TargetFactory } = require("devtools/client/framework/target");
 const { getHighlighterUtils } = require("devtools/client/framework/toolbox-highlighter-utils");
 const { Hosts } = require("devtools/client/framework/toolbox-hosts");
 const { Selection } = require("devtools/client/framework/selection");
@@ -79,29 +81,21 @@ const ToolboxButtons = exports.ToolboxButtons = [
   { id: "command-button-measure" }
 ];
 
-exports.getWSTarget = Task.async(function*() {
-  let { DebuggerClient } = require("devtools/shared/client/main");
-  let { DebuggerTransport } = require("devtools/shared/transport/transport");
-  let { Task } = require("devtools/sham/task");
-  let { TargetFactory } = require("devtools/client/framework/target");
-  let { InspectorFront } = require("devtools/server/actors/inspector");
-
+/**
+ *
+ */
+exports.getWSTarget = function() {
   let socket = new WebSocket("ws://localhost:9000");
   let transport = new DebuggerTransport(socket);
   let client = new DebuggerClient(transport);
-  yield client.connect();
-
-  let response = yield client.listTabs();
-  let tab = response.tabs[response.selected];
-
-  let options = {
-    form: tab,
-    client,
-    chrome: false,
-  };
-  let target = yield TargetFactory.forRemoteTab(options);
-  return target;
-});
+  return client.connect().then(() => {
+    return client.listTabs().then(response => {
+      let tab = response.tabs[response.selected];
+      let options = { form: tab, client, chrome: false };
+      return TargetFactory.forRemoteTab(options);
+    });
+  });
+};
 
 /**
  * A "Toolbox" is the component that holds all the tools for one specific
