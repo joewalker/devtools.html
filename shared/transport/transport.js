@@ -759,7 +759,7 @@ exports.ChildDebuggerTransport = ChildDebuggerTransport;
 // same worker. Consequently, each transport has a connection id, to allow
 // messages from multiple connections to be multiplexed on a single channel.
 
-if (!this.isWorker) {
+if (typeof WorkerGlobalScope === 'undefined') { // i.e. not in a worker
   (function () { // Main thread
     /**
      * A transport that uses a WorkerDebugger to send packets from the main

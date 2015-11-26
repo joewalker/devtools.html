@@ -672,7 +672,7 @@ function newChannelForURL(url, { policy }) {
 
 // Fetch is defined differently depending on whether we are on the main thread
 // or a worker thread.
-if (!this.isWorker) {
+if (typeof WorkerGlobalScope === 'undefined') { // i.e. not in a worker
   exports.fetch = mainThreadFetch;
 } else {
   // Services is not available in worker threads, nor is there any other way
