@@ -47,7 +47,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader", query: { compact: false } },
       { test: /\.properties$/, loader: "properties-loader" },
       { test: /\.json$/, loader: "json-loader" },
     ]
