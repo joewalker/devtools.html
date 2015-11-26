@@ -25,7 +25,7 @@ const StyleInspectorMenu = require("devtools/client/styleinspector/style-inspect
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
-
+const clipboardHelper = Cc("@mozilla.org/widget/clipboardhelper;1").getService(Ci.nsIClipboardHelper);
 const PluralForm = require("devtools/sham/pluralform");
 
 const FILTER_CHANGED_TIMEOUT = 150;
@@ -50,7 +50,7 @@ const HTML_NS = "http://www.w3.org/1999/xhtml";
  */
 function UpdateProcess(win, generator, options) {
   this.win = win;
-  this.iter = _Iterator(generator);
+  this.iter = Iterator(generator);
   this.onItem = options.onItem || function() {};
   this.onBatch = options.onBatch || function() {};
   this.onDone = options.onDone || function() {};
@@ -225,10 +225,6 @@ XPCOMUtils.defineLazyGetter(CssComputedView, "_strings", function() {
     "chrome://devtools-shared/locale/styleinspector.properties");
 });
 
-XPCOMUtils.defineLazyGetter(this, "clipboardHelper", function() {
-  return Cc("@mozilla.org/widget/clipboardhelper;1")
-         .getService(Ci.nsIClipboardHelper);
-});
 
 CssComputedView.prototype = {
   // Cache the list of properties that match the selected element.

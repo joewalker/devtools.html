@@ -60,8 +60,9 @@ gulp.task("build", function () {
     return path.join(__dirname, "client", tool);
   });*/
   var dirs = [];
-  // dirs.push(path.join(__dirname, "client", "inspector"));
   dirs.push(path.join(__dirname, "client", "inspector"));
+  dirs.push(path.join(__dirname, "client", "styleinspector"));
+  dirs.push(path.join(__dirname, "client", "fontinspector"));
   dirs.push(path.join(__dirname, "client", "framework"));
   dirs.push(path.join(__dirname, "tools", "connect"));
   return Promise.all(dirs.map(buildDir));

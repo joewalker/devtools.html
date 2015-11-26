@@ -6,12 +6,12 @@
 
 "use strict";
 
-var { utils: Cu } = Components;
 const DEFAULT_PREVIEW_TEXT = "Abc";
 const PREVIEW_UPDATE_DELAY = 150;
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Task } = require("devtools/sham/task");
+const { gDevTools } = require("devtools/client/framework/gDevTools");
 
 function FontInspector(inspector, window)
 {

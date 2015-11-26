@@ -6,6 +6,12 @@ var inDOMUtils = require("devtools/sham/inDOMUtils");
 
 var ourServices = {
   inIDOMUtils: inDOMUtils,
+  nsIClipboardHelper: {
+    copyString: () => {}
+  },
+  nsIXULChromeRegistry: {
+    isLocaleRTL: () => {return false;}
+  },
 };
 
 module.exports = {
@@ -29,6 +35,8 @@ module.exports = {
 
     },
     inIDOMUtils: "inIDOMUtils",
+    nsIClipboardHelper: "nsIClipboardHelper",
+    nsIXULChromeRegistry: "nsIXULChromeRegistry",
   },
   Cu: {
     reportError: (msg) => console.error(msg),

@@ -2,25 +2,28 @@
  * A sham for https://dxr.mozilla.org/mozilla-central/source/toolkit/modules/Services.jsm
  */
 
-const Services = {
-  strings: {
-    createBundle: name => {
-      // TODO: implement
-      return  {
-        GetStringFromName: () => { return ""; },
-        formatStringFromName: () => { return ""; }
-      }
+const Services = { };
+
+
+Services.strings = {
+  createBundle: name => {
+    // TODO: implement
+    return  {
+      GetStringFromName: () => { return ""; },
+      formatStringFromName: () => { return ""; }
     }
   },
-  appinfo: {
-    OS: 'Darwin', // Probably
-  },
-  telemetry: {
-    getHistogramById() {
-      return {
-        add() {}
-      };
-    },
+};
+
+Services.appinfo = {
+  OS: 'Darwin', // Probably
+};
+
+Services.telemetry = {
+  getHistogramById() {
+    return {
+      add() {}
+    };
   },
 };
 

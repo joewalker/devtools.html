@@ -4,7 +4,7 @@
 
 const {Cu, CC} = require("devtools/sham/chrome");
 const promise = require("devtools/sham/promise");
-const {Services} = const { Services } = require("devtools/sham/services");
+const {Services} = require("devtools/sham/services");
 
 const XMLHttpRequest = CC("@mozilla.org/xmlextras/xmlhttprequest;1");
 

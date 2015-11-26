@@ -4,7 +4,7 @@
 
 const {Cu, Ci} = require("devtools/sham/chrome");
 const {Devices} = require("devtools/shared/apps/Devices");
-const {Services} = const { Services } = require("devtools/sham/services");
+const {Services} = require("devtools/sham/services");
 const {Connection} = require("devtools/shared/client/connection-manager");
 const {DebuggerServer} = require("devtools/server/main");
 const {Simulators} = require("devtools/client/webide/modules/simulators");

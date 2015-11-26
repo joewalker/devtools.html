@@ -39,7 +39,7 @@
  */
 
 const { Cc, Ci, Cu } = require("devtools/sham/chrome");
-const Services = require("devtools/sham/services");
+const { Services } = require("devtools/sham/services");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const { getRootBindingParent } = require("devtools/shared/layout/utils");
 
@@ -834,6 +834,9 @@ CssLogic.getComputedStyle = function(node)
   return node.ownerDocument.defaultView.getComputedStyle(bindingElement, pseudo);
 };
 
+const _strings = Services.strings
+             .createBundle("chrome://devtools-shared/locale/styleinspector.properties");
+
 /**
  * Memonized lookup of a l10n string from a string bundle.
  * @param {string} aName The key to lookup.
@@ -841,11 +844,8 @@ CssLogic.getComputedStyle = function(node)
  */
 CssLogic.l10n = function(aName)
 {
-  return CssLogic._strings.GetStringFromName(aName);
+  return _strings.GetStringFromName(aName);
 };
-
-DevToolsUtils.defineLazyGetter(CssLogic, "_strings", function() { return Services.strings
-             .createBundle("chrome://devtools-shared/locale/styleinspector.properties")});
 
 /**
  * Is the given property sheet a content stylesheet?

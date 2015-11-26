@@ -4,7 +4,7 @@
 
 var Cu = Components.utils;
 const { gDevTools } = require("devtools/client/framework/gDevTools");
-const {Services} = const { Services } = require("devtools/sham/services");
+const {Services} = require("devtools/sham/services");
 const {AppManager} = require("devtools/client/webide/modules/app-manager");
 const {ProjectBuilding} = require("devtools/client/webide/modules/build");
 

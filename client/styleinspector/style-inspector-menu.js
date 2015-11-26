@@ -11,14 +11,15 @@ const {PREF_ORIG_SOURCES} = require("devtools/client/styleeditor/utils");
 
 const overlays = require("devtools/client/styleinspector/style-inspector-overlays");
 const { Services } = require("devtools/sham/services");
-loader.lazyServiceGetter(this, "clipboardHelper",
-  "@mozilla.org/widget/clipboardhelper;1", "nsIClipboardHelper");
+const {Task} = require("devtools/sham/task");
+const clipboardHelper = Cc("@mozilla.org/widget/clipboardhelper;1").getService(Ci.nsIClipboardHelper);
 loader.lazyGetter(this, "_strings", () => {
   return Services.strings
   .createBundle("chrome://devtools-shared/locale/styleinspector.properties");
 });
 
-const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+// XXX: Need to use different popups
+const XUL_NS = "http://www.w3.org/1999/xhtml";
 const PREF_ENABLE_MDN_DOCS_TOOLTIP =
   "devtools.inspector.mdnDocsTooltip.enabled";
 
@@ -60,14 +61,24 @@ function StyleInspectorMenu(view, options) {
 module.exports = StyleInspectorMenu;
 
 StyleInspectorMenu.prototype = {
+
+  get popupNode() {
+    // return this.styleDocument.popupNode;
+    return document.createElement("span");
+  },
+
+  set popupNode(value) {
+    // this.styleDocument.popupNode = value;
+  },
+
   /**
    * Display the style inspector context menu
    */
   show: function(event) {
     try {
-      // In the sidebar we do not have this.styleDocument.popupNode
+      // In the sidebar we do not have this.popupNode
       // so we need to save the node ourselves.
-      this.styleDocument.popupNode = event.explicitOriginalTarget;
+      this.popupNode = event.explicitOriginalTarget;
       this.styleWindow.focus();
       this._menupopup.openPopupAtScreen(event.screenX, event.screenY, true);
     } catch(e) {
@@ -353,7 +364,7 @@ StyleInspectorMenu.prototype = {
    */
   _getClickedNode: function() {
     let container = null;
-    let node = this.styleDocument.popupNode;
+    let node = this.popupNode;
 
     if (node) {
       let isTextNode = node.nodeType == node.TEXT_NODE;
@@ -375,7 +386,7 @@ StyleInspectorMenu.prototype = {
    * Copy the most recently selected color value to clipboard.
    */
   _onCopy: function() {
-    this.view.copySelection(this.styleDocument.popupNode);
+    this.view.copySelection(this.popupNode);
   },
 
   /**
@@ -423,8 +434,8 @@ StyleInspectorMenu.prototype = {
    *  Show docs from MDN for a CSS property.
    */
   _onShowMdnDocs: function() {
-    let cssPropertyName = this.styleDocument.popupNode.textContent;
-    let anchor = this.styleDocument.popupNode.parentNode;
+    let cssPropertyName = this.popupNode.textContent;
+    let anchor = this.popupNode.parentNode;
     let cssDocsTooltip = this.view.tooltips.cssDocs;
     cssDocsTooltip.show(anchor, cssPropertyName);
   },
@@ -486,7 +497,7 @@ StyleInspectorMenu.prototype = {
    */
   _onCopyRule: function() {
     let ruleEditor =
-      this.styleDocument.popupNode.parentNode.offsetParent._ruleEditor;
+      this.popupNode.parentNode.offsetParent._ruleEditor;
     let rule = ruleEditor.rule;
     clipboardHelper.copyString(rule.stringifyRule());
   },
@@ -519,7 +530,7 @@ StyleInspectorMenu.prototype = {
     this._menupopup = null;
 
     this.popupNode = null;
-    this.styleDocument.popupNode = null;
+    this.popupNode = null;
     this.view = null;
     this.inspector = null;
     this.styleDocument = null;

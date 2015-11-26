@@ -13,7 +13,7 @@ const { Task } = require("devtools/sham/task");
 const promise = require("devtools/sham/promise");
 const { on, forget } = require("devtools/client/projecteditor/lib/helpers/event");
 const { FileResource } = require("devtools/client/projecteditor/lib/stores/resource");
-const {Services} = const { Services } = require("devtools/sham/services");
+const {Services} = require("devtools/sham/services");
 //const {setTimeout, clearTimeout} = require("devtools/sham/timer");
 
 const CHECK_LINKED_DIRECTORY_DELAY = 5000;

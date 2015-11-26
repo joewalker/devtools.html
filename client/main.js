@@ -10,8 +10,8 @@ const { gDevTools } = require("devtools/client/framework/gDevTools");
 
 const { defaultTools, defaultThemes } = require("devtools/client/definitions");
 
-defaultTools.forEach(definition => gDevTools.registerTool(definition));
-defaultThemes.forEach(definition => gDevTools.registerTheme(definition));
+// defaultTools.forEach(definition => gDevTools.registerTool(definition));
+// defaultThemes.forEach(definition => gDevTools.registerTheme(definition));
 
 // Re-export for backwards compatibility, but we should probably the
 // definitions from require("devtools/client/definitions") in the future
@@ -26,20 +26,20 @@ Object.defineProperty(exports, "TargetFactory", {
   get: () => require("devtools/client/framework/target").TargetFactory
 });
 
-const unloadObserver = {
-  observe: function(subject, topic, data) {
-    if (subject.wrappedJSObject === require("@loader/unload")) {
-      Services.obs.removeObserver(unloadObserver, "sdk:loader:destroy");
-      for (let definition of gDevTools.getToolDefinitionArray()) {
-        gDevTools.unregisterTool(definition.id);
-      }
-      for (let definition of gDevTools.getThemeDefinitionArray()) {
-        gDevTools.unregisterTheme(definition.id);
-      }
-    }
-  }
-};
-Services.obs.addObserver(unloadObserver, "sdk:loader:destroy", false);
+// const unloadObserver = {
+//   observe: function(subject, topic, data) {
+//     if (subject.wrappedJSObject === require("@loader/unload")) {
+//       Services.obs.removeObserver(unloadObserver, "sdk:loader:destroy");
+//       for (let definition of gDevTools.getToolDefinitionArray()) {
+//         gDevTools.unregisterTool(definition.id);
+//       }
+//       for (let definition of gDevTools.getThemeDefinitionArray()) {
+//         gDevTools.unregisterTheme(definition.id);
+//       }
+//     }
+//   }
+// };
+// Services.obs.addObserver(unloadObserver, "sdk:loader:destroy", false);
 
-const events = require("sdk/system/events");
-events.emit("devtools-loaded", {});
+// const events = require("sdk/system/events");
+// events.emit("devtools-loaded", {});

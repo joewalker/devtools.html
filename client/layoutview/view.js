@@ -578,7 +578,7 @@ window.setPanel = function(panel) {
   }
 
   // Mark document as RTL or LTR:
-  let chromeReg = Cc("@mozilla.org/chrome/chrome-registry;1")
+  let chromeReg = Cc("nsIXULChromeRegistry")
                   .getService(Ci.nsIXULChromeRegistry);
   let dir = chromeReg.isLocaleRTL("global");
   document.body.setAttribute("dir", dir ? "rtl" : "ltr");

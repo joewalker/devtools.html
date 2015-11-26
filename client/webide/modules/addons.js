@@ -5,7 +5,7 @@
 const {Cu} = require("devtools/sham/chrome");
 const promise = require("devtools/sham/promise");
 const { AddonManager } = require("devtools/sham/addonmanager");
-const {Services} = const { Services } = require("devtools/sham/services");
+const {Services} = require("devtools/sham/services");
 const {getJSON} = require("devtools/client/shared/getjson");
 const EventEmitter = require("devtools/shared/event-emitter");
 

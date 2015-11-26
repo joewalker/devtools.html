@@ -888,7 +888,6 @@ Toolbox.prototype = {
    * Add tabs to the toolbox UI for registered tools
    */
   _buildTabs: function() {
-    console.log("BUILDING TABS", gDevTools.getToolDefinitionArray());
     for (let definition of gDevTools.getToolDefinitionArray()) {
       this._buildTabForTool(definition);
     }
@@ -1341,7 +1340,6 @@ Toolbox.prototype = {
     // and select the right iframe
     let deck = this.doc.getElementById("toolbox-deck");
     let panel = this.doc.getElementById("toolbox-panel-" + id);
-    console.log("Geting panel for ", id);
 
     // Hack to work around no <deck>
     // deck.selectedPanel = panel;

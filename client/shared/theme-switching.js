@@ -30,7 +30,6 @@
     let current = document.documentElement;
     while (current) {
       if (current.nodeType === 7 && current.sheet && current.sheet.href === url) {
-        console.log("Found a matching PI", current);
         let toRemove = current;
         current = current.previousSibling;
         toRemove.remove();

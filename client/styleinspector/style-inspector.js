@@ -8,15 +8,16 @@
 
 const {Cc, Cu, Ci} = require("devtools/sham/chrome");
 const promise = require("devtools/sham/promise");
+// XXX: No need for this since it's just for style editor integration
 const {Tools} = require("devtools/client/main");
 const { Services } = require("devtools/sham/services");
 const {PREF_ORIG_SOURCES} = require("devtools/client/styleeditor/utils");
 
 const { gDevTools } = require("devtools/client/framework/gDevTools");
-this.RuleView = require("devtools/client/styleinspector/rule-view");
-this.ComputedView = require("devtools/client/styleinspector/computed-view");
-this._strings = Services.strings
-  .createBundle("chrome://devtools-shared/locale/styleinspector.properties");
+var RuleView = require("devtools/client/styleinspector/rule-view");
+var ComputedView = require("devtools/client/styleinspector/computed-view");
+// this._strings = Services.strings
+// .createBundle("chrome://devtools-shared/locale/styleinspector.properties");
 
 // This module doesn't currently export any symbols directly, it only
 // registers inspector tools.
@@ -24,7 +25,6 @@ this._strings = Services.strings
 function RuleViewTool(inspector, window) {
   this.inspector = inspector;
   this.document = window.document;
-
   this.view = new RuleView.CssRuleView(this.inspector, this.document);
 
   this.onLinkClicked = this.onLinkClicked.bind(this);
@@ -126,12 +126,12 @@ RuleViewTool.prototype = {
     }
     location.then(({ source, href, line, column }) => {
       let target = this.inspector.target;
-      if (Tools.styleEditor.isTargetSupported(target)) {
-        gDevTools.showToolbox(target, "styleeditor").then(function(toolbox) {
-          let sheet = source || href;
-          toolbox.getCurrentPanel().selectStyleSheet(sheet, line, column);
-        });
-      }
+      // if (Tools.styleEditor.isTargetSupported(target)) {
+      //   gDevTools.showToolbox(target, "styleeditor").then(function(toolbox) {
+      //     let sheet = source || href;
+      //     toolbox.getCurrentPanel().selectStyleSheet(sheet, line, column);
+      //   });
+      // }
       return;
     });
   },
@@ -259,13 +259,11 @@ ComputedViewTool.prototype = {
 exports.RuleViewTool = RuleViewTool;
 exports.ComputedViewTool = ComputedViewTool;
 
-console.log("RUNNING STYLE INSPECTOR!!", window);
-
 window.setPanel = function(panel, iframe) {
-  if (window.location.includes("cssruleview")) {
+  if (window.location.toString().includes("cssruleview")) {
     window.ruleview = new RuleViewTool(panel, window);
   } else {
-    window.computedview = new inspector.ComputedViewTool(panel, window);
+    window.computedview = new ComputedViewTool(panel, window);
   }
 }
 window.onunload = function() {

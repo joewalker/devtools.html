@@ -6,7 +6,7 @@ const promise = require("devtools/sham/promise");
 var { registerPlugin, Plugin } = require("devtools/client/projecteditor/lib/plugins/core");
 const { AppProjectEditor } = require("./app-project-editor");
 const OPTION_URL = "chrome://devtools/skin/images/tool-options.svg";
-const {Services} = const { Services } = require("devtools/sham/services");
+const {Services} = require("devtools/sham/services");
 const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
 
 var AppManagerRenderer = Class({

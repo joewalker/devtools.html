@@ -238,8 +238,8 @@ ToolSidebar.prototype = {
     let allTabsItem = this._addItemToAllTabsMenu(id, tab, selected);
 
     let onIFrameLoaded = (event) => {
-      let doc = iframe.contentDocument;
-      let win = doc.defaultView;
+      let win = iframe.contentWindow;
+      let doc = win.document;
       tab.textContent = doc.title;
 
       if (allTabsItem) {
@@ -248,7 +248,6 @@ ToolSidebar.prototype = {
 
       iframe.removeEventListener("load", onIFrameLoaded, true);
 
-      console.log("CALLING SET PANEL", win, win.setPanel);
       if ("setPanel" in win) {
         win.setPanel(this._toolPanel, iframe);
       }

@@ -4,7 +4,7 @@
 
 const {Cu} = require("devtools/sham/chrome");
 
-const Services = require("devtools/sham/services");
+const {Services} = require("devtools/sham/services");
 const {AppProjects} = require("devtools/client/webide/modules/app-projects");
 const {AppManager} = require("devtools/client/webide/modules/app-manager");
 const promise = require("devtools/sham/promise");

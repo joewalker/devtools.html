@@ -10,7 +10,7 @@ const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { Task } = require("devtools/sham/task");
 
 const {Toolbox} = require("devtools/client/framework/toolbox");
-const Services = require("devtools/sham/services");
+const {Services} = require("devtools/sham/services");
 const {AppProjects} = require("devtools/client/webide/modules/app-projects");
 const {Connection} = require("devtools/shared/client/connection-manager");
 const {AppManager} = require("devtools/client/webide/modules/app-manager");

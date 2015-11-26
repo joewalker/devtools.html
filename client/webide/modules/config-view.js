@@ -5,7 +5,7 @@
 const {Cu} = require("devtools/sham/chrome");
 
 const EventEmitter = require("devtools/shared/event-emitter");
-const {Services} = const { Services } = require("devtools/sham/services");
+const {Services} = require("devtools/sham/services");
 const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
 
 var ConfigView;

@@ -11,10 +11,7 @@ const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const {parseDeclarations} =
       require("devtools/client/shared/css-parsing-utils");
 const promise = require("devtools/sham/promise");
-
-loader.lazyServiceGetter(this, "domUtils",
-  "@mozilla.org/inspector/dom-utils;1", "inIDOMUtils");
-
+const domUtils = Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 const HTML_NS = "http://www.w3.org/1999/xhtml";
 
 /**

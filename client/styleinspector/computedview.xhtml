@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="../themes/computedview.css"  type="text/css"/>
 
     <script type="application/javascript;version=1.8" src="../shared/theme-switching.js"/>
+    <script type="application/javascript;version=1.8" src="../../globals.js"></script>
+    <script type="application/javascript;version=1.8" src="build.js"></script>
   </head>
 
   <body>
@@ -46,9 +48,10 @@
                  type="search" placeholder="!!filterStylesPlaceholder;"/>
           <button id="computedview-searchinput-clear" class="devtools-searchinput-clear"></button>
         </div>
-        <xul:checkbox id="browser-style-checkbox"
-                      class="includebrowserstyles"
-                      checked="false" label="!!browserStylesLabel;"/>
+        <input id="browser-style-checkbox"
+               type="checkbox"
+               class="includebrowserstyles"
+               checked="false" label="!!browserStylesLabel;"/>
       </div>
     </div>
 

@@ -6,7 +6,7 @@ const {Cu} = require("devtools/sham/chrome");
 
 const promise = require("devtools/sham/promise");
 const {TargetFactory} = require("devtools/client/framework/target");
-const Services = require("devtools/sham/services");
+const {Services} = require("devtools/sham/services");
 const { FileUtils } = require("devtools/sham/fileutils");
 const EventEmitter = require("devtools/shared/event-emitter");
 const { TextEncoder, OS } = require("devtools/sham/osfile");

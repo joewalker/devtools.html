@@ -1323,8 +1323,5 @@ exports.gDevTools = gDevTools;
 exports.DevTools = DevTools;
 exports.gDevToolsBrowser = gDevToolsBrowser;
 
-
-// XXX: MAIN SHOULD DO THIS
 DefaultTools.forEach(definition => gDevTools.registerTool(definition));
 DefaultThemes.forEach(definition => gDevTools.registerTheme(definition));
-

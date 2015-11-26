@@ -160,8 +160,6 @@ InspectorPanel.prototype = {
       cutAfter: () => {},
     };
 
-    console.log("_deferredOpen called");
-
     this._toolbox.on("host-changed", this.onToolboxHostChanged);
 
     if (this.target.isLocalTab) {
@@ -212,7 +210,6 @@ InspectorPanel.prototype = {
       this.emit("ready");
       deferred.resolve(this);
     });
-    console.log("About to setupSidebar");
 
     this.setupSearchBox();
     this.setupSidebar();
@@ -346,7 +343,6 @@ InspectorPanel.prototype = {
    */
   setupSidebar: function() {
     let tabbox = this.panelDoc.querySelector("#inspector-sidebar");
-    console.log("HERE", tabbox);
     this.sidebar = new ToolSidebar(tabbox, this, "inspector", {
       showAllTabsMenu: true
     });
@@ -395,7 +391,6 @@ InspectorPanel.prototype = {
    */
   setupSidebarToggle: function() {
     this._paneToggleButton = this.panelDoc.getElementById("inspector-pane-toggle");
-    console.log("BINDING", this._paneToggleButton)
     this._paneToggleButton.addEventListener("mousedown",
       this.onPaneToggleButtonClicked);
     this.updatePaneToggleButton();

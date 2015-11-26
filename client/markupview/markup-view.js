@@ -40,7 +40,7 @@ const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 loader.lazyGetter(this, "DOMParser", function() {
   return Cc("@mozilla.org/xmlextras/domparser;1").createInstance(Ci.nsIDOMParser);
 });
-var AutocompletePopup = require("devtools/client/shared/autocomplete-popup").AutocompletePopup;
+const { AutocompletePopup } = require("devtools/client/shared/autocomplete-popup");
 
 /**
  * Vocabulary for the purposes of this file:

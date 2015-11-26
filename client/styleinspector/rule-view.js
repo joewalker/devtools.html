@@ -10,10 +10,12 @@ const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const promise = require("devtools/sham/promise");
 //const {setTimeout, clearTimeout} = require("devtools/sham/timer");
 const {CssLogic} = require("devtools/shared/styleinspector/css-logic");
+const {Task} = require("devtools/sham/task");
 const {InplaceEditor, editableField, editableItem} =
       require("devtools/client/shared/inplace-editor");
 const {ELEMENT_STYLE, PSEUDO_ELEMENTS} =
       require("devtools/server/actors/styles");
+const { AutocompletePopup } = require("devtools/client/shared/autocomplete-popup");
 const {OutputParser} = require("devtools/client/shared/output-parser");
 const {PrefObserver, PREF_ORIG_SOURCES} = require("devtools/client/styleeditor/utils");
 const {
@@ -37,6 +39,8 @@ const overlays = require("devtools/client/styleinspector/style-inspector-overlay
 const EventEmitter = require("devtools/shared/event-emitter");
 const StyleInspectorMenu = require("devtools/client/styleinspector/style-inspector-menu");
 const { Services } = require("devtools/sham/services");
+const _strings = Services.strings.createBundle(
+    "chrome://devtools-shared/locale/styleinspector.properties");
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
@@ -69,29 +73,38 @@ function createDummyDocument() {
   if (gDummyPromise) {
     return gDummyPromise;
   }
-  const { getDocShell, create: makeFrame } = require("sdk/frame/utils");
-
-  let frame = makeFrame(Services.appShell.hiddenDOMWindow.document, {
-    nodeName: "iframe",
-    namespaceURI: "http://www.w3.org/1999/xhtml",
-    allowJavascript: false,
-    allowPlugins: false,
-    allowAuth: false
-  });
-  let docShell = getDocShell(frame);
-  let eventTarget = docShell.chromeEventHandler;
-  docShell.createAboutBlankContentViewer(Cc("@mozilla.org/nullprincipal;1")
-                                         .createInstance(Ci.nsIPrincipal));
-  let window = docShell.contentViewer.DOMDocument.defaultView;
-  window.location = "data:text/html,<html></html>";
-  let deferred = promise.defer();
-  eventTarget.addEventListener("DOMContentLoaded", function handler() {
-    eventTarget.removeEventListener("DOMContentLoaded", handler, false);
-    deferred.resolve(window.document);
+  let frame = document.createElement("iframe");
+  frame.src = "data:text/html,<html></html>";
+  frame.onload = () => {
+    deferred.resolve(frame.contentWindow.document);
     frame.remove();
-  }, false);
+  }
+  let deferred = promise.defer();
   gDummyPromise = deferred.promise;
   return gDummyPromise;
+
+  // const { getDocShell, create: makeFrame } = require("sdk/frame/utils");
+  // let frame = makeFrame(Services.appShell.hiddenDOMWindow.document, {
+  //   nodeName: "iframe",
+  //   namespaceURI: "http://www.w3.org/1999/xhtml",
+  //   allowJavascript: false,
+  //   allowPlugins: false,
+  //   allowAuth: false
+  // });
+  // let docShell = getDocShell(frame);
+  // let eventTarget = docShell.chromeEventHandler;
+  // docShell.createAboutBlankContentViewer(Cc("@mozilla.org/nullprincipal;1")
+  //                                        .createInstance(Ci.nsIPrincipal));
+  // let window = docShell.contentViewer.DOMDocument.defaultView;
+  // window.location = "data:text/html,<html></html>";
+  // let deferred = promise.defer();
+  // eventTarget.addEventListener("DOMContentLoaded", function handler() {
+  //   eventTarget.removeEventListener("DOMContentLoaded", handler, false);
+  //   deferred.resolve(window.document);
+  //   frame.remove();
+  // }, false);
+  // gDummyPromise = deferred.promise;
+  // return gDummyPromise;
 }
 
 /**
@@ -4043,15 +4056,7 @@ XPCOMUtils.defineLazyGetter(this, "osString", function() {
   return Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime).OS;
 });
 
-XPCOMUtils.defineLazyGetter(this, "_strings", function() {
-  return Services.strings.createBundle(
-    "chrome://devtools-shared/locale/styleinspector.properties");
-});
-
 // XPCOMUtils.defineLazyGetter(this, "domUtils", function() {
 //   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 // });
 
-loader.lazyGetter(this, "AutocompletePopup", function() {
-  return require("devtools/client/shared/autocomplete-popup").AutocompletePopup;
-});

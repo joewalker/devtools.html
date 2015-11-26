@@ -11,9 +11,7 @@ const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const {Utils: WebConsoleUtils, CONSOLE_WORKER_IDS} = require("devtools/shared/webconsole/utils");
 const promise = require("devtools/sham/promise");
 
-loader.lazyServiceGetter(this, "clipboardHelper",
-                         "@mozilla.org/widget/clipboardhelper;1",
-                         "nsIClipboardHelper");
+const clipboardHelper = Cc("@mozilla.org/widget/clipboardhelper;1").getService(Ci.nsIClipboardHelper);
 const { Services } = require("devtools/sham/services");
 const EventEmitter = require("devtools/shared/event-emitter");
 const { AutocompletePopup } = require("devtools/client/shared/autocomplete-popup");
