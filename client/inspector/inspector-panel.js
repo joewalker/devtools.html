@@ -434,7 +434,7 @@ InspectorPanel.prototype = {
    * Will store the current target url along with it to allow pre-selection at
    * reload
    */
-  set selectionCssSelector(cssSelector = null) {
+  set selectionCssSelector(cssSelector) {
     if (this._panelDestroyer) {
       return;
     }
@@ -1427,4 +1427,3 @@ InspectorPanel.prototype = {
     }
   }
 };
-
