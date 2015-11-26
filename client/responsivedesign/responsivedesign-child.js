@@ -2,7 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-var Ci = Components.interfaces;
+const { Ci } = require("devtools/sham/chrome");
+
 const gDeviceSizeWasPageSize = docShell.deviceSizeIsPageSize;
 const gFloatingScrollbarsStylesheet = Services.io.newURI("chrome://devtools/skin/floating-scrollbars.css", null, null);
 var gRequiresFloatingScrollbars;

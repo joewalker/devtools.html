@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 
 const DBG_STRINGS_URI = "l10n/debugger.properties";
 const NEW_SOURCE_IGNORED_URLS = ["debugger eval code", "XStringBundle"];

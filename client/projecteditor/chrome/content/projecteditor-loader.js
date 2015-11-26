@@ -1,4 +1,6 @@
-var Cu = Components.utils;
+
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
+
 const { FileUtils } = require("devtools/sham/fileutils");
 const { NetUtil } = require("devtools/sham/netutil");
 const promise = require("devtools/sham/promise");
