@@ -5,8 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const Ci = Components.interfaces;
-const Cu = Components.utils;
+const { Ci, Cu } = require("devtools/sham/chrome");
 
 const NET_STRINGS_URI = "chrome://devtools/locale/netmonitor.properties";
 const SVG_NS = "http://www.w3.org/2000/svg";
