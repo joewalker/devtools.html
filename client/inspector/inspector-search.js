@@ -64,7 +64,7 @@ InspectorSearch.prototype = {
         .catch(e => console.error(e));
   },
 
-  doFullTextSearch: Task.async(function*(query, reverse) {
+  doFullTextSearch: async function(query, reverse) {
     let lastSearched = this._lastSearched;
     this._lastSearched = query;
 
@@ -76,7 +76,7 @@ InspectorSearch.prototype = {
       return;
     }
 
-    let res = yield this.walker.search(query, { reverse });
+    let res = await this.walker.search(query, { reverse });
 
     // Value has changed since we started this request, we're done.
     if (query != this.searchBox.value) {
@@ -93,7 +93,7 @@ InspectorSearch.prototype = {
       this.searchBox.classList.add("devtools-no-search-result");
       this.emit("search-result");
     }
-  }),
+  },
 
   _onCommand: function() {
     if (this.searchBox.value.length === 0) {
