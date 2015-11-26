@@ -29,10 +29,7 @@ const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const promise = require("devtools/sham/promise");
 
 const PluralForm = require("devtools/sham/pluralform");
-
-XPCOMUtils.defineLazyServiceGetter(this, "clipboardHelper",
-  "@mozilla.org/widget/clipboardhelper;1",
-  "nsIClipboardHelper");
+const clipboardHelper = require("devtools/sham/clipboard");
 
 Object.defineProperty(this, "WebConsoleUtils", {
   get: function() {
@@ -907,7 +904,7 @@ VariablesView.prototype = {
       // Copy current selection to clipboard.
       if (e.ctrlKey || e.metaKey) {
         let item = this.getFocusedItem();
-        clipboardHelper.copyString(
+        clipboardHelper.copy(
           item._nameString + item.separatorStr + item._valueString
         );
       }

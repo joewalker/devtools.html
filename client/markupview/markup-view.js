@@ -32,6 +32,7 @@ const {parseAttribute} = require("devtools/client/shared/node-attribute-parser")
 const ELLIPSIS = "…"; // Should be l10n'd
 const { Task } = require("devtools/sham/task");
 const {scrollIntoViewIfNeeded} = require("devtools/shared/layout/utils");
+const clipboardHelper = require("devtools/sham/clipboard");
 
 // Removed this already, will need to bring it back if this is called
 const {template} = require("devtools/client/markupview/templater");
@@ -3100,8 +3101,3 @@ function map(value, oldMin, oldMax, newMin, newMax) {
 loader.lazyGetter(MarkupView.prototype, "strings", () => Services.strings.createBundle(
   "chrome://devtools/locale/inspector.properties"
 ));
-
-XPCOMUtils.defineLazyGetter(this, "clipboardHelper", function() {
-  return Cc("@mozilla.org/widget/clipboardhelper;1").
-    getService(Ci.nsIClipboardHelper);
-});
