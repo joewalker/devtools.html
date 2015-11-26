@@ -81,13 +81,13 @@ exports.getHighlighterUtils = function(toolbox) {
    */
   let isInspectorInitialized = false;
   let requireInspector = generator => {
-    return Task.async(function*(...args) {
+    return async function(...args) {
       if (!isInspectorInitialized) {
-        yield toolbox.initInspector();
+        await toolbox.initInspector();
         isInspectorInitialized = true;
       }
-      return yield generator.apply(null, args);
-    });
+      return await generator.apply(null, args);
+    };
   };
 
   /**
@@ -255,19 +255,18 @@ exports.getHighlighterUtils = function(toolbox) {
    * markup view, which is when this param is passed to true
    * @return a promise that resolves when the highlighter is hidden
    */
-  let unhighlight = exported.unhighlight = Task.async(
-  function*(forceHide=false) {
+  let unhighlight = exported.unhighlight = async function(forceHide=false) {
     forceHide = forceHide || !DevToolsUtils.testing;
 
     // Note that if isRemoteHighlightable is true, there's no need to hide the
     // highlighter as the walker uses setTimeout to hide it after some time
     if (isNodeFrontHighlighted && forceHide && toolbox.highlighter && isRemoteHighlightable()) {
       isNodeFrontHighlighted = false;
-      yield toolbox.highlighter.hideBoxModel();
+      await toolbox.highlighter.hideBoxModel();
     }
 
     toolbox.emit("node-unhighlight");
-  });
+  };
 
   /**
    * If the main, box-model, highlighter isn't enough, or if multiple

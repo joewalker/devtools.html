@@ -97,14 +97,14 @@ var StyleSheetsActor = exports.StyleSheetsActor = protocol.ActorClass({
    * Protocol method for getting a list of StyleSheetActors representing
    * all the style sheets in this document.
    */
-  getStyleSheets: method(Task.async(function* () {
+  getStyleSheets: method(async function() {
     // Iframe document can change during load (bug 1171919). Track their windows
     // instead.
     let windows = [this.window];
     let actors = [];
 
     for (let win of windows) {
-      let sheets = yield this._addStyleSheets(win);
+      let sheets = await this._addStyleSheets(win);
       actors = actors.concat(sheets);
 
       // Recursively handle style sheets of the documents in iframes.
@@ -117,7 +117,7 @@ var StyleSheetsActor = exports.StyleSheetsActor = protocol.ActorClass({
       }
     }
     return actors;
-  }), {
+  }, {
     request: {},
     response: { styleSheets: RetVal("array:stylesheet") }
   }),

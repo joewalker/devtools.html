@@ -151,26 +151,26 @@ var TargetNodeHighlighter = {
   highlighter: null,
   isShown: false,
 
-  highlight: Task.async(function*(animationTargetNode) {
+  highlight: async function(animationTargetNode) {
     if (!this.highlighter) {
       let hUtils = animationTargetNode.inspector.toolbox.highlighterUtils;
-      this.highlighter = yield hUtils.getHighlighterByType("BoxModelHighlighter");
+      this.highlighter = unhighlight hUtils.getHighlighterByType("BoxModelHighlighter");
     }
 
-    yield this.highlighter.show(animationTargetNode.nodeFront);
+    unhighlight this.highlighter.show(animationTargetNode.nodeFront);
     this.isShown = true;
     this.emit("highlighted", animationTargetNode);
-  }),
+  },
 
-  unhighlight: Task.async(function*() {
+  unhighlight: async function() {
     if (!this.highlighter || !this.isShown) {
       return;
     }
 
-    yield this.highlighter.hide();
+    await this.highlighter.hide();
     this.isShown = false;
     this.emit("unhighlighted");
-  })
+  }
 };
 
 EventEmitter.decorate(TargetNodeHighlighter);

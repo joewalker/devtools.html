@@ -639,23 +639,23 @@ Tooltip.prototype = {
    * @return a promise that resolves when the image is shown in the tooltip or
    * resolves when the broken image tooltip content is ready, but never rejects.
    */
-  setRelativeImageContent: Task.async(function*(imageUrl, inspectorFront,
+  setRelativeImageContent: async function(imageUrl, inspectorFront,
                                                 maxDim) {
     if (imageUrl.startsWith("data:")) {
       // If the imageUrl already is a data-url, save ourselves a round-trip
       this.setImageContent(imageUrl, {maxDim: maxDim});
     } else if (inspectorFront) {
       try {
-        let {data, size} = yield inspectorFront.getImageDataFromURL(imageUrl,
+        let {data, size} = await inspectorFront.getImageDataFromURL(imageUrl,
                                                                     maxDim);
         size.maxDim = maxDim;
-        let str = yield data.string();
+        let str = await data.string();
         this.setImageContent(str, size);
       } catch (e) {
         this.setBrokenImageContent();
       }
     }
-  }),
+  },
 
   /**
    * Fill the tooltip with a message explaining the the image is missing
@@ -890,7 +890,7 @@ Tooltip.prototype = {
    * @return A promise that resolves when the font tooltip content is ready, or
    *         rejects if no font is provided
    */
-  setFontFamilyContent: Task.async(function*(font, nodeFront) {
+  setFontFamilyContent: async function(font, nodeFront) {
     if (!font || !nodeFront) {
       throw new Error("Missing font");
     }
@@ -904,11 +904,11 @@ Tooltip.prototype = {
           (Services.prefs.getCharPref("devtools.theme") === "light") ?
           "black" : "white";
 
-      let {data, size} = yield nodeFront.getFontFamilyDataURL(font, fillStyle);
-      let str = yield data.string();
+      let {data, size} = await nodeFront.getFontFamilyDataURL(font, fillStyle);
+      let str = await data.string();
       this.setImageContent(str, { hideDimensionLabel: true, maxDim: size });
     }
-  }),
+  },
 
   /**
    * Set the content of this tooltip to the MDN docs widget.

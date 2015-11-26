@@ -798,7 +798,7 @@ RuleRewriter.prototype = {
    * @return {Promise} a promise that is resolved when the edit has
    *                   completed
    */
-  internalCreateProperty: Task.async(function*(index, name, value, priority) {
+  internalCreateProperty: async function(index, name, value, priority) {
     this.completeInitialization(index);
     let newIndentation = "";
     if (this.hasNewLine) {
@@ -808,7 +808,7 @@ RuleRewriter.prototype = {
       } else if (this.defaultIndentation) {
         newIndentation = this.defaultIndentation;
       } else {
-        newIndentation = yield this.getDefaultIndentation();
+        newIndentation = await this.getDefaultIndentation();
       }
     }
 
@@ -845,7 +845,7 @@ RuleRewriter.prototype = {
       // index.
       this.completeCopying(this.decl.offsets[0]);
     }
-  }),
+  },
 
   /**
    * Create a new declaration.
