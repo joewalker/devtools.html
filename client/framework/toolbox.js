@@ -25,6 +25,10 @@ const { Services } = require("devtools/sham/services");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { Task } = require("devtools/sham/task");
 
+let { DebuggerClient } = require("devtools/shared/client/main");
+let { DebuggerTransport } = require("devtools/shared/transport/transport");
+let { TargetFactory } = require("devtools/client/framework/target");
+
 var toolboxStrings = () => {};
 // loader.lazyGetter(this, "toolboxStrings", () => {
 //   const properties = "chrome://devtools/locale/toolbox.properties";
@@ -82,29 +86,21 @@ const ToolboxButtons = exports.ToolboxButtons = [
   { id: "command-button-measure" }
 ];
 
-exports.getWSTarget = Task.async(function*() {
-  let { DebuggerClient } = require("devtools/shared/client/main");
-  let { DebuggerTransport } = require("devtools/shared/transport/transport");
-  let { Task } = require("devtools/sham/task");
-  let { TargetFactory } = require("devtools/client/framework/target");
-  let { InspectorFront } = require("devtools/server/actors/inspector");
-
+/**
+ *
+ */
+exports.getWSTarget = function() {
   let socket = new WebSocket("ws://localhost:9000");
   let transport = new DebuggerTransport(socket);
   let client = new DebuggerClient(transport);
-  yield client.connect();
-
-  let response = yield client.listTabs();
-  let tab = response.tabs[response.selected];
-
-  let options = {
-    form: tab,
-    client,
-    chrome: false,
-  };
-  let target = yield TargetFactory.forRemoteTab(options);
-  return target;
-});
+  return client.connect().then(() => {
+    return client.listTabs().then(response => {
+      let tab = response.tabs[response.selected];
+      let options = { form: tab, client, chrome: false };
+      return TargetFactory.forRemoteTab(options);
+    });
+  });
+};
 
 /**
  * A "Toolbox" is the component that holds all the tools for one specific
