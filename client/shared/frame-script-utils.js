@@ -11,9 +11,8 @@ const subScriptLoader = Cc("@mozilla.org/moz/jssubscript-loader;1")
                           .getService(Ci.mozIJSSubScriptLoader);
 var EventUtils = {};
 subScriptLoader.loadSubScript("chrome://marionette/content/EventUtils.js", EventUtils);
-loader.lazyGetter(this, "nsIProfilerModule", () => {
-  return Cc("@mozilla.org/tools/profiler;1").getService(Ci.nsIProfiler);
-});
+
+const nsIProfilerModule = Cc("@mozilla.org/tools/profiler;1").getService(Ci.nsIProfiler);
 
 addMessageListener("devtools:test:history", function ({ data }) {
   content.history[data.direction]();

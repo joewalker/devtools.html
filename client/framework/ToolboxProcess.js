@@ -14,12 +14,8 @@ const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { DevToolsLoader } = require("devtools/shared/Loader");
 
-XPCOMUtils.defineLazyGetter(this, "Telemetry", function () {
-  return require("devtools/client/shared/telemetry");
-});
-XPCOMUtils.defineLazyGetter(this, "EventEmitter", function () {
-  return require("devtools/shared/event-emitter");
-});
+this.Telemetry = require("devtools/client/shared/telemetry");
+this.EventEmitter = require("devtools/shared/event-emitter");
 const promise = require("devtools/sham/promise");
 
 var processes = new Set();

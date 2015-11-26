@@ -842,9 +842,7 @@ var Prefs = new ViewHelpers.Prefs("devtools.netmonitor", {
  * Returns true if this is document is in RTL mode.
  * @return boolean
  */
-XPCOMUtils.defineLazyGetter(window, "isRTL", function() {
-  return window.getComputedStyle(document.documentElement, null).direction == "rtl";
-});
+ window.isRTL = window.getComputedStyle(document.documentElement, null).direction == "rtl";
 
 /**
  * Convenient way of emitting events from the panel window.

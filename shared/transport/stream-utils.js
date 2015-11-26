@@ -11,14 +11,10 @@ const { dumpv } = DevToolsUtils;
 const EventEmitter = require("devtools/shared/event-emitter");
 const promise = require("devtools/sham/promise");
 
-DevToolsUtils.defineLazyGetter(this, "IOUtil", () => {
-  return Cc("@mozilla.org/io-util;1").getService(Ci.nsIIOUtil);
-});
+const IOUtil = Cc("@mozilla.org/io-util;1").getService(Ci.nsIIOUtil);
 
-DevToolsUtils.defineLazyGetter(this, "ScriptableInputStream", () => {
-  return CC("@mozilla.org/scriptableinputstream;1",
-            "nsIScriptableInputStream", "init");
-});
+const ScriptableInputStream = CC("@mozilla.org/scriptableinputstream;1",
+          "nsIScriptableInputStream", "init");
 
 const BUFFER_SIZE = 0x8000;
 

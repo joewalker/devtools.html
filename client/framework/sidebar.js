@@ -552,7 +552,7 @@ ToolSidebar.prototype = {
   })
 }
 
-XPCOMUtils.defineLazyGetter(this, "l10n", function() {
+function getToolboxStrings() {
   let bundle = Services.strings.createBundle("chrome://devtools/locale/toolbox.properties");
   let l10n = function(aName, ...aArgs) {
     try {
@@ -566,4 +566,6 @@ XPCOMUtils.defineLazyGetter(this, "l10n", function() {
     }
   };
   return l10n;
-});
+}
+
+const l10n = getToolboxStrings();

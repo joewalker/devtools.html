@@ -83,8 +83,7 @@ const { DebuggerClient } = require("devtools/shared/client/main");
 const { EnvironmentClient } = require("devtools/shared/client/main");
 const { ObjectClient } = require("devtools/shared/client/main");
 
-XPCOMUtils.defineLazyGetter(this, "REMOTE_TIMEOUT", () =>
-  Services.prefs.getIntPref("devtools.debugger.remote-timeout"));
+const REMOTE_TIMEOUT = Services.prefs.getIntPref("devtools.debugger.remote-timeout");
 
 //XPCOMUtils.defineLazyModuleGetter(this, "ShortcutUtils",
 //  "resource://gre/modules/ShortcutUtils.jsm");
@@ -2485,9 +2484,7 @@ var CloseObserver = {
   },
 };
 
-XPCOMUtils.defineLazyGetter(Scratchpad, "strings", function () {
-  return Services.strings.createBundle(SCRATCHPAD_L10N);
-});
+Scratchpad.strings = Services.strings.createBundle(SCRATCHPAD_L10N);
 
 addEventListener("load", Scratchpad.onLoad.bind(Scratchpad), false);
 addEventListener("unload", Scratchpad.onUnload.bind(Scratchpad), false);

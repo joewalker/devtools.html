@@ -524,9 +524,7 @@ const { NetUtil } = require("devtools/sham/netutil");
 
 const { TextDecoder, OS } = require("devtools/sham/osfile");
 
-exports.defineLazyGetter(this, "NetworkHelper", () => {
-  return require("devtools/shared/webconsole/network-helper");
-});
+const NetworkHelper = require("devtools/shared/webconsole/network-helper");
 
 /**
  * Performs a request to load the desired URL and returns a promise.

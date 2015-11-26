@@ -16,17 +16,9 @@ const {
 } = require("devtools/client/shared/widgets/ViewHelpers");
 var promise = require("devtools/sham/promise");
 
-Object.defineProperty(this, "WebConsoleUtils", {
-  get: function() {
-    return require("devtools/shared/webconsole/utils").Utils;
-  },
-  configurable: true,
-  enumerable: true
-});
+const WebConsoleUtils = require("devtools/shared/webconsole/utils").Utils;
 
-XPCOMUtils.defineLazyGetter(this, "VARIABLES_SORTING_ENABLED", () =>
-  Services.prefs.getBoolPref("devtools.debugger.ui.variables-sorting-enabled")
-);
+const VARIABLES_SORTING_ENABLED = Services.prefs.getBoolPref("devtools.debugger.ui.variables-sorting-enabled");
 
 const MAX_LONG_STRING_LENGTH = 200000;
 const MAX_PROPERTY_ITEMS = 2000;

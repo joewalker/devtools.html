@@ -9,10 +9,7 @@ const { defer, resolve } = require("devtools/sham/promise");
 const { HarUtils } = require("./har-utils.js");
 const { HarBuilder } = require("./har-builder.js");
 
-XPCOMUtils.defineLazyGetter(this, "clipboardHelper", function() {
-  return Cc("@mozilla.org/widget/clipboardhelper;1").
-    getService(Ci.nsIClipboardHelper);
-});
+this.clipboardHelper = Cc("@mozilla.org/widget/clipboardhelper;1").getService(Ci.nsIClipboardHelper);
 
 var uid = 1;
 
