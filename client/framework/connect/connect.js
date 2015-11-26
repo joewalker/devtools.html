@@ -11,7 +11,6 @@ const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
 const { Task } = require("devtools/sham/task");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
-var L10N = require("devtools/sham/l10n");
 var {TargetFactory} = require("devtools/client/framework/target");
 var {Toolbox} = require("devtools/client/framework/toolbox")
 var promise = require("devtools/sham/promise");
@@ -21,7 +20,7 @@ var gClient;
 var gConnectionTimeout;
 
 XPCOMUtils.defineLazyGetter(window, 'l10n', function () {
-  return new L10N(require('chrome://devtools/locale/connection-screen.properties'));
+  return Services.strings.createBundle('chrome://devtools/locale/connection-screen.properties');
 });
 
 /**

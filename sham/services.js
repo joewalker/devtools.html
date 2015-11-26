@@ -2,15 +2,14 @@
  * A sham for https://dxr.mozilla.org/mozilla-central/source/toolkit/modules/Services.jsm
  */
 
-const L10N = require("devtools/sham/l10n");
-
 const Services = {
   strings: {
     createBundle: name => {
-      if (typeof name !== "object") {
-        throw new Error(`Cannot implement 'Services.strings.createBundle'. Use 'new L10N(require(${name}))' instead, or call this with the return value of a require, like 'Services.strings.createBundle(require(${name}))'.`);
+      // TODO: implement
+      return  {
+        GetStringFromName: () => { return ""; },
+        formatStringFromName: () => { return ""; }
       }
-      return new L10N(name);
     }
   },
   appinfo: {
