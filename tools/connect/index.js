@@ -17,7 +17,7 @@ function getPort() {
   return WEB_SOCKET_PORT;
 }
 
-exports.start = Task.async(function*() {
+const start = Task.async(function*() {
   let socket = new WebSocket("ws://localhost:" + getPort());
   let transport = new DebuggerTransport(socket);
   let client = new DebuggerClient(transport);
@@ -46,3 +46,5 @@ exports.start = Task.async(function*() {
 
   output.textContent += walker + "\n\n";
 });
+
+start().catch(err => console.error(err));

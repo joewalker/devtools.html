@@ -10,16 +10,6 @@
     </head>
     <body>
         <!-- All this code should actually live inside an iframe and this should be called via a toolbox -->
-        <script src="../../globals.js"></script>
-        <script src="build.js"></script>
-        <script>
-            var toolbox;
-            Toolbox.getWSTarget().then(function(target) {
-                toolbox = new Toolbox.Toolbox(target, "inspector", "bottom");
-                toolbox.open().then(function() {
-                    console.log("Open finished");
-                });
-            });
-        </script>
+        <script src="../../built/toolbox.js"></script>
     </body>
 </html>
