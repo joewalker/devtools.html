@@ -30,7 +30,7 @@ const TABS_PINNED_AVG_HISTOGRAM = "DEVTOOLS_TABS_PINNED_AVERAGE_LINEAR";
 const FORBIDDEN_IDS = new Set(["toolbox", ""]);
 const MAX_ORDINAL = 99;
 
-const bundle = Services.strings.createBundle("chrome://devtools/locale/toolbox.properties");
+const bundle = Services.strings.createBundle(require("l10n/toolbox.properties"));
 
 /**
  * DevTools is a class that represents a set of developer tools, it holds a

@@ -19,7 +19,6 @@ const ENABLE_CODE_FOLDING = "devtools.editor.enableCodeFolding";
 const KEYMAP      = "devtools.editor.keymap";
 const AUTO_CLOSE  = "devtools.editor.autoclosebrackets";
 const AUTOCOMPLETE  = "devtools.editor.autocomplete";
-const L10N_BUNDLE = "chrome://devtools/locale/sourceeditor.properties";
 const XUL_NS      = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 const VALID_KEYMAPS = new Set(["emacs", "vim", "sublime"]);
 const {Task} = require("devtools/sham/task");
@@ -38,7 +37,7 @@ const events  = require("devtools/shared/event-emitter");
 const { PrefObserver } = require("devtools/client/styleeditor/utils");
 
 const { Services } = require("devtools/sham/services");
-const L10N = Services.strings.createBundle(L10N_BUNDLE);
+const L10N = Services.strings.createBundle(require("l10n/sourceeditor.properties"));
 
 const { OS } = Services.appinfo;
 

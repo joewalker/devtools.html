@@ -15,7 +15,6 @@ const WIDGET_FOCUSABLE_NODES = new Set(["vbox", "hbox"]);
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
-// const {setTimeout, clearTimeout} = require("devtools/sham/timer");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const EventEmitter = require("devtools/shared/event-emitter");
 
