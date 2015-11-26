@@ -17,7 +17,7 @@ const Heritage = require("sdk/core/heritage");
 const {Eyedropper} = require("devtools/client/eyedropper/eyedropper");
 const Editor = require("devtools/client/sourceeditor/editor");
 
-const beautify = require("devtools/shared/jsbeautify/beautify");
+//const beautify = require("devtools/shared/jsbeautify/beautify");
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
