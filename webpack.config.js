@@ -6,11 +6,30 @@ var path = require("path");
 
 module.exports = {
   entry: {
-    fontinspector: [ path.join(__dirname, "client", "fontinspector", "font-inspector.js") ],
-    toolbox: [ path.join(__dirname, "client", "framework", "index.js") ],
-    inspector: [ path.join(__dirname, "client", "inspector", "inspector-panel.js") ],
-    styleinspector: [ path.join(__dirname, "client", "styleinspector", "style-inspector.js") ],
-    test: [ "mocha!./test/index.js" ],
+    fontinspector: [
+      "babel-polyfill",
+      path.join(__dirname, "client", "fontinspector", "font-inspector.js"),
+    ],
+    toolbox: [
+      "babel-polyfill",
+      path.join(__dirname, "client", "framework", "index.js"),
+    ],
+    inspector: [
+      "babel-polyfill",
+      path.join(__dirname, "client", "inspector", "inspector-panel.js"),
+    ],
+    styleinspector: [
+      "babel-polyfill",
+      path.join(__dirname, "client", "styleinspector", "style-inspector.js"),
+    ],
+    test: [
+      "babel-polyfill",
+      "mocha!./test/index.js",
+    ],
+    connect: [
+      "babel-polyfill",
+      path.join(__dirname, "tools", "connect", "index.js"),
+    ],
   },
   output: {
     path: path.join(__dirname, "built"),

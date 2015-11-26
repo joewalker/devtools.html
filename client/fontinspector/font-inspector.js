@@ -6,8 +6,6 @@
 
 "use strict";
 
-require("babel-polyfill");
-
 const DEFAULT_PREVIEW_TEXT = "Abc";
 const PREVIEW_UPDATE_DELAY = 150;
 
