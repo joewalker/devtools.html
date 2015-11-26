@@ -1237,7 +1237,7 @@ var Scratchpad = {
             file = aFile;
           } else {
             file = Components.classes["@mozilla.org/file/local;1"].
-                   createInstance(Components.interfaces.nsILocalFile);
+                   createInstance(Ci.nsILocalFile);
             let filePath = this.getRecentFiles()[aIndex];
             file.initWithPath(filePath);
           }
