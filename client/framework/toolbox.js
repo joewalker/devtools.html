@@ -24,23 +24,20 @@ var Telemetry = require("devtools/client/shared/telemetry");
 const { Services } = require("devtools/sham/services");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { Task } = require("devtools/sham/task");
+const bundle = Services.strings.createBundle(require("l10n/toolbox.properties"));
 
-var toolboxStrings = () => {};
-// loader.lazyGetter(this, "toolboxStrings", () => {
-//   const properties = "chrome://devtools/locale/toolbox.properties";
-//   const bundle = Services.strings.createBundle(properties);
-//   return (name, ...args) => {
-//     try {
-//       if (!args.length) {
-//         return bundle.GetStringFromName(name);
-//       }
-//       return bundle.formatStringFromName(name, args, args.length);
-//     } catch (ex) {
-//       Services.console.logStringMessage("Error reading '" + name + "'");
-//       return null;
-//     }
-//   };
-// });
+var toolboxStrings = (name, ...args) => {
+  try {
+    if (!args.length) {
+      return bundle.GetStringFromName(name);
+    }
+    return bundle.formatStringFromName(name, args, args.length);
+  } catch (ex) {
+    console.error("Error reading '" + name + "'");
+    return null;
+  }
+};
+
 const { getHighlighterUtils } = require("devtools/client/framework/toolbox-highlighter-utils");
 const { Hosts } = require("devtools/client/framework/toolbox-hosts");
 const { Selection } = require("devtools/client/framework/selection");

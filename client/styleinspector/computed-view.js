@@ -221,8 +221,7 @@ CssComputedView.l10n = function(name) {
 };
 
 XPCOMUtils.defineLazyGetter(CssComputedView, "_strings", function() {
-  return Services.strings.createBundle(
-    "chrome://devtools-shared/locale/styleinspector.properties");
+  return Services.strings.createBundle(require("l10n/styleinspector.properties"));
 });
 
 

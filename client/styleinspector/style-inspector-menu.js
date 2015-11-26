@@ -13,10 +13,7 @@ const overlays = require("devtools/client/styleinspector/style-inspector-overlay
 const { Services } = require("devtools/sham/services");
 const {Task} = require("devtools/sham/task");
 const clipboardHelper = Cc("@mozilla.org/widget/clipboardhelper;1").getService(Ci.nsIClipboardHelper);
-loader.lazyGetter(this, "_strings", () => {
-  return Services.strings
-  .createBundle("chrome://devtools-shared/locale/styleinspector.properties");
-});
+const _strings = Services.strings.createBundle(require("l10n/styleinspector.properties"));
 
 // XXX: Need to use different popups
 const XUL_NS = "http://www.w3.org/1999/xhtml";

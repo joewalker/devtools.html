@@ -5,9 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const Cc = Components.classes;
-const Ci = Components.interfaces;
-const Cu = Components.utils;
+const Ci = require("devtools/sham/chrome");
 
 const PANE_APPEARANCE_DELAY = 50;
 const PAGE_SIZE_ITEM_COUNT_RATIO = 5;
@@ -299,9 +297,6 @@ var ViewHelpers = {
  */
 ViewHelpers.L10N = function(aStringBundleName) {
   this.stringBundle = Services.strings.createBundle(aStringBundleName);
-  // XPCOMUtils.defineLazyGetter(this, "stringBundle", () =>
-  //   Services.strings.createBundle(aStringBundleName));
-
   this.ellipsis = "…"; // Should be l10n'd
 };
 

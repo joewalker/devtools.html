@@ -8,7 +8,6 @@
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
-const DBG_STRINGS_URI = "chrome://devtools/locale/debugger.properties";
 const LAZY_EMPTY_DELAY = 150; // ms
 const LAZY_EXPAND_DELAY = 50; // ms
 const SCROLL_PAGE_SIZE_DEFAULT = 0;
@@ -50,7 +49,7 @@ Object.defineProperty(this, "NetworkHelper", {
 /**
  * Debugger localization strings.
  */
-const STR = Services.strings.createBundle(DBG_STRINGS_URI)
+const STR = Services.strings.createBundle(require("l10n/debugger.properties"))
 
 /**
  * A tree view for inspecting scopes, objects and properties.

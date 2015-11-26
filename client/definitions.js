@@ -14,14 +14,11 @@ var InspectorPanel = require("devtools/client/inspector/inspector-panel").Inspec
 // loader.lazyGetter(this, "WebConsolePanel", () => require("devtools/client/webconsole/panel").WebConsolePanel);
 
 // Strings
-const toolboxProps = "l10n/toolbox.properties";
-const inspectorProps = "l10n/inspector.properties";
-const webConsoleProps = "l10n/webconsole.properties";
 const L10N = require("devtools/sham/l10n");
 
-var toolboxStrings = Services.strings.createBundle(toolboxProps);
-var webConsoleStrings = Services.strings.createBundle(webConsoleProps);
-var inspectorStrings = Services.strings.createBundle(inspectorProps);
+var toolboxStrings = new L10N(require("l10n/toolbox.properties"));
+var webConsoleStrings = new L10N(require("l10n/webconsole.properties"));
+var inspectorStrings = new L10N(require("l10n/inspector.properties"));
 
 var Tools = {};
 exports.Tools = Tools;

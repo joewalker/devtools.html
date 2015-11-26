@@ -835,7 +835,7 @@ CssLogic.getComputedStyle = function(node)
 };
 
 const _strings = Services.strings
-             .createBundle("chrome://devtools-shared/locale/styleinspector.properties");
+             .createBundle(require("l10n/styleinspector.properties"));
 
 /**
  * Memonized lookup of a l10n string from a string bundle.
