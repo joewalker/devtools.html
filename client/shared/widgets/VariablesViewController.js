@@ -22,7 +22,6 @@ const VARIABLES_SORTING_ENABLED = Services.prefs.getBoolPref("devtools.debugger.
 
 const MAX_LONG_STRING_LENGTH = 200000;
 const MAX_PROPERTY_ITEMS = 2000;
-const DBG_STRINGS_URI = "chrome://devtools/locale/debugger.properties";
 
 const ELLIPSIS = "…"; // Should be l10n'd
 
@@ -778,7 +777,7 @@ var StackFrameUtils = {
 /**
  * Localization convenience methods.
  */
-var L10N = new ViewHelpers.L10N(DBG_STRINGS_URI);
+var L10N = new ViewHelpers.L10N(require("l10n/debugger.properties"));
 
 exports.VariablesViewController = VariablesViewController;
 exports.StackFrameUtils = StackFrameUtils;

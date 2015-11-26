@@ -17,7 +17,7 @@ const { gDevTools } = require("devtools/client/framework/gDevTools");
 var RuleView = require("devtools/client/styleinspector/rule-view");
 var ComputedView = require("devtools/client/styleinspector/computed-view");
 // this._strings = Services.strings
-// .createBundle("chrome://devtools-shared/locale/styleinspector.properties");
+// .createBundle(require("l10n/styleinspector.properties"));
 
 // This module doesn't currently export any symbols directly, it only
 // registers inspector tools.

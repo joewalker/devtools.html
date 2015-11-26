@@ -11,6 +11,7 @@ const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
 const { Task } = require("devtools/sham/task");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
+var L10N = require("devtools/sham/l10n");
 var {TargetFactory} = require("devtools/client/framework/target");
 var {Toolbox} = require("devtools/client/framework/toolbox")
 var promise = require("devtools/sham/promise");
@@ -19,7 +20,7 @@ var {DebuggerClient} = require("devtools/shared/client/main");
 var gClient;
 var gConnectionTimeout;
 
-window.l10n = Services.strings.createBundle('chrome://devtools/locale/connection-screen.properties');
+window.l10n = Services.strings.createBundle('l10n/connection-screen.properties');
 
 /**
  * Once DOM is ready, we prefil the host/port inputs with

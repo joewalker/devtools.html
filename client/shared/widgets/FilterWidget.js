@@ -12,8 +12,7 @@
 const EventEmitter = require("devtools/shared/event-emitter");
 const { Cu, Cc, Ci } = require("devtools/sham/chrome");
 const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
-const STRINGS_URI = "chrome://devtools/locale/filterwidget.properties";
-const L10N = new ViewHelpers.L10N(STRINGS_URI);
+const L10N = new ViewHelpers.L10N(require("l10n/filterwidget.properties"));
 const {cssTokenizer} = require("devtools/client/shared/css-parsing-utils");
 
 const asyncStorage = require("devtools/shared/async-storage");

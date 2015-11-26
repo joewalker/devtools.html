@@ -7,7 +7,7 @@
 
 const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 
-const DBG_STRINGS_URI = "chrome://devtools/locale/debugger.properties";
+const DBG_STRINGS_URI = "l10n/debugger.properties";
 const NEW_SOURCE_IGNORED_URLS = ["debugger eval code", "XStringBundle"];
 const NEW_SOURCE_DISPLAY_DELAY = 200; // ms
 const FETCH_SOURCE_RESPONSE_DELAY = 200; // ms
@@ -2012,7 +2012,7 @@ Object.defineProperty(Breakpoints.prototype, "_addedOrDisabled", {
 /**
  * Localization convenience methods.
  */
-var L10N = new ViewHelpers.L10N(DBG_STRINGS_URI);
+var L10N = new ViewHelpers.L10N(require(DBG_STRINGS_URI));
 
 /**
  * Shortcuts for accessing various debugger preferences.

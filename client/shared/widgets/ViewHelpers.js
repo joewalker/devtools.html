@@ -13,7 +13,6 @@ const WIDGET_FOCUSABLE_NODES = new Set(["vbox", "hbox"]);
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
-// const {setTimeout, clearTimeout} = require("devtools/sham/timer");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const EventEmitter = require("devtools/shared/event-emitter");
 
@@ -298,9 +297,6 @@ var ViewHelpers = {
  */
 ViewHelpers.L10N = function(aStringBundleName) {
   this.stringBundle = Services.strings.createBundle(aStringBundleName);
-  // XPCOMUtils.defineLazyGetter(this, "stringBundle", () =>
-  //   Services.strings.createBundle(aStringBundleName));
-
   this.ellipsis = "…"; // Should be l10n'd
 };
 

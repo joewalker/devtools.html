@@ -40,7 +40,7 @@ const EventEmitter = require("devtools/shared/event-emitter");
 const StyleInspectorMenu = require("devtools/client/styleinspector/style-inspector-menu");
 const { Services } = require("devtools/sham/services");
 const _strings = Services.strings.createBundle(
-    "chrome://devtools-shared/locale/styleinspector.properties");
+    require("l10n/styleinspector.properties"));
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
