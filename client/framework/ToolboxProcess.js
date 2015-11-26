@@ -210,7 +210,7 @@ BrowserToolboxProcess.prototype = {
 
     // Disable safe mode for the new process in case this was opened via the
     // keyboard shortcut.
-    let nsIEnvironment = Components.classes["@mozilla.org/process/environment;1"].getService(Components.interfaces.nsIEnvironment);
+    let nsIEnvironment = Cc["@mozilla.org/process/environment;1"].getService(Ci.nsIEnvironment);
     let originalValue = nsIEnvironment.get("MOZ_DISABLE_SAFE_MODE_KEY");
     nsIEnvironment.set("MOZ_DISABLE_SAFE_MODE_KEY", "1");
 
