@@ -40,6 +40,8 @@
   },
   "dependencies": {
     "babel-polyfill": "6.2.0",
+    "express": "4.13.3",
+    "morgan": "1.6.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.0",

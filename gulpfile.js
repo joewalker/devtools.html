@@ -1,4 +1,5 @@
-/* eslint-env node */
+#!/usr/bin/env babel-node
+/* eslint-env babel-node */
 "use strict";
 
 // Lets us use babel in tests
@@ -13,6 +14,8 @@ var mocha = require("gulp-mocha");
 var wsTcpProxy = require("./tools/ws-tcp-proxy");
 var http = require("http");
 var ecstatic = require("ecstatic");
+var express = require('express');
+var morgan = require('morgan');
 
 var WEBPACK_CONFIG_NAME = "webpack.config.js";
 var PREFS_SRC_FILE = path.join(__dirname, "client", "preferences", "devtools.js");
@@ -163,13 +166,23 @@ gulp.task("start-proxy", function() {
 gulp.task("build-connect", function() {
   return buildDir(path.join(__dirname, "tools", "connect"));
 });
+gulp.task("serve-connect", [ "start-proxy" ], function() {
+  var app = express();
 
-gulp.task("serve-connect", ["build-connect", "start-proxy"], function() {
-  var server = http.createServer(ecstatic({
+  app.use(morgan('dev'));
+
+  app.use(ecstatic({
     root: path.join(__dirname, "tools", "connect"),
-    cache: 0
+    handleError: false,
   }));
-  server.listen(CONNECT_HTTP_PORT);
+  app.use(ecstatic({
+    root: path.join(__dirname, "built"),
+    baseDir: '/built/',
+    handleError: false,
+  }));
+
+  http.createServer(app).listen(CONNECT_HTTP_PORT);
+
   console.log("Open http://localhost:8081/?wsPort=9000 to test Firefox");
   console.log("Open http://localhost:8081/?wsPort=9001 to test Chrome");
 });
