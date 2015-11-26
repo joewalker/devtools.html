@@ -264,7 +264,7 @@ function cssPropertyIsValid(name, value) {
   return elt.style.length > 0;
 }
 
-module.exports = {
+exports.inDOMUtils = {
   getCSSLexer,
   rgbToColorName,
   colorToRGBA,

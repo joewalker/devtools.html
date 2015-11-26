@@ -2,7 +2,7 @@
  * A sham for https://developer.mozilla.org/en-US/Add-ons/SDK/Low-Level_APIs/chrome
  */
 
-var inDOMUtils = require("devtools/sham/inDOMUtils");
+var { inDOMUtils } = require("devtools/sham/inDOMUtils");
 
 var ourServices = {
   inIDOMUtils: inDOMUtils,
@@ -12,13 +12,22 @@ var ourServices = {
   nsIXULChromeRegistry: {
     isLocaleRTL: () => {return false;}
   },
+  nsIDOMParser: {
+
+  },
 };
 
 module.exports = {
   Cc: name => {
-    console.log('Sham for', name);
+    console.log('Cc sham for', name);
     return {
-      getService: (name) => ourServices[name]
+      getService: (name) => ourServices[name],
+      createInstance: (iface) => ourServices[iface],
+    };
+  },
+  CC: (name, iface, method) => {
+    console.log('CC sham for', name, iface, method);
+    return {
     };
   },
   Ci: {
