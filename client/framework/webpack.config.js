@@ -2,7 +2,7 @@ var common = require("../../build/common.webpack.config");
 
 module.exports = Object.assign({}, common, {
   context: __dirname,
-  entry: "./toolbox.js",
+  entry: [ "babel-polyfill", "./toolbox.js" ],
   output: {
     path: __dirname,
     filename: "build.js",
