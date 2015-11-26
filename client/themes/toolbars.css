@@ -811,7 +811,7 @@ html .devtools-toolbar {
 }
 
 #command-button-pick::before {
-  background-image: url("chrome://devtools/skin/images/command-pick.png");
+  background-image: url("images/command-pick.png");
 }
 
 #command-button-frames::before {
@@ -856,7 +856,7 @@ html .devtools-toolbar {
   }
 
   #command-button-pick::before {
-    background-image: url("chrome://devtools/skin/images/command-pick@2x.png");
+    background-image: url("images/command-pick@2x.png");
   }
 
   #command-button-frames::before {
