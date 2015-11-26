@@ -380,7 +380,7 @@ L10N.prototype = {};
 
 var l10n = new L10N();
 
-L10N.prototype.strings = Services.strings.createBundle("chrome://devtools/locale/inspector.properties");
+L10N.prototype.strings = Services.strings.createBundle(require("l10n/inspector.properties"));
 
 /**
  * Test whether a node is all whitespace.
