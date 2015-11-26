@@ -779,5 +779,5 @@ var StackFrameUtils = {
  */
 var L10N = new ViewHelpers.L10N(require("l10n/debugger.properties"));
 
-exports.VariablesViewController = this.VariablesViewController;
-exports.StackFrameUtils = this.StackFrameUtils;
+exports.VariablesViewController = VariablesViewController;
+exports.StackFrameUtils = StackFrameUtils;
