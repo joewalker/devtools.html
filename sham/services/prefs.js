@@ -85,21 +85,24 @@ exports.setIntPref = function (pref, value) {
 
 exports.getBoolPref = function (pref) {
   if (getPrefType(pref) !== PREF_BOOL) {
-    throw new Error("Can only call getBoolPref on boolean type prefs.");
+    console.error(`No cached boolean pref for ${pref}`);
+    return undefined;
   }
   return getPrefValue(pref);
 };
 
 exports.getCharPref = function (pref) {
   if (getPrefType(pref) !== PREF_STRING) {
-    throw new Error("Can only call getCharPref on string type prefs.");
+    console.error(`No cached char pref for ${pref}`);
+    return undefined;
   }
   return getPrefValue(pref);
 };
 
 exports.getIntPref = function (pref) {
   if (getPrefType(pref) !== PREF_INT) {
-    throw new Error("Can only call getIntPref on number type prefs.");
+    console.error(`No cached int pref for ${pref}`);
+    return undefined;
   }
   return getPrefValue(pref);
 };
