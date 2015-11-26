@@ -6,7 +6,7 @@ const {Cc,Ci,Cu,Cr} = require("devtools/sham/chrome");
 const ObservableObject = require("devtools/client/shared/observable-object");
 const promise = require("devtools/shared/deprecated-sync-thenables");
 
-const { EventEmitter } = require("devtools/shared/event-emitter");
+const EventEmitter = require("devtools/shared/event-emitter");
 const {generateUUID} = Cc['@mozilla.org/uuid-generator;1'].getService(Ci.nsIUUIDGenerator);
 const { FileUtils } = require("devtools/sham/fileutils");
 const {indexedDB} = require("sdk/indexed-db");

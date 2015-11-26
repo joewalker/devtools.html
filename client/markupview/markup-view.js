@@ -71,8 +71,8 @@ function MarkupView(aInspector, aFrame, aControllerWindow) {
   this.doc = this._frame.contentDocument;
   this._elt = this.doc.querySelector("#root");
   // XXX: source editor doesn't work yet
-  this.htmlEditor = { hide: () => {}, refresh: () => {}, show: () => {}, destroy: () => {}, once: () => {}}
-  // this.htmlEditor = new HTMLEditor(this.doc);
+  // this.htmlEditor = { hide: () => {}, refresh: () => {}, show: () => {}, destroy: () => {}, once: () => {}}
+  this.htmlEditor = new HTMLEditor(this.doc);
 
   try {
     this.maxChildren = Services.prefs.getIntPref("devtools.markup.pagesize");

@@ -5,7 +5,7 @@
 const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const {rgbToHsl} = require("devtools/shared/css-color").colorUtils;
 const Telemetry = require("devtools/client/shared/telemetry");
-const { EventEmitter } = require("devtools/shared/event-emitter");
+const EventEmitter = require("devtools/shared/event-emitter");
 const promise = require("devtools/sham/promise");
 //const {setTimeout, clearTimeout} = require("devtools/sham/timer");
 

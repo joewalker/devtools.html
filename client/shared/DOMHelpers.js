@@ -135,22 +135,15 @@ DOMHelpers.prototype = {
    * chrome iframes are loaded in content docshells (in Firefox
    * tabs for example).
    */
-  onceDOMReady: function Helpers_onLocationChange(callback) {
+  onceDOMReady: function(callback) {
     let window = this.window;
-    console.log("onceDOMReady", window.location.toString(), window.document.readyState)
-    // XXX: This is just a hack to simulate dom loaded.. this will surely
-    // fail in a variety of ways
-
-    setTimeout(function() {
+    if (window.document.readyState === "complete") {
       callback();
-    }, 1000);
-    // if (window.location.toString() === "about:blank") {
-    //   callback();
-    // } else {
-    //   window.document.addEventListener("DOMContentLoaded", () => {
-    //     callback();
-    //   });
-    // }
+    } else {
+      window.document.addEventListener("DOMContentLoaded", () => {
+        callback();
+      });
+    }
     // let docShell = window.QueryInterface(Ci.nsIInterfaceRequestor)
     //                      .getInterface(Ci.nsIWebNavigation)
     //                      .QueryInterface(Ci.nsIDocShell);

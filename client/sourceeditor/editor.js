@@ -22,6 +22,7 @@ const AUTOCOMPLETE  = "devtools.editor.autocomplete";
 const L10N_BUNDLE = "chrome://devtools/locale/sourceeditor.properties";
 const XUL_NS      = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 const VALID_KEYMAPS = new Set(["emacs", "vim", "sublime"]);
+const {Task} = require("devtools/sham/task");
 
 // Maximum allowed margin (in number of lines) from top or bottom of the editor
 // while shifting to a line which was initially out of view.
@@ -53,29 +54,29 @@ const CM_STYLES   = [
 ];
 
 const CM_SCRIPTS  = [
-  "chrome://devtools/content/shared/theme-switching.js",
-  "chrome://devtools/content/sourceeditor/codemirror/codemirror.js",
-  "chrome://devtools/content/sourceeditor/codemirror/dialog/dialog.js",
-  "chrome://devtools/content/sourceeditor/codemirror/search/searchcursor.js",
-  "chrome://devtools/content/sourceeditor/codemirror/search/search.js",
-  "chrome://devtools/content/sourceeditor/codemirror/edit/matchbrackets.js",
-  "chrome://devtools/content/sourceeditor/codemirror/edit/closebrackets.js",
-  "chrome://devtools/content/sourceeditor/codemirror/comment/comment.js",
-  "chrome://devtools/content/sourceeditor/codemirror/mode/javascript.js",
-  "chrome://devtools/content/sourceeditor/codemirror/mode/xml.js",
-  "chrome://devtools/content/sourceeditor/codemirror/mode/css.js",
-  "chrome://devtools/content/sourceeditor/codemirror/mode/htmlmixed.js",
-  "chrome://devtools/content/sourceeditor/codemirror/mode/clike.js",
-  "chrome://devtools/content/sourceeditor/codemirror/selection/active-line.js",
-  "chrome://devtools/content/sourceeditor/codemirror/edit/trailingspace.js",
-  "chrome://devtools/content/sourceeditor/codemirror/keymap/emacs.js",
-  "chrome://devtools/content/sourceeditor/codemirror/keymap/vim.js",
-  "chrome://devtools/content/sourceeditor/codemirror/keymap/sublime.js",
-  "chrome://devtools/content/sourceeditor/codemirror/fold/foldcode.js",
-  "chrome://devtools/content/sourceeditor/codemirror/fold/brace-fold.js",
-  "chrome://devtools/content/sourceeditor/codemirror/fold/comment-fold.js",
-  "chrome://devtools/content/sourceeditor/codemirror/fold/xml-fold.js",
-  "chrome://devtools/content/sourceeditor/codemirror/fold/foldgutter.js"
+  "shared/theme-switching.js",
+  "sourceeditor/codemirror/lib/codemirror.js",
+  "sourceeditor/codemirror/addon/dialog/dialog.js",
+  "sourceeditor/codemirror/addon/search/searchcursor.js",
+  "sourceeditor/codemirror/addon/search/search.js",
+  "sourceeditor/codemirror/addon/edit/matchbrackets.js",
+  "sourceeditor/codemirror/addon/edit/closebrackets.js",
+  "sourceeditor/codemirror/addon/comment/comment.js",
+  "sourceeditor/codemirror/mode/javascript.js",
+  "sourceeditor/codemirror/mode/xml.js",
+  "sourceeditor/codemirror/mode/css.js",
+  "sourceeditor/codemirror/mode/htmlmixed.js",
+  "sourceeditor/codemirror/mode/clike.js",
+  "sourceeditor/codemirror/addon/selection/active-line.js",
+  "sourceeditor/codemirror/addon/edit/trailingspace.js",
+  "sourceeditor/codemirror/keymap/emacs.js",
+  "sourceeditor/codemirror/keymap/vim.js",
+  "sourceeditor/codemirror/keymap/sublime.js",
+  "sourceeditor/codemirror/addon/fold/foldcode.js",
+  "sourceeditor/codemirror/addon/fold/brace-fold.js",
+  "sourceeditor/codemirror/addon/fold/comment-fold.js",
+  "sourceeditor/codemirror/addon/fold/xml-fold.js",
+  "sourceeditor/codemirror/addon/fold/foldgutter.js"
 ];
 
 const CM_IFRAME   =
@@ -251,6 +252,14 @@ Editor.prototype = {
     let def = promise.defer();
     let cm  = editors.get(this);
 
+    var parser = el.ownerDocument.createElement('a');
+    var baseUri = el.ownerDocument.documentURI;
+
+    // Yuck.. since the CM iframe is a data URI we need an absolute path
+    // for our resources and we are making some pretty bad assumptions about
+    // where it will be.
+    baseUri = baseUri.split("/").slice(0, -2).join("/") + "/";
+
     if (!env)
       env = el.ownerDocument.createElementNS(XUL_NS, "iframe");
 
@@ -259,7 +268,7 @@ Editor.prototype = {
     if (cm)
       throw new Error("You can append an editor only once.");
 
-    let onLoad = () => {
+    let onLoad = Task.async(function*() {
       // Once the iframe is loaded, we can inject CodeMirror
       // and its dependencies into its DOM.
 
@@ -271,10 +280,10 @@ Editor.prototype = {
         win.document.documentElement.setAttribute("force-theme", "light");
 
       let scriptsToInject = CM_SCRIPTS.concat(this.config.externalScripts);
-      scriptsToInject.forEach((url) => {
-        if (url.startsWith("chrome://"))
-          Services.scriptloader.loadSubScript(url, win, "utf8");
-      });
+      for (let script of scriptsToInject) {
+        yield Services.scriptloader.loadSubScript(baseUri + script, win, "utf8");
+      }
+
       // Replace the propertyKeywords, colorKeywords and valueKeywords
       // properties of the CSS MIME type with the values provided by Gecko.
       let cssSpec = win.CodeMirror.resolveMode("text/css");
@@ -389,7 +398,8 @@ Editor.prototype = {
         return L10N.GetStringFromName(name);
       });
 
-      cm.getInputField().controllers.insertControllerAt(0, controller(this));
+      // XXX: No controllers
+      // cm.getInputField().controllers.insertControllerAt(0, controller(this));
 
       this.container = env;
       editors.set(this, cm);
@@ -411,7 +421,7 @@ Editor.prototype = {
       win.dispatchEvent(editorReadyEvent);
 
       def.resolve();
-    };
+    }.bind(this));
 
     env.addEventListener("load", onLoad, true);
     env.setAttribute("src", CM_IFRAME);

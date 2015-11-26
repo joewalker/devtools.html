@@ -34,12 +34,12 @@ function buildDir(dirPath) {
     // skip it
     try {
       if (!fs.statSync(toolConfig).size) {
-        // console.log("Skipping dir", dirPath);
+        console.log("Skipping dir", dirPath);
         resolve();
         return;
       }
     } catch(e) {
-      // console.log("Skipping dir", dirPath);
+      console.log("Skipping dir", dirPath);
       resolve();
       return;
     }

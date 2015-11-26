@@ -54,10 +54,12 @@ Services.scriptloader = {
     if (!target || !target.document) {
       throw new Error(`target in loadSubScript does not have a document.`);
     }
-
-    let script = target.document.createElement("script");
-    script.src = url;
-    target.document.body.appendChild(script);
+    return new Promise(resolve => {
+      let script = target.document.createElement("script");
+      script.src = url;
+      script.onload = resolve
+      target.document.body.appendChild(script);
+    });
   }
 };
 
