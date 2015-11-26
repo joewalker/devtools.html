@@ -1126,9 +1126,7 @@ var OriginalSourceFront = protocol.FrontClass(OriginalSourceActor, {
 });
 
 
-XPCOMUtils.defineLazyGetter(this, "DOMUtils", function () {
-  return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
-});
+const DOMUtils = Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 
 exports.StyleSheetsActor = StyleSheetsActor;
 exports.StyleSheetsFront = StyleSheetsFront;

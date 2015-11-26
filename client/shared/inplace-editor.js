@@ -1244,14 +1244,8 @@ function moveFocus(win, direction) {
   return focusManager.moveFocus(win, null, direction, 0);
 }
 
-XPCOMUtils.defineLazyGetter(this, "focusManager", function() {
-  return Services.focus;
-});
+const focusManager = Services.focus;
 
-XPCOMUtils.defineLazyGetter(this, "CSSPropertyList", function() {
-  return domUtils.getCSSPropertyNames(domUtils.INCLUDE_ALIASES).sort();
-});
+const domUtils = Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 
-// XPCOMUtils.defineLazyGetter(this, "domUtils", function() {
-//   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
-// });
+const CSSPropertyList = domUtils.getCSSPropertyNames(domUtils.INCLUDE_ALIASES).sort();

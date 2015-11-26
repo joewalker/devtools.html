@@ -370,7 +370,8 @@ var ShadersEditorsView = {
    * Initialization function, called when the tool is started.
    */
   initialize: function() {
-    XPCOMUtils.defineLazyGetter(this, "_editorPromises", () => new Map());
+    this._editorPromises = new Map(); // was in XPCOMUtils.defineLazyGetter - Why?
+
     this._vsFocused = this._onFocused.bind(this, "vs", "fs");
     this._fsFocused = this._onFocused.bind(this, "fs", "vs");
     this._vsChanged = this._onChanged.bind(this, "vs");

@@ -16,12 +16,9 @@ const STRINGS_URI = "chrome://devtools/locale/filterwidget.properties";
 const L10N = new ViewHelpers.L10N(STRINGS_URI);
 const {cssTokenizer} = require("devtools/client/shared/css-parsing-utils");
 
-loader.lazyGetter(this, "asyncStorage",
-                  () => require("devtools/shared/async-storage"));
+const asyncStorage = require("devtools/shared/async-storage");
 
-// loader.lazyGetter(this, "DOMUtils", () => {
-//   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
-// });
+const DOMUtils = Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 
 const DEFAULT_FILTER_TYPE = "length";
 const UNIT_MAPPING = {

@@ -11,9 +11,7 @@ const {Cu, Ci, Cc} = require("devtools/sham/chrome");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
 
-XPCOMUtils.defineLazyGetter(this, "JsonViewService", function() {
-  return require("devtools/client/jsonview/utils");
-});
+this.JsonViewService = require("devtools/client/jsonview/utils");
 
 /**
  * Singleton object that represents the JSON View in-content tool.

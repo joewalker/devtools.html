@@ -38,9 +38,7 @@ const clipboardHelper = require("devtools/sham/clipboard");
 const {template} = require("devtools/client/markupview/templater");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
-loader.lazyGetter(this, "DOMParser", function() {
-  return Cc("@mozilla.org/xmlextras/domparser;1").createInstance(Ci.nsIDOMParser);
-});
+const DOMParser = Cc("@mozilla.org/xmlextras/domparser;1").createInstance(Ci.nsIDOMParser);
 const { AutocompletePopup } = require("devtools/client/shared/autocomplete-popup");
 
 /**
@@ -3098,6 +3096,4 @@ function map(value, oldMin, oldMax, newMin, newMax) {
   return newMin + (newMax - newMin) * ((value - oldMin) / ratio);
 }
 
-loader.lazyGetter(MarkupView.prototype, "strings", () => Services.strings.createBundle(
-  "chrome://devtools/locale/inspector.properties"
-));
+MarkupView.prototype.strings = Services.strings.createBundle("chrome://devtools/locale/inspector.properties");

@@ -370,6 +370,4 @@ Telemetry.prototype = {
   }
 };
 
-XPCOMUtils.defineLazyGetter(this, "appInfo", function() {
-  return Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULAppInfo);
-});
+const appInfo = Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULAppInfo);

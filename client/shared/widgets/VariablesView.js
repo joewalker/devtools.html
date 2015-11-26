@@ -31,21 +31,8 @@ const promise = require("devtools/sham/promise");
 const PluralForm = require("devtools/sham/pluralform");
 const clipboardHelper = require("devtools/sham/clipboard");
 
-Object.defineProperty(this, "WebConsoleUtils", {
-  get: function() {
-    return require("devtools/shared/webconsole/utils").Utils;
-  },
-  configurable: true,
-  enumerable: true
-});
-
-Object.defineProperty(this, "NetworkHelper", {
-  get: function() {
-    return require("devtools/shared/webconsole/network-helper");
-  },
-  configurable: true,
-  enumerable: true
-});
+const WebConsoleUtils = require("devtools/shared/webconsole/utils").Utils;
+const NetworkHelper = require("devtools/shared/webconsole/network-helper");
 
 /**
  * Debugger localization strings.

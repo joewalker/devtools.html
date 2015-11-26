@@ -1020,8 +1020,6 @@ ResponsiveUI.prototype = {
   },
 }
 
-XPCOMUtils.defineLazyGetter(ResponsiveUI.prototype, "strings", function () {
-  return Services.strings.createBundle("chrome://devtools/locale/responsiveUI.properties");
-});
+ResponsiveUI.prototype.strings = Services.strings.createBundle("chrome://devtools/locale/responsiveUI.properties");
 
 exports.ResponsiveUIManager = this.ResponsiveUIManager;

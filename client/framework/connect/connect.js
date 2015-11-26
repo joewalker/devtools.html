@@ -19,9 +19,7 @@ var {DebuggerClient} = require("devtools/shared/client/main");
 var gClient;
 var gConnectionTimeout;
 
-XPCOMUtils.defineLazyGetter(window, 'l10n', function () {
-  return Services.strings.createBundle('chrome://devtools/locale/connection-screen.properties');
-});
+window.l10n = Services.strings.createBundle('chrome://devtools/locale/connection-screen.properties');
 
 /**
  * Once DOM is ready, we prefil the host/port inputs with
