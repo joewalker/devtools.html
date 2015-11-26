@@ -3096,4 +3096,4 @@ function map(value, oldMin, oldMax, newMin, newMax) {
   return newMin + (newMax - newMin) * ((value - oldMin) / ratio);
 }
 
-MarkupView.prototype.strings = Services.strings.createBundle("chrome://devtools/locale/inspector.properties");
+MarkupView.prototype.strings = Services.strings.createBundle(require("l10n/inspector.properties"));
