@@ -780,5 +780,5 @@ var StackFrameUtils = {
  */
 var L10N = new ViewHelpers.L10N(DBG_STRINGS_URI);
 
-exports.VariablesViewController = this.VariablesViewController;
-exports.StackFrameUtils = this.StackFrameUtils;
+exports.VariablesViewController = VariablesViewController;
+exports.StackFrameUtils = StackFrameUtils;

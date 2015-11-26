@@ -262,7 +262,7 @@ function jQueryLiveGetListeners(node, boolOnEventFound) {
   return handlers;
 }
 
-let EventParsers = this.EventParsers = function() {
+let EventParsers = function() {
   if (this._eventParsers.size === 0) {
     for (let parserObj of parsers) {
       this.registerEventParser(parserObj);
