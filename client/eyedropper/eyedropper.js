@@ -21,7 +21,7 @@ const DOMUtils = Cc("@mozilla.org/inspector/dom-utils;1")
         .getService(Ci.inIDOMUtils);
 const XULRuntime = Cc("@mozilla.org/xre/app-info;1")
         .getService(Ci.nsIXULRuntime);
-const l10n = Services.strings.createBundle("chrome://devtools/locale/eyedropper.properties");
+const l10n = Services.strings.createBundle(require("l10n/eyedropper.properties"));
 
 const EYEDROPPER_URL = "chrome://devtools/content/eyedropper/eyedropper.xul";
 const CROSSHAIRS_URL = "chrome://devtools/content/eyedropper/crosshairs.css";

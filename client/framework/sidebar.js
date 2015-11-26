@@ -553,7 +553,7 @@ ToolSidebar.prototype = {
 }
 
 function getToolboxStrings() {
-  let bundle = Services.strings.createBundle("chrome://devtools/locale/toolbox.properties");
+  let bundle = Services.strings.createBundle(require("l10n/toolbox.properties"));
   let l10n = function(aName, ...aArgs) {
     try {
       if (aArgs.length == 0) {
