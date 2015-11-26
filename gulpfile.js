@@ -22,56 +22,8 @@ var PREFS_SRC_FILE = path.join(__dirname, "client", "preferences", "devtools.js"
 var PREFS_OUTPUT_FILE = path.join(__dirname, "build", "preferences.json");
 var CONNECT_HTTP_PORT = 8081;
 
-/**
- * Builds a webpack dir via `dirPath`, mapping to
- * `${dirPath}/webpack.config.js`, resolving the returned promise on completion.
- *
- * @param {String} toolName
- * @return {Promise}
- */
-function buildDir(dirPath) {
-  var toolConfig = path.join(dirPath, WEBPACK_CONFIG_NAME);
-
-  return new Promise(function (resolve, reject) {
-    // If tool directory doesn"t have a webpack build config,
-    // skip it
-    try {
-      if (!fs.statSync(toolConfig).size) {
-        console.log("Skipping dir", dirPath);
-        resolve();
-        return;
-      }
-    } catch(e) {
-      console.log("Skipping dir", dirPath);
-      resolve();
-      return;
-    }
-
-    webpack(require(toolConfig), function (err, stats) {
-      if (err) {
-        reject(new gutil.PluginError("webpack", err));
-      }
-      gutil.log("[webpack] Path: " + dirPath, stats.toString({}));
-      resolve();
-    });
-  });
-}
-
 gulp.task("build", function () {
-  var tools = fs.readdirSync(path.join(__dirname, "client"));
-  /*var dirs = tools.map(function(tool) {
-    return path.join(__dirname, "client", tool);
-  });*/
-  var dirs = [];
-  dirs.push(path.join(__dirname, "client", "inspector", "content"));
-  dirs.push(path.join(__dirname, "client", "inspector"));
-  dirs.push(path.join(__dirname, "client", "styleinspector"));
-  dirs.push(path.join(__dirname, "client", "fontinspector"));
-  dirs.push(path.join(__dirname, "client", "framework", "content"));
-  dirs.push(path.join(__dirname, "client", "framework"));
-  dirs.push(path.join(__dirname, "client", "webconsole"));
-  dirs.push(path.join(__dirname, "tools", "connect"));
-  return Promise.all(dirs.map(buildDir));
+  console.error('Use `webpack --progress --color`');
 });
 
 gulp.task("build-console", function () {
@@ -83,15 +35,11 @@ gulp.task("build-console", function () {
 });
 
 gulp.task("watch", function() {
-  var watcher = gulp.watch(["client/**/*","shared/**/*","sham/**/*"]);
-  watcher.on("change", function(event) {
-    console.log("File " + event.path + " was " + event.type);
-    if (event.type == "changed" &&
-        event.path.indexOf("build.js") == -1) {
-      console.log("Running build");
-      gulp.run("build");
-    }
-  });
+  console.error('Use `webpack --progress --color --watch`');
+});
+
+gulp.task("build-connect", function() {
+  console.error('Use `webpack --progress --color`');
 });
 
 gulp.task("watch-console", function() {
@@ -163,9 +111,6 @@ gulp.task("start-proxy", function() {
   });
 });
 
-gulp.task("build-connect", function() {
-  return buildDir(path.join(__dirname, "tools", "connect"));
-});
 gulp.task("serve-connect", [ "start-proxy" ], function() {
   var app = express();
 
@@ -196,50 +141,6 @@ gulp.task("start", ["start-proxy"], function() {
   server.listen(8055);
 
   console.log("Open http://localhost:8055/client/framework/toolbox-wrapper.html");
-});
-
-/**
- * Build client/framework directory (mostly related to the Toolbox)
- */
-gulp.task("build-framework", function() {
-  var dirs = [];
-  dirs.push(path.join(__dirname, "client", "framework"));
-  dirs.push(path.join(__dirname, "client", "framework", "content"));
-  return Promise.all(dirs.map(buildDir));
-});
-
-/**
- * Watch client/framework/content directory
- */
-gulp.task("watch-framework", function() {
-  var watcher = gulp.watch(["client/framework/**/*"]);
-  watcher.on("change", function(event) {
-    if (event.type == "changed" && event.path.indexOf("build.js") == -1) {
-      gulp.run("build-framework");
-    }
-  });
-});
-
-/**
- * Build client/inspector directory
- */
-gulp.task("build-inspector", function() {
-  var dirs = [];
-  dirs.push(path.join(__dirname, "client", "inspector"));
-  dirs.push(path.join(__dirname, "client", "inspector", "content"));
-  return Promise.all(dirs.map(buildDir));
-});
-
-/**
- * Watch client/framework/content directory
- */
-gulp.task("watch-inspector", function() {
-  var watcher = gulp.watch(["client/inspector/**/*", "client/framework/content/**/*"]);
-  watcher.on("change", function(event) {
-    if (event.type == "changed" && event.path.indexOf("build.js") == -1) {
-      gulp.run("build-inspector");
-    }
-  });
 });
 
 gulp.task("default", ["build"]);
