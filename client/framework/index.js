@@ -1,4 +1,5 @@
 
+require("babel-polyfill");
 const Toolbox = require("devtools/client/framework/toolbox");
 
 Toolbox.getWSTarget().then(target => {
