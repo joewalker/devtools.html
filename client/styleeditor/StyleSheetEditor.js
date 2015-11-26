@@ -5,9 +5,7 @@
 
 "use strict";
 
-const Cc = Components.classes;
-const Ci = Components.interfaces;
-const Cu = Components.utils;
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 
 const Editor  = require("devtools/client/sourceeditor/editor");
 const promise = require("devtools/sham/promise");
