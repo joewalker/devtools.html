@@ -1,6 +1,8 @@
 /* eslint-env browser */
 "use strict";
 
+require("babel-polyfill");
+
 let { DebuggerClient } = require("devtools/shared/client/main");
 let { DebuggerTransport } = require("devtools/shared/transport/transport");
 let { Task } = require("devtools/sham/task");
