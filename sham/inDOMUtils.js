@@ -195,7 +195,7 @@ function cssPropertyIsShorthand(name) {
   if (!(name in cssProperties)) {
     throw Error("unknown property " + name);
   }
-  return cssProperties[name].inherited;
+  return !!cssProperties[name].subproperties;
 }
 
 function getSubpropertiesForCSSProperty(name) {
