@@ -337,34 +337,34 @@ div.CodeMirror span.eval-text {
 }
 
 .theme-tooltip-panel .panel-arrow[side="top"] {
-  list-style-image: url("devtools/client/themes/tooltip/arrow-vertical-light.png");
+  list-style-image: url("/devtools/client/themes/tooltip/arrow-vertical-light.png");
   margin-bottom: var(--arrow-margin);
 }
 
 .theme-tooltip-panel .panel-arrow[side="bottom"] {
-  list-style-image: url("devtools/client/themes/tooltip/arrow-vertical-light.png");
+  list-style-image: url("/devtools/client/themes/tooltip/arrow-vertical-light.png");
   margin-top: var(--arrow-margin);
 }
 
 .theme-tooltip-panel .panel-arrow[side="left"] {
-  list-style-image: url("devtools/client/themes/tooltip/arrow-horizontal-light.png");
+  list-style-image: url("/devtools/client/themes/tooltip/arrow-horizontal-light.png");
   margin-right: var(--arrow-margin);
 }
 
 .theme-tooltip-panel .panel-arrow[side="right"] {
-  list-style-image: url("devtools/client/themes/tooltip/arrow-horizontal-light.png");
+  list-style-image: url("/devtools/client/themes/tooltip/arrow-horizontal-light.png");
   margin-left: var(--arrow-margin);
 }
 
 @media (min-resolution: 1.1dppx) {
   .theme-tooltip-panel .panel-arrow[side="top"],
   .theme-tooltip-panel .panel-arrow[side="bottom"] {
-    list-style-image: url("devtools/client/themes/tooltip/arrow-vertical-light@2x.png");
+    list-style-image: url("/devtools/client/themes/tooltip/arrow-vertical-light@2x.png");
   }
 
   .theme-tooltip-panel .panel-arrow[side="left"],
   .theme-tooltip-panel .panel-arrow[side="right"] {
-    list-style-image: url("devtools/client/themes/tooltip/arrow-horizontal-light@2x.png");
+    list-style-image: url("/devtools/client/themes/tooltip/arrow-horizontal-light@2x.png");
   }
 }
 

@@ -328,34 +328,34 @@ div.CodeMirror span.eval-text {
 }
 
 .theme-tooltip-panel .panel-arrow[side="top"] {
-  list-style-image: url("devtools/client/themes/tooltip/arrow-vertical-dark.png");
+  list-style-image: url("/devtools/client/themes/tooltip/arrow-vertical-dark.png");
   margin-bottom: var(--arrow-margin);
 }
 
 .theme-tooltip-panel .panel-arrow[side="bottom"] {
-  list-style-image: url("devtools/client/themes/tooltip/arrow-vertical-dark.png");
+  list-style-image: url("/devtools/client/themes/tooltip/arrow-vertical-dark.png");
   margin-top: var(--arrow-margin);
 }
 
 .theme-tooltip-panel .panel-arrow[side="left"] {
-  list-style-image: url("devtools/client/themes/tooltip/arrow-horizontal-dark.png");
+  list-style-image: url("/devtools/client/themes/tooltip/arrow-horizontal-dark.png");
   margin-right: var(--arrow-margin);
 }
 
 .theme-tooltip-panel .panel-arrow[side="right"] {
-  list-style-image: url("devtools/client/themes/tooltip/arrow-horizontal-dark.png");
+  list-style-image: url("/devtools/client/themes/tooltip/arrow-horizontal-dark.png");
   margin-left: var(--arrow-margin);
 }
 
 @media (min-resolution: 1.1dppx) {
   .theme-tooltip-panel .panel-arrow[side="top"],
   .theme-tooltip-panel .panel-arrow[side="bottom"] {
-    list-style-image: url("devtools/client/themes/tooltip/arrow-vertical-dark@2x.png");
+    list-style-image: url("/devtools/client/themes/tooltip/arrow-vertical-dark@2x.png");
   }
 
   .theme-tooltip-panel .panel-arrow[side="left"],
   .theme-tooltip-panel .panel-arrow[side="right"] {
-    list-style-image: url("devtools/client/themes/tooltip/arrow-horizontal-dark@2x.png");
+    list-style-image: url("/devtools/client/themes/tooltip/arrow-horizontal-dark@2x.png");
   }
 }
 

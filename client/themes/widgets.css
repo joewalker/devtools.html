@@ -641,7 +641,7 @@
 }
 
 .variable-or-property-non-writable-icon {
-  background: url("devtools/client/themes/images/vview-lock.png") no-repeat;
+  background: url("/devtools/client/themes/images/vview-lock.png") no-repeat;
   background-size: cover;
   width: 16px;
   height: 16px;
@@ -649,7 +649,7 @@
 
 @media (min-resolution: 1.1dppx) {
   .variable-or-property-non-writable-icon {
-    background-image: url("devtools/client/themes/images/vview-lock@2x.png");
+    background-image: url("/devtools/client/themes/images/vview-lock@2x.png");
   }
 }
 
@@ -767,32 +767,32 @@
 }
 
 .variables-view-delete {
-  background-image: url("devtools/client/themes/images/vview-delete.png");
+  background-image: url("/devtools/client/themes/images/vview-delete.png");
 }
 
 @media (min-resolution: 1.1dppx) {
   .variables-view-delete {
-    background-image: url("devtools/client/themes/images/vview-delete@2x.png");
+    background-image: url("/devtools/client/themes/images/vview-delete@2x.png");
   }
 }
 
 .variables-view-edit {
-  background-image: url("devtools/client/themes/images/vview-edit.png");
+  background-image: url("/devtools/client/themes/images/vview-edit.png");
 }
 
 @media (min-resolution: 1.1dppx) {
   .variables-view-edit {
-    background-image: url("devtools/client/themes/images/vview-edit@2x.png");
+    background-image: url("/devtools/client/themes/images/vview-edit@2x.png");
   }
 }
 
 .variables-view-open-inspector {
-  background-image: url("devtools/client/themes/images/vview-open-inspector.png");
+  background-image: url("/devtools/client/themes/images/vview-open-inspector.png");
 }
 
 @media (min-resolution: 1.1dppx) {
   .variables-view-open-inspector {
-    background-image: url("devtools/client/themes/images/vview-open-inspector@2x.png");
+    background-image: url("/devtools/client/themes/images/vview-open-inspector@2x.png");
   }
 }
 
@@ -1482,18 +1482,18 @@
 }
 
 .tree-widget-item[type="dir"]::after {
-  background-image: url(devtools/client/themes/images/filetypes/dir-close.svg);
+  background-image: url(/devtools/client/themes/images/filetypes/dir-close.svg);
   background-position: 2px 0;
   background-size: auto 16px;
   width: 20px;
 }
 
 .tree-widget-item[type="dir"][expanded]:not([empty])::after {
-  background-image: url(devtools/client/themes/images/filetypes/dir-open.svg);
+  background-image: url(/devtools/client/themes/images/filetypes/dir-open.svg);
 }
 
 .tree-widget-item[type="url"]::after {
-  background-image: url(devtools/client/themes/images/filetypes/globe.svg);
+  background-image: url(/devtools/client/themes/images/filetypes/globe.svg);
   background-size: auto 18px;
   width: 18px;
 }

@@ -200,7 +200,7 @@ input {
 .remove-button {
   width: 16px;
   height: 16px;
-  background: url(devtools/client/themes/images/close@2x.png);
+  background: url(/devtools/client/themes/images/close@2x.png);
   background-size: cover;
   font-size: 0;
   border: none;
@@ -236,14 +236,14 @@ input {
 }
 
 .add {
-  background: url(devtools/client/themes/images/add.svg);
+  background: url(/devtools/client/themes/images/add.svg);
 }
 
 #toggle-presets {
-  background: url(devtools/client/themes/images/pseudo-class.svg#pseudo-class);
+  background: url(/devtools/client/themes/images/pseudo-class.svg#pseudo-class);
 }
 
 .show-presets #toggle-presets {
-  background: url(devtools/client/themes/images/pseudo-class.svg#pseudo-class-checked);
+  background: url(/devtools/client/themes/images/pseudo-class.svg#pseudo-class-checked);
   filter: none;
 }
