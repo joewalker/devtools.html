@@ -9,7 +9,7 @@
  %editMenuStrings;
 <!ENTITY % sourceEditorStrings SYSTEM "l10n/sourceeditor.dtd">
  %sourceEditorStrings;
-<!ENTITY % csscoverageDTD SYSTEM "chrome://devtools-shared/locale/csscoverage.dtd">
+<!ENTITY % csscoverageDTD SYSTEM "/devtools/shared/locales/en-US/csscoverage.dtd">
  %csscoverageDTD;
 ]>
 

@@ -12,10 +12,7 @@ var DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const { DebuggerSocket } = require("devtools/shared/security/socket");
 const { AuthenticationResult } = require("devtools/shared/security/auth");
 
-DevToolsUtils.defineLazyGetter(this, "bundle", () => {
-  const DBG_STRINGS_URI = "chrome://devtools-shared/locale/debugger.properties";
-  return Services.strings.createBundle(DBG_STRINGS_URI);
-});
+const bundle = Services.strings.createBundle(require("devtools/shared/locales/en-US/debugger.properties"));
 
 var Client = exports.Client = {};
 var Server = exports.Server = {};
