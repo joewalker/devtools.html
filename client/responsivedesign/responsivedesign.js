@@ -34,7 +34,7 @@ const ROUND_RATIO = 10;
 
 const INPUT_PARSER = /(\d+)[^\d]+(\d+)/;
 
-const SHARED_L10N = new ViewHelpers.L10N("chrome://devtools/locale/shared.properties");
+const SHARED_L10N = new ViewHelpers.L10N("l10n/shared.properties");
 
 var ActiveTabs = new Map();
 
@@ -1019,6 +1019,6 @@ ResponsiveUI.prototype = {
   },
 }
 
-ResponsiveUI.prototype.strings = Services.strings.createBundle("chrome://devtools/locale/responsiveUI.properties");
+ResponsiveUI.prototype.strings = Services.strings.createBundle("l10n/responsiveUI.properties");
 
 exports.ResponsiveUIManager = this.ResponsiveUIManager;

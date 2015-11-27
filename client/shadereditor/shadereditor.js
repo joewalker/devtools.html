@@ -41,7 +41,6 @@ const EVENTS = {
 };
 XPCOMUtils.defineConstant(this, "EVENTS", EVENTS);
 
-const STRINGS_URI = "chrome://devtools/locale/shadereditor.properties"
 const HIGHLIGHT_TINT = [1, 0, 0.25, 1]; // rgba
 const TYPING_MAX_DELAY = 500; // ms
 const SHADERS_AUTOGROW_ITEMS = 4;
@@ -624,7 +623,7 @@ var ShadersEditorsView = {
 /**
  * Localization convenience methods.
  */
-var L10N = new ViewHelpers.L10N(STRINGS_URI);
+var L10N = new ViewHelpers.L10N(require("l10n/shadereditor.properties"));
 
 /**
  * Convenient way of emitting events from the panel window.

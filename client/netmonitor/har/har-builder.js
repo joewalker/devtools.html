@@ -11,7 +11,7 @@ const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
 const NetworkHelper = require("devtools/shared/webconsole/network-helper");
 
 const appInfo = Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULAppInfo);
-const L10N = new ViewHelpers.L10N("chrome://devtools/locale/har.properties");
+const L10N = new ViewHelpers.L10N("l10n/har.properties");
 
 const HAR_VERSION = "1.1";
 

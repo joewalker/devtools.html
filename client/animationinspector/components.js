@@ -32,8 +32,7 @@ const {
   TargetNodeHighlighter
 } = require("devtools/client/animationinspector/utils");
 
-const STRINGS_URI = "chrome://devtools/locale/animationinspector.properties";
-const L10N = new ViewHelpers.L10N(STRINGS_URI);
+const L10N = new ViewHelpers.L10N(require("l10n/animationinspector.properties"));
 const MILLIS_TIME_FORMAT_MAX_DURATION = 4000;
 // The minimum spacing between 2 time graduation headers in the timeline (px).
 const TIME_GRADUATION_MIN_SPACING = 40;

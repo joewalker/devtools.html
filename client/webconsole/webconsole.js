@@ -27,8 +27,7 @@ const { VariablesViewController, StackFrameUtils } = require("devtools/client/sh
 const PluralForm = require("devtools/sham/pluralform");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 
-const STRINGS_URI = "chrome://devtools/locale/webconsole.properties";
-var l10n = new WebConsoleUtils.l10n(STRINGS_URI);
+var l10n = new WebConsoleUtils.l10n(require("l10n/webconsole.properties"));
 
 const XHTML_NS = "http://www.w3.org/1999/xhtml";
 

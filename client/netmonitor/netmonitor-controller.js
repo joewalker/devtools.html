@@ -7,7 +7,6 @@
 
 const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
-const NET_STRINGS_URI = "chrome://devtools/locale/netmonitor.properties";
 const PKI_STRINGS_URI = "chrome://pippki/locale/pippki.properties";
 const LISTENERS = [ "NetworkActivity" ];
 const NET_PREFS = { "NetworkMonitor.saveRequestAndResponseBodies": true };
@@ -825,7 +824,7 @@ NetworkEventsHandler.prototype = {
 /**
  * Localization convenience methods.
  */
-var L10N = new ViewHelpers.L10N(NET_STRINGS_URI);
+var L10N = new ViewHelpers.L10N(require("l10n/netmonitor.properties"));
 var PKI_L10N = new ViewHelpers.L10N(PKI_STRINGS_URI);
 
 /**

@@ -23,8 +23,7 @@ const { DebuggerClient } = require("devtools/shared/client/main");
 loader.lazyGetter(this, "showDoorhanger", () => require("devtools/client/shared/doorhanger").showDoorhanger);
 const sourceUtils = require("devtools/client/shared/source-utils");
 
-const STRINGS_URI = "chrome://devtools/locale/webconsole.properties";
-var l10n = new WebConsoleUtils.l10n(STRINGS_URI);
+var l10n = new WebConsoleUtils.l10n(require("l10n/webconsole.properties"));
 
 const BROWSER_CONSOLE_WINDOW_FEATURES = "chrome,titlebar,toolbar,centerscreen,resizable,dialog=no";
 

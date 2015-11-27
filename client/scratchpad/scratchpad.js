@@ -28,7 +28,6 @@ const MAXIMUM_FONT_SIZE = 96;
 const MINIMUM_FONT_SIZE = 6;
 const NORMAL_FONT_SIZE = 12;
 
-const SCRATCHPAD_L10N = "chrome://devtools/locale/scratchpad.properties";
 const DEVTOOLS_CHROME_ENABLED = "devtools.chrome.enabled";
 const PREF_RECENT_FILES_MAX = "devtools.scratchpad.recentFilesMax";
 const SHOW_LINE_NUMBERS = "devtools.scratchpad.lineNumbers";
@@ -2482,7 +2481,7 @@ var CloseObserver = {
   },
 };
 
-Scratchpad.strings = Services.strings.createBundle(SCRATCHPAD_L10N);
+Scratchpad.strings = Services.strings.createBundle(require("l10n/scratchpad.properties"));
 
 addEventListener("load", Scratchpad.onLoad.bind(Scratchpad), false);
 addEventListener("unload", Scratchpad.onUnload.bind(Scratchpad), false);
