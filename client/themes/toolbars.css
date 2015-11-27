@@ -95,6 +95,13 @@ html .devtools-toolbar {
   display: flex;
 }
 
+/* XXX: Need to come up with a better solution for panels */
+html panel {
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+}
+
 /* Toolbars */
 .devtools-toolbar,
 .devtools-sidebar-tabs tabs {
