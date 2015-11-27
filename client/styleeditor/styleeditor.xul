@@ -3,11 +3,11 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <!DOCTYPE window [
-<!ENTITY % styleEditorDTD SYSTEM "chrome://devtools/locale/styleeditor.dtd" >
+<!ENTITY % styleEditorDTD SYSTEM "l10n/styleeditor.dtd" >
  %styleEditorDTD;
 <!ENTITY % editMenuStrings SYSTEM "chrome://global/locale/editMenuOverlay.dtd">
  %editMenuStrings;
-<!ENTITY % sourceEditorStrings SYSTEM "chrome://devtools/locale/sourceeditor.dtd">
+<!ENTITY % sourceEditorStrings SYSTEM "l10n/sourceeditor.dtd">
  %sourceEditorStrings;
 <!ENTITY % csscoverageDTD SYSTEM "chrome://devtools-shared/locale/csscoverage.dtd">
  %csscoverageDTD;
