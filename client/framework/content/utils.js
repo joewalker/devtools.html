@@ -22,7 +22,16 @@ function createFactories(args) {
   return result;
 }
 
+/**
+ * Example:
+ *  const box = createFactory("box");
+ */
+function createFactory(type) {
+  return React.createElement.bind(null, type);
+}
+
 // Exports from this module
 module.exports = {
-  createFactories: createFactories
+  createFactories: createFactories,
+  createFactory: createFactory
 };
