@@ -22,7 +22,7 @@
 
 <page xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" class="theme-body">
 
-  <script type="application/javascript" src="chrome://global/content/globalOverlay.js"/>
+  <script type="application/javascript" src="/devtools/client/chrome/global/content/globalOverlay.js"/>
 
   <commandset id="projecteditor-commandset" />
   <commandset id="editMenuCommands"/>

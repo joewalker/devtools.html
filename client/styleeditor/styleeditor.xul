@@ -29,7 +29,7 @@
 
   <script type="application/javascript;version=1.8"
           src="chrome://devtools/content/shared/theme-switching.js"/>
-  <xul:script type="application/javascript" src="chrome://global/content/globalOverlay.js"/>
+  <xul:script type="application/javascript" src="/devtools/client/chrome/global/content/globalOverlay.js"/>
   <xul:script type="application/javascript" src="chrome://browser/content/utilityOverlay.js"/>
   <xul:script type="application/javascript">
     function goUpdateSourceEditorMenuItems() {
