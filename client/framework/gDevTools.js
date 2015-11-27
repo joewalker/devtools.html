@@ -690,7 +690,7 @@ var gDevToolsBrowser = {
     if (win) {
       win.focus();
     } else {
-      Services.ww.openWindow(null, "chrome://webide/content/", "webide", "chrome,centerscreen,resizable", null);
+      Services.ww.openWindow(null, "/devtools/client/webide/content/", "webide", "chrome,centerscreen,resizable", null);
     }
   },
 
