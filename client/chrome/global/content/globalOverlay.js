@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
+
 function closeWindow(aClose, aPromptFunction)
 {
 //@line 28 "/builds/slave/m-cen-m64-ntly-000000000000000/build/src/toolkit/content/globalOverlay.js"
@@ -18,16 +20,16 @@ function closeWindow(aClose, aPromptFunction)
 
 function canQuitApplication(aData)
 {
-  var os = Components.classes["@mozilla.org/observer-service;1"]
-                     .getService(Components.interfaces.nsIObserverService);
+  var os = Cc("@mozilla.org/observer-service;1")
+                              .getService(Ci.nsIObserverService);
   if (!os) return true;
-  
+
   try {
-    var cancelQuit = Components.classes["@mozilla.org/supports-PRBool;1"]
-                              .createInstance(Components.interfaces.nsISupportsPRBool);
+    var cancelQuit = Cc("@mozilla.org/supports-PRBool;1")
+                              .createInstance(Ci.nsISupportsPRBool);
     os.notifyObservers(cancelQuit, "quit-application-requested", aData || null);
-    
-    // Something aborted the quit process. 
+
+    // Something aborted the quit process.
     if (cancelQuit.data)
       return false;
   }
@@ -40,10 +42,10 @@ function goQuitApplication()
   if (!canQuitApplication())
     return false;
 
-  var appStartup = Components.classes['@mozilla.org/toolkit/app-startup;1'].
-                     getService(Components.interfaces.nsIAppStartup);
+  var appStartup = Cc('@mozilla.org/toolkit/app-startup;1').
+                     getService(Ci.nsIAppStartup);
 
-  appStartup.quit(Components.interfaces.nsIAppStartup.eAttemptQuit);
+  appStartup.quit(Ci.nsIAppStartup.eAttemptQuit);
   return true;
 }
 
@@ -63,7 +65,7 @@ function goUpdateCommand(aCommand)
     goSetCommandEnabled(aCommand, enabled);
   }
   catch (e) {
-    Components.utils.reportError("An error occurred updating the " +
+    Cu.reportError("An error occurred updating the " +
                                  aCommand + " command: " + e);
   }
 }
@@ -77,7 +79,7 @@ function goDoCommand(aCommand)
       controller.doCommand(aCommand);
   }
   catch (e) {
-    Components.utils.reportError("An error occurred executing the " +
+    Cu.reportError("An error occurred executing the " +
                                  aCommand + " command: " + e);
   }
 }
@@ -139,7 +141,6 @@ function setTooltipText(aID, aTooltipText)
 
 this.__defineGetter__("NS_ASSERT", function() {
   delete this.NS_ASSERT;
-  var tmpScope = {};
-  Components.utils.import("resource://gre/modules/debug.js", tmpScope);
-  return this.NS_ASSERT = tmpScope.NS_ASSERT;
+  const { NS_ASSERT } = require("resource://gre/modules/debug.js");
+  return this.NS_ASSERT = NS_ASSERT;
 });
