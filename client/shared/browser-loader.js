@@ -1,4 +1,5 @@
-var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 
 const loaders = require("gre/modules/commonjs/toolkit/loader.js");
 const { devtools, DevToolsLoader } = require("devtools/shared/Loader");

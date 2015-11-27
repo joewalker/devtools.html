@@ -9,7 +9,7 @@
  * Manages the addon-sdk loader instance used to load the developer tools.
  */
 
-var { Constructor: CC, classes: Cc, interfaces: Ci, utils: Cu } = Components;
+const { CC, Cc, Ci, Cu } = require("devtools/sham/chrome");
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");

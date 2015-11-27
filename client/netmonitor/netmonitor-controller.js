@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
 const NET_STRINGS_URI = "chrome://devtools/locale/netmonitor.properties";
 const PKI_STRINGS_URI = "chrome://pippki/locale/pippki.properties";

@@ -3,7 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 "use strict";
-var {classes: Cc, interfaces: Ci, utils: Cu, results: Cr} = Components;
+
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
+
 const {loader} = require("devtools/shared/Loader");
 const promise = require("devtools/sham/promise");
 const { Task } = require("devtools/sham/task");

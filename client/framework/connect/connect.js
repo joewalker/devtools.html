@@ -6,7 +6,8 @@
 
 "use strict";
 
-var Cu = Components.utils;
+const { Cu } = require("devtools/sham/chrome");
+
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
 const { Task } = require("devtools/sham/task");

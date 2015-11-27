@@ -4,7 +4,6 @@
 
 "use strict";
 
-var Cu = Components.utils;
 const { Services } = const { Services } = require("devtools/sham/services");
 const QR = require("devtools/shared/qrcode/index");
 
