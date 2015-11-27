@@ -38,8 +38,8 @@ directory.
 
   And see TCP -> WS logs in the console where you ran `gulp serve-connect`
 
-* `http://localhost:8081/test/index.html` to run the unit tests
-* `http://localhost:8081/client/framework/toolbox-wrapper.html` runs the
+* `http://localhost:8081/devtools/test/index.html` to run the unit tests
+* `http://localhost:8081/devtools/client/framework/toolbox-wrapper.html` runs the
   toolbox itself.
 
 ## Connecting to Chrome
