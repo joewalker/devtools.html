@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-%ifdef XP_MACOSX
+/* %ifdef XP_MACOSX */
 
 #inspector-toolbar:-moz-locale-dir(ltr) {
   padding-left: 2px;
@@ -13,7 +13,7 @@
   padding-left: 4px;
 }
 
-%endif
+/* %endif */
 
 #inspector-searchlabel {
   overflow: hidden;

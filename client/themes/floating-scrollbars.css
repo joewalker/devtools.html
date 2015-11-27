@@ -7,9 +7,9 @@ scrollbar {
   background-image: none;
   z-index: 2147483647;
   padding: 2px;
-%ifdef XP_MACOSX
+/* %ifdef XP_MACOSX */
   border: 0px solid transparent;
-%endif
+/* %endif */
 }
 
 /* Scrollbar code will reset the margin to the correct side depending on
@@ -26,7 +26,7 @@ scrollbar[orient="horizontal"] {
   max-height: 10px;
 }
 
-%ifdef XP_MACOSX
+/* %ifdef XP_MACOSX */
 slider {
   -moz-appearance: none !important;
 }
@@ -36,7 +36,7 @@ thumb {
   background-color: rgba(0,0,0,0.2);
   border-radius: 3px;
 }
-%else
+/* %else
 scrollbar thumb {
   -moz-appearance: none !important;
   border-width: 0px !important;
@@ -46,4 +46,4 @@ scrollbar thumb {
 scrollbar scrollbarbutton, scrollbar gripper {
   display: none;
 }
-%endif
+%endif */
