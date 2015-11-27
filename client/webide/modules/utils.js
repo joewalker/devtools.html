@@ -5,7 +5,7 @@
 const { Cc, Cu, Ci } = require("devtools/sham/chrome");
 const { FileUtils } = require("devtools/sham/fileutils");
 const { Services } = require("devtools/sham/services");
-const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
+const Strings = Services.strings.createBundle(require("l10n/webide.properties"));
 
 function doesFileExist (location) {
   let file = new FileUtils.File(location);

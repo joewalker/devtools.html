@@ -11,7 +11,7 @@ const EventEmitter = require('devtools/shared/event-emitter');
 const promise = require("devtools/sham/promise");
 const utils = require("devtools/client/webide/modules/utils");
 
-const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
+const Strings = Services.strings.createBundle(require("l10n/webide.properties"));
 
 var SimulatorEditor = {
 

@@ -10,7 +10,7 @@ const { FileUtils } = require("devtools/sham/fileutils");
 const {Services} = require("devtools/sham/services");
 const {Task} = require("devtools/sham/task");
 var XMLHttpRequest = CC("@mozilla.org/xmlextras/xmlhttprequest;1");
-var strings = Services.strings.createBundle("chrome://devtools/locale/app-manager.properties");
+var strings = Services.strings.createBundle(require("l10n/app-manager.properties"));
 
 function AppValidator({ type, location }) {
   this.type = type;

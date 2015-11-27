@@ -14,7 +14,7 @@ const promise = require("devtools/sham/promise");
 const { AuthenticationResult } = require("devtools/shared/security/auth");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
-const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
+const Strings = Services.strings.createBundle(require("l10n/webide.properties"));
 
 /**
  * Runtime and Scanner API

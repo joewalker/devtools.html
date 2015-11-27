@@ -13,7 +13,7 @@ const {Task} = require("devtools/sham/task");
 const utils = require("devtools/client/webide/modules/utils");
 const Telemetry = require("devtools/client/shared/telemetry");
 
-const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
+const Strings = Services.strings.createBundle(require("l10n/webide.properties"));
 
 var ProjectList;
 
