@@ -8,7 +8,8 @@
 
 "use strict";
 
-var { utils: Cu } = Components;
+const { Cu } = require("devtools/sham/chrome");
+
 const { loader } = require("devtools/shared/Loader");
 
 const { Task } = require("devtools/sham/task");

@@ -4,7 +4,8 @@
 
 "use strict";
 
-const { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
+
 //const { BrowserLoader } = require("devtools/client/shared/browser-loader");
 //const { require } = BrowserLoader("resource://devtools/client/memory/", this);
 const { Task } = require("devtools/sham/task");

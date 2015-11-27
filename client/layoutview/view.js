@@ -6,7 +6,7 @@
 
 "use strict";
 
-var {utils: Cu, interfaces: Ci, classes: Cc} = Components;
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
 const { Task } = require("devtools/sham/task");
 const {

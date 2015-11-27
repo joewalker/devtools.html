@@ -2,7 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
+
 const kDebuggerPrefs = [
   "devtools.debugger.remote-enabled",
   "devtools.chrome.enabled"

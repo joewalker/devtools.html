@@ -2,7 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-var Cu = Components.utils;
+const { Cu } = require("devtools/sham/chrome");
+
 const RuntimeList = require("devtools/client/webide/modules/runtime-list");
 
 var runtimeList = new RuntimeList(window, window.parent);

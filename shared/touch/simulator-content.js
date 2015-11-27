@@ -5,7 +5,7 @@
    removeEventListener */
 "use strict";
 
-var { interfaces: Ci, utils: Cu } = Components;
+const { Ci, Cu } = require("devtools/sham/chrome");
 
 const { Services } = require("devtools/sham/services");
 

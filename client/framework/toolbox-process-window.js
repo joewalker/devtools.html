@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 var { TargetFactory } = require("devtools/client/framework/target");
