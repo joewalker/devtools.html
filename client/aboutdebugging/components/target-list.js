@@ -11,7 +11,7 @@ const { TargetComponent } = require("devtools/client/aboutdebugging/components/t
 const { Services } = require("devtools/sham/services");
 
 const Strings = Services.strings.createBundle(
-  "chrome://devtools/locale/aboutdebugging.properties");
+  require("l10n/aboutdebugging.properties"));
 const LocaleCompare = (a, b) => {
   return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
 };

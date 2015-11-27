@@ -5,7 +5,7 @@
 var Cu = Components.utils;
 const {Services} = require("devtools/sham/services");
 const {GetAvailableAddons, ForgetAddonsList} = require("devtools/client/webide/modules/addons");
-const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
+const Strings = Services.strings.createBundle(require("l10n/webide.properties"));
 
 window.addEventListener("load", function onLoad() {
   window.removeEventListener("load", onLoad);

@@ -7,7 +7,7 @@ var { registerPlugin, Plugin } = require("devtools/client/projecteditor/lib/plug
 const { AppProjectEditor } = require("./app-project-editor");
 const OPTION_URL = "chrome://devtools/skin/images/tool-options.svg";
 const {Services} = require("devtools/sham/services");
-const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
+const Strings = Services.strings.createBundle(require("l10n/webide.properties"));
 
 var AppManagerRenderer = Class({
   extends: Plugin,

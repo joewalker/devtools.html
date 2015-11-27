@@ -24,7 +24,7 @@ const { NetUtil } = require("devtools/sham/netutil");
 const Telemetry = require("devtools/client/shared/telemetry");
 const {ProjectBuilding} = require("./build");
 
-const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
+const Strings = Services.strings.createBundle(require("l10n/webide.properties"));
 
 var AppManager = exports.AppManager = {
 

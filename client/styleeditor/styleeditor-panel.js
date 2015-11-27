@@ -151,5 +151,5 @@ StyleEditorPanel.prototype = {
 XPCOMUtils.defineLazyGetter(StyleEditorPanel.prototype, "strings",
   function () {
     return Services.strings.createBundle(
-            "chrome://devtools/locale/styleeditor.properties");
+            require("l10n/styleeditor.properties"));
   });
