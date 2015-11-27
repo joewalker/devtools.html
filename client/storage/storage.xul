@@ -5,8 +5,8 @@
 <?xml-stylesheet href="chrome://browser/skin/" type="text/css"?>
 <?xml-stylesheet href="devtools/client/shared/widgets/widgets.css" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/skin/widgets.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/skin/storage.css" type="text/css"?>
+<?xml-stylesheet href="devtools/client/themes/widgets.css" type="text/css"?>
+<?xml-stylesheet href="devtools/client/themes/storage.css" type="text/css"?>
 
 <?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
 

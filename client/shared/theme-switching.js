@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 (function() {
-  const DEVTOOLS_SKIN_URL = "chrome://devtools/skin/";
+  const DEVTOOLS_SKIN_URL = "devtools/client/themes/";
   let documentElement = document.documentElement;
 
   function forceStyle() {
