@@ -17,7 +17,7 @@ var MenuPopup = React.createClass({
 
   render: function() {
     let id = this.props.id;
-    let items = this.props.items;
+    let items = this.props.items || [];
 
     let menuItems = items.map(item =>
       React.createElement("menuitem", {
