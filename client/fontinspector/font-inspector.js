@@ -141,7 +141,7 @@ FontInspector.prototype = {
  /**
   * Retrieve all the font info for the selected node and display it.
   */
-  update: Task.async(function*(showAllFonts) {
+  update: async function(showAllFonts) {
     let node = this.inspector.selection.nodeFront;
 
     if (!node ||
@@ -166,10 +166,10 @@ FontInspector.prototype = {
 
     let fonts = [];
     if (showAllFonts) {
-      fonts = yield this.pageStyle.getAllUsedFontFaces(options)
+      fonts = await this.pageStyle.getAllUsedFontFaces(options)
                       .then(null, console.error);
     } else {
-      fonts = yield this.pageStyle.getUsedFontFaces(node, options)
+      fonts = await this.pageStyle.getUsedFontFaces(node, options)
                       .then(null, console.error);
     }
 
@@ -180,7 +180,7 @@ FontInspector.prototype = {
     }
 
     for (let font of fonts) {
-      font.previewUrl = yield font.preview.data.string();
+      font.previewUrl = await font.preview.data.string();
     }
 
     // in case we've been destroyed in the meantime
@@ -196,7 +196,7 @@ FontInspector.prototype = {
     }
 
     this.inspector.emit("fontinspector-updated");
-  }),
+  },
 
   /**
    * Display the information of one font.
