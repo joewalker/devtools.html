@@ -151,8 +151,39 @@ gulp.task("serve-connect", ["build-connect", "start-proxy"], function() {
   console.log("Open http://localhost:8081/?wsPort=9001 to test Chrome");
 });
 
+gulp.task("start", ["start-proxy"], function() {
+  var server = http.createServer(ecstatic({
+    root: path.join(__dirname),
+    cache: 0
+  }));
+
+  server.listen(8055);
+
+  console.log("Open http://localhost:8055/client/framework/toolbox-wrapper.html");
+});
+
+/**
+ * Build client/framework directory (mostly related to the Toolbox)
+ */
+gulp.task("build-framework", function() {
+  var dirs = [];
+  dirs.push(path.join(__dirname, "client", "framework"));
+  dirs.push(path.join(__dirname, "client", "framework", "content"));
+  return Promise.all(dirs.map(buildDir));
+});
+
+/**
+ * Build client/framework/content directory (related to HTML Toolbox)
+ */
 gulp.task("build-toolbox", function() {
-  return buildDir(path.join(__dirname, "client", "framework", "toolbox.html"));
+  return buildDir(path.join(__dirname, "client", "framework", "content"));
+});
+
+/**
+ * Watch client/framework/content directory
+ */
+gulp.task("watch-toolbox", function() {
+  gulp.watch("client/framework/content/**/*", ["build-toolbox"]);
 });
 
 gulp.task("default", ["build"]);
