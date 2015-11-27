@@ -54,6 +54,10 @@ gulp.task("watch-console", function() {
   });
 });
 
+gulp.task("build-test", function (callback) {
+  console.error('Use `webpack --progress --color`');
+});
+
 /**
  * Crudely parses `client/preferences/devtools.js` and generates
  * a JSON representation of these prefs in `build/prefs.json`
@@ -88,14 +92,6 @@ gulp.task("build-prefs", function (callback) {
                          typeof value === "number" ? 64 : 0;
     return prefs;
   }, Object.create(null)), null, 2), callback);
-});
-
-gulp.task("build-test", function (callback) {
-  var webpackConfig = path.join(__dirname, "test", WEBPACK_CONFIG_NAME);
-  webpack(require(webpackConfig), function (err, stats) {
-    gutil.log("[webpack]", stats.toString({}));
-    callback();
-  });
 });
 
 gulp.task("start-proxy", function() {
