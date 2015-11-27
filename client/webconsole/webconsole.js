@@ -46,7 +46,7 @@ const WEAK_SIGNATURE_ALGORITHM_LEARN_MORE = "https://developer.mozilla.org/docs/
 
 const HELP_URL = "https://developer.mozilla.org/docs/Tools/Web_Console/Helpers";
 
-const VARIABLES_VIEW_URL = "chrome://devtools/content/shared/widgets/VariablesView.xul";
+const VARIABLES_VIEW_URL = "devtools/client/shared/widgets/VariablesView.xul";
 
 const IGNORED_SOURCE_URLS = ["debugger eval code"];
 

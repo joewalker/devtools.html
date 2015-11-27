@@ -10,7 +10,7 @@
  * the parent process.
  */
 
-const FRAME_SCRIPT_UTILS_URL = "chrome://devtools/content/shared/frame-script-utils.js";
+const FRAME_SCRIPT_UTILS_URL = "devtools/client/shared/frame-script-utils.js";
 const { Task } = require("devtools/sham/task");
 const { uuid } = require("sdk/util/uuid");
 

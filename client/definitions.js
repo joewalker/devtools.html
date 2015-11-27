@@ -28,7 +28,7 @@ exports.Tools = Tools;
 Tools.options = {
   id: "options",
   ordinal: 0,
-  url: "chrome://devtools/content/framework/toolbox-options.xul",
+  url: "devtools/client/framework/toolbox-options.xul",
   icon: "../themes/images/tool-options.svg",
   invertIconForLightTheme: true,
   bgTheme: "theme-body",

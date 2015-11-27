@@ -7,7 +7,7 @@
 
 const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
-const DBG_XUL = "chrome://devtools/content/framework/toolbox-process-window.xul";
+const DBG_XUL = "devtools/client/framework/toolbox-process-window.xul";
 const CHROME_DEBUGGER_PROFILE_NAME = "chrome_debugger_profile";
 
 const { Services } = require("devtools/sham/services");

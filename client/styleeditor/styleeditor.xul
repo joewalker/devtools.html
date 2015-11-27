@@ -14,12 +14,12 @@
 ]>
 
 <?xml-stylesheet href="/devtools/client/chrome/global/skin/global.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/content/shared/widgets/widgets.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/content/shared/splitview.css" type="text/css"?>
+<?xml-stylesheet href="devtools/client/shared/widgets/widgets.css" type="text/css"?>
+<?xml-stylesheet href="devtools/client/shared/splitview.css" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
 <?xml-stylesheet href="chrome://devtools/skin/widgets.css" type="text/css"?>
 <?xml-stylesheet href="chrome://devtools/skin/splitview.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/content/styleeditor/styleeditor.css" type="text/css"?>
+<?xml-stylesheet href="devtools/client/styleeditor/styleeditor.css" type="text/css"?>
 <?xml-stylesheet href="chrome://devtools/skin/styleeditor.css" type="text/css"?>
 <?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
 
@@ -28,7 +28,7 @@
         id="style-editor-chrome-window">
 
   <script type="application/javascript;version=1.8"
-          src="chrome://devtools/content/shared/theme-switching.js"/>
+          src="devtools/client/shared/theme-switching.js"/>
   <xul:script type="application/javascript" src="/devtools/client/chrome/global/content/globalOverlay.js"/>
   <xul:script type="application/javascript" src="chrome://browser/content/utilityOverlay.js"/>
   <xul:script type="application/javascript">

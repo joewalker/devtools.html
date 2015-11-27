@@ -29,9 +29,9 @@
         persist="screenX screenY width height sizemode">
 
 <script type="application/javascript;version=1.8"
-        src="chrome://devtools/content/shared/theme-switching.js"/>
+        src="devtools/client/shared/theme-switching.js"/>
 <script type="application/javascript" src="/devtools/client/chrome/global/content/globalOverlay.js"/>
-<script type="application/javascript" src="chrome://devtools/content/scratchpad/scratchpad.js"/>
+<script type="application/javascript" src="devtools/client/scratchpad/scratchpad.js"/>
 
 <commandset id="editMenuCommands"/>
 
