@@ -1,25 +1,25 @@
-%if 0
+/* %if 0 */
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-%endif
+/* %endif */
 
 :root {
   font: message-box;
-%ifdef XP_MACOSX
+/* %ifdef XP_MACOSX */
   --monospace-font-family: Menlo, monospace;
-%elifdef XP_WIN
+/* %elifdef XP_WIN
   --monospace-font-family: Consolas, monospace;
 %else
   --monospace-font-family: monospace;
-%endif
+%endif */
 }
 
 .devtools-monospace {
   font-family: var(--monospace-font-family);
-%if defined(MOZ_WIDGET_GTK) || defined(MOZ_WIDGET_QT)
+/* %if defined(MOZ_WIDGET_GTK) || defined(MOZ_WIDGET_QT)
   font-size: 80%;
-%endif
+%endif */
 }
 
 /* Bottom-docked toolbox minimize transition */
@@ -71,11 +71,11 @@
   background-color: transparent;
   border-radius: 3px;
   overflow-x: hidden;
-%if defined(MOZ_WIDGET_GTK) || defined(MOZ_WIDGET_QT)
+/* %if defined(MOZ_WIDGET_GTK) || defined(MOZ_WIDGET_QT)
   max-height: 32rem;
-%else
+%else */
   max-height: 40rem;
-%endif
+/* %endif */
 }
 
 .devtools-autocomplete-listbox {
