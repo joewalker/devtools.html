@@ -5,8 +5,8 @@
 <?xml-stylesheet href="chrome://browser/skin/" type="text/css"?>
 <?xml-stylesheet href="devtools/client/shared/widgets/widgets.css" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/skin/widgets.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/skin/performance.css" type="text/css"?>
+<?xml-stylesheet href="devtools/client/themes/widgets.css" type="text/css"?>
+<?xml-stylesheet href="devtools/client/themes/performance.css" type="text/css"?>
 <!DOCTYPE window [
   <!ENTITY % performanceDTD SYSTEM "l10n/performance.dtd">
   %performanceDTD;

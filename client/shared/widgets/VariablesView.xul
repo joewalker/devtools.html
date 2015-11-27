@@ -5,7 +5,7 @@
 <?xml-stylesheet href="/devtools/client/chrome/global/skin/global.css"?>
 <?xml-stylesheet href="devtools/client/shared/widgets/widgets.css" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/skin/widgets.css" type="text/css"?>
+<?xml-stylesheet href="devtools/client/themes/widgets.css" type="text/css"?>
 <!DOCTYPE window [
   <!ENTITY % viewDTD SYSTEM "l10n/VariablesView.dtd">
   %viewDTD;
