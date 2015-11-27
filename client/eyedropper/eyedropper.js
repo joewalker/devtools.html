@@ -23,9 +23,9 @@ const XULRuntime = Cc("@mozilla.org/xre/app-info;1")
         .getService(Ci.nsIXULRuntime);
 const l10n = Services.strings.createBundle(require("l10n/eyedropper.properties"));
 
-const EYEDROPPER_URL = "chrome://devtools/content/eyedropper/eyedropper.xul";
-const CROSSHAIRS_URL = "chrome://devtools/content/eyedropper/crosshairs.css";
-const NOCURSOR_URL = "chrome://devtools/content/eyedropper/nocursor.css";
+const EYEDROPPER_URL = "devtools/client/eyedropper/eyedropper.xul";
+const CROSSHAIRS_URL = "devtools/client/eyedropper/crosshairs.css";
+const NOCURSOR_URL = "devtools/client/eyedropper/nocursor.css";
 
 const ZOOM_PREF = "devtools.eyedropper.zoom";
 const FORMAT_PREF = "devtools.defaultColorUnit";

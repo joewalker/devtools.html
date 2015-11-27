@@ -3,7 +3,7 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <?xml-stylesheet href="chrome://browser/skin/" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/content/shared/widgets/widgets.css" type="text/css"?>
+<?xml-stylesheet href="devtools/client/shared/widgets/widgets.css" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
 <?xml-stylesheet href="chrome://devtools/skin/widgets.css" type="text/css"?>
 <?xml-stylesheet href="chrome://devtools/skin/storage.css" type="text/css"?>
@@ -13,7 +13,7 @@
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
   <script type="application/javascript;version=1.8"
-          src="chrome://devtools/content/shared/theme-switching.js"/>
+          src="devtools/client/shared/theme-switching.js"/>
   <script type="text/javascript" src="/devtools/client/chrome/global/content/globalOverlay.js"/>
 
   <commandset id="editMenuCommands"/>

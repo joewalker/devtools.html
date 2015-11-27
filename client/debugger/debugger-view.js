@@ -34,7 +34,7 @@ const TOOLBAR_ORDER_POPUP_POSITION = "topcenter bottomleft";
 const FUNCTION_SEARCH_POPUP_POSITION = "topcenter bottomleft";
 const RESIZE_REFRESH_RATE = 50; // ms
 const PROMISE_DEBUGGER_URL =
-  "chrome://devtools/content/promisedebugger/promise-debugger.xhtml";
+  "devtools/client/promisedebugger/promise-debugger.xhtml";
 
 const debuggerControllerEmit = DebuggerController.emit.bind(DebuggerController);
 const createStore = require("devtools/client/shared/redux/create-store")();

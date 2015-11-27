@@ -39,7 +39,7 @@ const ENABLE_AUTOCOMPLETION = "devtools.scratchpad.enableAutocompletion";
 const TAB_SIZE = "devtools.editor.tabsize";
 const FALLBACK_CHARSET_LIST = "intl.fallbackCharsetList.ISO-8859-1";
 
-const VARIABLES_VIEW_URL = "chrome://devtools/content/shared/widgets/VariablesView.xul";
+const VARIABLES_VIEW_URL = "devtools/client/shared/widgets/VariablesView.xul";
 
 const {loader} = require("devtools/shared/Loader");
 

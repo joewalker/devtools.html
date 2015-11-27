@@ -4,9 +4,9 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <?xml-stylesheet href="chrome://devtools/skin/light-theme.css" type="text/css"?>
 <?xml-stylesheet href="chrome://devtools/skin/projecteditor/projecteditor.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/content/debugger/debugger.css" type="text/css"?>
+<?xml-stylesheet href="devtools/client/debugger/debugger.css" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/content/markupview/markup-view.css" type="text/css"?>
+<?xml-stylesheet href="devtools/client/markupview/markup-view.css" type="text/css"?>
 <?xml-stylesheet href="chrome://devtools/skin/markup-view.css" type="text/css"?>
 
 <?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>

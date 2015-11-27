@@ -12,7 +12,7 @@ const { Promise } = require("devtools/sham/promise");
 const { getMostRecentBrowserWindow } = require("sdk/window/utils");
 
 const XULNS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
-const DEV_EDITION_PROMO_URL = "chrome://devtools/content/framework/dev-edition-promo/dev-edition-promo.xul";
+const DEV_EDITION_PROMO_URL = "devtools/client/framework/dev-edition-promo/dev-edition-promo.xul";
 const DEV_EDITION_PROMO_ENABLED_PREF = "devtools.devedition.promo.enabled";
 const DEV_EDITION_PROMO_SHOWN_PREF = "devtools.devedition.promo.shown";
 const DEV_EDITION_PROMO_URL_PREF = "devtools.devedition.promo.url";

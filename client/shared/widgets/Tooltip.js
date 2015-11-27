@@ -28,11 +28,11 @@ const { VariablesViewController, StackFrameUtils } = require("devtools/client/sh
 const { Task } = require("devtools/sham/task");
 
 const XHTML_NS = "http://www.w3.org/1999/xhtml";
-const SPECTRUM_FRAME = "chrome://devtools/content/shared/widgets/spectrum-frame.xhtml";
+const SPECTRUM_FRAME = "devtools/client/shared/widgets/spectrum-frame.xhtml";
 const CUBIC_BEZIER_FRAME =
-      "chrome://devtools/content/shared/widgets/cubic-bezier-frame.xhtml";
-const MDN_DOCS_FRAME = "chrome://devtools/content/shared/widgets/mdn-docs-frame.xhtml";
-const FILTER_FRAME = "chrome://devtools/content/shared/widgets/filter-frame.xhtml";
+      "devtools/client/shared/widgets/cubic-bezier-frame.xhtml";
+const MDN_DOCS_FRAME = "devtools/client/shared/widgets/mdn-docs-frame.xhtml";
+const FILTER_FRAME = "devtools/client/shared/widgets/filter-frame.xhtml";
 const ESCAPE_KEYCODE = Ci.nsIDOMKeyEvent.DOM_VK_ESCAPE;
 const RETURN_KEYCODE = Ci.nsIDOMKeyEvent.DOM_VK_RETURN;
 const POPUP_EVENTS = ["shown", "hidden", "showing", "hiding"];
