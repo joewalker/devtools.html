@@ -38,11 +38,11 @@ function getPrefValue (pref) {
 
 
 const addObserver = exports.addObserver = function (domain, observer, holdWeak) {
-  console.error("TODO implement addObserver");
+  console.log("TODO implement addObserver");
 };
 
 const removeObserver = exports.removeObserver = function (domain, observer, holdWeak) {
-  console.error("TODO implement removeObserver");
+  console.log("TODO implement removeObserver");
 };
 
 const resetPrefs = exports.resetPrefs = function () {
@@ -85,7 +85,7 @@ exports.setIntPref = function (pref, value) {
 
 exports.getBoolPref = function (pref) {
   if (getPrefType(pref) !== PREF_BOOL) {
-    console.error(`No cached boolean pref for ${pref}`);
+    console.log(`No cached boolean pref for ${pref}`);
     return undefined;
   }
   return getPrefValue(pref);
@@ -93,7 +93,7 @@ exports.getBoolPref = function (pref) {
 
 exports.getCharPref = function (pref) {
   if (getPrefType(pref) !== PREF_STRING) {
-    console.error(`No cached char pref for ${pref}`);
+    console.log(`No cached char pref for ${pref}`);
     return undefined;
   }
   return getPrefValue(pref);
@@ -101,7 +101,7 @@ exports.getCharPref = function (pref) {
 
 exports.getIntPref = function (pref) {
   if (getPrefType(pref) !== PREF_INT) {
-    console.error(`No cached int pref for ${pref}`);
+    console.log(`No cached int pref for ${pref}`);
     return undefined;
   }
   return getPrefValue(pref);
