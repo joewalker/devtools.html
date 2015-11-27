@@ -98,6 +98,7 @@ gulp.task("serve-connect", [ "start-proxy" ], function() {
   }));
   app.use(ecstatic({
     root: path.join(__dirname),
+    baseDir: '/devtools/',
     handleError: false,
   }));
 
