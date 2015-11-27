@@ -16,6 +16,7 @@ const { createFactories } = require("../utils");
 const { KeySet } = createFactories(require("../components/xul/keyset"));
 const { PopupSet } = createFactories(require("../components/xul/popupset"));
 const { CommandSet } = createFactories(require("../components/xul/commandset"));
+const { ToolboxNotificationBox } = createFactories(require("./toolbox-notification-box"));
 
 // Shortcuts
 const { div } = React.DOM;
@@ -40,12 +41,13 @@ var Toolbox = React.createClass({
     let popupset = PopupSet({popupset: this.props.popupset});
     let commandset = CommandSet({commandset: this.props.commandset});
 
+    // Render the Toolbox
     return (
       div({},
-        div({}, "This is new toolbox!"),
         keysets,
         popupset,
-        commandset
+        commandset,
+        ToolboxNotificationBox(this.props)
       )
     );
   }

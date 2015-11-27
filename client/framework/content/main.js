@@ -23,10 +23,9 @@ var store = configureStore();
 /**
  * Render top-level application component - the Toolbox.
  */
-const content = document.getElementById("content");
 const theApp = ReactDOM.render(Provider({store: store},
   Toolbox({})
-), content);
+), document.body);
 
 // View Resizer
 
