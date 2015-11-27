@@ -39,7 +39,7 @@
 }
 
 #record-snapshot {
-  list-style-image: url("devtools/client/themes/images/profiler-stopwatch.svg");
+  list-style-image: url("/devtools/client/themes/images/profiler-stopwatch.svg");
 }
 
 /* Snapshots items */
