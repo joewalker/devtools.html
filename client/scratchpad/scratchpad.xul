@@ -5,11 +5,11 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 <!DOCTYPE window [
-<!ENTITY % scratchpadDTD SYSTEM "chrome://devtools/locale/scratchpad.dtd" >
+<!ENTITY % scratchpadDTD SYSTEM "l10n/scratchpad.dtd" >
  %scratchpadDTD;
 <!ENTITY % editMenuStrings SYSTEM "chrome://global/locale/editMenuOverlay.dtd">
 %editMenuStrings;
-<!ENTITY % sourceEditorStrings SYSTEM "chrome://devtools/locale/sourceeditor.dtd">
+<!ENTITY % sourceEditorStrings SYSTEM "l10n/sourceeditor.dtd">
 %sourceEditorStrings;
 ]>
 

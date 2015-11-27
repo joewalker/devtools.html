@@ -8,7 +8,7 @@
 <?xml-stylesheet href="chrome://devtools/skin/widgets.css" type="text/css"?>
 <?xml-stylesheet href="chrome://devtools/skin/performance.css" type="text/css"?>
 <!DOCTYPE window [
-  <!ENTITY % performanceDTD SYSTEM "chrome://devtools/locale/performance.dtd">
+  <!ENTITY % performanceDTD SYSTEM "l10n/performance.dtd">
   %performanceDTD;
 ]>
 
