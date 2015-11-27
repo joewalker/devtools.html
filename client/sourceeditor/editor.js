@@ -257,7 +257,8 @@ Editor.prototype = {
     // Yuck.. since the CM iframe is a data URI we need an absolute path
     // for our resources and we are making some pretty bad assumptions about
     // where it will be.
-    baseUri = baseUri.split("/").slice(0, -2).join("/") + "/";
+    // baseUri = baseUri.split("/").slice(0, -2).join("/") + "/";
+    baseUri = "/devtools/client/";
 
     if (!env)
       env = el.ownerDocument.createElementNS(XUL_NS, "iframe");
