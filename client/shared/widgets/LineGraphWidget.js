@@ -7,7 +7,7 @@ const { ViewHelpers, Heritage } = require("devtools/client/shared/widgets/ViewHe
 const { AbstractCanvasGraph, CanvasGraphUtils } = require("devtools/client/shared/widgets/Graphs");
 
 const HTML_NS = "http://www.w3.org/1999/xhtml";
-const L10N = new ViewHelpers.L10N("chrome://devtools/locale/graphs.properties");
+const L10N = new ViewHelpers.L10N("l10n/graphs.properties");
 
 // Line graph constants.
 

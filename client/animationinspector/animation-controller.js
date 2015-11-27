@@ -19,8 +19,7 @@ const { promise } = require("devtools/sham/promise");
 const EventEmitter = require("devtools/shared/event-emitter");
 const { AnimationsFront } = require("devtools/server/actors/animation");
 
-const STRINGS_URI = "chrome://devtools/locale/animationinspector.properties";
-const L10N = new ViewHelpers.L10N(STRINGS_URI);
+const L10N = new ViewHelpers.L10N(require("l10n/animationinspector.properties"));
 
 // Global toolbox/inspector, set when startup is called.
 var gToolbox, gInspector;
