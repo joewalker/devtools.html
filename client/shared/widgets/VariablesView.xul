@@ -3,9 +3,9 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <?xml-stylesheet href="/devtools/client/chrome/global/skin/global.css"?>
-<?xml-stylesheet href="devtools/client/shared/widgets/widgets.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/shared/widgets/widgets.css" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
-<?xml-stylesheet href="devtools/client/themes/widgets.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/themes/widgets.css" type="text/css"?>
 <!DOCTYPE window [
   <!ENTITY % viewDTD SYSTEM "l10n/VariablesView.dtd">
   %viewDTD;
@@ -14,6 +14,6 @@
         title="&PropertiesViewWindowTitle;">
 
   <script type="application/javascript;version=1.8"
-          src="devtools/client/shared/theme-switching.js"/>
+          src="/devtools/client/shared/theme-switching.js"/>
   <vbox id="variables" flex="1"/>
 </window>

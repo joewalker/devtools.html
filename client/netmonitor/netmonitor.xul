@@ -3,11 +3,11 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <?xml-stylesheet href="chrome://browser/skin/" type="text/css"?>
-<?xml-stylesheet href="devtools/client/shared/widgets/widgets.css" type="text/css"?>
-<?xml-stylesheet href="devtools/client/netmonitor/netmonitor.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/shared/widgets/widgets.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/netmonitor/netmonitor.css" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
-<?xml-stylesheet href="devtools/client/themes/widgets.css" type="text/css"?>
-<?xml-stylesheet href="devtools/client/themes/netmonitor.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/themes/widgets.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/themes/netmonitor.css" type="text/css"?>
 <!DOCTYPE window [
   <!ENTITY % netmonitorDTD SYSTEM "l10n/netmonitor.dtd">
   %netmonitorDTD;
@@ -19,7 +19,7 @@
         xmlns:html="http://www.w3.org/1999/xhtml">
 
   <script type="application/javascript;version=1.8"
-          src="devtools/client/shared/theme-switching.js"/>
+          src="/devtools/client/shared/theme-switching.js"/>
   <script type="text/javascript" src="netmonitor-controller.js"/>
   <script type="text/javascript" src="netmonitor-view.js"/>
 
