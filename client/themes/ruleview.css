@@ -293,12 +293,12 @@
 }
 
 #ruleview-add-rule-button::before {
-  background-image: url("chrome://devtools/skin/images/add.svg");
+  background-image: url("../themes/images/add.svg");
   background-size: cover;
 }
 
 #pseudo-class-panel-toggle::before {
-  background-image: url("chrome://devtools/skin/images/pseudo-class.svg");
+  background-image: url("../themes/images/pseudo-class.svg");
   background-size: cover;
 }
 

@@ -258,6 +258,7 @@ ToolSidebar.prototype = {
 
     let tabpanel = this._panelDoc.createElementNS(XULNS, "tabpanel");
     tabpanel.setAttribute("id", this.TABPANEL_ID_PREFIX + id);
+    tabpanel.setAttribute("flex", 1);
     tabpanel.appendChild(iframe);
     tabpanel.hidden = true;
     this._tabboxTabpanels.appendChild(tabpanel);
