@@ -198,18 +198,18 @@
 }
 
 .ruleview-bezierswatch {
-  background: url("chrome://devtools/skin/images/cubic-bezier-swatch.png");
+  background: url("devtools/client/themes/images/cubic-bezier-swatch.png");
   background-size: 1em;
 }
 
 .ruleview-filterswatch {
-  background: url("chrome://devtools/skin/images/filter-swatch.svg");
+  background: url("devtools/client/themes/images/filter-swatch.svg");
   background-size: 1em;
 }
 
 @media (min-resolution: 1.1dppx) {
   .ruleview-bezierswatch {
-    background: url("chrome://devtools/skin/images/cubic-bezier-swatch@2x.png");
+    background: url("devtools/client/themes/images/cubic-bezier-swatch@2x.png");
     background-size: 1em;
   }
 }
@@ -277,7 +277,7 @@
 }
 
 .ruleview-selectorhighlighter {
-  background: url("chrome://devtools/skin/images/vview-open-inspector.png") no-repeat 0 0;
+  background: url("devtools/client/themes/images/vview-open-inspector.png") no-repeat 0 0;
   padding-left: 16px;
   margin-left: 5px;
   cursor: pointer;
