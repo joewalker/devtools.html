@@ -3,11 +3,11 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <?xml-stylesheet href="chrome://browser/skin/" type="text/css"?>
-<?xml-stylesheet href="devtools/client/shared/widgets/widgets.css" type="text/css"?>
-<?xml-stylesheet href="devtools/client/inspector/inspector.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/shared/widgets/widgets.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/inspector/inspector.css" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
-<?xml-stylesheet href="devtools/client/themes/widgets.css" type="text/css"?>
-<?xml-stylesheet href="devtools/client/themes/inspector.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/themes/widgets.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/themes/inspector.css" type="text/css"?>
 <!DOCTYPE window [
   <!ENTITY % inspectorDTD SYSTEM "l10n/inspector.dtd" >
    %inspectorDTD;
@@ -16,7 +16,7 @@
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
   <script type="application/javascript;version=1.8"
-          src="devtools/client/shared/theme-switching.js"/>
+          src="/devtools/client/shared/theme-switching.js"/>
 
   <commandset>
     <command id="nodeSearchCommand"

@@ -15,7 +15,7 @@
 
 <?xml-stylesheet href="/devtools/client/chrome/global/skin/global.css"?>
 <?xml-stylesheet href="/devtools/client/themes/common.css"?>
-<?xml-stylesheet href="devtools/client/themes/scratchpad.css"?>
+<?xml-stylesheet href="/devtools/client/themes/scratchpad.css"?>
 <?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
 
 <window id="main-window"
@@ -29,9 +29,9 @@
         persist="screenX screenY width height sizemode">
 
 <script type="application/javascript;version=1.8"
-        src="devtools/client/shared/theme-switching.js"/>
+        src="/devtools/client/shared/theme-switching.js"/>
 <script type="application/javascript" src="/devtools/client/chrome/global/content/globalOverlay.js"/>
-<script type="application/javascript" src="devtools/client/scratchpad/scratchpad.js"/>
+<script type="application/javascript" src="/devtools/client/scratchpad/scratchpad.js"/>
 
 <commandset id="editMenuCommands"/>
 
