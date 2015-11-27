@@ -564,7 +564,7 @@ WiFiRuntime.prototype = {
       let win = Services.wm.getMostRecentWindow("devtools:webide");
       let width = win.outerWidth * 0.8;
       let height = Math.max(win.outerHeight * 0.5, MIN_HEIGHT);
-      win.openDialog("chrome://webide/content/wifi-auth.xhtml",
+      win.openDialog("/devtools/client/webide/content/wifi-auth.xhtml",
                      WINDOW_ID,
                      "modal=yes,width=" + width + ",height=" + height, session);
     });
