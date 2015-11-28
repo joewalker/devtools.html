@@ -226,7 +226,7 @@ SrcdirProvider.prototype = {
           pathComponents.unshift(clientDir);
           let path = OS.Path.join.apply(OS.Path, pathComponents);
           let uri = this.fileURI(path);
-          let chromeURI = "devtools/client/" + match[1];
+          let chromeURI = "/devtools/client/" + match[1];
           let entry = "override " + chromeURI + "\t" + uri;
           entries.push(entry);
         }

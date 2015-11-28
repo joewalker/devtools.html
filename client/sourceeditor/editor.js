@@ -46,10 +46,10 @@ const { OS } = Services.appinfo;
 // order to initialize a CodeMirror instance.
 
 const CM_STYLES   = [
-  "devtools/client/themes/common.css",
-  "devtools/client/sourceeditor/codemirror/lib/codemirror.css",
-  "devtools/client/sourceeditor/codemirror/addon/dialog/dialog.css",
-  "devtools/client/sourceeditor/codemirror/mozilla.css"
+  "/devtools/client/themes/common.css",
+  "/devtools/client/sourceeditor/codemirror/lib/codemirror.css",
+  "/devtools/client/sourceeditor/codemirror/addon/dialog/dialog.css",
+  "/devtools/client/sourceeditor/codemirror/mozilla.css"
 ];
 
 const CM_SCRIPTS  = [
@@ -258,7 +258,7 @@ Editor.prototype = {
     // for our resources and we are making some pretty bad assumptions about
     // where it will be.
     // baseUri = baseUri.split("/").slice(0, -2).join("/") + "/";
-    baseUri = "devtools/client/";
+    baseUri = "/devtools/client/";
 
     if (!env)
       env = el.ownerDocument.createElementNS(XUL_NS, "iframe");
