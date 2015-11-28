@@ -14,8 +14,8 @@ var mocha = require("gulp-mocha");
 var wsTcpProxy = require("./tools/ws-tcp-proxy");
 var http = require("http");
 var ecstatic = require("ecstatic");
-var express = require('express');
-var morgan = require('morgan');
+var express = require("express");
+var morgan = require("morgan");
 
 var WEBPACK_CONFIG_NAME = "webpack.config.js";
 var PREFS_SRC_FILE = path.join(__dirname, "client", "preferences", "devtools.js");
