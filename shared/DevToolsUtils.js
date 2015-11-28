@@ -50,16 +50,16 @@ exports.safeErrorString = function safeErrorString(aError) {
 exports.reportException = function reportException(aWho, aException) {
   let msg = aWho + " threw an exception: " + exports.safeErrorString(aException);
 
-  dump(msg + "\n");
+  console.log(msg);
 
-  if (Cu && Cu.reportError) {
-    /*
-     * Note that the xpcshell test harness registers an observer for
-     * console messages, so when we're running tests, this will cause
-     * the test to quit.
-     */
-    Cu.reportError(msg);
-  }
+//  if (Cu && Cu.reportError) {
+//    /*
+//     * Note that the xpcshell test harness registers an observer for
+//     * console messages, so when we're running tests, this will cause
+//     * the test to quit.
+//     */
+//    Cu.reportError(msg);
+//  }
 }
 
 /**
@@ -442,9 +442,9 @@ let haveLoggedDeprecationMessage = false;
 exports.dbg_assert = function dbg_assert(cond, e) {
   if (!haveLoggedDeprecationMessage) {
     haveLoggedDeprecationMessage = true;
-    const deprecationMessage = "DevToolsUtils.dbg_assert is deprecated! Use DevToolsUtils.assert instead!\n"
+    const deprecationMessage = "DevToolsUtils.dbg_assert is deprecated! Use DevToolsUtils.assert instead!"
           + Error().stack;
-    dump(deprecationMessage);
+    console.log(deprecationMessage);
     if (typeof console === "object" && console && console.warn) {
       console.warn(deprecationMessage);
     }

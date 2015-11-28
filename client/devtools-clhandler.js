@@ -64,10 +64,10 @@ devtoolsCommandlineHandler.prototype = {
     if (!remoteDebuggingEnabled) {
       let errorMsg = "Could not run chrome debugger! You need the following prefs " +
                      "to be set to true: " + kDebuggerPrefs.join(", ");
-      Cu.reportError(errorMsg);
+      //Cu.reportError(errorMsg);
       // Dump as well, as we're doing this from a commandline, make sure people
       // don't miss it:
-      dump(errorMsg + "\n");
+      console.log(errorMsg);
     }
     return remoteDebuggingEnabled;
   },
@@ -112,9 +112,9 @@ devtoolsCommandlineHandler.prototype = {
       let listener = debuggerServer.createListener();
       listener.portOrPath = portOrPath;
       listener.open();
-      dump("Started debugger server on " + portOrPath + "\n");
+      console.log("Started debugger server on " + portOrPath);
     } catch(e) {
-      dump("Unable to start debugger server on " + portOrPath + ": " + e);
+      console.log("Unable to start debugger server on " + portOrPath + ": " + e);
     }
 
     if (cmdLine.state == Ci.nsICommandLine.STATE_REMOTE_AUTO) {

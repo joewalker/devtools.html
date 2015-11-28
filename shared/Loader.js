@@ -217,7 +217,7 @@ SrcdirProvider.prototype = {
       let contentEntry = /^\s+content\/(\S+)\s+\((\S+)\)/;
       for (let line of lines) {
         if (preprocessed.test(line)) {
-          dump("Unable to override preprocessed file: " + line + "\n");
+          console.log("Unable to override preprocessed file: " + line);
           continue;
         }
         let match = contentEntry.exec(line);

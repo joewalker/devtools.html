@@ -910,7 +910,7 @@ const WDA_DEFAULT_GIVE_UP_TIMEOUT = DevToolsUtils.testing ? 45000 : 2000; // ms
  */
 function dumpn(str) {
   if (wantLogging) {
-    dump("NET-FRONTEND: " + str + "\n");
+    console.log("NET-FRONTEND: " + str);
   }
 }
 
