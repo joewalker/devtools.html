@@ -510,15 +510,15 @@ html tooltip {
 }
 
 .theme-dark .devtools-searchinput-clear {
-  background-image: url("/devtools/client/themes/images/search-clear-dark.svg");
+  background-image: url(images/search-clear-dark.svg);
 }
 
 .theme-light .devtools-searchinput-clear {
-  background-image: url("/devtools/client/themes/images/search-clear-light.svg");
+  background-image: url(images/search-clear-light.svg);
 }
 
 .devtools-style-searchbox-no-match + .devtools-searchinput-clear {
-  background-image: url("/devtools/client/themes/images/search-clear-failed.svg") !important;
+  background-image: url(images/search-clear-failed.svg) !important;
 }
 
 .devtools-searchinput-clear:hover {
@@ -526,12 +526,12 @@ html tooltip {
 }
 
 .theme-dark .devtools-searchinput > .textbox-input-box > .textbox-search-icons > .textbox-search-clear {
-  list-style-image: url("/devtools/client/themes/images/search-clear-dark.svg");
+  list-style-image: url(images/search-clear-dark.svg);
   -moz-image-region: rect(0, 16px, 16px, 0);
 }
 
 .theme-light .devtools-searchinput > .textbox-input-box > .textbox-search-icons > .textbox-search-clear {
-  list-style-image: url("/devtools/client/themes/images/search-clear-light.svg");
+  list-style-image: url(images/search-clear-light.svg);
   -moz-image-region: rect(0, 16px, 16px, 0);
 }
 

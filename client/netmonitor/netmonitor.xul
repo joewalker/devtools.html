@@ -18,7 +18,7 @@
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         xmlns:html="http://www.w3.org/1999/xhtml">
 
-  <script type="application/javascript;version=1.8"
+  <script type="application/javascript"
           src="/devtools/client/shared/theme-switching.js"/>
   <script type="text/javascript" src="netmonitor-controller.js"/>
   <script type="text/javascript" src="netmonitor-view.js"/>
