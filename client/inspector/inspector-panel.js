@@ -943,6 +943,10 @@ InspectorPanel.prototype = {
   },
 
   _onMarkupFrameLoad: function() {
+    if (this._markupFrame.getAttribute("src") !== "../markupview/markup-view.xhtml") {
+      return;
+    }
+
     this._markupFrame.removeEventListener("load", this._onMarkupFrameLoad, true);
 
     this._markupFrame.contentWindow.focus();
