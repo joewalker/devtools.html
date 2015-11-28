@@ -27,7 +27,7 @@ exports.Tools = Tools;
 Tools.options = {
   id: "options",
   ordinal: 0,
-  url: "devtools/client/framework/toolbox-options.xul",
+  url: "/devtools/client/framework/toolbox-options.xul",
   icon: "../themes/images/tool-options.svg",
   invertIconForLightTheme: true,
   bgTheme: "theme-body",
@@ -90,7 +90,7 @@ Tools.webConsole = {
   ordinal: 2,
   icon: "../themes/images/tool-webconsole.svg",
   invertIconForLightTheme: true,
-  url: "devtools/client/webconsole/webconsole.xul",
+  url: "/devtools/client/webconsole/webconsole.xul",
   label: l10n("ToolboxTabWebconsole.label", webConsoleStrings),
   menuLabel: l10n("MenuWebconsole.label", webConsoleStrings),
   panelLabel: l10n("ToolboxWebConsole.panelLabel", webConsoleStrings),

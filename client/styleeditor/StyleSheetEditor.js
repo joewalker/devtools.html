@@ -12,7 +12,7 @@ const promise = require("devtools/sham/promise");
 const {CssLogic} = require("devtools/shared/styleinspector/css-logic");
 
 const { Services } = require("devtools/sham/services");
-const { FileUtils } = require ("devtools/sham/fileutils");
+const { FileUtils } = require("devtools/sham/fileutils");
 const { NetUtil } = require("devtools/sham/netutil");
 const { OS } = require("devtools/sham/osfile");
 const { Task } = require("devtools/sham/task");

@@ -14,7 +14,7 @@ const { NetUtil } = require("devtools/sham/netutil");
 const { Services } = require("devtools/sham/services");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 
-const VARIABLES_URI = "devtools/client/themes/variables.css";
+const VARIABLES_URI = "/devtools/client/themes/variables.css";
 const THEME_SELECTOR_STRINGS = {
   light: ":root.theme-light {",
   dark: ":root.theme-dark {"

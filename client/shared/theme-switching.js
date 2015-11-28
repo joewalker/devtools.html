@@ -5,7 +5,7 @@
 "use strict";
 
 (function() {
-  const DEVTOOLS_SKIN_URL = "devtools/client/themes/";
+  const DEVTOOLS_SKIN_URL = "/devtools/client/themes/";
   let documentElement = document.documentElement;
 
   function forceStyle() {
