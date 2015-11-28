@@ -269,6 +269,10 @@ Editor.prototype = {
       throw new Error("You can append an editor only once.");
 
     let onLoad = Task.spawn(function*() {
+      if (env.getAttribute("src") == null) {
+        return;
+      }
+
       // Once the iframe is loaded, we can inject CodeMirror
       // and its dependencies into its DOM.
 

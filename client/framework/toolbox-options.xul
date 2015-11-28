@@ -11,7 +11,7 @@
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-  <script type="application/javascript;version=1.8"
+  <script type="application/javascript"
           src="/devtools/client/shared/theme-switching.js"/>
   <hbox id="options-panel-container" flex="1">
     <hbox id="options-panel" class="theme-body" flex="1">

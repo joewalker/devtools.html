@@ -9,7 +9,7 @@
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-<script type="application/javascript;version=1.8" src="projecteditor-loader.js"></script>
+<script type="application/javascript" src="projecteditor-loader.js"></script>
 
   <commandset id="toolbox-commandset">
     <command id="projecteditor-cmd-close" oncommand="window.close();"/>
