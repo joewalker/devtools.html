@@ -123,8 +123,8 @@ EventEmitter.prototype = {
         catch (ex) {
           // Prevent a bad listener from interfering with the others.
           let msg = ex + ": " + ex.stack;
-          Cu.reportError(msg);
-          dump(msg + "\n");
+          //Cu.reportError(msg);
+          console.log(msg);
         }
       }
     }

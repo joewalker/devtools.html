@@ -906,7 +906,7 @@ var Actor = Class({
   writeError: function(err) {
     console.error(err);
     if (err.stack) {
-      dump(err.stack);
+      console.log(err.stack);
     }
     this.conn.send({
       from: this.actorID,

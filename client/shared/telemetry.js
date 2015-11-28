@@ -333,8 +333,8 @@ Telemetry.prototype = {
         // let histogram = Services.telemetry.getKeyedHistogramById(histogramId);
         histogram.add(key, value);
       } catch(e) {
-        dump("Warning: An attempt was made to write to the " + histogramId +
-             " histogram, which is not defined in Histograms.json\n");
+        console.log("Warning: An attempt was made to write to the " + histogramId +
+             " histogram, which is not defined in Histograms.json");
       }
     }
   },

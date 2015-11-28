@@ -258,7 +258,7 @@ BrowserToolboxProcess.prototype = {
  */
 function dumpn(str) {
   if (wantLogging) {
-    dump("DBG-FRONTEND: " + str + "\n");
+    console.log("DBG-FRONTEND: " + str);
   }
 }
 
