@@ -3332,7 +3332,7 @@ VariablesView.getGrip = function(aValue) {
       return { type: "object",
                class: WebConsoleUtils.getObjectClassName(aValue) };
     default:
-      Cu.reportError("Failed to provide a grip for value of " + typeof value +
+      console.error("Failed to provide a grip for value of " + typeof value +
                      ": " + aValue);
       return null;
   }

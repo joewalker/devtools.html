@@ -175,7 +175,7 @@ SrcdirProvider.prototype = {
       sharedGlobalBlacklist: sharedGlobalBlacklist
     });
 
-    return this._writeManifest(srcDir).then(null, Cu.reportError);
+    return this._writeManifest(srcDir).catch(console.error.bind(console));
   },
 
   unload: function(reason) {
@@ -382,7 +382,7 @@ DevToolsLoader.prototype = {
     this._provider.invisibleToDebugger = this.invisibleToDebugger;
     this._provider.globals = {
       isWorker: false,
-      reportError: Cu.reportError,
+      reportError: console.error.bind(console),
       atob: atob,
       btoa: btoa,
       _Iterator: Iterator,

@@ -107,7 +107,7 @@ var HarUtils = {
       // this closes foStream
       convertor.close();
     } catch (err) {
-      Cu.reportError(err);
+      console.error(err);
       return false;
     }
 
@@ -145,7 +145,7 @@ var HarUtils = {
       file.remove(true);
       return true;
     } catch (err) {
-      Cu.reportError(err);
+      console.error(err);
 
       // Something went wrong (disk space?) rename the original file back.
       file.moveTo(null, originalFileName);

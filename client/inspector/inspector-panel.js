@@ -1202,7 +1202,7 @@ InspectorPanel.prototype = {
   _copyLongString: function(longStringActorPromise) {
     return this._getLongString(longStringActorPromise).then(string => {
       clipboardHelper.copy(string);
-    }).catch(Cu.reportError);
+    }).catch(console.error.bind(console));
   },
 
   /**
@@ -1213,10 +1213,10 @@ InspectorPanel.prototype = {
   _getLongString: function(longStringActorPromise) {
     return longStringActorPromise.then(longStringActor => {
       return longStringActor.string().then(string => {
-        longStringActor.release().catch(Cu.reportError);
+        longStringActor.release().catch(console.error.bind(console));
         return string;
       });
-    }).catch(Cu.reportError);
+    }).catch(console.error.bind(console));
   },
 
   /**

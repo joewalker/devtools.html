@@ -229,7 +229,7 @@ function autoComplete({ ed, cm }) {
     priv.suggestionInsertedOnce = false;
     // This event is used in tests.
     ed.emit("after-suggest");
-  }).then(null, Cu.reportError);
+  }).catch(console.error.bind(console));
 }
 
 /**

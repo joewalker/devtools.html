@@ -415,7 +415,7 @@ var {
       subScriptLoader.loadSubScript(url, sandbox, "UTF-8");
     };
 
-    let reportError = Cu.reportError;
+    let reportError = console.error.bind(console);
 
     //const Timer = require("devtools/sham/timer");
 

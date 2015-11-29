@@ -219,7 +219,7 @@ const LegacyPerformanceFront = Class({
     // If `profileEnd()` was called with a label, and there are no matching
     // sessions, abort.
     if (!model) {
-      Cu.reportError("console.profileEnd() called with label that does not match a recording.");
+      console.error("console.profileEnd() called with label that does not match a recording.");
       return;
     }
 
@@ -230,7 +230,7 @@ const LegacyPerformanceFront = Class({
   * TODO handle bug 1144438
   */
   _onProfilerUnexpectedlyStopped: function () {
-    Cu.reportError("Profiler unexpectedly stopped.", arguments);
+    console.error("Profiler unexpectedly stopped.", arguments);
   },
 
   /**

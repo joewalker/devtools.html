@@ -1387,16 +1387,17 @@ Toolbox.prototype = {
    * of the console, then store the newly focused element, so that
    * it can be restored once the split console closes.
    */
-  _onFocus: function({originalTarget}) {
+  _onFocus: function(ev) {
+    const target = ev.originalTarget || ev.target;
     // Ignore any non element nodes, or any elements contained
     // within the webconsole frame.
     let webconsoleURL = gDevTools.getToolDefinition("webconsole").url;
-    if (originalTarget.nodeType !== 1 ||
-        originalTarget.baseURI === webconsoleURL) {
+    if (target.nodeType !== 1 ||
+        target.baseURI === webconsoleURL) {
       return;
     }
 
-    this._lastFocusedElement = originalTarget;
+    this._lastFocusedElement = target;
   },
 
   /**

@@ -58,13 +58,13 @@ devtoolsCommandlineHandler.prototype = {
     try {
       remoteDebuggingEnabled = kDebuggerPrefs.every((pref) => Services.prefs.getBoolPref(pref));
     } catch (ex) {
-      Cu.reportError(ex);
+      console.error(ex);
       return false;
     }
     if (!remoteDebuggingEnabled) {
       let errorMsg = "Could not run chrome debugger! You need the following prefs " +
                      "to be set to true: " + kDebuggerPrefs.join(", ");
-      //Cu.reportError(errorMsg);
+      //console.error(errorMsg);
       // Dump as well, as we're doing this from a commandline, make sure people
       // don't miss it:
       console.log(errorMsg);

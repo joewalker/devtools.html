@@ -183,7 +183,7 @@ HarCollector.prototype = {
 
     let file = this.getFile(actor);
     if (file) {
-      Cu.reportError("HarCollector.onNetworkEvent; ERROR " +
+      console.error("HarCollector.onNetworkEvent; ERROR " +
         "existing file conflict!");
       return;
     }
@@ -269,7 +269,7 @@ HarCollector.prototype = {
     let deferred = defer();
 
     if (!this.webConsoleClient[method]) {
-      Cu.reportError("HarCollector.getData; ERROR " +
+      console.error("HarCollector.getData; ERROR " +
         "Unknown method!");
       return;
     }

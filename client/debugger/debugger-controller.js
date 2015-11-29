@@ -393,7 +393,7 @@ var DebuggerController = {
     }, aResponse => {
       if (aResponse.error) {
         let msg = "Couldn't reconfigure thread: " + aResponse.message;
-        Cu.reportError(msg);
+        console.error(msg);
         dumpn(msg);
         return;
       }
@@ -1276,7 +1276,7 @@ SourceScripts.prototype = {
   _onSourcesAdded: function(aResponse) {
     if (aResponse.error || !aResponse.sources) {
       let msg = "Error getting sources: " + aResponse.message;
-      Cu.reportError(msg);
+      console.error(msg);
       dumpn(msg);
       return;
     }
@@ -1349,7 +1349,7 @@ SourceScripts.prototype = {
       if (error) {
         let msg = "Couldn't toggle black boxing for " + aSource.url + ": " + message;
         dumpn(msg);
-        Cu.reportError(msg);
+        console.error(msg);
         deferred.reject([aSource, msg]);
       } else {
         deferred.resolve([aSource, sourceClient.isBlackBoxed]);

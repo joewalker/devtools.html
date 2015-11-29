@@ -219,7 +219,7 @@ const PerformanceFront = exports.PerformanceFront = protocol.FrontClass(Performa
 
   get traits() {
     if (!this._traits) {
-      Cu.reportError("Cannot access traits of PerformanceFront before calling `connect()`.");
+      console.error("Cannot access traits of PerformanceFront before calling `connect()`.");
     }
     return this._traits;
   },

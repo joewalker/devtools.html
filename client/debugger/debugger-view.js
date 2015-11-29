@@ -493,7 +493,7 @@ var DebuggerView = {
       let url = aError;
       let msg = L10N.getFormatStr("errorLoadingText2", url);
       this._setEditorText(msg);
-      Cu.reportError(msg);
+      console.error(msg);
       dumpn(msg);
 
       // Reject and notify that there was an error showing the source file.
