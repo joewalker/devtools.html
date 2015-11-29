@@ -311,7 +311,7 @@ StorageUI.prototype = {
       }
       this.populateTable(data, reason);
       this.emit("store-objects-updated");
-    }, Cu.reportError);
+    }).catch(console.error.bind(console));
   },
 
   /**

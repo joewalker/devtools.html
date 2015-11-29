@@ -221,7 +221,7 @@ exports.ProfilerFront = protocol.FrontClass(ProfilerActor, {
         details: data.details
       });
       if (this.conn._getListeners("eventNotification").length) {
-        Cu.reportError(`
+        console.error(`
           ProfilerActor's "eventNotification" on the DebuggerClient has been deprecated.
           Use the ProfilerFront found in "devtools/server/actors/profiler".`);
       }

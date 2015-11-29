@@ -117,7 +117,7 @@ OptionsPanel.prototype = {
       this.emit("ready");
       return this;
     }).then(null, function onError(aReason) {
-      Cu.reportError("OptionsPanel open failed. " +
+      console.error("OptionsPanel open failed. " +
                      aReason.error + ": " + aReason.message);
     });
   },

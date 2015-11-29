@@ -52,13 +52,13 @@ exports.reportException = function reportException(aWho, aException) {
 
   console.log(msg);
 
-//  if (Cu && Cu.reportError) {
+//  if (Cu && console.error) {
 //    /*
 //     * Note that the xpcshell test harness registers an observer for
 //     * console messages, so when we're running tests, this will cause
 //     * the test to quit.
 //     */
-//    Cu.reportError(msg);
+//    console.error(msg);
 //  }
 }
 

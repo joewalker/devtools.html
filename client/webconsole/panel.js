@@ -92,7 +92,7 @@ WebConsolePanel.prototype = {
         let msg = "WebConsolePanel open failed. " +
                   aReason.error + ": " + aReason.message;
         console.log(msg);
-        //Cu.reportError(msg);
+        //console.error(msg);
       });
   },
 

@@ -391,7 +391,7 @@ var WebConsoleUtils = {
       case "function":
         return aObjectWrapper(aValue);
       default:
-        Cu.reportError("Failed to provide a grip for value of " + typeof aValue
+        console.error("Failed to provide a grip for value of " + typeof aValue
                        + ": " + aValue);
         return null;
     }
@@ -669,7 +669,7 @@ WebConsoleUtils.l10n.prototype = {
       result = this.stringBundle.GetStringFromName(aName);
     }
     catch (ex) {
-      Cu.reportError("Failed to get string: " + aName);
+      console.error("Failed to get string: " + aName);
       throw ex;
     }
     return result;
@@ -693,7 +693,7 @@ WebConsoleUtils.l10n.prototype = {
       result = this.stringBundle.formatStringFromName(aName, aArray, aArray.length);
     }
     catch (ex) {
-      Cu.reportError("Failed to format string: " + aName);
+      console.error("Failed to format string: " + aName);
       throw ex;
     }
     return result;

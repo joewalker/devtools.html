@@ -2637,7 +2637,7 @@ NetworkDetailsView.prototype = {
           viewState.dirty[tab] = false;
         }
       }
-    }, Cu.reportError);
+    }, console.error.bind(console));
   },
 
   /**

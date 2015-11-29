@@ -1472,12 +1472,12 @@ CssRuleView.prototype = {
         this.lastSelectorIcon = selectorIcon;
         this.highlightSelector(selector).then(() => {
           this.emit("ruleview-selectorhighlighter-toggled", true);
-        }, Cu.reportError);
+        }).catch(console.error.bind(console));
       } else {
         this.highlightedSelector = null;
         this.emit("ruleview-selectorhighlighter-toggled", false);
       }
-    }, Cu.reportError);
+    }).catch(console.error.bind(console));
   },
 
   highlightSelector: Task.async(function*(selector) {

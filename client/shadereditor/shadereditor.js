@@ -317,7 +317,7 @@ var ShadersListView = Heritage.extend(WidgetMethods, {
     getShaders()
       .then(getSources)
       .then(showSources)
-      .then(null, Cu.reportError);
+      .catch(console.error.bind(console));
   },
 
   /**

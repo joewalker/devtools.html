@@ -155,7 +155,7 @@ function ResponsiveUI(aWindow, aTab)
       presets = JSON.parse(Services.prefs.getCharPref("devtools.responsiveUI.presets"));
     } catch(e) {
       // User pref is malformated.
-      Cu.reportError("Could not parse pref `devtools.responsiveUI.presets`: " + e);
+      console.error("Could not parse pref `devtools.responsiveUI.presets`: " + e);
     }
   }
 
@@ -164,7 +164,7 @@ function ResponsiveUI(aWindow, aTab)
   if (Array.isArray(presets)) {
     this.presets = [this.customPreset].concat(presets);
   } else {
-    Cu.reportError("Presets value (devtools.responsiveUI.presets) is malformated.");
+    console.error("Presets value (devtools.responsiveUI.presets) is malformated.");
     this.presets = [this.customPreset];
   }
 
