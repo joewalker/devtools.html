@@ -91,7 +91,7 @@ var Splitter = React.createClass({
 
     return (
       div({class: "splitterBox splitter", ref: "splitterBox",
-        id: this.props.id, hidden: "false",
+        id: this.props.id, /*hidden: "false",*/
         mode: this.props.mode, is: ""},
 
         // Left/top panel

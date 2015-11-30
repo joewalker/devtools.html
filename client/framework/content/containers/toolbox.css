@@ -37,3 +37,13 @@ vbox {
 #toolbox-notificationbox #toolbox-deck {
   height: calc(100% - 24px);
 }
+
+.splitterBox.splitter[hidden="true"],
+.splitterBox.splitter[hidden="false"],
+.splitterBox.splitter[hidden] {
+  display: block !important;
+}
+
+#toolbox-console-splitter.toolbox-console-splitter {
+  display: none !important;
+}
