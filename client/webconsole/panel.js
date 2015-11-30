@@ -38,7 +38,8 @@ WebConsolePanel.prototype = {
 
   open: Task.async(function*()
   {
-    this.webConsoleClient = yield connect();
+    this.webConsoleClient = yield initConnection();
+    yield initView(this._frameWindow.document);
 
     this.isReady = true;
     this.emit("ready");
@@ -55,15 +56,20 @@ WebConsolePanel.prototype = {
   },
 };
 
-function getPort() {
-  let query = location.search.match(/(\w+)=(\d+)/);
-  if (query && query[1] == "wsPort") {
-    return query[2];
-  }
-  return WEB_SOCKET_PORT;
+function initView(document) {
+  let $ = selector => document.querySelectorAll(selector);
+
 }
 
-function* connect() {
+function* initConnection() {
+  function getPort() {
+    let query = location.search.match(/(\w+)=(\d+)/);
+    if (query && query[1] == "wsPort") {
+      return query[2];
+    }
+    return WEB_SOCKET_PORT;
+  }
+
   let socket = new WebSocket("ws://localhost:" + getPort());
   let transport = new DebuggerTransport(socket);
   let client = new DebuggerClient(transport);

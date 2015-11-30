@@ -9,12 +9,29 @@
       xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
       class="theme-body">
   <head>
-  <script type="application/javascript;version=1.8"
-          src="../shared/theme-switching.js"/>
+    <script type="application/javascript;version=1.8"
+            src="../shared/theme-switching.js"/>
+    <style>
+      html, body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #js-output {
+        flex: 1;
+      }
+
+    </style>
 
   </head>
   <body class="devtools-responsive-container theme-body">
 
-    <div>Hello World</div>
+    <div id="js-output"></div>
+    <input id="js-input" type="text" name="input" value=""/>
   </body>
 </html>
