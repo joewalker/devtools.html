@@ -1,0 +1,46 @@
+/* See license.txt for terms of usage */
+
+/******************************************************************************/
+/* Sidebar */
+
+/* Make the tab side-bar look the same as the main toolbar */
+.theme-firebug .tabs .tabs-navigation {
+  background-color: #dbeaf9;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2)) !important;
+  height: 26px;
+  font-family: Lucida Grande, Tahoma, sans-serif;
+  font-size: 11px;
+}
+
+.theme-firebug .splitterBox .splitter > .innerBox {
+  height: 27px;
+}
+
+/* This is the trick that makes the tab bottom border invisible */
+.theme-firebug .tabs .tabs-menu-item {
+  position: relative;
+  bottom: -1px;
+}
+
+.theme-firebug .tabs .tabs-menu-item.is-active a,
+.theme-firebug .tabs .tabs-menu-item.is-active:hover a {
+  background-color: white !important;
+}
+
+/* Make sure there are scroll-bars in the side panel */
+.tabs .tab-panel {
+  overflow: auto;
+}
+
+/******************************************************************************/
+/* Payload */
+
+.payloadTabContent {
+  padding: 3px;
+  font-family: monospace;
+}
+
+/* Do not display the bottom border for inline tree-preview for payload */
+.payload .domTable > tbody > tr > td {
+  border-bottom: none;
+}
