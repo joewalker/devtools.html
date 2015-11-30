@@ -7,8 +7,15 @@
 const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const promise = require("devtools/sham/promise");
 
-loader.lazyGetter(this, "HUDService", () => require("devtools/client/webconsole/hudservice"));
 const EventEmitter = require("devtools/shared/event-emitter");
+
+let { DebuggerClient } = require("devtools/shared/client/main");
+let { DebuggerTransport } = require("devtools/shared/transport/transport");
+let { Task } = require("devtools/sham/task");
+let { TargetFactory } = require("devtools/client/framework/target");
+let { InspectorFront } = require("devtools/server/actors/inspector");
+
+let WEB_SOCKET_PORT = 9000;
 
 /**
  * A DevToolPanel that controls the Web Console.
@@ -25,97 +32,58 @@ exports.WebConsolePanel = WebConsolePanel;
 WebConsolePanel.prototype = {
   hud: null,
 
-  /**
-   * Called by the WebConsole's onkey command handler.
-   * If the WebConsole is opened, check if the JSTerm's input line has focus.
-   * If not, focus it.
-   */
-  focusInput: function WCP_focusInput()
+  focusInput: function()
   {
-    this.hud.jsterm.focus();
   },
 
-  /**
-   * Open is effectively an asynchronous constructor.
-   *
-   * @return object
-   *         A promise that is resolved when the Web Console completes opening.
-   */
-  open: function WCP_open()
+  open: Task.async(function*()
   {
-    let parentDoc = this._toolbox.doc;
-    let iframe = parentDoc.getElementById("toolbox-panel-iframe-webconsole");
+    this.webConsoleClient = yield initConnection();
+    yield initView(this._frameWindow.document);
 
-    // Make sure the iframe content window is ready.
-    let deferredIframe = promise.defer();
-    let win, doc;
-    if ((win = iframe.contentWindow) &&
-        (doc = win.document) &&
-        doc.readyState == "complete") {
-      deferredIframe.resolve(null);
-    }
-    else {
-      iframe.addEventListener("load", function onIframeLoad() {
-        iframe.removeEventListener("load", onIframeLoad, true);
-        deferredIframe.resolve(null);
-      }, true);
-    }
-
-    // Local debugging needs to make the target remote.
-    let promiseTarget;
-    if (!this.target.isRemote) {
-      promiseTarget = this.target.makeRemote();
-    }
-    else {
-      promiseTarget = promise.resolve(this.target);
-    }
-
-    // 1. Wait for the iframe to load.
-    // 2. Wait for the remote target.
-    // 3. Open the Web Console.
-    return deferredIframe.promise
-      .then(() => promiseTarget)
-      .then((aTarget) => {
-        this._frameWindow._remoteTarget = aTarget;
-
-        let webConsoleUIWindow = iframe.contentWindow.wrappedJSObject;
-        let chromeWindow = iframe.ownerDocument.defaultView;
-        return HUDService.openWebConsole(this.target, webConsoleUIWindow,
-                                         chromeWindow);
-      })
-      .then((aWebConsole) => {
-        this.hud = aWebConsole;
-        this._isReady = true;
-        this.emit("ready");
-        return this;
-      }, (aReason) => {
-        let msg = "WebConsolePanel open failed. " +
-                  aReason.error + ": " + aReason.message;
-        console.log(msg);
-        //console.error(msg);
-      });
-  },
+    this.isReady = true;
+    this.emit("ready");
+    return this;
+  }),
 
   get target()
   {
     return this._toolbox.target;
   },
 
-  _isReady: false,
-  get isReady()
+  destroy: function()
   {
-    return this._isReady;
-  },
-
-  destroy: function WCP_destroy()
-  {
-    if (this._destroyer) {
-      return this._destroyer;
-    }
-
-    this._destroyer = this.hud.destroy();
-    this._destroyer.then(() => this.emit("destroyed"));
-
-    return this._destroyer;
   },
 };
+
+function initView(document) {
+  let $ = selector => document.querySelectorAll(selector);
+
+}
+
+function* initConnection() {
+  function getPort() {
+    let query = location.search.match(/(\w+)=(\d+)/);
+    if (query && query[1] == "wsPort") {
+      return query[2];
+    }
+    return WEB_SOCKET_PORT;
+  }
+
+  let socket = new WebSocket("ws://localhost:" + getPort());
+  let transport = new DebuggerTransport(socket);
+  let client = new DebuggerClient(transport);
+  yield client.connect();
+
+  let response = yield client.listTabs();
+  let tab = response.tabs[response.selected];
+
+  let options = {
+    form: tab,
+    client,
+    chrome: false,
+  };
+  let target = yield TargetFactory.forRemoteTab(options);
+
+  return target.activeConsole;
+}

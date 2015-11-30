@@ -10,6 +10,7 @@ const { Services } = require("devtools/sham/services");
 
 var osString = "Darwin";
 var InspectorPanel = require("devtools/client/inspector/inspector-panel").InspectorPanel;
+var WebConsolePanel = require("devtools/client/webconsole/panel").WebConsolePanel;
 // loader.lazyGetter(this, "OptionsPanel", () => require("devtools/client/framework/toolbox-options").OptionsPanel);
 // loader.lazyGetter(this, "WebConsolePanel", () => require("devtools/client/webconsole/panel").WebConsolePanel);
 
@@ -90,7 +91,7 @@ Tools.webConsole = {
   ordinal: 2,
   icon: "../themes/images/tool-webconsole.svg",
   invertIconForLightTheme: true,
-  url: "/devtools/client/webconsole/webconsole.xul",
+  url: "../webconsole/webconsole.xhtml",
   label: l10n("ToolboxTabWebconsole.label", webConsoleStrings),
   menuLabel: l10n("MenuWebconsole.label", webConsoleStrings),
   panelLabel: l10n("ToolboxWebConsole.panelLabel", webConsoleStrings),
