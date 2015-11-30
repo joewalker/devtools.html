@@ -72,6 +72,7 @@ gulp.task("build-console", function () {
   var tools = fs.readdirSync(path.join(__dirname, "client"));
   var dirs = [];
   dirs.push(path.join(__dirname, "client", "console"));
+  dirs.push(path.join(__dirname, "client", "framework"));
   return Promise.all(dirs.map(buildDir));
 });
 

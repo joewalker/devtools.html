@@ -9,6 +9,14 @@ const promise = require("devtools/sham/promise");
 
 const EventEmitter = require("devtools/shared/event-emitter");
 
+let { DebuggerClient } = require("devtools/shared/client/main");
+let { DebuggerTransport } = require("devtools/shared/transport/transport");
+let { Task } = require("devtools/sham/task");
+let { TargetFactory } = require("devtools/client/framework/target");
+let { InspectorFront } = require("devtools/server/actors/inspector");
+
+let WEB_SOCKET_PORT = 9000;
+
 /**
  * A DevToolPanel that controls the Web Console.
  */
@@ -28,12 +36,14 @@ WebConsolePanel.prototype = {
   {
   },
 
-  open: function()
+  open: Task.async(function*()
   {
+    this.webConsoleClient = yield connect();
+
     this.isReady = true;
     this.emit("ready");
     return this;
-  },
+  }),
 
   get target()
   {
@@ -44,3 +54,30 @@ WebConsolePanel.prototype = {
   {
   },
 };
+
+function getPort() {
+  let query = location.search.match(/(\w+)=(\d+)/);
+  if (query && query[1] == "wsPort") {
+    return query[2];
+  }
+  return WEB_SOCKET_PORT;
+}
+
+function* connect() {
+  let socket = new WebSocket("ws://localhost:" + getPort());
+  let transport = new DebuggerTransport(socket);
+  let client = new DebuggerClient(transport);
+  yield client.connect();
+
+  let response = yield client.listTabs();
+  let tab = response.tabs[response.selected];
+
+  let options = {
+    form: tab,
+    client,
+    chrome: false,
+  };
+  let target = yield TargetFactory.forRemoteTab(options);
+
+  return target.activeConsole;
+}
