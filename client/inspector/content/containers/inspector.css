@@ -1,0 +1,31 @@
+/* See license.txt for terms of usage */
+
+/******************************************************************************/
+/* Inspector */
+
+#content {
+  height: 100%;
+}
+
+box {
+  height: 100%;
+  width: 100%;
+}
+
+.devtools-main-content {
+  height: 100%;
+}
+
+body.devtools-responsive-container {
+  overflow: hidden;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+/* Ignore mouse events if splitter-dragging is in progress */
+body[resizing] #markup-box > iframe {
+  pointer-events: none;
+}
+
