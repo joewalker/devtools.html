@@ -44,20 +44,29 @@ var Splitter = React.createClass({
   onDragStart: function(/*tracker*/) {
     var splitter = this.refs.splitter;
     var body = splitter.ownerDocument.body;
-    body.setAttribute("resizing", "true");
+    body.setAttribute("resizing", this.props.mode);
 
     var rightPanel = this.refs.rightPanel;
     this.rightWidth = rightPanel.clientWidth;
+    this.rightHeight = rightPanel.clientHeight;
   },
 
   onDragOver: function(newPos/*, tracker*/) {
     var rightPanel = this.refs.rightPanel;
-    var newWidth = (this.rightWidth - newPos.x);
-    if (newWidth < this.props.min) {
-      return;
-    }
 
-    rightPanel.style.width = newWidth + "px";
+    if (this.mode == "vertical") {
+      var newWidth = (this.rightWidth - newPos.x);
+      if (newWidth < this.props.min) {
+        return;
+      }
+      rightPanel.style.width = newWidth + "px";
+    } else {
+      var newHeight = (this.rightHeight - newPos.y);
+      if (newHeight < this.props.min) {
+        return;
+      }
+      rightPanel.style.height = newHeight + "px";
+    }
   },
 
   onDrop: function(/*tracker*/) {
@@ -69,18 +78,33 @@ var Splitter = React.createClass({
   // Rendering
 
   render: function() {
-    var leftPanel = this.props.leftPanel;
-    var rightPanel = this.props.rightPanel;
-    var splitterClassNames = ["splitter", this.props.mode];
+    var leftPanel = this.props.leftPanel || this.props.topPanel;
+    var rightPanel = this.props.rightPanel || this.props.bottomPanel;
+
+    var splitterClassNames = [
+      "splitterBox",
+      "splitter",
+      "devtools-horizontal-splitter",
+      this.props.mode
+    ];
 
     return (
-      div({className: "splitterBox", ref: "splitterBox"},
+      div({class: splitterClassNames.join(" "), ref: "splitterBox",
+        id: this.props.id, hidden: "false",
+        mode: this.props.mode, is: ""},
+
+        // Left/top panel
         div({className: "leftPanel", ref: "leftPanel"},
           leftPanel
         ),
-        div({className: splitterClassNames.join(" "), ref: "splitter"},
+
+        // Splitter
+        div({className: splitterClassNames.join(" "), ref: "splitter",
+          id: "toolbox-console-splitter"},
           this.props.innerBox
         ),
+
+        // Right/bottom panel
         div({className: "rightPanel", ref: "rightPanel"},
           rightPanel
         )
