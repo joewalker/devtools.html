@@ -54,12 +54,14 @@ var Splitter = React.createClass({
   onDragOver: function(newPos/*, tracker*/) {
     var rightPanel = this.refs.rightPanel;
 
-    if (this.mode == "vertical") {
+    if (this.props.mode == "vertical") {
       var newWidth = (this.rightWidth - newPos.x);
       if (newWidth < this.props.min) {
         return;
       }
       rightPanel.style.width = newWidth + "px";
+
+      console.log("new width " + newWidth + "px");
     } else {
       var newHeight = (this.rightHeight - newPos.y);
       if (newHeight < this.props.min) {
@@ -81,15 +83,14 @@ var Splitter = React.createClass({
     var leftPanel = this.props.leftPanel || this.props.topPanel;
     var rightPanel = this.props.rightPanel || this.props.bottomPanel;
 
-    var splitterClassNames = [
-      "splitterBox",
-      "splitter",
-      "devtools-horizontal-splitter",
-      this.props.mode
-    ];
+    // Class name for the splitter (the thin line in the middle)
+    var splitterClassName = this.props.splitterClassName ?
+      this.props.splitterClassName.split(" ") : [];
+    splitterClassName.push("splitter");
+    splitterClassName.push(this.props.mode);
 
     return (
-      div({class: splitterClassNames.join(" "), ref: "splitterBox",
+      div({class: "splitterBox splitter", ref: "splitterBox",
         id: this.props.id, hidden: "false",
         mode: this.props.mode, is: ""},
 
@@ -99,8 +100,8 @@ var Splitter = React.createClass({
         ),
 
         // Splitter
-        div({className: splitterClassNames.join(" "), ref: "splitter",
-          id: "toolbox-console-splitter"},
+        div({className: splitterClassName.join(" "), ref: "splitter",
+          id: this.props.splitterId},
           this.props.innerBox
         ),
 

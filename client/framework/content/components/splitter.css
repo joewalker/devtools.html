@@ -19,6 +19,11 @@
   align-content: stretch; /* Extra space in Cross Axis */
 }
 
+.splitterBox[mode="vertical"] {
+  flex: 1 1 auto;
+  display: flex;
+}
+
 .splitterBox[mode="vertical"] .leftPanel {
   height: 100%;
   flex: 1;
@@ -50,6 +55,20 @@
 
   display: flex;
   flex-direction: column;
+
+  justify-content: flex-start; /* align items in Main Axis */
+  align-items: stretch; /* align items in Cross Axis */
+  align-content: stretch; /* Extra space in Cross Axis */
+}
+
+.splitterBox[mode="vertical"] .leftPanel {
+  flex: 1;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
 
   justify-content: flex-start; /* align items in Main Axis */
   align-items: stretch; /* align items in Cross Axis */
@@ -102,19 +121,27 @@ body[resizing="horizontal"] * {
 /******************************************************************************/
 /* Theme Light & Dark */
 
-.theme-dark .splitterBox .splitter > .innerBox,
-.theme-light .splitterBox .splitter > .innerBox {
+.theme-dark .splitterBox .splitter > .innerBox {
   display: none;
 }
 
-.theme-light .splitterBox .splitter,
 .theme-dark .splitterBox .splitter {
   background-color: var(--theme-toolbar-background);
 }
 
-.theme-light .splitterBox .splitter.vertical,
-.theme-dark .splitterBox .splitter.vertical {
-  width: 1px;
-  border-left: 1px solid var(--theme-splitter-color);
+.theme-light .splitterBox .splitter > .innerBox {
+  height: 24px;
+  width: 4px;
+  border-bottom: 1px solid var(--theme-splitter-color);
+  background-color: var(--theme-toolbar-background);
 }
 
+.theme-light .splitterBox .splitter {
+  background-color: transparent;
+}
+
+.theme-light .splitterBox .splitter.vertical {
+  width: 4px;
+  border-left: 1px solid var(--theme-splitter-color);
+  background-color: transparent;
+}
