@@ -15,6 +15,7 @@ module.exports = {
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
       { test: /\.properties$/, loader: "properties-loader" },
       { test: /\.json$/, loader: "json-loader" },
+      { test: /\.css$/, loader: "style!css" },
     ]
   }
 };

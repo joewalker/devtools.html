@@ -60,9 +60,11 @@ gulp.task("build", function () {
     return path.join(__dirname, "client", tool);
   });*/
   var dirs = [];
+  dirs.push(path.join(__dirname, "client", "inspector", "content"));
   dirs.push(path.join(__dirname, "client", "inspector"));
   dirs.push(path.join(__dirname, "client", "styleinspector"));
   dirs.push(path.join(__dirname, "client", "fontinspector"));
+  dirs.push(path.join(__dirname, "client", "framework", "content"));
   dirs.push(path.join(__dirname, "client", "framework"));
   dirs.push(path.join(__dirname, "client", "webconsole"));
   dirs.push(path.join(__dirname, "tools", "connect"));
@@ -172,8 +174,59 @@ gulp.task("serve-connect", ["build-connect", "start-proxy"], function() {
   console.log("Open http://localhost:8081/?wsPort=9001 to test Chrome");
 });
 
-gulp.task("build-toolbox", function() {
-  return buildDir(path.join(__dirname, "client", "framework", "toolbox.html"));
+gulp.task("start", ["start-proxy"], function() {
+  var server = http.createServer(ecstatic({
+    root: path.join(__dirname),
+    cache: 0
+  }));
+
+  server.listen(8055);
+
+  console.log("Open http://localhost:8055/client/framework/toolbox-wrapper.html");
+});
+
+/**
+ * Build client/framework directory (mostly related to the Toolbox)
+ */
+gulp.task("build-framework", function() {
+  var dirs = [];
+  dirs.push(path.join(__dirname, "client", "framework"));
+  dirs.push(path.join(__dirname, "client", "framework", "content"));
+  return Promise.all(dirs.map(buildDir));
+});
+
+/**
+ * Watch client/framework/content directory
+ */
+gulp.task("watch-framework", function() {
+  var watcher = gulp.watch(["client/framework/**/*"]);
+  watcher.on("change", function(event) {
+    if (event.type == "changed" && event.path.indexOf("build.js") == -1) {
+      gulp.run("build-framework");
+    }
+  });
+});
+
+/**
+ * Build client/inspector directory
+ */
+gulp.task("build-inspector", function() {
+  var dirs = [];
+  dirs.push(path.join(__dirname, "client", "inspector"));
+  dirs.push(path.join(__dirname, "client", "inspector", "content"));
+  return Promise.all(dirs.map(buildDir));
+});
+
+/**
+ * Watch client/framework/content directory
+ */
+gulp.task("watch-inspector", function() {
+  var watcher = gulp.watch(["client/inspector/**/*", "client/framework/content/**/*"]);
+  watcher.on("change", function(event) {
+    if (event.type == "changed" && event.path.indexOf("build.js") == -1) {
+      gulp.run("build-inspector");
+    }
+  });
 });
 
 gulp.task("default", ["build"]);
