@@ -25,37 +25,30 @@ var ToolboxNotificationBox = React.createClass({
   displayName: "ToolboxNotificationBox",
 
   render: function() {
-    // Setup splitter panel first
-
     // Set large flex for 'toolbox-deck' to allow the toolbox-panel-webconsole
     // to have a height set to a small value without flexing to fill up extra
     // space. There must be a flex on both to ensure that the console
     // panel itself is sized properly -->
-    return (
-      vbox({id: "toolbox-notificationbox", flex: "1", is: ""},
-        DevToolsToolbar(this.props),
-        vbox({flex: "1", is: ""},
-          box({id: "toolbox-deck", flex: "1000", minheight: "75", is: ""})
-        ),
-        box({
-          id: "toolbox-console-splitter",
-          className: "devtools-horizontal-splitter",
-          hidden: "true",
-          is: ""
+    var topPanel = div({flex: "1000", is: "", class: "toolbox-content"},
+      DevToolsToolbar(this.props),
+      box({id: "toolbox-deck", flex: "1000", is: ""})
+    );
 
-          //xxxHonza: Real splitter needs this
-          /*mode: "vertical",
-          min: 200,
-          leftPanel: leftPanel,
-          rightPanel: rightPanel,
-          innerBox: div({className: "innerBox"})*/
-        }),
-        box({
-          id: "toolbox-panel-webconsole",
-          flex: "1",
-          minheight: "75",
-          collapsed: "true",
-          is: ""
+    var bottomPanel = box({
+      id: "toolbox-panel-webconsole",
+      flex: "1",
+      collapsed: "true",
+      is: ""
+    });
+
+    return (
+      div({id: "toolbox-notificationbox", flex: "1", is: ""},
+        Splitter({
+          //id: "toolbox-console-splitter",
+          min: 50,
+          mode: "horizontal",
+          topPanel: topPanel,
+          bottomPanel: bottomPanel
         })
       )
     )

@@ -41,9 +41,9 @@ var Toolbox = React.createClass({
     let popupset = PopupSet({popupset: this.props.popupset});
     let commandset = CommandSet({commandset: this.props.commandset});
 
-    // Render the Toolbox
+    // Render the Toolbox.
     return (
-      div({},
+      div({id: "content"},
         keysets,
         popupset,
         commandset,

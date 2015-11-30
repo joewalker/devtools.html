@@ -3,6 +3,33 @@
 /******************************************************************************/
 /* Toolbox */
 
-.leftPanel {
-  min-width: 500px;
+/* Containers need to take the entire vertical space by default */
+#content,
+#toolbox-console-splitter,
+#toolbox-notificationbox,
+#toolbox-notificationbox .toolbox-content {
+  height: 100%;
+}
+
+vbox {
+  height: 100%;
+}
+
+/* Support for split-console. Minimal height for the Console. */
+#toolbox-notificationbox .rightPanel {
+  /*border-top: 1px solid var(--theme-splitter-color);*/
+}
+
+/* Flex should be used for toolbox-deck instead of 100% */
+#toolbox-notificationbox #toolbox-deck {
+  height: calc(100% - 24px);
+}
+
+/* Hide for now FIXME */
+#toolbox-panel-webconsole {
+  display: none;
+}
+
+#toolbox-close {
+  display: none;
 }
