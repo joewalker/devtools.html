@@ -21,6 +21,7 @@ const { Sidebar } = createFactories(require("../../../framework/content/componen
 
 // Inspector
 const { RulesPanel } = createFactories(require("./rules-panel"));
+const { GenericPanel } = createFactories(require("./generic-panel"));
 
 // Shortcuts
 const vbox = createFactory("vbox");
@@ -49,10 +50,10 @@ var Inspector = React.createClass({
         class: "devtools-sidebar-tabs", /*hidden: "true", */flex: "0", is: ""},
         Sidebar({},
           RulesPanel({className: "rules", key: "rules", title: "Rules"}),
-          RulesPanel({className: "rules", key: "rules", title: "Computed"}),
-          RulesPanel({className: "rules", key: "rules", title: "Fonts"}),
-          RulesPanel({className: "rules", key: "rules", title: "Box Model"}),
-          RulesPanel({className: "rules", key: "rules", title: "Animations"})
+          GenericPanel({className: "rules", key: "rules", title: "Computed"}),
+          GenericPanel({className: "rules", key: "rules", title: "Fonts"}),
+          GenericPanel({className: "rules", key: "rules", title: "Box Model"}),
+          GenericPanel({className: "rules", key: "rules", title: "Animations"})
         )
       );
 
