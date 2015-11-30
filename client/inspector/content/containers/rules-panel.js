@@ -11,7 +11,7 @@ const React = require("react");
 const { createFactories } = require("../../../framework/content/utils");
 
 // Shortcuts
-const { div } = React.DOM;
+const { div, iframe } = React.DOM;
 
 /**
  * Component responsible for rendering the Inspector tab.
@@ -23,7 +23,13 @@ var RulesPanel = React.createClass({
 
   render: function() {
     return (
-      div({className: "rulesPanel"})
+      iframe({
+        class: "iframe-ruleview",
+        flex: "1",
+        src: "../styleinspector/cssruleview.xhtml",
+        tooltip: "aHTMLTooltip",
+        is: ""
+      })
     );
   }
 });
