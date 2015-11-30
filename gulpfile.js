@@ -64,6 +64,7 @@ gulp.task("build", function () {
   dirs.push(path.join(__dirname, "client", "styleinspector"));
   dirs.push(path.join(__dirname, "client", "fontinspector"));
   dirs.push(path.join(__dirname, "client", "framework"));
+  dirs.push(path.join(__dirname, "client", "webconsole"));
   dirs.push(path.join(__dirname, "tools", "connect"));
   return Promise.all(dirs.map(buildDir));
 });
