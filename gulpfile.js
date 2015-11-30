@@ -68,6 +68,13 @@ gulp.task("build", function () {
   return Promise.all(dirs.map(buildDir));
 });
 
+gulp.task("build-console", function () {
+  var tools = fs.readdirSync(path.join(__dirname, "client"));
+  var dirs = [];
+  dirs.push(path.join(__dirname, "client", "console"));
+  return Promise.all(dirs.map(buildDir));
+});
+
 gulp.task("watch", function() {
   var watcher = gulp.watch(["client/**/*","shared/**/*","sham/**/*"]);
   watcher.on("change", function(event) {
@@ -76,6 +83,18 @@ gulp.task("watch", function() {
         event.path.indexOf("build.js") == -1) {
       console.log("Running build");
       gulp.run("build");
+    }
+  });
+});
+
+gulp.task("watch-console", function() {
+  var watcher = gulp.watch(["client/webconsole/*"]);
+  watcher.on("change", function(event) {
+    console.log("File " + event.path + " was " + event.type);
+    if (event.type == "changed" &&
+        event.path.indexOf("build.js") == -1) {
+      console.log("Running build");
+      gulp.run("build-console");
     }
   });
 });
