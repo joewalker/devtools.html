@@ -7,6 +7,9 @@
 // React
 const React = require("react");
 
+// DevTools
+const { createFactories } = require("../../utils");
+
 /**
  * This component renders <MenuPopup> element.
  */
@@ -19,11 +22,17 @@ var MenuPopup = React.createClass({
     let id = this.props.id;
     let items = this.props.items || [];
 
-    let menuItems = items.map(item =>
-      React.createElement("menuitem", {
-        is: item.id
-      })
-    );
+    let menuItems = items.map(item => {
+      switch (item.type) {
+        case "menuseparator":
+          return React.createElement("menuseparator", {id: item.id});
+        case "menu":
+          // this is undefined React error FIXME
+          //return MenuFactory({id: item.id}, items);
+        default:
+          return React.createElement("menuitem", {id: item.id});
+      }
+    });
 
     return React.createElement("menupopup", {id: id},
       menuItems
@@ -31,7 +40,30 @@ var MenuPopup = React.createClass({
   }
 });
 
+/**
+ * This component renders <Menu> element.
+ */
+var Menu = React.createClass({
+/** @lends Menu */
+
+  displayName: "Menu",
+
+  render: function() {
+    let id = this.props.id;
+    let items = this.props.items || [];
+
+    return React.createElement("menu", {id: id},
+      MenuPopup({
+        items: items
+      })
+    );
+  }
+});
+
+var MenuFactory = React.createFactory(Menu);
+
 // Exports from this module
 module.exports = {
-  MenuPopup: MenuPopup
+  MenuPopup: MenuPopup,
+  Menu: Menu
 }
