@@ -30,8 +30,31 @@ function createFactory(type) {
   return React.createElement.bind(null, type);
 }
 
+/**
+ * This object is responsible for setting proper body height
+ * when the window changes its size.
+ *
+ * XXX: could we use flex box?
+ */
+function BodyResizer(win) {
+  this.win = win;
+  this.win.addEventListener("resize", this.onResize.bind(this));
+  this.onResize();
+}
+
+BodyResizer.prototype =
+/** @lends BodyResizer */
+{
+  onResize: function() {
+    var doc = this.win.document;
+    doc.body.style.height = this.win.innerHeight + "px";
+    doc.body.style.width = this.win.innerWidth + "px";
+  }
+};
+
 // Exports from this module
 module.exports = {
   createFactories: createFactories,
-  createFactory: createFactory
+  createFactory: createFactory,
+  BodyResizer: BodyResizer
 };
