@@ -44,7 +44,8 @@ var ToolboxNotificationBox = React.createClass({
     return (
       div({id: "toolbox-notificationbox", flex: "1", is: ""},
         Splitter({
-          //id: "toolbox-console-splitter",
+          splitterId: "toolbox-console-splitter",
+          splitterClassName: "devtools-horizontal-splitter",
           min: 50,
           mode: "horizontal",
           topPanel: topPanel,

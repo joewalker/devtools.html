@@ -33,3 +33,7 @@ vbox {
 #toolbox-close {
   display: none;
 }
+
+#toolbox-notificationbox #toolbox-deck {
+  height: calc(100% - 24px);
+}
