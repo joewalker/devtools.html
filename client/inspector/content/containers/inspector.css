@@ -25,7 +25,18 @@ body.devtools-responsive-container {
 }
 
 /* Ignore mouse events if splitter-dragging is in progress */
-body[resizing] #markup-box > iframe {
+body[resizing] iframe {
   pointer-events: none;
 }
 
+/******************************************************************************/
+/* Sidebar */
+
+#inspector-sidebar {
+  height: 100%;
+}
+
+.iframe-ruleview {
+  width: 100%;
+  height: 100%;
+}
