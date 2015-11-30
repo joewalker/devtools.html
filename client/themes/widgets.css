@@ -1354,7 +1354,7 @@
   float: left;
   margin: 3px 2px -3px;
   background-repeat: no-repeat;
-  background-image: url("chrome://devtools/skin/images/controls.png");
+  background-image: url("images/controls.png");
   background-size: 56px 28px;
   cursor: pointer;
   background-position: -28px -14px;
@@ -1412,7 +1412,7 @@
 
 @media (min-resolution: 1.1dppx) {
   .tree-widget-item:before {
-    background-image: url("chrome://devtools/skin/images/controls@2x.png");
+    background-image: url("images/controls@2x.png");
   }
 }
 
