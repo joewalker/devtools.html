@@ -156,6 +156,10 @@ View.prototype = {
     this.inputNode.focus();
   },
 
+  clearInput: function() {
+    this.inputNode.value = "";
+  },
+
   appendOutput: function(error, result) {
     let message = new ConsoleMessageView(this.outputNode);
     message.render(error, result);
@@ -182,13 +186,14 @@ Presenter.prototype = {
   _onJsInput: EventsQueue.register(function*(event, value) {
     let response = yield this.controller.eval(value);
     this.view.appendOutput(...response);
+    this.view.clearInput();
   })
 };
 
 function UIElement(parentNode) {
   this.parent = parentNode;
-  this.document = parent.ownerDocument;
-  this.window = parent.ownerDocument.defaultView;
+  this.document = parentNode.ownerDocument;
+  this.window = parentNode.ownerDocument.defaultView;
 
   this.view = this.document.createElement("div");
   this.parent.appendChild(this.view);
