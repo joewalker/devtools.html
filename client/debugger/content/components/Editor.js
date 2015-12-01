@@ -44,10 +44,7 @@ const Editor = React.createClass({
       enableCodeFolding: false
     });
 
-    console.log('creating & appending');
-
     this._editor.appendTo(ReactDOM.findDOMNode(this)).then(() => {
-      console.log('appended2s');
       this._editor.extend(DebuggerExtensions);
       this.update();
     });
