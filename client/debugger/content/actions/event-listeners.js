@@ -4,6 +4,7 @@
 "use strict";
 
 const constants = require("../constants");
+const Task = require('devtools/sham/task');
 const { rdpInvoke, asPaused } = require("../utils");
 const { reportException } = require("devtools/shared/DevToolsUtils");
 
