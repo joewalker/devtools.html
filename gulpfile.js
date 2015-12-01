@@ -107,7 +107,7 @@ gulp.task("start-proxy", function() {
   });
 });
 
-gulp.task("serve-connect", [ "start-proxy" ], function() {
+gulp.task("start", ["start-proxy"], function() {
   var app = express();
 
   app.use(morgan('dev'));
@@ -118,25 +118,15 @@ gulp.task("serve-connect", [ "start-proxy" ], function() {
   }));
   app.use(ecstatic({
     root: path.join(__dirname),
-    baseDir: '/devtools/',
+    baseDir: '/',
     handleError: false,
   }));
 
   http.createServer(app).listen(CONNECT_HTTP_PORT);
 
-  console.log("Open http://localhost:8081/?wsPort=9000 to test Firefox");
-  console.log("Open http://localhost:8081/?wsPort=9001 to test Chrome");
-});
-
-gulp.task("start", ["start-proxy"], function() {
-  var server = http.createServer(ecstatic({
-    root: path.join(__dirname),
-    cache: 0
-  }));
-
-  server.listen(8055);
-
-  console.log("Open http://localhost:8055/client/framework/toolbox-wrapper.html");
+  console.log("Open http://localhost:8081/client/framework/toolbox-wrapper.html to test the toolbox");
+  console.log("Open http://localhost:8081/?wsPort=9000 for the test tool (for Firefox server)");
+  console.log("Open http://localhost:8081/?wsPort=9001 for the test tool (for Chrome server)");
 });
 
 gulp.task("default", ["build"]);
