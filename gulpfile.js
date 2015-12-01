@@ -1,9 +1,5 @@
-#!/usr/bin/env babel-node
 /* eslint-env babel-node */
 "use strict";
-
-// Lets us use babel in tests
-require("babel-core/register");
 
 var fs = require("fs");
 var path = require("path");
@@ -98,7 +94,7 @@ gulp.task("start-proxy", function() {
   // WS <-> TCP server in Firefox
   wsTcpProxy.listen({
     wsPort: 9000,
-    tcpPort: 6080
+    tcpPort: 6080,
   });
   // WS <-> TCP server in Valence add-on <-> Chrome
   wsTcpProxy.listen({

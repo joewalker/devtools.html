@@ -38,7 +38,6 @@ directory.
 
   And see TCP -> WS logs in the console where you ran `gulp serve-connect`
 
-* `http://localhost:8081/test/index.html` to run the unit tests
 
 ## Connecting to Chrome
 
