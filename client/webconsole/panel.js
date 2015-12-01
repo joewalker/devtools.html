@@ -26,10 +26,6 @@ function WebConsolePanel(iframeWindow, toolbox) {
 exports.WebConsolePanel = WebConsolePanel;
 
 WebConsolePanel.prototype = {
-  focusInput: function() {
-    this.view.focusInput();
-  },
-
   open: Task.async(function*() {
     this.controller = new Controller();
     yield this.controller.connect();
@@ -50,6 +46,10 @@ WebConsolePanel.prototype = {
   },
 
   destroy: function() {
+  },
+
+  focusInput: function() {
+    this.view.focusInput();
   },
 };
 
