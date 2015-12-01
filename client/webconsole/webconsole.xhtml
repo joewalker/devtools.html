@@ -26,12 +26,29 @@
         flex: 1;
       }
 
+      #js-input {
+        font-family: monospace;
+        font-size: 120%;
+        padding: 4px;
+        padding-left: 18px;
+        background-image: -moz-image-rect(url('../themes/images/commandline-icon@2x.png'), 0, 64, 32, 32);
+        background-size: 16px;
+        background-repeat: no-repeat;
+        background-position: 0 50%;
+        border: 1px solid lightgray;
+      }
+
     </style>
 
   </head>
   <body class="devtools-responsive-container theme-body">
 
     <div id="js-output"></div>
-    <input id="js-input" type="text" name="input" value=""/>
+    <input id="js-input"
+           class="devtools-monospace"
+           type="text"
+           name="input"
+           value=""/>
+
   </body>
 </html>
