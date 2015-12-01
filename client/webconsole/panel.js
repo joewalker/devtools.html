@@ -41,6 +41,9 @@ WebConsolePanel.prototype = {
     this.view = new View(this._frameWindow.document);
     yield this.view.init();
 
+    this.presenter = new Presenter(this.view, this.controller);
+    yield this.presenter.init();
+
     this.isReady = true;
     this.emit("ready");
     return this;
@@ -52,6 +55,34 @@ WebConsolePanel.prototype = {
 
   destroy: function() {
   },
+};
+
+let EventsQueue = {
+  _queue: [],
+
+  register: function(f) {
+    let self = this;
+
+    return function(...args) {
+      self._queue.push([this, f, args]);
+      self._onInvoke();
+    };
+  },
+
+  _onInvoke: Task.async(function*() {
+    if (this._popping) {
+      return;
+    }
+
+    this._popping = true;
+
+    while (this._queue.length) {
+      let [self, f, args] = this._queue.pop();
+      yield f.apply(self, args);
+    }
+
+    this._popping = false;
+  })
 };
 
 function Controller() {
@@ -76,6 +107,10 @@ Controller.prototype = {
     this.webConsoleClient = target.activeConsole;
   },
 
+  eval: function(value) {
+    debugger;
+  },
+
   _getPort: function() {
     let query = location.search.match(/(\w+)=(\d+)/);
     if (query && query[1] == "wsPort") {
@@ -87,6 +122,7 @@ Controller.prototype = {
 
 function View(document) {
   this.$ = selector => document.querySelectorAll(selector)[0];
+  EventEmitter.decorate(this);
 }
 
 View.prototype = {
@@ -98,9 +134,25 @@ View.prototype = {
     this.$("#js-input").focus();
   },
 
-  _onJsInput: function(e) {
+  _onJsInput: EventsQueue.register(function(e) {
     if (e.keyCode == 13 /* ENTER */) {
       let value = this.$("#js-input").value;
+      this.emit("js-eval", value);
     }
-  }
+  })
+};
+
+function Presenter(view, controller) {
+  this.view = view;
+  this.controller = controller;
+}
+
+Presenter.prototype = {
+  init: function*() {
+    this.view.on("js-eval", this._onJsInput.bind(this));
+  },
+
+  _onJsInput: EventsQueue.register(function*(value) {
+    yield this.controller.eval(value);
+  })
 };
