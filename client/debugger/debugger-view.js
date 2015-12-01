@@ -29,7 +29,7 @@ const EDITOR_VARIABLE_POPUP_POSITION = "topcenter bottomleft";
 const TOOLBAR_ORDER_POPUP_POSITION = "topcenter bottomleft";
 const RESIZE_REFRESH_RATE = 50; // ms
 const PROMISE_DEBUGGER_URL =
-  "/devtools/client/promisedebugger/promise-debugger.xhtml";
+  "/client/promisedebugger/promise-debugger.xhtml";
 
 const EventListenersView = require('./content/views/event-listeners-view');
 const SourcesView = require('./content/views/sources-view');

@@ -3,11 +3,11 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <?xml-stylesheet href="chrome://browser/skin/" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/shared/widgets/widgets.css" type="text/css"?>
+<?xml-stylesheet href="/client/shared/widgets/widgets.css" type="text/css"?>
 <?xml-stylesheet href="debugger.css" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/themes/widgets.css" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/themes/debugger.css" type="text/css"?>
+<?xml-stylesheet href="/client/themes/common.css" type="text/css"?>
+<?xml-stylesheet href="/client/themes/widgets.css" type="text/css"?>
+<?xml-stylesheet href="/client/themes/debugger.css" type="text/css"?>
 <!DOCTYPE window [
   <!ENTITY % debuggerDTD SYSTEM "l10n/debugger.dtd">
   %debuggerDTD;
@@ -23,8 +23,8 @@
         persist="screenX screenY width height sizemode">
 
   <script type="application/javascript"
-          src="/devtools/client/shared/theme-switching.js"/>
-  <script type="text/javascript" src="/devtools/client/chrome/global/content/globalOverlay.js"/>
+          src="/client/shared/theme-switching.js"/>
+  <script type="text/javascript" src="/client/chrome/global/content/globalOverlay.js"/>
   <script type="text/javascript" src="debugger-controller.js"/>
   <script type="text/javascript" src="debugger-view.js"/>
   <script type="text/javascript" src="utils.js"/>

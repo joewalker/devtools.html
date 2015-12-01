@@ -21,10 +21,10 @@ require.config({
   baseUrl: ".",
   paths: {
     "react": [
-      "resource://devtools/client/shared/vendor/react-dev",
-      "resource://devtools/client/shared/vendor/react"
+      "resource://client/shared/vendor/react-dev",
+      "resource://client/shared/vendor/react"
     ],
-    "react-dom": "resource://devtools/client/shared/vendor/react-dom"
+    "react-dom": "resource://client/shared/vendor/react-dom"
   }
 });
 

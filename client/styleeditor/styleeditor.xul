@@ -13,14 +13,14 @@
  %csscoverageDTD;
 ]>
 
-<?xml-stylesheet href="/devtools/client/chrome/global/skin/global.css" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/shared/widgets/widgets.css" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/shared/splitview.css" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/themes/widgets.css" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/themes/splitview.css" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/styleeditor/styleeditor.css" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/themes/styleeditor.css" type="text/css"?>
+<?xml-stylesheet href="/client/chrome/global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="/client/shared/widgets/widgets.css" type="text/css"?>
+<?xml-stylesheet href="/client/shared/splitview.css" type="text/css"?>
+<?xml-stylesheet href="/client/themes/common.css" type="text/css"?>
+<?xml-stylesheet href="/client/themes/widgets.css" type="text/css"?>
+<?xml-stylesheet href="/client/themes/splitview.css" type="text/css"?>
+<?xml-stylesheet href="/client/styleeditor/styleeditor.css" type="text/css"?>
+<?xml-stylesheet href="/client/themes/styleeditor.css" type="text/css"?>
 <?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
 
 <xul:window xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
@@ -28,8 +28,8 @@
         id="style-editor-chrome-window">
 
   <script type="application/javascript"
-          src="/devtools/client/shared/theme-switching.js"/>
-  <xul:script type="application/javascript" src="/devtools/client/chrome/global/content/globalOverlay.js"/>
+          src="/client/shared/theme-switching.js"/>
+  <xul:script type="application/javascript" src="/client/chrome/global/content/globalOverlay.js"/>
   <xul:script type="application/javascript" src="chrome://browser/content/utilityOverlay.js"/>
   <xul:script type="application/javascript">
     function goUpdateSourceEditorMenuItems() {

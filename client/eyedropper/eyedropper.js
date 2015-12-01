@@ -23,9 +23,9 @@ const XULRuntime = Cc("@mozilla.org/xre/app-info;1")
         .getService(Ci.nsIXULRuntime);
 const l10n = Services.strings.createBundle(require("l10n/eyedropper.properties"));
 
-const EYEDROPPER_URL = "/devtools/client/eyedropper/eyedropper.xul";
-const CROSSHAIRS_URL = "/devtools/client/eyedropper/crosshairs.css";
-const NOCURSOR_URL = "/devtools/client/eyedropper/nocursor.css";
+const EYEDROPPER_URL = "/client/eyedropper/eyedropper.xul";
+const CROSSHAIRS_URL = "/client/eyedropper/crosshairs.css";
+const NOCURSOR_URL = "/client/eyedropper/nocursor.css";
 
 const ZOOM_PREF = "devtools.eyedropper.zoom";
 const FORMAT_PREF = "devtools.defaultColorUnit";
@@ -119,7 +119,7 @@ function Eyedropper(chromeWindow, opts = { copyOnSelect: true, context: "other" 
   };
 
   let mm = this._contentTab.linkedBrowser.messageManager;
-  mm.loadFrameScript("resource://devtools/client/eyedropper/eyedropper-child.js", true);
+  mm.loadFrameScript("resource://client/eyedropper/eyedropper-child.js", true);
 
   // record if this was opened via the picker or standalone
   var telemetry = new Telemetry();

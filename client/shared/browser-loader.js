@@ -4,8 +4,8 @@ const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 const loaders = require("gre/modules/commonjs/toolkit/loader.js");
 const { devtools, DevToolsLoader } = require("devtools/shared/Loader");
 const { joinURI } = devtools.require("devtools/shared/path");
-const VENDOR_CONTENT_URL = "resource://devtools/client/shared/vendor";
-const COMPONENTS_URL = "resource://devtools/client/shared/components";
+const VENDOR_CONTENT_URL = "resource://client/shared/vendor";
+const COMPONENTS_URL = "resource://client/shared/components";
 
 /*
  * Create a loader to be used in a browser environment. This evaluates

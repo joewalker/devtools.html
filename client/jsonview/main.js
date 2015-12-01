@@ -25,7 +25,7 @@ var JsonView = {
     // them into a simple web-app that allows easy inspection
     // of the JSON data.
     Services.ppmm.loadProcessScript(
-      "resource://devtools/client/jsonview/converter-observer.js",
+      "resource://client/jsonview/converter-observer.js",
       true);
 
     this.onSaveListener = this.onSave.bind(this);

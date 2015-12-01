@@ -28,7 +28,7 @@ const Strings = Services.strings.createBundle(require("l10n/webide.properties"))
 
 var AppManager = exports.AppManager = {
 
-  DEFAULT_PROJECT_ICON: "/devtools/client/webide/skin/default-app-icon.png",
+  DEFAULT_PROJECT_ICON: "/client/webide/skin/default-app-icon.png",
   DEFAULT_PROJECT_NAME: "--",
 
   _initialized: false,

@@ -142,7 +142,7 @@ function ResponsiveUI(aWindow, aTab)
   this.mm.addMessageListener("ResponsiveMode:Start:Done", childOn);
 
   let requiresFloatingScrollbars = !this.mainWindow.matchMedia("(-moz-overlay-scrollbars)").matches;
-  this.mm.loadFrameScript("resource://devtools/client/responsivedesign/responsivedesign-child.js", true);
+  this.mm.loadFrameScript("resource://client/responsivedesign/responsivedesign-child.js", true);
   this.mm.addMessageListener("ResponsiveMode:ChildScriptReady", () => {
     this.mm.sendAsyncMessage("ResponsiveMode:Start", {
       requiresFloatingScrollbars: requiresFloatingScrollbars

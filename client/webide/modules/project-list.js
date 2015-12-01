@@ -74,7 +74,7 @@ ProjectList.prototype = {
     return this._UI.busyUntil(Task.spawn(function*() {
       // Open newapp.xul, which will feed ret.location
       let ret = {location: null, testOptions: testOptions};
-      parentWindow.openDialog("/devtools/client/webide/content/newapp.xul", "newapp", "chrome,modal", ret);
+      parentWindow.openDialog("/client/webide/content/newapp.xul", "newapp", "chrome,modal", ret);
       if (!ret.location)
         return;
 

@@ -671,7 +671,7 @@ var UI = {
       projecteditor.setProjectToAppPath(project.location, {
         name: project.name,
         iconUrl: project.icon,
-        projectOverviewURL: "/devtools/client/webide/content/details.xhtml",
+        projectOverviewURL: "/client/webide/content/details.xhtml",
         validationStatus: status
       }).then(null, console.error);
     }, console.error);

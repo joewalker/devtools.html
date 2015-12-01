@@ -8,7 +8,7 @@ const { OS } = require("devtools/sham/osfile");
 
 /**
  * This file is meant to be loaded in a worker using:
- *   new ChromeWorker("/devtools/client/projecteditor/lib/helpers/readdir.js");
+ *   new ChromeWorker("/client/projecteditor/lib/helpers/readdir.js");
  *
  * Read a local directory inside of a web woker
  *

@@ -13,7 +13,7 @@ var MESSAGE_COUNTER = 0;
  * communication to offload demanding tasks. The corresponding URL
  * must implement the interface provided by `devtools/shared/worker/helper`.
  *
- * @see `./devtools/client/shared/widgets/GraphsWorker.js`
+ * @see `/client/shared/widgets/GraphsWorker.js`
  *
  * @param {string} url
  *        The URL of the worker.

@@ -9,7 +9,7 @@ const ProjectEditor = require("devtools/client/projecteditor/lib/projecteditor")
 const SAMPLE_PATH = buildTempDirectoryStructure();
 const SAMPLE_NAME = "DevTools Content Application Name";
 const SAMPLE_PROJECT_URL = "data:text/html;charset=utf-8,<body><h1>Project Overview</h1></body>";
-const SAMPLE_ICON = "/devtools/client/themes/images/tool-debugger.svg";
+const SAMPLE_ICON = "/client/themes/images/tool-debugger.svg";
 
 /**
  * Create a workspace for working on projecteditor, available at
