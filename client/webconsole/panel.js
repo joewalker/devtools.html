@@ -111,8 +111,6 @@ Controller.prototype = {
     let deferred = promise.defer();
 
     this.webConsoleClient.evaluateJSAsync(value, response => {
-      debugger;
-
       if (response.error) {
         deferred.reject(response);
       }
@@ -142,17 +140,30 @@ function View(document) {
 }
 
 View.prototype = {
+  get outputNode() {
+    return this.$("#js-output");
+  },
+
+  get inputNode() {
+    return this.$("#js-input");
+  },
+
   init: function*() {
-    this.$("#js-input").addEventListener("keypress", this._onJsInput.bind(this));
+    this.inputNode.addEventListener("keypress", this._onJsInput.bind(this));
   },
 
   focusInput: function() {
-    this.$("#js-input").focus();
+    this.inputNode.focus();
+  },
+
+  appendOutput: function(error, result) {
+    let message = new ConsoleMessageView(this.outputNode);
+    message.render(error, result);
   },
 
   _onJsInput: EventsQueue.register(function(e) {
     if (e.keyCode == 13 /* ENTER */) {
-      let value = this.$("#js-input").value;
+      let value = this.inputNode.value;
       this.emit("js-eval", value);
     }
   })
@@ -169,7 +180,41 @@ Presenter.prototype = {
   },
 
   _onJsInput: EventsQueue.register(function*(event, value) {
-    let [error, result] = yield this.controller.eval(value);
-    debugger;
+    let response = yield this.controller.eval(value);
+    this.view.appendOutput(...response);
   })
+};
+
+function UIElement(parentNode) {
+  this.parent = parentNode;
+  this.document = parent.ownerDocument;
+  this.window = parent.ownerDocument.defaultView;
+
+  this.view = this.document.createElement("div");
+  this.parent.appendChild(this.view);
+}
+
+UIElement.prototype = {
+  clear: function() {
+    this.view.innerHTML = "";
+  }
+};
+
+function ConsoleMessageView(parentNode) {
+  UIElement.call(this, parentNode);
+}
+
+ConsoleMessageView.prototype = Object.create(UIElement.prototype);
+ConsoleMessageView.constructor = ConsoleMessageView;
+
+ConsoleMessageView.prototype.render = function(error, result) {
+  this.clear();
+
+  this.view.className = ".console-message";
+  this.view.setAttribute("category", "input");
+
+  let messageNode = this.document.createElement("div");
+  messageNode.textContent = result;
+
+  this.view.appendChild(messageNode);
 };
