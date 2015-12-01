@@ -3,10 +3,16 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const uuidgen = require("sdk/util/uuid").uuid;
+// const uuidgen = require("sdk/util/uuid").uuid;
+let lastId = 1;
+function makeSeqId() {
+  return 'seq' + (lastId++);
+}
+
 const {
   entries, toObject, reportException, executeSoon
 } = require("devtools/shared/DevToolsUtils");
+const promise = require('devtools/sham/promise');
 const PROMISE = exports.PROMISE = "@@dispatch/promise";
 
 function promiseMiddleware ({ dispatch, getState }) {
@@ -15,8 +21,8 @@ function promiseMiddleware ({ dispatch, getState }) {
       return next(action);
     }
 
-    const promise = action[PROMISE];
-    const seqId = uuidgen().toString();
+    const promiseInst = action[PROMISE];
+    const seqId = makeSeqId();
 
     // Create a new action that doesn't have the promise field and has
     // the `seqId` field that represents the sequence id
@@ -26,26 +32,27 @@ function promiseMiddleware ({ dispatch, getState }) {
 
     dispatch(Object.assign({}, action, { status: "start" }));
 
-    promise.then(value => {
+    // Return the promise so action creators can still compose if they
+    // want to.
+    const deferred = promise.defer();
+    promiseInst.then(value => {
       executeSoon(() => {
         dispatch(Object.assign({}, action, {
           status: "done",
           value: value
         }));
+        deferred.resolve(value);
       });
-    }).catch(error => {
+    }, error => {
       executeSoon(() => {
         dispatch(Object.assign({}, action, {
           status: "error",
-          error
+          error: error.message || error
         }));
+        deferred.reject(error);
       });
-      reportException(`@@redux/middleware/promise#${action.type}`, error);
     });
-
-    // Return the promise so action creators can still compose if they
-    // want to.
-    return promise;
+    return deferred.promise;
   };
 }
 

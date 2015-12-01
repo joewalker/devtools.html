@@ -1,0 +1,54 @@
+.vbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.hbox {
+    display: flex;
+    flex-direction: row;
+}
+
+.toolbar {
+    background-color: var(--theme-toolbar-background);
+    border-bottom: 1px solid #cccccc;
+    padding-top: 1px;
+    padding-left: 5px;
+}
+
+.sources ul {
+    padding: 5px;
+}
+
+.sources ul li {
+    margin: 2px 0;
+    padding: 5px;
+}
+
+.sources ul li:hover {
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+
+.sources ul li.selected {
+    background-color: var(--theme-selection-background);
+}
+
+.resume::before {
+    background-image: url(/client/themes/images/debugger-play@2x.png);
+}
+
+.pause::before {
+    background-image: url(/client/themes/images/debugger-pause@2x.png);
+}
+
+.stepIn::before {
+    background-image: url(/client/themes/images/debugger-step-in@2x.png);
+}
+
+.stepOut::before {
+    background-image: url(/client/themes/images/debugger-step-out@2x.png);
+}
+
+.stepOver::before {
+    background-image: url(/client/themes/images/debugger-step-over@2x.png);
+}

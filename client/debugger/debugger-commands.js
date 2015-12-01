@@ -4,10 +4,10 @@
 
 "use strict";
 
-const { Cc, Ci, Cu } = require("devtools/sham/chrome");
+const { Cc, Ci, Cu } = require("chrome");
 const l10n = require("gcli/l10n");
 
-const { gDevTools } = require("devtools/client/framework/gDevTools");
+loader.lazyImporter(this, "gDevTools", "resource://devtools/client/framework/gDevTools.jsm");
 
 /**
  * The commands and converters that are exported to GCLI
@@ -537,17 +537,15 @@ exports.items.push({
       const blackBoxed = [];
 
       for (let source of toBlackBox) {
-        activeThread.source(source)[cmd.clientMethod](function({ error }) {
-          if (error) {
-            blackBoxed.push(lookup("ErrorDesc") + " " + source.url);
-          } else {
-            blackBoxed.push(source.url);
-          }
-
+        dbg.blackbox(source, cmd.clientMethod === "blackBox").then(() => {
+          blackBoxed.push(source.url);
+        }, err => {
+          blackBoxed.push(lookup("ErrorDesc") + " " + source.url);
+        }).then(() => {
           if (toBlackBox.length === blackBoxed.length) {
             displayResults();
           }
-        });
+        })
       }
 
       // List the results for the user.

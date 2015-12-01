@@ -11,6 +11,8 @@ const { Services } = require("devtools/sham/services");
 var osString = "Darwin";
 var InspectorPanel = require("devtools/client/inspector/inspector-panel").InspectorPanel;
 var WebConsolePanel = require("devtools/client/webconsole/panel").WebConsolePanel;
+var DebuggerPanel = require("devtools/client/debugger/panel").DebuggerPanel;
+
 // loader.lazyGetter(this, "OptionsPanel", () => require("devtools/client/framework/toolbox-options").OptionsPanel);
 // loader.lazyGetter(this, "WebConsolePanel", () => require("devtools/client/webconsole/panel").WebConsolePanel);
 
@@ -20,6 +22,7 @@ const L10N = require("devtools/sham/l10n");
 var toolboxStrings = new L10N(require("l10n/toolbox.properties"));
 var webConsoleStrings = new L10N(require("l10n/webconsole.properties"));
 var inspectorStrings = new L10N(require("l10n/inspector.properties"));
+var debuggerStrings = new L10N(require("l10n/debugger.properties"));
 
 var Tools = {};
 exports.Tools = Tools;
@@ -119,10 +122,39 @@ Tools.webConsole = {
   }
 };
 
+Tools.jsdebugger = {
+  id: "jsdebugger",
+  key: l10n("debuggerMenu.commandkey", debuggerStrings),
+  accesskey: l10n("debuggerMenu.accesskey", debuggerStrings),
+  modifiers: osString == "Darwin" ? "accel,alt" : "accel,shift",
+  ordinal: 3,
+  icon: "chrome://devtools/skin/images/tool-debugger.svg",
+  invertIconForLightTheme: true,
+  highlightedicon: "chrome://devtools/skin/images/tool-debugger-paused.svg",
+  url: "../debugger/debugger.xhtml",
+  label: l10n("ToolboxDebugger.label", debuggerStrings),
+  panelLabel: l10n("ToolboxDebugger.panelLabel", debuggerStrings),
+  get tooltip() {
+    return l10n("ToolboxDebugger.tooltip2", debuggerStrings,
+    ( osString == "Darwin" ? "Cmd+Opt+" : "Ctrl+Shift+" ) + this.key);
+  },
+  inMenu: true,
+  commands: "devtools/client/debugger/debugger-commands",
+
+  isTargetSupported: function(target) {
+    return true;
+  },
+
+  build: function(iframeWindow, toolbox) {
+    return new DebuggerPanel(iframeWindow, toolbox);
+  }
+};
+
 var defaultTools = [
   Tools.options,
   Tools.webConsole,
   Tools.inspector,
+  Tools.jsdebugger,
 ];
 
 exports.defaultTools = defaultTools;

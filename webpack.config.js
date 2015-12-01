@@ -29,6 +29,10 @@ module.exports = {
       "babel-polyfill",
       path.join(__dirname, "client", "styleinspector", "style-inspector.js"),
     ],
+    'debugger': [
+      "babel-polyfill",
+      path.join(__dirname, "client", "debugger", "main.js"),
+    ],
     test: [
       "babel-polyfill",
       "mocha!./test/index.js",
