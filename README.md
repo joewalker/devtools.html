@@ -54,3 +54,25 @@ directory.
 5. Run `gulp serve-connect` to start proxy and build the connection test tool
   * Can also use just `gulp start-proxy` if you don't care about the test tool
 6. Navigate to `http://localhost:8081/?wsPort=9001` to run the connection test tool
+
+## Connecting to Servo
+
+Initial setup:
+
+```
+$ git clone https://github.com/servo/servo.git
+$ cd servo/
+$ ./mach build -r # release build
+```
+
+Start servo with a devtools server listening on port 6000 and open to mozilla.org:
+
+```
+$ ./mach run --devtools 6000 http://mozilla.org
+```
+
+See also:
+
+* https://github.com/servo/servo/wiki/Devtools
+
+* https://github.com/servo/servo/wiki/Devtools-plans
