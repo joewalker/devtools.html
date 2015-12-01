@@ -30,60 +30,77 @@ function WebConsolePanel(iframeWindow, toolbox)
 exports.WebConsolePanel = WebConsolePanel;
 
 WebConsolePanel.prototype = {
-  hud: null,
-
-  focusInput: function()
-  {
+  focusInput: function() {
+    this.view.focusInput();
   },
 
-  open: Task.async(function*()
-  {
-    this.webConsoleClient = yield initConnection();
-    yield initView(this._frameWindow.document);
+  open: Task.async(function*() {
+    this.controller = new Controller();
+    yield this.controller.connect();
+
+    this.view = new View(this._frameWindow.document);
+    yield this.view.init();
 
     this.isReady = true;
     this.emit("ready");
     return this;
   }),
 
-  get target()
-  {
+  get target() {
     return this._toolbox.target;
   },
 
-  destroy: function()
-  {
+  destroy: function() {
   },
 };
 
-function initView(document) {
-  let $ = selector => document.querySelectorAll(selector);
-
+function Controller() {
 }
 
-function* initConnection() {
-  function getPort() {
+Controller.prototype = {
+  connect: function*() {
+    let socket = new WebSocket("ws://localhost:" + this._getPort());
+    let transport = new DebuggerTransport(socket);
+    let client = new DebuggerClient(transport);
+    yield client.connect();
+
+    let response = yield client.listTabs();
+    let tab = response.tabs[response.selected];
+
+    let target = yield TargetFactory.forRemoteTab({
+      form: tab,
+      client: client,
+      chrome: false,
+    });
+
+    this.webConsoleClient = target.activeConsole;
+  },
+
+  _getPort: function() {
     let query = location.search.match(/(\w+)=(\d+)/);
     if (query && query[1] == "wsPort") {
       return query[2];
     }
     return WEB_SOCKET_PORT;
-  }
+  },
+};
 
-  let socket = new WebSocket("ws://localhost:" + getPort());
-  let transport = new DebuggerTransport(socket);
-  let client = new DebuggerClient(transport);
-  yield client.connect();
-
-  let response = yield client.listTabs();
-  let tab = response.tabs[response.selected];
-
-  let options = {
-    form: tab,
-    client,
-    chrome: false,
-  };
-  let target = yield TargetFactory.forRemoteTab(options);
-
-  return target.activeConsole;
+function View(document) {
+  this.$ = selector => document.querySelectorAll(selector)[0];
 }
+
+View.prototype = {
+  init: function*() {
+    this.$("#js-input").addEventListener("keypress", this._onJsInput.bind(this));
+  },
+
+  focusInput: function() {
+    this.$("#js-input").focus();
+  },
+
+  _onJsInput: function(e) {
+    if (e.keyCode == 13 /* ENTER */) {
+      let value = this.$("#js-input").value;
+    }
+  }
+};
