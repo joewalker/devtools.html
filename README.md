@@ -68,7 +68,7 @@ $ ./mach build -r # release build
 Start servo with a devtools server listening on port 6000 and open to mozilla.org:
 
 ```
-$ ./mach run --devtools 6000 http://mozilla.org
+$ ./mach run --devtools 6080 https://google.com
 ```
 
 See also:
