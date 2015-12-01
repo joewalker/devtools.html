@@ -108,7 +108,23 @@ Controller.prototype = {
   },
 
   eval: function(value) {
-    debugger;
+    let deferred = promise.defer();
+
+    this.webConsoleClient.evaluateJSAsync(value, response => {
+      debugger;
+
+      if (response.error) {
+        deferred.reject(response);
+      }
+      else if (response.exception !== null) {
+        deferred.resolve([response]);
+      }
+      else {
+        deferred.resolve([undefined, response.result]);
+      }
+    });
+
+    return deferred.promise;
   },
 
   _getPort: function() {
@@ -152,7 +168,8 @@ Presenter.prototype = {
     this.view.on("js-eval", this._onJsInput.bind(this));
   },
 
-  _onJsInput: EventsQueue.register(function*(value) {
-    yield this.controller.eval(value);
+  _onJsInput: EventsQueue.register(function*(event, value) {
+    let [error, result] = yield this.controller.eval(value);
+    debugger;
   })
 };
