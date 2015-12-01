@@ -26,7 +26,7 @@ const { GenericPanel } = createFactories(require("./generic-panel"));
 // Shortcuts
 const vbox = createFactory("vbox");
 const box = createFactory("box");
-const { div } = React.DOM;
+const { div, button } = React.DOM;
 
 /**
  * Top level DevTools component
@@ -41,7 +41,9 @@ var Inspector = React.createClass({
 
     let leftPanel =
       vbox({flex: "1", class: "devtools-main-content", is: ""},
-        div({id: "inspector-toolbar", className: "devtools-toolbar"}),
+        div({id: "inspector-toolbar", className: "devtools-toolbar"},
+          button( { id: "inspector-pane-toggle", className: "devtools-button", /* WHY IS THIS HIDDEN? */ }))
+        ),
         vbox({flex: "1", id: "markup-box", is: ""})
       );
 

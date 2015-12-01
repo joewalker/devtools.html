@@ -20,16 +20,9 @@ const {UPDATE_PRESERVING_RULES, UPDATE_GENERAL} =
 
 /*let CSS = require("CSS");*/
 
-/*loader.lazyGetter(this, "CssLogic", () => {
-  return require("devtools/shared/styleinspector/css-logic").CssLogic;
-});
-loader.lazyGetter(this, "DOMUtils", () => {
-  return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
-});
-
-loader.lazyGetter(this, "RuleRewriter", () => {
-  return require("devtools/client/shared/css-parsing-utils").RuleRewriter;
-});*/
+const CssLogic = require("devtools/shared/styleinspector/css-logic").CssLogic;
+const DOMUtils = Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
+const RuleRewriter =require("devtools/client/shared/css-parsing-utils").RuleRewriter;
 
 // The PageStyle actor flattens the DOM CSS objects a little bit, merging
 // Rules and their Styles into one actor.  For elements (which have a style

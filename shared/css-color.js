@@ -9,6 +9,9 @@ const { Services } = require("devtools/sham/services");
 
 const COLOR_UNIT_PREF = "devtools.defaultColorUnit";
 
+const DOMUtils = Cc("@mozilla.org/inspector/dom-utils;1")
+    .getService(Ci.inIDOMUtils);
+
 const SPECIALVALUES = new Set([
   "currentcolor",
   "initial",
@@ -466,7 +469,3 @@ function classifyColor(value) {
   }
   return CssColor.COLORUNIT.name;
 }
-
-// loader.lazyGetter(this, "DOMUtils", function () {
-//   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
-// });

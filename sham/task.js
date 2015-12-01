@@ -15,12 +15,7 @@ const Task = {
   // XXX: Not sure if this works in all cases...
   async: function(task) {
     return function() {
-      let args = arguments;
-      let that = this;
-      return new Promise(function(resolve, reject) {
-        let ret = Task.spawn(task, that, args);
-        ret.then(resolve, reject);
-      });
+      return Task.spawn(task, this, arguments);
     }
   },
 
@@ -36,7 +31,13 @@ const Task = {
       const callNext = lastValue => {
         const iteration = iterator.next(lastValue);
         Promise.resolve(iteration.value)
-               .then(value => (iteration.done ? resolve : callNext)(value))
+               .then(value => {
+                 if (iteration.done) {
+                   resolve(value);
+                 } else {
+                   callNext(value);
+                 }
+               })
                .catch(error => {
                  reject(error);
                  iterator.throw(error);

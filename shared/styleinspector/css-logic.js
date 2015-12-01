@@ -42,6 +42,8 @@ const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 const { Services } = require("devtools/sham/services");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const { getRootBindingParent } = require("devtools/shared/layout/utils");
+const domUtils = Cc("@mozilla.org/inspector/dom-utils;1")
+    .getService(Ci.inIDOMUtils);
 
 var pseudos = new Set([
   ":after",
@@ -834,7 +836,7 @@ CssLogic.getComputedStyle = function(node)
   return node.ownerDocument.defaultView.getComputedStyle(bindingElement, pseudo);
 };
 
-const _strings = Services.strings
+const _strings = exports._strings = Services.strings
              .createBundle(require("l10n/styleinspector.properties"));
 
 /**
@@ -2068,7 +2070,3 @@ CssSelectorInfo.prototype = {
     return this.selector + " -> " + this.value;
   },
 };
-
-// DevToolsUtils.defineLazyGetter(this, "domUtils", function() {
-//   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
-// });

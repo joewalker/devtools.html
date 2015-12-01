@@ -69,7 +69,7 @@ html vbox {
 
 /* Stolen from minimal-xul */
 /* hide the content and destroy the frame */
-[hidden="true"], [hidden] {
+[hidden="true"], [hidden]:not([hidden="false"]) {
   display: none !important;
 }
 
@@ -106,7 +106,10 @@ html .devtools-toolbar {
 
 /* XXX: Need to come up with a better solution for panels */
 html panel,
-html tooltip {
+html tooltip,
+html keyset,
+html popupset,
+html commandset {
   position: absolute;
   top: -1000px;
   left: -1000px;

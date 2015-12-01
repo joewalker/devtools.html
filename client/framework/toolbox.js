@@ -1248,7 +1248,6 @@ Toolbox.prototype = {
           built = deferred.promise;
         }
       }
-
       // Wait till the panel is fully ready and fire 'ready' events.
       promise.resolve(built).then((panel) => {
         this._toolPanels.set(id, panel);
