@@ -8,7 +8,7 @@ const Provider = React.createFactory(require("react-redux").Provider);
 // Used to create the Redux store
 const createStore = require("devtools/client/shared/redux/create-store")({
   getTargetClient: () => DebuggerController.client,
-  log: false
+  log: true
 });
 const {
   makeStateBroadcaster,
@@ -19,6 +19,7 @@ const { bindActionCreators } = require('devtools/client/shared/vendor/redux');
 const constants = require("./content/constants");
 const reducers = require("./content/reducers");
 const actions = require("./content/actions");
+const queries = require("./content/queries");
 const { onReducerEvents } = require("./content/utils");
 
 const waitUntilService = require("devtools/client/shared/redux/middleware/wait-service");
@@ -71,7 +72,17 @@ function onConnect(thread) {
 
   thread.addListener("paused", (event, packet) => {
     if(packet.frame && packet.frame.where) {
-      selectSource(packet.frame.where.source, {
+      let source;
+      if(packet.frame.where.url) {
+        // When using Valence to connect with Chrome, we get back a
+        // URL instead of a source for some reason
+        source = queries.getSourceByURL(gStore.getState(), packet.frame.where.url)
+      }
+      else {
+        source = packet.frame.where.source;
+      }
+
+      selectSource(source, {
         line: packet.frame.where.line
       })
     }
