@@ -17,11 +17,7 @@ let { InspectorFront } = require("devtools/server/actors/inspector");
 
 let WEB_SOCKET_PORT = 9000;
 
-/**
- * A DevToolPanel that controls the Web Console.
- */
-function WebConsolePanel(iframeWindow, toolbox)
-{
+function WebConsolePanel(iframeWindow, toolbox) {
   this._frameWindow = iframeWindow;
   this._toolbox = toolbox;
   EventEmitter.decorate(this);
