@@ -156,9 +156,9 @@ View.prototype = {
     this.inputNode.value = "";
   },
 
-  appendOutput: function(error, result) {
+  appendOutput: function(result) {
     let message = new ConsoleMessageView(this.outputNode);
-    message.render(error, result);
+    message.render(result);
   },
 
   _onJsInput: EventsQueue.register(function(e) {
@@ -180,8 +180,8 @@ Presenter.prototype = {
   },
 
   _onJsInput: EventsQueue.register(function*(event, value) {
-    let response = yield this.controller.eval(value);
-    this.view.appendOutput(...response);
+    let [error, result] = yield this.controller.eval(value);
+    this.view.appendOutput(result);
     this.view.clearInput();
   })
 };
@@ -208,7 +208,7 @@ function ConsoleMessageView(parentNode) {
 ConsoleMessageView.prototype = Object.create(UIElement.prototype);
 ConsoleMessageView.constructor = ConsoleMessageView;
 
-ConsoleMessageView.prototype.render = function(error, result) {
+ConsoleMessageView.prototype.render = function(result) {
   this.clear();
 
   this.view.className = ".console-message";
