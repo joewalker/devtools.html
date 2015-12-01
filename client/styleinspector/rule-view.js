@@ -1393,10 +1393,10 @@ function CssRuleView(inspector, document, store, pageStyle) {
   this._contextmenu = new StyleInspectorMenu(this, { isRuleView: true });
 
   // Add the tooltips and highlighters to the view
-  this.tooltips = new overlays.TooltipsOverlay(this);
-  this.tooltips.addToView();
-  this.highlighters = new overlays.HighlightersOverlay(this);
-  this.highlighters.addToView();
+  // this.tooltips = new overlays.TooltipsOverlay(this);
+  // this.tooltips.addToView();
+  // this.highlighters = new overlays.HighlightersOverlay(this);
+  // this.highlighters.addToView();
 
   EventEmitter.decorate(this);
 }
@@ -4047,14 +4047,10 @@ function getPropertyNameAndValue(node) {
   }
 }
 
-XPCOMUtils.defineLazyGetter(this, "clipboardHelper", function() {
-  return Cc("@mozilla.org/widget/clipboardhelper;1")
-    .getService(Ci.nsIClipboardHelper);
-});
+const clipboardHelper = Cc("@mozilla.org/widget/clipboardhelper;1")
+      .getService(Ci.nsIClipboardHelper);
 
-XPCOMUtils.defineLazyGetter(this, "osString", function() {
-  return Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime).OS;
-});
+const osString = "xxx"; // Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime).OS;
 
 // XPCOMUtils.defineLazyGetter(this, "domUtils", function() {
 //   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);

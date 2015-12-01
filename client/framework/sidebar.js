@@ -62,8 +62,8 @@ function ToolSidebar(tabbox, panel, uid, options={}) {
   EventEmitter.decorate(this);
 
   this._tabbox = tabbox;
-  this._tabboxTabs = tabbox.querySelector("tabs");
-  this._tabboxTabpanels = tabbox.querySelector("tabpanels");
+  this._tabboxTabs = tabbox.querySelector("tabs") || tabbox.ownerDocument.createElement("tabs");
+  this._tabboxTabpanels = tabbox.querySelector("tabpanels") || tabbox.ownerDocument.createElement("tabpanels");
   this._uid = uid;
   this._panelDoc = this._tabbox.ownerDocument;
   this._toolPanel = panel;
@@ -294,9 +294,9 @@ ToolSidebar.prototype = {
    * Search for existing tabs in the markup that aren't know yet and add them.
    */
   addExistingTabs: function() {
-    let knownTabs = [...this._tabs.values()];
+    let knownTabs = this._tabs.values();
 
-    for (let tab of this._tabboxTabs.querySelectorAll("tab")) {
+    for (let tab of [].slice.call(this._tabboxTabs.querySelectorAll("tab"))) {
       if (knownTabs.indexOf(tab) !== -1) {
         continue;
       }

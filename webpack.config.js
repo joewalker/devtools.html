@@ -6,6 +6,13 @@ var path = require("path");
 
 module.exports = {
   entry: {
+    // app: [
+    //   "babel-polyfill",
+    //   path.join(__dirname, "client", "fontinspector", "font-inspector.js"),
+    //   path.join(__dirname, "client", "framework", "index.js"),
+    //   path.join(__dirname, "client", "inspector", "inspector-panel.js"),
+    //   path.join(__dirname, "client", "styleinspector", "style-inspector.js"),
+    // ],
     fontinspector: [
       "babel-polyfill",
       path.join(__dirname, "client", "fontinspector", "font-inspector.js"),

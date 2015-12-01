@@ -6,20 +6,32 @@
 
 "use strict";
 
-const promise = require("devtools/sham/promise");
+// const promise = require("devtools/sham/promise");
 
 /**
  * This object provides the public module functions.
  */
 const Task = {
+  // XXX: Not sure if this works in all cases...
+  async: function(task) {
+    return function() {
+      let args = arguments;
+      let that = this;
+      return new Promise(function(resolve, reject) {
+        let ret = Task.spawn(task, that, args);
+        ret.then(resolve, reject);
+      });
+    }
+  },
+
   /**
    * Creates and starts a new task.
    * @param task A generator function
    * @return A promise, resolved when the task terminates
    */
-  spawn: function(task, scope) {
+  spawn: function(task, scope, args) {
     return new Promise(function(resolve, reject) {
-      const iterator = task.call(scope);
+      const iterator = task.apply(scope, args);
 
       const callNext = lastValue => {
         const iteration = iterator.next(lastValue);

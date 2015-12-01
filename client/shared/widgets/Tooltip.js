@@ -28,11 +28,11 @@ const { VariablesViewController, StackFrameUtils } = require("devtools/client/sh
 const { Task } = require("devtools/sham/task");
 
 const XHTML_NS = "http://www.w3.org/1999/xhtml";
-const SPECTRUM_FRAME = "/devtools/client/shared/widgets/spectrum-frame.xhtml";
+const SPECTRUM_FRAME = "../shared/widgets/spectrum-frame.xhtml";
 const CUBIC_BEZIER_FRAME =
-      "/devtools/client/shared/widgets/cubic-bezier-frame.xhtml";
-const MDN_DOCS_FRAME = "/devtools/client/shared/widgets/mdn-docs-frame.xhtml";
-const FILTER_FRAME = "/devtools/client/shared/widgets/filter-frame.xhtml";
+      "../shared/widgets/cubic-bezier-frame.xhtml";
+const MDN_DOCS_FRAME = "../shared/widgets/mdn-docs-frame.xhtml";
+const FILTER_FRAME = "../shared/widgets/filter-frame.xhtml";
 const ESCAPE_KEYCODE = Ci.nsIDOMKeyEvent.DOM_VK_ESCAPE;
 const RETURN_KEYCODE = Ci.nsIDOMKeyEvent.DOM_VK_RETURN;
 const POPUP_EVENTS = ["shown", "hidden", "showing", "hiding"];
@@ -795,7 +795,7 @@ Tooltip.prototype = {
     return this.setIFrameContent(dimensions, SPECTRUM_FRAME).then(onLoaded);
 
     function onLoaded(iframe) {
-      let win = iframe.contentWindow.wrappedJSObject;
+      let win = iframe.contentWindow;
       let def = promise.defer();
       let container = win.document.getElementById("spectrum");
       let spectrum = new Spectrum(container, color);
@@ -829,7 +829,7 @@ Tooltip.prototype = {
     return this.setIFrameContent(dimensions, CUBIC_BEZIER_FRAME).then(onLoaded);
 
     function onLoaded(iframe) {
-      let win = iframe.contentWindow.wrappedJSObject;
+      let win = iframe.contentWindow;
       let def = promise.defer();
       let container = win.document.getElementById("container");
       let widget = new CubicBezierWidget(container, bezier);
@@ -859,7 +859,7 @@ Tooltip.prototype = {
     return this.setIFrameContent(dimensions, FILTER_FRAME).then(onLoaded);
 
     function onLoaded(iframe) {
-      let win = iframe.contentWindow.wrappedJSObject;
+      let win = iframe.contentWindow;
       let doc = win.document.documentElement;
       let def = promise.defer();
       let container = win.document.getElementById("container");
@@ -929,7 +929,7 @@ Tooltip.prototype = {
     return this.setIFrameContent(dimensions, MDN_DOCS_FRAME).then(onLoaded);
 
     function onLoaded(iframe) {
-      let win = iframe.contentWindow.wrappedJSObject;
+      let win = iframe.contentWindow;
       // create an MdnDocsWidget, initializing it with the content document
       let widget = new MdnDocsWidget(win.document);
       return widget;

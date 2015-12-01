@@ -1231,10 +1231,10 @@ InplaceEditor.prototype = {
 function copyTextStyles(from, to) {
   let win = from.ownerDocument.defaultView;
   let style = win.getComputedStyle(from);
-  to.style.fontFamily = style.getPropertyCSSValue("font-family").cssText;
-  to.style.fontSize = style.getPropertyCSSValue("font-size").cssText;
-  to.style.fontWeight = style.getPropertyCSSValue("font-weight").cssText;
-  to.style.fontStyle = style.getPropertyCSSValue("font-style").cssText;
+  to.style.fontFamily = style.fontFamily; //style.getPropertyCSSValue("font-family").cssText;
+  to.style.fontSize = style.fontSize; //style.getPropertyCSSValue("font-size").cssText;
+  to.style.fontWeight = style.fontWeight; //style.getPropertyCSSValue("font-weight").cssText;
+  to.style.fontStyle = style.fontStyle; //style.getPropertyCSSValue("font-style").cssText;
 }
 
 /**

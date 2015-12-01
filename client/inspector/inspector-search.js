@@ -34,14 +34,16 @@ function InspectorSearch(inspector, input) {
 
   this._onKeyDown = this._onKeyDown.bind(this);
   this._onCommand = this._onCommand.bind(this);
-  this.searchBox.addEventListener("keydown", this._onKeyDown, true);
-  this.searchBox.addEventListener("command", this._onCommand, true);
+
+  if (this.searchBox) {
+    this.searchBox.addEventListener("keydown", this._onKeyDown, true);
+    this.searchBox.addEventListener("command", this._onCommand, true);
+    this.autocompleter = new SelectorAutocompleter(inspector, input);
+  }
 
   // For testing, we need to be able to wait for the most recent node request
   // to finish.  Tests can watch this promise for that.
   this._lastQuery = promise.resolve(null);
-
-  this.autocompleter = new SelectorAutocompleter(inspector, input);
   EventEmitter.decorate(this);
 }
 

@@ -15,6 +15,7 @@ var L10N = require("devtools/sham/l10n");
 var MarkupView = require("devtools/client/markupview/markup-view").MarkupView;
 var HTMLBreadcrumbs = require("devtools/client/inspector/breadcrumbs").HTMLBreadcrumbs;
 var ToolSidebar = require("devtools/client/framework/sidebar").ToolSidebar;
+const Toolbox = require("devtools/client/framework/toolbox");
 var InspectorSearch = require("devtools/client/inspector/inspector-search").InspectorSearch;
 
 var strings = new L10N(require("l10n/inspector.properties"));
@@ -1025,7 +1026,7 @@ InspectorPanel.prototype = {
    */
   updatePaneToggleButton: function() {
     this._paneToggleButton.setAttribute("hidden",
-      this._toolbox.hostType === HostType.SIDE);
+      this._toolbox.hostType === Toolbox.HostType.SIDE);
   },
 
   /**

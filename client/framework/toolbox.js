@@ -180,8 +180,9 @@ Toolbox.HostType = {
   CUSTOM: "custom"
 };
 
+exports.HostType = Toolbox.HostType;
 Toolbox.prototype = {
-  _URL: "toolbox.html",
+  _URL: "toolbox.xhtml",
 
   _prefs: {
     LAST_HOST: "devtools.toolbox.host",
@@ -348,13 +349,13 @@ Toolbox.prototype = {
    * Open the toolbox
    */
   open: function() {
-    return this.openAsync().catch(console.error.bind(console));
+    return this.openAsync().catch(e => console.error(e));
   },
 
   /**
    *
    */
-  async openAsync() {
+  openAsync: async function() {
     let iframe = await this._host.create();
 
     // Load the toolbox-level actor fronts and utilities now
@@ -2031,7 +2032,8 @@ Toolbox.prototype = {
       return;
     }
     let window = this.frame.contentWindow;
-    showDoorhanger({ window, type: "deveditionpromo" });
+    // XXX: don't need doorhanger for demo
+    // showDoorhanger({ window, type: "deveditionpromo" });
   },
 
   /**
@@ -2048,6 +2050,9 @@ Toolbox.prototype = {
    * necessary because of the WebConsole's `profile` and `profileEnd` methods.
    */
   initPerformance: async function() {
+    // XXX: don't need performance actor for demo
+    return;
+
     // If target does not have profiler actor (addons), do not
     // even register the shared performance connection.
     if (!this.target.hasActor("profiler")) {

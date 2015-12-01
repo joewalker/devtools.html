@@ -55,7 +55,7 @@ Tools.inspector = {
   modifiers: osString == "Darwin" ? "accel,alt" : "accel,shift",
   icon: "../themes/images/tool-inspector.svg",
   invertIconForLightTheme: true,
-  url: "../inspector/inspector.html",
+  url: "../inspector/inspector.xhtml",
   label: l10n("inspector.label", inspectorStrings),
   panelLabel: l10n("inspector.panelLabel", inspectorStrings),
   get tooltip() {
