@@ -80,10 +80,10 @@ pref("devtools.debugger.remote-host", "localhost");
 pref("devtools.debugger.remote-timeout", 20000);
 pref("devtools.debugger.pause-on-exceptions", false);
 pref("devtools.debugger.ignore-caught-exceptions", true);
-pref("devtools.debugger.source-maps-enabled", true);
+pref("devtools.debugger.source-maps-enabled", false);
 pref("devtools.debugger.pretty-print-enabled", true);
 pref("devtools.debugger.auto-pretty-print", false);
-pref("devtools.debugger.auto-black-box", true);
+pref("devtools.debugger.auto-black-box", false);
 pref("devtools.debugger.workers", false);
 pref("devtools.debugger.promise", false);
 
