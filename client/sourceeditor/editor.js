@@ -41,56 +41,7 @@ const L10N = Services.strings.createBundle(require("l10n/sourceeditor.properties
 
 const { OS } = Services.appinfo;
 
-// CM_STYLES, CM_SCRIPTS and CM_IFRAME represent the HTML,
-// JavaScript and CSS that is injected into an iframe in
-// order to initialize a CodeMirror instance.
-
-const CM_STYLES   = [
-  "/devtools/client/themes/common.css",
-  "/devtools/client/sourceeditor/codemirror/lib/codemirror.css",
-  "/devtools/client/sourceeditor/codemirror/addon/dialog/dialog.css",
-  "/devtools/client/sourceeditor/codemirror/mozilla.css"
-];
-
-const CM_SCRIPTS  = [
-  "shared/theme-switching.js",
-  "sourceeditor/codemirror/lib/codemirror.js",
-  "sourceeditor/codemirror/addon/dialog/dialog.js",
-  "sourceeditor/codemirror/addon/search/searchcursor.js",
-  "sourceeditor/codemirror/addon/search/search.js",
-  "sourceeditor/codemirror/addon/edit/matchbrackets.js",
-  "sourceeditor/codemirror/addon/edit/closebrackets.js",
-  "sourceeditor/codemirror/addon/comment/comment.js",
-  "sourceeditor/codemirror/mode/javascript.js",
-  "sourceeditor/codemirror/mode/xml.js",
-  "sourceeditor/codemirror/mode/css.js",
-  "sourceeditor/codemirror/mode/htmlmixed.js",
-  "sourceeditor/codemirror/mode/clike.js",
-  "sourceeditor/codemirror/addon/selection/active-line.js",
-  "sourceeditor/codemirror/addon/edit/trailingspace.js",
-  "sourceeditor/codemirror/keymap/emacs.js",
-  "sourceeditor/codemirror/keymap/vim.js",
-  "sourceeditor/codemirror/keymap/sublime.js",
-  "sourceeditor/codemirror/addon/fold/foldcode.js",
-  "sourceeditor/codemirror/addon/fold/brace-fold.js",
-  "sourceeditor/codemirror/addon/fold/comment-fold.js",
-  "sourceeditor/codemirror/addon/fold/xml-fold.js",
-  "sourceeditor/codemirror/addon/fold/foldgutter.js"
-];
-
-const CM_IFRAME   =
-  "data:text/html;charset=utf8,<!DOCTYPE html>" +
-  "<html dir='ltr'>" +
-  "  <head>" +
-  "    <style>" +
-  "      html, body { height: 100%; }" +
-  "      body { margin: 0; overflow: hidden; }" +
-  "      .CodeMirror { width: 100%; height: 100% !important; line-height: 1.25 !important;}" +
-  "    </style>" +
-  CM_STYLES.map(style => "<link rel='stylesheet' href='" + style + "'>").join("\n") +
-  "  </head>" +
-  "  <body class='theme-body devtools-monospace'></body>" +
-  "</html>";
+const CM_IFRAME = "/client/sourceeditor/codemirror.html";
 
 const CM_MAPPING = [
   "focus",
@@ -251,28 +202,18 @@ Editor.prototype = {
     let def = promise.defer();
     let cm  = editors.get(this);
 
-    var parser = el.ownerDocument.createElement('a');
-    var baseUri = el.ownerDocument.documentURI;
-
-    // Yuck.. since the CM iframe is a data URI we need an absolute path
-    // for our resources and we are making some pretty bad assumptions about
-    // where it will be.
-    // baseUri = baseUri.split("/").slice(0, -2).join("/") + "/";
-    baseUri = "/devtools/client/";
+    var parser = document.createElement('a');
 
     if (!env)
-      env = el.ownerDocument.createElementNS(XUL_NS, "iframe");
+      env = document.createElement("iframe");
 
     env.flex = 1;
+    env.style.flex = '1';
 
     if (cm)
       throw new Error("You can append an editor only once.");
 
-    let onLoad = Task.spawn(function*() {
-      if (env.getAttribute("src") == null) {
-        return;
-      }
-
+    let onLoad = Task.async(function*() {
       // Once the iframe is loaded, we can inject CodeMirror
       // and its dependencies into its DOM.
 
@@ -282,11 +223,6 @@ Editor.prototype = {
 
       if (!this.config.themeSwitching)
         win.document.documentElement.setAttribute("force-theme", "light");
-
-      let scriptsToInject = CM_SCRIPTS.concat(this.config.externalScripts);
-      for (let script of scriptsToInject) {
-        yield Services.scriptloader.loadSubScript(baseUri + script, win, "utf8");
-      }
 
       // Replace the propertyKeywords, colorKeywords and valueKeywords
       // properties of the CSS MIME type with the values provided by Gecko.
@@ -424,11 +360,12 @@ Editor.prototype = {
       let editorReadyEvent = new win.CustomEvent("editorReady");
       win.dispatchEvent(editorReadyEvent);
 
+      this.isReady = true;
       def.resolve();
     }.bind(this));
 
     env.addEventListener("load", onLoad, true);
-    env.setAttribute("src", CM_IFRAME);
+    env.src = CM_IFRAME;
     el.appendChild(env);
 
     this.once("destroy", () => el.removeChild(env));
@@ -687,7 +624,7 @@ Editor.prototype = {
       }
     }
 
-    let marker = cm.getWrapperElement().ownerDocument.createElement("div");
+    let marker = document.createElement("div");
     marker.className = markerClass;
     cm.setGutterMarker(info.line, gutterName, marker);
   },
