@@ -182,7 +182,7 @@ Toolbox.HostType = {
 
 exports.HostType = Toolbox.HostType;
 Toolbox.prototype = {
-  _URL: "toolbox.html",
+  _URL: "toolbox.xhtml",
 
   _prefs: {
     LAST_HOST: "devtools.toolbox.host",
