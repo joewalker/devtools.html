@@ -6,7 +6,6 @@
 
 const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const promise = require("devtools/sham/promise");
-
 const EventEmitter = require("devtools/shared/event-emitter");
 
 const {DebuggerClient} = require("devtools/shared/client/main");
@@ -15,16 +14,14 @@ const {TargetFactory} = require("devtools/client/framework/target");
 
 const WEB_SOCKET_PORT = 9000;
 
-function WebConsolePanel(iframeWindow, toolbox) {
-  this._frameWindow = iframeWindow;
-  this._toolbox = toolbox;
-  EventEmitter.decorate(this);
-}
+class WebConsolePanel {
+  constructor(iframeWindow, toolbox) {
+    this._frameWindow = iframeWindow;
+    this._toolbox = toolbox;
+    EventEmitter.decorate(this);
+  }
 
-exports.WebConsolePanel = WebConsolePanel;
-
-WebConsolePanel.prototype = {
-  open: async function() {
+  async open() {
     this.controller = new Controller();
     await this.controller.connect();
 
@@ -37,19 +34,19 @@ WebConsolePanel.prototype = {
     this.isReady = true;
     this.emit("ready");
     return this;
-  },
+  }
 
   get target() {
     return this._toolbox.target;
-  },
+  }
 
-  destroy: function() {
-  },
+  destroy() {
+  }
 
-  focusInput: function() {
+  focusInput() {
     this.view.focusInput();
-  },
-};
+  }
+}
 
 let EventsQueue = {
   _queue: [],
@@ -79,11 +76,8 @@ let EventsQueue = {
   }
 };
 
-function Controller() {
-}
-
-Controller.prototype = {
-  connect: async function() {
+class Controller {
+  async connect() {
     let socket = new WebSocket("ws://localhost:" + this._getPort());
     let transport = new DebuggerTransport(socket);
     let client = new DebuggerClient(transport);
@@ -99,9 +93,9 @@ Controller.prototype = {
     });
 
     this.webConsoleClient = target.activeConsole;
-  },
+  }
 
-  eval: function(value) {
+  evaluate(value) {
     let deferred = promise.defer();
 
     this.webConsoleClient.evaluateJSAsync(value, response => {
@@ -117,103 +111,104 @@ Controller.prototype = {
     });
 
     return deferred.promise;
-  },
+  }
 
-  _getPort: function() {
+  _getPort() {
     let query = location.search.match(/(\w+)=(\d+)/);
     if (query && query[1] == "wsPort") {
       return query[2];
     }
     return WEB_SOCKET_PORT;
-  },
-};
-
-function View(document) {
-  this.$ = selector => document.querySelectorAll(selector)[0];
-  EventEmitter.decorate(this);
+  }
 }
 
-View.prototype = {
+class View {
+  constructor(document) {
+    this.$ = selector => document.querySelectorAll(selector)[0];
+    EventEmitter.decorate(this);
+
+    this._onJsInput = EventsQueue.register(this._onJsInput);
+  }
+
+  init() {
+    this.inputNode.addEventListener("keypress", this._onJsInput.bind(this));
+  }
+
   get outputNode() {
     return this.$("#js-output");
-  },
+  }
 
   get inputNode() {
     return this.$("#js-input");
-  },
+  }
 
-  init: async function() {
-    this.inputNode.addEventListener("keypress", this._onJsInput.bind(this));
-  },
-
-  focusInput: function() {
+  focusInput() {
     this.inputNode.focus();
-  },
+  }
 
-  clearInput: function() {
+  clearInput() {
     this.inputNode.value = "";
-  },
+  }
 
-  appendOutput: function(result) {
+  appendOutput(result) {
     let message = new ConsoleMessageView(this.outputNode);
     message.render(result);
-  },
+  }
 
-  _onJsInput: EventsQueue.register(function(e) {
+  _onJsInput(e) {
     if (e.keyCode == 13 /* ENTER */) {
       let value = this.inputNode.value;
       this.emit("js-eval", value);
     }
-  })
-};
-
-function Presenter(view, controller) {
-  this.view = view;
-  this.controller = controller;
+  }
 }
 
-Presenter.prototype = {
-  init: async function() {
-    this.view.on("js-eval", this._onJsInput.bind(this));
-  },
+class Presenter {
+  constructor(view, controller) {
+    this.view = view;
+    this.controller = controller;
 
-  _onJsInput: EventsQueue.register(async function(event, value) {
-    let [error, result] = await this.controller.eval(value);
+    this._onJsInput = EventsQueue.register(this._onJsInput);
+  }
+
+  init() {
+    this.view.on("js-eval", this._onJsInput.bind(this));
+  }
+
+  async _onJsInput(event, value) {
+    let [error, result] = await this.controller.evaluate(value);
     this.view.appendOutput(result);
     this.view.clearInput();
-  })
-};
-
-function UIElement(parentNode) {
-  this.parent = parentNode;
-  this.document = parentNode.ownerDocument;
-  this.window = parentNode.ownerDocument.defaultView;
-
-  this.view = this.document.createElement("div");
-  this.parent.appendChild(this.view);
+  }
 }
 
-UIElement.prototype = {
-  clear: function() {
+class UIElement {
+  constructor(parentNode) {
+    this.parent = parentNode;
+    this.document = parentNode.ownerDocument;
+    this.window = parentNode.ownerDocument.defaultView;
+
+    this.view = this.document.createElement("div");
+    this.parent.appendChild(this.view);
+  }
+
+  clear() {
     this.view.innerHTML = "";
   }
-};
-
-function ConsoleMessageView(parentNode) {
-  UIElement.call(this, parentNode);
 }
 
-ConsoleMessageView.prototype = Object.create(UIElement.prototype);
-ConsoleMessageView.constructor = ConsoleMessageView;
+class ConsoleMessageView extends UIElement {
+  render(object) {
+    this.clear();
 
-ConsoleMessageView.prototype.render = function(result) {
-  this.clear();
+    this.view.className = ".console-message";
+    this.view.setAttribute("category", "input");
 
-  this.view.className = ".console-message";
-  this.view.setAttribute("category", "input");
+    let messageNode = this.document.createElement("div");
+    messageNode.textContent = object;
 
-  let messageNode = this.document.createElement("div");
-  messageNode.textContent = result;
+    this.view.appendChild(messageNode);
+  }
+}
 
-  this.view.appendChild(messageNode);
-};
+exports.WebConsolePanel = WebConsolePanel;
