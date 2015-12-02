@@ -9,8 +9,8 @@ const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
  * Localization convenience methods.
  */
 const L10N = new ViewHelpers.MultiL10N([
-  "chrome://devtools/locale/markers.properties",
-  "chrome://devtools/locale/performance.properties"
+  require("l10n/markers.properties"),
+  require("l10n/performance.properties")
 ]);
 
 /**

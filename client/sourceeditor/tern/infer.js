@@ -23,7 +23,7 @@
 
   const acorn = require("acorn/acorn");
   const acorn_loose = require("acorn/acorn_loose");
-  const def = require("./def");
+  const defModule = require("./def");
   const signal = require("./signal");
   const walk = require("acorn/walk");
 
@@ -1477,5 +1477,5 @@
   // INIT DEF MODULE
 
   // Delayed initialization because of cyclic dependencies.
-  def = exports.def = def.init({}, exports);
+  const def = exports.def = defModule.init({}, exports);
 //});

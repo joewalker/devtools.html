@@ -5,16 +5,14 @@
 
 "use strict";
 
-const Cc = Components.classes;
-const Ci = Components.interfaces;
-const Cu = Components.utils;
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 
 const Editor  = require("devtools/client/sourceeditor/editor");
 const promise = require("devtools/sham/promise");
 const {CssLogic} = require("devtools/shared/styleinspector/css-logic");
 
 const { Services } = require("devtools/sham/services");
-const { FileUtils } = require ("devtools/sham/fileutils");
+const { FileUtils } = require("devtools/sham/fileutils");
 const { NetUtil } = require("devtools/sham/netutil");
 const { OS } = require("devtools/sham/osfile");
 const { Task } = require("devtools/sham/task");
@@ -119,7 +117,7 @@ function StyleSheetEditor(styleSheet, win, file, isNew, walker, highlighter) {
   this.styleSheet.on("error", this._onError);
   this.mediaRules = [];
   if (this.cssSheet.getMediaRules) {
-    this.cssSheet.getMediaRules().then(this._onMediaRulesChanged, Cu.reportError);
+    this.cssSheet.getMediaRules().then(this._onMediaRulesChanged).catch(console.error.bind(console));
   }
   this.cssSheet.on("media-rules-changed", this._onMediaRulesChanged);
   this.cssSheet.on("style-applied", this._onStyleApplied);
@@ -285,7 +283,7 @@ StyleSheetEditor.prototype = {
         console.warn("Could not fetch the source for " +
                      this.styleSheet.href +
                      ", the editor was destroyed");
-        Cu.reportError(e);
+        console.error(e);
       } else {
         this.emit("error", { key: LOAD_ERROR, append: this.styleSheet.href });
         throw e;
@@ -502,7 +500,7 @@ StyleSheetEditor.prototype = {
    * Toggled the disabled state of the underlying stylesheet.
    */
   toggleDisabled: function() {
-    this.styleSheet.toggleDisabled().then(null, Cu.reportError);
+    this.styleSheet.toggleDisabled().catch(console.error.bind(console));
   },
 
   /**
@@ -542,7 +540,7 @@ StyleSheetEditor.prototype = {
 
     this._isUpdating = true;
     this.styleSheet.update(this._state.text, this.transitionsEnabled)
-                   .then(null, Cu.reportError);
+                   .catch(console.error.bind(console));
   },
 
   /**
@@ -714,7 +712,7 @@ StyleSheetEditor.prototype = {
 
     error += " querying " + this.linkedCSSFile +
              " original source location: " + this.savedFile.path
-    Cu.reportError(error);
+    console.error(error);
   },
 
   /**

@@ -4,7 +4,7 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 <!DOCTYPE window [
-  <!ENTITY % inspectorDTD SYSTEM "chrome://devtools/locale/styleinspector.dtd">
+  <!ENTITY % inspectorDTD SYSTEM "l10n/styleinspector.dtd">
   %inspectorDTD;
   <!ENTITY % globalDTD SYSTEM "chrome://global/locale/global.dtd">
   %globalDTD;
@@ -29,11 +29,13 @@
 
     <title>!!computedViewTitle;</title>
 
+    <link rel="stylesheet" href="../chrome/global/skin/global.css"  type="text/css"/>
+    <link rel="stylesheet" href="../themes/common.css"  type="text/css"/>
     <link rel="stylesheet" href="../themes/computedview.css"  type="text/css"/>
 
-    <script type="application/javascript;version=1.8" src="../shared/theme-switching.js"/>
-    <script type="application/javascript;version=1.8" src="../../globals.js"></script>
-    <script type="application/javascript;version=1.8" src="build.js"></script>
+    <script type="application/javascript" src="../shared/theme-switching.js"/>
+    <script type="application/javascript" src="../../globals.js"></script>
+    <script type="application/javascript" src="../../built/styleinspector.js"></script>
   </head>
 
   <body>

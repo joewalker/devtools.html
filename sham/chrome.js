@@ -2,7 +2,7 @@
  * A sham for https://developer.mozilla.org/en-US/Add-ons/SDK/Low-Level_APIs/chrome
  */
 
-var inDOMUtils = require("devtools/sham/inDOMUtils");
+var { inDOMUtils } = require("devtools/sham/inDOMUtils");
 
 var ourServices = {
   inIDOMUtils: inDOMUtils,
@@ -12,13 +12,22 @@ var ourServices = {
   nsIXULChromeRegistry: {
     isLocaleRTL: () => {return false;}
   },
+  nsIDOMParser: {
+
+  },
 };
 
 module.exports = {
   Cc: name => {
-    console.log('Sham for', name);
+    console.log('Cc sham for', name);
     return {
-      getService: (name) => ourServices[name]
+      getService: (name) => ourServices[name],
+      createInstance: (iface) => ourServices[iface],
+    };
+  },
+  CC: (name, iface, method) => {
+    console.log('CC sham for', name, iface, method);
+    return {
     };
   },
   Ci: {
@@ -34,6 +43,7 @@ module.exports = {
     nsIDOMKeyEvent: {
 
     },
+    nsIDOMCSSRule: {"UNKNOWN_RULE":0,"STYLE_RULE":1,"CHARSET_RULE":2,"IMPORT_RULE":3,"MEDIA_RULE":4,"FONT_FACE_RULE":5,"PAGE_RULE":6,"KEYFRAMES_RULE":7,"KEYFRAME_RULE":8,"MOZ_KEYFRAMES_RULE":7,"MOZ_KEYFRAME_RULE":8,"NAMESPACE_RULE":10,"COUNTER_STYLE_RULE":11,"SUPPORTS_RULE":12,"FONT_FEATURE_VALUES_RULE":14},
     inIDOMUtils: "inIDOMUtils",
     nsIClipboardHelper: "nsIClipboardHelper",
     nsIXULChromeRegistry: "nsIXULChromeRegistry",

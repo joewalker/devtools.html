@@ -650,9 +650,7 @@ var OldStyleSheetFront = protocol.FrontClass(OldStyleSheetActor, {
   }
 });
 
-XPCOMUtils.defineLazyGetter(this, "DOMUtils", function () {
-  return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
-});
+const DOMUtils = Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 
 exports.StyleEditorActor = StyleEditorActor;
 exports.StyleEditorFront = StyleEditorFront;

@@ -17,7 +17,7 @@ const Heritage = require("sdk/core/heritage");
 const {Eyedropper} = require("devtools/client/eyedropper/eyedropper");
 const Editor = require("devtools/client/sourceeditor/editor");
 
-const beautify = require("devtools/shared/jsbeautify/beautify");
+//const beautify = require("devtools/shared/jsbeautify/beautify");
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
@@ -28,11 +28,11 @@ const { VariablesViewController, StackFrameUtils } = require("devtools/client/sh
 const { Task } = require("devtools/sham/task");
 
 const XHTML_NS = "http://www.w3.org/1999/xhtml";
-const SPECTRUM_FRAME = "chrome://devtools/content/shared/widgets/spectrum-frame.xhtml";
+const SPECTRUM_FRAME = "../shared/widgets/spectrum-frame.xhtml";
 const CUBIC_BEZIER_FRAME =
-      "chrome://devtools/content/shared/widgets/cubic-bezier-frame.xhtml";
-const MDN_DOCS_FRAME = "chrome://devtools/content/shared/widgets/mdn-docs-frame.xhtml";
-const FILTER_FRAME = "chrome://devtools/content/shared/widgets/filter-frame.xhtml";
+      "../shared/widgets/cubic-bezier-frame.xhtml";
+const MDN_DOCS_FRAME = "../shared/widgets/mdn-docs-frame.xhtml";
+const FILTER_FRAME = "../shared/widgets/filter-frame.xhtml";
 const ESCAPE_KEYCODE = Ci.nsIDOMKeyEvent.DOM_VK_ESCAPE;
 const RETURN_KEYCODE = Ci.nsIDOMKeyEvent.DOM_VK_RETURN;
 const POPUP_EVENTS = ["shown", "hidden", "showing", "hiding"];
@@ -639,23 +639,23 @@ Tooltip.prototype = {
    * @return a promise that resolves when the image is shown in the tooltip or
    * resolves when the broken image tooltip content is ready, but never rejects.
    */
-  setRelativeImageContent: Task.async(function*(imageUrl, inspectorFront,
+  setRelativeImageContent: async function(imageUrl, inspectorFront,
                                                 maxDim) {
     if (imageUrl.startsWith("data:")) {
       // If the imageUrl already is a data-url, save ourselves a round-trip
       this.setImageContent(imageUrl, {maxDim: maxDim});
     } else if (inspectorFront) {
       try {
-        let {data, size} = yield inspectorFront.getImageDataFromURL(imageUrl,
+        let {data, size} = await inspectorFront.getImageDataFromURL(imageUrl,
                                                                     maxDim);
         size.maxDim = maxDim;
-        let str = yield data.string();
+        let str = await data.string();
         this.setImageContent(str, size);
       } catch (e) {
         this.setBrokenImageContent();
       }
     }
-  }),
+  },
 
   /**
    * Fill the tooltip with a message explaining the the image is missing
@@ -795,7 +795,7 @@ Tooltip.prototype = {
     return this.setIFrameContent(dimensions, SPECTRUM_FRAME).then(onLoaded);
 
     function onLoaded(iframe) {
-      let win = iframe.contentWindow.wrappedJSObject;
+      let win = iframe.contentWindow;
       let def = promise.defer();
       let container = win.document.getElementById("spectrum");
       let spectrum = new Spectrum(container, color);
@@ -829,7 +829,7 @@ Tooltip.prototype = {
     return this.setIFrameContent(dimensions, CUBIC_BEZIER_FRAME).then(onLoaded);
 
     function onLoaded(iframe) {
-      let win = iframe.contentWindow.wrappedJSObject;
+      let win = iframe.contentWindow;
       let def = promise.defer();
       let container = win.document.getElementById("container");
       let widget = new CubicBezierWidget(container, bezier);
@@ -859,7 +859,7 @@ Tooltip.prototype = {
     return this.setIFrameContent(dimensions, FILTER_FRAME).then(onLoaded);
 
     function onLoaded(iframe) {
-      let win = iframe.contentWindow.wrappedJSObject;
+      let win = iframe.contentWindow;
       let doc = win.document.documentElement;
       let def = promise.defer();
       let container = win.document.getElementById("container");
@@ -890,7 +890,7 @@ Tooltip.prototype = {
    * @return A promise that resolves when the font tooltip content is ready, or
    *         rejects if no font is provided
    */
-  setFontFamilyContent: Task.async(function*(font, nodeFront) {
+  setFontFamilyContent: async function(font, nodeFront) {
     if (!font || !nodeFront) {
       throw new Error("Missing font");
     }
@@ -904,11 +904,11 @@ Tooltip.prototype = {
           (Services.prefs.getCharPref("devtools.theme") === "light") ?
           "black" : "white";
 
-      let {data, size} = yield nodeFront.getFontFamilyDataURL(font, fillStyle);
-      let str = yield data.string();
+      let {data, size} = await nodeFront.getFontFamilyDataURL(font, fillStyle);
+      let str = await data.string();
       this.setImageContent(str, { hideDimensionLabel: true, maxDim: size });
     }
-  }),
+  },
 
   /**
    * Set the content of this tooltip to the MDN docs widget.
@@ -929,7 +929,7 @@ Tooltip.prototype = {
     return this.setIFrameContent(dimensions, MDN_DOCS_FRAME).then(onLoaded);
 
     function onLoaded(iframe) {
-      let win = iframe.contentWindow.wrappedJSObject;
+      let win = iframe.contentWindow;
       // create an MdnDocsWidget, initializing it with the content document
       let widget = new MdnDocsWidget(win.document);
       return widget;
@@ -1274,7 +1274,7 @@ EventTooltip.prototype = {
       if (!listener.hide.debugger) {
         let debuggerIcon = doc.createElement("image");
         debuggerIcon.className = "event-tooltip-debugger-icon";
-        debuggerIcon.setAttribute("src", "chrome://devtools/skin/images/tool-debugger.svg");
+        debuggerIcon.setAttribute("src", "/devtools/client/themes/images/tool-debugger.svg");
         let openInDebugger =
             l10n.strings.GetStringFromName("eventsTooltip.openInDebugger");
         debuggerIcon.setAttribute("tooltiptext", openInDebugger);
@@ -1711,7 +1711,4 @@ L10N.prototype = {};
 
 var l10n = new L10N();
 
-loader.lazyGetter(L10N.prototype, "strings", () => {
-  return Services.strings.createBundle(
-    "chrome://devtools/locale/inspector.properties");
-});
+L10N.prototype.strings = Services.strings.createBundle(require("l10n/inspector.properties"));

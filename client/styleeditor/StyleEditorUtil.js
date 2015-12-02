@@ -5,15 +5,11 @@
 
 "use strict";
 
-const Cc = Components.classes;
-const Ci = Components.interfaces;
-const Cu = Components.utils;
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 
 const { Services } = require("devtools/sham/services");
 
-const PROPERTIES_URL = "chrome://devtools/locale/styleeditor.properties";
-
-const gStringBundle = Services.strings.createBundle(PROPERTIES_URL);
+const gStringBundle = Services.strings.createBundle(require("l10n/styleeditor.properties"));
 
 
 /**
@@ -35,7 +31,7 @@ this._ = function _(aName)
   }
   catch (ex) {
     console.error(ex);
-    throw new Error("L10N error. '" + aName + "' is missing from " + PROPERTIES_URL);
+    throw new Error("L10N error. '" + aName + "' is missing from styleeditor.properties");
   }
 }
 

@@ -5,13 +5,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-XPCOMUtils.defineLazyGetter(this, "HarExporter", function() {
-  return require("devtools/client/netmonitor/har/har-exporter").HarExporter;
-});
-
-XPCOMUtils.defineLazyGetter(this, "NetworkHelper", function() {
-  return require("devtools/shared/webconsole/network-helper");
-});
+const { HarExporter } = require("devtools/client/netmonitor/har/har-exporter");
+const NetworkHelper = require("devtools/shared/webconsole/network-helper");
 
 const HTML_NS = "http://www.w3.org/1999/xhtml";
 const EPSILON = 0.001;
@@ -2642,7 +2637,7 @@ NetworkDetailsView.prototype = {
           viewState.dirty[tab] = false;
         }
       }
-    }, Cu.reportError);
+    }, console.error.bind(console));
   },
 
   /**

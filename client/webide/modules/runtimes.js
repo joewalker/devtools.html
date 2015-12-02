@@ -14,7 +14,7 @@ const promise = require("devtools/sham/promise");
 const { AuthenticationResult } = require("devtools/shared/security/auth");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
-const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
+const Strings = Services.strings.createBundle(require("l10n/webide.properties"));
 
 /**
  * Runtime and Scanner API
@@ -564,7 +564,7 @@ WiFiRuntime.prototype = {
       let win = Services.wm.getMostRecentWindow("devtools:webide");
       let width = win.outerWidth * 0.8;
       let height = Math.max(win.outerHeight * 0.5, MIN_HEIGHT);
-      win.openDialog("chrome://webide/content/wifi-auth.xhtml",
+      win.openDialog("/devtools/client/webide/content/wifi-auth.xhtml",
                      WINDOW_ID,
                      "modal=yes,width=" + width + ",height=" + height, session);
     });

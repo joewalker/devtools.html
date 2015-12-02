@@ -1,4 +1,5 @@
 /* eslint-env browser */
+
 "use strict";
 
 let { DebuggerClient } = require("devtools/shared/client/main");
@@ -17,13 +18,13 @@ function getPort() {
   return WEB_SOCKET_PORT;
 }
 
-exports.start = Task.async(function*() {
+async function start() {
   let socket = new WebSocket("ws://localhost:" + getPort());
   let transport = new DebuggerTransport(socket);
   let client = new DebuggerClient(transport);
-  yield client.connect();
+  await client.connect();
 
-  let response = yield client.listTabs();
+  let response = await client.listTabs();
   let tab = response.tabs[response.selected];
   let output = document.getElementById("output");
   output.textContent = "Success!  Check console for protocol logs.\n\n";
@@ -33,7 +34,7 @@ exports.start = Task.async(function*() {
     client,
     chrome: false,
   };
-  let target = yield TargetFactory.forRemoteTab(options);
+  let target = await TargetFactory.forRemoteTab(options);
   output.textContent += target + "\n\n";
 
   /*let hostType = Toolbox.HostType.WINDOW;
@@ -42,7 +43,10 @@ exports.start = Task.async(function*() {
   let inspector = InspectorFront(target.client, target.form);
   output.textContent += inspector + "\n\n";
 
-  let walker = yield inspector.getWalker();
+  let walker = await inspector.getWalker();
 
   output.textContent += walker + "\n\n";
-});
+}
+
+start().then(data => console.log('started', data))
+       .catch(err => console.error(err));

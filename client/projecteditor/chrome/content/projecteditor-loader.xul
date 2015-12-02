@@ -3,13 +3,13 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <!DOCTYPE window [
-<!ENTITY % toolboxDTD SYSTEM "chrome://devtools/locale/toolbox.dtd" >
+<!ENTITY % toolboxDTD SYSTEM "l10n/toolbox.dtd" >
  %toolboxDTD;
 ]>
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-<script type="application/javascript;version=1.8" src="projecteditor-loader.js"></script>
+<script type="application/javascript" src="projecteditor-loader.js"></script>
 
   <commandset id="toolbox-commandset">
     <command id="projecteditor-cmd-close" oncommand="window.close();"/>

@@ -1,8 +1,5 @@
-/* eslint-env node */
+/* eslint-env babel-node */
 "use strict";
-
-// Lets us use babel in tests
-require("babel-core/register");
 
 var fs = require("fs");
 var path = require("path");
@@ -13,59 +10,16 @@ var mocha = require("gulp-mocha");
 var wsTcpProxy = require("./tools/ws-tcp-proxy");
 var http = require("http");
 var ecstatic = require("ecstatic");
+var express = require("express");
+var morgan = require("morgan");
 
 var WEBPACK_CONFIG_NAME = "webpack.config.js";
 var PREFS_SRC_FILE = path.join(__dirname, "client", "preferences", "devtools.js");
 var PREFS_OUTPUT_FILE = path.join(__dirname, "build", "preferences.json");
 var CONNECT_HTTP_PORT = 8081;
 
-/**
- * Builds a webpack dir via `dirPath`, mapping to
- * `${dirPath}/webpack.config.js`, resolving the returned promise on completion.
- *
- * @param {String} toolName
- * @return {Promise}
- */
-function buildDir(dirPath) {
-  var toolConfig = path.join(dirPath, WEBPACK_CONFIG_NAME);
-
-  return new Promise(function (resolve, reject) {
-    // If tool directory doesn"t have a webpack build config,
-    // skip it
-    try {
-      if (!fs.statSync(toolConfig).size) {
-        console.log("Skipping dir", dirPath);
-        resolve();
-        return;
-      }
-    } catch(e) {
-      console.log("Skipping dir", dirPath);
-      resolve();
-      return;
-    }
-
-    webpack(require(toolConfig), function (err, stats) {
-      if (err) {
-        reject(new gutil.PluginError("webpack", err));
-      }
-      gutil.log("[webpack] Path: " + dirPath, stats.toString({}));
-      resolve();
-    });
-  });
-}
-
 gulp.task("build", function () {
-  var tools = fs.readdirSync(path.join(__dirname, "client"));
-  /*var dirs = tools.map(function(tool) {
-    return path.join(__dirname, "client", tool);
-  });*/
-  var dirs = [];
-  dirs.push(path.join(__dirname, "client", "inspector"));
-  dirs.push(path.join(__dirname, "client", "styleinspector"));
-  dirs.push(path.join(__dirname, "client", "fontinspector"));
-  dirs.push(path.join(__dirname, "client", "framework"));
-  dirs.push(path.join(__dirname, "tools", "connect"));
-  return Promise.all(dirs.map(buildDir));
+  console.error('Use `webpack --progress --color`');
 });
 
 gulp.task("build-console", function () {
@@ -77,15 +31,11 @@ gulp.task("build-console", function () {
 });
 
 gulp.task("watch", function() {
-  var watcher = gulp.watch(["client/**/*","shared/**/*","sham/**/*"]);
-  watcher.on("change", function(event) {
-    console.log("File " + event.path + " was " + event.type);
-    if (event.type == "changed" &&
-        event.path.indexOf("build.js") == -1) {
-      console.log("Running build");
-      gulp.run("build");
-    }
-  });
+  console.error('Use `webpack --progress --color --watch`');
+});
+
+gulp.task("build-connect", function() {
+  console.error('Use `webpack --progress --color`');
 });
 
 gulp.task("watch-console", function() {
@@ -98,6 +48,10 @@ gulp.task("watch-console", function() {
       gulp.run("build-console");
     }
   });
+});
+
+gulp.task("build-test", function (callback) {
+  console.error('Use `webpack --progress --color`');
 });
 
 /**
@@ -136,19 +90,11 @@ gulp.task("build-prefs", function (callback) {
   }, Object.create(null)), null, 2), callback);
 });
 
-gulp.task("build-test", function (callback) {
-  var webpackConfig = path.join(__dirname, "test", WEBPACK_CONFIG_NAME);
-  webpack(require(webpackConfig), function (err, stats) {
-    gutil.log("[webpack]", stats.toString({}));
-    callback();
-  });
-});
-
 gulp.task("start-proxy", function() {
   // WS <-> TCP server in Firefox
   wsTcpProxy.listen({
     wsPort: 9000,
-    tcpPort: 6080
+    tcpPort: 6080,
   });
   // WS <-> TCP server in Valence add-on <-> Chrome
   wsTcpProxy.listen({
@@ -157,22 +103,26 @@ gulp.task("start-proxy", function() {
   });
 });
 
-gulp.task("build-connect", function() {
-  return buildDir(path.join(__dirname, "tools", "connect"));
-});
+gulp.task("start", ["start-proxy"], function() {
+  var app = express();
 
-gulp.task("serve-connect", ["build-connect", "start-proxy"], function() {
-  var server = http.createServer(ecstatic({
+  app.use(morgan('dev'));
+
+  app.use(ecstatic({
     root: path.join(__dirname, "tools", "connect"),
-    cache: 0
+    handleError: false,
   }));
-  server.listen(CONNECT_HTTP_PORT);
-  console.log("Open http://localhost:8081/?wsPort=9000 to test Firefox");
-  console.log("Open http://localhost:8081/?wsPort=9001 to test Chrome");
-});
+  app.use(ecstatic({
+    root: path.join(__dirname),
+    baseDir: '/',
+    handleError: false,
+  }));
 
-gulp.task("build-toolbox", function() {
-  return buildDir(path.join(__dirname, "client", "framework", "toolbox.html"));
+  http.createServer(app).listen(CONNECT_HTTP_PORT);
+
+  console.log("Open http://localhost:8081/client/framework/toolbox-wrapper.html to test the toolbox");
+  console.log("Open http://localhost:8081/?wsPort=9000 for the test tool (for Firefox server)");
+  console.log("Open http://localhost:8081/?wsPort=9001 for the test tool (for Chrome server)");
 });
 
 gulp.task("default", ["build"]);

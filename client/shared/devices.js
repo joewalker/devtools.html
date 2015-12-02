@@ -10,7 +10,7 @@ const { Services } = require("devtools/sham/services");
 const promise = require("devtools/sham/promise");
 
 const DEVICES_URL = "devtools.devices.url";
-const Strings = Services.strings.createBundle("chrome://devtools/locale/device.properties");
+const Strings = Services.strings.createBundle(require("l10n/device.properties"));
 
 /* This is a catalog of common web-enabled devices and their properties,
  * intended for (mobile) device emulation.

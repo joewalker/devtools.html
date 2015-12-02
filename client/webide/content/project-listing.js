@@ -4,7 +4,8 @@
 
 /* eslint-env browser */
 
-var Cu = Components.utils;
+const { Cu } = require("devtools/sham/chrome");
+
 const ProjectList = require("devtools/client/webide/modules/project-list");
 
 var projectList = new ProjectList(window, window.parent);

@@ -311,8 +311,8 @@ Telemetry.prototype = {
         // let histogram = Services.telemetry.getHistogramById(histogramId);
         histogram.add(value);
       } catch(e) {
-        dump("Warning: An attempt was made to write to the " + histogramId +
-             " histogram, which is not defined in Histograms.json\n");
+        console.log("Warning: An attempt was made to write to the " + histogramId +
+                    " histogram, which is not defined in Histograms.json\n");
       }
     }
   },
@@ -333,8 +333,8 @@ Telemetry.prototype = {
         // let histogram = Services.telemetry.getKeyedHistogramById(histogramId);
         histogram.add(key, value);
       } catch(e) {
-        dump("Warning: An attempt was made to write to the " + histogramId +
-             " histogram, which is not defined in Histograms.json\n");
+        console.log("Warning: An attempt was made to write to the " + histogramId +
+             " histogram, which is not defined in Histograms.json");
       }
     }
   },
@@ -370,6 +370,4 @@ Telemetry.prototype = {
   }
 };
 
-XPCOMUtils.defineLazyGetter(this, "appInfo", function() {
-  return Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULAppInfo);
-});
+const appInfo = Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULAppInfo);

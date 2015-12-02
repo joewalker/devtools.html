@@ -72,23 +72,13 @@ exports.getHighlighterUtils = function(toolbox) {
     return !!target.client.traits.customHighlighters;
   };
 
-  /**
-   * Make a function that initializes the inspector before it runs.
-   * Since the init of the inspector is asynchronous, the return value will be
-   * produced by Task.async and the argument should be a generator
-   * @param {Function*} generator A generator function
-   * @return {Function} A function
-   */
   let isInspectorInitialized = false;
-  let requireInspector = generator => {
-    return Task.async(function*(...args) {
-      if (!isInspectorInitialized) {
-        yield toolbox.initInspector();
-        isInspectorInitialized = true;
-      }
-      return yield generator.apply(null, args);
-    });
-  };
+  let requireInspector = Task.async(function*() {
+    if (!isInspectorInitialized) {
+      yield toolbox.initInspector();
+      isInspectorInitialized = true;
+    }
+  });
 
   /**
    * Start/stop the element picker on the debuggee target.
@@ -111,12 +101,13 @@ exports.getHighlighterUtils = function(toolbox) {
    * @return A promise that resolves when the picker has started or immediately
    * if it is already started
    */
-  let startPicker = exported.startPicker = requireInspector(function*() {
+  let startPicker = exported.startPicker = Task.async(function* () {
     if (isPicking) {
       return;
     }
     isPicking = true;
 
+    yield requireInspector();
     toolbox.pickerButtonChecked = true;
     yield toolbox.selectTool("inspector");
     toolbox.on("select", stopPicker);
@@ -144,7 +135,7 @@ exports.getHighlighterUtils = function(toolbox) {
    * @return A promise that resolves when the picker has stopped or immediately
    * if it is already stopped
    */
-  let stopPicker = exported.stopPicker = requireInspector(function*() {
+  let stopPicker = exported.stopPicker = Task.async(function* () {
     if (!isPicking) {
       return;
     }
@@ -201,12 +192,12 @@ exports.getHighlighterUtils = function(toolbox) {
    * @param {Object} options
    * @return A promise that resolves when the node has been highlighted
    */
-  let highlightNodeFront = exported.highlightNodeFront = requireInspector(
-  function*(nodeFront, options={}) {
+  let highlightNodeFront = exported.highlightNodeFront = Task.async(function* (nodeFront, options={}) {
     if (!nodeFront) {
       return;
     }
 
+    yield requireInspector();
     isNodeFrontHighlighted = true;
     if (isRemoteHighlightable()) {
       yield toolbox.highlighter.showBoxModel(nodeFront, options);
@@ -216,7 +207,7 @@ exports.getHighlighterUtils = function(toolbox) {
       yield toolbox.walker.highlight(nodeFront);
     }
 
-    toolbox.emit("node-highlight", nodeFront, options.toSource());
+    toolbox.emit("node-highlight", nodeFront, JSON.stringify(options));
   });
 
   /**
@@ -226,8 +217,9 @@ exports.getHighlighterUtils = function(toolbox) {
    * highlightNodeFront, so it has the same signature.
    * @see highlightNodeFront
    */
-  let highlightDomValueGrip = exported.highlightDomValueGrip = requireInspector(
-  function*(valueGrip, options={}) {
+  let highlightDomValueGrip = exported.highlightDomValueGrip = Task.async(function* (valueGrip, options={}) {
+    yield requireInspector();
+
     let nodeFront = yield gripToNodeFront(valueGrip);
     if (nodeFront) {
       yield highlightNodeFront(nodeFront, options);
@@ -241,8 +233,9 @@ exports.getHighlighterUtils = function(toolbox) {
    * @param {ValueGrip}
    * @return a promise that resolves to the node front when done
    */
-  let gripToNodeFront = exported.gripToNodeFront = requireInspector(
-  function*(grip) {
+  let gripToNodeFront = exported.gripToNodeFront = Task.async(function* (grip) {
+    yield requireInspector();
+
     return yield toolbox.walker.getNodeActorFromObjectActor(grip.actor);
   });
 
@@ -255,19 +248,18 @@ exports.getHighlighterUtils = function(toolbox) {
    * markup view, which is when this param is passed to true
    * @return a promise that resolves when the highlighter is hidden
    */
-  let unhighlight = exported.unhighlight = Task.async(
-  function*(forceHide=false) {
+  let unhighlight = exported.unhighlight = async function(forceHide=false) {
     forceHide = forceHide || !DevToolsUtils.testing;
 
     // Note that if isRemoteHighlightable is true, there's no need to hide the
     // highlighter as the walker uses setTimeout to hide it after some time
     if (isNodeFrontHighlighted && forceHide && toolbox.highlighter && isRemoteHighlightable()) {
       isNodeFrontHighlighted = false;
-      yield toolbox.highlighter.hideBoxModel();
+      await toolbox.highlighter.hideBoxModel();
     }
 
     toolbox.emit("node-unhighlight");
-  });
+  };
 
   /**
    * If the main, box-model, highlighter isn't enough, or if multiple
@@ -278,9 +270,10 @@ exports.getHighlighterUtils = function(toolbox) {
    * methods and needs to be released by the consumer when not needed anymore.
    * @return a promise that resolves to the highlighter
    */
-  let getHighlighterByType = exported.getHighlighterByType = requireInspector(
-  function*(typeName) {
+  let getHighlighterByType = exported.getHighlighterByType =  Task.async(function* (typeName) {
     let highlighter = null;
+
+    yield requireInspector();
 
     if (supportsCustomHighlighters()) {
       highlighter = yield toolbox.inspector.getHighlighterByType(typeName);

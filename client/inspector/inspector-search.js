@@ -34,14 +34,16 @@ function InspectorSearch(inspector, input) {
 
   this._onKeyDown = this._onKeyDown.bind(this);
   this._onCommand = this._onCommand.bind(this);
-  this.searchBox.addEventListener("keydown", this._onKeyDown, true);
-  this.searchBox.addEventListener("command", this._onCommand, true);
+
+  if (this.searchBox) {
+    this.searchBox.addEventListener("keydown", this._onKeyDown, true);
+    this.searchBox.addEventListener("command", this._onCommand, true);
+    this.autocompleter = new SelectorAutocompleter(inspector, input);
+  }
 
   // For testing, we need to be able to wait for the most recent node request
   // to finish.  Tests can watch this promise for that.
   this._lastQuery = promise.resolve(null);
-
-  this.autocompleter = new SelectorAutocompleter(inspector, input);
   EventEmitter.decorate(this);
 }
 
@@ -64,7 +66,7 @@ InspectorSearch.prototype = {
         .catch(e => console.error(e));
   },
 
-  doFullTextSearch: Task.async(function*(query, reverse) {
+  doFullTextSearch: async function(query, reverse) {
     let lastSearched = this._lastSearched;
     this._lastSearched = query;
 
@@ -76,7 +78,7 @@ InspectorSearch.prototype = {
       return;
     }
 
-    let res = yield this.walker.search(query, { reverse });
+    let res = await this.walker.search(query, { reverse });
 
     // Value has changed since we started this request, we're done.
     if (query != this.searchBox.value) {
@@ -93,7 +95,7 @@ InspectorSearch.prototype = {
       this.searchBox.classList.add("devtools-no-search-result");
       this.emit("search-result");
     }
-  }),
+  },
 
   _onCommand: function() {
     if (this.searchBox.value.length === 0) {

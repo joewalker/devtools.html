@@ -8,7 +8,7 @@
 <?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
 
 <!DOCTYPE window [
-<!ENTITY % toolboxDTD SYSTEM "chrome://devtools/locale/toolbox.dtd" >
+<!ENTITY % toolboxDTD SYSTEM "l10n/toolbox.dtd" >
 %toolboxDTD;
 <!ENTITY % editMenuStrings SYSTEM "chrome://global/locale/editMenuOverlay.dtd">
 %editMenuStrings;
@@ -18,12 +18,12 @@
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-  <script type="application/javascript;version=1.8"
+  <script type="application/javascript"
           src="../shared/theme-switching.js"/>
   <script type="application/javascript"
           src="chrome://global/content/viewSourceUtils.js"/>
 
-  <script type="application/javascript" src="chrome://global/content/globalOverlay.js"/>
+  <script type="application/javascript" src="/devtools/client/chrome/global/content/globalOverlay.js"/>
 
   <commandset id="editMenuCommands"/>
   <keyset id="editMenuKeys"/>

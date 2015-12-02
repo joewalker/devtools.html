@@ -18,8 +18,7 @@ const Telemetry = require("devtools/client/shared/telemetry");
 /**
  * Localization convenience methods.
  */
-const STORAGE_STRINGS = "chrome://devtools/locale/storage.properties";
-const L10N = new ViewHelpers.L10N(STORAGE_STRINGS);
+const L10N = new ViewHelpers.L10N(require("l10n/storage.properties"));
 
 const GENERIC_VARIABLES_VIEW_SETTINGS = {
   lazyEmpty: true,
@@ -312,7 +311,7 @@ StorageUI.prototype = {
       }
       this.populateTable(data, reason);
       this.emit("store-objects-updated");
-    }, Cu.reportError);
+    }).catch(console.error.bind(console));
   },
 
   /**

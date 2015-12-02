@@ -24,7 +24,7 @@ function lazyRequire (obj, property, module, destructure) {
       // getter again.
       delete obj[property];
 
-      let value;
+      var value;
 
       if (typeof module === "function") {
         value = module();
@@ -41,7 +41,7 @@ function lazyRequire (obj, property, module, destructure) {
         configurable: true,
         enumerable: true
       });
-      
+
       return value;
     },
     configurable: true,

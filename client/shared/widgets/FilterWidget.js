@@ -15,12 +15,9 @@ const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
 const L10N = new ViewHelpers.L10N(require("l10n/filterwidget.properties"));
 const {cssTokenizer} = require("devtools/client/shared/css-parsing-utils");
 
-loader.lazyGetter(this, "asyncStorage",
-                  () => require("devtools/shared/async-storage"));
+const asyncStorage = require("devtools/shared/async-storage");
 
-// loader.lazyGetter(this, "DOMUtils", () => {
-//   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
-// });
+const DOMUtils = Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 
 const DEFAULT_FILTER_TYPE = "length";
 const UNIT_MAPPING = {
@@ -535,7 +532,7 @@ CSSFilterEditorWidget.prototype = {
       if (el.classList.contains("remove-button")) {
         // If the click happened on the remove button.
         presets.splice(id, 1);
-        this.setPresets(presets).then(this.renderPresets, Cu.reportError);
+        this.setPresets(presets).then(this.renderPresets, console.error.bind(console));
       } else {
         // Or if the click happened on a preset.
         let p = presets[id];
@@ -543,7 +540,7 @@ CSSFilterEditorWidget.prototype = {
         this.setCssValue(p.value);
         this.addPresetInput.value = p.name;
       }
-    }, Cu.reportError);
+    }, console.error.bind(console));
   },
 
   _togglePresets: function() {
@@ -571,8 +568,8 @@ CSSFilterEditorWidget.prototype = {
         presets.push({name, value});
       }
 
-      this.setPresets(presets).then(this.renderPresets, Cu.reportError);
-    }, Cu.reportError);
+      this.setPresets(presets).then(this.renderPresets, console.error.bind(console));
+    }, console.error.bind(console));
   },
 
   /**
@@ -888,12 +885,12 @@ CSSFilterEditorWidget.prototype = {
       }
 
       return presets;
-    }, Cu.reportError);
+    }, console.error.bind(console));
   },
 
   setPresets: function(presets) {
     return asyncStorage.setItem("cssFilterPresets", presets)
-                       .catch(Cu.reportError);
+                       .catch(console.error.bind(console));
   }
 };
 

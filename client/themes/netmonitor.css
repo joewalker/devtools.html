@@ -399,20 +399,20 @@ box.requests-menu-status[code^="5"] {
 /* Network request details */
 
 #details-pane-toggle {
-  list-style-image: url("chrome://devtools/skin/images/debugger-collapse.png");
+  list-style-image: url("/devtools/client/themes/images/debugger-collapse.png");
 }
 
 #details-pane-toggle[pane-collapsed] {
-  list-style-image: url("chrome://devtools/skin/images/debugger-expand.png");
+  list-style-image: url("/devtools/client/themes/images/debugger-expand.png");
 }
 
 @media (min-resolution: 1.1dppx) {
   #details-pane-toggle {
-    list-style-image: url("chrome://devtools/skin/images/debugger-collapse@2x.png");
+    list-style-image: url("/devtools/client/themes/images/debugger-collapse@2x.png");
   }
 
   #details-pane-toggle[pane-collapsed] {
-    list-style-image: url("chrome://devtools/skin/images/debugger-expand@2x.png");
+    list-style-image: url("/devtools/client/themes/images/debugger-expand@2x.png");
   }
 }
 
@@ -818,7 +818,7 @@ box.requests-menu-status[code^="5"] {
 }
 
 /* Platform overrides (copied in from the old platform specific files) */
-%ifdef XP_WIN
+/* %ifdef XP_WIN */
 .requests-menu-header-button > .button-box {
   padding: 0;
 }
@@ -842,7 +842,8 @@ box.requests-menu-status[code^="5"] {
     padding-bottom: 0px;
   }
 }
-%elifdef XP_LINUX
+
+/* %elifdef XP_LINUX
 #headers-summary-resend {
   padding: 4px;
 }
@@ -863,10 +864,10 @@ box.requests-menu-status[code^="5"] {
   width: 6em;
 }
 
-/* Responsive sidebar */
+/ * Responsive sidebar * /
 @media (max-width: 700px) {
   .requests-menu-header-button {
     font-size: 85%;
   }
 }
-%endif
+%endif */

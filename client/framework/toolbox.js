@@ -37,7 +37,9 @@ var toolboxStrings = (name, ...args) => {
     return null;
   }
 };
-
+let { DebuggerClient } = require("devtools/shared/client/main");
+let { DebuggerTransport } = require("devtools/shared/transport/transport");
+let { TargetFactory } = require("devtools/client/framework/target");
 const { getHighlighterUtils } = require("devtools/client/framework/toolbox-highlighter-utils");
 const { Hosts } = require("devtools/client/framework/toolbox-hosts");
 const { Selection } = require("devtools/client/framework/selection");
@@ -79,29 +81,21 @@ const ToolboxButtons = exports.ToolboxButtons = [
   { id: "command-button-measure" }
 ];
 
-exports.getWSTarget = Task.async(function*() {
-  let { DebuggerClient } = require("devtools/shared/client/main");
-  let { DebuggerTransport } = require("devtools/shared/transport/transport");
-  let { Task } = require("devtools/sham/task");
-  let { TargetFactory } = require("devtools/client/framework/target");
-  let { InspectorFront } = require("devtools/server/actors/inspector");
-
+/**
+ *
+ */
+exports.getWSTarget = function() {
   let socket = new WebSocket("ws://localhost:9000");
   let transport = new DebuggerTransport(socket);
   let client = new DebuggerClient(transport);
-  yield client.connect();
-
-  let response = yield client.listTabs();
-  let tab = response.tabs[response.selected];
-
-  let options = {
-    form: tab,
-    client,
-    chrome: false,
-  };
-  let target = yield TargetFactory.forRemoteTab(options);
-  return target;
-});
+  return client.connect().then(() => {
+    return client.listTabs().then(response => {
+      let tab = response.tabs[response.selected];
+      let options = { form: tab, client, chrome: false };
+      return TargetFactory.forRemoteTab(options);
+    });
+  });
+};
 
 /**
  * A "Toolbox" is the component that holds all the tools for one specific
@@ -186,6 +180,7 @@ Toolbox.HostType = {
   CUSTOM: "custom"
 };
 
+exports.HostType = Toolbox.HostType;
 Toolbox.prototype = {
   _URL: "toolbox.xhtml",
 
@@ -354,93 +349,98 @@ Toolbox.prototype = {
    * Open the toolbox
    */
   open: function() {
-    return Task.spawn(function*() {
-      let iframe = yield this._host.create();
+    return this.openAsync().catch(e => console.error(e));
+  },
 
-      // Load the toolbox-level actor fronts and utilities now
-      yield this._target.makeRemote();
-      yield new Promise(resolve => {
-        iframe.setAttribute("src", this._URL);
-        iframe.setAttribute("aria-label", toolboxStrings("toolbox.label"));
-        iframe.onload = resolve;
-      });
+  /**
+   *
+   */
+  openAsync: async function() {
+    let iframe = await this._host.create();
 
-      this.isReady = true;
-      let framesPromise = this._listFrames();
+    // Load the toolbox-level actor fronts and utilities now
+    await this._target.makeRemote();
+    await new Promise(resolve => {
+      iframe.setAttribute("src", this._URL);
+      iframe.setAttribute("aria-label", toolboxStrings("toolbox.label"));
+      iframe.onload = resolve;
+    });
 
-      this.closeButton = this.doc.getElementById("toolbox-close");
-      this.closeButton.addEventListener("click", this.destroy, true);
+    this.isReady = true;
+    let framesPromise = this._listFrames();
 
-      gDevTools.on("pref-changed", this._prefChanged);
+    this.closeButton = this.doc.getElementById("toolbox-close");
+    this.closeButton.addEventListener("click", this.destroy, true);
 
-      let framesMenu = this.doc.getElementById("command-button-frames");
-      framesMenu.addEventListener("click", this.selectFrame, true);
+    gDevTools.on("pref-changed", this._prefChanged);
 
-      this.textboxContextMenuPopup =
-        this.doc.getElementById("toolbox-textbox-context-popup");
-      this.textboxContextMenuPopup.addEventListener("popupshowing",
-        this._updateTextboxMenuItems, true);
+    let framesMenu = this.doc.getElementById("command-button-frames");
+    framesMenu.addEventListener("click", this.selectFrame, true);
 
-      this._buildDockButtons();
-      this._buildOptions();
-      this._buildTabs();
-      this._applyCacheSettings();
-      this._applyServiceWorkersTestingSettings();
-      this._addKeysToWindow();
-      this._addReloadKeys();
-      this._addHostListeners();
-      this._registerOverlays();
-      if (this._hostOptions && this._hostOptions.zoom === false) {
-        this._disableZoomKeys();
-      } else {
-        this._addZoomKeys();
-        this._loadInitialZoom();
-      }
+    this.textboxContextMenuPopup =
+      this.doc.getElementById("toolbox-textbox-context-popup");
+    this.textboxContextMenuPopup.addEventListener("popupshowing",
+      this._updateTextboxMenuItems, true);
 
-      this.webconsolePanel = this.doc.querySelector("#toolbox-panel-webconsole");
-      this.webconsolePanel.height = Services.prefs.getIntPref(SPLITCONSOLE_HEIGHT_PREF);
-      this.webconsolePanel.addEventListener("resize", this._saveSplitConsoleHeight);
+    this._buildDockButtons();
+    this._buildOptions();
+    this._buildTabs();
+    this._applyCacheSettings();
+    this._applyServiceWorkersTestingSettings();
+    this._addKeysToWindow();
+    this._addReloadKeys();
+    this._addHostListeners();
+    this._registerOverlays();
+    if (this._hostOptions && this._hostOptions.zoom === false) {
+      this._disableZoomKeys();
+    } else {
+      this._addZoomKeys();
+      this._loadInitialZoom();
+    }
 
-      let buttonsPromise = this._buildButtons();
+    this.webconsolePanel = this.doc.querySelector("#toolbox-panel-webconsole");
+    this.webconsolePanel.height = Services.prefs.getIntPref(SPLITCONSOLE_HEIGHT_PREF);
+    this.webconsolePanel.addEventListener("resize", this._saveSplitConsoleHeight);
 
-      this._pingTelemetry();
+    let buttonsPromise = this._buildButtons();
 
-      // The isTargetSupported check needs to happen after the target is
-      // remoted, otherwise we could have done it in the toolbox constructor
-      // (bug 1072764).
-      let toolDef = gDevTools.getToolDefinition(this._defaultToolId);
-      if (!toolDef || !toolDef.isTargetSupported(this._target)) {
-        this._defaultToolId = "webconsole";
-      }
+    this._pingTelemetry();
 
-      yield this.selectTool(this._defaultToolId);
+    // The isTargetSupported check needs to happen after the target is
+    // remoted, otherwise we could have done it in the toolbox constructor
+    // (bug 1072764).
+    let toolDef = gDevTools.getToolDefinition(this._defaultToolId);
+    if (!toolDef || !toolDef.isTargetSupported(this._target)) {
+      this._defaultToolId = "webconsole";
+    }
 
-      // Wait until the original tool is selected so that the split
-      // console input will receive focus.
-      let splitConsolePromise = promise.resolve();
-      if (Services.prefs.getBoolPref(SPLITCONSOLE_ENABLED_PREF)) {
-        splitConsolePromise = this.openSplitConsole();
-      }
+    await this.selectTool(this._defaultToolId);
 
-      yield promise.all([
-        splitConsolePromise,
-        buttonsPromise,
-        framesPromise
-      ]);
+    // Wait until the original tool is selected so that the split
+    // console input will receive focus.
+    let splitConsolePromise = promise.resolve();
+    if (Services.prefs.getBoolPref(SPLITCONSOLE_ENABLED_PREF)) {
+      splitConsolePromise = this.openSplitConsole();
+    }
 
-      // Lazily connect to the profiler here and don't wait for it to complete,
-      // used to intercept console.profile calls before the performance tools are open.
-      let performanceFrontConnection = this.initPerformance();
+    await promise.all([
+      splitConsolePromise,
+      buttonsPromise,
+      framesPromise
+    ]);
 
-      // If in testing environment, wait for performance connection to finish,
-      // so we don't have to explicitly wait for this in tests; ideally, all tests
-      // will handle this on their own, but each have their own tear down function.
-      if (DevToolsUtils.testing) {
-        yield performanceFrontConnection;
-      }
+    // Lazily connect to the profiler here and don't wait for it to complete,
+    // used to intercept console.profile calls before the performance tools are open.
+    let performanceFrontConnection = this.initPerformance();
 
-      this.emit("ready");
-    }.bind(this)).then(null, console.error.bind(console));
+    // If in testing environment, wait for performance connection to finish,
+    // so we don't have to explicitly wait for this in tests; ideally, all tests
+    // will handle this on their own, but each have their own tear down function.
+    if (DevToolsUtils.testing) {
+      await performanceFrontConnection;
+    }
+
+    this.emit("ready");
   },
 
   _pingTelemetry: function() {
@@ -1248,7 +1248,6 @@ Toolbox.prototype = {
           built = deferred.promise;
         }
       }
-
       // Wait till the panel is fully ready and fire 'ready' events.
       promise.resolve(built).then((panel) => {
         this._toolPanels.set(id, panel);
@@ -1388,16 +1387,17 @@ Toolbox.prototype = {
    * of the console, then store the newly focused element, so that
    * it can be restored once the split console closes.
    */
-  _onFocus: function({originalTarget}) {
+  _onFocus: function(ev) {
+    const target = ev.originalTarget || ev.target;
     // Ignore any non element nodes, or any elements contained
     // within the webconsole frame.
     let webconsoleURL = gDevTools.getToolDefinition("webconsole").url;
-    if (originalTarget.nodeType !== 1 ||
-        originalTarget.baseURI === webconsoleURL) {
+    if (target.nodeType !== 1 ||
+        target.baseURI === webconsoleURL) {
       return;
     }
 
-    this._lastFocusedElement = originalTarget;
+    this._lastFocusedElement = target;
   },
 
   /**
@@ -2031,7 +2031,8 @@ Toolbox.prototype = {
       return;
     }
     let window = this.frame.contentWindow;
-    showDoorhanger({ window, type: "deveditionpromo" });
+    // XXX: don't need doorhanger for demo
+    // showDoorhanger({ window, type: "deveditionpromo" });
   },
 
   /**
@@ -2047,7 +2048,10 @@ Toolbox.prototype = {
    * Connects to the SPS profiler when the developer tools are open. This is
    * necessary because of the WebConsole's `profile` and `profileEnd` methods.
    */
-  initPerformance: Task.async(function*() {
+  initPerformance: async function() {
+    // XXX: don't need performance actor for demo
+    return;
+
     // If target does not have profiler actor (addons), do not
     // even register the shared performance connection.
     if (!this.target.hasActor("profiler")) {
@@ -2060,7 +2064,7 @@ Toolbox.prototype = {
 
     this._performanceFrontConnection = promise.defer();
     this._performance = createPerformanceFront(this._target);
-    yield this.performance.connect();
+    await this.performance.connect();
 
     // Emit an event when connected, but don't wait on startup for this.
     this.emit("profiler-connected");
@@ -2068,26 +2072,26 @@ Toolbox.prototype = {
     this.performance.on("*", this._onPerformanceFrontEvent);
     this._performanceFrontConnection.resolve(this.performance);
     return this._performanceFrontConnection.promise;
-  }),
+  },
 
   /**
    * Disconnects the underlying Performance actor. If the connection
    * has not finished initializing, as opening a toolbox does not wait,
    * the performance connection destroy method will wait for it on its own.
    */
-  destroyPerformance: Task.async(function*() {
+  destroyPerformance: async function() {
     if (!this.performance) {
       return;
     }
     // If still connecting to performance actor, allow the
     // actor to resolve its connection before attempting to destroy.
     if (this._performanceFrontConnection) {
-      yield this._performanceFrontConnection.promise;
+      await this._performanceFrontConnection.promise;
     }
     this.performance.off("*", this._onPerformanceFrontEvent);
-    yield this.performance.destroy();
+    await this.performance.destroy();
     this._performance = null;
-  }),
+  },
 
   /**
    * Called when any event comes from the PerformanceFront. If the performance tool is already
@@ -2095,7 +2099,7 @@ Toolbox.prototype = {
    * only used to queue up observed recordings before the performance tool can handle them,
    * which will only occur when `console.profile()` recordings are started before the tool loads.
    */
-  _onPerformanceFrontEvent: Task.async(function*(eventName, recording) {
+  _onPerformanceFrontEvent: async function(eventName, recording) {
     if (this.getPanel("performance")) {
       this.performance.off("*", this._onPerformanceFrontEvent);
       return;
@@ -2109,8 +2113,8 @@ Toolbox.prototype = {
     // observed during that time.
     if (eventName === "console-profile-start" && !this._performanceToolOpenedViaConsole) {
       this._performanceToolOpenedViaConsole = this.loadTool("performance");
-      let panel = yield this._performanceToolOpenedViaConsole;
-      yield panel.open();
+      let panel = await this._performanceToolOpenedViaConsole;
+      await panel.open();
 
       panel.panelWin.PerformanceController.populateWithRecordings(recordings);
       this.performance.off("*", this._onPerformanceFrontEvent);
@@ -2122,7 +2126,7 @@ Toolbox.prototype = {
     if (eventName === "recording-started") {
       recordings.push(recording);
     }
-  }),
+  },
 
   /**
    * Returns gViewSourceUtils for viewing source.

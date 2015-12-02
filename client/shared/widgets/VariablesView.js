@@ -5,8 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const Ci = Components.interfaces;
-const Cu = Components.utils;
+const { Ci, Cu } = require("devtools/sham/chrome");
 
 const LAZY_EMPTY_DELAY = 150; // ms
 const LAZY_EXPAND_DELAY = 50; // ms
@@ -30,21 +29,8 @@ const promise = require("devtools/sham/promise");
 const PluralForm = require("devtools/sham/pluralform");
 const clipboardHelper = require("devtools/sham/clipboard");
 
-Object.defineProperty(this, "WebConsoleUtils", {
-  get: function() {
-    return require("devtools/shared/webconsole/utils").Utils;
-  },
-  configurable: true,
-  enumerable: true
-});
-
-Object.defineProperty(this, "NetworkHelper", {
-  get: function() {
-    return require("devtools/shared/webconsole/network-helper");
-  },
-  configurable: true,
-  enumerable: true
-});
+const WebConsoleUtils = require("devtools/shared/webconsole/utils").Utils;
+const NetworkHelper = require("devtools/shared/webconsole/network-helper");
 
 /**
  * Debugger localization strings.
@@ -3346,7 +3332,7 @@ VariablesView.getGrip = function(aValue) {
       return { type: "object",
                class: WebConsoleUtils.getObjectClassName(aValue) };
     default:
-      Cu.reportError("Failed to provide a grip for value of " + typeof value +
+      console.error("Failed to provide a grip for value of " + typeof value +
                      ": " + aValue);
       return null;
   }

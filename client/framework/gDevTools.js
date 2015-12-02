@@ -679,7 +679,7 @@ var gDevToolsBrowser = {
    * Open a tab to allow connects to a remote browser
    */
   openConnectScreen: function(gBrowser) {
-    gBrowser.selectedTab = gBrowser.addTab("chrome://devtools/content/framework/connect/connect.xhtml");
+    gBrowser.selectedTab = gBrowser.addTab("/devtools/client/framework/connect/connect.xhtml");
   },
 
   /**
@@ -690,7 +690,7 @@ var gDevToolsBrowser = {
     if (win) {
       win.focus();
     } else {
-      Services.ww.openWindow(null, "chrome://webide/content/", "webide", "chrome,centerscreen,resizable", null);
+      Services.ww.openWindow(null, "/devtools/client/webide/content/", "webide", "chrome,centerscreen,resizable", null);
     }
   },
 

@@ -20,7 +20,7 @@ const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
 const { DOMHelpers } = require("devtools/client/shared/DOMHelpers");
 const { Services } = require("devtools/sham/services");
 const { Task } = require("devtools/sham/task");
-const ITCHPAD_URL = "chrome://devtools/content/projecteditor/chrome/content/projecteditor.xul";
+const ITCHPAD_URL = "/devtools/client/projecteditor/chrome/content/projecteditor.xul";
 const { confirm } = require("devtools/client/projecteditor/lib/helpers/prompts");
 const { getLocalizedString } = require("devtools/client/projecteditor/lib/helpers/l10n");
 

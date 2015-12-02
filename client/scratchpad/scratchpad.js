@@ -14,9 +14,7 @@
 
 "use strict";
 
-var Cu = Components.utils;
-var Cc = Components.classes;
-var Ci = Components.interfaces;
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
 const SCRATCHPAD_CONTEXT_CONTENT = 1;
 const SCRATCHPAD_CONTEXT_BROWSER = 2;
@@ -30,7 +28,6 @@ const MAXIMUM_FONT_SIZE = 96;
 const MINIMUM_FONT_SIZE = 6;
 const NORMAL_FONT_SIZE = 12;
 
-const SCRATCHPAD_L10N = "chrome://devtools/locale/scratchpad.properties";
 const DEVTOOLS_CHROME_ENABLED = "devtools.chrome.enabled";
 const PREF_RECENT_FILES_MAX = "devtools.scratchpad.recentFilesMax";
 const SHOW_LINE_NUMBERS = "devtools.scratchpad.lineNumbers";
@@ -41,7 +38,7 @@ const ENABLE_AUTOCOMPLETION = "devtools.scratchpad.enableAutocompletion";
 const TAB_SIZE = "devtools.editor.tabsize";
 const FALLBACK_CHARSET_LIST = "intl.fallbackCharsetList.ISO-8859-1";
 
-const VARIABLES_VIEW_URL = "chrome://devtools/content/shared/widgets/VariablesView.xul";
+const VARIABLES_VIEW_URL = "/devtools/client/shared/widgets/VariablesView.xul";
 
 const {loader} = require("devtools/shared/Loader");
 
@@ -56,7 +53,7 @@ const promise = require("devtools/sham/promise");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
 const { NetUtil } = require("devtools/sham/netutil");
-const { ScratchpadManager } = reauire("devtools/client/scratchpad/scratchpad-manager");
+const { ScratchpadManager } = require("devtools/client/scratchpad/scratchpad-manager");
 const { addDebuggerToGlobal } = require("devtools/sham/jsdebugger");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { OS } = require("devtools/sham/osfile");
@@ -83,8 +80,7 @@ const { DebuggerClient } = require("devtools/shared/client/main");
 const { EnvironmentClient } = require("devtools/shared/client/main");
 const { ObjectClient } = require("devtools/shared/client/main");
 
-XPCOMUtils.defineLazyGetter(this, "REMOTE_TIMEOUT", () =>
-  Services.prefs.getIntPref("devtools.debugger.remote-timeout"));
+const REMOTE_TIMEOUT = Services.prefs.getIntPref("devtools.debugger.remote-timeout");
 
 //XPCOMUtils.defineLazyModuleGetter(this, "ShortcutUtils",
 //  "resource://gre/modules/ShortcutUtils.jsm");
@@ -612,7 +608,7 @@ var Scratchpad = {
     let deferred = promise.defer();
 
     if (this.executionContext !== SCRATCHPAD_CONTEXT_CONTENT) {
-      Cu.reportError(this.strings.
+      console.error(this.strings.
           GetStringFromName("scratchpadContext.invalid"));
       return;
     }
@@ -1086,14 +1082,14 @@ var Scratchpad = {
     let writePromise = OS.File.writeAtomic(aFile.path, buffer,{tmpPath: aFile.path + ".tmp"});
     writePromise.then(value => {
       if (aCallback) {
-        aCallback.call(this, Components.results.NS_OK);
+        aCallback.call(this, Cr.NS_OK);
       }
     }, reason => {
       if (!aSilentError) {
         window.alert(this.strings.GetStringFromName("saveFile.failed"));
       }
       if (aCallback) {
-        aCallback.call(this, Components.results.NS_ERROR_UNEXPECTED);
+        aCallback.call(this, Cr.NS_ERROR_UNEXPECTED);
       }
     });
 
@@ -1237,8 +1233,8 @@ var Scratchpad = {
           if (aFile) {
             file = aFile;
           } else {
-            file = Components.classes["@mozilla.org/file/local;1"].
-                   createInstance(Components.interfaces.nsILocalFile);
+            file = Cc("@mozilla.org/file/local;1").
+                   createInstance(Ci.nsILocalFile);
             let filePath = this.getRecentFiles()[aIndex];
             file.initWithPath(filePath);
           }
@@ -2403,7 +2399,7 @@ ScratchpadSidebar.prototype = {
  */
 function reportError(aAction, aResponse)
 {
-  Cu.reportError(aAction + " failed: " + aResponse.error + " " +
+  console.error(aAction + " failed: " + aResponse.error + " " +
                  aResponse.message);
 }
 
@@ -2485,9 +2481,7 @@ var CloseObserver = {
   },
 };
 
-XPCOMUtils.defineLazyGetter(Scratchpad, "strings", function () {
-  return Services.strings.createBundle(SCRATCHPAD_L10N);
-});
+Scratchpad.strings = Services.strings.createBundle(require("l10n/scratchpad.properties"));
 
 addEventListener("load", Scratchpad.onLoad.bind(Scratchpad), false);
 addEventListener("unload", Scratchpad.onUnload.bind(Scratchpad), false);

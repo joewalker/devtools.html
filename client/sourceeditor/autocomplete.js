@@ -8,8 +8,8 @@ const cssAutoCompleter = require("devtools/client/sourceeditor/css-autocompleter
 const { AutocompletePopup } = require("devtools/client/shared/autocomplete-popup");
 
 const CM_TERN_SCRIPTS = [
-  "chrome://devtools/content/sourceeditor/codemirror/tern/tern.js",
-  "chrome://devtools/content/sourceeditor/codemirror/hint/show-hint.js"
+  "/devtools/client/sourceeditor/codemirror/tern/tern.js",
+  "/devtools/client/sourceeditor/codemirror/hint/show-hint.js"
 ];
 
 const autocompleteMap = new WeakMap();
@@ -229,7 +229,7 @@ function autoComplete({ ed, cm }) {
     priv.suggestionInsertedOnce = false;
     // This event is used in tests.
     ed.emit("after-suggest");
-  }).then(null, Cu.reportError);
+  }).catch(console.error.bind(console));
 }
 
 /**

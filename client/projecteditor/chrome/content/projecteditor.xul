@@ -2,27 +2,27 @@
 <!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-<?xml-stylesheet href="chrome://devtools/skin/light-theme.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/skin/projecteditor/projecteditor.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/content/debugger/debugger.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/skin/common.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/content/markupview/markup-view.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/skin/markup-view.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/themes/light-theme.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/themes/projecteditor/projecteditor.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/debugger/debugger.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/markupview/markup-view.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/themes/markup-view.css" type="text/css"?>
 
 <?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
 
 <!DOCTYPE window [
-<!ENTITY % scratchpadDTD SYSTEM "chrome://devtools/locale/scratchpad.dtd" >
+<!ENTITY % scratchpadDTD SYSTEM "l10n/scratchpad.dtd" >
  %scratchpadDTD;
 <!ENTITY % editMenuStrings SYSTEM "chrome://global/locale/editMenuOverlay.dtd">
 %editMenuStrings;
-<!ENTITY % sourceEditorStrings SYSTEM "chrome://devtools/locale/sourceeditor.dtd">
+<!ENTITY % sourceEditorStrings SYSTEM "l10n/sourceeditor.dtd">
 %sourceEditorStrings;
 ]>
 
 <page xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" class="theme-body">
 
-  <script type="application/javascript" src="chrome://global/content/globalOverlay.js"/>
+  <script type="application/javascript" src="/devtools/client/chrome/global/content/globalOverlay.js"/>
 
   <commandset id="projecteditor-commandset" />
   <commandset id="editMenuCommands"/>

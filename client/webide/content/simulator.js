@@ -2,16 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-var Cu = Components.utils;
+const { Cu } = require("devtools/sham/chrome");
 
 const { GetDevices, GetDeviceString } = require("devtools/client/shared/devices");
-const { Services } = const { Services } = require("devtools/sham/services");
+const { Services } = require("devtools/sham/services");
 const { Simulators, Simulator } = require("devtools/client/webide/modules/simulators");
 const EventEmitter = require('devtools/shared/event-emitter');
 const promise = require("devtools/sham/promise");
 const utils = require("devtools/client/webide/modules/utils");
 
-const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
+const Strings = Services.strings.createBundle(require("l10n/webide.properties"));
 
 var SimulatorEditor = {
 

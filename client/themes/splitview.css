@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-%filter substitution
-%define smw_marginDark #000
-%define smw_marginLight #aaa
-%define smw_itemDarkTopBorder rgba(0,0,0,0.2)
-%define smw_itemDarkBottomBorder rgba(128,128,128,0.15)
-%define smw_itemLightTopBorder rgba(128,128,128,0.15)
-%define smw_itemLightBottomBorder transparent
+/* %filter substitution */
+/* %define smw_marginDark #000 */
+/* %define smw_marginLight #aaa */
+/* %define smw_itemDarkTopBorder rgba(0,0,0,0.2) */
+/* %define smw_itemDarkBottomBorder rgba(128,128,128,0.15) */
+/* %define smw_itemLightTopBorder rgba(128,128,128,0.15) */
+/* %define smw_itemLightBottomBorder transparent */
 
 .splitview-nav-container .devtools-throbber {
   display: none;
@@ -33,19 +33,19 @@
 }
 
 .theme-dark .splitview-nav {
-  box-shadow: inset -1px 0 0 @smw_marginDark@;
+  box-shadow: inset -1px 0 0 #000/*@smw_marginDark@*/;
 }
 
 .theme-dark .splitview-nav:-moz-locale-dir(rtl) {
-  box-shadow: inset 1px 0 0 @smw_marginDark@;
+  box-shadow: inset 1px 0 0 #000/*@smw_marginDark@*/;
 }
 
 .theme-light .splitview-nav {
-  box-shadow: inset -1px 0 0 @smw_marginLight@;
+  box-shadow: inset -1px 0 0 #aaa/*@smw_marginLight@*/;
 }
 
 .theme-light .splitview-nav:-moz-locale-dir(rtl) {
-  box-shadow: inset 1px 0 0 @smw_marginLight@;
+  box-shadow: inset 1px 0 0 #aaa/*@smw_marginLight@*/;
 }
 
 .splitview-nav > li {
@@ -59,21 +59,21 @@
 }
 
 .theme-dark .splitview-nav > li {
-  border-top: 1px solid @smw_itemDarkTopBorder@;
-  border-bottom: 1px solid @smw_itemDarkBottomBorder@;
+  border-top: 1px solid rgba(0,0,0,0.2)/*@smw_itemDarkTopBorder@*/;
+  border-bottom: 1px solid rgba(128,128,128,0.15)/*@smw_itemDarkBottomBorder@*/;
 }
 
 .theme-dark .splitview-nav > li:last-of-type {
-  box-shadow: inset 0 -1px 0 @smw_itemDarkTopBorder@;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.2)/*@smw_itemDarkTopBorder@*/;
 }
 
 .theme-light  .splitview-nav > li {
-  border-top: 1px solid @smw_itemLightTopBorder@;
-  border-bottom: 1px solid @smw_itemLightBottomBorder@;
+  border-top: 1px solid rgba(128,128,128,0.15)/*@smw_itemLightTopBorder@*/;
+  border-bottom: 1px solid transparent/*@smw_itemLightBottomBorder@*/;
 }
 
 .theme-light .splitview-nav > li:last-of-type {
-  box-shadow: inset 0 -1px 0 @smw_itemLightTopBorder@;
+  box-shadow: inset 0 -1px 0 rgba(128,128,128,0.15)/*@smw_itemLightTopBorder@*/;
 }
 
 .placeholder {
@@ -94,25 +94,25 @@
 
 .theme-dark .splitview-nav > li.splitview-active {
   background-image: url(images/itemArrow-dark-ltr.svg),
-                    linear-gradient(@smw_marginDark@, @smw_marginDark@),
+                    linear-gradient(#000/*@smw_marginDark@*/, #000/*@smw_marginDark@*/),
                     linear-gradient(#1d4f73, #1d4f73);
 }
 
 .theme-dark .splitview-nav > li.splitview-active:-moz-locale-dir(rtl) {
   background-image: url(images/itemArrow-dark-rtl.svg),
-                    linear-gradient(@smw_marginDark@, @smw_marginDark@),
+                    linear-gradient(#000/*@smw_marginDark@*/, #000/*@smw_marginDark@*/),
                     linear-gradient(#1d4f73, #1d4f73);
 }
 
 .theme-light .splitview-nav > li.splitview-active {
   background-image: url(images/itemArrow-ltr.svg),
-                    linear-gradient(@smw_marginLight@, @smw_marginLight@),
+                    linear-gradient(#aaa/*@smw_marginLight@*/, #aaa/*@smw_marginLight@*/),
                     linear-gradient(#4c9ed9, #4c9ed9);
 }
 
 .theme-light .splitview-nav > li.splitview-active:-moz-locale-dir(rtl) {
   background-image: url(images/itemArrow-rtl.svg),
-                    linear-gradient(@smw_marginLight@, @smw_marginLight@),
+                    linear-gradient(#aaa/*@smw_marginLight@*/, #aaa/*@smw_marginLight@*/),
                     linear-gradient(#4c9ed9, #4c9ed9);
 }
 
@@ -125,12 +125,12 @@
 
 .theme-dark .splitview-main > toolbar,
 .theme-dark .loading .splitview-nav-container {
-  -moz-border-end: 1px solid @smw_marginDark@;
+  -moz-border-end: 1px solid #000/*@smw_marginDark@*/
 }
 
 .theme-light .splitview-main > toolbar,
 .theme-light .loading .splitview-nav-container {
-  -moz-border-end: 1px solid @smw_marginLight@;
+  -moz-border-end: 1px solid #aaa/*@smw_marginLight@*/;
 }
 
 .splitview-main > .devtools-toolbarbutton {

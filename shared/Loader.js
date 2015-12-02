@@ -9,7 +9,7 @@
  * Manages the addon-sdk loader instance used to load the developer tools.
  */
 
-var { Constructor: CC, classes: Cc, interfaces: Ci, utils: Cu } = Components;
+const { CC, Cc, Ci, Cu } = require("devtools/sham/chrome");
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
@@ -175,7 +175,7 @@ SrcdirProvider.prototype = {
       sharedGlobalBlacklist: sharedGlobalBlacklist
     });
 
-    return this._writeManifest(srcDir).then(null, Cu.reportError);
+    return this._writeManifest(srcDir).catch(console.error.bind(console));
   },
 
   unload: function(reason) {
@@ -217,7 +217,7 @@ SrcdirProvider.prototype = {
       let contentEntry = /^\s+content\/(\S+)\s+\((\S+)\)/;
       for (let line of lines) {
         if (preprocessed.test(line)) {
-          dump("Unable to override preprocessed file: " + line + "\n");
+          console.log("Unable to override preprocessed file: " + line);
           continue;
         }
         let match = contentEntry.exec(line);
@@ -226,7 +226,7 @@ SrcdirProvider.prototype = {
           pathComponents.unshift(clientDir);
           let path = OS.Path.join.apply(OS.Path, pathComponents);
           let uri = this.fileURI(path);
-          let chromeURI = "chrome://devtools/content/" + match[1];
+          let chromeURI = "/devtools/client/" + match[1];
           let entry = "override " + chromeURI + "\t" + uri;
           entries.push(entry);
         }
@@ -382,7 +382,7 @@ DevToolsLoader.prototype = {
     this._provider.invisibleToDebugger = this.invisibleToDebugger;
     this._provider.globals = {
       isWorker: false,
-      reportError: Cu.reportError,
+      reportError: console.error.bind(console),
       atob: atob,
       btoa: btoa,
       _Iterator: Iterator,

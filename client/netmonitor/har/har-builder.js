@@ -10,13 +10,8 @@ const { Services } = require("devtools/sham/services");
 const { ViewHelpers } = require("devtools/client/shared/widgets/ViewHelpers");
 const NetworkHelper = require("devtools/shared/webconsole/network-helper");
 
-loader.lazyGetter(this, "appInfo", () => {
-  return Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULAppInfo);
-});
-
-loader.lazyGetter(this, "L10N", () => {
-  return new ViewHelpers.L10N("chrome://devtools/locale/har.properties");
-});
+const appInfo = Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULAppInfo);
+const L10N = new ViewHelpers.L10N("l10n/har.properties");
 
 const HAR_VERSION = "1.1";
 

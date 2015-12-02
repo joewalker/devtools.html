@@ -15,9 +15,6 @@
 
 .devtools-monospace {
   font-family: var(--monospace-font-family);
-/*%if defined(MOZ_WIDGET_GTK) || defined(MOZ_WIDGET_QT)
-  font-size: 80%;
-%endif*/
 }
 
 /* Bottom-docked toolbox minimize transition */
@@ -69,11 +66,11 @@
   background-color: transparent;
   border-radius: 3px;
   overflow-x: hidden;
-/*%if defined(MOZ_WIDGET_GTK) || defined(MOZ_WIDGET_QT)
+/* %if defined(MOZ_WIDGET_GTK) || defined(MOZ_WIDGET_QT)
   max-height: 32rem;
-%else*/
+%else */
   max-height: 40rem;
-/*%endif*/
+/* %endif */
 }
 
 .devtools-autocomplete-listbox {

@@ -3,7 +3,7 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
@@ -41,7 +41,6 @@ const EVENTS = {
 };
 XPCOMUtils.defineConstant(this, "EVENTS", EVENTS);
 
-const STRINGS_URI = "chrome://devtools/locale/shadereditor.properties"
 const HIGHLIGHT_TINT = [1, 0, 0.25, 1]; // rgba
 const TYPING_MAX_DELAY = 500; // ms
 const SHADERS_AUTOGROW_ITEMS = 4;
@@ -318,7 +317,7 @@ var ShadersListView = Heritage.extend(WidgetMethods, {
     getShaders()
       .then(getSources)
       .then(showSources)
-      .then(null, Cu.reportError);
+      .catch(console.error.bind(console));
   },
 
   /**
@@ -370,7 +369,8 @@ var ShadersEditorsView = {
    * Initialization function, called when the tool is started.
    */
   initialize: function() {
-    XPCOMUtils.defineLazyGetter(this, "_editorPromises", () => new Map());
+    this._editorPromises = new Map(); // was in XPCOMUtils.defineLazyGetter - Why?
+
     this._vsFocused = this._onFocused.bind(this, "vs", "fs");
     this._fsFocused = this._onFocused.bind(this, "fs", "vs");
     this._vsChanged = this._onChanged.bind(this, "vs");
@@ -623,7 +623,7 @@ var ShadersEditorsView = {
 /**
  * Localization convenience methods.
  */
-var L10N = new ViewHelpers.L10N(STRINGS_URI);
+var L10N = new ViewHelpers.L10N(require("l10n/shadereditor.properties"));
 
 /**
  * Convenient way of emitting events from the panel window.

@@ -3,7 +3,7 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
@@ -20,8 +20,7 @@ var { EventTarget } = require("sdk/event/target");
 const { Task } = require("devtools/sham/task");
 const { Class } = require("sdk/core/heritage");
 const EventEmitter = require("devtools/shared/event-emitter");
-const STRINGS_URI = "chrome://devtools/locale/webaudioeditor.properties"
-const L10N = new ViewHelpers.L10N(STRINGS_URI);
+const L10N = new ViewHelpers.L10N(require("l10n/webaudioeditor.properties"));
 const Telemetry = require("devtools/client/shared/telemetry");
 const telemetry = new Telemetry();
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");

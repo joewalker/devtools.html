@@ -6,7 +6,7 @@
 
 "use strict";
 
-var {utils: Cu, interfaces: Ci, classes: Cc} = Components;
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
 const { Task } = require("devtools/sham/task");
 const {
@@ -17,8 +17,7 @@ const {
 const {InplaceEditor, editableItem} = require("devtools/client/shared/inplace-editor");
 const {ReflowFront} = require("devtools/server/actors/layout");
 
-const STRINGS_URI = "chrome://devtools/locale/shared.properties";
-const SHARED_L10N = new ViewHelpers.L10N(STRINGS_URI);
+const SHARED_L10N = new ViewHelpers.L10N(require("l10n/shared.properties"));
 const NUMERIC = /^-?[\d\.]+$/;
 const LONG_TEXT_ROTATE_LIMIT = 3;
 

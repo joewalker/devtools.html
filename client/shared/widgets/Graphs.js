@@ -16,7 +16,7 @@ loader.lazyImporter(this, "DevToolsWorker",
   "resource://devtools/shared/worker/worker.js");
 
 const HTML_NS = "http://www.w3.org/1999/xhtml";
-const GRAPH_SRC = "chrome://devtools/content/shared/widgets/graphs-frame.xhtml";
+const GRAPH_SRC = "/devtools/client/shared/widgets/graphs-frame.xhtml";
 const WORKER_URL =
   "resource://devtools/client/shared/widgets/GraphsWorker.js";
 

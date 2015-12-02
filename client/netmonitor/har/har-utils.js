@@ -6,21 +6,10 @@
 const { Cu, Ci, Cc, CC } = require("devtools/sham/chrome");
 const { Services } = require("devtools/sham/services");
 
-XPCOMUtils.defineLazyGetter(this, "dirService", function() {
-  return Cc("@mozilla.org/file/directory_service;1").getService(Ci.nsIProperties);
-});
-
-XPCOMUtils.defineLazyGetter(this, "ZipWriter", function() {
-  return CC("@mozilla.org/zipwriter;1", "nsIZipWriter");
-});
-
-XPCOMUtils.defineLazyGetter(this, "LocalFile", function() {
-  return new CC("@mozilla.org/file/local;1", "nsILocalFile", "initWithPath");
-});
-
-XPCOMUtils.defineLazyGetter(this, "getMostRecentBrowserWindow", function() {
-  return require("sdk/window/utils").getMostRecentBrowserWindow;
-});
+const dirService = Cc("@mozilla.org/file/directory_service;1").getService(Ci.nsIProperties);
+const ZipWriter = CC("@mozilla.org/zipwriter;1", "nsIZipWriter");
+const LocalFile = new CC("@mozilla.org/file/local;1", "nsILocalFile", "initWithPath");
+const { getMostRecentBrowserWindow } = require("sdk/window/utils");
 
 const nsIFilePicker = Ci.nsIFilePicker;
 
@@ -118,7 +107,7 @@ var HarUtils = {
       // this closes foStream
       convertor.close();
     } catch (err) {
-      Cu.reportError(err);
+      console.error(err);
       return false;
     }
 
@@ -156,7 +145,7 @@ var HarUtils = {
       file.remove(true);
       return true;
     } catch (err) {
-      Cu.reportError(err);
+      console.error(err);
 
       // Something went wrong (disk space?) rename the original file back.
       file.moveTo(null, originalFileName);

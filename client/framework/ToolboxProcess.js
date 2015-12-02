@@ -5,21 +5,17 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
-const DBG_XUL = "chrome://devtools/content/framework/toolbox-process-window.xul";
+const DBG_XUL = "/devtools/client/framework/toolbox-process-window.xul";
 const CHROME_DEBUGGER_PROFILE_NAME = "chrome_debugger_profile";
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { DevToolsLoader } = require("devtools/shared/Loader");
 
-XPCOMUtils.defineLazyGetter(this, "Telemetry", function () {
-  return require("devtools/client/shared/telemetry");
-});
-XPCOMUtils.defineLazyGetter(this, "EventEmitter", function () {
-  return require("devtools/shared/event-emitter");
-});
+this.Telemetry = require("devtools/client/shared/telemetry");
+this.EventEmitter = require("devtools/shared/event-emitter");
 const promise = require("devtools/sham/promise");
 
 var processes = new Set();
@@ -214,7 +210,7 @@ BrowserToolboxProcess.prototype = {
 
     // Disable safe mode for the new process in case this was opened via the
     // keyboard shortcut.
-    let nsIEnvironment = Components.classes["@mozilla.org/process/environment;1"].getService(Components.interfaces.nsIEnvironment);
+    let nsIEnvironment = Cc["@mozilla.org/process/environment;1"].getService(Ci.nsIEnvironment);
     let originalValue = nsIEnvironment.get("MOZ_DISABLE_SAFE_MODE_KEY");
     nsIEnvironment.set("MOZ_DISABLE_SAFE_MODE_KEY", "1");
 
@@ -262,7 +258,7 @@ BrowserToolboxProcess.prototype = {
  */
 function dumpn(str) {
   if (wantLogging) {
-    dump("DBG-FRONTEND: " + str + "\n");
+    console.log("DBG-FRONTEND: " + str);
   }
 }
 

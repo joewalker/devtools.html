@@ -4,8 +4,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const Ci = Components.interfaces;
-const Cu = Components.utils;
+const { Ci, Cu } = require("devtools/sham/chrome");
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
@@ -35,7 +34,7 @@ const ROUND_RATIO = 10;
 
 const INPUT_PARSER = /(\d+)[^\d]+(\d+)/;
 
-const SHARED_L10N = new ViewHelpers.L10N("chrome://devtools/locale/shared.properties");
+const SHARED_L10N = new ViewHelpers.L10N("l10n/shared.properties");
 
 var ActiveTabs = new Map();
 
@@ -156,7 +155,7 @@ function ResponsiveUI(aWindow, aTab)
       presets = JSON.parse(Services.prefs.getCharPref("devtools.responsiveUI.presets"));
     } catch(e) {
       // User pref is malformated.
-      Cu.reportError("Could not parse pref `devtools.responsiveUI.presets`: " + e);
+      console.error("Could not parse pref `devtools.responsiveUI.presets`: " + e);
     }
   }
 
@@ -165,7 +164,7 @@ function ResponsiveUI(aWindow, aTab)
   if (Array.isArray(presets)) {
     this.presets = [this.customPreset].concat(presets);
   } else {
-    Cu.reportError("Presets value (devtools.responsiveUI.presets) is malformated.");
+    console.error("Presets value (devtools.responsiveUI.presets) is malformated.");
     this.presets = [this.customPreset];
   }
 
@@ -1020,8 +1019,6 @@ ResponsiveUI.prototype = {
   },
 }
 
-XPCOMUtils.defineLazyGetter(ResponsiveUI.prototype, "strings", function () {
-  return Services.strings.createBundle("chrome://devtools/locale/responsiveUI.properties");
-});
+ResponsiveUI.prototype.strings = Services.strings.createBundle("l10n/responsiveUI.properties");
 
 exports.ResponsiveUIManager = this.ResponsiveUIManager;

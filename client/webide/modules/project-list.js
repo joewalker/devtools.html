@@ -13,7 +13,7 @@ const {Task} = require("devtools/sham/task");
 const utils = require("devtools/client/webide/modules/utils");
 const Telemetry = require("devtools/client/shared/telemetry");
 
-const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
+const Strings = Services.strings.createBundle(require("l10n/webide.properties"));
 
 var ProjectList;
 
@@ -74,7 +74,7 @@ ProjectList.prototype = {
     return this._UI.busyUntil(Task.spawn(function*() {
       // Open newapp.xul, which will feed ret.location
       let ret = {location: null, testOptions: testOptions};
-      parentWindow.openDialog("chrome://webide/content/newapp.xul", "newapp", "chrome,modal", ret);
+      parentWindow.openDialog("/devtools/client/webide/content/newapp.xul", "newapp", "chrome,modal", ret);
       if (!ret.location)
         return;
 

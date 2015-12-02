@@ -5,8 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const Ci = Components.interfaces;
-const Cu = Components.utils;
+const { Ci, Cu } = require("devtools/sham/chrome");
 
 const {
   Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,

@@ -12,8 +12,8 @@ const { gDevTools } = require("devtools/client/framework/gDevTools");
 
 exports.OptionsPanel = OptionsPanel;
 
-XPCOMUtils.defineLazyGetter(this, "l10n", function() {
-  let bundle = Services.strings.createBundle("chrome://devtools/locale/toolbox.properties");
+function getToolboxStrings() {
+  let bundle = Services.strings.createBundle(require("l10n/toolbox.properties"));
   let l10n = function(aName, ...aArgs) {
     try {
       if (aArgs.length == 0) {
@@ -26,7 +26,9 @@ XPCOMUtils.defineLazyGetter(this, "l10n", function() {
     }
   };
   return l10n;
-});
+}
+
+const l10n = getToolboxStrings();
 
 function GetPref(name) {
   let type = Services.prefs.getPrefType(name);
@@ -115,7 +117,7 @@ OptionsPanel.prototype = {
       this.emit("ready");
       return this;
     }).then(null, function onError(aReason) {
-      Cu.reportError("OptionsPanel open failed. " +
+      console.error("OptionsPanel open failed. " +
                      aReason.error + ": " + aReason.message);
     });
   },

@@ -2,8 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const Ci = Components.interfaces;
-const Cu = Components.utils;
+const { Ci, Cu } = require("devtools/sham/chrome");
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
@@ -35,7 +34,7 @@ webideCli.prototype = {
       win.focus();
     } else {
       win = Services.ww.openWindow(null,
-                                   "chrome://webide/content/",
+                                   "/devtools/client/webide/content/",
                                    "webide",
                                    "chrome,centerscreen,resizable,dialog=no",
                                    null);

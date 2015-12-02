@@ -3377,7 +3377,7 @@ var WalkerFront = exports.WalkerFront = protocol.FrontClass(WalkerActor, {
    *    - "selectorOnly": treat input as a selector string (don't search text
    *                      tags, attributes, etc)
    */
-  search: protocol.custom(Task.async(function*(query, options = { }) {
+  search: protocol.custom(async function(query, options = { }) {
     let nodeList;
     let searchType;
     let searchData = this.searchData = this.searchData || { };
@@ -3389,13 +3389,13 @@ var WalkerFront = exports.WalkerFront = protocol.FrontClass(WalkerActor, {
     if (selectorOnly || !this.traits.textSearch) {
       searchType = "selector";
       if (this.traits.multiFrameQuerySelectorAll) {
-        nodeList = yield this.multiFrameQuerySelectorAll(query);
+        nodeList = await this.multiFrameQuerySelectorAll(query);
       } else {
-        nodeList = yield this.querySelectorAll(this.rootNode, query);
+        nodeList = await this.querySelectorAll(this.rootNode, query);
       }
     } else {
       searchType = "search";
-      let result = yield this._search(query, options);
+      let result = await this._search(query, options);
       nodeList = result.list;
     }
 
@@ -3422,14 +3422,14 @@ var WalkerFront = exports.WalkerFront = protocol.FrontClass(WalkerActor, {
     }
 
     // Send back the single node, along with any relevant search data
-    let node = yield nodeList.item(searchData.index);
+    let node = await nodeList.item(searchData.index);
     return {
       type: searchType,
       node: node,
       resultsLength: nodeList.length,
       resultsIndex: searchData.index,
     };
-  }), {
+  }, {
     impl: "_search"
   }),
 
@@ -3626,14 +3626,14 @@ var WalkerFront = exports.WalkerFront = protocol.FrontClass(WalkerActor, {
     return returnNode;
   },
 
-  removeNode: protocol.custom(Task.async(function* (node) {
-    let previousSibling = yield this.previousSibling(node);
-    let nextSibling = yield this._removeNode(node);
+  removeNode: protocol.custom(async function(node) {
+    let previousSibling = await this.previousSibling(node);
+    let nextSibling = await this._removeNode(node);
     return {
       previousSibling: previousSibling,
       nextSibling: nextSibling,
     };
-  }), {
+  }, {
     impl: "_removeNode"
   }),
 });
@@ -4170,7 +4170,7 @@ function ensureImageLoaded(image, timeout) {
  *
  * If something goes wrong, the promise is rejected.
  */
-var imageToImageData = Task.async(function* (node, maxDim) {
+var imageToImageData = async function(node, maxDim) {
   let { HTMLCanvasElement, HTMLImageElement } = node.ownerDocument.defaultView;
 
   let isImg = node instanceof HTMLImageElement;
@@ -4182,7 +4182,7 @@ var imageToImageData = Task.async(function* (node, maxDim) {
 
   if (isImg) {
     // Ensure that the image is ready.
-    yield ensureImageLoaded(node, IMAGE_FETCHING_TIMEOUT);
+    await ensureImageLoaded(node, IMAGE_FETCHING_TIMEOUT);
   }
 
   // Get the image resize ratio if a maxDim was provided
@@ -4220,7 +4220,7 @@ var imageToImageData = Task.async(function* (node, maxDim) {
       resized: resizeRatio !== 1
     }
   }
-});
+};
 
 /*loader.lazyGetter(this, "DOMUtils", function () {
   return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);

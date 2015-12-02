@@ -93,7 +93,7 @@ DevToolsWorker.prototype.destroy = function () {
 };
 
 DevToolsWorker.prototype.onError = function({ message, filename, lineno }) {
-  dump(new Error(message + " @ " + filename + ":" + lineno) + "\n");
+  console.log(new Error(message + " @ " + filename + ":" + lineno));
 };
 
 /**

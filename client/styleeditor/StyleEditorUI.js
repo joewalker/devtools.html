@@ -5,9 +5,7 @@
 
 "use strict";
 
-const Cc = Components.classes;
-const Ci = Components.interfaces;
-const Cu = Components.utils;
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Services } = require("devtools/sham/services");
@@ -221,7 +219,7 @@ StyleEditorUI.prototype = {
   _onNewDocument: function() {
     this._debuggee.getStyleSheets().then((styleSheets) => {
       return this._resetStyleSheetList(styleSheets);
-    }).then(null, Cu.reportError);
+    }).catch(console.error.bind(console));
   },
 
   /**
@@ -613,7 +611,7 @@ StyleEditorUI.prototype = {
               this.emit("error", { key: "error-compressed", level: "info" });
             }
           }
-        }.bind(this)).then(null, Cu.reportError);
+        }.bind(this)).catch(console.error.bind(console));
       }.bind(this)
     });
   },
@@ -892,7 +890,7 @@ StyleEditorUI.prototype = {
       sidebar.hidden = !showSidebar || !inSource;
 
       this.emit("media-list-changed", editor);
-    }.bind(this)).then(null, Cu.reportError);
+    }.bind(this)).catch(console.error.bind(console));
   },
 
   /**

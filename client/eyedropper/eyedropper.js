@@ -11,35 +11,21 @@ const promise = require("devtools/sham/promise");
 
 const { Services } = require("devtools/sham/services");
 
-loader.lazyGetter(this, "clipboardHelper", function() {
-  return Cc("@mozilla.org/widget/clipboardhelper;1")
-    .getService(Ci.nsIClipboardHelper);
-});
+const clipboardHelper = Cc("@mozilla.org/widget/clipboardhelper;1")
+        .getService(Ci.nsIClipboardHelper);
+const ssService = Cc("@mozilla.org/content/style-sheet-service;1")
+        .getService(Ci.nsIStyleSheetService)
+const ioService = Cc("@mozilla.org/network/io-service;1")
+        .getService(Ci.nsIIOService);
+const DOMUtils = Cc("@mozilla.org/inspector/dom-utils;1")
+        .getService(Ci.inIDOMUtils);
+const XULRuntime = Cc("@mozilla.org/xre/app-info;1")
+        .getService(Ci.nsIXULRuntime);
+const l10n = Services.strings.createBundle(require("l10n/eyedropper.properties"));
 
-loader.lazyGetter(this, "ssService", function() {
-  return Cc("@mozilla.org/content/style-sheet-service;1")
-    .getService(Ci.nsIStyleSheetService);
-});
-
-loader.lazyGetter(this, "ioService", function() {
-  return Cc("@mozilla.org/network/io-service;1")
-    .getService(Ci.nsIIOService);
-});
-
-loader.lazyGetter(this, "DOMUtils", function () {
-  return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
-});
-
-loader.lazyGetter(this, "XULRuntime", function() {
-  return Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime);
-});
-
-loader.lazyGetter(this, "l10n", () => Services.strings
-  .createBundle("chrome://devtools/locale/eyedropper.properties"));
-
-const EYEDROPPER_URL = "chrome://devtools/content/eyedropper/eyedropper.xul";
-const CROSSHAIRS_URL = "chrome://devtools/content/eyedropper/crosshairs.css";
-const NOCURSOR_URL = "chrome://devtools/content/eyedropper/nocursor.css";
+const EYEDROPPER_URL = "/devtools/client/eyedropper/eyedropper.xul";
+const CROSSHAIRS_URL = "/devtools/client/eyedropper/crosshairs.css";
+const NOCURSOR_URL = "/devtools/client/eyedropper/nocursor.css";
 
 const ZOOM_PREF = "devtools.eyedropper.zoom";
 const FORMAT_PREF = "devtools.defaultColorUnit";

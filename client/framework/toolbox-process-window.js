@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 var { TargetFactory } = require("devtools/client/framework/target");
@@ -64,7 +64,7 @@ window.addEventListener("load", function() {
     let errorMessage = document.getElementById("error-message");
     errorMessage.value = e;
     errorMessageContainer.hidden = false;
-    Cu.reportError(e);
+    console.error(e);
   });
 });
 
@@ -161,7 +161,7 @@ function onMessage(event) {
         setTitle(json.data.value);
         break;
     }
-  } catch(e) { Cu.reportError(e); }
+  } catch(e) { console.error(e); }
 }
 
 window.addEventListener("message", onMessage);

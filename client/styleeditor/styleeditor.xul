@@ -3,33 +3,33 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <!DOCTYPE window [
-<!ENTITY % styleEditorDTD SYSTEM "chrome://devtools/locale/styleeditor.dtd" >
+<!ENTITY % styleEditorDTD SYSTEM "l10n/styleeditor.dtd" >
  %styleEditorDTD;
 <!ENTITY % editMenuStrings SYSTEM "chrome://global/locale/editMenuOverlay.dtd">
  %editMenuStrings;
-<!ENTITY % sourceEditorStrings SYSTEM "chrome://devtools/locale/sourceeditor.dtd">
+<!ENTITY % sourceEditorStrings SYSTEM "l10n/sourceeditor.dtd">
  %sourceEditorStrings;
-<!ENTITY % csscoverageDTD SYSTEM "chrome://devtools-shared/locale/csscoverage.dtd">
+<!ENTITY % csscoverageDTD SYSTEM "/devtools/shared/locales/en-US/csscoverage.dtd">
  %csscoverageDTD;
 ]>
 
-<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/content/shared/widgets/widgets.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/content/shared/splitview.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/skin/common.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/skin/widgets.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/skin/splitview.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/content/styleeditor/styleeditor.css" type="text/css"?>
-<?xml-stylesheet href="chrome://devtools/skin/styleeditor.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/chrome/global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/shared/widgets/widgets.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/shared/splitview.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/themes/widgets.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/themes/splitview.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/styleeditor/styleeditor.css" type="text/css"?>
+<?xml-stylesheet href="/devtools/client/themes/styleeditor.css" type="text/css"?>
 <?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
 
 <xul:window xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         xmlns="http://www.w3.org/1999/xhtml"
         id="style-editor-chrome-window">
 
-  <script type="application/javascript;version=1.8"
-          src="chrome://devtools/content/shared/theme-switching.js"/>
-  <xul:script type="application/javascript" src="chrome://global/content/globalOverlay.js"/>
+  <script type="application/javascript"
+          src="/devtools/client/shared/theme-switching.js"/>
+  <xul:script type="application/javascript" src="/devtools/client/chrome/global/content/globalOverlay.js"/>
   <xul:script type="application/javascript" src="chrome://browser/content/utilityOverlay.js"/>
   <xul:script type="application/javascript">
     function goUpdateSourceEditorMenuItems() {

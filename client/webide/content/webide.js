@@ -2,9 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-var Cc = Components.classes;
-var Cu = Components.utils;
-var Ci = Components.interfaces;
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 const { Task } = require("devtools/sham/task");
@@ -25,7 +23,7 @@ const {RuntimeScanners} = require("devtools/client/webide/modules/runtimes");
 const {showDoorhanger} = require("devtools/client/shared/doorhanger");
 const {Simulators} = require("devtools/client/webide/modules/simulators");
 
-const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
+const Strings = Services.strings.createBundle(require("l10n/webide.properties"));
 
 const HTML = "http://www.w3.org/1999/xhtml";
 const HELP_URL = "https://developer.mozilla.org/docs/Tools/WebIDE/Troubleshooting";
@@ -673,7 +671,7 @@ var UI = {
       projecteditor.setProjectToAppPath(project.location, {
         name: project.name,
         iconUrl: project.icon,
-        projectOverviewURL: "chrome://webide/content/details.xhtml",
+        projectOverviewURL: "/devtools/client/webide/content/details.xhtml",
         validationStatus: status
       }).then(null, console.error);
     }, console.error);

@@ -38,9 +38,7 @@ const clipboardHelper = require("devtools/sham/clipboard");
 const {template} = require("devtools/client/markupview/templater");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
-loader.lazyGetter(this, "DOMParser", function() {
-  return Cc("@mozilla.org/xmlextras/domparser;1").createInstance(Ci.nsIDOMParser);
-});
+const DOMParser = Cc("@mozilla.org/xmlextras/domparser;1").createInstance(Ci.nsIDOMParser);
 const { AutocompletePopup } = require("devtools/client/shared/autocomplete-popup");
 
 /**
@@ -1874,9 +1872,10 @@ MarkupContainer.prototype = {
    * Check if element is draggable
    */
   isDraggable: function() {
-    let tagName = this.node.tagName.toLowerCase();
+    let tagName = this.node.tagName == null ? '' : this.node.tagName.toLowerCase();
 
-    return !this.node.isPseudoElement &&
+    return tagName !== "" &&
+           !this.node.isPseudoElement &&
            !this.node.isAnonymous &&
            !this.node.isDocumentElement &&
            tagName !== "body" &&
@@ -1928,7 +1927,7 @@ MarkupContainer.prototype = {
   /**
    * On mouse up, stop dragging.
    */
-  _onMouseUp: Task.async(function*() {
+  _onMouseUp: async function() {
     this._isPreDragging = false;
 
     if (this.isDragging) {
@@ -1940,11 +1939,11 @@ MarkupContainer.prototype = {
         return;
       }
 
-      yield this.markup.walker.insertBefore(this.node, dropTargetNodes.parent,
+      await this.markup.walker.insertBefore(this.node, dropTargetNodes.parent,
                                             dropTargetNodes.nextSibling);
       this.markup.emit("drop-completed");
     }
-  }),
+  },
 
   /**
    * On mouse move, move the dragged element and indicate the drop target.
@@ -3098,6 +3097,4 @@ function map(value, oldMin, oldMax, newMin, newMax) {
   return newMin + (newMax - newMin) * ((value - oldMin) / ratio);
 }
 
-loader.lazyGetter(MarkupView.prototype, "strings", () => Services.strings.createBundle(
-  "chrome://devtools/locale/inspector.properties"
-));
+MarkupView.prototype.strings = Services.strings.createBundle(require("l10n/inspector.properties"));

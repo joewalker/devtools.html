@@ -5,7 +5,7 @@
    removeEventListener */
 "use strict";
 
-var { interfaces: Ci, utils: Cu } = Components;
+const { Ci, Cu } = require("devtools/sham/chrome");
 
 const { Services } = require("devtools/sham/services");
 
@@ -206,7 +206,7 @@ var simulator = {
             self.fireMouseEvent("mousemove", evt);
             self.fireMouseEvent("mouseup", evt);
           } catch(e) {
-            Cu.reportError("Exception in touch event helper: " + e);
+            console.error("Exception in touch event helper: " + e);
           }
         }, 0, this);
         return;

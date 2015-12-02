@@ -172,7 +172,7 @@ function editableItem(options, callback) {
   };
 }
 
-exports.editableItem = this.editableItem;
+exports.editableItem = editableItem;
 
 /*
  * Various API consumers (especially tests) sometimes want to grab the
@@ -1231,10 +1231,10 @@ InplaceEditor.prototype = {
 function copyTextStyles(from, to) {
   let win = from.ownerDocument.defaultView;
   let style = win.getComputedStyle(from);
-  to.style.fontFamily = style.getPropertyCSSValue("font-family").cssText;
-  to.style.fontSize = style.getPropertyCSSValue("font-size").cssText;
-  to.style.fontWeight = style.getPropertyCSSValue("font-weight").cssText;
-  to.style.fontStyle = style.getPropertyCSSValue("font-style").cssText;
+  to.style.fontFamily = style.fontFamily; //style.getPropertyCSSValue("font-family").cssText;
+  to.style.fontSize = style.fontSize; //style.getPropertyCSSValue("font-size").cssText;
+  to.style.fontWeight = style.fontWeight; //style.getPropertyCSSValue("font-weight").cssText;
+  to.style.fontStyle = style.fontStyle; //style.getPropertyCSSValue("font-style").cssText;
 }
 
 /**
@@ -1244,14 +1244,8 @@ function moveFocus(win, direction) {
   return focusManager.moveFocus(win, null, direction, 0);
 }
 
-XPCOMUtils.defineLazyGetter(this, "focusManager", function() {
-  return Services.focus;
-});
+const focusManager = Services.focus;
 
-XPCOMUtils.defineLazyGetter(this, "CSSPropertyList", function() {
-  return domUtils.getCSSPropertyNames(domUtils.INCLUDE_ALIASES).sort();
-});
+const domUtils = Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 
-// XPCOMUtils.defineLazyGetter(this, "domUtils", function() {
-//   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
-// });
+const CSSPropertyList = domUtils.getCSSPropertyNames(domUtils.INCLUDE_ALIASES).sort();

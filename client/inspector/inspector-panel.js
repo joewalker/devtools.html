@@ -15,6 +15,7 @@ var L10N = require("devtools/sham/l10n");
 var MarkupView = require("devtools/client/markupview/markup-view").MarkupView;
 var HTMLBreadcrumbs = require("devtools/client/inspector/breadcrumbs").HTMLBreadcrumbs;
 var ToolSidebar = require("devtools/client/framework/sidebar").ToolSidebar;
+const Toolbox = require("devtools/client/framework/toolbox");
 var InspectorSearch = require("devtools/client/inspector/inspector-search").InspectorSearch;
 
 var strings = new L10N(require("l10n/inspector.properties"));
@@ -434,7 +435,7 @@ InspectorPanel.prototype = {
    * Will store the current target url along with it to allow pre-selection at
    * reload
    */
-  set selectionCssSelector(cssSelector = null) {
+  set selectionCssSelector(cssSelector) {
     if (this._panelDestroyer) {
       return;
     }
@@ -943,6 +944,10 @@ InspectorPanel.prototype = {
   },
 
   _onMarkupFrameLoad: function() {
+    if (this._markupFrame.getAttribute("src") !== "../markupview/markup-view.xhtml") {
+      return;
+    }
+
     this._markupFrame.removeEventListener("load", this._onMarkupFrameLoad, true);
 
     this._markupFrame.contentWindow.focus();
@@ -1021,7 +1026,7 @@ InspectorPanel.prototype = {
    */
   updatePaneToggleButton: function() {
     this._paneToggleButton.setAttribute("hidden",
-      this._toolbox.hostType === HostType.SIDE);
+      this._toolbox.hostType === Toolbox.HostType.SIDE);
   },
 
   /**
@@ -1198,7 +1203,7 @@ InspectorPanel.prototype = {
   _copyLongString: function(longStringActorPromise) {
     return this._getLongString(longStringActorPromise).then(string => {
       clipboardHelper.copy(string);
-    }).catch(Cu.reportError);
+    }).catch(console.error.bind(console));
   },
 
   /**
@@ -1209,10 +1214,10 @@ InspectorPanel.prototype = {
   _getLongString: function(longStringActorPromise) {
     return longStringActorPromise.then(longStringActor => {
       return longStringActor.string().then(string => {
-        longStringActor.release().catch(Cu.reportError);
+        longStringActor.release().catch(console.error.bind(console));
         return string;
       });
-    }).catch(Cu.reportError);
+    }).catch(console.error.bind(console));
   },
 
   /**
@@ -1427,4 +1432,3 @@ InspectorPanel.prototype = {
     }
   }
 };
-

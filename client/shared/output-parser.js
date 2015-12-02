@@ -24,9 +24,7 @@ const COLOR_TAKING_FUNCTIONS = ["linear-gradient",
                                 "-moz-repeating-radial-gradient",
                                 "drop-shadow"];
 
-// loader.lazyGetter(this, "DOMUtils", function() {
-//   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
-// });
+const DOMUtils = Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 
 /**
  * This module is used to process text for output by developer tools. This means

@@ -12,9 +12,9 @@ const { Services } = require("devtools/sham/services");
 
 const { AddonManager } = require("devtools/sham/addonmanager");
 
-const ExtensionIcon = "chrome://mozapps/skin/extensions/extensionGeneric.svg";
+const ExtensionIcon = "/devtools/client/chrome/mozapps/skin/extensions/extensionGeneric.svg";
 const Strings = Services.strings.createBundle(
-  "chrome://devtools/locale/aboutdebugging.properties");
+  require("l10n/aboutdebugging.properties"));
 
 exports.AddonsComponent = React.createClass({
   displayName: "AddonsComponent",

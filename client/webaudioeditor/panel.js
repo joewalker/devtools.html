@@ -45,7 +45,7 @@ WebAudioEditorPanel.prototype = {
         return this;
       })
       .then(null, function onError(aReason) {
-        Cu.reportError("WebAudioEditorPanel open failed. " +
+        console.error("WebAudioEditorPanel open failed. " +
                        aReason.error + ": " + aReason.message);
       });
   },

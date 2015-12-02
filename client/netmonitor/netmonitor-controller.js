@@ -5,9 +5,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
-const NET_STRINGS_URI = "chrome://devtools/locale/netmonitor.properties";
 const PKI_STRINGS_URI = "chrome://pippki/locale/pippki.properties";
 const LISTENERS = [ "NetworkActivity" ];
 const NET_PREFS = { "NetworkMonitor.saveRequestAndResponseBodies": true };
@@ -825,7 +824,7 @@ NetworkEventsHandler.prototype = {
 /**
  * Localization convenience methods.
  */
-var L10N = new ViewHelpers.L10N(NET_STRINGS_URI);
+var L10N = new ViewHelpers.L10N(require("l10n/netmonitor.properties"));
 var PKI_L10N = new ViewHelpers.L10N(PKI_STRINGS_URI);
 
 /**
@@ -842,9 +841,7 @@ var Prefs = new ViewHelpers.Prefs("devtools.netmonitor", {
  * Returns true if this is document is in RTL mode.
  * @return boolean
  */
-XPCOMUtils.defineLazyGetter(window, "isRTL", function() {
-  return window.getComputedStyle(document.documentElement, null).direction == "rtl";
-});
+ window.isRTL = window.getComputedStyle(document.documentElement, null).direction == "rtl";
 
 /**
  * Convenient way of emitting events from the panel window.
@@ -913,7 +910,7 @@ const WDA_DEFAULT_GIVE_UP_TIMEOUT = DevToolsUtils.testing ? 45000 : 2000; // ms
  */
 function dumpn(str) {
   if (wantLogging) {
-    dump("NET-FRONTEND: " + str + "\n");
+    console.log("NET-FRONTEND: " + str);
   }
 }
 

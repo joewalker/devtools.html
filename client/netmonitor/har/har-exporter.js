@@ -9,10 +9,7 @@ const { defer, resolve } = require("devtools/sham/promise");
 const { HarUtils } = require("./har-utils.js");
 const { HarBuilder } = require("./har-builder.js");
 
-XPCOMUtils.defineLazyGetter(this, "clipboardHelper", function() {
-  return Cc("@mozilla.org/widget/clipboardhelper;1").
-    getService(Ci.nsIClipboardHelper);
-});
+this.clipboardHelper = Cc("@mozilla.org/widget/clipboardhelper;1").getService(Ci.nsIClipboardHelper);
 
 var uid = 1;
 
@@ -88,7 +85,7 @@ const HarExporter = {
     return this.fetchHarData(options).then(jsonString => {
       if (!HarUtils.saveToFile(file, jsonString, options.compress)) {
         let msg = "Failed to save HAR file at: " + options.defaultFileName;
-        Cu.reportError(msg);
+        console.error(msg);
       }
       return jsonString;
     });
@@ -146,7 +143,7 @@ const HarExporter = {
 
       return jsonString;
     }).then(null, function onError(err) {
-      Cu.reportError(err);
+      console.error(err);
     });
   },
 
@@ -174,7 +171,7 @@ const HarExporter = {
       return JSON.stringify(har, null, "  ");
     }
     catch (err) {
-      Cu.reportError(err);
+      console.error(err);
     }
   },
 };

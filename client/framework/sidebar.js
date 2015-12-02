@@ -62,8 +62,8 @@ function ToolSidebar(tabbox, panel, uid, options={}) {
   EventEmitter.decorate(this);
 
   this._tabbox = tabbox;
-  this._tabboxTabs = tabbox.querySelector("tabs");
-  this._tabboxTabpanels = tabbox.querySelector("tabpanels");
+  this._tabboxTabs = tabbox.querySelector("tabs") || tabbox.ownerDocument.createElement("tabs");
+  this._tabboxTabpanels = tabbox.querySelector("tabpanels") || tabbox.ownerDocument.createElement("tabpanels");
   this._uid = uid;
   this._panelDoc = this._tabbox.ownerDocument;
   this._toolPanel = panel;
@@ -294,9 +294,9 @@ ToolSidebar.prototype = {
    * Search for existing tabs in the markup that aren't know yet and add them.
    */
   addExistingTabs: function() {
-    let knownTabs = [...this._tabs.values()];
+    let knownTabs = this._tabs.values();
 
-    for (let tab of this._tabboxTabs.querySelectorAll("tab")) {
+    for (let tab of [].slice.call(this._tabboxTabs.querySelectorAll("tab"))) {
       if (knownTabs.indexOf(tab) !== -1) {
         continue;
       }
@@ -317,7 +317,7 @@ ToolSidebar.prototype = {
    * @param {String} tabPanelId Optional. If provided, this ID will be used
    * instead of the tabId to retrieve and remove the corresponding <tabpanel>
    */
-  removeTab: Task.async(function*(tabId, tabPanelId) {
+  removeTab: async function(tabId, tabPanelId) {
     // Remove the tab if it can be found
     let tab = this.getTab(tabId);
     if (!tab) {
@@ -326,7 +326,7 @@ ToolSidebar.prototype = {
 
     let win = this.getWindowForTab(tabId);
     if (win && ("destroy" in win)) {
-      yield win.destroy();
+      await win.destroy();
     }
 
     tab.remove();
@@ -339,7 +339,7 @@ ToolSidebar.prototype = {
 
     this._tabs.delete(tabId);
     this.emit("tab-unregistered", tabId);
-  }),
+  },
 
   /**
    * Show or hide a specific tab.
@@ -509,7 +509,7 @@ ToolSidebar.prototype = {
   /**
    * Clean-up.
    */
-  destroy: Task.async(function*() {
+  destroy: async function() {
     if (this._destroyed) {
       return;
     }
@@ -530,7 +530,7 @@ ToolSidebar.prototype = {
       let panel = this._tabboxTabpanels.firstChild;
       let win = panel.firstChild.contentWindow;
       if (win && ("destroy" in win)) {
-        yield win.destroy();
+        await win.destroy();
       }
       panel.remove();
     }
@@ -549,11 +549,11 @@ ToolSidebar.prototype = {
     this._tabbox = null;
     this._panelDoc = null;
     this._toolPanel = null;
-  })
+  }
 }
 
-XPCOMUtils.defineLazyGetter(this, "l10n", function() {
-  let bundle = Services.strings.createBundle("chrome://devtools/locale/toolbox.properties");
+function getToolboxStrings() {
+  let bundle = Services.strings.createBundle(require("l10n/toolbox.properties"));
   let l10n = function(aName, ...aArgs) {
     try {
       if (aArgs.length == 0) {
@@ -566,4 +566,6 @@ XPCOMUtils.defineLazyGetter(this, "l10n", function() {
     }
   };
   return l10n;
-});
+}
+
+const l10n = getToolboxStrings();

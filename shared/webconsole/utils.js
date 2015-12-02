@@ -18,10 +18,12 @@ const { Services } = require("devtools/sham/services");
 const { VariablesView, escapeHTML } = require("devtools/client/shared/widgets/VariablesView");
 const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 
-XPCOMUtils.defineLazyServiceGetter(this,
-                                   "swm",
-                                   "@mozilla.org/serviceworkers/manager;1",
-                                   "nsIServiceWorkerManager");
+// Not sure this is a correct replacement for XPCOMUtils.defineLazyServiceGetter below
+const swm = Cc("@mozilla.org/serviceworkers/manager;1").getService(Ci.nsIServiceWorkerManager);
+// XPCOMUtils.defineLazyServiceGetter(this,
+//                                    "swm",
+//                                    "@mozilla.org/serviceworkers/manager;1",
+//                                    "nsIServiceWorkerManager");
 
 // Match the function name from the result of toString() or toSource().
 //
@@ -389,7 +391,7 @@ var WebConsoleUtils = {
       case "function":
         return aObjectWrapper(aValue);
       default:
-        Cu.reportError("Failed to provide a grip for value of " + typeof aValue
+        console.error("Failed to provide a grip for value of " + typeof aValue
                        + ": " + aValue);
         return null;
     }
@@ -667,7 +669,7 @@ WebConsoleUtils.l10n.prototype = {
       result = this.stringBundle.GetStringFromName(aName);
     }
     catch (ex) {
-      Cu.reportError("Failed to get string: " + aName);
+      console.error("Failed to get string: " + aName);
       throw ex;
     }
     return result;
@@ -691,7 +693,7 @@ WebConsoleUtils.l10n.prototype = {
       result = this.stringBundle.formatStringFromName(aName, aArray, aArray.length);
     }
     catch (ex) {
-      Cu.reportError("Failed to format string: " + aName);
+      console.error("Failed to format string: " + aName);
       throw ex;
     }
     return result;

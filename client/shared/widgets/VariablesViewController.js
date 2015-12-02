@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
@@ -16,17 +16,9 @@ const {
 } = require("devtools/client/shared/widgets/ViewHelpers");
 var promise = require("devtools/sham/promise");
 
-Object.defineProperty(this, "WebConsoleUtils", {
-  get: function() {
-    return require("devtools/shared/webconsole/utils").Utils;
-  },
-  configurable: true,
-  enumerable: true
-});
+const WebConsoleUtils = require("devtools/shared/webconsole/utils").Utils;
 
-XPCOMUtils.defineLazyGetter(this, "VARIABLES_SORTING_ENABLED", () =>
-  Services.prefs.getBoolPref("devtools.debugger.ui.variables-sorting-enabled")
-);
+const VARIABLES_SORTING_ENABLED = Services.prefs.getBoolPref("devtools.debugger.ui.variables-sorting-enabled");
 
 const MAX_LONG_STRING_LENGTH = 200000;
 const MAX_PROPERTY_ITEMS = 2000;
@@ -603,7 +595,7 @@ VariablesViewController.prototype = {
         break;
       default:
         let error = "Unknown Debugger.Environment type: " + aSource.type;
-        Cu.reportError(error);
+        console.error(error);
         deferred.reject(error);
     }
 
@@ -787,5 +779,5 @@ var StackFrameUtils = {
  */
 var L10N = new ViewHelpers.L10N(require("l10n/debugger.properties"));
 
-exports.VariablesViewController = this.VariablesViewController;
-exports.StackFrameUtils = this.StackFrameUtils;
+exports.VariablesViewController = VariablesViewController;
+exports.StackFrameUtils = StackFrameUtils;

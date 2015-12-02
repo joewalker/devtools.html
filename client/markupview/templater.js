@@ -58,10 +58,7 @@ var template = function(node, data, options) {
   processNode(state, node, data);
 };
 
-if (typeof exports !== 'undefined') {
-  exports.template = template;
-}
-this.template = template;
+exports.template = template;
 
 /**
  * Helper for the places where we need to act asynchronously and keep track of

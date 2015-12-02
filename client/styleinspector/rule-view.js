@@ -41,11 +41,11 @@ const StyleInspectorMenu = require("devtools/client/styleinspector/style-inspect
 const { Services } = require("devtools/sham/services");
 const _strings = Services.strings.createBundle(
     require("l10n/styleinspector.properties"));
-
+const domUtils = Cc("@mozilla.org/inspector/dom-utils;1")
+    .getService(Ci.inIDOMUtils);
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 
 const HTML_NS = "http://www.w3.org/1999/xhtml";
-const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 const PREF_UA_STYLES = "devtools.inspector.showUserAgentStyles";
 const PREF_DEFAULT_COLOR_UNIT = "devtools.defaultColorUnit";
 const PREF_ENABLE_MDN_DOCS_TOOLTIP =
@@ -73,14 +73,18 @@ function createDummyDocument() {
   if (gDummyPromise) {
     return gDummyPromise;
   }
+
+  let deferred = promise.defer();
   let frame = document.createElement("iframe");
-  frame.src = "data:text/html,<html></html>";
   frame.onload = () => {
     deferred.resolve(frame.contentWindow.document);
     frame.remove();
   }
-  let deferred = promise.defer();
+  frame.style.display = "none";
+  frame.src = "dummy.html";
+  document.body.appendChild(frame);
   gDummyPromise = deferred.promise;
+
   return gDummyPromise;
 
   // const { getDocShell, create: makeFrame } = require("sdk/frame/utils");
@@ -1393,10 +1397,10 @@ function CssRuleView(inspector, document, store, pageStyle) {
   this._contextmenu = new StyleInspectorMenu(this, { isRuleView: true });
 
   // Add the tooltips and highlighters to the view
-  this.tooltips = new overlays.TooltipsOverlay(this);
-  this.tooltips.addToView();
-  this.highlighters = new overlays.HighlightersOverlay(this);
-  this.highlighters.addToView();
+  // this.tooltips = new overlays.TooltipsOverlay(this);
+  // this.tooltips.addToView();
+  // this.highlighters = new overlays.HighlightersOverlay(this);
+  // this.highlighters.addToView();
 
   EventEmitter.decorate(this);
 }
@@ -1472,12 +1476,12 @@ CssRuleView.prototype = {
         this.lastSelectorIcon = selectorIcon;
         this.highlightSelector(selector).then(() => {
           this.emit("ruleview-selectorhighlighter-toggled", true);
-        }, Cu.reportError);
+        }).catch(console.error.bind(console));
       } else {
         this.highlightedSelector = null;
         this.emit("ruleview-selectorhighlighter-toggled", false);
       }
-    }, Cu.reportError);
+    }).catch(console.error.bind(console));
   },
 
   highlightSelector: Task.async(function*(selector) {
@@ -2036,6 +2040,7 @@ CssRuleView.prototype = {
         this._stopSelectingElement();
         this._clearRules();
       }
+
       console.error(e);
     });
   },
@@ -2720,7 +2725,7 @@ RuleEditor.prototype = {
       let rule = this.rule.domRule;
       this.ruleView.emit("ruleview-linked-clicked", rule);
     }.bind(this));
-    let sourceLabel = this.doc.createElementNS(XUL_NS, "label");
+    let sourceLabel = this.doc.createElementNS(HTML_NS, "label");
     sourceLabel.setAttribute("crop", "center");
     sourceLabel.classList.add("ruleview-rule-source-label");
     this.source.appendChild(sourceLabel);
@@ -3195,7 +3200,7 @@ TextPropertyEditor.prototype = {
    */
   get editing() {
     return !!(this.nameSpan.inplaceEditor || this.valueSpan.inplaceEditor ||
-      this.ruleView.tooltips.isEditing) || this.popup.isOpen;
+      this.ruleView.tooltips && this.ruleView.tooltips.isEditing) || this.popup.isOpen;
   },
 
   /**
@@ -3384,7 +3389,7 @@ TextPropertyEditor.prototype = {
   get sheetURI() {
     if (this._sheetURI === undefined) {
       if (this.sheetHref) {
-        this._sheetURI = IOService.newURI(this.sheetHref, null, null);
+        this._sheetURI = null; // XXX: SHIM THIS IOService.newURI(this.sheetHref, null, null);
       } else {
         this._sheetURI = null;
       }
@@ -3478,51 +3483,51 @@ TextPropertyEditor.prototype = {
     this.valueSpan.appendChild(frag);
 
     // Attach the color picker tooltip to the color swatches
-    this._colorSwatchSpans =
-      this.valueSpan.querySelectorAll("." + colorSwatchClass);
-    if (this.ruleEditor.isEditable) {
-      for (let span of this._colorSwatchSpans) {
-        // Adding this swatch to the list of swatches our colorpicker
-        // knows about
-        this.ruleView.tooltips.colorPicker.addSwatch(span, {
-          onShow: this._onStartEditing,
-          onPreview: this._onSwatchPreview,
-          onCommit: this._onSwatchCommit,
-          onRevert: this._onSwatchRevert
-        });
-      }
-    }
+    // this._colorSwatchSpans =
+    //   this.valueSpan.querySelectorAll("." + colorSwatchClass);
+    // if (this.ruleEditor.isEditable) {
+    //   for (let span of this._colorSwatchSpans) {
+    //     // Adding this swatch to the list of swatches our colorpicker
+    //     // knows about
+    //     this.ruleView.tooltips.colorPicker.addSwatch(span, {
+    //       onShow: this._onStartEditing,
+    //       onPreview: this._onSwatchPreview,
+    //       onCommit: this._onSwatchCommit,
+    //       onRevert: this._onSwatchRevert
+    //     });
+    //   }
+    // }
 
-    // Attach the cubic-bezier tooltip to the bezier swatches
-    this._bezierSwatchSpans =
-      this.valueSpan.querySelectorAll("." + bezierSwatchClass);
-    if (this.ruleEditor.isEditable) {
-      for (let span of this._bezierSwatchSpans) {
-        // Adding this swatch to the list of swatches our colorpicker
-        // knows about
-        this.ruleView.tooltips.cubicBezier.addSwatch(span, {
-          onShow: this._onStartEditing,
-          onPreview: this._onSwatchPreview,
-          onCommit: this._onSwatchCommit,
-          onRevert: this._onSwatchRevert
-        });
-      }
-    }
+    // // Attach the cubic-bezier tooltip to the bezier swatches
+    // this._bezierSwatchSpans =
+    //   this.valueSpan.querySelectorAll("." + bezierSwatchClass);
+    // if (this.ruleEditor.isEditable) {
+    //   for (let span of this._bezierSwatchSpans) {
+    //     // Adding this swatch to the list of swatches our colorpicker
+    //     // knows about
+    //     this.ruleView.tooltips.cubicBezier.addSwatch(span, {
+    //       onShow: this._onStartEditing,
+    //       onPreview: this._onSwatchPreview,
+    //       onCommit: this._onSwatchCommit,
+    //       onRevert: this._onSwatchRevert
+    //     });
+    //   }
+    // }
 
-    // Attach the filter editor tooltip to the filter swatch
-    let span = this.valueSpan.querySelector("." + filterSwatchClass);
-    if (this.ruleEditor.isEditable) {
-      if (span) {
-        parserOptions.filterSwatch = true;
+    // // Attach the filter editor tooltip to the filter swatch
+    // let span = this.valueSpan.querySelector("." + filterSwatchClass);
+    // if (this.ruleEditor.isEditable) {
+    //   if (span) {
+    //     parserOptions.filterSwatch = true;
 
-        this.ruleView.tooltips.filterEditor.addSwatch(span, {
-          onShow: this._onStartEditing,
-          onPreview: this._onSwatchPreview,
-          onCommit: this._onSwatchCommit,
-          onRevert: this._onSwatchRevert
-        }, outputParser, parserOptions);
-      }
-    }
+    //     this.ruleView.tooltips.filterEditor.addSwatch(span, {
+    //       onShow: this._onStartEditing,
+    //       onPreview: this._onSwatchPreview,
+    //       onCommit: this._onSwatchCommit,
+    //       onRevert: this._onSwatchRevert
+    //     }, outputParser, parserOptions);
+    //   }
+    // }
 
     // Populate the computed styles.
     this._updateComputed();
@@ -4047,14 +4052,10 @@ function getPropertyNameAndValue(node) {
   }
 }
 
-XPCOMUtils.defineLazyGetter(this, "clipboardHelper", function() {
-  return Cc("@mozilla.org/widget/clipboardhelper;1")
-    .getService(Ci.nsIClipboardHelper);
-});
+const clipboardHelper = Cc("@mozilla.org/widget/clipboardhelper;1")
+      .getService(Ci.nsIClipboardHelper);
 
-XPCOMUtils.defineLazyGetter(this, "osString", function() {
-  return Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime).OS;
-});
+const osString = "xxx"; // Cc("@mozilla.org/xre/app-info;1").getService(Ci.nsIXULRuntime).OS;
 
 // XPCOMUtils.defineLazyGetter(this, "domUtils", function() {
 //   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);

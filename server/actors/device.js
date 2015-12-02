@@ -81,7 +81,7 @@ var DeviceFront = protocol.FrontClass(DeviceActor, {
     return this.screenshotToDataURL().then(longstr => {
       return longstr.string().then(dataURL => {
         let deferred = promise.defer();
-        longstr.release().then(null, Cu.reportError);
+        longstr.release().catch(console.error.bind(console));
         let req = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
         req.open("GET", dataURL, true);
         req.responseType = "blob";

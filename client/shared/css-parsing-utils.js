@@ -17,9 +17,7 @@
 const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const promise = require("devtools/sham/promise");
 const { Task } = require("devtools/sham/task");
-// loader.lazyGetter(this, "DOMUtils", () => {
-//   return Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
-// });
+const DOMUtils = Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
 
 const SELECTOR_ATTRIBUTE = exports.SELECTOR_ATTRIBUTE = 1;
 const SELECTOR_ELEMENT = exports.SELECTOR_ELEMENT = 2;
@@ -800,7 +798,7 @@ RuleRewriter.prototype = {
    * @return {Promise} a promise that is resolved when the edit has
    *                   completed
    */
-  internalCreateProperty: Task.async(function*(index, name, value, priority) {
+  internalCreateProperty: async function(index, name, value, priority) {
     this.completeInitialization(index);
     let newIndentation = "";
     if (this.hasNewLine) {
@@ -810,7 +808,7 @@ RuleRewriter.prototype = {
       } else if (this.defaultIndentation) {
         newIndentation = this.defaultIndentation;
       } else {
-        newIndentation = yield this.getDefaultIndentation();
+        newIndentation = await this.getDefaultIndentation();
       }
     }
 
@@ -847,7 +845,7 @@ RuleRewriter.prototype = {
       // index.
       this.completeCopying(this.decl.offsets[0]);
     }
-  }),
+  },
 
   /**
    * Create a new declaration.

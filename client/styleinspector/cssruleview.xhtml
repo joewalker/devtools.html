@@ -3,12 +3,14 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
+<!--
 <!DOCTYPE window [
-  <!ENTITY % inspectorDTD SYSTEM "chrome://devtools/locale/styleinspector.dtd">
+  <!ENTITY % inspectorDTD SYSTEM "l10n/styleinspector.dtd">
   %inspectorDTD;
   <!ENTITY % globalDTD SYSTEM "chrome://global/locale/global.dtd">
   %globalDTD;
 ]>
+-->
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
@@ -16,10 +18,12 @@
   <head>
     <title>!!ruleViewTitle;</title>
     <link rel="stylesheet" href="ruleview.css"  type="text/css"/>
+    <link rel="stylesheet" href="../chrome/global/skin/global.css"  type="text/css"/>
+    <link rel="stylesheet" href="../themes/common.css"  type="text/css"/>
     <link rel="stylesheet" href="../themes/ruleview.css"  type="text/css"/>
-    <script type="application/javascript;version=1.8" src="../shared/theme-switching.js"></script>
-    <script type="application/javascript;version=1.8" src="../../globals.js"></script>
-    <script type="application/javascript;version=1.8" src="build.js"></script>
+    <script type="application/javascript" src="../shared/theme-switching.js"></script>
+    <script type="application/javascript" src="../../globals.js"></script>
+    <script type="application/javascript" src="../../built/styleinspector.js"></script>
   </head>
   <body>
     <div id="root" class="devtools-monospace">

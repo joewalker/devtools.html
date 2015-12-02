@@ -16,7 +16,7 @@ const { BrowserToolboxProcess } = require("devtools/client/framework/ToolboxProc
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 
 const Strings = Services.strings.createBundle(
-  "chrome://devtools/locale/aboutdebugging.properties");
+  require("l10n/aboutdebugging.properties"));
 
 exports.TargetComponent = React.createClass({
   displayName: "TargetComponent",

@@ -8,8 +8,7 @@ const {
   Heritage, ViewHelpers, WidgetMethods, setNamedTimeout,
   clearNamedTimeout, setConditionalTimeout, clearConditionalTimeout
 } = require("devtools/client/shared/widgets/ViewHelpers");
-const STRINGS_URI = "chrome://devtools/locale/memory.properties"
-const L10N = exports.L10N = new ViewHelpers.L10N(STRINGS_URI);
+const L10N = exports.L10N = new ViewHelpers.L10N(require("l10n/memory.properties"));
 
 const { URL } = require("sdk/url");
 const { OS } = require("devtools/sham/osfile");

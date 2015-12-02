@@ -3,8 +3,6 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
-
 const { Services } = require("devtools/sham/services");
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { SideMenuWidget } = require("devtools/client/shared/widgets/SideMenuWidget");
@@ -69,8 +67,6 @@ const EVENTS = {
 XPCOMUtils.defineConstant(this, "EVENTS", EVENTS);
 
 const HTML_NS = "http://www.w3.org/1999/xhtml";
-const STRINGS_URI = "chrome://devtools/locale/canvasdebugger.properties";
-const SHARED_STRINGS_URI = "chrome://devtools/locale/shared.properties";
 
 const SNAPSHOT_START_RECORDING_DELAY = 10; // ms
 const SNAPSHOT_DATA_EXPORT_MAX_BLOCK = 1000; // ms
@@ -169,8 +165,8 @@ var EventsHandler = {
 /**
  * Localization convenience methods.
  */
-var L10N = new ViewHelpers.L10N(STRINGS_URI);
-var SHARED_L10N = new ViewHelpers.L10N(SHARED_STRINGS_URI);
+var L10N = new ViewHelpers.L10N(require("l10n/canvasdebugger.properties"));
+var SHARED_L10N = new ViewHelpers.L10N(require("l10n/shared.properties"));
 
 /**
  * Convenient way of emitting events from the panel window.

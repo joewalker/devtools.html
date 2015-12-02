@@ -12,8 +12,8 @@ const { TargetListComponent } = require("devtools/client/aboutdebugging/componen
 const { Services } = require("devtools/sham/services");
 
 const Strings = Services.strings.createBundle(
-  "chrome://devtools/locale/aboutdebugging.properties");
-const WorkerIcon = "chrome://devtools/skin/images/debugging-workers.svg";
+  require("l10n/aboutdebugging.properties"));
+const WorkerIcon = "/devtools/client/themes/images/debugging-workers.svg";
 
 exports.WorkersComponent = React.createClass({
   displayName: "WorkersComponent",

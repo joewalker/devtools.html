@@ -27,8 +27,7 @@ const { VariablesViewController, StackFrameUtils } = require("devtools/client/sh
 const PluralForm = require("devtools/sham/pluralform");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 
-const STRINGS_URI = "chrome://devtools/locale/webconsole.properties";
-var l10n = new WebConsoleUtils.l10n(STRINGS_URI);
+var l10n = new WebConsoleUtils.l10n(require("l10n/webconsole.properties"));
 
 const XHTML_NS = "http://www.w3.org/1999/xhtml";
 
@@ -46,7 +45,7 @@ const WEAK_SIGNATURE_ALGORITHM_LEARN_MORE = "https://developer.mozilla.org/docs/
 
 const HELP_URL = "https://developer.mozilla.org/docs/Tools/Web_Console/Helpers";
 
-const VARIABLES_VIEW_URL = "chrome://devtools/content/shared/widgets/VariablesView.xul";
+const VARIABLES_VIEW_URL = "/devtools/client/shared/widgets/VariablesView.xul";
 
 const IGNORED_SOURCE_URLS = ["debugger eval code"];
 
@@ -1363,7 +1362,7 @@ WebConsoleFrame.prototype = {
           return null;
         }
         if (timer.error) {
-          Cu.reportError(l10n.getStr(timer.error));
+          console.error(l10n.getStr(timer.error));
           return null;
         }
         body = l10n.getFormatStr("timerStarted", [timer.name]);
@@ -1388,7 +1387,7 @@ WebConsoleFrame.prototype = {
           return null;
         }
         if (counter.error) {
-          Cu.reportError(l10n.getStr(counter.error));
+          console.error(l10n.getStr(counter.error));
           return null;
         }
         let msg = new Messages.ConsoleGeneric(aMessage);
@@ -1402,7 +1401,7 @@ WebConsoleFrame.prototype = {
       }
 
       default:
-        Cu.reportError("Unknown Console API log level: " + level);
+        console.error("Unknown Console API log level: " + level);
         return null;
     }
 
@@ -2854,7 +2853,7 @@ WebConsoleFrame.prototype = {
     this.webConsoleClient.inspectObjectProperties(aActor,
       function(aResponse) {
         if (aResponse.error) {
-          Cu.reportError("Failed to retrieve the object properties from the " +
+          console.error("Failed to retrieve the object properties from the " +
                          "server. Error: " + aResponse.error);
           return;
         }
@@ -3254,7 +3253,7 @@ JSTerm.prototype = {
       return;
     }
     if (aResponse.error) {
-      Cu.reportError("Evaluation error " + aResponse.error + ": " +
+      console.error("Evaluation error " + aResponse.error + ": " +
                      aResponse.message);
       return;
     }
@@ -3830,7 +3829,7 @@ JSTerm.prototype = {
   _silentEvalCallback: function JST__silentEvalCallback(aCallback, aResponse)
   {
     if (aResponse.error) {
-      Cu.reportError("Web Console evaluation failed. " + aResponse.error + ":" +
+      console.error("Web Console evaluation failed. " + aResponse.error + ":" +
                      aResponse.message);
 
       aCallback && aCallback(aResponse);
@@ -5093,7 +5092,7 @@ WebConsoleConnectionProxy.prototype = {
   _onAttachConsole: function WCCP__onAttachConsole(aResponse, aWebConsoleClient)
   {
     if (aResponse.error) {
-      Cu.reportError("attachConsole failed: " + aResponse.error + " " +
+      console.error("attachConsole failed: " + aResponse.error + " " +
                      aResponse.message);
       this._connectDefer.reject(aResponse);
       return;
@@ -5121,7 +5120,7 @@ WebConsoleConnectionProxy.prototype = {
   _onCachedMessages: function WCCP__onCachedMessages(aResponse)
   {
     if (aResponse.error) {
-      Cu.reportError("Web Console getCachedMessages error: " + aResponse.error +
+      console.error("Web Console getCachedMessages error: " + aResponse.error +
                      " " + aResponse.message);
       this._connectDefer.reject(aResponse);
       return;
@@ -5130,7 +5129,7 @@ WebConsoleConnectionProxy.prototype = {
     if (!this._connectTimer) {
       // This happens if the promise is rejected (eg. a timeout), but the
       // connection attempt is successful, nonetheless.
-      Cu.reportError("Web Console getCachedMessages error: invalid state.");
+      console.error("Web Console getCachedMessages error: invalid state.");
     }
 
     let messages = aResponse.messages.concat(...this.webConsoleClient.getNetworkEvents());

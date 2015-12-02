@@ -20,16 +20,9 @@ const {UPDATE_PRESERVING_RULES, UPDATE_GENERAL} =
 
 /*let CSS = require("CSS");*/
 
-/*loader.lazyGetter(this, "CssLogic", () => {
-  return require("devtools/shared/styleinspector/css-logic").CssLogic;
-});
-loader.lazyGetter(this, "DOMUtils", () => {
-  return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
-});
-
-loader.lazyGetter(this, "RuleRewriter", () => {
-  return require("devtools/client/shared/css-parsing-utils").RuleRewriter;
-});*/
+const CssLogic = require("devtools/shared/styleinspector/css-logic").CssLogic;
+const DOMUtils = Cc("@mozilla.org/inspector/dom-utils;1").getService(Ci.inIDOMUtils);
+const RuleRewriter =require("devtools/client/shared/css-parsing-utils").RuleRewriter;
 
 // The PageStyle actor flattens the DOM CSS objects a little bit, merging
 // Rules and their Styles into one actor.  For elements (which have a style
@@ -579,7 +572,7 @@ var PageStyleActor = protocol.ActorClass({
    *   `matchedSelectors`: Include an array of specific selectors that
    *     caused this rule to match its node.
    */
-  getApplied: method(Task.async(function*(node, options) {
+  getApplied: method(async function(node, options) {
     if (!node) {
       return {entries: [], rules: [], sheets: []};
     }
@@ -591,10 +584,10 @@ var PageStyleActor = protocol.ActorClass({
     let result = this.getAppliedProps(node, entries, options);
     for (let rule of result.rules) {
       // See the comment in |form| to understand this.
-      yield rule.getAuthoredCssText();
+      await rule.getAuthoredCssText();
     }
     return result;
-  }), {
+  }, {
     request: {
       node: Arg(0, "domnode"),
       inherited: Option(1, "boolean"),
@@ -975,7 +968,7 @@ var PageStyleActor = protocol.ActorClass({
    *        CSSOM.
    * @returns {StyleRuleActor} the new rule
    */
-  addNewRule: method(Task.async(function*(node, pseudoClasses,
+  addNewRule: method(async function(node, pseudoClasses,
                                           editAuthored = false) {
     let style = this.styleElement;
     let sheet = style.sheet;
@@ -1001,13 +994,13 @@ var PageStyleActor = protocol.ActorClass({
     // text if requested.
     if (editAuthored) {
       let sheetActor = this._sheetRef(sheet);
-      let {str: authoredText} = yield sheetActor.getText();
+      let {str: authoredText} = await sheetActor.getText();
       authoredText += "\n" + selector + " {\n" + "}";
-      yield sheetActor.update(authoredText, false);
+      await sheetActor.update(authoredText, false);
     }
 
     return this.getNewAppliedProps(node, sheet.cssRules.item(index));
-  }), {
+  }, {
     request: {
       node: Arg(0, "domnode"),
       pseudoClasses: Arg(1, "nullable:array:string"),
@@ -1055,17 +1048,17 @@ var PageStyleFront = protocol.FrontClass(PageStyleActor, {
     impl: "_getMatchedSelectors"
   }),
 
-  getApplied: protocol.custom(Task.async(function*(node, options={}) {
+  getApplied: protocol.custom(async function(node, options={}) {
     // If the getApplied method doesn't recreate the style cache itself, this
     // means a call to cssLogic.highlight is required before trying to access
     // the applied rules. Issue a request to getLayout if this is the case.
     // See https://bugzilla.mozilla.org/show_bug.cgi?id=1103993#c16.
     if (!this._form.traits || !this._form.traits.getAppliedCreatesStyleCache) {
-      yield this.getLayout(node);
+      await this.getLayout(node);
     }
-    let ret = yield this._getApplied(node, options);
+    let ret = await this._getApplied(node, options);
     return ret.entries;
-  }), {
+  }, {
     impl: "_getApplied"
   }),
 
@@ -1402,7 +1395,7 @@ var StyleRuleActor = protocol.ActorClass({
    * @param {String} newText the new text of the rule
    * @returns the rule with updated properties
    */
-  setRuleText: method(Task.async(function*(newText) {
+  setRuleText: method(async function(newText) {
     if (!this.canSetRuleText ||
         (this.type !== Ci.nsIDOMCSSRule.STYLE_RULE &&
          this.type !== Ci.nsIDOMCSSRule.KEYFRAME_RULE)) {
@@ -1410,17 +1403,17 @@ var StyleRuleActor = protocol.ActorClass({
     }
 
     let parentStyleSheet = this.pageStyle._sheetRef(this._parentSheet);
-    let {str: cssText} = yield parentStyleSheet.getText();
+    let {str: cssText} = await parentStyleSheet.getText();
 
     let {offset, text} = getRuleText(cssText, this.line, this.column);
     cssText = cssText.substring(0, offset) + newText +
       cssText.substring(offset + text.length);
 
     this.authoredText = newText;
-    yield parentStyleSheet.update(cssText, false, UPDATE_PRESERVING_RULES);
+    await parentStyleSheet.update(cssText, false, UPDATE_PRESERVING_RULES);
 
     return this;
-  }), {
+  }, {
     request: { modification: Arg(0, "string") },
     response: { rule: RetVal("domstylerule") }
   }),
@@ -1493,7 +1486,7 @@ var StyleRuleActor = protocol.ActorClass({
    * @returns {CSSRule}
    *        The new CSS rule added
    */
-  _addNewSelector: Task.async(function*(value, editAuthored) {
+  _addNewSelector: async function(value, editAuthored) {
     let rule = this.rawRule;
     let parentStyleSheet = this._parentSheet;
 
@@ -1508,12 +1501,12 @@ var StyleRuleActor = protocol.ActorClass({
       }
 
       let sheetActor = this.pageStyle._sheetRef(parentStyleSheet);
-      let {str: authoredText} = yield sheetActor.getText();
+      let {str: authoredText} = await sheetActor.getText();
       let [startOffset, endOffset] = getSelectorOffsets(authoredText, this.line,
                                                         this.column);
       authoredText = authoredText.substring(0, startOffset) + value +
         authoredText.substring(endOffset);
-      yield sheetActor.update(authoredText, false, UPDATE_PRESERVING_RULES);
+      await sheetActor.update(authoredText, false, UPDATE_PRESERVING_RULES);
     } else {
       let cssRules = parentStyleSheet.cssRules;
       let cssText = rule.cssText;
@@ -1537,7 +1530,7 @@ var StyleRuleActor = protocol.ActorClass({
     }
 
     return this._getRuleFromIndex(parentStyleSheet);
-  }),
+  },
 
   /**
    * Modify the current rule's selector by inserting a new rule with the new
@@ -1552,7 +1545,7 @@ var StyleRuleActor = protocol.ActorClass({
    *        Returns a boolean if the selector in the stylesheet was modified,
    *        and false otherwise
    */
-  modifySelector: method(Task.async(function*(value) {
+  modifySelector: method(async function(value) {
     if (this.type === ELEMENT_STYLE) {
       return false;
     }
@@ -1571,11 +1564,11 @@ var StyleRuleActor = protocol.ActorClass({
     // Check if the selector is valid and not the same as the original
     // selector
     if (selectorElement && this.rawRule.selectorText !== value) {
-      yield this._addNewSelector(value, false);
+      await this._addNewSelector(value, false);
       return true;
     }
     return false;
-  }), {
+  }, {
     request: { selector: Arg(0, "string") },
     response: { isModified: RetVal("boolean") },
   }),
@@ -1810,24 +1803,24 @@ var StyleRuleFront = protocol.FrontClass(StyleRuleActor, {
       });
   },
 
-  modifySelector: protocol.custom(Task.async(function*(node, value) {
+  modifySelector: protocol.custom(async function(node, value) {
     let response;
     if (this.supportsModifySelectorUnmatched) {
       // If the debugee supports adding unmatched rules (post FF41)
       if (this.canSetRuleText) {
-        response = yield this.modifySelector2(node, value, true);
+        response = await this.modifySelector2(node, value, true);
       } else {
-        response = yield this.modifySelector2(node, value);
+        response = await this.modifySelector2(node, value);
       }
     } else {
-      response = yield this._modifySelector(value);
+      response = await this._modifySelector(value);
     }
 
     if (response.ruleProps) {
       response.ruleProps = response.ruleProps.entries[0];
     }
     return response;
-  }), {
+  }, {
     impl: "_modifySelector"
   }),
 

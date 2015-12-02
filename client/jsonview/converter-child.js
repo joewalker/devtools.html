@@ -32,7 +32,7 @@ const CLASS_ID = "{d8c9acee-dec5-11e4-8c75-1681e6b88ec1}";
 
 // Localization
 var jsonViewStrings = Services.strings.createBundle(
-  "chrome://devtools/locale/jsonview.properties");
+  require("l10n/jsonview.properties"));
 
 /**
  * This object detects 'application/vnd.mozilla.json.view' content type
@@ -126,7 +126,7 @@ var Converter = Class({
         try {
           return jsonViewStrings.GetStringFromName(key);
         } catch (err) {
-          Cu.reportError(err);
+          console.error(err);
         }
       }
     };
@@ -161,7 +161,7 @@ var Converter = Class({
       headers = JSON.stringify(headers);
       outputDoc = this.toHTML(this.data, headers, this.uri);
     } catch (e) {
-      Cu.reportError("JSON Viewer ERROR " + e);
+      console.error("JSON Viewer ERROR " + e);
       outputDoc = this.toErrorPage(e, this.data, this.uri);
     }
 

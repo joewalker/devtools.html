@@ -97,7 +97,7 @@ DOMHelpers.prototype = {
 
   getFirstChild: function Helpers_getFirstChild(node)
   {
-    let SHOW_ALL = Components.interfaces.nsIDOMNodeFilter.SHOW_ALL;
+    let SHOW_ALL = Ci.nsIDOMNodeFilter.SHOW_ALL;
     this.treeWalker = node.ownerDocument.createTreeWalker(node,
       SHOW_ALL, null);
     return this.treeWalker.firstChild();

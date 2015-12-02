@@ -22,10 +22,9 @@ const Heritage = require("sdk/core/heritage");
 const URI = Cc("@mozilla.org/network/io-service;1").getService(Ci.nsIIOService);
 const XHTML_NS = "http://www.w3.org/1999/xhtml";
 const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
-const STRINGS_URI = "chrome://devtools/locale/webconsole.properties";
 
 const WebConsoleUtils = require("devtools/shared/webconsole/utils").Utils;
-const l10n = new WebConsoleUtils.l10n(STRINGS_URI);
+const l10n = new WebConsoleUtils.l10n(require("l10n/webconsole.properties"));
 
 const MAX_STRING_GRIP_LENGTH = 36;
 const ELLIPSIS = "…"; // Should be l10n'd
@@ -3212,7 +3211,7 @@ Widgets.ObjectRenderers.add({
     // the message is destroyed.
     this.message.widgets.add(this);
 
-    this.linkToInspector().then(null, Cu.reportError);
+    this.linkToInspector().catch(console.error.bind(console));
   },
 
   /**
@@ -3302,7 +3301,7 @@ Widgets.ObjectRenderers.add({
   {
     return this.linkToInspector().then(() => {
       return this.toolbox.highlighterUtils.unhighlight();
-    }).then(null, Cu.reportError);
+    }).catch(console.error.bind(console));
   },
 
   /**
@@ -3495,7 +3494,7 @@ Widgets.LongString.prototype = Heritage.extend(Widgets.BaseWidget.prototype,
   _onSubstring: function(response)
   {
     if (response.error) {
-      Cu.reportError("LongString substring failure: " + response.error);
+      console.error("LongString substring failure: " + response.error);
       return;
     }
 

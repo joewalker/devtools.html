@@ -2,7 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+const { Cc, Ci, Cu } = require("devtools/sham/chrome");
+
 const kDebuggerPrefs = [
   "devtools.debugger.remote-enabled",
   "devtools.chrome.enabled"
@@ -57,16 +58,16 @@ devtoolsCommandlineHandler.prototype = {
     try {
       remoteDebuggingEnabled = kDebuggerPrefs.every((pref) => Services.prefs.getBoolPref(pref));
     } catch (ex) {
-      Cu.reportError(ex);
+      console.error(ex);
       return false;
     }
     if (!remoteDebuggingEnabled) {
       let errorMsg = "Could not run chrome debugger! You need the following prefs " +
                      "to be set to true: " + kDebuggerPrefs.join(", ");
-      Cu.reportError(errorMsg);
+      //console.error(errorMsg);
       // Dump as well, as we're doing this from a commandline, make sure people
       // don't miss it:
-      dump(errorMsg + "\n");
+      console.log(errorMsg);
     }
     return remoteDebuggingEnabled;
   },
@@ -111,9 +112,9 @@ devtoolsCommandlineHandler.prototype = {
       let listener = debuggerServer.createListener();
       listener.portOrPath = portOrPath;
       listener.open();
-      dump("Started debugger server on " + portOrPath + "\n");
+      console.log("Started debugger server on " + portOrPath);
     } catch(e) {
-      dump("Unable to start debugger server on " + portOrPath + ": " + e);
+      console.log("Unable to start debugger server on " + portOrPath + ": " + e);
     }
 
     if (cmdLine.state == Ci.nsICommandLine.STATE_REMOTE_AUTO) {

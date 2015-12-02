@@ -1,4 +1,6 @@
-var Cu = Components.utils;
+
+const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
+
 const { FileUtils } = require("devtools/sham/fileutils");
 const { NetUtil } = require("devtools/sham/netutil");
 const promise = require("devtools/sham/promise");
@@ -7,11 +9,11 @@ const ProjectEditor = require("devtools/client/projecteditor/lib/projecteditor")
 const SAMPLE_PATH = buildTempDirectoryStructure();
 const SAMPLE_NAME = "DevTools Content Application Name";
 const SAMPLE_PROJECT_URL = "data:text/html;charset=utf-8,<body><h1>Project Overview</h1></body>";
-const SAMPLE_ICON = "chrome://devtools/skin/images/tool-debugger.svg";
+const SAMPLE_ICON = "/devtools/client/themes/images/tool-debugger.svg";
 
 /**
  * Create a workspace for working on projecteditor, available at
- * chrome://devtools/content/projecteditor/chrome/content/projecteditor-loader.xul.
+ * devtools/client/projecteditor/chrome/content/projecteditor-loader.xul.
  * This emulates the integration points that the app manager uses.
  */
 var appManagerEditor;
@@ -102,7 +104,7 @@ function buildTempDirectoryStructure() {
   FileUtils.getDir("TmpD", ["ProjectEditor", "js"], true);
 
   let htmlFile = FileUtils.getFile("TmpD", ["ProjectEditor", "index.html"]);
-  htmlFile.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
+  htmlFile.createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
   writeToFile(htmlFile, [
     '<!DOCTYPE html>',
     '<html lang="en">',
@@ -118,14 +120,14 @@ function buildTempDirectoryStructure() {
   );
 
   let readmeFile = FileUtils.getFile("TmpD", ["ProjectEditor", "README.md"]);
-  readmeFile.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
+  readmeFile.createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
   writeToFile(readmeFile, [
     '## Readme'
     ].join("\n")
   );
 
   let licenseFile = FileUtils.getFile("TmpD", ["ProjectEditor", "LICENSE"]);
-  licenseFile.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
+  licenseFile.createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
   writeToFile(licenseFile, [
    '/* This Source Code Form is subject to the terms of the Mozilla Public',
    ' * License, v. 2.0. If a copy of the MPL was not distributed with this',
@@ -134,7 +136,7 @@ function buildTempDirectoryStructure() {
   );
 
   let cssFile = FileUtils.getFile("TmpD", ["ProjectEditor", "css", "styles.css"]);
-  cssFile.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
+  cssFile.createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
   writeToFile(cssFile, [
     'body {',
     ' background: red;',
@@ -142,13 +144,13 @@ function buildTempDirectoryStructure() {
     ].join("\n")
   );
 
-  FileUtils.getFile("TmpD", ["ProjectEditor", "js", "script.js"]).createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
+  FileUtils.getFile("TmpD", ["ProjectEditor", "js", "script.js"]).createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
 
-  FileUtils.getFile("TmpD", ["ProjectEditor", "img", "fake.png"]).createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
-  FileUtils.getFile("TmpD", ["ProjectEditor", "img", "icons", "16x16.png"]).createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
-  FileUtils.getFile("TmpD", ["ProjectEditor", "img", "icons", "32x32.png"]).createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
-  FileUtils.getFile("TmpD", ["ProjectEditor", "img", "icons", "128x128.png"]).createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
-  FileUtils.getFile("TmpD", ["ProjectEditor", "img", "icons", "vector.svg"]).createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
+  FileUtils.getFile("TmpD", ["ProjectEditor", "img", "fake.png"]).createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
+  FileUtils.getFile("TmpD", ["ProjectEditor", "img", "icons", "16x16.png"]).createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
+  FileUtils.getFile("TmpD", ["ProjectEditor", "img", "icons", "32x32.png"]).createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
+  FileUtils.getFile("TmpD", ["ProjectEditor", "img", "icons", "128x128.png"]).createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
+  FileUtils.getFile("TmpD", ["ProjectEditor", "img", "icons", "vector.svg"]).createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
 
   return TEMP_DIR.path;
 }
@@ -160,8 +162,8 @@ function writeToFile(file, data) {
   let defer = promise.defer();
   var ostream = FileUtils.openSafeFileOutputStream(file)
 
-  var converter = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"].
-                  createInstance(Components.interfaces.nsIScriptableUnicodeConverter);
+  var converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].
+                  createInstance(Ci.nsIScriptableUnicodeConverter);
   converter.charset = "UTF-8";
   var istream = converter.convertToInputStream(data);
 

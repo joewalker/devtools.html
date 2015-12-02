@@ -2,10 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-var Cu = Components.utils;
+const { Cu } = require("devtools/sham/chrome");
+
 const {Services} = require("devtools/sham/services");
 const {GetAvailableAddons, ForgetAddonsList} = require("devtools/client/webide/modules/addons");
-const Strings = Services.strings.createBundle("chrome://devtools/locale/webide.properties");
+const Strings = Services.strings.createBundle(require("l10n/webide.properties"));
 
 window.addEventListener("load", function onLoad() {
   window.removeEventListener("load", onLoad);
