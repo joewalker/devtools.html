@@ -269,10 +269,6 @@ class VariablesView extends AbstractTreeItem {
     node.className = "variables-view-item";
     node.appendChild(arrowNode);
 
-    if (!this.objectActor.ownPropertyLength) {
-      arrowNode.setAttribute("invisible", "");
-    }
-
     node.style.marginLeft = (this.level * 10) + "px";
 
     node.appendChild(document.createTextNode(this.label + ": "));
