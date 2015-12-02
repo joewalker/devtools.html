@@ -11,9 +11,7 @@ const EventEmitter = require("devtools/shared/event-emitter");
 
 let { DebuggerClient } = require("devtools/shared/client/main");
 let { DebuggerTransport } = require("devtools/shared/transport/transport");
-let { Task } = require("devtools/sham/task");
 let { TargetFactory } = require("devtools/client/framework/target");
-let { InspectorFront } = require("devtools/server/actors/inspector");
 
 let WEB_SOCKET_PORT = 9000;
 
@@ -26,20 +24,20 @@ function WebConsolePanel(iframeWindow, toolbox) {
 exports.WebConsolePanel = WebConsolePanel;
 
 WebConsolePanel.prototype = {
-  open: Task.async(function*() {
+  open: async function() {
     this.controller = new Controller();
-    yield this.controller.connect();
+    await this.controller.connect();
 
     this.view = new View(this._frameWindow.document);
-    yield this.view.init();
+    await this.view.init();
 
     this.presenter = new Presenter(this.view, this.controller);
-    yield this.presenter.init();
+    await this.presenter.init();
 
     this.isReady = true;
     this.emit("ready");
     return this;
-  }),
+  },
 
   get target() {
     return this._toolbox.target;
@@ -65,7 +63,7 @@ let EventsQueue = {
     };
   },
 
-  _onInvoke: Task.async(function*() {
+  _onInvoke: async function() {
     if (this._popping) {
       return;
     }
@@ -74,27 +72,27 @@ let EventsQueue = {
 
     while (this._queue.length) {
       let [self, f, args] = this._queue.pop();
-      yield f.apply(self, args);
+      await f.apply(self, args);
     }
 
     this._popping = false;
-  })
+  }
 };
 
 function Controller() {
 }
 
 Controller.prototype = {
-  connect: function*() {
+  connect: async function() {
     let socket = new WebSocket("ws://localhost:" + this._getPort());
     let transport = new DebuggerTransport(socket);
     let client = new DebuggerClient(transport);
-    yield client.connect();
+    await client.connect();
 
-    let response = yield client.listTabs();
+    let response = await client.listTabs();
     let tab = response.tabs[response.selected];
 
-    let target = yield TargetFactory.forRemoteTab({
+    let target = await TargetFactory.forRemoteTab({
       form: tab,
       client: client,
       chrome: false,
@@ -144,7 +142,7 @@ View.prototype = {
     return this.$("#js-input");
   },
 
-  init: function*() {
+  init: async function() {
     this.inputNode.addEventListener("keypress", this._onJsInput.bind(this));
   },
 
@@ -175,12 +173,12 @@ function Presenter(view, controller) {
 }
 
 Presenter.prototype = {
-  init: function*() {
+  init: async function() {
     this.view.on("js-eval", this._onJsInput.bind(this));
   },
 
-  _onJsInput: EventsQueue.register(function*(event, value) {
-    let [error, result] = yield this.controller.eval(value);
+  _onJsInput: EventsQueue.register(async function(event, value) {
+    let [error, result] = await this.controller.eval(value);
     this.view.appendOutput(result);
     this.view.clearInput();
   })
