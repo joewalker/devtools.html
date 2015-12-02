@@ -274,7 +274,7 @@ window.setPanel = function(panel, iframe) {
   }
 }
 
-window.addEventListener("DOMContentLoaded", function(event) {
+window.addEventListener("load", function(event) {
   internationalize(document, strings);
 }, false);
 
