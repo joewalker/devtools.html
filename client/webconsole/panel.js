@@ -10,7 +10,9 @@ const EventEmitter = require("devtools/shared/event-emitter");
 
 const {DebuggerClient} = require("devtools/shared/client/main");
 const {DebuggerTransport} = require("devtools/shared/transport/transport");
+const {ObjectClient} = require("devtools/shared/client/main");
 const {TargetFactory} = require("devtools/client/framework/target");
+const {AbstractTreeItem} = require("devtools/client/webconsole/abstracttreeitem.js");
 
 const WEB_SOCKET_PORT = 9000;
 
@@ -30,6 +32,10 @@ class WebConsolePanel {
 
     this.presenter = new Presenter(this.view, this.controller);
     await this.presenter.init();
+
+    let [error, result] = await this.controller.evaluate("[1,2,3]");
+    let variablesView = this.view.inspectVariable(result);
+    VariablesViewPresenter.handle(variablesView, this.controller.debuggerClient);
 
     this.isReady = true;
     this.emit("ready");
@@ -92,6 +98,7 @@ class Controller {
       chrome: false,
     });
 
+    this.debuggerClient = client;
     this.webConsoleClient = target.activeConsole;
   }
 
@@ -142,6 +149,10 @@ class View {
     return this.$("#js-input");
   }
 
+  get sidebarNode() {
+    return this.$("#sidebar-pane");
+  }
+
   focusInput() {
     this.inputNode.focus();
   }
@@ -163,6 +174,15 @@ class View {
         break;
       }
     }
+  }
+
+  inspectVariable(objectActor) {
+    this.sidebarNode.innerHTML = "";
+
+    let vv = new VariablesView(objectActor, { label: "Scope" });
+    vv.attachTo(this.sidebarNode);
+
+    return vv;
   }
 
   _onJsInput(e) {
@@ -187,9 +207,17 @@ class Presenter {
 
   async _onJsInput(event, value) {
     let [error, result] = await this.controller.evaluate(value);
-    this.view.appendMessage(value, "user-input");
-    this.view.appendMessage(result, "eval-result");
+
     this.view.clearInput();
+
+    if (typeof result == "object" && result.type == "object") {
+      this.view.appendMessage(value, "user-input");
+      this.view.inspectVariable(result);
+      VariablesViewPresenter.handle(variablesView, this.controller.debuggerClient);
+    } else {
+      this.view.appendMessage(value, "user-input");
+      this.view.appendMessage(result, "eval-result");
+    }
   }
 }
 
@@ -234,6 +262,77 @@ class ConsoleMessageResultView extends UIElement {
 
     this.view.appendChild(messageNode);
   }
+}
+
+class VariablesView extends AbstractTreeItem {
+  constructor(objectActor, properties = {}) {
+    super(properties);
+    this.objectActor = objectActor;
+    this.label = properties.label;
+  }
+
+  _displaySelf(document, arrowNode) {
+    let node = document.createElement("div");
+    node.className = "variables-view-item";
+    node.appendChild(arrowNode);
+
+    node.style.marginLeft = (this.level * 10) + "px";
+
+    node.appendChild(document.createTextNode(this.label + ": "));
+
+    if (this.objectActor.type == "undefined") {
+      node.appendChild(document.createTextNode("undefined"));
+    } else if (this.objectActor.type == "null") {
+      node.appendChild(document.createTextNode("null"));
+    } else if ("type" in this.objectActor && "class" in this.objectActor) {
+      node.appendChild(document.createTextNode("[" + this.objectActor.type + " " + this.objectActor.class + "]"));
+    } else {
+      node.appendChild(document.createTextNode(this.objectActor.value));
+    }
+
+    return node;
+  }
+
+  async _populateSelf(children) {
+    this.emit("will-populate", this);
+
+    let ownProperties = (await this.fetchedProperties) || {};
+
+    for (let name in ownProperties) {
+      children.push(new VariablesView(ownProperties[name], {
+        parent: this,
+        level: this.level + 1,
+        label: name
+      }));
+    }
+
+  }
+}
+
+class VariablesViewPresenter {
+  constructor(view, debuggerClient) {
+    this.view = view;
+    this.debuggerClient = debuggerClient;
+
+    this._onWillPopulateVariable = EventsQueue.register(this._onWillPopulateVariable);
+    this.view.on("will-populate", this._onWillPopulateVariable.bind(this));
+  }
+
+  async _onWillPopulateVariable(event, item) {
+    let deferred = promise.defer();
+    item.fetchedProperties = deferred.promise;
+
+    let objectClient = new ObjectClient(this.debuggerClient, item.objectActor);
+    objectClient.getPrototypeAndProperties(response => {
+      deferred.resolve(response.ownProperties);
+    });
+
+    return deferred.promise;
+  }
+}
+
+VariablesViewPresenter.handle = function(view, debuggerClient) {
+  new VariablesViewPresenter(view, debuggerClient);
 }
 
 exports.WebConsolePanel = WebConsolePanel;
