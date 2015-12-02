@@ -150,9 +150,19 @@ class View {
     this.inputNode.value = "";
   }
 
-  appendOutput(result) {
-    let message = new ConsoleMessageView(this.outputNode);
-    message.render(result);
+  appendMessage(output, type) {
+    switch (type) {
+      case "user-input": {
+        let message = new ConsoleMessageInputView(this.outputNode);
+        message.render(output);
+        break;
+      }
+      case "eval-result": {
+        let message = new ConsoleMessageResultView(this.outputNode);
+        message.render(output);
+        break;
+      }
+    }
   }
 
   _onJsInput(e) {
@@ -177,7 +187,8 @@ class Presenter {
 
   async _onJsInput(event, value) {
     let [error, result] = await this.controller.evaluate(value);
-    this.view.appendOutput(result);
+    this.view.appendMessage(value, "user-input");
+    this.view.appendMessage(result, "eval-result");
     this.view.clearInput();
   }
 }
@@ -197,12 +208,26 @@ class UIElement {
   }
 }
 
-class ConsoleMessageView extends UIElement {
+class ConsoleMessageInputView extends UIElement {
   render(object) {
     this.clear();
 
-    this.view.className = ".console-message";
-    this.view.setAttribute("category", "input");
+    this.view.className = "console-message";
+    this.view.setAttribute("category", "user-input");
+
+    let messageNode = this.document.createElement("div");
+    messageNode.textContent = object;
+
+    this.view.appendChild(messageNode);
+  }
+}
+
+class ConsoleMessageResultView extends UIElement {
+  render(object) {
+    this.clear();
+
+    this.view.className = "console-message";
+    this.view.setAttribute("category", "eval-result");
 
     let messageNode = this.document.createElement("div");
     messageNode.textContent = object;
