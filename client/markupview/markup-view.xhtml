@@ -51,11 +51,17 @@
           class="more-nodes devtools-class-comment"
           save="${elt}"><!--
       --><span>${showing}</span> <!--
-      --><button href="#" onclick="${allButtonClick}">${showAll}</button>
+      --><button href="#" onclick="">${showAll}</button>
       </li>
     </ul>
 
-    <span id="template-generic" save="${elt}" class="editor"><span save="${tag}" class="tag"></span></span>
+    <span id="template-generic"
+          save="${elt}"
+          class="editor">
+          <span save="${tag}"
+          class="tag">
+          </span>
+          </span>
 
     <span id="template-element" save="${elt}" class="editor"><!--
    --><span class="open">&lt;<!--

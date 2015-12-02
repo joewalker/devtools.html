@@ -50,7 +50,7 @@ const HTML_NS = "http://www.w3.org/1999/xhtml";
  */
 function UpdateProcess(win, generator, options) {
   this.win = win;
-  this.iter = Iterator(generator);
+  this.iter = generator;
   this.onItem = options.onItem || function() {};
   this.onBatch = options.onBatch || function() {};
   this.onDone = options.onDone || function() {};
@@ -90,11 +90,14 @@ UpdateProcess.prototype = {
       this._runBatch();
       this.schedule();
     } catch(e) {
+      /*
+      // Firefox specific
       if (e instanceof StopIteration) {
         this.onBatch();
         this.onDone();
         return;
       }
+      */
       console.error(e);
       throw e;
     }
