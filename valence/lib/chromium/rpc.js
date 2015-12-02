@@ -2,10 +2,11 @@ const { Class } = require("sdk/core/heritage");
 const task = require("../util/task");
 const {EventTarget} = require("sdk/event/target");
 const {emit} = require("sdk/event/core");
-const {prefs} = require("sdk/simple-prefs");
+//const {prefs} = require("sdk/simple-prefs");
+const prefs = { logDeviceProtocolTraffic: true };
 
-const win = require("sdk/addon/window");
-const WebSocket = win.window.WebSocket;
+//const win = require("sdk/addon/window");
+//const WebSocket = win.window.WebSocket;
 
 var TabConnection = Class({
   extends: EventTarget,
@@ -21,10 +22,6 @@ var TabConnection = Class({
         if (prefs["logDeviceProtocolTraffic"]) {
           console.log("<<<<<< Connecting to " + this.json.webSocketDebuggerUrl + "...");
         }
-        // TODO: remove this workaround for issue #136 when bug 1137008 is fixed.
-        const {Cu} = require("chrome");
-        Cu.import("resource://gre/modules/Services.jsm");
-        Services.prefs.setBoolPref("network.websocket.extensions.permessage-deflate", false);
 
         let socket = new WebSocket(this.json.webSocketDebuggerUrl, []);
         this.socket = socket;
@@ -39,11 +36,6 @@ var TabConnection = Class({
           if (prefs["logDeviceProtocolTraffic"]) {
             console.log(">>>>>> Web socket closed: " + e.code + "/" + e.reason);
           }
-
-          // TODO: remove this workaround for issue #136 when bug 1137008 is fixed.
-          const {Cu} = require("chrome");
-          Cu.import("resource://gre/modules/Services.jsm");
-          Services.prefs.clearUserPref("network.websocket.extensions.permessage-deflate");
         }
         socket.oncerror = e => console.error("Error occurred in web socket: " + e);
       });

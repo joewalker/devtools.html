@@ -1,12 +1,12 @@
 const task = require("../util/task");
 
-const protocol = require("../devtools-require")("devtools/server/protocol");
+const protocol = require("devtools/server/protocol");
 const {asyncMethod, types} = require("../util/protocol-extra");
 const {Actor, Pool, method, Arg, Option, RetVal, emit} = protocol;
 const {ChromiumWalkerActor} = require("./walker");
 const {ChromiumPageStyleActor} = require("./styles");
 const {ChromiumHighlighterActor} = require("./highlighter");
-const {LongStringActor} = require("../devtools-require")("devtools/server/actors/string");
+const {LongStringActor} = require("devtools/server/actors/string");
 const {getResourceStore} = require("./resource-store");
 
 var ChromiumInspectorActor = protocol.ActorClass({
@@ -18,7 +18,7 @@ var ChromiumInspectorActor = protocol.ActorClass({
     this.rpc = tab.rpc;
   },
 
-  getWalker: asyncMethod(function(options={}) {
+  getWalker: asyncMethod(function*(options={}) {
     if (!this.walkerPromise) {
       this.walker = ChromiumWalkerActor(this.tab, options);
       this.walkerPromise = this.walker.init();

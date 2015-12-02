@@ -65,7 +65,7 @@ var CSSStore = Class({
       }
     } catch(e) {}
 
-    return [for (key of Object.keys(this.sheets)) this.sheets[key]];
+    return Object.keys(this.sheets).map(key => this.sheets[key]);
   }),
 
   get(styleSheetId) {

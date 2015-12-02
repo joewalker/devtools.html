@@ -1,13 +1,12 @@
 const object = require("sdk/util/object");
 const task = require("../util/task");
-const {URL} = require("sdk/url");
 
 const {Class} = require("sdk/core/heritage");
-const protocol = require("../devtools-require")("devtools/server/protocol");
+const protocol = require("devtools/server/protocol");
 const {asyncMethod, types} = require("../util/protocol-extra");
 const {Actor, Pool, method, Arg, Option, RetVal, emit} = protocol;
-const {LongStringActor} = require("../devtools-require")("devtools/server/actors/string");
-const {fetch} = require("../devtools-require")("devtools/shared/DevToolsUtils");
+const {LongStringActor} = require("devtools/server/actors/string");
+const {fetch} = require("devtools/shared/DevToolsUtils");
 
 const values = require("./value");
 const preview = require("./preview");

@@ -12,6 +12,7 @@ var http = require("http");
 var ecstatic = require("ecstatic");
 var express = require("express");
 var morgan = require("morgan");
+var proxy = require("express-http-proxy");
 
 var WEBPACK_CONFIG_NAME = "webpack.config.js";
 var PREFS_SRC_FILE = path.join(__dirname, "client", "preferences", "devtools.js");
@@ -85,6 +86,12 @@ gulp.task("start-proxy", function() {
 
 gulp.task("start", ["start-proxy"], function() {
   var app = express();
+
+  app.use('/chrome-tab-list/json', proxy('localhost:9222', {
+    forwardPath: function(req, res) {
+      return "/json";
+    }
+  }));
 
   app.use(morgan('dev'));
 

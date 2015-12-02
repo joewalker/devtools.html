@@ -1,10 +1,8 @@
-const {Cc, Ci, Cu} = require("chrome");
-
-const protocol = require("../devtools-require")("devtools/server/protocol");
+const protocol = require("devtools/server/protocol");
 const {Actor, method, Arg, Option, RetVal, emit} = protocol;
 const {asyncMethod, todoMethod, todoMethodSilent, types} = require("../util/protocol-extra");
-const {LongStringActor} = require("../devtools-require")("devtools/server/actors/string");
-const {CssLogic} = require("../devtools-require")("devtools/shared/styleinspector/css-logic");
+const {LongStringActor} = require("devtools/server/actors/string");
+const {CssLogic} = require("devtools/shared/styleinspector/css-logic");
 const task = require("../util/task");
 
 protocol.types.addActorType("chromium_domnode");
@@ -36,7 +34,8 @@ const PSEUDO_ID_MAPPING = [
 ];
 
 function DOMUtils() {
-  return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
+  return null;
+  //return Cc["@mozilla.org/inspector/dom-utils;1"].getService(Ci.inIDOMUtils);
 }
 
 var ChromiumPageStyleActor = protocol.ActorClass({
@@ -164,6 +163,10 @@ var ChromiumPageStyleActor = protocol.ActorClass({
   },
 
   getComputed: asyncMethod(function*(node, options) {
+    // XXX: this relies on DOMUtils, which we don't have
+    // access to here.
+    return [];
+    
     // For onlyMatched properties, we need to know all the applied rules
     // properties so we can filter computed styles.
     let matchingPropertyNames = new Set;

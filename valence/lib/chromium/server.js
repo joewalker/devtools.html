@@ -1,17 +1,13 @@
-const {CC} = require("chrome");
-
-const ServerSocket = CC("@mozilla.org/network/server-socket;1",
-                        "nsIServerSocket",
-                        "initSpecialConnection");
-
 const {Class} = require("sdk/core/heritage");
-const {prefs} = require("sdk/simple-prefs");
+//const {prefs} = require("sdk/simple-prefs");
+const prefs = { logDevToolsProtocolTraffic: true };
 const task = require("../util/task");
-const {Pool} = require("../devtools-require")("devtools/server/protocol");
-const {DebuggerTransport, LocalDebuggerTransport} = require("../devtools-require")("devtools/shared/transport/transport");
-const DevToolsUtils = require("../devtools-require")("devtools/shared/DevToolsUtils");
+const {Pool} = require("devtools/server/protocol");
+const {DebuggerTransport, LocalDebuggerTransport} = require("devtools/shared/transport/transport");
+const DevToolsUtils = require("devtools/shared/DevToolsUtils");
 const {ChromiumRootActor, requestTabs} = require("./root");
-const {when: unload} = require("sdk/system/unload");
+
+//const {when: unload} = require("sdk/system/unload");
 
 let connID = 1;
 let connections = new Set();
@@ -128,11 +124,11 @@ var Connection = Class({
   }
 });
 
-unload(() => {
-  for (let conn of connections) {
-    conn.close();
-  }
-});
+//unload(() => {
+//  for (let conn of connections) {
+//    conn.close();
+//  }
+//});
 
 exports.connect = function (url="http://localhost:9222") {
   let serverTransport = new LocalDebuggerTransport();
@@ -152,33 +148,4 @@ exports.connect = function (url="http://localhost:9222") {
 // Test if a target is likely to respond by making an early tabs request
 exports.ping = function (url="http://localhost:9222") {
   return requestTabs(url);
-}
-
-/**
- * Right now this is only useful for testing, if we use it for more than
- * that we should do all the fancy unix domain socket stuff...
- */
-exports.listen = function(port, url="http://localhost:9222") {
-  let backlog = 4;
-  let socket = new ServerSocket(port, 0, backlog);
-  socket.asyncListen(new Listener(url))
-}
-
-function Listener(url) {
-  this.url = url;
-}
-
-Listener.prototype = {
-  onSocketAccepted: DevToolsUtils.makeInfallible(function(socket, transport) {
-    let input = transport.openInputStream(0, 0, 0);
-    let output = transport.openOutputStream(0, 0, 0);
-    let dbgTransport = new DebuggerTransport(input, output);
-
-    let conn = new Connection("chromium" + connID++, dbgTransport, this.url);
-    connections.add(conn);
-    conn.root.sayHello();
-    transport.ready();
-  }, "Listener.onSocketAccepted"),
-
-  onStopListening: function(socket, status) {}
 }

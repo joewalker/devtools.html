@@ -2,7 +2,7 @@
  * Value grips.
  */
 
-const protocol = require("../devtools-require")("devtools/server/protocol");
+const protocol = require("devtools/server/protocol");
 const {Actor, method, Arg, Option, RetVal} = protocol;
 const {asyncMethod, types} = require("../util/protocol-extra");
 const {stringify} = require("./stringify");

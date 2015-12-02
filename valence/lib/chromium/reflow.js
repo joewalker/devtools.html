@@ -1,9 +1,9 @@
 const task = require("../util/task");
 
-const protocol = require("../devtools-require")("devtools/server/protocol");
+const protocol = require("devtools/server/protocol");
 const {asyncMethod, types} = require("../util/protocol-extra");
 const {Actor, Pool, method, Arg, Option, RetVal, emit} = protocol;
-const {setTimeout, clearTimeout} = require("sdk/timers");
+//const {setTimeout, clearTimeout} = require("sdk/timers");
 
 /**
  * The reflow actor groups a few of the CSS and Page domain events from the

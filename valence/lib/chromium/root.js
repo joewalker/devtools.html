@@ -3,11 +3,9 @@
  * Implementation of the root and tab actors for the Chromium debugging server.
  */
 
-const request = require("sdk/request");
-
 const task = require("../util/task");
 
-const protocol = require("../devtools-require")("devtools/server/protocol");
+const protocol = require("devtools/server/protocol");
 const {Actor, method, Arg, Option, RetVal, emit} = protocol;
 const {asyncMethod, types} = require("../util/protocol-extra");
 
@@ -27,17 +25,19 @@ types.addDictType("chromium_tablist", {
 
 function requestTabs(url) {
   return new Promise((resolve, reject) => {
-    let tabsRequest = request.Request({
-      url: url,
-      onComplete: function(response) {
-        if (response.status === 200) {
-          resolve(response.json);
+    var request = new XMLHttpRequest();
+    request.responseType = "json";
+    request.onreadystatechange = () => {
+      if (request.readyState == request.DONE) {
+        if (request.status === 200) {
+          resolve(request.response);
         } else {
-          reject(response.statusText);
+          reject(request.response);
         }
       }
-    });
-    tabsRequest.get();
+    }
+    request.open("GET", url, true);
+    request.send();
   });
 }
 
@@ -264,7 +264,7 @@ var ChromiumTabActor = protocol.ActorClass({
     }
   }),
 
-  reconfigure: method(function(options) {
+  reconfigure: method(function*(options) {
     if (typeof options.cacheDisabled !== "undefined") {
       yield this.rpc.request("Network.setCacheDisabled", {
         cacheDisabled: options.cacheDisabled

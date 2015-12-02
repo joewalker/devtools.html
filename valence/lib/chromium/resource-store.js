@@ -1,20 +1,12 @@
-var { Cu } = require("chrome");
 var { Class } = require("sdk/core/heritage");
 var { EventTarget } = require("sdk/event/target");
 var task = require("../util/task");
-Cu.importGlobalProperties(["URL"]);
 
 /**
  * Removes the hash from a URL.
  */
 function normalize(url) {
-  try {
-    url = new URL(url);
-    return url.protocol + "//" + url.host + url.pathname + url.search;
-  } catch (e) {
-    // Leave invalid URLs unchanged
-    return url;
-  }
+   return url.split("#")[0];
 }
 exports.normalize = normalize;
 

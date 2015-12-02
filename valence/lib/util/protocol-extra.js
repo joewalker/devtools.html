@@ -1,6 +1,6 @@
-let { method, types } = require("../devtools-require")("devtools/server/protocol");
+let { method, types } = require("devtools/server/protocol");
 let task = require("./task");
-let unload = require("sdk/system/unload");
+//let unload = require("sdk/system/unload");
 
 exports.asyncMethod = function(...args) {
   return method(task.async(args[0]), ...args.slice(1));
@@ -28,23 +28,23 @@ exports.todoMethodSilent = function(spec) {
 
 exports.types = Object.assign({}, types);
 
-unload.when(() => {
+//unload.when(() => {
   // Only Fx 41+ exports registeredTypes
-  if (!types.registeredTypes) {
-    return;
-  }
-  for (let name of types.registeredTypes.keys()) {
-    if (name.includes("chromium")) {
-      types.removeType(name);
-    }
-  }
-});
+//  if (!types.registeredTypes) {
+//    return;
+//  }
+//  for (let name of types.registeredTypes.keys()) {
+//    if (name.includes("chromium")) {
+//      types.removeType(name);
+//    }
+//  }
+//});
 
 exports.types.addLifetime = function(name, attribute) {
   types.addLifetime(name, attribute);
-  unload.when(() => {
-    types.removeLifetime(name);
-  });
+  //unload.when(() => {
+   // types.removeLifetime(name);
+  //});
 }
 
 exports.types.addUniformDictType = function(name, subtype) {
@@ -68,9 +68,9 @@ exports.types.addUniformDictType = function(name, subtype) {
     }
   });
 
-  unload.when(() => {
-    types.removeType(name);
-  });
+  //unload.when(() => {
+  //  types.removeType(name);
+  //});
 
   return type;
 }

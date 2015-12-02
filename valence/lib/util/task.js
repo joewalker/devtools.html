@@ -1,3 +1,2 @@
-const { Cu } = require("chrome");
-const { Task } = Cu.import("resource://gre/modules/Task.jsm", {});
+const { Task } = require("devtools/sham/task");
 module.exports = Task;

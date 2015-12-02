@@ -1,14 +1,11 @@
-const { Ci, Cu, Cc } = require("chrome");
-
 const task = require("../util/task");
 
-const protocol = require("../devtools-require")("devtools/server/protocol");
+const protocol = require("devtools/server/protocol");
 const {asyncMethod, todoMethod, todoMethodSilent, types} = require("../util/protocol-extra");
 const {Actor, Pool, method, Arg, Option, RetVal, emit} = protocol;
 const {ChromiumPageStyleActor} = require("./styles");
-const {LongStringActor} = require("../devtools-require")("devtools/server/actors/string");
+const {LongStringActor} = require("devtools/server/actors/string");
 const {getResourceStore} = require("./resource-store");
-Cu.importGlobalProperties(["URL"]);
 
 const SUMMARY_VALUE_LENGTH = 50;
 
@@ -95,11 +92,11 @@ var NodeActor = protocol.ActorClass({
   },
 
   isDocument() {
-    return this.handle.nodeType == Ci.nsIDOMNode.DOCUMENT_NODE;
+    return this.handle.nodeType == 9;// Ci.nsIDOMNode.DOCUMENT_NODE
   },
 
   isElement() {
-    return this.handle.nodeType == Ci.nsIDOMNode.ELEMENT_NODE;
+    return this.handle.nodeType == 1;//Ci.nsIDOMNode.ELEMENT_NODE;
   },
 
   getAttr(name) {
@@ -430,7 +427,7 @@ var ChromiumWalkerActor = protocol.ActorClass({
 
   init: task.async(function*() {
     if (this.root) {
-      return;
+      return this;
     }
 
     let result = yield this.rpc.request("DOM.getDocument");
@@ -688,7 +685,7 @@ var ChromiumWalkerActor = protocol.ActorClass({
     }
   },
 
-  onPageLoad: task.async(function(params) {
+  onPageLoad: task.async(function*(params) {
     if (this.hasNavigated) {
       this.hasNavigated = false;
 
@@ -713,7 +710,7 @@ var ChromiumWalkerActor = protocol.ActorClass({
 
   document: method(function(node) {
     while (node) {
-      if (node.handle.nodeType === Ci.nsIDOMNode.DOCUMENT_NODE) {
+      if (node.handle.nodeType === 9 /*Ci.nsIDOMNode.DOCUMENT_NODE*/) {
         break;
       }
       node = node.parent;
@@ -780,7 +777,7 @@ var ChromiumWalkerActor = protocol.ActorClass({
     response: {}
   }),
 
-  retainNode: asyncMethod(function(node) {
+  retainNode: asyncMethod(function*(node) {
     console.error("Chromium backend does not support retained nodes");
     // XXX: Turn this into a thrown error once the frontend is capable of
     // dealing with it.
@@ -788,7 +785,7 @@ var ChromiumWalkerActor = protocol.ActorClass({
     request: { node: Arg(0, "chromium_domnode") }
   }),
 
-  unretainNode: asyncMethod(function(node) {
+  unretainNode: asyncMethod(function*(node) {
     console.error("Chromium backend does not support retained nodes");
     // XXX: Turn this into a thrown error once the frontend is capable of
     // dealing with it.
@@ -1092,26 +1089,31 @@ var ChromiumWalkerActor = protocol.ActorClass({
       nodeId: node.handle.nodeId
     });
 
-    let DOMParser = Cc["@mozilla.org/xmlextras/domparser;1"].createInstance(
-      Ci.nsIDOMParser);
+    // XXX: ... but actually just return the outerHTML because we don't have
+    // DOMParser here.
+    return outerHTML;
 
-    let el = DOMParser.parseFromString(outerHTML, "text/html");
+
+//    let DOMParser = Cc["@mozilla.org/xmlextras/domparser;1"].createInstance(
+//      Ci.nsIDOMParser);
+
+//    let el = DOMParser.parseFromString(outerHTML, "text/html");
 
     // The HTML parser wraps the node in <html><body> except if the node is
     // <html>, <body, <head>, <title>, ...
-    let htmlGetters = {
-      "html": el => el.head.outerHTML + el.body.outerHTML,
-      "body": el => el.body.innerHTML,
-      "head": el => el.head.innerHTML,
-      "title": el => el.head.children[0].innerHTML,
-      "meta": el => el.head.children[0].innerHTML,
-      "default": el => el.body.children[0].innerHTML
-    };
+//    let htmlGetters = {
+//      "html": el => el.head.outerHTML + el.body.outerHTML,
+//      "body": el => el.body.innerHTML,
+//      "head": el => el.head.innerHTML,
+//      "title": el => el.head.children[0].innerHTML,
+//      "meta": el => el.head.children[0].innerHTML,
+//      "default": el => el.body.children[0].innerHTML
+//    };
 
-    let tagName = node.handle.nodeName.toLowerCase();
-    let htmlGetter = htmlGetters[tagName] || htmlGetters.default;
+//    let tagName = node.handle.nodeName.toLowerCase();
+//    let htmlGetter = htmlGetters[tagName] || htmlGetters.default;
 
-    return new LongStringActor(this.conn, htmlGetter(el));
+//    return new LongStringActor(this.conn, htmlGetter(el));
   }, {
     request: { node: Arg(0, "chromium_domnode") },
     response: { value: RetVal("longstring") }
@@ -1141,7 +1143,7 @@ var ChromiumWalkerActor = protocol.ActorClass({
     response: {}
   }),
 
-  removeNode: asyncMethod(function(node) {
+  removeNode: asyncMethod(function*(node) {
     yield this.rpc.request("DOM.removeNode", {
       nodeId: node.handle.nodeId
     });

@@ -1,10 +1,10 @@
 const task = require("../util/task");
 
-const protocol = require("../devtools-require")("devtools/server/protocol");
+const protocol = require("devtools/server/protocol");
 const {asyncMethod, types} = require("../util/protocol-extra");
 const {Actor, Pool, method, Arg, Option, RetVal, emit} = protocol;
 
-const timers = require("sdk/timers");
+//const timers = require("sdk/timers");
 const HIGHLIGHTER_PICKED_TIMER = 1000;
 
 var ChromiumHighlighterActor = protocol.ActorClass({
@@ -62,11 +62,11 @@ var ChromiumHighlighterActor = protocol.ActorClass({
       yield this.rpc.request("DOM.setInspectModeEnabled", {
         enabled: false
       });
-      timers.setTimeout(function() {}, HIGHLIGHTER_PICKED_TIMER);
+      setTimeout(function() {}, HIGHLIGHTER_PICKED_TIMER);
     }));
   }),
 
-  cancelPick: method(function() {
+  cancelPick: method(function*() {
     yield this.rpc.request("DOM.setInspectModeEnabled", {
       enabled: false
     });
