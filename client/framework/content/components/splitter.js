@@ -61,7 +61,6 @@ var Splitter = React.createClass({
       }
       rightPanel.style.width = newWidth + "px";
 
-      console.log("new width " + newWidth + "px");
     } else {
       var newHeight = (this.rightHeight - newPos.y);
       if (newHeight < this.props.min) {
