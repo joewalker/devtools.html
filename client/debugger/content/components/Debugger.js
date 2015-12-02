@@ -12,13 +12,14 @@ const Debugger = React.createClass({
     return dom.div(
       { className: 'vbox',
         style: {
-        width: '100%',
-        height: '100%'
-      }},
+          width: '100%',
+          height: '100%'
+        }
+      },
       Toolbar(),
       dom.div(
         { className: 'hbox',
-          style: { flex: 1 }},
+          style: { flex: 1, overflow: 'hidden' }},
         Sources(),
         Editor({
           content: 'hola'

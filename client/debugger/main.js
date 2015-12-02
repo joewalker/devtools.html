@@ -8,7 +8,7 @@ const Provider = React.createFactory(require("react-redux").Provider);
 // Used to create the Redux store
 const createStore = require("devtools/client/shared/redux/create-store")({
   getTargetClient: () => DebuggerController.client,
-  log: true
+  log: false
 });
 const {
   makeStateBroadcaster,
