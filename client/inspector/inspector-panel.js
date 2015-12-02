@@ -20,6 +20,7 @@ var InspectorSearch = require("devtools/client/inspector/inspector-search").Insp
 
 var strings = new L10N(require("l10n/inspector.properties"));
 var toolboxStrings = new L10N(require("l10n/toolbox.properties"));
+var { internationalize } = require("devtools/client/shared/l10n");
 
 const LAYOUT_CHANGE_TIMER = 250;
 
@@ -214,6 +215,8 @@ InspectorPanel.prototype = {
 
     this.setupSearchBox();
     this.setupSidebar();
+
+    internationalize(this.panelDoc, strings);
 
     return deferred.promise;
   },
@@ -1006,16 +1009,22 @@ InspectorPanel.prototype = {
       sidePane.setAttribute("width", sidePane.getBoundingClientRect().width);
     }
 
-    ViewHelpers.togglePane({
+    /*ViewHelpers.togglePane({
       visible: !isVisible,
       animated: true,
       delayed: true
-    }, sidePane);
+    }, sidePane);*/
 
     if (isVisible) {
+      sidePane.parentNode.setAttribute("hidden", true);
+      sidePane.parentNode.previousSibling.setAttribute("hidden", true);
+
       button.setAttribute("pane-collapsed", "");
       button.setAttribute("tooltiptext", strings.GetStringFromName("inspector.expandPane"));
     } else {
+      sidePane.parentNode.removeAttribute("hidden");
+      sidePane.parentNode.previousSibling.removeAttribute("hidden");
+
       button.removeAttribute("pane-collapsed");
       button.setAttribute("tooltiptext", strings.GetStringFromName("inspector.collapsePane"));
     }
@@ -1025,8 +1034,13 @@ InspectorPanel.prototype = {
    * Update the pane toggle button visibility depending on the toolbox host type.
    */
   updatePaneToggleButton: function() {
-    this._paneToggleButton.setAttribute("hidden",
-      this._toolbox.hostType === Toolbox.HostType.SIDE);
+    // XXX: when 'hidden' attribute is presentd it's hidden
+    // even if the value is false, why? FIXME
+    if (this._toolbox.hostType === Toolbox.HostType.SIDE) {
+      this._paneToggleButton.setAttribute("hidden", true);
+    } else {
+      this._paneToggleButton.removeAttribute("hidden");
+    }
   },
 
   /**
