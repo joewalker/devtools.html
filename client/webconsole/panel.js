@@ -178,6 +178,10 @@ class View {
     let variablesView = new VariablesView(objectActor, { label: "Scope" });
     variablesView.attachTo(this.sidebarNode);
     VariablesViewPresenter.handle(variablesView, debuggerClient);
+
+    setTimeout(function() {
+      variablesView.expand();
+    }, 0);
   }
 
   _onJsInput(e) {
@@ -321,10 +325,14 @@ class VariablesViewPresenter {
     item.fetchedPrototypeAndProperties = deferred.promise;
 
     let objectClient = new ObjectClient(this.debuggerClient, item.objectActor);
-    objectClient.getPrototypeAndProperties(response => {
-      deferred.resolve([response.prototype, response.ownProperties]);
-    });
 
+    try {
+      objectClient.getPrototypeAndProperties(response => {
+        deferred.resolve([response.prototype, response.ownProperties]);
+      });
+    } catch (e) {
+      deferred.reject();
+    }
     return deferred.promise;
   }
 }
