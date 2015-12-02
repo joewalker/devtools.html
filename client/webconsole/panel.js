@@ -41,7 +41,7 @@ class WebConsolePanel {
     return this._toolbox.target;
   }
 
-  destroy: function() {
+  destroy() {
   }
 
   focusInput() {
@@ -78,7 +78,7 @@ let EventsQueue = {
 };
 
 class Controller {
-  connect: async function() {
+  async connect() {
     let socket = new WebSocket("ws://localhost:" + this._getPort());
     let transport = new DebuggerTransport(socket);
     let client = new DebuggerClient(transport);
@@ -94,7 +94,7 @@ class Controller {
     });
 
     this.webConsoleClient = target.activeConsole;
-  },
+  }
 
   eval(value) {
     let deferred = promise.defer();
@@ -137,15 +137,22 @@ class View {
     return this.$("#js-input");
   }
 
-  init: async function() {
-    this.inputNode.addEventListener("keypress", this._onJsInput.bind(this));
+  async init() {
+    const onJsInput = e => {
+      if (e.keyCode == 13 /* ENTER */) {
+        let value = this.inputNode.value;
+        this.emit("js-eval", value);
+      }
+    };
+    const wrappedOnJsInput = EventsQueue.register(onJsInput);
+    this.inputNode.addEventListener("keypress", wrappedOnJsInput.bind(this));
   }
 
-  focusInput: function() {
+  focusInput() {
     this.inputNode.focus();
   }
 
-  clearInput: function() {
+  clearInput() {
     this.inputNode.value = "";
   }
 
@@ -153,30 +160,23 @@ class View {
     let message = new ConsoleMessageView(this.outputNode);
     message.render(result);
   }
-
-  _onJsInput: EventsQueue.register(function(e) {
-    if (e.keyCode == 13 /* ENTER */) {
-      let value = this.inputNode.value;
-      this.emit("js-eval", value);
-    }
-  })
 };
 
-class Presenter() {
+class Presenter {
   constructor(view, controller) {
     this.view = view;
     this.controller = controller;
   }
 
-  init: async function() {
-    this.view.on("js-eval", this._onJsInput.bind(this));
+  async init() {
+    const onJsInput = async function(event, value) {
+      let [error, result] = await this.controller.eval(value);
+      this.view.appendOutput(result);
+      this.view.clearInput();
+    };
+    const wrappedOnJsInput = EventsQueue.register(onJsInput);
+    this.view.on("js-eval", wrappedOnJsInput.bind(this));
   }
-
-  _onJsInput: EventsQueue.register(async function(event, value) {
-    let [error, result] = await this.controller.eval(value);
-    this.view.appendOutput(result);
-    this.view.clearInput();
-  })
 }
 
 class UIElement {
