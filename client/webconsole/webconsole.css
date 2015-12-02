@@ -15,11 +15,13 @@ body {
 }
 
 #sidebar-pane {
+  overflow: auto;
   width: 300px;
   border-left: 1px solid lightgray;
 }
 
 #js-output {
+  overflow: auto;
   flex: 1;
   font-size: 90%;
 }

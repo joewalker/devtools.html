@@ -33,10 +33,6 @@ class WebConsolePanel {
     this.presenter = new Presenter(this.view, this.controller);
     await this.presenter.init();
 
-    let [error, result] = await this.controller.evaluate("[1,2,3]");
-    let variablesView = this.view.inspectVariable(result);
-    VariablesViewPresenter.handle(variablesView, this.controller.debuggerClient);
-
     this.isReady = true;
     this.emit("ready");
     return this;
@@ -176,13 +172,12 @@ class View {
     }
   }
 
-  inspectVariable(objectActor) {
+  inspectVariable(objectActor, debuggerClient) {
     this.sidebarNode.innerHTML = "";
 
-    let vv = new VariablesView(objectActor, { label: "Scope" });
-    vv.attachTo(this.sidebarNode);
-
-    return vv;
+    let variablesView = new VariablesView(objectActor, { label: "Scope" });
+    variablesView.attachTo(this.sidebarNode);
+    VariablesViewPresenter.handle(variablesView, debuggerClient);
   }
 
   _onJsInput(e) {
@@ -206,16 +201,14 @@ class Presenter {
   }
 
   async _onJsInput(event, value) {
-    let [error, result] = await this.controller.evaluate(value);
-
+    this.view.appendMessage(value, "user-input");
     this.view.clearInput();
 
+    let [error, result] = await this.controller.evaluate(value);
+
     if (typeof result == "object" && result.type == "object") {
-      this.view.appendMessage(value, "user-input");
-      this.view.inspectVariable(result);
-      VariablesViewPresenter.handle(variablesView, this.controller.debuggerClient);
+      this.view.inspectVariable(result, this.controller.debuggerClient);
     } else {
-      this.view.appendMessage(value, "user-input");
       this.view.appendMessage(result, "eval-result");
     }
   }
@@ -276,6 +269,10 @@ class VariablesView extends AbstractTreeItem {
     node.className = "variables-view-item";
     node.appendChild(arrowNode);
 
+    if (!this.objectActor.ownPropertyLength) {
+      arrowNode.setAttribute("invisible", "");
+    }
+
     node.style.marginLeft = (this.level * 10) + "px";
 
     node.appendChild(document.createTextNode(this.label + ": "));
@@ -294,9 +291,9 @@ class VariablesView extends AbstractTreeItem {
   }
 
   async _populateSelf(children) {
-    this.emit("will-populate", this);
+    this.root.emit("will-populate", this);
 
-    let ownProperties = (await this.fetchedProperties) || {};
+    let [prototype, ownProperties] = (await this.fetchedPrototypeAndProperties) || {};
 
     for (let name in ownProperties) {
       children.push(new VariablesView(ownProperties[name], {
@@ -306,6 +303,11 @@ class VariablesView extends AbstractTreeItem {
       }));
     }
 
+    children.push(new VariablesView(prototype, {
+      parent: this,
+      level: this.level + 1,
+      label: "__proto__"
+    }));
   }
 }
 
@@ -315,16 +317,16 @@ class VariablesViewPresenter {
     this.debuggerClient = debuggerClient;
 
     this._onWillPopulateVariable = EventsQueue.register(this._onWillPopulateVariable);
-    this.view.on("will-populate", this._onWillPopulateVariable.bind(this));
+    this.view.root.on("will-populate", this._onWillPopulateVariable.bind(this));
   }
 
   async _onWillPopulateVariable(event, item) {
     let deferred = promise.defer();
-    item.fetchedProperties = deferred.promise;
+    item.fetchedPrototypeAndProperties = deferred.promise;
 
     let objectClient = new ObjectClient(this.debuggerClient, item.objectActor);
     objectClient.getPrototypeAndProperties(response => {
-      deferred.resolve(response.ownProperties);
+      deferred.resolve([response.prototype, response.ownProperties]);
     });
 
     return deferred.promise;
