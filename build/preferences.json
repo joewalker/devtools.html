@@ -136,14 +136,6 @@
       "promise": {
         "value": false,
         "type": 128
-      },
-      "source-maps-enabled": {
-        "value": false,
-        "type": 128
-      },
-      "auto-black-box": {
-        "value": false,
-        "type": 128
       }
     },
     "memory": {
