@@ -9,81 +9,203 @@ const promise = require("devtools/sham/promise");
 
 const EventEmitter = require("devtools/shared/event-emitter");
 
-let { DebuggerClient } = require("devtools/shared/client/main");
-let { DebuggerTransport } = require("devtools/shared/transport/transport");
-let { Task } = require("devtools/sham/task");
-let { TargetFactory } = require("devtools/client/framework/target");
-let { InspectorFront } = require("devtools/server/actors/inspector");
+const {DebuggerClient} = require("devtools/shared/client/main");
+const {DebuggerTransport} = require("devtools/shared/transport/transport");
+const {TargetFactory} = require("devtools/client/framework/target");
 
-let WEB_SOCKET_PORT = 9000;
+const WEB_SOCKET_PORT = 9000;
 
-/**
- * A DevToolPanel that controls the Web Console.
- */
-function WebConsolePanel(iframeWindow, toolbox)
-{
-  this._frameWindow = iframeWindow;
-  this._toolbox = toolbox;
-  EventEmitter.decorate(this);
-}
+class WebConsolePanel {
+  constructor(iframeWindow, toolbox) {
+    this._frameWindow = iframeWindow;
+    this._toolbox = toolbox;
+    EventEmitter.decorate(this);
+  }
 
-exports.WebConsolePanel = WebConsolePanel;
+  async open() {
+    this.controller = new Controller();
+    await this.controller.connect();
 
-WebConsolePanel.prototype = {
-  hud: null,
+    this.view = new View(this._frameWindow.document);
+    await this.view.init();
 
-  focusInput: function()
-  {
-  },
-
-  open: Task.async(function*()
-  {
-    this.webConsoleClient = yield initConnection();
-    yield initView(this._frameWindow.document);
+    this.presenter = new Presenter(this.view, this.controller);
+    await this.presenter.init();
 
     this.isReady = true;
     this.emit("ready");
     return this;
-  }),
+  }
 
-  get target()
-  {
+  get target() {
     return this._toolbox.target;
-  },
+  }
 
-  destroy: function()
-  {
-  },
-};
+  destroy() {
+  }
 
-function initView(document) {
-  let $ = selector => document.querySelectorAll(selector);
-
+  focusInput() {
+    this.view.focusInput();
+  }
 }
 
-function* initConnection() {
-  function getPort() {
+let EventsQueue = {
+  _queue: [],
+
+  register: function(f) {
+    let self = this;
+
+    return function(...args) {
+      self._queue.push([this, f, args]);
+      self._onInvoke();
+    };
+  },
+
+  _onInvoke: async function() {
+    if (this._popping) {
+      return;
+    }
+
+    this._popping = true;
+
+    while (this._queue.length) {
+      let [self, f, args] = this._queue.pop();
+      await f.apply(self, args);
+    }
+
+    this._popping = false;
+  }
+};
+
+class Controller {
+  async connect() {
+    let socket = new WebSocket("ws://localhost:" + this._getPort());
+    let transport = new DebuggerTransport(socket);
+    let client = new DebuggerClient(transport);
+    await client.connect();
+
+    let response = await client.listTabs();
+    let tab = response.tabs[response.selected];
+
+    let target = await TargetFactory.forRemoteTab({
+      form: tab,
+      client: client,
+      chrome: false,
+    });
+
+    this.webConsoleClient = target.activeConsole;
+  }
+
+  eval(value) {
+    let deferred = promise.defer();
+
+    this.webConsoleClient.evaluateJSAsync(value, response => {
+      if (response.error) {
+        deferred.reject(response);
+      }
+      else if (response.exception !== null) {
+        deferred.resolve([response]);
+      }
+      else {
+        deferred.resolve([undefined, response.result]);
+      }
+    });
+
+    return deferred.promise;
+  }
+
+  _getPort() {
     let query = location.search.match(/(\w+)=(\d+)/);
     if (query && query[1] == "wsPort") {
       return query[2];
     }
     return WEB_SOCKET_PORT;
   }
+};
 
-  let socket = new WebSocket("ws://localhost:" + getPort());
-  let transport = new DebuggerTransport(socket);
-  let client = new DebuggerClient(transport);
-  yield client.connect();
+class View {
+  constructor(document) {
+    this.$ = selector => document.querySelectorAll(selector)[0];
+    EventEmitter.decorate(this);
+  }
 
-  let response = yield client.listTabs();
-  let tab = response.tabs[response.selected];
+  get outputNode() {
+    return this.$("#js-output");
+  }
 
-  let options = {
-    form: tab,
-    client,
-    chrome: false,
-  };
-  let target = yield TargetFactory.forRemoteTab(options);
+  get inputNode() {
+    return this.$("#js-input");
+  }
 
-  return target.activeConsole;
+  async init() {
+    const onJsInput = e => {
+      if (e.keyCode == 13 /* ENTER */) {
+        let value = this.inputNode.value;
+        this.emit("js-eval", value);
+      }
+    };
+    const wrappedOnJsInput = EventsQueue.register(onJsInput);
+    this.inputNode.addEventListener("keypress", wrappedOnJsInput.bind(this));
+  }
+
+  focusInput() {
+    this.inputNode.focus();
+  }
+
+  clearInput() {
+    this.inputNode.value = "";
+  }
+
+  appendOutput(result) {
+    let message = new ConsoleMessageView(this.outputNode);
+    message.render(result);
+  }
+};
+
+class Presenter {
+  constructor(view, controller) {
+    this.view = view;
+    this.controller = controller;
+  }
+
+  async init() {
+    const onJsInput = async function(event, value) {
+      let [error, result] = await this.controller.eval(value);
+      this.view.appendOutput(result);
+      this.view.clearInput();
+    };
+    const wrappedOnJsInput = EventsQueue.register(onJsInput);
+    this.view.on("js-eval", wrappedOnJsInput.bind(this));
+  }
 }
+
+class UIElement {
+  constructor(parentNode) {
+    this.parent = parentNode;
+    this.document = parentNode.ownerDocument;
+    this.window = parentNode.ownerDocument.defaultView;
+
+    this.view = this.document.createElement("div");
+    this.parent.appendChild(this.view);
+  }
+
+  clear() {
+    this.view.innerHTML = "";
+  }
+};
+
+class ConsoleMessageView extends UIElement {
+  render(object) {
+    this.clear();
+
+    this.view.className = ".console-message";
+    this.view.setAttribute("category", "input");
+
+    let messageNode = this.document.createElement("div");
+    messageNode.textContent = object;
+
+    this.view.appendChild(messageNode);
+  }
+}
+
+exports.WebConsolePanel = WebConsolePanel;

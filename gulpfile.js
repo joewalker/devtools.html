@@ -22,32 +22,12 @@ gulp.task("build", function () {
   console.error('Use `webpack --progress --color`');
 });
 
-gulp.task("build-console", function () {
-  var tools = fs.readdirSync(path.join(__dirname, "client"));
-  var dirs = [];
-  dirs.push(path.join(__dirname, "client", "console"));
-  dirs.push(path.join(__dirname, "client", "framework"));
-  return Promise.all(dirs.map(buildDir));
-});
-
 gulp.task("watch", function() {
   console.error('Use `webpack --progress --color --watch`');
 });
 
 gulp.task("build-connect", function() {
   console.error('Use `webpack --progress --color`');
-});
-
-gulp.task("watch-console", function() {
-  var watcher = gulp.watch(["client/webconsole/*"]);
-  watcher.on("change", function(event) {
-    console.log("File " + event.path + " was " + event.type);
-    if (event.type == "changed" &&
-        event.path.indexOf("build.js") == -1) {
-      console.log("Running build");
-      gulp.run("build-console");
-    }
-  });
 });
 
 gulp.task("build-test", function (callback) {
