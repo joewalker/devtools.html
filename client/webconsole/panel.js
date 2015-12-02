@@ -9,11 +9,11 @@ const promise = require("devtools/sham/promise");
 
 const EventEmitter = require("devtools/shared/event-emitter");
 
-let { DebuggerClient } = require("devtools/shared/client/main");
-let { DebuggerTransport } = require("devtools/shared/transport/transport");
-let { TargetFactory } = require("devtools/client/framework/target");
+const {DebuggerClient} = require("devtools/shared/client/main");
+const {DebuggerTransport} = require("devtools/shared/transport/transport");
+const {TargetFactory} = require("devtools/client/framework/target");
 
-let WEB_SOCKET_PORT = 9000;
+const WEB_SOCKET_PORT = 9000;
 
 function WebConsolePanel(iframeWindow, toolbox) {
   this._frameWindow = iframeWindow;
