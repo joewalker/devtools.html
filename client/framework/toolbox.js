@@ -362,6 +362,7 @@ Toolbox.prototype = {
     await this._target.makeRemote();
     await new Promise(resolve => {
       iframe.setAttribute("src", this._URL);
+      iframe.style.height = "100%";
       iframe.setAttribute("aria-label", toolboxStrings("toolbox.label"));
       iframe.onload = resolve;
     });
@@ -1203,6 +1204,7 @@ Toolbox.prototype = {
     iframe.setAttribute("forceOwnRefreshDriver", "");
     iframe.tooltip = "aHTMLTooltip";
     iframe.style.visibility = "hidden";
+    iframe.style.width = "100%";
 
     gDevTools.emit(id + "-init", this, iframe);
     this.emit(id + "-init", iframe);
