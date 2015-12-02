@@ -85,7 +85,7 @@ const ToolboxButtons = exports.ToolboxButtons = [
  *
  */
 exports.getWSTarget = function() {
-  let socket = new WebSocket("ws://localhost:9000");
+  let socket = new WebSocket(`ws://${window.location.hostname}:9000`);
   let transport = new DebuggerTransport(socket);
   let client = new DebuggerClient(transport);
   return client.connect().then(() => {
