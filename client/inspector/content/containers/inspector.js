@@ -28,7 +28,7 @@ const vbox = createFactory("vbox");
 const box = createFactory("box");
 const tabs = createFactory("tabs");
 const tabpanels = createFactory("tabpanels");
-const { div, button } = React.DOM;
+const { div, button, input } = React.DOM;
 
 /**
  * Top level DevTools component
@@ -44,11 +44,22 @@ var Inspector = React.createClass({
     let leftPanel =
       vbox({flex: "1", class: "devtools-main-content", is: ""},
         div({id: "inspector-toolbar", className: "devtools-toolbar"},
-          button({id: "inspector-pane-toggle", className: "devtools-button" /* WHY IS THIS HIDDEN? */ })
+          div({flex: "1", is: ""}),
+          div({className: "label", id: "inspector-searchlabel"}),
+          input({id: "inspector-searchbox",
+            class: "devtools-searchinput devtools-rule-searchbox translateAttr",
+            type: "search",
+            placeholder: "inspectorSearchHTML.label3",
+            is: ""
+          }),
+          button({id: "inspector-pane-toggle",
+            className: "devtools-button"
+          })
         ),
         vbox({flex: "1", id: "markup-box", is: ""})
       );
 
+// XXX the side bar should be pure react component.
 //    let rightPanel =
 //      div({id: "inspector-sidebar", handleCtrlTab: "false",
 //        class: "devtools-sidebar-tabs", /*hidden: "true", */flex: "0", is: ""},

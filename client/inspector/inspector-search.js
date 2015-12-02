@@ -34,10 +34,16 @@ function InspectorSearch(inspector, input) {
 
   this._onKeyDown = this._onKeyDown.bind(this);
   this._onCommand = this._onCommand.bind(this);
+  this._onFocus= this._onFocus.bind(this);
+  this._onBlur = this._onBlur.bind(this);
 
   if (this.searchBox) {
     this.searchBox.addEventListener("keydown", this._onKeyDown, true);
     this.searchBox.addEventListener("command", this._onCommand, true);
+
+    this.searchBox.addEventListener("focus", this._onFocus, true);
+    this.searchBox.addEventListener("blur", this._onBlur, true);
+
     this.autocompleter = new SelectorAutocompleter(inspector, input);
   }
 
@@ -115,7 +121,15 @@ InspectorSearch.prototype = {
       this._onSearch(event.shiftKey);
       event.preventDefault();
     }
-  }
+  },
+
+  _onFocus: function() {
+    this.searchBox.setAttribute("focused", true);
+  },
+
+  _onBlur: function() {
+    this.searchBox.removeAttribute("focused");
+  },
 };
 
 /**
