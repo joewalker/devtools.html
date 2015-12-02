@@ -19,6 +19,12 @@
     border-right: 1px solid #cccccc;
 }
 
+.sources .host {
+    background-color: var(--theme-toolbar-background);
+    border: 1px solid #cccccc;
+    padding: 5px 10px;
+}
+
 .sources h4 {
     font-size: 12px;
     padding: 5px 10px;
