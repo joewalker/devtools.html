@@ -21,9 +21,17 @@ module.exports = {
       "babel-polyfill",
       path.join(__dirname, "client", "framework", "index.js"),
     ],
+    toolboxContent: [
+      "babel-polyfill",
+      path.join(__dirname, "client", "framework", "content", "main.js"),
+    ],
     inspector: [
       "babel-polyfill",
       path.join(__dirname, "client", "inspector", "inspector-panel.js"),
+    ],
+    inspectorContent: [
+      "babel-polyfill",
+      path.join(__dirname, "client", "inspector", "content", "main.js"),
     ],
     styleinspector: [
       "babel-polyfill",
