@@ -27,7 +27,7 @@
 
   <head>
 
-    <title>!!computedViewTitle;</title>
+    <title class="translateText">computedViewTitle</title>
 
     <link rel="stylesheet" href="../chrome/global/skin/global.css"  type="text/css"/>
     <link rel="stylesheet" href="../themes/common.css"  type="text/css"/>
@@ -44,14 +44,14 @@
       <div class="devtools-toolbar">
         <div class="devtools-searchbox">
           <input id="computedview-searchbox"
-                 class="devtools-searchinput devtools-rule-searchbox"
-                 type="search" placeholder="!!filterStylesPlaceholder;"/>
+                 class="devtools-searchinput devtools-rule-searchbox translateAttr"
+                 type="search" placeholder="filterStylesPlaceholder"/>
           <button id="computedview-searchinput-clear" class="devtools-searchinput-clear"></button>
         </div>
         <input id="browser-style-checkbox"
                type="checkbox"
-               class="includebrowserstyles"
-               checked="false" label="!!browserStylesLabel;"/>
+               class="includebrowserstyles translateAttr"
+               checked="false" label="browserStylesLabel"/>
       </div>
     </div>
 
@@ -60,8 +60,8 @@
     </div>
 
     <!-- When no properties are found the following block is displayed. -->
-    <div id="noResults" hidden="">
-      !!noPropertiesFound;
+    <div id="noResults" hidden="" class="traslateText">
+      noPropertiesFound
     </div>
 
   </body>

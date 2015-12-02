@@ -2,14 +2,14 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
-<!DOCTYPE html [
+<!-- <!DOCTYPE html [
 <!ENTITY % fontinspectorDTD SYSTEM "l10n/font-inspector.dtd" >
  %fontinspectorDTD;
-]>
+]> -->
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>!!title;</title>
+    <title class="translateText">title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="font-inspector.css" type="text/css"/>
     <link rel="stylesheet" href="../themes/font-inspector.css" type="text/css"/>
@@ -22,14 +22,14 @@
       <div class="devtools-toolbar preview-input-toolbar">
         <div class="devtools-searchbox">
           <input id="preview-text-input"
-                 class="devtools-textinput"
-                 placeholder="!!previewHint;"/>
+                 class="devtools-textinput translateAttr"
+                 placeholder="previewHint"/>
         </div>
       </div>
     </div>
     <div id="root">
       <ul id="all-fonts"></ul>
-      <button id="showall">!!showAllFonts;</button>
+      <button id="showall" class="translateAttr">showAllFonts</button>
     </div>
     <div id="template">
       <section class="font">
@@ -38,13 +38,13 @@
         </div>
         <div class="font-info">
           <h1 class="font-name"></h1>
-          <span class="font-is-local">!!system;</span>
-          <span class="font-is-remote">!!remote;</span>
+          <span class="font-is-local translateText">system</span>
+          <span class="font-is-remote translateText">remote</span>
           <p class="font-format-url">
             <input readonly="readonly" class="font-url"></input>
             <span class="font-format"></span>
           </p>
-          <p class="font-css">!!usedAs; "<span class="font-css-name"></span>"</p>
+          <p class="font-css translateText">usedAs<span class="font-css-name"></span>"</p>
           <pre class="font-css-code"></pre>
         </div>
       </section>

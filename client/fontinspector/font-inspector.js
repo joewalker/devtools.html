@@ -12,6 +12,12 @@ const PREVIEW_UPDATE_DELAY = 150;
 const { XPCOMUtils } = require("devtools/sham/xpcomutils");
 const { Task } = require("devtools/sham/task");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
+const { Services } = require("devtools/sham/services");
+
+// Localization
+var L10N = require("devtools/sham/l10n");
+var { internationalize } = require("devtools/client/shared/l10n");
+var strings = new L10N(require("l10n/font-inspector.properties"));
 
 function FontInspector(inspector, window)
 {
@@ -247,6 +253,10 @@ FontInspector.prototype = {
 window.setPanel = function(panel) {
   window.fontInspector = new FontInspector(panel, window);
 };
+
+window.addEventListener("DOMContentLoaded", function(event) {
+  internationalize(document, strings);
+}, false);
 
 window.onunload = function() {
   if (window.fontInspector) {

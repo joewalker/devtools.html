@@ -16,7 +16,7 @@
       xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
       class="theme-sidebar">
   <head>
-    <title>!!ruleViewTitle;</title>
+    <title class="translateText">ruleViewTitle</title>
     <link rel="stylesheet" href="ruleview.css"  type="text/css"/>
     <link rel="stylesheet" href="../chrome/global/skin/global.css"  type="text/css"/>
     <link rel="stylesheet" href="../themes/common.css"  type="text/css"/>
@@ -30,12 +30,12 @@
       <div id="ruleview-toolbar" class="devtools-toolbar">
         <div class="devtools-searchbox">
           <input id="ruleview-searchbox"
-                 class="devtools-searchinput devtools-rule-searchbox"
-                 type="search" placeholder="!!filterStylesPlaceholder;"/>
+                 class="devtools-searchinput devtools-rule-searchbox translateAttr"
+                 type="search" placeholder="filterStylesPlaceholder"/>
           <button id="ruleview-searchinput-clear" class="devtools-searchinput-clear"></button>
         </div>
-        <button id="ruleview-add-rule-button" title="!!addRuleButtonTooltip;" class="devtools-button"></button>
-        <button id="pseudo-class-panel-toggle" title="!!togglePseudoClassPanel;" class="devtools-button"></button>
+        <button id="ruleview-add-rule-button" title="addRuleButtonTooltip" class="devtools-button translateAttr"></button>
+        <button id="pseudo-class-panel-toggle" title="togglePseudoClassPanel" class="devtools-button translateAttr"></button>
       </div>
       <div id="pseudo-class-panel" class="devtools-toolbar" hidden="true" tabindex="-1">
         <label><input id="pseudo-hover-toggle" type="checkbox" value=":hover" tabindex="-1" />:hover</label>

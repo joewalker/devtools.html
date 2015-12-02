@@ -16,8 +16,15 @@ const {PREF_ORIG_SOURCES} = require("devtools/client/styleeditor/utils");
 const { gDevTools } = require("devtools/client/framework/gDevTools");
 var RuleView = require("devtools/client/styleinspector/rule-view");
 var ComputedView = require("devtools/client/styleinspector/computed-view");
+
+// Localization
+var L10N = require("devtools/sham/l10n");
+var { internationalize } = require("devtools/client/shared/l10n");
+var strings = new L10N(require("l10n/styleinspector.properties"));
+
 // this._strings = Services.strings
 // .createBundle(require("l10n/styleinspector.properties"));
+
 
 // This module doesn't currently export any symbols directly, it only
 // registers inspector tools.
@@ -266,6 +273,11 @@ window.setPanel = function(panel, iframe) {
     window.computedview = new ComputedViewTool(panel, window);
   }
 }
+
+window.addEventListener("DOMContentLoaded", function(event) {
+  internationalize(document, strings);
+}, false);
+
 window.onunload = function() {
   if (window.ruleview) {
     window.ruleview.destroy();
