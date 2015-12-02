@@ -20,7 +20,7 @@ const { GraphArea } = require("devtools/client/shared/widgets/Graphs");
 const { GraphAreaDragger } = require("devtools/client/shared/widgets/Graphs");
 
 const HTML_NS = "http://www.w3.org/1999/xhtml";
-const GRAPH_SRC = "/devtools/client/shared/widgets/graphs-frame.xhtml";
+const GRAPH_SRC = "/client/shared/widgets/graphs-frame.xhtml";
 
 const L10N = new ViewHelpers.L10N();
 

@@ -7,11 +7,11 @@
 %webConsoleDTD;
 ]>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/themes/common.css"
+<?xml-stylesheet href="/client/themes/common.css"
                  type="text/css"?>
-<?xml-stylesheet href="/devtools/client/themes/widgets.css"
+<?xml-stylesheet href="/client/themes/widgets.css"
                  type="text/css"?>
-<?xml-stylesheet href="/devtools/client/themes/webconsole.css"
+<?xml-stylesheet href="/client/themes/webconsole.css"
                  type="text/css"?>
 <?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
@@ -25,8 +25,8 @@
         persist="screenX screenY width height sizemode">
 
   <script type="application/javascript"
-          src="/devtools/client/shared/theme-switching.js"/>
-  <script type="text/javascript" src="/devtools/client/chrome/global/content/globalOverlay.js"/>
+          src="/client/shared/theme-switching.js"/>
+  <script type="text/javascript" src="/client/chrome/global/content/globalOverlay.js"/>
   <script type="text/javascript"><![CDATA[
 function goUpdateConsoleCommands() {
   goUpdateCommand("consoleCmd_openURL");

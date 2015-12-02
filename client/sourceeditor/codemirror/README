@@ -46,9 +46,9 @@ are licensed according to the contents in the LICENSE file.
 
 # Localization patches
 
-diff --git a/devtools/client/sourceeditor/codemirror/addon/search/search.js b/devtools/client/sourceeditor/codemirror/addon/search/search.js
---- a/devtools/client/sourceeditor/codemirror/addon/search/search.js
-+++ b/devtools/client/sourceeditor/codemirror/addon/search/search.js
+diff --git a/client/sourceeditor/codemirror/addon/search/search.js b/client/sourceeditor/codemirror/addon/search/search.js
+--- a/client/sourceeditor/codemirror/addon/search/search.js
++++ b/client/sourceeditor/codemirror/addon/search/search.js
 @@ -92,32 +92,47 @@
      } else {
        query = parseString(query)

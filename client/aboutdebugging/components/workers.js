@@ -13,7 +13,7 @@ const { Services } = require("devtools/sham/services");
 
 const Strings = Services.strings.createBundle(
   require("l10n/aboutdebugging.properties"));
-const WorkerIcon = "/devtools/client/themes/images/debugging-workers.svg";
+const WorkerIcon = "/client/themes/images/debugging-workers.svg";
 
 exports.WorkersComponent = React.createClass({
   displayName: "WorkersComponent",

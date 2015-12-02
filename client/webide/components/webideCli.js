@@ -34,7 +34,7 @@ webideCli.prototype = {
       win.focus();
     } else {
       win = Services.ww.openWindow(null,
-                                   "/devtools/client/webide/content/",
+                                   "/client/webide/content/",
                                    "webide",
                                    "chrome,centerscreen,resizable,dialog=no",
                                    null);

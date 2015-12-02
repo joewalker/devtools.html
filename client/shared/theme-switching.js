@@ -5,7 +5,7 @@
 "use strict";
 
 (function() {
-  const DEVTOOLS_SKIN_URL = "/devtools/client/themes/";
+  const DEVTOOLS_SKIN_URL = "/client/themes/";
   let documentElement = document.documentElement;
 
   function forceStyle() {
@@ -129,7 +129,7 @@
   // const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
   // Cu.import("resource://gre/modules/Services.jsm");
-  // Cu.import("resource://devtools/client/framework/gDevTools.jsm");
+  // Cu.import("resource://client/framework/gDevTools.jsm");
 
   let os;
   let platform = navigator.platform;

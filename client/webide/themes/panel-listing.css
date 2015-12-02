@@ -92,7 +92,7 @@ button.panel-item {
 }
 
 .refresh-icon {
-  background-image: url("/devtools/client/themes/images/reload.svg");
+  background-image: url("/client/themes/images/reload.svg");
   height: 14px;
   width: 14px;
   border: 0;

@@ -95,20 +95,20 @@ const FRAME_TYPE = {
 Cu.import("resource://gre/modules/Services.jsm");
 Cu.import("resource://gre/modules/XPCOMUtils.jsm");
 Cu.import("resource://devtools/shared/event-emitter.js");
-Cu.import("resource://devtools/client/shared/widgets/SimpleListWidget.jsm");
-Cu.import("resource://devtools/client/shared/widgets/BreadcrumbsWidget.jsm");
-Cu.import("resource://devtools/client/shared/widgets/SideMenuWidget.jsm");
-Cu.import("resource://devtools/client/shared/widgets/VariablesView.jsm");
-Cu.import("resource://devtools/client/shared/widgets/VariablesViewController.jsm");
-Cu.import("resource://devtools/client/shared/widgets/ViewHelpers.jsm");
+Cu.import("resource://client/shared/widgets/SimpleListWidget.jsm");
+Cu.import("resource://client/shared/widgets/BreadcrumbsWidget.jsm");
+Cu.import("resource://client/shared/widgets/SideMenuWidget.jsm");
+Cu.import("resource://client/shared/widgets/VariablesView.jsm");
+Cu.import("resource://client/shared/widgets/VariablesViewController.jsm");
+Cu.import("resource://client/shared/widgets/ViewHelpers.jsm");
 
 /**
  * Localization convenience methods.
  */
 var L10N = new ViewHelpers.L10N(DBG_STRINGS_URI);
 
-Cu.import("resource://devtools/client/shared/browser-loader.js");
-const require = BrowserLoader("resource://devtools/client/debugger/", this).require;
+Cu.import("resource://client/shared/browser-loader.js");
+const require = BrowserLoader("resource://client/debugger/", this).require;
 XPCOMUtils.defineConstant(this, "require", require);
 
 // React

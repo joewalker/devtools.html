@@ -7,12 +7,12 @@
 }
 
 #eyedropper-button::before {
-  background-image: url("/devtools/client/themes/images/command-eyedropper.png");
+  background-image: url("/client/themes/images/command-eyedropper.png");
 }
 
 @media (min-resolution: 1.1dppx) {
   #eyedropper-button::before {
-    background-image: url("/devtools/client/themes/images/command-eyedropper@2x.png");
+    background-image: url("/client/themes/images/command-eyedropper@2x.png");
   }
 }
 

@@ -154,7 +154,7 @@ body {
   overflow: hidden;
   position: relative;
   /* The timeline gets its background-image from a canvas element created in
-     /devtools/client/animationinspector/utils.js drawGraphElementBackground
+     /client/animationinspector/utils.js drawGraphElementBackground
      thanks to document.mozSetImageElement("time-graduations", canvas)
      This is done so that the background can be built dynamically from script */
   background-image: -moz-element(#time-graduations);
@@ -376,7 +376,7 @@ body {
 }
 
 .animation-target .node-highlighter {
-  background: url("/devtools/client/themes/images/vview-open-inspector.png") no-repeat 0 0;
+  background: url("/client/themes/images/vview-open-inspector.png") no-repeat 0 0;
   padding-left: 16px;
   margin-right: 5px;
   cursor: pointer;

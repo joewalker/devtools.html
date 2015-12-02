@@ -7,7 +7,7 @@
 const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
 //const { BrowserLoader } = require("devtools/client/shared/browser-loader");
-//const { require } = BrowserLoader("resource://devtools/client/memory/", this);
+//const { require } = BrowserLoader("resource://client/memory/", this);
 const { Task } = require("devtools/sham/task");
 const { createFactory, createElement } = require("devtools/client/shared/vendor/react");
 const ReactDOM = require("devtools/client/shared/vendor/react-dom");

@@ -3,17 +3,17 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <?xml-stylesheet href="chrome://browser/skin/" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/shared/widgets/widgets.css" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/themes/widgets.css" type="text/css"?>
-<?xml-stylesheet href="/devtools/client/themes/canvasdebugger.css" type="text/css"?>
+<?xml-stylesheet href="/client/shared/widgets/widgets.css" type="text/css"?>
+<?xml-stylesheet href="/client/themes/common.css" type="text/css"?>
+<?xml-stylesheet href="/client/themes/widgets.css" type="text/css"?>
+<?xml-stylesheet href="/client/themes/canvasdebugger.css" type="text/css"?>
 <!DOCTYPE window [
   <!ENTITY % canvasDebuggerDTD SYSTEM "l10n/canvasdebugger.dtd">
   %canvasDebuggerDTD;
 ]>
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <script src="/devtools/client/shared/theme-switching.js"/>
+  <script src="/client/shared/theme-switching.js"/>
   <script type="application/javascript" src="canvasdebugger.js"/>
   <script type="application/javascript" src="callslist.js"/>
   <script type="application/javascript" src="snapshotslist.js"/>
