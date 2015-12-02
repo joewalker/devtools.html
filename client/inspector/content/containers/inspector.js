@@ -26,6 +26,8 @@ const { GenericPanel } = createFactories(require("./generic-panel"));
 // Shortcuts
 const vbox = createFactory("vbox");
 const box = createFactory("box");
+const tabs = createFactory("tabs");
+const tabpanels = createFactory("tabpanels");
 const { div, button } = React.DOM;
 
 /**
@@ -47,16 +49,23 @@ var Inspector = React.createClass({
         vbox({flex: "1", id: "markup-box", is: ""})
       );
 
+//    let rightPanel =
+//      div({id: "inspector-sidebar", handleCtrlTab: "false",
+//        class: "devtools-sidebar-tabs", /*hidden: "true", */flex: "0", is: ""},
+//        Sidebar({},
+//          RulesPanel({className: "rules", key: "rules", title: "Rules"}),
+//          GenericPanel({className: "rules", key: "rules", title: "Computed"}),
+//          GenericPanel({className: "rules", key: "rules", title: "Fonts"}),
+//          GenericPanel({className: "rules", key: "rules", title: "Box Model"}),
+//          GenericPanel({className: "rules", key: "rules", title: "Animations"})
+//        )
+//      );
+
     let rightPanel =
       div({id: "inspector-sidebar", handleCtrlTab: "false",
-        class: "devtools-sidebar-tabs", /*hidden: "true", */flex: "0", is: ""},
-        Sidebar({},
-          RulesPanel({className: "rules", key: "rules", title: "Rules"}),
-          GenericPanel({className: "rules", key: "rules", title: "Computed"}),
-          GenericPanel({className: "rules", key: "rules", title: "Fonts"}),
-          GenericPanel({className: "rules", key: "rules", title: "Box Model"}),
-          GenericPanel({className: "rules", key: "rules", title: "Animations"})
-        )
+        class: "devtools-sidebar-tabs", hidden: "true", flex: "0", is: ""},
+        tabs({}),
+        tabpanels({flex: "1", is: ""})
       );
 
     // Render the Inspector.

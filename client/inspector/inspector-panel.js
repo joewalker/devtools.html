@@ -14,7 +14,7 @@ var L10N = require("devtools/sham/l10n");
 
 var MarkupView = require("devtools/client/markupview/markup-view").MarkupView;
 var HTMLBreadcrumbs = require("devtools/client/inspector/breadcrumbs").HTMLBreadcrumbs;
-var ToolSidebar = require("devtools/client/framework/sidebar").ToolSidebar;
+var ToolSidebar = require("devtools/client/framework/content/widgets/sidebar").ToolSidebar;
 const Toolbox = require("devtools/client/framework/toolbox");
 var InspectorSearch = require("devtools/client/inspector/inspector-search").InspectorSearch;
 
