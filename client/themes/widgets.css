@@ -10,14 +10,6 @@
 /* %define smw_itemDarkBottomBorder rgba(128,128,128,0.15) */
 /* %define smw_itemLightTopBorder rgba(128,128,128,0.15) */
 /* %define smw_itemLightBottomBorder transparent */
-.theme-dark {
-  --table-splitter-color: rgba(255,255,255,0.15);
-  --table-zebra-background: rgba(255,255,255,0.05);
-}
-.theme-light {
-  --table-splitter-color: rgba(0,0,0,0.15);
-  --table-zebra-background: rgba(0,0,0,0.05);
-}
 
 /* Generic pane helpers */
 
@@ -133,14 +125,14 @@
 .scrollbutton-down:-moz-locale-dir(rtl) {
   border-right: solid 1px rgba(255, 255, 255, .1);
   border-left: solid 1px transparent;
-  box-shadow: 3px 0px 3px -3px var(--theme-sidebar-background);
+  box-shadow: 3px 0px 3px -3px #f7f7f7;
 }
 
 .scrollbutton-down:-moz-locale-dir(ltr),
 .scrollbutton-up:-moz-locale-dir(rtl) {
   border-right: solid 1px transparent;
   border-left: solid 1px rgba(255, 255, 255, .1);
-  box-shadow: -3px 0px 3px -3px var(--theme-sidebar-background);
+  box-shadow: -3px 0px 3px -3px #f7f7f7;
 }
 
 .scrollbutton-up[disabled],
@@ -174,12 +166,12 @@
 
 #breadcrumb-separator-before,
 #breadcrumb-separator-after:after {
-  background: var(--theme-selection-background);
+  background: #4c9ed9;
 }
 
 #breadcrumb-separator-after,
 #breadcrumb-separator-before:after {
-  background: var(--theme-toolbar-background);
+  background: #f0f1f2;
 }
 
 /* This chevron arrow cannot be replicated easily in CSS, so we are using
@@ -239,7 +231,7 @@
 }
 
 .breadcrumbs-widget-item[checked] {
-  background-color: var(--theme-selection-background);
+  background-color: #4c9ed9;
 }
 
 .breadcrumbs-widget-item:first-child {
@@ -273,27 +265,27 @@
 .breadcrumbs-widget-item[checked] .breadcrumbs-widget-item-tag,
 .breadcrumbs-widget-item[checked] .breadcrumbs-widget-item-pseudo-classes,
 .breadcrumbs-widget-item[checked] .breadcrumbs-widget-item-classes {
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
 }
 
 .theme-dark .breadcrumbs-widget-item {
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
 }
 
 .theme-light .breadcrumbs-widget-item {
-  color: var(--theme-body-color);
+  color: #18191a;;
 }
 
 .breadcrumbs-widget-item-id {
-  color: var(--theme-body-color-alt);
+  color: #585959;
 }
 
 .breadcrumbs-widget-item-classes {
-  color: var(--theme-content-color1);
+  color: #292e33;
 }
 
 .breadcrumbs-widget-item-pseudo-classes {
-  color: var(--theme-highlight-lightorange);
+  color: #d97e00;
 }
 
 .theme-dark .breadcrumbs-widget-item:not([checked]):hover label {
@@ -312,8 +304,8 @@
 }
 
 .simple-list-widget-item.selected {
-  background-color: var(--theme-selection-background);
-  color: var(--theme-selection-color);
+  background-color: #4c9ed9;
+  color: #f5f7fa;
 }
 
 .theme-dark .simple-list-widget-item:not(.selected):hover {
@@ -331,7 +323,7 @@
 
 .simple-list-widget-empty-text,
 .simple-list-widget-perma-text {
-  color: var(--theme-body-color-alt);
+  color: #585959;
 }
 
 /* FastListWidget */
@@ -346,7 +338,7 @@
 }
 
 .fast-list-widget-empty-text {
-  color: var(--theme-body-color-alt);
+  color: #585959;
 }
 
 /* SideMenuWidget */
@@ -392,15 +384,15 @@
 
 .side-menu-widget-group-title {
   padding: 4px;
-  background-color: var(--theme-tab-toolbar-background);
+  background-color: #ebeced;
 }
 
 .theme-dark .side-menu-widget-group-title {
-  color: var(--theme-content-color1);
+  color: #292e33;
 }
 
 .theme-light .side-menu-widget-group-title {
-  color: var(--theme-content-color3);
+  color: #667380;
 }
 
 /* SideMenuWidget items */
@@ -415,7 +407,7 @@
 .theme-dark .side-menu-widget-item {
   border-top: 1px solid rgba(0,0,0,0.2)/*@smw_itemDarkTopBorder@*/;
   border-bottom: 1px solid rgba(128,128,128,0.15)/*@smw_itemDarkBottomBorder@*/;
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
 }
 
 .theme-dark .side-menu-widget-item:last-of-type {
@@ -425,7 +417,7 @@
 .theme-light .side-menu-widget-item {
   border-top: 1px solid rgba(128,128,128,0.15)/*@smw_itemLightTopBorder@*/;
   border-bottom: 1px solid transparent/*@smw_itemLightBottomBorder@*/;
-  color: var(--theme-body-color);
+  color: #18191a;;
 }
 
 .theme-light .side-menu-widget-item:last-of-type {
@@ -433,8 +425,8 @@
 }
 
 .side-menu-widget-item.selected {
-  background-color: var(--theme-selection-background);
-  color: var(--theme-selection-color);
+  background-color: #4c9ed9;
+  color: #f5f7fa;
 }
 
 .side-menu-widget-item-arrow {
@@ -508,17 +500,17 @@
 
 .theme-dark .side-menu-widget-item.selected .side-menu-widget-item-other {
   background-color: rgba(0,0,0,.2); /* Darken the selection by 20% */
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
 }
 
 .theme-light .side-menu-widget-item.selected .side-menu-widget-item-other {
   background-color: rgba(255,255,255,.8); /* Lighten the selection by 20% */
-  color: var(--theme-body-color);
+  color: #18191a;;
 }
 
 .side-menu-widget-item.selected .side-menu-widget-item-other.selected {
   background-color: transparent;
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
 }
 
 /* SideMenuWidget checkboxes */
@@ -537,7 +529,7 @@
 
 .theme-dark .side-menu-widget-container,
 .theme-dark .side-menu-widget-empty-text {
-  background-color: var(--theme-toolbar-background);
+  background-color: #f0f1f2;
 }
 
 .side-menu-widget-empty-text {
@@ -556,13 +548,13 @@
 }
 
 .variables-view-empty-notice {
-  color: var(--theme-body-color-alt);
+  color: #585959;
 }
 
 .variables-view-scope:focus > .title,
 .variable-or-property:focus > .title {
-  background-color: var(--theme-selection-background);
-  color: var(--theme-selection-color);
+  background-color: #4c9ed9;
+  color: #f5f7fa;
 }
 
 .variables-view-scope > .title {
@@ -973,7 +965,7 @@
 }
 
 .line-graph-widget-tooltip > [text=info] {
-  color: var(--theme-content-color1);
+  color: #292e33;
 }
 
 .line-graph-widget-tooltip > [text=value] {
@@ -982,7 +974,7 @@
 
 .line-graph-widget-tooltip > [text=metric] {
   -moz-margin-start: 1px;
-  color: var(--theme-content-color3);
+  color: #667380;
 }
 
 .theme-light .line-graph-widget-tooltip > [text=value],
@@ -1002,15 +994,15 @@
 }
 
 .line-graph-widget-tooltip[type=maximum] > [text=value] {
-  color: var(--theme-highlight-green);
+  color: #2cbb0f;
 }
 
 .line-graph-widget-tooltip[type=minimum] > [text=value] {
-  color: var(--theme-highlight-red);
+  color: #ed2655;
 }
 
 .line-graph-widget-tooltip[type=average] > [text=value] {
-  color: var(--theme-highlight-orange);
+  color: #f13c00;
 }
 
 /* Bar graph widget */
@@ -1060,16 +1052,16 @@
 }
 
 .theme-dark .generic-chart-container {
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
 }
 
 .theme-light .generic-chart-container {
-  color: var(--theme-body-color-alt);
+  color: #585959;
 }
 
 .chart-colored-blob {
-  fill: var(--theme-content-color2);
-  background: var(--theme-content-color2);
+  fill: #8fa1b2;
+  background: #8fa1b2;
 }
 
 /* Charts: Pie */
@@ -1168,7 +1160,7 @@
 }
 
 .table-chart-totals {
-  border-top: 1px solid var(--theme-body-color-alt); /* Grey foreground text */
+  border-top: 1px solid #585959; /* Grey foreground text */
 }
 
 .table-chart-summary-label {
@@ -1177,11 +1169,11 @@
 }
 
 .theme-dark .table-chart-summary-label {
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
 }
 
 .theme-light .table-chart-summary-label {
-  color: var(--theme-body-color);
+  color: #18191a;;
 }
 
 /* Table Widget */
@@ -1198,14 +1190,14 @@
 
 .table-widget-body,
 .table-widget-empty-text {
-  background-color: var(--theme-body-background);
+  background-color: #fcfcfc;
 }
 
 /* Column Headers */
 
 .table-widget-column-header,
 .table-widget-cell {
-  -moz-border-end: 1px solid var(--table-splitter-color) !important;
+  -moz-border-end: 1px solid rgba(0,0,0,0.15) !important;
 }
 
 /* Table widget column header colors are taken from netmonitor.inc.css to match
@@ -1261,16 +1253,16 @@
   -moz-user-focus: normal;
   margin-bottom: -1px !important;
   border-bottom: 1px solid transparent;
-  color: var(--theme-body-color);
+  color: #18191a;;
 }
 
 .table-widget-cell:last-child {
-  border-bottom: 1px solid var(--table-splitter-color);
+  border-bottom: 1px solid rgba(0,0,0,0.15);
 }
 
 :root:not(.filtering) .table-widget-cell:nth-child(odd):not(.theme-selected),
 .table-widget-cell:not(.theme-selected)[odd] {
-  background: var(--table-zebra-background);
+  background: rgba(0,0,0,0.05);
 }
 
 .table-widget-cell.flash-out {
@@ -1279,7 +1271,7 @@
 
 @keyframes flash-out {
   to {
-    background: var(--theme-contrast-background);
+    background: #e6b064;
   }
 }
 

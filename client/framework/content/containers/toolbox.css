@@ -17,7 +17,7 @@ vbox {
 
 /* Support for split-console. Minimal height for the Console. */
 #toolbox-notificationbox .rightPanel {
-  /*border-top: 1px solid var(--theme-splitter-color);*/
+  /*border-top: 1px solid #aaaaaa;*/
 }
 
 /* Flex should be used for toolbox-deck instead of 100% */

@@ -101,12 +101,12 @@
 
 .theme-dark .tabs,
 .theme-light .tabs {
-  background: var(--theme-tab-toolbar-background);
+  background: #ebeced;
 }
 
 .theme-dark .tabs .tabs-navigation,
 .theme-light .tabs .tabs-navigation {
-  border-bottom: 1px solid var(--theme-splitter-color);
+  border-bottom: 1px solid #aaaaaa;
   box-shadow: 0 -2px 0 rgba(170, 170, 170,.1) inset;
   height: 24px;
   font-size: 12px;
@@ -124,12 +124,12 @@
   border-style: solid;
   border-width: 0;
   -moz-border-start-width: 1px;
-  border-color: var(--theme-splitter-color);
+  border-color: #aaaaaa;
 }
 
 .theme-dark .tabs .tabs-menu-item a,
 .theme-light .tabs .tabs-menu-item a {
-  color: var(--theme-content-color1);
+  color: #292e33;
 }
 
 .theme-dark .tabs .tabs-menu-item a:hover,
@@ -150,14 +150,14 @@
 .theme-dark .tabs .tabs-menu-item.is-active:hover,
 .theme-light .tabs .tabs-menu-item.is-active,
 .theme-light .tabs .tabs-menu-item.is-active:hover {
-  background-color: var(--theme-selection-background);
+  background-color: #4c9ed9;
 }
 
 .theme-dark .tabs .tabs-menu-item.is-active a,
 .theme-dark .tabs .tabs-menu-item.is-active:hover a,
 .theme-light .tabs .tabs-menu-item.is-active a,
 .theme-light .tabs .tabs-menu-item.is-active:hover a {
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
 }
 
 .theme-dark .tabs .tabs-menu-item:active:hover,
@@ -201,5 +201,5 @@
 }
 
 .theme-dark .tabs .tab-panel {
-  background-color: var(--theme-body-background);
+  background-color: #fcfcfc;
 }

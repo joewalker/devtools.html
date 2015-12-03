@@ -58,7 +58,7 @@ body {
   /* The regions are semi-transparent, so the white background is partly
      visible */
   background-color: white;
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
   /* Make sure there is some space between the window's edges and the regions */
   margin: 0 14px 10px 14px;
   width: calc(100% - 2 * 14px);
@@ -66,7 +66,7 @@ body {
 
 .margin,
 .size {
-  color: var(--theme-highlight-blue);
+  color: #0088cc;
 }
 
 /* Regions are 3 nested elements with wide borders and outlines */
@@ -299,7 +299,7 @@ body {
 }
 
 .legend[data-box="margin"] {
-  color: var(--theme-highlight-blue);
+  color: #0088cc;
 }
 
 @media (max-height: 228px) {

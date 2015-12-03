@@ -163,7 +163,7 @@ html commandset {
   text-shadow: none;
   border: none;
   border-radius: 0;
-  color: var(--theme-body-color);
+  color: #18191a;;
   transition: background 0.05s ease-in-out;
 }
 
@@ -217,7 +217,7 @@ html commandset {
   border-width: 1px;
   border-style: solid;
   min-height: 32px;
-  background-color: var(--theme-toolbar-background);
+  background-color: #f0f1f2;
 }
 
 .devtools-toolbarbutton[standalone], .devtools-toolbarbutton[data-standalone] {
@@ -366,7 +366,7 @@ html commandset {
 .theme-dark .devtools-button:not(:empty)[checked=true],
 .theme-dark #toolbox-buttons .devtools-toolbarbutton[text-as-image][checked=true] {
   background: rgba(29, 79, 115, .7); /* Select highlight blue */
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
 }
 .theme-light .devtools-toolbarbutton:not([disabled])[label][checked=true],
 .theme-light .devtools-toolbarbutton:not([disabled])[label][open],
@@ -408,7 +408,7 @@ html commandset {
   border: 1px solid;
   border-radius: 2px;
   padding: 4px 6px;
-  border-color: var(--theme-splitter-color);
+  border-color: #aaaaaa;
 }
 
 :root[platform="mac"] .devtools-textinput,
@@ -493,7 +493,7 @@ html commandset {
 }
 
 .devtools-no-search-result {
-  border-color: var(--theme-highlight-red) !important;
+  border-color: #ed2655 !important;
 }
 
 .devtools-searchinput-clear {
@@ -608,8 +608,8 @@ html commandset {
 }
 
 .theme-light .devtools-sidebar-tabs > tabpanels {
-  background: var(--theme-sidebar-background);
-  color: var(--theme-body-color);
+  background: #f7f7f7;
+  color: #18191a;;
 }
 
 .devtools-sidebar-tabs tabs {
@@ -661,12 +661,12 @@ html commandset {
 }
 
 .devtools-sidebar-tabs tabs > tab {
-  border-image: linear-gradient(transparent 15%, var(--theme-splitter-color) 15%, var(--theme-splitter-color) 85%, transparent 85%) 1 1;
+  border-image: linear-gradient(transparent 15%, #aaaaaa 15%, #aaaaaa 85%, transparent 85%) 1 1;
 }
 
 .devtools-sidebar-tabs tabs > tab[selected],
 .devtools-sidebar-tabs tabs > tab[selected] + tab {
-  border-image: linear-gradient(var(--theme-splitter-color), var(--theme-splitter-color)) 1 1;
+  border-image: linear-gradient(#aaaaaa, #aaaaaa) 1 1;
 }
 
 .devtools-sidebar-tabs tabs > tab:first-child {
@@ -683,8 +683,8 @@ html commandset {
 
 .devtools-sidebar-tabs tabs > tab[selected],
 .devtools-sidebar-tabs tabs > tab[selected]:hover:active {
-  color: var(--theme-selection-color);
-  background: var(--theme-selection-background);
+  color: #f5f7fa;
+  background: #4c9ed9;
 }
 
 /* Toolbox - moved from toolbox.css.
@@ -926,8 +926,8 @@ html commandset {
   border: 0px solid;
   border-bottom-width: 1px;
   padding: 0;
-  background: var(--theme-tab-toolbar-background);
-  border-bottom-color: var(--theme-splitter-color);
+  background: #ebeced;
+  border-bottom-color: #aaaaaa;
 }
 
 .theme-light .devtools-tabbar {
@@ -959,13 +959,13 @@ html commandset {
 }
 
 .theme-dark .devtools-tab {
-  color: var(--theme-body-color-alt);
+  color: #585959;
   border-color: #42484f;
 }
 
 .theme-light .devtools-tab {
-  color: var(--theme-body-color);
-  border-color: var(--theme-splitter-color);
+  color: #18191a;;
+  border-color: #aaaaaa;
 }
 
 .theme-dark .devtools-tab:hover {
@@ -979,7 +979,7 @@ html commandset {
 
 .theme-dark .devtools-tab:hover:active {
   background-color: hsla(206,37%,4%,.4);
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
 }
 
 .theme-light .devtools-tab:hover:active {
@@ -987,7 +987,7 @@ html commandset {
 }
 
 .devtools-tab:not([selected])[highlighted] {
-  box-shadow: 0 2px 0 var(--theme-highlight-green) inset;
+  box-shadow: 0 2px 0 #2cbb0f inset;
 }
 
 .theme-dark .devtools-tab:not([selected])[highlighted] {
@@ -1022,8 +1022,8 @@ html commandset {
 
 .devtools-tabbar .devtools-tab[selected],
 .devtools-tabbar .devtools-tab[selected]:hover:active {
-  color: var(--theme-selection-color);
-  background-color: var(--theme-selection-background);
+  color: #f5f7fa;
+  background-color: #4c9ed9;
 }
 
 .theme-dark .devtools-tabbar .devtools-tab[selected] {
@@ -1130,12 +1130,12 @@ html commandset {
 }
 
 .devtools-horizontal-splitter {
-  border-bottom: 1px solid var(--theme-splitter-color);
+  border-bottom: 1px solid #aaaaaa;
 }
 
 .devtools-side-splitter {
-  -moz-border-end: 1px solid var(--theme-splitter-color);
-  border-color: var(--theme-splitter-color); /* Needed for responsive container at low width. */
+  -moz-border-end: 1px solid #aaaaaa;
+  border-color: #aaaaaa; /* Needed for responsive container at low width. */
 }
 
 /* Throbbers */

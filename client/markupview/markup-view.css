@@ -96,11 +96,11 @@ body.dragging .tag-line {
 }
 
 .tag-line.drag-target::before {
-  border-top: 2px solid var(--theme-content-color2);
+  border-top: 2px solid #8fa1b2;
 }
 
 .tag-line.drop-target::before {
-  border-top: 2px solid var(--theme-contrast-background);
+  border-top: 2px solid #e6b064;
 }
 
 /* In case the indicator is put on the closing .tag-line, the indentation level

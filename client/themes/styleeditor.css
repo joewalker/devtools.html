@@ -14,24 +14,24 @@
 
 .theme-dark .stylesheet-title,
 .theme-dark .stylesheet-name {
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
 }
 
 .theme-dark .stylesheet-rule-count,
 .theme-dark .stylesheet-linked-file,
 .theme-dark .stylesheet-saveButton {
-  color: var(--theme-body-color-alt);
+  color: #585959;
 }
 
 .theme-light .stylesheet-title,
 .theme-light .stylesheet-name {
-  color: var(--theme-body-color-alt);
+  color: #585959;
 }
 
 .theme-light .stylesheet-rule-count,
 .theme-light .stylesheet-linked-file,
 .theme-light .stylesheet-saveButton {
-  color: var(--theme-body-color);
+  color: #18191a;;
 }
 
 .stylesheet-saveButton {
@@ -44,7 +44,7 @@
 .theme-light .splitview-active .stylesheet-rule-count,
 .theme-light .splitview-active .stylesheet-linked-file,
 .theme-light .splitview-active .stylesheet-saveButton {
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
 }
 
 .splitview-nav:focus {
@@ -67,7 +67,7 @@
 .stylesheet-sidebar {
   max-width: 400px;
   min-width: 100px;
-  border-color: var(--theme-splitter-color);
+  border-color: #aaaaaa;
 }
 
 .theme-light .media-rule-label {
@@ -199,7 +199,7 @@ h3 {
 }
 
 .csscoverage-report {
-  background-color: var(--theme-toolbar-background);
+  background-color: #f0f1f2;
 }
 
 .csscoverage-report-container {
@@ -269,13 +269,13 @@ h3 {
 }
 
 .chart-colored-blob[name=Used] {
-  fill: var(--theme-highlight-green);
-  background: var(--theme-highlight-green);
+  fill: #2cbb0f;
+  background: #2cbb0f;
 }
 
 .chart-colored-blob[name=Unused] {
-  fill: var(--theme-highlight-lightorange);
-  background: var(--theme-highlight-lightorange);
+  fill: #d97e00;
+  background: #d97e00;
 }
 
 /* Undo 'largest' customization */

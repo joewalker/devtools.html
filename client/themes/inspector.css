@@ -141,8 +141,8 @@
   border-radius: 3px;
   padding: 2px;
   -moz-margin-start: 5px;
-  background-color: var(--theme-body-color-alt);
-  color: var(--theme-toolbar-background);
+  background-color: #585959;
+  color: #f0f1f2;
 }
 
 .event-tooltip-attributes {

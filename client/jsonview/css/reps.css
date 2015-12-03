@@ -175,19 +175,19 @@
 
 .theme-dark .domLabel,
 .theme-light .domLabel {
-  color: var(--theme-highlight-bluegrey);
+  color: #0072ab;
 }
 
 .theme-dark .objectBox-array .length,
 .theme-light .objectBox-array .length,
 .theme-dark .objectBox-number,
 .theme-light .objectBox-number {
-  color: var(--theme-highlight-green);
+  color: #2cbb0f;
 }
 
 .theme-dark .objectBox-string,
 .theme-light .objectBox-string {
-  color: var(--theme-highlight-orange);
+  color: #f13c00;
 }
 
 .theme-dark .objectBox-null,
@@ -195,19 +195,19 @@
 .theme-light .objectBox-null,
 .theme-light .objectBox-undefined {
   font-style: normal;
-  color: var(--theme-comment);
+  color: #757873;
 }
 
 .theme-dark .objectBox-array,
 .theme-light .objectBox-array {
-  color: var(--theme-body-color);
+  color: #18191a;;
 }
 
 .theme-dark .objectBox-object,
 .theme-light .objectBox-object {
   font-family: Lucida Grande, sans-serif;
   font-weight: normal;
-  color: var(--theme-highlight-bluegrey);
+  color: #0072ab;
   white-space: pre-wrap;
 }
 
@@ -215,5 +215,5 @@
 .theme-light .caption {
   font-family: Lucida Grande, Tahoma, sans-serif;
   font-weight: normal;
-  color: var(--theme-highlight-bluegrey);
+  color: #0072ab;
 }

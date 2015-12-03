@@ -6,8 +6,8 @@
 
 .notice-container {
   margin-top: -50vh;
-  background-color: var(--theme-toolbar-background);
-  color: var(--theme-body-color-alt);
+  background-color: #f0f1f2;
+  color: #585959;
 }
 
 #reload-notice {
@@ -83,14 +83,14 @@
 }
 
 .editor-label {
-  background: var(--theme-toolbar-background);
-  border-color: var(--theme-splitter-color);
-  color: var(--theme-body-color-alt);
+  background: #f0f1f2;
+  border-color: #aaaaaa;
+  color: #585959;
 }
 
 .editor-label[selected] {
-  background-color: var(--theme-selection-background);
-  color: var(--theme-selection-color);
+  background-color: #4c9ed9;
+  color: #f5f7fa;
 }
 
 /* Responsive sidebar */

@@ -21,7 +21,7 @@
 }
 
 .theme-dark .splitview-nav-container {
-  background-color: var(--theme-toolbar-background);
+  background-color: #f0f1f2;
 }
 
 .splitview-nav {

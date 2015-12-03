@@ -19,7 +19,7 @@
    Center vertically with the 1.4em line height on .tag-line */
 .child.pseudoclass-locked::before {
   content: "";
-  background: var(--theme-highlight-lightorange);
+  background: #d97e00;
   border-radius: 50%;
   width: .8em;
   height: .8em;
@@ -39,7 +39,7 @@
 .theme-selected ~ .editor .theme-fg-color5,
 .theme-selected ~ .editor .theme-fg-color6,
 .theme-selected ~ .editor .theme-fg-color7 {
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
 }
 
 /* In case a node isn't displayed in the page, we fade the syntax highlighting */
@@ -64,6 +64,6 @@
 }
 
 .markupview-events {
-  background-color: var(--theme-body-color-alt);
-  color: var(--theme-body-background);
+  background-color: #585959;
+  color: #fcfcfc;
 }
