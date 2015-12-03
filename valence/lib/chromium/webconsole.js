@@ -117,7 +117,7 @@ var ChromiumConsoleActor = protocol.ActorClass({
   },
 
   toGenericEvent: function(msg) {
-    return payload = {
+    return {
       errorMessage: msg.text,
       sourceName: msg.url,
       lineText: "",
