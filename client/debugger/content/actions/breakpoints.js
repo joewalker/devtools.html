@@ -40,6 +40,7 @@ function _getOrCreateBreakpoint(state, location, condition) {
   return getBreakpoint(state, location) || { location, condition };
 }
 
+let fakeBpId = 1;
 function addBreakpoint(location, condition) {
   return (dispatch, getState) => {
     if (_breakpointExists(getState(), location)) {
@@ -64,7 +65,7 @@ function addBreakpoint(location, condition) {
         let { isPending, actualLocation } = response;
 
         // Save the client instance
-        setBreakpointClient(bpClient.actor, bpClient);
+        // setBreakpointClient(bpClient.actor, bpClient);
 
         return {
           //text: DebuggerView.editor.getText(bp.location.line - 1).trim(),
@@ -74,7 +75,7 @@ function addBreakpoint(location, condition) {
           // the original requested placement for the breakpoint wasn't
           // accepted.
           actualLocation: isPending ? null : actualLocation,
-          actor: bpClient.actor
+          actor: 'bp' + (fakeBpId++)
         };
       })
     });

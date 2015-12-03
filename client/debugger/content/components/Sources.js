@@ -14,10 +14,12 @@ const Sources = React.createClass({
       if(!source.url) {
         return;
       }
-      const location = parseURL(source.url);
+      const url = source.url.replace(/^file:\/\//, 'http://app');
+      const location = parseURL(url);
+      const group = location.host || 'Internal';
 
-      if(!groups[location.host]) {
-        groups[location.host] = [];
+      if(!groups[group]) {
+        groups[group] = [];
       }
       let label;
       if(location.pathname !== '/') {
@@ -27,7 +29,7 @@ const Sources = React.createClass({
       else {
         label = location.pathname;
       }
-      groups[location.host].push({ source, label });
+      groups[group].push({ source, label });
     });
     return groups;
   },
