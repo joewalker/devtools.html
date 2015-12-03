@@ -328,32 +328,24 @@ div.CodeMirror span.eval-text {
 
 /* Overring panel arrow images to fit with our light and dark themes */
 
-.theme-tooltip-panel .panel-arrow {
-  --arrow-margin: -4px;
-}
-
-:root[platform="win"] .theme-tooltip-panel .panel-arrow {
-  --arrow-margin: -7px;
-}
-
 .theme-tooltip-panel .panel-arrow[side="top"] {
   list-style-image: url("/devtools/client/themes/tooltip/arrow-vertical-light.png");
-  margin-bottom: var(--arrow-margin);
+  margin-bottom: -7px;
 }
 
 .theme-tooltip-panel .panel-arrow[side="bottom"] {
   list-style-image: url("/devtools/client/themes/tooltip/arrow-vertical-light.png");
-  margin-top: var(--arrow-margin);
+  margin-top: -7px;
 }
 
 .theme-tooltip-panel .panel-arrow[side="left"] {
   list-style-image: url("/devtools/client/themes/tooltip/arrow-horizontal-light.png");
-  margin-right: var(--arrow-margin);
+  margin-right: -7px;
 }
 
 .theme-tooltip-panel .panel-arrow[side="right"] {
   list-style-image: url("/devtools/client/themes/tooltip/arrow-horizontal-light.png");
-  margin-left: var(--arrow-margin);
+  margin-left: -7px;
 }
 
 @media (min-resolution: 1.1dppx) {

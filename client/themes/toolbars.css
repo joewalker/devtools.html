@@ -4,19 +4,21 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 /* CSS Variables specific to the devtools toolbar that aren't defined by the themes */
-.theme-light {
+:root {
   --searchbox-background-color: #ffee99;
   --searchbox-border-color: #ffbf00;
   --searcbox-no-match-background-color: #ffe5e5;
   --searcbox-no-match-border-color: #e52e2e;
 }
 
+/*
 .theme-dark {
   --searchbox-background-color: #4d4222;
   --searchbox-border-color: #d99f2b;
   --searcbox-no-match-background-color: #402325;
   --searcbox-no-match-border-color: #cc3d3d;
 }
+*/
 
 /* LAYOUT */
 
