@@ -6,12 +6,13 @@
 
 const {Cc, Ci, Cu} = require("devtools/sham/chrome");
 const promise = require("devtools/sham/promise");
-
 const EventEmitter = require("devtools/shared/event-emitter");
 
 const {DebuggerClient} = require("devtools/shared/client/main");
 const {DebuggerTransport} = require("devtools/shared/transport/transport");
+const {ObjectClient} = require("devtools/shared/client/main");
 const {TargetFactory} = require("devtools/client/framework/target");
+const {AbstractTreeItem} = require("devtools/client/webconsole/abstracttreeitem.js");
 
 const WEB_SOCKET_PORT = 9000;
 
@@ -93,10 +94,11 @@ class Controller {
       chrome: false,
     });
 
+    this.debuggerClient = client;
     this.webConsoleClient = target.activeConsole;
   }
 
-  eval(value) {
+  evaluate(value) {
     let deferred = promise.defer();
 
     this.webConsoleClient.evaluateJSAsync(value, response => {
@@ -121,12 +123,18 @@ class Controller {
     }
     return WEB_SOCKET_PORT;
   }
-};
+}
 
 class View {
   constructor(document) {
     this.$ = selector => document.querySelectorAll(selector)[0];
     EventEmitter.decorate(this);
+
+    this._onJsInput = EventsQueue.register(this._onJsInput);
+  }
+
+  init() {
+    this.inputNode.addEventListener("keypress", this._onJsInput.bind(this));
   }
 
   get outputNode() {
@@ -137,15 +145,8 @@ class View {
     return this.$("#js-input");
   }
 
-  async init() {
-    const onJsInput = e => {
-      if (e.keyCode == 13 /* ENTER */) {
-        let value = this.inputNode.value;
-        this.emit("js-eval", value);
-      }
-    };
-    const wrappedOnJsInput = EventsQueue.register(onJsInput);
-    this.inputNode.addEventListener("keypress", wrappedOnJsInput.bind(this));
+  get sidebarNode() {
+    return this.$("#sidebar-pane");
   }
 
   focusInput() {
@@ -156,26 +157,64 @@ class View {
     this.inputNode.value = "";
   }
 
-  appendOutput(result) {
-    let message = new ConsoleMessageView(this.outputNode);
-    message.render(result);
+  appendMessage(output, type) {
+    switch (type) {
+      case "user-input": {
+        let message = new ConsoleMessageInputView(this.outputNode);
+        message.render(output);
+        break;
+      }
+      case "eval-result": {
+        let message = new ConsoleMessageResultView(this.outputNode);
+        message.render(output);
+        break;
+      }
+    }
   }
-};
+
+  inspectVariable(objectActor, debuggerClient) {
+    this.sidebarNode.innerHTML = "";
+
+    let variablesView = new VariablesView(objectActor, { label: "Scope" });
+    variablesView.attachTo(this.sidebarNode);
+    VariablesViewPresenter.handle(variablesView, debuggerClient);
+
+    setTimeout(function() {
+      variablesView.expand();
+    }, 0);
+  }
+
+  _onJsInput(e) {
+    if (e.keyCode == 13 /* ENTER */) {
+      let value = this.inputNode.value;
+      this.emit("js-eval", value);
+    }
+  }
+}
 
 class Presenter {
   constructor(view, controller) {
     this.view = view;
     this.controller = controller;
+
+    this._onJsInput = EventsQueue.register(this._onJsInput);
   }
 
-  async init() {
-    const onJsInput = async function(event, value) {
-      let [error, result] = await this.controller.eval(value);
-      this.view.appendOutput(result);
-      this.view.clearInput();
-    };
-    const wrappedOnJsInput = EventsQueue.register(onJsInput);
-    this.view.on("js-eval", wrappedOnJsInput.bind(this));
+  init() {
+    this.view.on("js-eval", this._onJsInput.bind(this));
+  }
+
+  async _onJsInput(event, value) {
+    this.view.appendMessage(value, "user-input");
+    this.view.clearInput();
+
+    let [error, result] = await this.controller.evaluate(value);
+
+    if (typeof result == "object" && result.type == "object") {
+      this.view.inspectVariable(result, this.controller.debuggerClient);
+    } else {
+      this.view.appendMessage(result, "eval-result");
+    }
   }
 }
 
@@ -192,20 +231,114 @@ class UIElement {
   clear() {
     this.view.innerHTML = "";
   }
-};
+}
 
-class ConsoleMessageView extends UIElement {
+class ConsoleMessageInputView extends UIElement {
   render(object) {
     this.clear();
 
-    this.view.className = ".console-message";
-    this.view.setAttribute("category", "input");
+    this.view.className = "console-message";
+    this.view.setAttribute("category", "user-input");
 
     let messageNode = this.document.createElement("div");
     messageNode.textContent = object;
 
     this.view.appendChild(messageNode);
   }
+}
+
+class ConsoleMessageResultView extends UIElement {
+  render(object) {
+    this.clear();
+
+    this.view.className = "console-message";
+    this.view.setAttribute("category", "eval-result");
+
+    let messageNode = this.document.createElement("div");
+    messageNode.textContent = object;
+
+    this.view.appendChild(messageNode);
+  }
+}
+
+class VariablesView extends AbstractTreeItem {
+  constructor(objectActor, properties = {}) {
+    super(properties);
+    this.objectActor = objectActor;
+    this.label = properties.label;
+  }
+
+  _displaySelf(document, arrowNode) {
+    let node = document.createElement("div");
+    node.className = "variables-view-item";
+    node.appendChild(arrowNode);
+
+    node.style.marginLeft = (this.level * 10) + "px";
+
+    node.appendChild(document.createTextNode(this.label + ": "));
+
+    if (this.objectActor.type == "undefined") {
+      node.appendChild(document.createTextNode("undefined"));
+    } else if (this.objectActor.type == "null") {
+      node.appendChild(document.createTextNode("null"));
+    } else if ("type" in this.objectActor && "class" in this.objectActor) {
+      node.appendChild(document.createTextNode("[" + this.objectActor.type + " " + this.objectActor.class + "]"));
+    } else {
+      node.appendChild(document.createTextNode(this.objectActor.value));
+    }
+
+    return node;
+  }
+
+  async _populateSelf(children) {
+    this.root.emit("will-populate", this);
+
+    let [prototype, ownProperties] = (await this.fetchedPrototypeAndProperties) || {};
+
+    for (let name in ownProperties) {
+      children.push(new VariablesView(ownProperties[name], {
+        parent: this,
+        level: this.level + 1,
+        label: name
+      }));
+    }
+
+    children.push(new VariablesView(prototype, {
+      parent: this,
+      level: this.level + 1,
+      label: "__proto__"
+    }));
+  }
+}
+
+class VariablesViewPresenter {
+  constructor(view, debuggerClient) {
+    this.view = view;
+    this.debuggerClient = debuggerClient;
+
+    this._onWillPopulateVariable = EventsQueue.register(this._onWillPopulateVariable);
+    this.view.root.on("will-populate", this._onWillPopulateVariable.bind(this));
+  }
+
+  async _onWillPopulateVariable(event, item) {
+    let deferred = promise.defer();
+    item.fetchedPrototypeAndProperties = deferred.promise;
+
+    let objectClient = new ObjectClient(this.debuggerClient, item.objectActor);
+
+    try {
+      objectClient.getPrototypeAndProperties(response => {
+        deferred.resolve([response.prototype, response.ownProperties]);
+      });
+    } catch (e) {
+      deferred.reject();
+    }
+    return deferred.promise;
+  }
+}
+
+VariablesViewPresenter.handle = function(view, debuggerClient) {
+  new VariablesViewPresenter(view, debuggerClient);
 }
 
 exports.WebConsolePanel = WebConsolePanel;

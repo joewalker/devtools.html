@@ -85,8 +85,19 @@ const ToolboxButtons = exports.ToolboxButtons = [
  *
  */
 exports.getWSTarget = function() {
-  let socket = new WebSocket(`ws://${window.location.hostname}:9000`);
-  let transport = new DebuggerTransport(socket);
+  let transport;
+  if (false) {
+    // Connect to chromium.  Need to fetch the tab list since it's over
+    // http and not same-origin, but will connect directly to the web
+    // socket.
+    let Valence = require("devtools/valence/lib/chromium/server");
+    transport = Valence.connect(`http://${window.location.hostname}:8081/chrome-tab-list`);
+  } else {
+    // Connect to firefox through the websocket proxy.
+    let socket = new WebSocket(`ws://${window.location.hostname}:9000`);
+    transport = new DebuggerTransport(socket);
+  }
+
   let client = new DebuggerClient(transport);
   return client.connect().then(() => {
     return client.listTabs().then(response => {

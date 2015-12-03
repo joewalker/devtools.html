@@ -13,13 +13,18 @@ var {Class} = require("sdk/core/heritage");
 var protocol = require("devtools/server/protocol");
 var {method, Arg, Option, RetVal} = protocol;
 
+/** Originally from DebuggerServer */
+const LONG_STRING_LENGTH = 200000;
+const LONG_STRING_INITIAL_LENGTH = 100;
+const LONG_STRING_READ_LENGTH = 65 * 1024;
+
 exports.LongStringActor = protocol.ActorClass({
   typeName: "longstractor",
 
   initialize: function(conn, str) {
     protocol.Actor.prototype.initialize.call(this, conn);
     this.str = str;
-    this.short = (this.str.length < DebuggerServer.LONG_STRING_LENGTH);
+    this.short = (this.str.length < LONG_STRING_LENGTH);
   },
 
   destroy: function() {
@@ -35,7 +40,7 @@ exports.LongStringActor = protocol.ActorClass({
       type: "longString",
       actor: this.actorID,
       length: this.str.length,
-      initial: this.str.substring(0, DebuggerServer.LONG_STRING_INITIAL_LENGTH)
+      initial: this.str.substring(0, LONG_STRING_INITIAL_LENGTH)
     }
   },
 
@@ -103,7 +108,7 @@ exports.LongStringFront = protocol.FrontClass(exports.LongStringActor, {
           return promise.resolve(thusFar);
         else {
           return this.substring(thusFar.length,
-                                thusFar.length + DebuggerServer.LONG_STRING_READ_LENGTH)
+                                thusFar.length + LONG_STRING_READ_LENGTH)
             .then((next) => promiseRest(thusFar + next));
         }
       }

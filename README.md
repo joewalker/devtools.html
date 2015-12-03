@@ -41,16 +41,14 @@ directory.
 
 ## Connecting to Chrome
 
-1. Allow unsigned add-ons in Firefox: set `xpinstall.signatures.required` to `false` in `about:config`
-2. Install the [special Valence build](http://people.mozilla.org/~rstinnett/devtools.html/valence/) for your OS
-  * If you already had Valence installed previously, you should restart Firefox before proceeding, something's not currently unloading in the add-on
-3. Start Chrome with at least `--remote-debugging-port=9222` CLI arg
+1. Start Chrome with at least `--remote-debugging-port=9222` CLI arg
   * Full OS X command: `/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --remote-debugging-port=9222`
   * More details in [Valence README](https://github.com/mozilla/valence/blob/master/README.md#debugging-chrome-on-desktop)
-4. Ensure some page is open in Chrome for inspecting
-5. Run `gulp start`
-6. Navigate to `http://localhost:8081/?wsPort=9001` to run the connection test tool
-7. If you want to test the toolbox, you'll need to change the port in getWSTarget in toolbox.js to 9001.
+2. Ensure some page is open in Chrome for inspecting
+3. Run `gulp start`
+4. Navigate to `http://localhost:8081/?wsPort=9001` to run the connection test tool, or the toolbox
+   at `http://localhost:8081/client/framework/toolbox-wrapper.html`
+5. If you view the toolbox, you'll need to change the `if` statement in `getWSTarget` in `client/framework/toolbox.js` to true.
 
 ## Connecting to Servo
 

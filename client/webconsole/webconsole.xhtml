@@ -2,58 +2,26 @@
 <!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-<?xml-stylesheet href="../shared/widgets/widgets.css" type="text/css"?>
-<?xml-stylesheet href="../themes/widgets.css" type="text/css"?>
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-      class="theme-body">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <script type="application/javascript;version=1.8"
-            src="../shared/theme-switching.js"/>
-    <style>
-      html, body {
-        height: 100%;
-      }
-
-      body {
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-      }
-
-      #js-output {
-        flex: 1;
-      }
-
-      #js-input {
-        font-family: monospace;
-        font-size: 120%;
-        padding: 4px;
-        padding-left: 18px;
-        background-image: -moz-image-rect(url('../themes/images/commandline-icon@2x.png'), 0, 64, 32, 32);
-        background-size: 16px;
-        background-repeat: no-repeat;
-        background-position: 0 50%;
-        border: 1px solid lightgray;
-      }
-
-      .console-message {
-      }
-
-      .console-message[category="input"] {
-      }
-
-    </style>
-
+    <link rel="stylesheet" href="../themes/common.css" type="text/css"/>
+    <link rel="stylesheet" href="webconsole.css" type="text/css"/>
   </head>
+
   <body class="devtools-responsive-container theme-body">
 
-    <div id="js-output"></div>
-    <input id="js-input"
-           type="text"
-           name="input"
-           value=""/>
+    <div id="main-pane">
+      <div id="js-output">
+      </div>
+      <input id="js-input"
+             type="text"
+             name="input"
+             value=""/>
+    </div>
+
+    <div id="sidebar-pane">
+    </div>
 
   </body>
 </html>

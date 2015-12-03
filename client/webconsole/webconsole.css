@@ -1,0 +1,95 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+#main-pane {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+#sidebar-pane {
+  overflow: auto;
+  width: 300px;
+  border-left: 1px solid lightgray;
+}
+
+#js-output {
+  overflow: auto;
+  flex: 1;
+  font-size: 90%;
+}
+
+#js-input {
+  font-family: monospace;
+  padding: 4px;
+  padding-left: 18px;
+  background-image: url(../themes/images/commandline-icon@2x.png);
+  background-size: 32px 16px;
+  background-repeat: no-repeat;
+  background-position: -16px 50%;
+  border: none;
+  border-top: 1px solid lightgray;
+}
+
+.console-message {
+  display: flex;
+  align-items: center;
+  margin: 0 4px;
+  border-left: solid #cbcbcb 6px;
+  font-family: monospace;
+  min-height: 20px;
+}
+
+.console-message::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  margin-left: 4px;
+  margin-right: 12px;
+}
+
+.console-message[category="user-input"]::before {
+  background-image: url(../themes/images/webconsole.svg#light-icons);
+  background-repeat: no-repeat;
+  background-position: -48px -36px;
+}
+
+.console-message[category="eval-result"]::before {
+  background-image: url(../themes/images/webconsole.svg#light-icons);
+  background-repeat: no-repeat;
+  background-position: -60px -36px;
+}
+
+.variables-view-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.theme-twisty, .theme-checkbox {
+  width: 14px;
+  height: 14px;
+  background-repeat: no-repeat;
+  background-image: url(../themes/images/controls.png);
+  background-size: 56px 28px;
+}
+
+.theme-twisty {
+  cursor: pointer;
+  background-position: 0px -14px;
+}
+
+.theme-twisty[open] {
+  background-position: -14px -14px;
+}
+
+.theme-twisty[invisible] {
+  visibility: hidden;
+}
