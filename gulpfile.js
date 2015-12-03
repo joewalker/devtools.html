@@ -98,10 +98,6 @@ gulp.task("start", ["start-proxy"], function() {
   app.use(morgan('dev'));
 
   app.use(ecstatic({
-    root: path.join(__dirname, "tools", "connect"),
-    handleError: false,
-  }));
-  app.use(ecstatic({
     root: path.join(__dirname),
     baseDir: '/',
     handleError: false,
@@ -111,8 +107,8 @@ gulp.task("start", ["start-proxy"], function() {
   http.createServer(app).listen(CONNECT_HTTP_PORT);
 
   console.log("Open http://localhost:8081/client/framework/toolbox-wrapper.html to test the toolbox");
-  console.log("Open http://localhost:8081/?wsPort=9000 for the test tool (for Firefox server)");
-  console.log("Open http://localhost:8081/?wsPort=9001 for the test tool (for Chrome server)");
+  console.log("Open http://localhost:8081/tools/connect/?wsPort=9000 for the test tool (for Firefox server)");
+  console.log("Open http://localhost:8081/tools/connect/?wsPort=9001 for the test tool (for Chrome server)");
 });
 
 gulp.task("default", ["build"]);
