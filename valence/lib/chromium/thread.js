@@ -620,18 +620,18 @@ var ChromiumThreadActor = protocol.ActorClass({
     console.log("Resuming");
     var wasKicked = false;
 
-    if (this.pauseOutstanding) {
-      this.resuming = true;
-      // The engine has a pause requested but doesn't actually pause
-      // until something happens. Evaluate a script to kick it into
-      // the pause state, and `onPaused` which simply resume from here
-      yield this.rpc.request("Runtime.evaluate", {
-        expression: "5"
-      });
-      this.resuming = false;
-      this.pauseOutstanding = false;
-      wasKicked = true;
-    }
+    // if (this.pauseOutstanding) {
+    //   this.resuming = true;
+    //   // The engine has a pause requested but doesn't actually pause
+    //   // until something happens. Evaluate a script to kick it into
+    //   // the pause state, and `onPaused` which simply resume from here
+    //   yield this.rpc.request("Runtime.evaluate", {
+    //     expression: "5"
+    //   });
+    //   this.resuming = false;
+    //   this.pauseOutstanding = false;
+    //   wasKicked = true;
+    // }
 
     this.state = "running";
     yield this.updateExceptionState(this.getDesiredExceptionState());
