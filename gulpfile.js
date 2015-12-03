@@ -15,6 +15,8 @@ var morgan = require("morgan");
 var proxy = require("express-http-proxy");
 
 var WEBPACK_CONFIG_NAME = "webpack.config.js";
+var customfs = require("./tools/loader/responses").customfs;
+
 var PREFS_SRC_FILE = path.join(__dirname, "client", "preferences", "devtools.js");
 var PREFS_OUTPUT_FILE = path.join(__dirname, "build", "preferences.json");
 var CONNECT_HTTP_PORT = 8081;
@@ -103,6 +105,7 @@ gulp.task("start", ["start-proxy"], function() {
     root: path.join(__dirname),
     baseDir: '/',
     handleError: false,
+    fs: customfs,
   }));
 
   http.createServer(app).listen(CONNECT_HTTP_PORT);

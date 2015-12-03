@@ -14,7 +14,7 @@
  * so the formatting should be consistent (i.e. no '}' inside a rule).
  */
 
-:root.theme-light {
+:root {
   --theme-body-background: #fcfcfc;
   --theme-sidebar-background: #f7f7f7;
   --theme-contrast-background: #e6b064;
@@ -55,6 +55,7 @@
   --theme-graphs-full-blue: #00f;
 }
 
+/*
 :root.theme-dark {
   --theme-body-background: #14171a;
   --theme-sidebar-background: #181d20;
@@ -83,7 +84,6 @@
   --theme-highlight-red: #eb5368;
   --theme-highlight-pink: #df80ff;
 
-  /* Colors used in Graphs, like performance tools. Mostly similar to some "highlight-*" colors. */
   --theme-graphs-green: #70bf53;
   --theme-graphs-blue: #46afe3;
   --theme-graphs-bluegrey: #5e88b0;
@@ -95,3 +95,4 @@
   --theme-graphs-full-red: #f00;
   --theme-graphs-full-blue: #00f;
 }
+*/
