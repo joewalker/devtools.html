@@ -46,8 +46,9 @@ directory.
   * More details in [Valence README](https://github.com/mozilla/valence/blob/master/README.md#debugging-chrome-on-desktop)
 2. Ensure some page is open in Chrome for inspecting
 3. Run `gulp start`
-4. Navigate to `http://localhost:8081/?wsPort=9001` to run the connection test tool
-5. If you want to test the toolbox, you'll need to change the if statement in getWSTarget to true.
+4. Navigate to `http://localhost:8081/?wsPort=9001` to run the connection test tool, or the toolbox
+   at `http://localhost:8081/client/framework/toolbox-wrapper.html`
+5. If you view the toolbox, you'll need to change the `if` statement in `getWSTarget` in `client/framework/toolbox.js` to true.
 
 ## Connecting to Servo
 
