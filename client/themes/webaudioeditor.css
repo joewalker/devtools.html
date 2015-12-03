@@ -5,8 +5,8 @@
 /* Reload and waiting notices */
 .notice-container {
   margin-top: -50vh;
-  background-color: var(--theme-toolbar-background);
-  color: var(--theme-body-color-alt);
+  background-color: #f0f1f2;
+  color: #585959;
 }
 
 #reload-notice {
@@ -30,10 +30,10 @@ svg {
 }
 
 .theme-dark .edgePath path {
-  stroke: var(--theme-body-color-alt);
+  stroke: #585959;
 }
 .theme-light .edgePath path {
-  stroke: var(--theme-splitter-color);
+  stroke: #aaaaaa;
 }
 
 /* AudioParam connection edges */
@@ -42,20 +42,20 @@ g.edgePath.param-connection {
 }
 
 .theme-dark .edgePath.param-connection path {
-  stroke: var(--theme-body-color-alt);
+  stroke: #585959;
 }
 .theme-light .edgePath.param-connection path {
-  stroke: var(--theme-splitter-color);
+  stroke: #aaaaaa;
 }
 
 /* Labels in AudioParam connection should have background that match
  * the main background so there's whitespace around the label, on top of the
  * dotted lines. */
 g.edgeLabel rect {
-  fill: var(--theme-body-background);
+  fill: #fcfcfc;
 }
 g.edgeLabel tspan {
-  fill: var(--theme-body-color-alt);
+  fill: #585959;
 }
 
 /* Audio Nodes */
@@ -65,13 +65,13 @@ g.edgeLabel tspan {
 }
 
 .nodes rect {
-  stroke: var(--theme-tab-toolbar-background);
+  stroke: #ebeced;
 }
 .theme-light rect {
-  fill: var(--theme-tab-toolbar-background);
+  fill: #ebeced;
 }
 .theme-dark rect {
-  fill: var(--theme-toolbar-background);
+  fill: #f0f1f2;
 }
 
 /**
@@ -85,7 +85,7 @@ g.edgeLabel tspan {
   fill: url(/devtools/client/themes/images/filters.svg#bypass-dark);
 }
 .nodes g.bypassed.selected rect {
-  stroke: var(--theme-selection-background);
+  stroke: #4c9ed9;
 }
 
 /*
@@ -98,12 +98,12 @@ g.edgeLabel tspan {
  * Selected Nodes
  */
 .nodes g.selected rect {
-  fill: var(--theme-selection-background);
+  fill: #4c9ed9;
 }
 
 /* Don't style bypassed nodes text different because it'd be illegible in light-theme */
 .theme-light g.selected:not(.bypassed) text {
-  fill: var(--theme-toolbar-background);
+  fill: #f0f1f2;
 }
 
 
@@ -116,7 +116,7 @@ text {
 }
 
 text {
-  fill: var(--theme-body-color-alt);
+  fill: #585959;
 }
 
 
@@ -172,8 +172,8 @@ text {
  */
 
 #automation-param-toolbar .automation-param-button[selected] {
-  color: var(--theme-selection-color);
-  background-color: var(--theme-selection-background);
+  color: #f5f7fa;
+  background-color: #4c9ed9;
 }
 
 #automation-graph {

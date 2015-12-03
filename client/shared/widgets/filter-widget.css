@@ -7,7 +7,7 @@ html, body {
   margin: 0;
   overflow: hidden;
   font: message-box;
-  color: var(--theme-body-color);
+  color: #18191a;;
 }
 
 /* Main container: Displays the filters and presets in 2 columns */
@@ -42,7 +42,7 @@ html, body {
   padding-left: 6px;
   transition: width .1s;
   flex-shrink: 0;
-  border-left: 1px solid var(--theme-splitter-color);
+  border-left: 1px solid #aaaaaa;
 }
 
 .presets-list .add {
@@ -168,15 +168,15 @@ input {
 .preset label {
   flex: 1 0;
   cursor: pointer;
-  color: var(--theme-body-color);
+  color: #18191a;;
 }
 
 .preset:hover {
-  background: var(--theme-selection-background);
+  background: #4c9ed9;
 }
 
 .preset:hover label, .preset:hover span {
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
 }
 
 .theme-light .preset:hover .remove-button {
@@ -194,7 +194,7 @@ input {
   text-overflow: ellipsis;
   display: block;
   order: 3;
-  color: var(--theme-body-color-alt);
+  color: #585959;
 }
 
 .remove-button {

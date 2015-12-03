@@ -138,16 +138,16 @@ canvas#curve {
 .preset-pane {
   width: 50%;
   height: 100%;
-  border-right: 1px solid var(--theme-splitter-color);
+  border-right: 1px solid #aaaaaa;
   padding-right: 4px; /* Visual balance for the panel-arrowcontent border on the left */
 }
 
 #preset-categories {
   display: flex;
   width: 95%;
-  border: 1px solid var(--theme-splitter-color);
+  border: 1px solid #aaaaaa;
   border-radius: 2px;
-  background-color: var(--theme-toolbar-background);
+  background-color: #f0f1f2;
   margin: 3px auto 0 auto;
 }
 
@@ -160,24 +160,24 @@ canvas#curve {
   width: 33.33%;
   text-align: center;
   text-transform: capitalize;
-  border-right: 1px solid var(--theme-splitter-color);
+  border-right: 1px solid #aaaaaa;
   cursor: default;
-  color: var(--theme-body-color);
+  color: #18191a;;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
 .category:hover {
-  background-color: var(--theme-tab-toolbar-background);
+  background-color: #ebeced;
 }
 
 .active-category {
-  background-color: var(--theme-selection-background);
-  color: var(--theme-selection-color);
+  background-color: #4c9ed9;
+  color: #f5f7fa;
 }
 
 .active-category:hover {
-  background-color: var(--theme-selection-background);
+  background-color: #4c9ed9;
 }
 
 #preset-container {
@@ -209,7 +209,7 @@ canvas#curve {
   display: block;
   border: 1px solid #ccc;
   border-radius: 3px;
-  background-color: var(--theme-body-background);
+  background-color: #fcfcfc;
   margin: 0 auto;
 }
 
@@ -220,22 +220,22 @@ canvas#curve {
 .preset p {
   font-size: 80%;
   margin: 2px auto 0px auto;
-  color: var(--theme-body-color-alt);
+  color: #585959;
   text-transform: capitalize;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
 .active-preset p, .active-preset:hover p {
-  color: var(--theme-body-color);
+  color: #18191a;;
 }
 
 .preset:hover canvas {
-  border-color: var(--theme-selection-background);
+  border-color: #4c9ed9;
 }
 
 .active-preset canvas, .active-preset:hover canvas,
 .theme-dark .active-preset canvas, .theme-dark .preset:hover canvas {
-  background-color: var(--theme-selection-background-semitransparent);
-  border-color: var(--theme-selection-background);
+  background-color: rgba(76, 158, 217, .23);
+  border-color: #4c9ed9;
 }

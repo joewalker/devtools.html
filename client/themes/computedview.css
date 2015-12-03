@@ -34,7 +34,7 @@ body {
 }
 
 .row-striped {
-  background: var(--theme-body-background);
+  background: #fcfcfc;
 }
 
 .property-view-hidden,

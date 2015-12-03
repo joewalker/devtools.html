@@ -32,7 +32,7 @@ body {
   flex-direction: column;
   height: 100%;
   overflow: hidden;
-  color: var(--theme-content-color3);
+  color: #667380;
 }
 
 /* The top toolbar, containing the toggle-all button. And the timeline toolbar,
@@ -41,7 +41,7 @@ body {
 
 #global-toolbar,
 #timeline-toolbar {
-  border-bottom: 1px solid var(--theme-splitter-color);
+  border-bottom: 1px solid #aaaaaa;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -263,8 +263,8 @@ body {
   height: 100%;
   box-sizing: border-box;
 
-  --timelime-border-color: var(--theme-body-color);
-  --timeline-background-color: var(--theme-splitter-color);
+  --timelime-border-color: #18191a;;
+  --timeline-background-color: #aaaaaa;
 
   /* Iterations of the animation are displayed with a repeating linear-gradient
      which size is dynamically changed from JS. The gradient only draws 1px
@@ -285,13 +285,13 @@ body {
 }
 
 .animation-timeline .animation .cssanimation {
-  --timelime-border-color: var(--theme-highlight-lightorange);
-  --timeline-background-color: var(--theme-contrast-background);
+  --timelime-border-color: #d97e00;
+  --timeline-background-color: #e6b064;
 }
 
 .animation-timeline .animation .csstransition {
-  --timelime-border-color: var(--theme-highlight-bluegrey);
-  --timeline-background-color: var(--theme-highlight-blue);
+  --timelime-border-color: #0072ab;
+  --timeline-background-color: #0088cc;
 }
 
 .animation-timeline .animation .iterations.infinite {
@@ -306,7 +306,7 @@ body {
   right: 0;
   width: 0;
   height: 0;
-  border-right: 4px solid var(--theme-body-background);
+  border-right: 4px solid #fcfcfc;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
 }
@@ -317,7 +317,7 @@ body {
 }
 
 .animation-timeline .animation .name {
-  color: var(--theme-selection-color);
+  color: #f5f7fa;
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -346,8 +346,8 @@ body {
   background-image: repeating-linear-gradient(45deg,
                                               transparent,
                                               transparent 1px,
-                                              var(--theme-selection-color) 1px,
-                                              var(--theme-selection-color) 4px);
+                                              #f5f7fa 1px,
+                                              #f5f7fa 4px);
   background-color: var(--timelime-border-color);
 }
 
@@ -362,7 +362,7 @@ body {
 /* Animation target node gutter, contains a preview of the dom node */
 
 .animation-target {
-  background-color: var(--theme-toolbar-background);
+  background-color: #f0f1f2;
   padding: 1px 4px;
   box-sizing: border-box;
   overflow: hidden;
@@ -394,8 +394,8 @@ body {
 /* Animation title gutter, contains the name, duration, iteration */
 
 .animation-title {
-  background-color: var(--theme-toolbar-background);
-  border-bottom: 1px solid var(--theme-splitter-color);
+  background-color: #f0f1f2;
+  border-bottom: 1px solid #aaaaaa;
   padding: 1px 4px;
   word-wrap: break-word;
   overflow: auto;

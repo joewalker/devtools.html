@@ -26,7 +26,7 @@ a {
 .message > .prefix,
 .message > .timestamp {
   flex: none;
-  color: var(--theme-comment);
+  color: #757873;
   margin: 3px 6px 0 0;
 }
 
@@ -155,7 +155,7 @@ a {
 }
 
 #output-container.hideTimestamps > .message > .indent {
-  background-color: var(--theme-body-background);
+  background-color: #fcfcfc;
 }
 
 .filtered-by-type,
@@ -194,7 +194,7 @@ a {
 }
 
 .message:hover {
-  background-color: var(--theme-selection-background-semitransparent) !important;
+  background-color: rgba(76, 158, 217, .23) !important;
 }
 
 .theme-light .message[severity=error] {
@@ -206,7 +206,7 @@ a {
 }
 
 .console-string {
-  color: var(--theme-highlight-lightorange);
+  color: #d97e00;
 }
 
 .theme-selected .console-string,
@@ -248,17 +248,17 @@ a {
 }
 
 .message[category=network].mixed-content .url {
-  color: var(--theme-highlight-red);
+  color: #ed2655;
 }
 
 .message .learn-more-link {
-  color: var(--theme-highlight-blue);
+  color: #0088cc;
   margin: 0 6px;
 }
 
 .message[category=network] .xhr {
-  background-color: var(--theme-body-color-alt);
-  color: var(--theme-body-background);
+  background-color: #585959;
+  color: #fcfcfc;
   border-radius: 3px;
   font-weight: bold;
   font-size: 10px;
@@ -356,8 +356,8 @@ a {
 
 /* JSTerm Styles */
 .jsterm-input-container {
-  background-color: var(--theme-tab-toolbar-background);
-  border-top: 1px solid var(--theme-splitter-color);
+  background-color: #ebeced;
+  border-top: 1px solid #aaaaaa;
 }
 
 .theme-light .jsterm-input-container {
@@ -376,7 +376,7 @@ a {
 }
 
 .jsterm-complete-node {
-  color: var(--theme-comment);
+  color: #757873;
 }
 
 .jsterm-input-node {
@@ -386,7 +386,7 @@ a {
   background-image: -moz-image-rect(url("/devtools/client/themes/images/commandline-icon.png"), 0, 32, 16, 16);
   background-repeat: no-repeat;
   background-size: 16px 16px;
-  color: var(--theme-content-color1);
+  color: #292e33;
 }
 
 @media (min-resolution: 1.1dppx) {
@@ -413,7 +413,7 @@ a {
   margin-top: 5px;
   margin-bottom: 15px;
   -moz-margin-end: 15px;
-  border: 1px solid var(--theme-splitter-color);
+  border: 1px solid #aaaaaa;
   border-radius: 3px;
 }
 
@@ -457,7 +457,7 @@ a {
 .navigation-marker .url {
   -moz-padding-end: 9px;
   text-decoration: none;
-  background: var(--theme-body-background);
+  background: #fcfcfc;
 }
 
 .theme-light .navigation-marker .url {
@@ -471,7 +471,7 @@ a {
   margin: 5px 0 0 0;
   max-height: 10em;
   overflow-y: auto;
-  border: 1px solid var(--theme-splitter-color);
+  border: 1px solid #aaaaaa;
   border-radius: 3px;
 }
 

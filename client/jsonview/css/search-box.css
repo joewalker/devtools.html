@@ -41,6 +41,6 @@
 .theme-dark .searchBox {
   background-color: rgba(24, 29, 32, 1);
   color: rgba(184, 200, 217, 1);
-  border-color: var(--theme-splitter-color);
+  border-color: #aaaaaa;
   background-image: url("/devtools/client/themes/images/magnifying-glass.png");
 }

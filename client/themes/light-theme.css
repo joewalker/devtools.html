@@ -12,39 +12,39 @@ body {
 }
 
 .theme-body {
-  background: var(--theme-body-background);
-  color: var(--theme-body-color);
+  background: #fcfcfc;
+  color: #18191a;;
 }
 
 .theme-sidebar {
-  background: var(--theme-sidebar-background);
-  color: var(--theme-body-color);
+  background: #f7f7f7;
+  color: #18191a;;
 }
 
 ::-moz-selection {
-  background-color: var(--theme-selection-background);
-  color: var(--theme-selection-color);
+  background-color: #4c9ed9;
+  color: #f5f7fa;
 }
 
 .theme-bg-darker {
-  background: var(--theme-selection-background-semitransparent);
+  background: rgba(76, 158, 217, .23);
 }
 
 .theme-selected,
 .CodeMirror-hint-active {
-  background-color: var(--theme-selection-background);
-  color: var(--theme-selection-color);
+  background-color: #4c9ed9;
+  color: #f5f7fa;
 }
 
 .theme-bg-contrast,
 .variable-or-property:not([overridden])[changed] {
-  background: var(--theme-contrast-background);
+  background: #e6b064;
 }
 
 .theme-link,
 .cm-s-mozilla .cm-link,
 .CodeMirror-Tern-type {
-  color: var(--theme-highlight-blue);
+  color: #0088cc;
 }
 
 /*
@@ -53,7 +53,7 @@ body {
  */
 .theme-link:visited,
 .cm-s-mozilla .cm-link:visited {
-  color: var(--theme-highlight-blue);
+  color: #0088cc;
 }
 
 .theme-comment,
@@ -63,12 +63,12 @@ body {
 .variable-or-property .token-undefined,
 .variable-or-property .token-null,
 .CodeMirror-Tern-completion-unknown:before {
-  color: var(--theme-comment);
+  color: #757873;
 }
 
 .theme-gutter {
   background-color: hsl(0,0%,90%);
-  color: var(--theme-content-color3);
+  color: #667380;
   border-color: hsl(0,0%,65%);
 }
 
@@ -78,7 +78,7 @@ body {
 
 .cm-s-mozilla .cm-unused-line {
   text-decoration: line-through;
-  text-decoration-color: var(--theme-highlight-bluegrey);
+  text-decoration-color: #0072ab;
 }
 
 .cm-s-mozilla .cm-executed-line {
@@ -90,7 +90,7 @@ body {
 .variable-or-property .token-number,
 .variable-or-property[return] > .title > .name,
 .variable-or-property[scope] > .title > .name {
-  color: var(--theme-highlight-green);
+  color: #2cbb0f;
 }
 
 .CodeMirror-Tern-completion-number:before {
@@ -104,7 +104,7 @@ body {
 .cm-s-mozilla .cm-property,
 .cm-s-mozilla .cm-qualifier,
 .variables-view-variable > .title > .name {
-  color: var(--theme-highlight-blue);
+  color: #0088cc;
 }
 
 .CodeMirror-Tern-completion-object:before {
@@ -117,20 +117,20 @@ body {
 .cm-s-mozilla .cm-header,
 .cm-s-mozilla .cm-bracket,
 .variables-view-property > .title > .name {
-  color: var(--theme-highlight-bluegrey);
+  color: #0072ab;
 }
 
 .CodeMirror-Tern-completion-array:before {
-  background-color: var(--theme-highlight-bluegrey);
+  background-color: #0072ab;
 }
 
 .theme-fg-color4 {
-  color: var(--theme-highlight-orange);
+  color: #f13c00;
 }
 
 .theme-fg-color5,
 .cm-s-mozilla .cm-keyword {
-  color: var(--theme-highlight-lightorange);
+  color: #d97e00;
 }
 
 .theme-fg-color6,
@@ -138,7 +138,7 @@ body {
 .cm-s-mozilla .cm-string-2,
 .variable-or-property .token-string,
 .CodeMirror-Tern-farg {
-  color: var(--theme-highlight-orange);
+  color: #f13c00;
 }
 
 .CodeMirror-Tern-completion-string:before,
@@ -153,7 +153,7 @@ body {
 .variable-or-property .token-boolean,
 .variable-or-property .token-domnode,
 .variable-or-property[exception] > .title > .name {
-  color: var(--theme-highlight-red);
+  color: #ed2655;
 }
 
 .CodeMirror-Tern-completion-bool:before {
@@ -173,9 +173,9 @@ body {
 .devtools-sidebar-tabs tabs,
 .devtools-sidebar-alltabs,
 .CodeMirror-dialog { /* General toolbar styling */
-  color: var(--theme-body-color-alt);
-  background-color: var(--theme-toolbar-background);
-  border-color: var(--theme-splitter-color);
+  color: #585959;
+  background-color: #f0f1f2;
+  border-color: #aaaaaa;
 }
 
 .ruleview-swatch,
@@ -198,7 +198,7 @@ body {
 .cm-s-mozilla .cm-variable-3,
 .cm-s-mozilla .cm-operator,
 .cm-s-mozilla .cm-special {
-  color: var(--theme-body-color);
+  color: #18191a;;
 }
 
 .cm-s-mozilla .CodeMirror-lines .CodeMirror-cursor {
@@ -249,12 +249,12 @@ div.CodeMirror span.eval-text {
 }
 
 .cm-s-mozilla .CodeMirror-linenumber { /* line number text */
-  color: var(--theme-content-color3);
+  color: #667380;
 }
 
 .cm-s-mozilla .CodeMirror-gutters { /* vertical line next to line numbers */
-  border-right-color: var(--theme-splitter-color);
-  background-color: var(--theme-sidebar-background);
+  border-right-color: #aaaaaa;
+  background-color: #f7f7f7;
 }
 
 .cm-s-markup-view pre {
@@ -372,5 +372,5 @@ div.CodeMirror span.eval-text {
 .CodeMirror-hints,
 .CodeMirror-Tern-tooltip {
   box-shadow: 0 0 4px rgba(128, 128, 128, .5);
-  background-color: var(--theme-sidebar-background);
+  background-color: #f7f7f7;
 }

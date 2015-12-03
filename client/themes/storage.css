@@ -11,7 +11,7 @@
 }
 
 #storage-tree {
-  background: var(--theme-sidebar-background);
+  background: #f7f7f7;
 }
 
 #storage-tree .tree-widget-item[type="store"]:after {

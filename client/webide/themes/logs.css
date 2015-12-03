@@ -1,6 +1,6 @@
 html, body {
-  background: var(--theme-body-background);
-  color: var(--theme-body-color);
+  background: #fcfcfc;
+  color: #18191a;;
 }
 
 h1 {
