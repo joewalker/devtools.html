@@ -86,7 +86,7 @@ const ToolboxButtons = exports.ToolboxButtons = [
  */
 exports.getWSTarget = function() {
   let transport;
-  if (true) {
+  if (false) {
     // Connect to chromium.  Need to fetch the tab list since it's over
     // http and not same-origin, but will connect directly to the web
     // socket.
