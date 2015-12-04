@@ -30,7 +30,7 @@
     */
 
     let styleSheet = document.createElement("link");
-    styleSheet.href = "/client/themes/" + url;
+    styleSheet.href = url;
     styleSheet.type = "text/css";
     styleSheet.rel = "stylesheet";
     document.querySelector('script').parentNode.appendChild(styleSheet);
