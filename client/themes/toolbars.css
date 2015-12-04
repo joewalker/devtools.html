@@ -562,6 +562,7 @@ html commandset {
 /* Close button */
 
 .devtools-closebutton {
+  display: none;
   -moz-appearance: none;
   border: none;
   margin: 0 4px;
@@ -571,7 +572,7 @@ html commandset {
 }
 
 .devtools-closebutton::before {
-  background-image: url("/devtools/client/themes/images/close@2x.png");
+  background-image: url("/client/themes/images/close@2x.png");
 }
 
 .devtools-closebutton > .toolbarbutton-icon {
