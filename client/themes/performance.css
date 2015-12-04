@@ -33,12 +33,12 @@
 /* Toolbar */
 
 #performance-toolbar-control-other {
-  -moz-padding-end: 5px;
+  padding-right: 5px;
 }
 
 #performance-toolbar-controls-detail-views .toolbarbutton-text {
-  -moz-padding-start: 4px;
-  -moz-padding-end: 8px;
+  padding-left: 4px;
+  padding-right: 8px;
 }
 
 #filter-button {
@@ -302,7 +302,7 @@
 }
 
 .call-tree-name {
-  -moz-margin-end: 4px !important;
+  margin-right: 4px !important;
 }
 
 .call-tree-url {
@@ -327,7 +327,7 @@
 }
 
 .call-tree-host {
-  -moz-margin-start: 8px !important;
+  margin-left: 8px !important;
   font-size: 90%;
   color: #8fa1b2;
 }
@@ -358,7 +358,7 @@
 }
 
 .waterfall-header-tick:not(:first-child) {
-  -moz-margin-start: -100px !important; /* Don't affect layout. */
+  margin-left: -100px !important; /* Don't affect layout. */
 }
 
 .waterfall-background-ticks {
@@ -462,8 +462,8 @@
 .waterfall-marker-bullet {
   width: 8px;
   height: 8px;
-  -moz-margin-start: 8px;
-  -moz-margin-end: 6px;
+  margin-left: 8px;
+  margin-right: 6px;
   border-radius: 1px;
 }
 
@@ -489,7 +489,7 @@
 .waterfall-marker > .theme-twisty {
   /* Don't affect layout. */
   width: 14px;
-  -moz-margin-end: -14px;
+  margin-right: -14px;
 }
 
 /**
@@ -508,8 +508,8 @@
  */
 
 #waterfall-details {
-  -moz-padding-start: 8px;
-  -moz-padding-end: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
   padding-top: 2vh;
   overflow: auto;
   min-width: 50px;
@@ -526,7 +526,7 @@
 }
 
 .marker-details-labelname {
-  -moz-padding-end: 4px;
+  padding-right: 4px;
 }
 
 .marker-details-type {
@@ -670,7 +670,7 @@ menuitem.marker-color-graphs-grey:before,
   color: #ed2655;
 }
 #jit-optimizations-view .tree-widget-container {
-  -moz-margin-end: 0px;
+  margin-right: 0px;
 }
 #jit-optimizations-view .tree-widget-container > li,
 #jit-optimizations-view .tree-widget-children > li {
@@ -692,7 +692,7 @@ menuitem.marker-color-graphs-grey:before,
 }
 
 .opt-url {
-  -moz-margin-start: 4px !important;
+  margin-left: 4px !important;
 }
 .opt-url:hover {
   text-decoration: underline;

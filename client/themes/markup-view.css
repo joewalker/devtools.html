@@ -59,7 +59,7 @@
   line-height: 10px;
   border-radius: 3px;
   padding: 0px 2px;
-  -moz-margin-start: 5px;
+  margin-left: 5px;
   -moz-user-select: none;
 }
 

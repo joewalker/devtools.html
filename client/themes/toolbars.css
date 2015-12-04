@@ -221,7 +221,7 @@ html commandset {
 }
 
 .devtools-toolbarbutton[standalone], .devtools-toolbarbutton[data-standalone] {
-  -moz-margin-end: 5px;
+  margin-right: 5px;
 }
 
 .devtools-toolbarbutton[label][standalone] {
@@ -247,8 +247,8 @@ html commandset {
 }
 
 #toolbox-buttons .devtools-toolbarbutton[text-as-image] {
-  -moz-padding-start: 5px;
-  -moz-padding-end: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
   min-width: inherit;
 }
 
@@ -279,7 +279,7 @@ html commandset {
 }
 
 .devtools-toolbarbutton > .toolbarbutton-menubutton-button > .toolbarbutton-icon {
-  -moz-margin-end: 4px;
+  margin-right: 4px;
 }
 
 .devtools-menulist > .menulist-dropmarker {
@@ -388,15 +388,15 @@ html commandset {
 }
 
 .devtools-toolbarbutton-group > .devtools-toolbarbutton:last-child {
-  -moz-margin-end: 0;
+  margin-right: 0;
 }
 
 .devtools-toolbarbutton-group + .devtools-toolbarbutton {
-  -moz-margin-start: 3px;
+  margin-left: 3px;
 }
 
 .devtools-separator + .devtools-toolbarbutton {
-  -moz-margin-start: 1px;
+  margin-left: 1px;
 }
 
 /* Text input */
@@ -418,8 +418,8 @@ html commandset {
 
 .devtools-searchinput {
   padding: 0;
-  -moz-padding-start: 22px;
-  -moz-padding-end: 4px;
+  padding-left: 22px;
+  padding-right: 4px;
   background-position: 8px center;
   background-size: 11px 11px;
   background-repeat: no-repeat;
@@ -462,17 +462,17 @@ html commandset {
    of a toolbar (since the toolbar has it's own spacing). */
 .devtools-toolbar > .devtools-textinput:first-child,
 .devtools-toolbar > .devtools-searchinput:first-child {
-  -moz-margin-start: 0;
+  margin-left: 0;
 }
 .devtools-toolbar > .devtools-textinput:last-child,
 .devtools-toolbar > .devtools-searchinput:last-child {
-  -moz-margin-end: 0;
+  margin-right: 0;
 }
 .devtools-toolbar > .devtools-searchbox:first-child {
-  -moz-padding-start: 0;
+  padding-left: 0;
 }
 .devtools-toolbar > .devtools-searchbox:last-child {
-  -moz-padding-end: 0;
+  padding-right: 0;
 }
 
 .devtools-rule-searchbox {
@@ -484,7 +484,7 @@ html commandset {
 .devtools-rule-searchbox[filled] {
   background-color: var(--searchbox-background-color);
   border-color: var(--searchbox-border-color);
-  -moz-padding-end: 23px;
+  padding-right: 23px;
 }
 
 .devtools-style-searchbox-no-match {
@@ -1041,18 +1041,18 @@ html commandset {
 #toolbox-tabs .devtools-tab[selected],
 #toolbox-tabs .devtools-tab[highlighted] {
   border-width: 0;
-  -moz-padding-start: 1px;
+  padding-left: 1px;
 }
 
 #toolbox-tabs .devtools-tab[selected]:last-child,
 #toolbox-tabs .devtools-tab[highlighted]:last-child {
-  -moz-padding-end: 1px;
+  padding-right: 1px;
 }
 
 #toolbox-tabs .devtools-tab[selected] + .devtools-tab,
 #toolbox-tabs .devtools-tab[highlighted] + .devtools-tab {
   -moz-border-start-width: 0;
-  -moz-padding-start: 1px;
+  padding-left: 1px;
 }
 
 #toolbox-tabs .devtools-tab:first-child[selected] {
@@ -1078,7 +1078,7 @@ html commandset {
 #toolbox-option-container .devtools-tab {
   border-color: transparent;
   border-width: 0;
-  -moz-padding-start: 1px;
+  padding-left: 1px;
 }
 #toolbox-tab-options > img {
   margin: 0 8px;
@@ -1143,7 +1143,7 @@ html commandset {
   content: "";
   display: inline-block;
   vertical-align: bottom;
-  -moz-margin-end: 0.5em;
+  margin-right: 0.5em;
   width: 1em;
   height: 1em;
   border: 2px solid currentColor;

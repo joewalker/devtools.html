@@ -46,7 +46,7 @@
 
 .requests-menu-header:first-child,
 .requests-menu-subitem:first-child {
-  -moz-padding-start: 6px;
+  padding-left: 6px;
 }
 
 .requests-menu-subitem {
@@ -122,7 +122,7 @@
   width: calc(1em + 4px);
   height: calc(1em + 4px);
   margin: -4px 0px;
-  -moz-margin-end: 4px;
+  margin-right: 4px;
 }
 
 .requests-menu-icon {
@@ -141,7 +141,7 @@
 .requests-security-state-icon {
   width: 16px;
   height: 16px;
-  -moz-margin-end: 4px;
+  margin-right: 4px;
   cursor: pointer;
 }
 
@@ -185,16 +185,16 @@
 box.requests-menu-status {
   background: #fff;
   width: 10px;
-  -moz-margin-start: 5px;
-  -moz-margin-end: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   border-radius: 10px;
   transition: box-shadow 0.5s ease-in-out;
 }
 
 label.requests-menu-status-code {
-  -moz-margin-start: 3px !important;
+  margin-left: 3px !important;
   width: 3em;
-  -moz-margin-end: -3em !important;
+  margin-right: -3em !important;
 }
 
 box.requests-menu-status:not([code]) {
@@ -241,21 +241,21 @@ box.requests-menu-status[code^="5"] {
 /* Network requests table: waterfall header */
 
 #requests-menu-waterfall-label {
-  -moz-padding-start: 8px;
-  -moz-padding-end: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .requests-menu-timings-division {
   width: 100px;
   padding-top: 2px;
-  -moz-padding-start: 4px;
+  padding-left: 4px;
   font-size: 75%;
   pointer-events: none;
 }
 
 .requests-menu-timings-division:not(:first-child) {
   -moz-border-start: 1px dotted;
-  -moz-margin-start: -100px !important; /* Don't affect layout. */
+  margin-left: -100px !important; /* Don't affect layout. */
 }
 
 .requests-menu-timings-division:-moz-locale-dir(ltr) {
@@ -297,8 +297,8 @@ box.requests-menu-status[code^="5"] {
 /* Network requests table: waterfall items */
 
 .requests-menu-subitem.requests-menu-waterfall {
-  -moz-padding-start: 0px;
-  -moz-padding-end: 4px;
+  padding-left: 0px;
+  padding-right: 4px;
   /* Background created on a <canvas> in js. */
   /* @see devtools/client/netmonitor/netmonitor-view.js */
   background-image: -moz-element(#waterfall-background);
@@ -327,7 +327,7 @@ box.requests-menu-status[code^="5"] {
 }
 
 .requests-menu-timings-total {
-  -moz-padding-start: 4px;
+  padding-left: 4px;
   font-size: 85%;
   font-weight: 600;
 }
@@ -437,14 +437,14 @@ box.requests-menu-status[code^="5"] {
 }
 
 .tabpanel-summary-label {
-  -moz-padding-start: 4px;
-  -moz-padding-end: 3px;
+  padding-left: 4px;
+  padding-right: 3px;
   font-weight: 600;
 }
 
 .tabpanel-summary-value {
   color: inherit;
-  -moz-padding-start: 3px;
+  padding-left: 3px;
 }
 
 .theme-dark .tabpanel-summary-value {
@@ -464,12 +464,12 @@ box.requests-menu-status[code^="5"] {
 
 #headers-summary-resend {
   margin-top: -10px;
-  -moz-margin-end: 6px;
+  margin-right: 6px;
 }
 
 #toggle-raw-headers {
   margin-top: -10px;
-  -moz-margin-end: 6px;
+  margin-right: 6px;
 }
 
 .raw-response-textarea {
@@ -525,7 +525,7 @@ box.requests-menu-status[code^="5"] {
 
 /* Security tabpanel */
 .security-info-section {
-  -moz-padding-start: 1em;
+  padding-left: 1em;
 }
 
 .theme-dark #security-error-message {
@@ -539,7 +539,7 @@ box.requests-menu-status[code^="5"] {
 .security-warning-icon {
   background-image: url(images/alerticon-warning.png);
   background-size: 13px 12px;
-  -moz-margin-start: 5px;
+  margin-left: 5px;
   vertical-align: top;
   width: 13px;
   height: 12px;
@@ -632,7 +632,7 @@ box.requests-menu-status[code^="5"] {
 }
 
 #requests-menu-filter-freetext-text {
-  transition-property: max-width, -moz-padding-end, -moz-padding-start;
+  transition-property: max-width, padding-right, padding-left;
   transition-duration: 250ms;
   transition-timing-function: ease;
 }
@@ -643,8 +643,8 @@ box.requests-menu-status[code^="5"] {
 
 #requests-menu-filter-freetext-text:not([focused]):not([filled]) {
   max-width: 20px !important;
-  -moz-padding-end: 5px;
-  -moz-padding-start: 22px;
+  padding-right: 5px;
+  padding-left: 22px;
   background-position: 8px center, top left, top left;
 }
 
@@ -660,12 +660,12 @@ box.requests-menu-status[code^="5"] {
   box-shadow: none;
   border-color: transparent;
   list-style-image: url(images/profiler-stopwatch.svg);
-  -moz-padding-end: 0;
+  padding-right: 0;
   cursor: pointer;
 }
 
 #requests-menu-network-summary-label {
-  -moz-padding-start: 0;
+  padding-left: 0;
   cursor: pointer;
 }
 
@@ -707,13 +707,13 @@ box.requests-menu-status[code^="5"] {
 }
 
 #network-statistics-charts .pie-chart-container {
-  -moz-margin-start: 3vw;
-  -moz-margin-end: 1vw;
+  margin-left: 3vw;
+  margin-right: 1vw;
 }
 
 #network-statistics-charts .table-chart-container {
-  -moz-margin-start: 1vw;
-  -moz-margin-end: 3vw;
+  margin-left: 1vw;
+  margin-right: 3vw;
 }
 
 .chart-colored-blob[name=html] {

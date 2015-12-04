@@ -20,7 +20,7 @@
 }
 
 #inspector-searchbox {
-  transition-property: max-width, -moz-padding-end, -moz-padding-start;
+  transition-property: max-width, padding-right, padding-left;
   transition-duration: 250ms;
   transition-timing-function: ease;
 }
@@ -31,8 +31,8 @@
 
 #inspector-searchbox:not([focused]):not([filled]) {
   max-width: 20px !important;
-  -moz-padding-end: 5px;
-  -moz-padding-start: 22px;
+  padding-right: 5px;
+  padding-left: 22px;
   background-position: 8px center, top left, top left;
 }
 
@@ -78,7 +78,7 @@
 .event-tooltip-event-type,
 .event-tooltip-filename,
 .event-tooltip-attributes {
-  -moz-margin-start: 0;
+  margin-left: 0;
   flex-shrink: 0;
   cursor: pointer;
 }
@@ -89,7 +89,7 @@
 }
 
 .event-tooltip-filename {
-  -moz-margin-end: 0;
+  margin-right: 0;
   font-size: 100%;
   flex-shrink: 1;
 }
@@ -97,7 +97,7 @@
 .event-tooltip-debugger-icon {
   width: 16px;
   height: 16px;
-  -moz-margin-end: 4px;
+  margin-right: 4px;
   opacity: 0.6;
   flex-shrink: 0;
 }
@@ -109,7 +109,7 @@
 .event-tooltip-content-box {
   display: none;
   overflow: auto;
-  -moz-margin-end: 0;
+  margin-right: 0;
 }
 
 .event-tooltip-content-box[open] {
@@ -119,8 +119,8 @@
 .event-tooltip-source-container {
   margin-top: 5px;
   margin-bottom: 10px;
-  -moz-margin-start: 5px;
-  -moz-margin-end: 0;
+  margin-left: 5px;
+  margin-right: 0;
 }
 
 .event-tooltip-source {
@@ -140,7 +140,7 @@
   align-items: center;
   border-radius: 3px;
   padding: 2px;
-  -moz-margin-start: 5px;
+  margin-left: 5px;
   background-color: #585959;
   color: #f0f1f2;
 }
