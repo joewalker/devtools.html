@@ -14,6 +14,8 @@
 /* Bottom-docked toolbox minimize transition */
 .devtools-toolbox-bottom-iframe {
   transition: margin-bottom .1s;
+  height: 100%;
+  width: 100%;
 }
 
 /* Splitters */
