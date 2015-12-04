@@ -85,7 +85,7 @@
 }
 
 .media-rule-line {
-  -moz-padding-start: 4px;
+  padding-left: 4px;
 }
 
 .theme-light .media-condition-unmatched {
@@ -129,11 +129,11 @@
 }
 
 .stylesheet-linked-file:not(:empty){
-  -moz-margin-end: 0.4em;
+  margin-right: 0.4em;
 }
 
 .stylesheet-linked-file:not(:empty):before {
-  -moz-margin-start: 0.4em;
+  margin-left: 0.4em;
 }
 
 li.linked-file-error .stylesheet-linked-file:after {
@@ -142,7 +142,7 @@ li.linked-file-error .stylesheet-linked-file:after {
 
 .stylesheet-more > h3 {
   font-size: 11px;
-  -moz-margin-end: 2px;
+  margin-right: 2px;
 }
 
 .devtools-searchinput {

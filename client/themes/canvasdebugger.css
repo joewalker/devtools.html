@@ -61,7 +61,7 @@
 }
 
 .snapshot-item-details {
-  -moz-padding-start: 6px;
+  padding-left: 6px;
 }
 
 .snapshot-item-calls {
@@ -134,7 +134,7 @@
 }
 
 #calls-slider {
-  -moz-padding-end: 24px;
+  padding-right: 24px;
 }
 
 #calls-slider .scale-slider {
@@ -201,7 +201,7 @@
   padding-top: 2px;
   padding-bottom: 2px;
   -moz-border-end: 1px solid;
-  -moz-margin-end: 6px;
+  margin-right: 6px;
 }
 
 .selected .call-item-gutter {
@@ -236,8 +236,8 @@
 }
 
 .call-item-location {
-  -moz-padding-start: 2px;
-  -moz-padding-end: 6px;
+  padding-left: 2px;
+  padding-right: 6px;
   text-align: end;
   cursor: pointer;
   color: #0072ab;
@@ -261,7 +261,7 @@
 }
 
 .call-item-stack {
-  -moz-padding-start: calc(var(--gutter-width) + var(--gutter-padding-start));
+  padding-left: calc(var(--gutter-width) + var(--gutter-padding-start));
   padding-bottom: 10px;
 }
 
@@ -279,8 +279,8 @@
 }
 
 .call-item-stack-fn-location {
-  -moz-padding-start: 2px;
-  -moz-padding-end: 6px;
+  padding-left: 2px;
+  padding-right: 6px;
   text-align: end;
   cursor: pointer;
   text-decoration: underline;

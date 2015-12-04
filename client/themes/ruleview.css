@@ -96,7 +96,7 @@
 .ruleview-warning {
   background-image: url(images/alerticon-warning.png);
   background-size: 13px 12px;
-  -moz-margin-start: 5px;
+  margin-left: 5px;
   display: inline-block;
   width: 13px;
   height: 12px;
@@ -111,14 +111,14 @@
 .ruleview-overridden-rule-filter {
   background-image: url(images/magnifying-glass-light.png);
   background-size: 11px 11px;
-  -moz-margin-start: 5px;
+  margin-left: 5px;
   display: inline-block;
   width: 11px;
   height: 11px;
 }
 
 .ruleview-ruleopen {
-  -moz-padding-end: 5px;
+  padding-right: 5px;
 }
 
 .ruleview-ruleclose {
@@ -142,7 +142,7 @@
 
 .ruleview-newproperty {
   /* (enable checkbox width: 12px) + (expander width: 15px) */
-  -moz-margin-start: 27px;
+  margin-left: 27px;
 }
 
 .ruleview-namecontainer,
@@ -158,7 +158,7 @@
 }
 
 .ruleview-computed {
-  -moz-margin-start: 35px;
+  margin-left: 35px;
 }
 
 .ruleview-swatch {
@@ -167,7 +167,7 @@
   width: 0.9em;
   height: 0.9em;
   vertical-align: middle;
-  -moz-margin-end: 5px;
+  margin-right: 5px;
   display: inline-block;
   position: relative;
 }
