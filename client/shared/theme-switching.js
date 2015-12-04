@@ -22,18 +22,18 @@
   }
 
   function loadSheet(url) {
+    /*
     let styleSheetAttr = `href="${url}" type="text/css"`;
     let styleSheet = document.createProcessingInstruction(
       "xml-stylesheet", styleSheetAttr);
     document.insertBefore(styleSheet, document.documentElement);
+    */
 
-    /*
     let styleSheet = document.createElement("link");
-    styleSheet.href = url;
+    styleSheet.href = "/client/themes/" + url;
     styleSheet.type = "text/css";
     styleSheet.rel = "stylesheet";
     document.querySelector('script').parentNode.appendChild(styleSheet);
-    */
   }
 
   function removeSheet(url) {
