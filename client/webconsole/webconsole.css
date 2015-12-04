@@ -6,6 +6,8 @@ body {
   margin: 0;
   display: flex;
   flex-direction: row;
+  background-color: #14171a;
+  color: #8fa1b2;
 }
 
 #main-pane {
@@ -18,12 +20,6 @@ body {
   overflow: auto;
   width: 300px;
   border-left: 1px solid #010101;
-}
-
-#js-input,
-#js-output {
-  background-color: #14171a;
-  color: #8fa1b2;
 }
 
 #js-output {
@@ -42,6 +38,8 @@ body {
   background-position: -16px 50%;
   border: none;
   border-top: 1px solid #010101;
+  background-color: #14171a;
+  color: #8fa1b2;
 }
 
 .console-message {
