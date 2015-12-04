@@ -14,6 +14,7 @@
  * so the formatting should be consistent (i.e. no '}' inside a rule).
  */
 
+/*
 :root {
   --theme-body-background: #fcfcfc;
   --theme-sidebar-background: #f7f7f7;
@@ -42,7 +43,6 @@
   --theme-highlight-red: #ed2655;
   --theme-highlight-pink: #b82ee5;
 
-  /* Colors used in Graphs, like performance tools. Similar colors to Chrome's timeline. */
   --theme-graphs-green: #85d175;
   --theme-graphs-blue: #83b7f6;
   --theme-graphs-bluegrey: #0072ab;
@@ -55,7 +55,6 @@
   --theme-graphs-full-blue: #00f;
 }
 
-/*
 :root.theme-dark {
   --theme-body-background: #14171a;
   --theme-sidebar-background: #181d20;
@@ -66,7 +65,7 @@
   --theme-selection-background: #1d4f73;
   --theme-selection-background-semitransparent: rgba(29, 79, 115, .5);
   --theme-selection-color: #f5f7fa;
-  --theme-splitter-color: black;
+  --theme-splitter-color: #010101;
   --theme-comment: #757873;
 
   --theme-body-color: #8fa1b2;
