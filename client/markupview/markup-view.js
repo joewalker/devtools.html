@@ -658,6 +658,7 @@ MarkupView.prototype = {
       default:
         handled = false;
     }
+
     if (handled) {
       aEvent.stopPropagation();
       aEvent.preventDefault();

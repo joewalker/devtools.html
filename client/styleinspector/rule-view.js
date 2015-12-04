@@ -526,9 +526,10 @@ Rule.prototype = {
       if (this.inherited.id) {
         eltText += "#" + this.inherited.id;
       }
-      this._inheritedSource =
-        CssLogic._strings.formatStringFromName("rule.inheritedFrom",
-                                               [eltText], 1);
+      this._inheritedSource = eltText;
+      // XXX: Not localized
+      // CssLogic._strings.formatStringFromName("rule.inheritedFrom",
+      //                                        [eltText], 1);
     }
     return this._inheritedSource;
   },
