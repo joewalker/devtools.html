@@ -206,7 +206,7 @@ a {
 }
 
 .console-string {
-  color: #d97e00;
+  color: #d99b28;
 }
 
 .theme-selected .console-string,
@@ -248,11 +248,11 @@ a {
 }
 
 .message[category=network].mixed-content .url {
-  color: #ed2655;
+  color: #eb5368;
 }
 
 .message .learn-more-link {
-  color: #0088cc;
+  color: #46afe3;
   margin: 0 6px;
 }
 

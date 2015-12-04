@@ -44,7 +44,7 @@ body {
 .theme-link,
 .cm-s-mozilla .cm-link,
 .CodeMirror-Tern-type {
-  color: #0088cc;
+  color: #46afe3;
 }
 
 /*
@@ -53,7 +53,7 @@ body {
  */
 .theme-link:visited,
 .cm-s-mozilla .cm-link:visited {
-  color: #0088cc;
+  color: #46afe3;
 }
 
 .theme-comment,
@@ -78,7 +78,7 @@ body {
 
 .cm-s-mozilla .cm-unused-line {
   text-decoration: line-through;
-  text-decoration-color: #0072ab;
+  text-decoration-color: #5e88b0;
 }
 
 .cm-s-mozilla .cm-executed-line {
@@ -90,7 +90,7 @@ body {
 .variable-or-property .token-number,
 .variable-or-property[return] > .title > .name,
 .variable-or-property[scope] > .title > .name {
-  color: #2cbb0f;
+  color: #70bf53;
 }
 
 .CodeMirror-Tern-completion-number:before {
@@ -104,7 +104,7 @@ body {
 .cm-s-mozilla .cm-property,
 .cm-s-mozilla .cm-qualifier,
 .variables-view-variable > .title > .name {
-  color: #0088cc;
+  color: #46afe3;
 }
 
 .CodeMirror-Tern-completion-object:before {
@@ -117,20 +117,20 @@ body {
 .cm-s-mozilla .cm-header,
 .cm-s-mozilla .cm-bracket,
 .variables-view-property > .title > .name {
-  color: #0072ab;
+  color: #5e88b0;
 }
 
 .CodeMirror-Tern-completion-array:before {
-  background-color: #0072ab;
+  background-color: #5e88b0;
 }
 
 .theme-fg-color4 {
-  color: #f13c00;
+  color: #d96629;
 }
 
 .theme-fg-color5,
 .cm-s-mozilla .cm-keyword {
-  color: #d97e00;
+  color: #d99b28;
 }
 
 .theme-fg-color6,
@@ -138,7 +138,7 @@ body {
 .cm-s-mozilla .cm-string-2,
 .variable-or-property .token-string,
 .CodeMirror-Tern-farg {
-  color: #f13c00;
+  color: #d96629;
 }
 
 .CodeMirror-Tern-completion-string:before,
@@ -153,7 +153,7 @@ body {
 .variable-or-property .token-boolean,
 .variable-or-property .token-domnode,
 .variable-or-property[exception] > .title > .name {
-  color: #ed2655;
+  color: #eb5368;
 }
 
 .CodeMirror-Tern-completion-bool:before {

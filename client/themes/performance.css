@@ -174,7 +174,7 @@
 
 #details-pane-container[buffer-status="full"] .buffer-status-message {
   display: initial;
-  color: #ed2655;
+  color: #eb5368;
   font-weight: bold;
   opacity: 1;
 }
@@ -314,15 +314,15 @@
 }
 
 .call-tree-url, .tree-widget-item:not(.theme-selected) .opt-url {
-  color: #0088cc;
+  color: #46afe3;
 }
 
 .call-tree-line, .tree-widget-item:not(.theme-selected) .opt-line {
-  color: #f13c00;
+  color: #d96629;
 }
 
 .call-tree-column {
-  color: #f13c00;
+  color: #d96629;
   opacity: 0.6;
 }
 
@@ -664,10 +664,10 @@ menuitem.marker-color-graphs-grey:before,
 }
 
 #jit-optimizations-view .tree-widget-item:not(.theme-selected) .opt-outcome[outcome=success] {
-  color: #2cbb0f;
+  color: #70bf53;
 }
 #jit-optimizations-view .tree-widget-item:not(.theme-selected) .opt-outcome[outcome=failure] {
-  color: #ed2655;
+  color: #eb5368;
 }
 #jit-optimizations-view .tree-widget-container {
   margin-right: 0px;
@@ -679,7 +679,7 @@ menuitem.marker-color-graphs-grey:before,
 
 .opt-line::before {
   content: ":";
-  color: #f13c00;
+  color: #d96629;
 }
 .theme-selected .opt-line::before {
   color: #f5f7fa;

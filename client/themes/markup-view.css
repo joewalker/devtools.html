@@ -19,7 +19,7 @@
    Center vertically with the 1.4em line height on .tag-line */
 .child.pseudoclass-locked::before {
   content: "";
-  background: #d97e00;
+  background: #d99b28;
   border-radius: 50%;
   width: .8em;
   height: .8em;

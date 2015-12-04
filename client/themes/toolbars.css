@@ -494,7 +494,7 @@ html commandset {
 }
 
 .devtools-no-search-result {
-  border-color: #ed2655 !important;
+  border-color: #eb5368 !important;
 }
 
 .devtools-searchinput-clear {
@@ -989,7 +989,7 @@ html commandset {
 }
 
 .devtools-tab:not([selected])[highlighted] {
-  box-shadow: 0 2px 0 #2cbb0f inset;
+  box-shadow: 0 2px 0 #70bf53 inset;
 }
 
 .theme-dark .devtools-tab:not([selected])[highlighted] {

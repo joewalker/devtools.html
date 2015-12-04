@@ -66,7 +66,7 @@
 }
 
 .ruleview-rule[uneditable=true] .theme-link {
-  color: #0072ab;
+  color: #5e88b0;
 }
 
 .ruleview-rule[uneditable=true] .ruleview-enableproperty {
@@ -228,7 +228,7 @@
 }
 
 .ruleview-property[dirty] {
-  border-left-color: #2cbb0f;
+  border-left-color: #70bf53;
 }
 
 .ruleview-highlight {
@@ -264,7 +264,7 @@
 
 .ruleview-selector-matched > .ruleview-selector-pseudo-class-lock {
   font-weight: bold;
-  color: #f13c00;
+  color: #d96629;
 }
 
 .ruleview-selectorhighlighter {

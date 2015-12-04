@@ -422,7 +422,7 @@ html, body, #app, #memory-tool {
 }
 
 .frame-link-filename {
-  color: #0088cc;
+  color: #46afe3;
   cursor: pointer;
 }
 
@@ -433,7 +433,7 @@ html, body, #app, #memory-tool {
 .frame-link-column,
 .frame-link-line,
 .frame-link-colon {
-  color: #f13c00;
+  color: #d96629;
 }
 
 .frame-link-host {

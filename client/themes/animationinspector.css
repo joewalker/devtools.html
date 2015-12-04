@@ -285,13 +285,13 @@ body {
 }
 
 .animation-timeline .animation .cssanimation {
-  --timelime-border-color: #d97e00;
+  --timelime-border-color: #d99b28;
   --timeline-background-color: #b28025;
 }
 
 .animation-timeline .animation .csstransition {
-  --timelime-border-color: #0072ab;
-  --timeline-background-color: #0088cc;
+  --timelime-border-color: #5e88b0;
+  --timeline-background-color: #46afe3;
 }
 
 .animation-timeline .animation .iterations.infinite {

@@ -47,7 +47,7 @@
 
 .dbg-breakpoint-condition-thrown-message {
   display: none;
-  color: #ed2655;
+  color: #eb5368;
 }
 
 .dbg-breakpoint.dbg-breakpoint-condition-thrown .dbg-breakpoint-condition-thrown-message {
@@ -210,7 +210,7 @@
 }
 
 .dbg-classic-stackframe-details-line {
-  color: #0072ab;
+  color: #5e88b0;
 }
 
 #callstack-list .selected label {
@@ -258,16 +258,16 @@
 }
 
 .trace-call {
-  color: #0088cc;
+  color: #46afe3;
 }
 
 .trace-return,
 .trace-yield {
-  color: #2cbb0f;
+  color: #70bf53;
 }
 
 .trace-throw {
-  color: #ed2655;
+  color: #eb5368;
 }
 
 .trace-param {
@@ -340,7 +340,7 @@
 }
 
 .dbg-expression-button {
-  color: #0088cc;
+  color: #46afe3;
 }
 
 /* Event listeners view */
@@ -358,7 +358,7 @@
 }
 
 .dbg-event-listener-targets {
-  color: #0072ab;
+  color: #5e88b0;
 }
 
 .theme-dark #event-listeners .selected {
@@ -435,7 +435,7 @@
 }
 
 .results-panel-item-label-before {
-  color: #0072ab;
+  color: #5e88b0;
 }
 
 .results-panel-item-label-below {
@@ -561,7 +561,7 @@
 }
 
 #resume[break-on-next] {
-  background: #d97e00;
+  background: #d99b28;
 }
 
 #step-over {

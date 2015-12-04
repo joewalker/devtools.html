@@ -175,19 +175,19 @@
 
 .theme-dark .domLabel,
 .theme-light .domLabel {
-  color: #0072ab;
+  color: #5e88b0;
 }
 
 .theme-dark .objectBox-array .length,
 .theme-light .objectBox-array .length,
 .theme-dark .objectBox-number,
 .theme-light .objectBox-number {
-  color: #2cbb0f;
+  color: #70bf53;
 }
 
 .theme-dark .objectBox-string,
 .theme-light .objectBox-string {
-  color: #f13c00;
+  color: #d96629;
 }
 
 .theme-dark .objectBox-null,
@@ -207,7 +207,7 @@
 .theme-light .objectBox-object {
   font-family: Lucida Grande, sans-serif;
   font-weight: normal;
-  color: #0072ab;
+  color: #5e88b0;
   white-space: pre-wrap;
 }
 
@@ -215,5 +215,5 @@
 .theme-light .caption {
   font-family: Lucida Grande, Tahoma, sans-serif;
   font-weight: normal;
-  color: #0072ab;
+  color: #5e88b0;
 }

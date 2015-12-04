@@ -285,7 +285,7 @@
 }
 
 .breadcrumbs-widget-item-pseudo-classes {
-  color: #d97e00;
+  color: #d99b28;
 }
 
 .theme-dark .breadcrumbs-widget-item:not([checked]):hover label {
@@ -887,15 +887,15 @@
 }
 
 .line-graph-widget-gutter-line[type=maximum] {
-  border-color: #2cbb0f;
+  border-color: #70bf53;
 }
 
 .line-graph-widget-gutter-line[type=minimum] {
-  border-color: #ed2655;
+  border-color: #eb5368;
 }
 
 .line-graph-widget-gutter-line[type=average] {
-  border-color: #d97e00;
+  border-color: #d99b28;
 }
 
 .line-graph-widget-tooltip {
@@ -994,15 +994,15 @@
 }
 
 .line-graph-widget-tooltip[type=maximum] > [text=value] {
-  color: #2cbb0f;
+  color: #70bf53;
 }
 
 .line-graph-widget-tooltip[type=minimum] > [text=value] {
-  color: #ed2655;
+  color: #eb5368;
 }
 
 .line-graph-widget-tooltip[type=average] > [text=value] {
-  color: #f13c00;
+  color: #d96629;
 }
 
 /* Bar graph widget */

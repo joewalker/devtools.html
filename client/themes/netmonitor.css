@@ -198,7 +198,7 @@ label.requests-menu-status-code {
 }
 
 box.requests-menu-status:not([code]) {
-  background-color: #ed2655;
+  background-color: #eb5368;
   border-radius: 0; /* squares */
 }
 
@@ -212,7 +212,7 @@ box.requests-menu-status[code^="1"] {
 }
 
 box.requests-menu-status[code^="2"] {
-  background-color: #2cbb0f;
+  background-color: #70bf53;
 }
 
 /* 3xx are triangles */
@@ -222,18 +222,18 @@ box.requests-menu-status[code^="3"] {
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-bottom: 10px solid #d97e00;
+  border-bottom: 10px solid #d99b28;
   border-radius: 0;
 }
 
 /* 4xx and 5xx are squares - error codes */
 box.requests-menu-status[code^="4"] {
-  background-color: #ed2655;
+  background-color: #eb5368;
   border-radius: 0; /* squares */
 }
 
 box.requests-menu-status[code^="5"] {
-  background-color: var(--theme-highlight-pink);
+  background-color: #b82ee5;
   border-radius: 0;
   transform: rotate(45deg);
 }
@@ -481,7 +481,7 @@ box.requests-menu-status[code^="5"] {
 #response-content-info-header {
   margin: 0;
   padding: 3px 8px;
-  background-color: #ed2655;
+  background-color: #eb5368;
   color: #f5f7fa;
 }
 
@@ -717,43 +717,43 @@ box.requests-menu-status[code^="5"] {
 }
 
 .chart-colored-blob[name=html] {
-  fill: #0072ab;
-  background: #0072ab;
+  fill: #5e88b0;
+  background: #5e88b0;
 }
 
 .chart-colored-blob[name=css] {
-  fill: #0088cc;
-  background: #0088cc;
+  fill: #46afe3;
+  background: #46afe3;
 }
 
 .chart-colored-blob[name=js] {
-  fill: #d97e00;
-  background: #d97e00;
+  fill: #d99b28;
+  background: #d99b28;
 }
 
 .chart-colored-blob[name=xhr] {
-  fill: #f13c00;
-  background: #f13c00;
+  fill: #d96629;
+  background: #d96629;
 }
 
 .chart-colored-blob[name=fonts] {
-  fill: var(--theme-highlight-purple);
-  background: var(--theme-highlight-purple);
+  fill: #5b5fff;
+  background: #5b5fff;
 }
 
 .chart-colored-blob[name=images] {
-  fill: var(--theme-highlight-pink);
-  background: var(--theme-highlight-pink);
+  fill: #b82ee5;
+  background: #b82ee5;
 }
 
 .chart-colored-blob[name=media] {
-  fill: #2cbb0f;
-  background: #2cbb0f;
+  fill: #70bf53;
+  background: #70bf53;
 }
 
 .chart-colored-blob[name=flash] {
-  fill: #ed2655;
-  background: #ed2655;
+  fill: #eb5368;
+  background: #eb5368;
 }
 
 .table-chart-row-label[name=cached] {

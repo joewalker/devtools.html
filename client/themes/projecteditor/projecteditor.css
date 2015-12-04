@@ -170,7 +170,7 @@
 }
 
 .project-status[status=error] {
-  background: #ed2655;
+  background: #eb5368;
   visibility: visible;
 }
 

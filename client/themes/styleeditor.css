@@ -264,18 +264,18 @@ h3 {
 }
 
 .chart-colored-blob[name="Used Preload"] {
-  fill: var(--theme-highlight-pink);
-  background: var(--theme-highlight-pink);;
+  fill: #b82ee5;
+  background: #b82ee5;;
 }
 
 .chart-colored-blob[name=Used] {
-  fill: #2cbb0f;
-  background: #2cbb0f;
+  fill: #70bf53;
+  background: #70bf53;
 }
 
 .chart-colored-blob[name=Unused] {
-  fill: #d97e00;
-  background: #d97e00;
+  fill: #d99b28;
+  background: #d99b28;
 }
 
 /* Undo 'largest' customization */

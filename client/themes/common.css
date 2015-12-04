@@ -254,7 +254,7 @@
 
 .devtools-source-link {
   font-family: var(--monospace-font-family);
-  color: #0088cc;
+  color: #46afe3;
   cursor: pointer;
   white-space: nowrap;
   display: flex;
