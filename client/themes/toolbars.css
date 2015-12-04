@@ -58,7 +58,7 @@ html vbox,
 html spacer {
   display: flex;
   flex-basis: 0;
-  white-space: pre;
+  /*white-space: pre;*/
 }
 
 html hbox {
@@ -79,6 +79,7 @@ html vbox {
 [collapsed="true"],
 [moz-collapsed="true"] {
   visibility: collapse;
+  display: none;
 }
 
 html [flex="0"] { flex: 0; }
@@ -163,7 +164,7 @@ html commandset {
   text-shadow: none;
   border: none;
   border-radius: 0;
-  color: #18191a;;
+  color: #8fa1b2;;
   transition: background 0.05s ease-in-out;
 }
 
@@ -217,7 +218,7 @@ html commandset {
   border-width: 1px;
   border-style: solid;
   min-height: 32px;
-  background-color: #f0f1f2;
+  background-color: #343c45;
 }
 
 .devtools-toolbarbutton[standalone], .devtools-toolbarbutton[data-standalone] {
@@ -408,7 +409,7 @@ html commandset {
   border: 1px solid;
   border-radius: 2px;
   padding: 4px 6px;
-  border-color: #aaaaaa;
+  border-color: #010101;
 }
 
 :root[platform="mac"] .devtools-textinput,
@@ -608,8 +609,8 @@ html commandset {
 }
 
 .theme-light .devtools-sidebar-tabs > tabpanels {
-  background: #f7f7f7;
-  color: #18191a;;
+  background: #181d20;
+  color: #8fa1b2;;
 }
 
 .devtools-sidebar-tabs tabs {
@@ -661,12 +662,12 @@ html commandset {
 }
 
 .devtools-sidebar-tabs tabs > tab {
-  border-image: linear-gradient(transparent 15%, #aaaaaa 15%, #aaaaaa 85%, transparent 85%) 1 1;
+  border-image: linear-gradient(transparent 15%, #010101 15%, #010101 85%, transparent 85%) 1 1;
 }
 
 .devtools-sidebar-tabs tabs > tab[selected],
 .devtools-sidebar-tabs tabs > tab[selected] + tab {
-  border-image: linear-gradient(#aaaaaa, #aaaaaa) 1 1;
+  border-image: linear-gradient(#010101, #010101) 1 1;
 }
 
 .devtools-sidebar-tabs tabs > tab:first-child {
@@ -684,7 +685,7 @@ html commandset {
 .devtools-sidebar-tabs tabs > tab[selected],
 .devtools-sidebar-tabs tabs > tab[selected]:hover:active {
   color: #f5f7fa;
-  background: #4c9ed9;
+  background: #1d4f73;
 }
 
 /* Toolbox - moved from toolbox.css.
@@ -926,8 +927,8 @@ html commandset {
   border: 0px solid;
   border-bottom-width: 1px;
   padding: 0;
-  background: #ebeced;
-  border-bottom-color: #aaaaaa;
+  background: #252c33;
+  border-bottom-color: #010101;
 }
 
 .theme-light .devtools-tabbar {
@@ -959,13 +960,13 @@ html commandset {
 }
 
 .theme-dark .devtools-tab {
-  color: #585959;
+  color: #b6babf;
   border-color: #42484f;
 }
 
 .theme-light .devtools-tab {
-  color: #18191a;;
-  border-color: #aaaaaa;
+  color: #8fa1b2;;
+  border-color: #010101;
 }
 
 .theme-dark .devtools-tab:hover {
@@ -1023,7 +1024,7 @@ html commandset {
 .devtools-tabbar .devtools-tab[selected],
 .devtools-tabbar .devtools-tab[selected]:hover:active {
   color: #f5f7fa;
-  background-color: #4c9ed9;
+  background-color: #1d4f73;
 }
 
 .theme-dark .devtools-tabbar .devtools-tab[selected] {
@@ -1130,12 +1131,12 @@ html commandset {
 }
 
 .devtools-horizontal-splitter {
-  border-bottom: 1px solid #aaaaaa;
+  border-bottom: 1px solid #010101;
 }
 
 .devtools-side-splitter {
-  -moz-border-end: 1px solid #aaaaaa;
-  border-color: #aaaaaa; /* Needed for responsive container at low width. */
+  -moz-border-end: 1px solid #010101;
+  border-color: #010101; /* Needed for responsive container at low width. */
 }
 
 /* Throbbers */

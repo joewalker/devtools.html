@@ -100,7 +100,7 @@ body.dragging .tag-line {
 }
 
 .tag-line.drop-target::before {
-  border-top: 2px solid #e6b064;
+  border-top: 2px solid #b28025;
 }
 
 /* In case the indicator is put on the closing .tag-line, the indentation level

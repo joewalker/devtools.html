@@ -4,7 +4,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
  :root {
-  color: #18191a;
+  color: #8fa1b2;
 }
 
 .view-project-detail {
@@ -67,7 +67,7 @@
 }
 
 .entry {
-  color: #18191A;
+  color: #8fa1b2;
   display: flex;
   align-items: center;
 }

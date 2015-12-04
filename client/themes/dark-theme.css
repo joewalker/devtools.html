@@ -12,33 +12,33 @@ body {
 }
 
 .theme-body {
-  background: #fcfcfc;
-  color: #18191a;;
+  background: #14171a;
+  color: #8fa1b2;;
 }
 
 .theme-sidebar {
-  background: #f7f7f7;
-  color: #292e33;
+  background: #181d20;
+  color: #a9bacb;
 }
 
 ::-moz-selection {
-  background-color: #4c9ed9;
+  background-color: #1d4f73;
   color: #f5f7fa;
 }
 
 .theme-bg-darker {
-  background-color: rgba(76, 158, 217, .23);
+  background-color: rgba(29, 79, 115, .5);
 }
 
 .theme-selected,
 .CodeMirror-hint-active {
-  background-color: #4c9ed9;
+  background-color: #1d4f73;
   color: #f5f7fa;
 }
 
 .theme-bg-contrast,
 .variable-or-property:not([overridden])[changed] {
-  background: #e6b064;
+  background: #b28025;
 }
 
 .theme-link,
@@ -69,7 +69,7 @@ body {
 
 .theme-gutter {
   background-color: #0f171f;
-  color: #667380;
+  color: #5f7387;
   border-color: #303b47;
 }
 
@@ -170,8 +170,8 @@ body {
 .devtools-sidebar-tabs tabs,
 .devtools-sidebar-alltabs,
 .CodeMirror-dialog { /* General toolbar styling */
-  color: #585959;
-  background-color: #f0f1f2;
+  color: #b6babf;
+  background-color: #343c45;
   border-color: hsla(210,8%,5%,.6);
 }
 
@@ -199,7 +199,7 @@ body {
 .cm-s-mozilla .cm-variable-3,
 .cm-s-mozilla .cm-operator,
 .cm-s-mozilla .cm-special {
-  color: #292e33;
+  color: #a9bacb;
 }
 
 .cm-s-mozilla .CodeMirror-lines .CodeMirror-cursor {
@@ -250,12 +250,12 @@ div.CodeMirror span.eval-text {
 }
 
 .cm-s-mozilla .CodeMirror-linenumber { /* line number text */
-  color: #667380;
+  color: #5f7387;
 }
 
 .cm-s-mozilla .CodeMirror-gutters { /* vertical line next to line numbers */
-  border-right-color: #f0f1f2;
-  background-color: #f7f7f7;
+  border-right-color: #343c45;
+  background-color: #181d20;
 }
 
 .cm-s-markup-view pre {
@@ -375,12 +375,12 @@ div.CodeMirror span.eval-text {
 }
 
 .CodeMirror-Tern-fname {
-  color: #f7f7f7;
+  color: #181d20;
 }
 
 .CodeMirror-hints,
 .CodeMirror-Tern-tooltip {
   box-shadow: 0 0 4px rgba(255, 255, 255, .3);
   background-color: #0f171f;
-  color: #18191a;;
+  color: #8fa1b2;;
 }

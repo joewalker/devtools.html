@@ -126,14 +126,14 @@ body[resizing="horizontal"] * {
 }
 
 .theme-dark .splitterBox .splitter {
-  background-color: #f0f1f2;
+  background-color: #343c45;
 }
 
 .theme-light .splitterBox .splitter > .innerBox {
   height: 24px;
   width: 4px;
-  border-bottom: 1px solid #aaaaaa;
-  background-color: #f0f1f2;
+  border-bottom: 1px solid #010101;
+  background-color: #343c45;
 }
 
 .theme-light .splitterBox .splitter {
@@ -142,6 +142,6 @@ body[resizing="horizontal"] * {
 
 .theme-light .splitterBox .splitter.vertical {
   width: 4px;
-  border-left: 1px solid #aaaaaa;
+  border-left: 1px solid #010101;
   background-color: transparent;
 }

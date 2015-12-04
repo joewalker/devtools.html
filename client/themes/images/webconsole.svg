@@ -39,7 +39,7 @@
         fill: #8fa1b2;
       }
       #icon-indicator-output {
-        fill: #667380;
+        fill: #5f7387;
       }
       #light-icons:target #icon-indicator-input {
         fill: #45494d;

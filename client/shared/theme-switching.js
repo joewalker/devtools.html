@@ -66,8 +66,8 @@
     // Load all stylesheets associated with the new theme.
     // let newThemeDef = gDevTools.getThemeDefinition(newTheme);
     let newThemeDef = {
-      stylesheets: ['../themes/light-theme.css'],
-      classList: ["theme-light"],
+      stylesheets: ['../themes/dark-theme.css'],
+      classList: ["theme-dark"],
     }
 
     // The theme might not be available anymore (e.g. uninstalled)

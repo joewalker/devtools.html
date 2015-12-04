@@ -60,7 +60,7 @@ window {
   padding: 20px;
   background-color: #252c33; /* tab toolbars */
   min-height: 75px;
-  border-top: 1px solid #292e33; /* text high contrast (light) */
+  border-top: 1px solid #a9bacb; /* text high contrast (light) */
 }
 
 #button-container {

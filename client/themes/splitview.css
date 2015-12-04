@@ -21,7 +21,7 @@
 }
 
 .theme-dark .splitview-nav-container {
-  background-color: #f0f1f2;
+  background-color: #343c45;
 }
 
 .splitview-nav {
@@ -107,13 +107,13 @@
 .theme-light .splitview-nav > li.splitview-active {
   background-image: url(images/itemArrow-ltr.svg),
                     linear-gradient(#aaa/*@smw_marginLight@*/, #aaa/*@smw_marginLight@*/),
-                    linear-gradient(#4c9ed9, #4c9ed9);
+                    linear-gradient(#1d4f73, #1d4f73);
 }
 
 .theme-light .splitview-nav > li.splitview-active:-moz-locale-dir(rtl) {
   background-image: url(images/itemArrow-rtl.svg),
                     linear-gradient(#aaa/*@smw_marginLight@*/, #aaa/*@smw_marginLight@*/),
-                    linear-gradient(#4c9ed9, #4c9ed9);
+                    linear-gradient(#1d4f73, #1d4f73);
 }
 
 /* Toolbars */

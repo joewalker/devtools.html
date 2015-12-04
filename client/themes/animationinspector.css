@@ -32,7 +32,7 @@ body {
   flex-direction: column;
   height: 100%;
   overflow: hidden;
-  color: #667380;
+  color: #5f7387;
 }
 
 /* The top toolbar, containing the toggle-all button. And the timeline toolbar,
@@ -41,7 +41,7 @@ body {
 
 #global-toolbar,
 #timeline-toolbar {
-  border-bottom: 1px solid #aaaaaa;
+  border-bottom: 1px solid #010101;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -263,8 +263,8 @@ body {
   height: 100%;
   box-sizing: border-box;
 
-  --timelime-border-color: #18191a;;
-  --timeline-background-color: #aaaaaa;
+  --timelime-border-color: #8fa1b2;;
+  --timeline-background-color: #010101;
 
   /* Iterations of the animation are displayed with a repeating linear-gradient
      which size is dynamically changed from JS. The gradient only draws 1px
@@ -286,7 +286,7 @@ body {
 
 .animation-timeline .animation .cssanimation {
   --timelime-border-color: #d97e00;
-  --timeline-background-color: #e6b064;
+  --timeline-background-color: #b28025;
 }
 
 .animation-timeline .animation .csstransition {
@@ -306,7 +306,7 @@ body {
   right: 0;
   width: 0;
   height: 0;
-  border-right: 4px solid #fcfcfc;
+  border-right: 4px solid #14171a;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
 }
@@ -362,7 +362,7 @@ body {
 /* Animation target node gutter, contains a preview of the dom node */
 
 .animation-target {
-  background-color: #f0f1f2;
+  background-color: #343c45;
   padding: 1px 4px;
   box-sizing: border-box;
   overflow: hidden;
@@ -394,8 +394,8 @@ body {
 /* Animation title gutter, contains the name, duration, iteration */
 
 .animation-title {
-  background-color: #f0f1f2;
-  border-bottom: 1px solid #aaaaaa;
+  background-color: #343c45;
+  border-bottom: 1px solid #010101;
   padding: 1px 4px;
   word-wrap: break-word;
   overflow: auto;

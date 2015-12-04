@@ -64,8 +64,8 @@
 
 .theme-dark .toolbar,
 .theme-light .toolbar {
-  background-color: #f0f1f2;
-  border-bottom: 1px solid #aaaaaa;
+  background-color: #343c45;
+  border-bottom: 1px solid #010101;
   padding: 1px;
   padding-left: 2px;
 }
@@ -74,7 +74,7 @@
 .theme-light .toolbar .btn {
   min-width: 78px;
   min-height: 18px;
-  color: #292e33;
+  color: #a9bacb;
   text-shadow: none;
   margin: 1px 2px 1px 2px;
   border: none;

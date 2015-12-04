@@ -147,7 +147,7 @@ BezierCanvas.prototype = {
     let defaultSettings = {
       handleColor: "#666",
       handleThickness: .008,
-      bezierColor: "#4C9ED9",
+      bezierColor: "#1d4f73",
       bezierThickness: .015,
       drawHandles: true
     };

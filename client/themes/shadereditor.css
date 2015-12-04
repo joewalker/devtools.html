@@ -6,8 +6,8 @@
 
 .notice-container {
   margin-top: -50vh;
-  background-color: #f0f1f2;
-  color: #585959;
+  background-color: #343c45;
+  color: #b6babf;
 }
 
 #reload-notice {
@@ -83,13 +83,13 @@
 }
 
 .editor-label {
-  background: #f0f1f2;
-  border-color: #aaaaaa;
-  color: #585959;
+  background: #343c45;
+  border-color: #010101;
+  color: #b6babf;
 }
 
 .editor-label[selected] {
-  background-color: #4c9ed9;
+  background-color: #1d4f73;
   color: #f5f7fa;
 }
 

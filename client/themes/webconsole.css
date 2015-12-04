@@ -155,7 +155,7 @@ a {
 }
 
 #output-container.hideTimestamps > .message > .indent {
-  background-color: #fcfcfc;
+  background-color: #14171a;
 }
 
 .filtered-by-type,
@@ -194,7 +194,7 @@ a {
 }
 
 .message:hover {
-  background-color: rgba(76, 158, 217, .23) !important;
+  background-color: rgba(29, 79, 115, .5) !important;
 }
 
 .theme-light .message[severity=error] {
@@ -257,8 +257,8 @@ a {
 }
 
 .message[category=network] .xhr {
-  background-color: #585959;
-  color: #fcfcfc;
+  background-color: #b6babf;
+  color: #14171a;
   border-radius: 3px;
   font-weight: bold;
   font-size: 10px;
@@ -305,7 +305,7 @@ a {
 
 /* Web Developer styles */
 .webconsole-filter-button[category="logging"] > .toolbarbutton-menubutton-button:before {
-  background-image: linear-gradient(#B9B9B9, #AAAAAA);
+  background-image: linear-gradient(#B9B9B9, #010101);
   border-color: #929292;
 }
 
@@ -356,8 +356,8 @@ a {
 
 /* JSTerm Styles */
 .jsterm-input-container {
-  background-color: #ebeced;
-  border-top: 1px solid #aaaaaa;
+  background-color: #252c33;
+  border-top: 1px solid #010101;
 }
 
 .theme-light .jsterm-input-container {
@@ -386,7 +386,7 @@ a {
   background-image: -moz-image-rect(url("/devtools/client/themes/images/commandline-icon.png"), 0, 32, 16, 16);
   background-repeat: no-repeat;
   background-size: 16px 16px;
-  color: #292e33;
+  color: #a9bacb;
 }
 
 @media (min-resolution: 1.1dppx) {
@@ -413,7 +413,7 @@ a {
   margin-top: 5px;
   margin-bottom: 15px;
   -moz-margin-end: 15px;
-  border: 1px solid #aaaaaa;
+  border: 1px solid #010101;
   border-radius: 3px;
 }
 
@@ -457,7 +457,7 @@ a {
 .navigation-marker .url {
   -moz-padding-end: 9px;
   text-decoration: none;
-  background: #fcfcfc;
+  background: #14171a;
 }
 
 .theme-light .navigation-marker .url {
@@ -471,7 +471,7 @@ a {
   margin: 5px 0 0 0;
   max-height: 10em;
   overflow-y: auto;
-  border: 1px solid #aaaaaa;
+  border: 1px solid #010101;
   border-radius: 3px;
 }
 

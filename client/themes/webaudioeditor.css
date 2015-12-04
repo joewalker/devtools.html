@@ -5,8 +5,8 @@
 /* Reload and waiting notices */
 .notice-container {
   margin-top: -50vh;
-  background-color: #f0f1f2;
-  color: #585959;
+  background-color: #343c45;
+  color: #b6babf;
 }
 
 #reload-notice {
@@ -30,10 +30,10 @@ svg {
 }
 
 .theme-dark .edgePath path {
-  stroke: #585959;
+  stroke: #b6babf;
 }
 .theme-light .edgePath path {
-  stroke: #aaaaaa;
+  stroke: #010101;
 }
 
 /* AudioParam connection edges */
@@ -42,20 +42,20 @@ g.edgePath.param-connection {
 }
 
 .theme-dark .edgePath.param-connection path {
-  stroke: #585959;
+  stroke: #b6babf;
 }
 .theme-light .edgePath.param-connection path {
-  stroke: #aaaaaa;
+  stroke: #010101;
 }
 
 /* Labels in AudioParam connection should have background that match
  * the main background so there's whitespace around the label, on top of the
  * dotted lines. */
 g.edgeLabel rect {
-  fill: #fcfcfc;
+  fill: #14171a;
 }
 g.edgeLabel tspan {
-  fill: #585959;
+  fill: #b6babf;
 }
 
 /* Audio Nodes */
@@ -65,13 +65,13 @@ g.edgeLabel tspan {
 }
 
 .nodes rect {
-  stroke: #ebeced;
+  stroke: #252c33;
 }
 .theme-light rect {
-  fill: #ebeced;
+  fill: #252c33;
 }
 .theme-dark rect {
-  fill: #f0f1f2;
+  fill: #343c45;
 }
 
 /**
@@ -85,7 +85,7 @@ g.edgeLabel tspan {
   fill: url(/devtools/client/themes/images/filters.svg#bypass-dark);
 }
 .nodes g.bypassed.selected rect {
-  stroke: #4c9ed9;
+  stroke: #1d4f73;
 }
 
 /*
@@ -98,12 +98,12 @@ g.edgeLabel tspan {
  * Selected Nodes
  */
 .nodes g.selected rect {
-  fill: #4c9ed9;
+  fill: #1d4f73;
 }
 
 /* Don't style bypassed nodes text different because it'd be illegible in light-theme */
 .theme-light g.selected:not(.bypassed) text {
-  fill: #f0f1f2;
+  fill: #343c45;
 }
 
 
@@ -116,7 +116,7 @@ text {
 }
 
 text {
-  fill: #585959;
+  fill: #b6babf;
 }
 
 
@@ -173,7 +173,7 @@ text {
 
 #automation-param-toolbar .automation-param-button[selected] {
   color: #f5f7fa;
-  background-color: #4c9ed9;
+  background-color: #1d4f73;
 }
 
 #automation-graph {

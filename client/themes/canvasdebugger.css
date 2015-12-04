@@ -12,8 +12,8 @@
 
 .notice-container {
   margin-top: -50vh;
-  background-color: #f0f1f2;
-  color: #585959;
+  background-color: #343c45;
+  color: #b6babf;
 }
 
 #empty-notice > button {
@@ -35,7 +35,7 @@
 
 #snapshots-pane > tabs,
 #snapshots-pane .devtools-toolbar {
-  -moz-border-end: 1px solid #aaaaaa;
+  -moz-border-end: 1px solid #010101;
 }
 
 #record-snapshot {
@@ -57,7 +57,7 @@
 }
 
 .snapshot-item-thumbnail {
-  background-color: #fcfcfc;
+  background-color: #14171a;
 }
 
 .snapshot-item-details {
@@ -76,7 +76,7 @@
 
 .snapshot-item-calls,
 .snapshot-item-save {
-  color: #585959;
+  color: #b6babf;
 }
 
 .snapshot-item-save {
@@ -218,9 +218,9 @@
 }
 
 .call-item-gutter {
-  background-color: #f7f7f7;
-  color: #667380;
-  border-color: #aaaaaa;
+  background-color: #181d20;
+  color: #5f7387;
+  border-color: #010101;
 }
 
 .call-item-index {
@@ -287,7 +287,7 @@
 }
 
 .call-item-stack-fn-name {
-  color: #667380;
+  color: #5f7387;
 }
 
 .call-item-stack-fn-location {
@@ -306,7 +306,7 @@
 /* Rendering preview */
 
 #screenshot-container {
-  background-color: #fcfcfc;
+  background-color: #14171a;
   background-image: var(--checkerboard-pattern);
   background-size: 30px 30px, 30px 30px;
   background-position: 0px 0px, 15px 15px;
@@ -357,7 +357,7 @@
 /* Snapshot filmstrip */
 
 #snapshot-filmstrip {
-  border-top: 1px solid #aaaaaa;
+  border-top: 1px solid #010101;
   overflow: hidden;
 }
 
@@ -366,12 +366,12 @@
 }
 
 .theme-light #snapshot-filmstrip {
-  color: #585959;
+  color: #b6babf;
 }
 
 .filmstrip-thumbnail {
   image-rendering: -moz-crisp-edges;
-  background-color: #fcfcfc;
+  background-color: #14171a;
   background-image: var(--checkerboard-pattern);
   background-size: 12px 12px, 12px 12px;
   background-position: 0px -1px, 6px 5px;
@@ -380,7 +380,7 @@
   cursor: pointer;
   padding-top: 1px;
   padding-bottom: 1px;
-  border-inline-end: 1px solid #aaaaaa;
+  border-inline-end: 1px solid #010101;
   transition: opacity 0.1s ease-in-out;
 }
 

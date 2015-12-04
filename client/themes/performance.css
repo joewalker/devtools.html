@@ -95,7 +95,7 @@
 .notice-container .record-button[checked],
 .notice-container .record-button[checked] {
   color: #f5f7fa !important;
-  background: #4c9ed9 !important;
+  background: #1d4f73 !important;
 }
 
 .record-button[locked] {
@@ -125,7 +125,7 @@
 
 .recording-item-duration,
 .recording-item-save {
-  color: #585959;
+  color: #b6babf;
 }
 
 #recordings-list .selected label {
@@ -137,8 +137,8 @@
 
 .notice-container {
   font-size: 120%;
-  background-color: #f0f1f2;
-  color: #18191a;;
+  background-color: #343c45;
+  color: #8fa1b2;;
   padding-bottom: 20vh;
 }
 
@@ -247,7 +247,7 @@
   -moz-box-align: center;
   overflow: hidden;
   padding: 1px 4px;
-  color: #18191a;;
+  color: #8fa1b2;;
   -moz-border-end-color: var(--cell-border-color);
 }
 
@@ -266,7 +266,7 @@
 }
 
 .call-tree-header {
-  background-color: #ebeced;
+  background-color: #252c33;
 }
 
 .call-tree-item:last-child {
@@ -282,7 +282,7 @@
 }
 
 .call-tree-item:focus {
-  background-color: #4c9ed9;
+  background-color: #1d4f73;
 }
 
 .call-tree-item:focus description {
@@ -354,7 +354,7 @@
   width: 100px;
   font-size: 9px;
   transform-origin: left center;
-  color: #18191a;;
+  color: #8fa1b2;;
 }
 
 .waterfall-header-tick:not(:first-child) {
@@ -438,7 +438,7 @@
 }
 
 .waterfall-tree-item:focus {
-  background-color: #4c9ed9;
+  background-color: #1d4f73;
 }
 
 .waterfall-tree-item:focus description {
@@ -657,7 +657,7 @@ menuitem.marker-color-graphs-grey:before,
 #jit-optimizations-view .opt-outcome::before {
   content: "→";
   margin: 4px 0px;
-  color: #18191a;;
+  color: #8fa1b2;;
 }
 #jit-optimizations-view .theme-selected .opt-outcome::before {
   color: #f5f7fa;
@@ -685,7 +685,7 @@ menuitem.marker-color-graphs-grey:before,
   color: #f5f7fa;
 }
 .opt-line.header-line::before {
-  color: #18191a;;
+  color: #8fa1b2;;
 }
 #jit-optimizations-view.empty .opt-line.header-line::before {
   display: none;
@@ -742,7 +742,7 @@ ul.frames-list li {
 }
 
 ul.frames-list li.selected {
-  background-color: #4c9ed9;
+  background-color: #1d4f73;
   color: #f5f7fa;
 }
 

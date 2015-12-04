@@ -48,7 +48,7 @@
 
 .headersPanelBox .netInfoParamValue code {
   display: block;
-  color: #18191A;
+  color: #8fa1b2;
   font-size: 11px;
   word-wrap: break-word;
 }
@@ -75,5 +75,5 @@
 }
 
 .theme-dark .headersPanelBox .netInfoHeadersGroup {
-  color: #585959;
+  color: #b6babf;
 }

@@ -106,7 +106,7 @@ canvas#curve {
 
   border-radius: 50%;
   border: 2px solid white;
-  background: #4C9ED9;
+  background: #1d4f73;
 }
 
 .timing-function-preview .dot.animate {
@@ -138,16 +138,16 @@ canvas#curve {
 .preset-pane {
   width: 50%;
   height: 100%;
-  border-right: 1px solid #aaaaaa;
+  border-right: 1px solid #010101;
   padding-right: 4px; /* Visual balance for the panel-arrowcontent border on the left */
 }
 
 #preset-categories {
   display: flex;
   width: 95%;
-  border: 1px solid #aaaaaa;
+  border: 1px solid #010101;
   border-radius: 2px;
-  background-color: #f0f1f2;
+  background-color: #343c45;
   margin: 3px auto 0 auto;
 }
 
@@ -160,24 +160,24 @@ canvas#curve {
   width: 33.33%;
   text-align: center;
   text-transform: capitalize;
-  border-right: 1px solid #aaaaaa;
+  border-right: 1px solid #010101;
   cursor: default;
-  color: #18191a;;
+  color: #8fa1b2;;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
 .category:hover {
-  background-color: #ebeced;
+  background-color: #252c33;
 }
 
 .active-category {
-  background-color: #4c9ed9;
+  background-color: #1d4f73;
   color: #f5f7fa;
 }
 
 .active-category:hover {
-  background-color: #4c9ed9;
+  background-color: #1d4f73;
 }
 
 #preset-container {
@@ -209,7 +209,7 @@ canvas#curve {
   display: block;
   border: 1px solid #ccc;
   border-radius: 3px;
-  background-color: #fcfcfc;
+  background-color: #14171a;
   margin: 0 auto;
 }
 
@@ -220,22 +220,22 @@ canvas#curve {
 .preset p {
   font-size: 80%;
   margin: 2px auto 0px auto;
-  color: #585959;
+  color: #b6babf;
   text-transform: capitalize;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
 .active-preset p, .active-preset:hover p {
-  color: #18191a;;
+  color: #8fa1b2;;
 }
 
 .preset:hover canvas {
-  border-color: #4c9ed9;
+  border-color: #1d4f73;
 }
 
 .active-preset canvas, .active-preset:hover canvas,
 .theme-dark .active-preset canvas, .theme-dark .preset:hover canvas {
-  background-color: rgba(76, 158, 217, .23);
-  border-color: #4c9ed9;
+  background-color: rgba(29, 79, 115, .5);
+  border-color: #1d4f73;
 }

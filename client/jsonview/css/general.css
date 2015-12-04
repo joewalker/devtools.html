@@ -35,10 +35,10 @@ pre {
 /* Dark Theme */
 
 body.theme-dark {
-  color: #18191a;;
-  background-color: #fcfcfc;
+  color: #8fa1b2;;
+  background-color: #14171a;
 }
 
 .theme-dark pre {
-  background-color: #fcfcfc;
+  background-color: #14171a;
 }

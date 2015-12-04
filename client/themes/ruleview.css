@@ -58,7 +58,7 @@
  */
 .ruleview-rule[unmatched=true],
 .ruleview-rule[uneditable=true] {
-  background: #ebeced;
+  background: #252c33;
 }
 
 .ruleview-rule[uneditable=true] :focus {
@@ -210,7 +210,7 @@
 }
 
 .theme-light .ruleview-overridden {
-  text-decoration-color: #667380;
+  text-decoration-color: #5f7387;
 }
 
 .styleinspector-propertyeditor {

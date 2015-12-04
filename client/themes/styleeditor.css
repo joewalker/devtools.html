@@ -20,18 +20,18 @@
 .theme-dark .stylesheet-rule-count,
 .theme-dark .stylesheet-linked-file,
 .theme-dark .stylesheet-saveButton {
-  color: #585959;
+  color: #b6babf;
 }
 
 .theme-light .stylesheet-title,
 .theme-light .stylesheet-name {
-  color: #585959;
+  color: #b6babf;
 }
 
 .theme-light .stylesheet-rule-count,
 .theme-light .stylesheet-linked-file,
 .theme-light .stylesheet-saveButton {
-  color: #18191a;;
+  color: #8fa1b2;;
 }
 
 .stylesheet-saveButton {
@@ -67,7 +67,7 @@
 .stylesheet-sidebar {
   max-width: 400px;
   min-width: 100px;
-  border-color: #aaaaaa;
+  border-color: #010101;
 }
 
 .theme-light .media-rule-label {
@@ -199,7 +199,7 @@ h3 {
 }
 
 .csscoverage-report {
-  background-color: #f0f1f2;
+  background-color: #343c45;
 }
 
 .csscoverage-report-container {

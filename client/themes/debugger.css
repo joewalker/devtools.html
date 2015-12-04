@@ -20,7 +20,7 @@
 
 #sources-pane > tabs,
 #sources-pane .devtools-toolbar {
-  -moz-border-end-color: #aaaaaa;
+  -moz-border-end-color: #010101;
 }
 
 /* Sources and breakpoints list */
@@ -202,11 +202,11 @@
 }
 
 .dbg-classic-stackframe-details-url {
-  color: #292e33;
+  color: #a9bacb;
 }
 
 .dbg-classic-stackframe-details-sep {
-  color: #585959
+  color: #b6babf
 }
 
 .dbg-classic-stackframe-details-line {
@@ -271,7 +271,7 @@
 }
 
 .trace-param {
-  color: #292e33;
+  color: #a9bacb;
 }
 
 .theme-dark .trace-syntax {
@@ -280,7 +280,7 @@
 
 /* Tracer light theme */
 .theme-light .trace-item {
-  color: #292e33;
+  color: #a9bacb;
 }
 
 .theme-light .trace-item.black-boxed {
@@ -350,11 +350,11 @@
 }
 
 .dbg-event-listener-location {
-  color: #292e33;
+  color: #a9bacb;
 }
 
 .dbg-event-listener-separator {
-  color: #585959;
+  color: #b6babf;
 }
 
 .dbg-event-listener-targets {
@@ -431,7 +431,7 @@
 }
 
 .theme-light .results-panel-item-label {
-  color: #18191a;;
+  color: #8fa1b2;;
 }
 
 .results-panel-item-label-before {
@@ -439,7 +439,7 @@
 }
 
 .results-panel-item-label-below {
-  color: #667380;
+  color: #5f7387;
 }
 
 #results-panel .selected label {
@@ -496,19 +496,19 @@
 }
 
 .dbg-source-results:not(.selected):hover {
-  background-color: #f7f7f7;
+  background-color: #181d20;
 }
 
 .dbg-results-header {
-  background-color: #ebeced;
+  background-color: #252c33;
 }
 
 .theme-dark .dbg-results-header {
-  color: #292e33;
+  color: #a9bacb;
 }
 
 .theme-light .dbg-results-header {
-  color: #667380;
+  color: #5f7387;
 }
 
 .theme-dark .dbg-search-result:hover {
@@ -520,16 +520,16 @@
 }
 
 .dbg-results-header-match-count {
-  color: #667380;
+  color: #5f7387;
 }
 
 .dbg-results-line-number {
-  background-color: #ebeced;
-  color: #585959;
+  background-color: #252c33;
+  color: #b6babf;
 }
 
 .dbg-results-line-contents-string {
-  color: #585959;
+  color: #b6babf;
 }
 
 .theme-dark .dbg-results-line-contents-string[match=true] {
@@ -537,7 +537,7 @@
 }
 
 .theme-light .dbg-results-line-contents-string[match=true] {
-  color: #18191a;;
+  color: #8fa1b2;;
 }
 
 /* Toolbar controls */
