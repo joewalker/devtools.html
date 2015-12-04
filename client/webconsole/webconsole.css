@@ -17,7 +17,13 @@ body {
 #sidebar-pane {
   overflow: auto;
   width: 300px;
-  border-left: 1px solid lightgray;
+  border-left: 1px solid #010101;
+}
+
+#js-input,
+#js-output {
+  background-color: #14171a;
+  color: #8fa1b2;
 }
 
 #js-output {
@@ -35,7 +41,7 @@ body {
   background-repeat: no-repeat;
   background-position: -16px 50%;
   border: none;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid #010101;
 }
 
 .console-message {
