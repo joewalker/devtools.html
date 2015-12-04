@@ -78,7 +78,8 @@ html vbox {
 /* hide the content, but don't destroy the frames */
 [collapsed="true"],
 [moz-collapsed="true"] {
-  visibility: collapse;
+  /*visibility: collapse;*/
+  display: none;
 }
 
 html [flex="0"] { flex: 0; }
