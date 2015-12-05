@@ -9,12 +9,12 @@
 <?xml-stylesheet href="/devtools/client/markupview/markup-view.css" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/themes/markup-view.css" type="text/css"?>
 
-<?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
+<?xul-overlay href="/chrome/global/content/editMenuOverlay.xul"?>
 
 <!DOCTYPE window [
 <!ENTITY % scratchpadDTD SYSTEM "l10n/scratchpad.dtd" >
  %scratchpadDTD;
-<!ENTITY % editMenuStrings SYSTEM "chrome://global/locale/editMenuOverlay.dtd">
+<!ENTITY % editMenuStrings SYSTEM "/chrome/global/locale/editMenuOverlay.dtd">
 %editMenuStrings;
 <!ENTITY % sourceEditorStrings SYSTEM "l10n/sourceeditor.dtd">
 %sourceEditorStrings;

@@ -211,7 +211,7 @@
 }
 
 .devtools-tooltip-alert-icon {
-  list-style-image: url("chrome://global/skin/icons/warning-32.png");
+  list-style-image: url("/chrome/global/skin/icons/warning-32.png");
 }
 
 /* Tooltip: Variables View */

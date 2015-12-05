@@ -5,7 +5,7 @@
 <!DOCTYPE window [
 <!ENTITY % styleEditorDTD SYSTEM "l10n/styleeditor.dtd" >
  %styleEditorDTD;
-<!ENTITY % editMenuStrings SYSTEM "chrome://global/locale/editMenuOverlay.dtd">
+<!ENTITY % editMenuStrings SYSTEM "/chrome/global/locale/editMenuOverlay.dtd">
  %editMenuStrings;
 <!ENTITY % sourceEditorStrings SYSTEM "l10n/sourceeditor.dtd">
  %sourceEditorStrings;
@@ -21,7 +21,7 @@
 <?xml-stylesheet href="/devtools/client/themes/splitview.css" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/styleeditor/styleeditor.css" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/themes/styleeditor.css" type="text/css"?>
-<?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
+<?xul-overlay href="/chrome/global/content/editMenuOverlay.xul"?>
 
 <xul:window xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         xmlns="http://www.w3.org/1999/xhtml"
@@ -30,7 +30,7 @@
   <script type="application/javascript"
           src="/devtools/client/shared/theme-switching.js"/>
   <xul:script type="application/javascript" src="/devtools/client/chrome/global/content/globalOverlay.js"/>
-  <xul:script type="application/javascript" src="chrome://browser/content/utilityOverlay.js"/>
+  <xul:script type="application/javascript" src="/chrome/browser/content/utilityOverlay.js"/>
   <xul:script type="application/javascript">
     function goUpdateSourceEditorMenuItems() {
       goUpdateGlobalEditMenuItems();

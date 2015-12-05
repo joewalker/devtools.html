@@ -7,7 +7,7 @@
  %toolboxDTD;
 ]>
 
-<?xml-stylesheet href="chrome://browser/skin/" type="text/css"?>
+<?xml-stylesheet href="/chrome/browser/skin/" type="text/css"?>
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         id="devtools-toolbox-window"
@@ -19,8 +19,8 @@
 
   <script type="text/javascript" src="/devtools/client/chrome/global/content/globalOverlay.js"/>
   <script type="text/javascript" src="toolbox-process-window.js"/>
-  <script type="text/javascript" src="chrome://global/content/viewSourceUtils.js"/>
-  <script type="text/javascript" src="chrome://browser/content/utilityOverlay.js"/>
+  <script type="text/javascript" src="/chrome/global/content/viewSourceUtils.js"/>
+  <script type="text/javascript" src="/chrome/browser/content/utilityOverlay.js"/>
 
   <commandset id="toolbox-commandset">
     <command id="toolbox-cmd-close"/>

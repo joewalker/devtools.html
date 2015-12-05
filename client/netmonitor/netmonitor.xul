@@ -2,7 +2,7 @@
 <!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-<?xml-stylesheet href="chrome://browser/skin/" type="text/css"?>
+<?xml-stylesheet href="/chrome/browser/skin/" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/shared/widgets/widgets.css" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/netmonitor/netmonitor.css" type="text/css"?>
 <?xml-stylesheet href="/devtools/client/themes/common.css" type="text/css"?>
@@ -11,7 +11,7 @@
 <!DOCTYPE window [
   <!ENTITY % netmonitorDTD SYSTEM "l10n/netmonitor.dtd">
   %netmonitorDTD;
-  <!ENTITY % certManagerDTD SYSTEM "chrome://pippki/locale/certManager.dtd">
+  <!ENTITY % certManagerDTD SYSTEM "/chrome/pippki/locale/certManager.dtd">
   %certManagerDTD;
 ]>
 

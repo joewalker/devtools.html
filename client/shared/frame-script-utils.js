@@ -12,7 +12,7 @@ const { Task } = require("devtools/sham/task");
 const subScriptLoader = Cc("@mozilla.org/moz/jssubscript-loader;1")
                           .getService(Ci.mozIJSSubScriptLoader);
 var EventUtils = {};
-subScriptLoader.loadSubScript("chrome://marionette/content/EventUtils.js", EventUtils);
+subScriptLoader.loadSubScript("/chrome/marionette/content/EventUtils.js", EventUtils);
 
 const nsIProfilerModule = Cc("@mozilla.org/tools/profiler;1").getService(Ci.nsIProfiler);
 

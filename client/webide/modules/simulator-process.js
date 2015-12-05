@@ -158,7 +158,7 @@ SimulatorProcess.prototype = {
     // we have to override the default chrome URL
     // in order to prevent the Browser UI to appear.
     if (this.b2gBinary.leafName.includes("firefox")) {
-      args.push("-chrome", "chrome://b2g/content/shell.html");
+      args.push("-chrome", "/chrome/b2g/content/shell.html");
     }
 
     return args;

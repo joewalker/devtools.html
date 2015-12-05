@@ -9,11 +9,11 @@
   %webideDTD;
 ]>
 
-<?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
+<?xul-overlay href="/chrome/global/content/editMenuOverlay.xul"?>
 
 <?xml-stylesheet href="/devtools/client/chrome/global/skin/global.css"?>
 <?xml-stylesheet href="/devtools/client/themes/common.css"?>
-<?xml-stylesheet href="chrome://webide/skin/webide.css"?>
+<?xml-stylesheet href="/chrome/webide/skin/webide.css"?>
 
 <window id="webide" onclose="return UI.canCloseProject();"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
@@ -129,7 +129,7 @@
         <toolbarbutton id="action-button-stop"  class="action-button" command="cmd_stop" tooltiptext="&projectMenu_stop_label;"/>
         <toolbarbutton id="action-button-debug" class="action-button" command="cmd_toggleToolbox" tooltiptext="&projectMenu_debug_label;"/>
         <hbox id="action-busy" align="center">
-          <html:img id="action-busy-undetermined" src="chrome://webide/skin/throbber.svg"/>
+          <html:img id="action-busy-undetermined" src="/chrome/webide/skin/throbber.svg"/>
           <progressmeter id="action-busy-determined"/>
         </hbox>
       </hbox>

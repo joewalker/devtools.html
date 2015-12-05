@@ -7,7 +7,7 @@
 <!DOCTYPE window [
 <!ENTITY % scratchpadDTD SYSTEM "l10n/scratchpad.dtd" >
  %scratchpadDTD;
-<!ENTITY % editMenuStrings SYSTEM "chrome://global/locale/editMenuOverlay.dtd">
+<!ENTITY % editMenuStrings SYSTEM "/chrome/global/locale/editMenuOverlay.dtd">
 %editMenuStrings;
 <!ENTITY % sourceEditorStrings SYSTEM "l10n/sourceeditor.dtd">
 %sourceEditorStrings;
@@ -16,7 +16,7 @@
 <?xml-stylesheet href="/devtools/client/chrome/global/skin/global.css"?>
 <?xml-stylesheet href="/devtools/client/themes/common.css"?>
 <?xml-stylesheet href="/devtools/client/themes/scratchpad.css"?>
-<?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
+<?xul-overlay href="/chrome/global/content/editMenuOverlay.xul"?>
 
 <window id="main-window"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"

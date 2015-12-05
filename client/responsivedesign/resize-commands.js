@@ -8,7 +8,7 @@ const { Cc, Ci, Cu } = require("devtools/sham/chrome");
 
 const BRAND_SHORT_NAME = Cc("@mozilla.org/intl/stringbundle;1").
                          getService(Ci.nsIStringBundleService).
-                         createBundle("chrome://branding/locale/brand.properties").
+                         createBundle("/chrome/branding/locale/brand.properties").
                          GetStringFromName("brandShortName");
 
 const l10n = require("gcli/l10n");

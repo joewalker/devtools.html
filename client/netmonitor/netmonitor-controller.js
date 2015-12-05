@@ -7,7 +7,7 @@
 
 const { Cc, Ci, Cu, Cr } = require("devtools/sham/chrome");
 
-const PKI_STRINGS_URI = "chrome://pippki/locale/pippki.properties";
+const PKI_STRINGS_URI = "/chrome/pippki/locale/pippki.properties";
 const LISTENERS = [ "NetworkActivity" ];
 const NET_PREFS = { "NetworkMonitor.saveRequestAndResponseBodies": true };
 

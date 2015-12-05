@@ -436,7 +436,7 @@ function isChromeScheme(location, i) {
   let firstChar = location.charCodeAt(i);
 
   switch (firstChar) {
-  case CHAR_CODE_C: // "chrome://"
+  case CHAR_CODE_C: // "/chrome/"
     if (location.charCodeAt(++i) === CHAR_CODE_H &&
         location.charCodeAt(++i) === CHAR_CODE_R &&
         location.charCodeAt(++i) === CHAR_CODE_O &&

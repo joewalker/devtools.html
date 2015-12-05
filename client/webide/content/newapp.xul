@@ -10,7 +10,7 @@
 ]>
 
 <?xml-stylesheet href="/devtools/client/chrome/global/skin/global.css"?>
-<?xml-stylesheet href="chrome://webide/skin/newapp.css"?>
+<?xml-stylesheet href="/chrome/webide/skin/newapp.css"?>
 
 <dialog id="webide:newapp" title="&newAppWindowTitle;"
   width="600" height="400"

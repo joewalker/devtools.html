@@ -948,7 +948,7 @@ html commandset {
 .devtools-tab {
   align-items: center;
   -moz-appearance: none;
-  -moz-binding: url("chrome://global/content/bindings/general.xml#control-item");
+  -moz-binding: url("/chrome/global/content/bindings/general.xml#control-item");
   -moz-box-align: center;
   min-width: 32px;
   min-height: 24px;
