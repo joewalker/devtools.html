@@ -151,10 +151,10 @@ Tools.jsdebugger = {
 };
 
 var defaultTools = [
-  Tools.options,
-  Tools.webConsole,
-  Tools.inspector,
-  Tools.jsdebugger,
+  // Tools.options,
+  // Tools.webConsole,
+  // Tools.inspector,
+  Tools.jsdebugger
 ];
 
 exports.defaultTools = defaultTools;
