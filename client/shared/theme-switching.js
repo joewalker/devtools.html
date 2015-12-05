@@ -66,7 +66,7 @@
     // Load all stylesheets associated with the new theme.
     // let newThemeDef = gDevTools.getThemeDefinition(newTheme);
     let newThemeDef = {
-      stylesheets: ['../themes/dark-theme.css'],
+      stylesheets: ['/client/themes/dark-theme.css'],
       classList: ["theme-dark"],
     }
 

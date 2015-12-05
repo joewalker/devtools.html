@@ -68,7 +68,16 @@ UpdateProcess.prototype = {
     if (this.canceled) {
       return;
     }
-    this._timeout = setTimeout(this._timeoutHandler.bind(this), 0);
+    // XXX: this isn't an iterator object anymore.
+    // Don't do any work and just let the computed view do nothing for now.
+    // for (let i of this.iter) {
+    //   this.onItem(i);
+    // }
+    // setTimeout(() => {
+    //   this.onDone();
+    // }, 10);
+
+    // this._timeout = setTimeout(this._timeoutHandler.bind(this), 0);
   },
 
   /**
@@ -624,7 +633,7 @@ CssComputedView.prototype = {
       .getComputedStyle(this.styleDocument.documentElement);
     let mozProps = [];
     for (let i = 0, numStyles = styles.length; i < numStyles; i++) {
-      let prop = styles.item(i);
+      let prop = styles[i];
       if (prop.startsWith("--")) {
         // Skip any CSS variables used inside of browser CSS files
         continue;

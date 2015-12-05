@@ -25,7 +25,11 @@ Services.telemetry = {
     };
   },
 };
-
+Services.wm = {
+  getMostRecentWindow: () => {
+    return window;
+  }
+}
 Services.obs = {
   addObserver: () => {},
   removeObserver: () => {},
