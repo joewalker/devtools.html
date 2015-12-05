@@ -519,7 +519,7 @@ a {
 
 /* Open DOMNode in inspector button */
 .open-inspector {
-  background: url("/devtools/client/themes/images/vview-open-inspector.png") no-repeat 0 0;
+  background: url("/client/themes/images/vview-open-inspector.png") no-repeat 0 0;
   padding-left: 16px;
   margin-left: 5px;
   cursor: pointer;

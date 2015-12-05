@@ -268,19 +268,19 @@
 }
 
 .ruleview-selectorhighlighter {
-  background: url("/devtools/client/themes/images/vview-open-inspector.png") no-repeat 0 0;
+  background: url("/client/themes/images/vview-open-inspector.png") no-repeat 0 0;
   padding-left: 16px;
   margin-left: 5px;
   cursor: pointer;
 }
 
 .ruleview-selectorhighlighter:hover {
-  filter: url(images/filters.svg#checked-icon-state);
+  filter: url(/client/themes/images/filters.svg#checked-icon-state);
 }
 
 .ruleview-selectorhighlighter:active,
 .ruleview-selectorhighlighter.highlighted {
-  filter: url(images/filters.svg#checked-icon-state) brightness(0.9);
+  filter: url(/client/themes/images/filters.svg#checked-icon-state) brightness(0.9);
 }
 
 #ruleview-add-rule-button::before {

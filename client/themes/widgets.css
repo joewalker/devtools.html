@@ -779,12 +779,12 @@
 }
 
 .variables-view-open-inspector {
-  background-image: url("/devtools/client/themes/images/vview-open-inspector.png");
+  background-image: url("/client/themes/images/vview-open-inspector.png");
 }
 
 @media (min-resolution: 1.1dppx) {
   .variables-view-open-inspector {
-    background-image: url("/devtools/client/themes/images/vview-open-inspector@2x.png");
+    background-image: url("/client/themes/images/vview-open-inspector@2x.png");
   }
 }
 

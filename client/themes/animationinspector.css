@@ -376,7 +376,7 @@ body {
 }
 
 .animation-target .node-highlighter {
-  background: url("/devtools/client/themes/images/vview-open-inspector.png") no-repeat 0 0;
+  background: url("/client/themes/images/vview-open-inspector.png") no-repeat 0 0;
   padding-left: 16px;
   margin-right: 5px;
   cursor: pointer;
