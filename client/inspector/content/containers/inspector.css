@@ -43,11 +43,6 @@ body[resizing] iframe {
   height: 100%;
 }
 
-.iframe-ruleview {
-  width: 100%;
-  height: 100%;
-}
-
 /* ToolSidebar */
 #inspector-sidebar.devtools-sidebar-tabs tabs > tab {
   padding: 0 !important;
