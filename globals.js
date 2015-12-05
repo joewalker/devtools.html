@@ -16,6 +16,8 @@
  *    Pass true if the property name is a member of the module's exports.
  */
 function lazyRequire (obj, property, module, destructure) {
+
+  /*
   Object.defineProperty(obj, property, {
     get: () => {
       // Redefine this accessor property as a data property.
@@ -47,6 +49,7 @@ function lazyRequire (obj, property, module, destructure) {
     configurable: true,
     enumerable: true
   });
+  */
 }
 
 // Shim out these lazy getters, as they can all be implemented
