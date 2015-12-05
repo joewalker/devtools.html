@@ -19,14 +19,14 @@ var ourServices = {
 
 module.exports = {
   Cc: name => {
-    console.log('Cc sham for', name);
+    // console.log('Cc sham for', name);
     return {
       getService: (name) => ourServices[name],
       createInstance: (iface) => ourServices[iface],
     };
   },
   CC: (name, iface, method) => {
-    console.log('CC sham for', name, iface, method);
+    // console.log('CC sham for', name, iface, method);
     return {
     };
   },

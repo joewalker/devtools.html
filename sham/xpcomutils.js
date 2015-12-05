@@ -9,7 +9,7 @@ const XPCOMUtils = {
     throw new Error('defineLazyServiceGetter impossible');
   },
   generateQI(...args) {
-    console.log('generateQI is a sham', args);
+    // console.log('generateQI is a sham', args);
   },
 };
 
