@@ -5,17 +5,17 @@
 "use strict";
 
 (function() {
-  const DEVTOOLS_SKIN_URL = "/devtools/client/themes/";
-  let documentElement = document.documentElement;
+  var DEVTOOLS_SKIN_URL = "/devtools/client/themes/";
+  var documentElement = document.documentElement;
 
   function forceStyle() {
-    let computedStyle = window.getComputedStyle(documentElement);
+    var computedStyle = window.getComputedStyle(documentElement);
     if (!computedStyle) {
       // Null when documentElement is not ready. This method is anyways not
       // required then as scrollbars would be in their state without flushing.
       return;
     }
-    let display = computedStyle.display; // Save display value
+    var display = computedStyle.display; // Save display value
     documentElement.style.display = "none";
     window.getComputedStyle(documentElement).display; // Flush
     documentElement.style.display = display; // Restore
@@ -23,13 +23,13 @@
 
   function loadSheet(url) {
     /*
-    let styleSheetAttr = `href="${url}" type="text/css"`;
-    let styleSheet = document.createProcessingInstruction(
+    var styleSheetAttr = `href="${url}" type="text/css"`;
+    var styleSheet = document.createProcessingInstruction(
       "xml-stylesheet", styleSheetAttr);
     document.insertBefore(styleSheet, document.documentElement);
     */
 
-    let styleSheet = document.createElement("link");
+    var styleSheet = document.createElement("link");
     styleSheet.href = url;
     styleSheet.type = "text/css";
     styleSheet.rel = "stylesheet";
@@ -37,10 +37,10 @@
   }
 
   function removeSheet(url) {
-    let current = document.documentElement;
+    var current = document.documentElement;
     while (current) {
       if (current.nodeType === 7 && current.sheet && current.sheet.href === url) {
-        let toRemove = current;
+        var toRemove = current;
         current = current.previousSibling;
         toRemove.remove();
       } else {
@@ -54,18 +54,18 @@
       return;
     }
 
-    // let oldThemeDef = gDevTools.getThemeDefinition(oldTheme);
+    // var oldThemeDef = gDevTools.getThemeDefinition(oldTheme);
 
     // // Unload all theme stylesheets related to the old theme.
     // if (oldThemeDef) {
-    //   for (let url of oldThemeDef.stylesheets) {
+    //   for (var url of oldThemeDef.stylesheets) {
     //     removeSheet(url);
     //   }
     // }
 
     // Load all stylesheets associated with the new theme.
-    // let newThemeDef = gDevTools.getThemeDefinition(newTheme);
-    let newThemeDef = {
+    // var newThemeDef = gDevTools.getThemeDefinition(newTheme);
+    var newThemeDef = {
       stylesheets: ['/client/themes/dark-theme.css'],
       classList: ["theme-dark"],
     }
@@ -76,18 +76,18 @@
     //   newThemeDef = gDevTools.getThemeDefinition("light");
     // }
 
-    for (let url of newThemeDef.stylesheets) {
+    for (var url of newThemeDef.stylesheets) {
       loadSheet(url);
     }
 
     // Floating scroll-bars like in OSX
-    // let hiddenDOMWindow = Cc["@mozilla.org/appshell/appShellService;1"]
+    // var hiddenDOMWindow = Cc["@mozilla.org/appshell/appShellService;1"]
     //              .getService(Ci.nsIAppShellService)
     //              .hiddenDOMWindow;
 
     // // TODO: extensions might want to customize scrollbar styles too.
     // if (!hiddenDOMWindow.matchMedia("(-moz-overlay-scrollbars)").matches) {
-    //   let scrollbarsUrl = Services.io.newURI(
+    //   var scrollbarsUrl = Services.io.newURI(
     //     DEVTOOLS_SKIN_URL + "floating-scrollbars-light.css", null, null);
 
     //   if (newTheme == "dark") {
@@ -99,7 +99,7 @@
     // }
 
     // if (oldThemeDef) {
-    //   for (let name of oldThemeDef.classList) {
+    //   for (var name of oldThemeDef.classList) {
     //     documentElement.classList.remove(name);
     //   }
 
@@ -108,7 +108,7 @@
     //   }
     // }
 
-    for (let name of newThemeDef.classList) {
+    for (var name of newThemeDef.classList) {
       documentElement.classList.add(name);
     }
 
@@ -126,13 +126,13 @@
     }
   }
 
-  // const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+  // var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
   // Cu.import("resource://gre/modules/Services.jsm");
   // Cu.import("resource://devtools/client/framework/gDevTools.jsm");
 
-  let os;
-  let platform = navigator.platform;
+  var os;
+  var platform = navigator.platform;
   if (platform.startsWith("Win")) {
     os = "win";
   } else if (platform.startsWith("Mac")) {
