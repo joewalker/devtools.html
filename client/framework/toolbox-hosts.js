@@ -52,7 +52,8 @@ BottomHost.prototype = {
   create: function() {
     return new Promise(resolve => {
       this.frame = document.createElement("iframe");
-      this.frame.src = "data:text/html,";
+      // this.frame.src = "data:text/html,";
+      this.frame.src = "http://localhost:8081/client/framework/toolbox.html";
       this.frame.className = "devtools-toolbox-bottom-iframe";
 
       document.body.appendChild(this.frame);

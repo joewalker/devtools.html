@@ -16,18 +16,18 @@
       class="theme-body">
   <head>
   <script type="application/javascript"
-          src="../shared/theme-switching.js"/>
+          src="../shared/theme-switching.js"></script>
 
   <commandset>
     <command id="nodeSearchCommand"
-      oncommand="inspector.searchBox.focus()"/>
+      oncommand="inspector.searchBox.focus()"></command>
   </commandset>
 
   <keyset>
     <key id="nodeSearchKey"
       key=";AMP;inspectorSearchHTML.key;"
       modifiers="accel"
-      command="nodeSearchCommand"/>
+      command="nodeSearchCommand"></key>
   </keyset>
 
   <popupset id="inspectorPopupSet">
@@ -36,43 +36,43 @@
       <menuitem id="node-menu-edithtml"
         label=";AMP;inspectorHTMLEdit.label;"
         accesskey=";AMP;inspectorHTMLEdit.accesskey;"
-        oncommand="inspector.editHTML()"/>
+        oncommand="inspector.editHTML()"></menuitem>
       <menuitem id="node-menu-copyinner"
         label=";AMP;inspectorHTMLCopyInner.label;"
         accesskey=";AMP;inspectorHTMLCopyInner.accesskey;"
-        oncommand="inspector.copyInnerHTML()"/>
+        oncommand="inspector.copyInnerHTML()"></menuitem>
       <menuitem id="node-menu-copyouter"
         label=";AMP;inspectorHTMLCopyOuter.label;"
         accesskey=";AMP;inspectorHTMLCopyOuter.accesskey;"
-        oncommand="inspector.copyOuterHTML()"/>
+        oncommand="inspector.copyOuterHTML()"></menuitem>
       <menuitem id="node-menu-copyuniqueselector"
         label=";AMP;inspectorCopyUniqueSelector.label;"
         accesskey=";AMP;inspectorCopyUniqueSelector.accesskey;"
-        oncommand="inspector.copyUniqueSelector()"/>
+        oncommand="inspector.copyUniqueSelector()"></menuitem>
       <menuitem id="node-menu-copyimagedatauri"
         label=";AMP;inspectorCopyImageDataUri.label;"
-        oncommand="inspector.copyImageDataUri()"/>
+        oncommand="inspector.copyImageDataUri()"></menuitem>
       <menuitem id="node-menu-showdomproperties"
         label=";AMP;inspectorShowDOMProperties.label;"
-        oncommand="inspector.showDOMProperties()"/>
+        oncommand="inspector.showDOMProperties()"></menuitem>
       <menuitem id="node-menu-useinconsole"
         label=";AMP;inspectorUseInConsole.label;"
-        oncommand="inspector.useInConsole()"/>
+        oncommand="inspector.useInConsole()"></menuitem>
       <menuitem id="node-menu-expand"
         label=";AMP;inspectorExpandNode.label;"
-        oncommand="inspector.expandNode()"/>
+        oncommand="inspector.expandNode()"></menuitem>
       <menuitem id="node-menu-collapse"
         label=";AMP;inspectorCollapseNode.label;"
-        oncommand="inspector.collapseNode()"/>
-      <menuseparator/>
+        oncommand="inspector.collapseNode()"></menuitem>
+      <menuseparator></menuseparator>
       <menuitem id="node-menu-pasteinnerhtml"
         label=";AMP;inspectorHTMLPasteInner.label;"
         accesskey=";AMP;inspectorHTMLPasteInner.accesskey;"
-        oncommand="inspector.pasteInnerHTML()"/>
+        oncommand="inspector.pasteInnerHTML()"></menuitem>
       <menuitem id="node-menu-pasteouterhtml"
         label=";AMP;inspectorHTMLPasteOuter.label;"
         accesskey=";AMP;inspectorHTMLPasteOuter.accesskey;"
-        oncommand="inspector.pasteOuterHTML()"/>
+        oncommand="inspector.pasteOuterHTML()"></menuitem>
       <menu id="node-menu-paste-extra-submenu"
         label=";AMP;inspectorHTMLPasteExtraSubmenu.label;"
         accesskey=";AMP;inspectorHTMLPasteExtraSubmenu.accesskey;">
@@ -80,68 +80,68 @@
           <menuitem id="node-menu-pastebefore"
             label=";AMP;inspectorHTMLPasteBefore.label;"
             accesskey=";AMP;inspectorHTMLPasteBefore.accesskey;"
-            oncommand="inspector.pasteAdjacentHTML('beforeBegin')"/>
+            oncommand="inspector.pasteAdjacentHTML('beforeBegin')"></menuitem>
           <menuitem id="node-menu-pasteafter"
             label=";AMP;inspectorHTMLPasteAfter.label;"
             accesskey=";AMP;inspectorHTMLPasteAfter.accesskey;"
-            oncommand="inspector.pasteAdjacentHTML('afterEnd')"/>
+            oncommand="inspector.pasteAdjacentHTML('afterEnd')"></menuitem>
           <menuitem id="node-menu-pastefirstchild"
             label=";AMP;inspectorHTMLPasteFirstChild.label;"
             accesskey=";AMP;inspectorHTMLPasteFirstChild.accesskey;"
-            oncommand="inspector.pasteAdjacentHTML('afterBegin')"/>
+            oncommand="inspector.pasteAdjacentHTML('afterBegin')"></menuitem>
           <menuitem id="node-menu-pastelastchild"
             label=";AMP;inspectorHTMLPasteLastChild.label;"
             accesskey=";AMP;inspectorHTMLPasteLastChild.accesskey;"
-            oncommand="inspector.pasteAdjacentHTML('beforeEnd')"/>
+            oncommand="inspector.pasteAdjacentHTML('beforeEnd')"></menuitem>
         </menupopup>
       </menu>
-      <menuseparator/>
+      <menuseparator></menuseparator>
       <menuitem id="node-menu-scrollnodeintoview"
         label=";AMP;inspectorScrollNodeIntoView.label;"
         accesskey=";AMP;inspectorScrollNodeIntoView.accesskey;"
-        oncommand="inspector.scrollNodeIntoView()"/>
+        oncommand="inspector.scrollNodeIntoView()"></menuitem>
       <menuitem id="node-menu-screenshotnode"
         label=";AMP;inspectorScreenshotNode.label;"
-        oncommand="inspector.screenshotNode()" />
+        oncommand="inspector.screenshotNode()"></menuitem>
       <menuitem id="node-menu-duplicatenode"
         label=";AMP;inspectorDuplicateNode.label;"
-        oncommand="inspector.duplicateNode()"/>
+        oncommand="inspector.duplicateNode()"></menuitem>
       <menuitem id="node-menu-delete"
         label=";AMP;inspectorHTMLDelete.label;"
         accesskey=";AMP;inspectorHTMLDelete.accesskey;"
-        oncommand="inspector.deleteNode()"/>
+        oncommand="inspector.deleteNode()"></menuitem>
       <menu label=";AMP;inspectorAttributeSubmenu.label;"
         accesskey=";AMP;inspectorAttributeSubmenu.accesskey;">
         <menupopup>
           <menuitem id="node-menu-add-attribute"
             label=";AMP;inspectorAddAttribute.label;"
             accesskey=";AMP;inspectorAddAttribute.accesskey;"
-            oncommand="inspector.onAddAttribute()"/>
+            oncommand="inspector.onAddAttribute()"></menuitem>
           <menuitem id="node-menu-edit-attribute"
             label=";AMP;inspectorEditAttribute.label;"
             accesskey=";AMP;inspectorEditAttribute.accesskey;"
-            oncommand="inspector.onEditAttribute()"/>
+            oncommand="inspector.onEditAttribute()"></menuitem>
           <menuitem id="node-menu-remove-attribute"
             label=";AMP;inspectorRemoveAttribute.label;"
             accesskey=";AMP;inspectorRemoveAttribute.accesskey;"
-            oncommand="inspector.onRemoveAttribute()"/>
+            oncommand="inspector.onRemoveAttribute()"></menuitem>
         </menupopup>
       </menu>
-      <menuseparator id="node-menu-link-separator"/>
+      <menuseparator id="node-menu-link-separator"></menuseparator>
       <menuitem id="node-menu-link-follow"
-        oncommand="inspector.onFollowLink()"/>
+        oncommand="inspector.onFollowLink()"></menuitem>
       <menuitem id="node-menu-link-copy"
-        oncommand="inspector.onCopyLink()"/>
-      <menuseparator/>
+        oncommand="inspector.onCopyLink()"></menuitem>
+      <menuseparator></menuseparator>
       <menuitem id="node-menu-pseudo-hover"
         label=":hover" type="checkbox"
-        oncommand="inspector.togglePseudoClass(':hover')"/>
+        oncommand="inspector.togglePseudoClass(':hover')"></menuitem>
       <menuitem id="node-menu-pseudo-active"
         label=":active" type="checkbox"
-        oncommand="inspector.togglePseudoClass(':active')"/>
+        oncommand="inspector.togglePseudoClass(':active')"></menuitem>
       <menuitem id="node-menu-pseudo-focus"
         label=":focus" type="checkbox"
-        oncommand="inspector.togglePseudoClass(':focus')"/>
+        oncommand="inspector.togglePseudoClass(':focus')"></menuitem>
     </menupopup>
   </popupset>
   </head>
@@ -162,10 +162,10 @@
       <vbox flex="1" id="markup-box">
       </vbox>
     </vbox>
-    <splitter class="devtools-side-splitter"/>
+    <splitter class="devtools-side-splitter"></splitter>
     <div id="inspector-sidebar" handleCtrlTab="false" class="devtools-sidebar-tabs" hidden="true" flex="0">
-      <tabs/>
-      <tabpanels flex="1"/>
+      <tabs></tabs>
+      <tabpanels flex="1"></tabpanels>
     </div>
   </box>
   </body>

@@ -1220,11 +1220,6 @@ Toolbox.prototype = {
     gDevTools.emit(id + "-init", this, iframe);
     this.emit(id + "-init", iframe);
 
-    // If no parent yet, append the frame into default location.
-    if (!iframe.parentNode) {
-      let vbox = this.doc.getElementById("toolbox-panel-" + id);
-      vbox.appendChild(iframe);
-    }
 
     let onLoad = () => {
       // Prevent flicker while loading by waiting to make visible until now.
@@ -1280,11 +1275,17 @@ Toolbox.prototype = {
       }, console.error);
     };
 
+    console.log("Loading iframe with URL: " + definition.url);
+    iframe.onload = onLoad;
     iframe.setAttribute("src", definition.url);
     if (definition.panelLabel) {
       iframe.setAttribute("aria-label", definition.panelLabel);
     }
-    iframe.onload = onLoad;
+    // If no parent yet, append the frame into default location.
+    if (!iframe.parentNode) {
+      let vbox = this.doc.getElementById("toolbox-panel-" + id);
+      vbox.appendChild(iframe);
+    }
 
     return deferred.promise;
   },

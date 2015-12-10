@@ -21,92 +21,92 @@
   <script src="../../globals.js"></script>
   <script src="../shared/theme-switching.js"></script>
 
-  <commandset id="editMenuCommands"/>
-  <keyset id="editMenuKeys"/>
+  <commandset id="editMenuCommands"></commandset>
+  <keyset id="editMenuKeys"></keyset>
   <keyset id="toolbox-keyset">
     <key id="toolbox-options-key"
          key=";AMP;toolboxOptionsButton.key;"
          oncommand="void(0);"
-         modifiers="shift, accel"/>
+         modifiers="shift, accel"></key>
     <key id="toolbox-options-key2"
          keycode=";AMP;openHelp.commandkey;"
-         oncommand="void(0);"/>
+         oncommand="void(0);"></key>
     <key id="toolbox-next-tool-key"
          key=";AMP;toolboxNextTool.key;"
          oncommand="void(0);"
-         modifiers="accel"/>
+         modifiers="accel"></key>
     <key id="toolbox-previous-tool-key"
          key=";AMP;toolboxPreviousTool.key;"
          oncommand="void(0);"
-         modifiers="accel"/>
+         modifiers="accel"></key>
     <key id="toolbox-zoom-in-key"
          key=";AMP;fullZoomEnlargeCmd.commandkey;"
          oncommand="void(0);"
-         modifiers="accel"/>
+         modifiers="accel"></key>
     <key id="toolbox-zoom-in-key2"
          key=";AMP;fullZoomEnlargeCmd.commandkey2;"
          oncommand="void(0);"
-         modifiers="accel"/>
+         modifiers="accel"></key>
     <key id="toolbox-zoom-in-key3"
          key=";AMP;fullZoomEnlargeCmd.commandkey3;"
          oncommand="void(0);"
-         modifiers="accel"/>
+         modifiers="accel"></key>
     <key id="toolbox-zoom-out-key"
          key=";AMP;fullZoomReduceCmd.commandkey;"
          oncommand="void(0);"
-         modifiers="accel"/>
+         modifiers="accel"></key>
     <key id="toolbox-zoom-out-key2"
          key=";AMP;fullZoomReduceCmd.commandkey2;"
          oncommand="void(0);"
-         modifiers="accel"/>
+         modifiers="accel"></key>
     <key id="toolbox-zoom-reset-key"
          key=";AMP;fullZoomResetCmd.commandkey;"
          oncommand="void(0);"
-         modifiers="accel"/>
+         modifiers="accel"></key>
     <key id="toolbox-zoom-reset-key2"
          key=";AMP;fullZoomResetCmd.commandkey2;"
          oncommand="void(0);"
-         modifiers="accel"/>
+         modifiers="accel"></key>
     <key id="toolbox-reload-key"
          key=";AMP;toolboxReload.key;"
          oncommand="void(0);"
-         modifiers="accel"/>
+         modifiers="accel"></key>
     <key id="toolbox-force-reload-key"
          key=";AMP;toolboxReload.key;"
          oncommand="void(0);"
-         modifiers="accel shift"/>
+         modifiers="accel shift"></key>
     <key id="toolbox-reload-key2"
          keycode="VK_F5"
          oncommand="void(0);"
-         modifiers=""/>
+         modifiers=""></key>
     <key id="toolbox-force-reload-key2"
          keycode="VK_F5"
          oncommand="void(0);"
-         modifiers="accel"/>
+         modifiers="accel"></key>
     <key id="toolbox-minimize-key"
          key=";AMP;toolboxToggleMinimize.key;"
          oncommand="void(0);"
-         modifiers="shift, accel"/>
+         modifiers="shift, accel"></key>
     <key id="toolbox-toggle-host-key"
          key=";AMP;toolboxToggle.key;"
          oncommand="void(0);"
-         modifiers="accel shift"/>
+         modifiers="accel shift"></key>
     <key id="tools-reload-key"
          key=";AMP;toolboxReload.key;"
          oncommand="void(0);"
-         modifiers="accel alt"/>
+         modifiers="accel alt"></key>
   </keyset>
 
   <popupset>
     <menupopup id="toolbox-textbox-context-popup">
-      <menuitem id="cMenu_undo"/>
-      <menuseparator/>
-      <menuitem id="cMenu_cut"/>
-      <menuitem id="cMenu_copy"/>
-      <menuitem id="cMenu_paste"/>
-      <menuitem id="cMenu_delete"/>
-      <menuseparator/>
-      <menuitem id="cMenu_selectAll"/>
+      <menuitem id="cMenu_undo"></menuitem>
+      <menuseparator</menuseparator>
+      <menuitem id="cMenu_cut"></menuitem>
+      <menuitem id="cMenu_copy"></menuitem>
+      <menuitem id="cMenu_paste"></menuitem>
+      <menuitem id="cMenu_delete"></menuitem>
+      <menuseparator></menuseparator>
+      <menuitem id="cMenu_selectAll"></menuitem>
     </menupopup>
   </popupset>
 
@@ -114,8 +114,8 @@
   <body>
   <vbox id="toolbox-notificationbox" flex="1">
     <toolbar class="devtools-tabbar">
-      <hbox id="toolbox-picker-container" />
-      <hbox id="toolbox-tabs" flex="1" role="tablist" />
+      <hbox id="toolbox-picker-container"></hbox>
+      <hbox id="toolbox-tabs" flex="1" role="tablist"></hbox>
       <hbox id="toolbox-buttons" pack="end">
         <button id="command-button-frames"
                        class="command-button command-button-invertable devtools-toolbarbutton devtools-button"
@@ -125,13 +125,13 @@
           <menupopup position="bottomright topright"></menupopup>
         </button>
       </hbox>
-      <vbox id="toolbox-controls-separator" class="devtools-separator"/>
-      <hbox id="toolbox-option-container"/>
+      <vbox id="toolbox-controls-separator" class="devtools-separator"></vbox>
+      <hbox id="toolbox-option-container"></hbox>
       <hbox id="toolbox-controls">
-        <hbox id="toolbox-dock-buttons"/>
+        <hbox id="toolbox-dock-buttons"></hbox>
         <button id="toolbox-close"
                        class="devtools-closebutton devtools-button"
-                       tooltiptext=";AMP;toolboxCloseButton.tooltip;"/>
+                       tooltiptext=";AMP;toolboxCloseButton.tooltip;"></button>
       </hbox>
     </toolbar>
     <vbox flex="1">
@@ -139,9 +139,9 @@
            height set to a small value without flexing to fill up extra
            space. There must be a flex on both to ensure that the console
            panel itself is sized properly -->
-      <box id="toolbox-deck" flex="1000" minheight="75" />
-      <splitter id="toolbox-console-splitter" class="devtools-horizontal-splitter" hidden="true" />
-      <box minheight="75" flex="1" id="toolbox-panel-webconsole" collapsed="true" />
+      <box id="toolbox-deck" flex="1000" minheight="75"></box>
+      <splitter id="toolbox-console-splitter" class="devtools-horizontal-splitter" hidden="true"></splitter>
+      <box minheight="75" flex="1" id="toolbox-panel-webconsole" collapsed="true"></box>
     </vbox>
   </vbox>
   </body>
