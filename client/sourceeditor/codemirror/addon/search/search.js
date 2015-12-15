@@ -113,8 +113,8 @@
 
   function doSearch(cm, rev, persistent) {
     if (!queryDialog) {
-      let doc = cm.getWrapperElement().ownerDocument;
-      let inp = doc.createElement("input");
+      var doc = cm.getWrapperElement().ownerDocument;
+      var inp = doc.createElement("input");
 
       inp.type = "search";
       inp.placeholder = cm.l10n("findCmd.promptMessage");
