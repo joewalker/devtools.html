@@ -953,7 +953,12 @@ InspectorPanel.prototype = {
 
     this._markupFrame.removeEventListener("load", this._onMarkupFrameLoad, true);
 
-    this._markupFrame.contentWindow.focus();
+    // XXXServo: No focus function on the window:
+    // https://github.com/servo/servo/issues/8981
+    if (this._markupFrame.contentWindow.focus) {
+      console.error("FIXME: window.focus is not defined: https://github.com/servo/servo/issues/8981");
+      this._markupFrame.contentWindow.focus();
+    }
 
     this._markupBox.removeAttribute("collapsed");
 
