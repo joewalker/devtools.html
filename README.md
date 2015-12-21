@@ -66,6 +66,14 @@ Start servo with a devtools server listening on port 6080 and open to mozilla.or
 $ ./mach run --devtools 6080 https://google.com
 ```
 
+## Running in Servo as a client:
+
+Download and build servo, then:
+
+```
+./mach run --pref layout.flex.enabled  http://localhost:8081/client/framework/toolbox-wrapper.html
+```
+
 See also:
 
 * https://github.com/servo/servo/wiki/Devtools
