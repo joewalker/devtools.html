@@ -1076,7 +1076,7 @@ PropertyView.prototype = {
             this.matchedExpander.setAttribute("open", "");
             this.tree.inspector.emit("computed-view-property-expanded");
           });
-        }).then(null, console.error);
+        }).then(null, console.error.bind(console));
     }
 
     this.matchedSelectorsContainer.innerHTML = "";

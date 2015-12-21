@@ -101,7 +101,7 @@ EditingSession.prototype = {
       }
     }
 
-    return modifications.apply().then(null, console.error);
+    return modifications.apply().then(null, console.error.bind(console));
   },
 
   /**
@@ -119,7 +119,7 @@ EditingSession.prototype = {
       }
     }
 
-    return modifications.apply().then(null, console.error);
+    return modifications.apply().then(null, console.error.bind(console));
   },
 
   destroy: function() {
@@ -474,7 +474,7 @@ LayoutView.prototype = {
       this.elementRules = styleEntries.map(e => e.rule);
 
       this.inspector.emit("layoutview-updated");
-    }).bind(this)).then(null, console.error);
+    }).bind(this)).then(null, console.error.bind(console));
 
     return this._lastRequest = lastRequest;
   },

@@ -43,7 +43,7 @@ devtoolsCommandlineHandler.prototype = {
       // Load the browser devtools main module as the loader's main module.
       const { gDevTools } = require("devtools/client/framework/gDevTools");
       let hudservice = require("devtools/client/webconsole/hudservice");
-      hudservice.toggleBrowserConsole().then(null, console.error);
+      hudservice.toggleBrowserConsole().then(null, console.error.bind(console));
     } else {
       window.focus(); // the Browser Console was already open
     }

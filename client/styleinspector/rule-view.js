@@ -206,7 +206,7 @@ ElementStyle.prototype = {
     this.dummyElementPromise.then(dummyElement => {
       dummyElement.remove();
       this.dummyElementPromise = null;
-    }, console.error);
+    }, console.error.bind(console));
   },
 
   /**
@@ -2849,7 +2849,7 @@ RuleEditor.prototype = {
       this.rule.getOriginalSourceStrings().then((strings) => {
         sourceLabel.setAttribute("value", strings.short);
         sourceLabel.setAttribute("tooltiptext", strings.full);
-      }, console.error);
+      }, console.error.bind(console));
     }
   },
 

@@ -220,7 +220,7 @@ var TextEditor = Class({
       this.editor.clearHistory();
       this.editor.setClean();
       this.emit("load");
-    }, console.error);
+    }, console.error.bind(console));
   },
 
   /**

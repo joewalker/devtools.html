@@ -53,7 +53,7 @@ var RenamePlugin = Class({
         if (!resource.isDir) {
           this.host.currentEditor.focus();
         }
-      }).then(null, console.error);
+      }).then(null, console.error.bind(console));
     }
   },
 

@@ -61,7 +61,7 @@ var NewFile = Class({
       }).then(resource => {
         tree.selectResource(resource);
         this.host.currentEditor.focus();
-      }).then(null, console.error);
+      }).then(null, console.error.bind(console));
     }
   },
 

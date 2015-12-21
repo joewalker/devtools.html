@@ -731,7 +731,7 @@ MarkupView.prototype = {
       }, () => {
         this.walker.insertBefore(aNode, parent, nextSibling);
       });
-    }).then(null, console.error);
+    }).then(null, console.error.bind(console));
   },
 
   /**
@@ -1008,7 +1008,7 @@ MarkupView.prototype = {
         child = child.nextSibling;
       }
       return promise.all(promises);
-    }).then(null, console.error);
+    }).then(null, console.error.bind(console));
   },
 
   /**
@@ -1048,7 +1048,7 @@ MarkupView.prototype = {
 
     return walkerPromise.then(longstr => {
       return longstr.string().then(html => {
-        longstr.release().then(null, console.error);
+        longstr.release().then(null, console.error.bind(console));
         return html;
       });
     });
@@ -1483,7 +1483,7 @@ MarkupView.prototype = {
 
       aContainer.children.appendChild(fragment);
       return aContainer;
-    }).then(null, console.error);
+    }).then(null, console.error.bind(console));
     this._queuedChildUpdates.set(aContainer, updatePromise);
     return updatePromise;
   },
@@ -2432,7 +2432,7 @@ function TextEditor(aContainer, aNode, aTemplate) {
       }
       this.node.getNodeValue().then(longstr => {
         longstr.string().then(oldValue => {
-          longstr.release().then(null, console.error);
+          longstr.release().then(null, console.error.bind(console));
 
           this.container.undo.do(() => {
             this.node.setNodeValue(aVal);
@@ -2473,12 +2473,12 @@ TextEditor.prototype = {
         longstr = ret;
         return longstr.string();
       }).then(str => {
-        longstr.release().then(null, console.error);
+        longstr.release().then(null, console.error.bind(console));
         if (this.selected) {
           this.value.textContent = str;
           this.markup.emit("text-expand")
         }
-      }).then(null, console.error);
+      }).then(null, console.error.bind(console));
     }
   },
 

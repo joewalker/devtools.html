@@ -172,7 +172,7 @@ function processNode(state, node, data) {
                 /* jshint loopfunc:true */
                 replacement.then(function(newValue) {
                   node.setAttribute(name, newValue);
-                }).then(null, console.error);
+                }).then(null, console.error.bind(console));
               }
               else {
                 if (state.options.blankNullUndefined && replacement == null) {

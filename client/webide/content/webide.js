@@ -95,12 +95,12 @@ var UI = {
     if (autoinstallADBHelper) {
       GetAvailableAddons().then(addons => {
         addons.adb.install();
-      }, console.error);
+      }, console.error.bind(console));
     }
     if (autoinstallFxdtAdapters) {
       GetAvailableAddons().then(addons => {
         addons.adapters.install();
-      }, console.error);
+      }, console.error.bind(console));
     }
     Services.prefs.setBoolPref("devtools.webide.autoinstallADBHelper", false);
     Services.prefs.setBoolPref("devtools.webide.autoinstallFxdtAdapters", false);
@@ -673,8 +673,8 @@ var UI = {
         iconUrl: project.icon,
         projectOverviewURL: "/devtools/client/webide/content/details.xhtml",
         validationStatus: status
-      }).then(null, console.error);
-    }, console.error);
+      }).then(null, console.error.bind(console));
+    }, console.error.bind(console));
   },
 
   isProjectEditorEnabled: function() {
@@ -711,7 +711,7 @@ var UI = {
 
     this.getProjectEditor().then(() => {
       this.updateProjectEditorHeader();
-    }, console.error);
+    }, console.error.bind(console));
 
     this.selectDeckPanel("projecteditor");
   },
@@ -983,7 +983,7 @@ var UI = {
       // toolbox.destroy's promise resolves.
       toolbox.once("destroyed", this._onToolboxClosed.bind(this, promise, iframe));
       return toolbox;
-    }, console.error);
+    }, console.error.bind(console));
 
     return this.busyUntil(this.toolboxPromise, "opening toolbox");
   },
@@ -1039,7 +1039,7 @@ var Cmds = {
     let url = AppManager.deviceFront.screenshotToDataURL();
     return UI.busyUntil(url.then(longstr => {
       return longstr.string().then(dataURL => {
-        longstr.release().then(null, console.error);
+        longstr.release().then(null, console.error.bind(console));
         UI.openInBrowser(dataURL);
       });
     }), "taking screenshot");

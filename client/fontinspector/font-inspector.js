@@ -173,10 +173,10 @@ FontInspector.prototype = {
     let fonts = [];
     if (showAllFonts) {
       fonts = await this.pageStyle.getAllUsedFontFaces(options)
-                      .then(null, console.error);
+                      .then(null, console.error.bind(console));
     } else {
       fonts = await this.pageStyle.getUsedFontFaces(node, options)
-                      .then(null, console.error);
+                      .then(null, console.error.bind(console));
     }
 
     if (!fonts || !fonts.length) {

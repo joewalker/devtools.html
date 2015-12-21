@@ -102,7 +102,7 @@ InspectorPanel.prototype = {
       return this._getDefaultNodeForSelection();
     }).then(defaultSelection => {
       return this._deferredOpen(defaultSelection);
-    }).then(null, console.error);
+    }).then(null, console.error.bind(console));
   },
 
   get toolbox() {
@@ -428,7 +428,7 @@ InspectorPanel.prototype = {
       });
     };
     this._pendingSelection = onNodeSelected;
-    this._getDefaultNodeForSelection().then(onNodeSelected, console.error);
+    this._getDefaultNodeForSelection().then(onNodeSelected, console.error.bind(console));
   },
 
   _selectionCssSelector: null,
@@ -917,7 +917,7 @@ InspectorPanel.prototype = {
         linkCopy.removeAttribute("hidden");
         linkCopy.setAttribute("label", strings.GetStringFromName(
           "inspector.menu.copyUrlToClipboard.label"));
-      }, console.error);
+      }, console.error.bind(console));
     } else if (type === "idref") {
       linkSeparator.removeAttribute("hidden");
       linkFollow.removeAttribute("hidden");
@@ -1113,7 +1113,7 @@ InspectorPanel.prototype = {
     if (!this.walker) {
       return;
     }
-    return this.walker.clearPseudoClassLocks().then(null, console.error);
+    return this.walker.clearPseudoClassLocks().then(null, console.error.bind(console));
   },
 
   /**
@@ -1249,7 +1249,7 @@ InspectorPanel.prototype = {
 
     this.selection.nodeFront.getUniqueSelector().then((selector) => {
       clipboardHelper.copy(selector);
-    }).then(null, console.error);
+    }).then(null, console.error.bind(console));
   },
 
   /**
@@ -1412,7 +1412,7 @@ InspectorPanel.prototype = {
     // already checked that resolveRelativeURL existed.
     this.inspector.resolveRelativeURL(link, this.selection.nodeFront).then(url => {
       clipboardHelper.copy(url);
-    }, console.error);
+    }, console.error.bind(console));
   },
 
   /**

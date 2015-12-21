@@ -68,7 +68,7 @@ var SavePlugin = Class({
       return this.saveResource(editor, resource);
     }).then(() => {
       this.host.openResource(resource);
-    }).then(null, console.error);
+    }).then(null, console.error.bind(console));
   },
 
   onEditorSaveRequested: function() {

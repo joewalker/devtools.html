@@ -1272,7 +1272,7 @@ Toolbox.prototype = {
         this.emit(id + "-ready", panel);
 
         deferred.resolve(panel);
-      }, console.error);
+      }, console.error.bind(console));
     };
 
     console.log("Loading iframe with URL: " + definition.url);
@@ -1995,7 +1995,7 @@ Toolbox.prototype = {
       this.highlighterUtils.release();
       target.off("close", this.destroy);
       return target.destroy();
-    }, console.error).then(() => {
+    }, console.error.bind(console)).then(() => {
       this.emit("destroyed");
 
       // Free _host after the call to destroyed in order to let a chance
@@ -2010,7 +2010,7 @@ Toolbox.prototype = {
            .getInterface(Ci.nsIDOMWindowUtils)
            .garbageCollect();
       }
-    }).then(null, console.error);
+    }).then(null, console.error.bind(console));
 
     let leakCheckObserver = ({wrappedJSObject: barrier}) => {
       // Make the leak detector wait until this toolbox is properly destroyed.
